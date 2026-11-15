@@ -1,0 +1,49 @@
+/* dark-fix.css — إصلاح وضوح النص في الوضع الداكن.
+   السبب: صناديق كثيرة في الموقع خلفيتها فاتحة ثابتة (بطاقات، قصص، صفحات الكورس، الأنشطة، لوحة ولي الأمر…)
+   بينما لون النص في الوضع الداكن يصبح فاتحًا فيختفي النص. هنا نجعل النص داخل هذه الصناديق داكنًا في الوضع الداكن فقط،
+   دون تغيير تصميم الموقع أو ألوانه في الوضع الفاتح. يُحمَّل بعد كل ملفات التنسيق. */
+@media(prefers-color-scheme:dark){
+ :root:not([data-theme=light]) :is(.ac-pad,.ac-c,.ac-dice,.ac-sg button,.ac-hv button,.story-card,.story-text,.ss.now,.ss:hover,.dl.a,.dl.b,.slot,.mw,.mp,.ct-paper,.ct-tbl,.ct-note,.ct-tip,.ct-say:active,.ct-quiz,.ct-opts button.ok,.ct-opts button.no,.ct-wide td:first-child,.ct-wide th:first-child,.lesson-menu[open] summary,.course-menu[open] summary,.course-frame,.course-entry,.pn,.badge,.badge-toast,.pdash,.pr-sum div,.cloudbox,.cloud-code,.nx,.vpersona.on,.chips button.ok,.chips button.no,.row>span:first-child,.card.ok,.coin,.voice-provider button.on,.tsel.on,.voice-styles button){--ink:#1f2147;--mut:#5b5f8a;--line:#e3e4f6;color:#1f2147}
+ :root:not([data-theme=light]) :is(.pst-h small,.pr-row small,.eng-h small){color:var(--mut)}
+ :root:not([data-theme=light]) .eng .eng-ok,:root:not([data-theme=light]) .vrow .eng-ok{color:#4ade80}
+}
+:root[data-theme=dark] :is(.ac-pad,.ac-c,.ac-dice,.ac-sg button,.ac-hv button,.story-card,.story-text,.ss.now,.ss:hover,.dl.a,.dl.b,.slot,.mw,.mp,.ct-paper,.ct-tbl,.ct-note,.ct-tip,.ct-say:active,.ct-quiz,.ct-opts button.ok,.ct-opts button.no,.ct-wide td:first-child,.ct-wide th:first-child,.lesson-menu[open] summary,.course-menu[open] summary,.course-frame,.course-entry,.pn,.badge,.badge-toast,.pdash,.pr-sum div,.cloudbox,.cloud-code,.nx,.vpersona.on,.chips button.ok,.chips button.no,.row>span:first-child,.card.ok,.coin,.voice-provider button.on,.tsel.on,.voice-styles button){--ink:#1f2147;--mut:#5b5f8a;--line:#e3e4f6;color:#1f2147}
+:root[data-theme=dark] :is(.pst-h small,.pr-row small,.eng-h small){color:var(--mut)}
+:root[data-theme=dark] .eng .eng-ok,:root[data-theme=dark] .vrow .eng-ok{color:#4ade80}
+/* النص الرمادي الثابت (#5b6475) يصبح لون «النص الخافت» الخاص بكل وضع */
+.pst-h small,.pr-row small,.eng-h small{color:var(--mut)}
+/* النص الأبيض فوق البلاطات الملوّنة الفاتحة (أصفر/برتقالي/أخضر فاتح) كان باهتًا: ظل خفيف يجعله واضحًا دون تغيير التصميم */
+.tl>button,.tl>button *,.go,.zone,.zone *,.world-tile,.world-tile *,.path-h,.path-h *{text-shadow:0 1px 3px rgba(0,0,0,.5),0 0 2px rgba(0,0,0,.35)}
+
+/* ===== لوحات الإعدادات والإنجازات في الوضع الداكن: سطح داكن حقيقي بدل صناديق بيضاء =====
+   (تقدّم الطالب، الحفظ على الإنترنت، تحليل بومي، الأسئلة الصوتية، مسار التعلم، الشارات) */
+@media(prefers-color-scheme:dark){
+:root:not([data-theme=light]) :is(.pdash,.cloudbox,.pr-sum div,.cloud-code,.pn,.badge,.badge.got,.badge-toast){--ink:#f1f2ff !important;--mut:#b7bce6 !important;--line:#3d4585 !important;--card:#262b57 !important;color:#f1f2ff !important}
+:root:not([data-theme=light]) :is(.pdash,.cloudbox){background:#20254d !important;border-color:#363d78 !important}
+:root:not([data-theme=light]) :is(.pr-sum div,.cloud-code){background:#2a3060 !important;border-color:#3d4585 !important}
+:root:not([data-theme=light]) :is(.pn){background:#262b57 !important;border-color:#3d4585 !important}
+:root:not([data-theme=light]) :is(.pn.done){background:#1f3b2c !important;border-color:#58cc02 !important}
+:root:not([data-theme=light]) :is(.pn.cur){background:#3b3420 !important;border-color:#ffc93c !important}
+:root:not([data-theme=light]) :is(.pn.lock){background:#1c2044 !important;border-color:#3d4585 !important;color:#8f95c4 !important}
+:root:not([data-theme=light]) :is(.pn small){color:#a9aedc !important}
+:root:not([data-theme=light]) :is(.badge){background:#20254d !important;border-color:#3d4585 !important}
+:root:not([data-theme=light]) :is(.badge.got){background:#3b3420 !important;border-color:#ffc93c !important}
+:root:not([data-theme=light]) :is(.badge-toast){background:#20254d !important}
+:root:not([data-theme=light]) :is(.badge-toast small){color:#ffd166 !important}
+:root:not([data-theme=light]) :is(.pr-row .bar,.pdash .bar){background:#363d78 !important}
+}
+:root[data-theme=dark] :is(.pdash,.cloudbox,.pr-sum div,.cloud-code,.pn,.badge,.badge.got,.badge-toast){--ink:#f1f2ff !important;--mut:#b7bce6 !important;--line:#3d4585 !important;--card:#262b57 !important;color:#f1f2ff !important}
+:root[data-theme=dark] :is(.pdash,.cloudbox){background:#20254d !important;border-color:#363d78 !important}
+:root[data-theme=dark] :is(.pr-sum div,.cloud-code){background:#2a3060 !important;border-color:#3d4585 !important}
+:root[data-theme=dark] :is(.pn){background:#262b57 !important;border-color:#3d4585 !important}
+:root[data-theme=dark] :is(.pn.done){background:#1f3b2c !important;border-color:#58cc02 !important}
+:root[data-theme=dark] :is(.pn.cur){background:#3b3420 !important;border-color:#ffc93c !important}
+:root[data-theme=dark] :is(.pn.lock){background:#1c2044 !important;border-color:#3d4585 !important;color:#8f95c4 !important}
+:root[data-theme=dark] :is(.pn small){color:#a9aedc !important}
+:root[data-theme=dark] :is(.badge){background:#20254d !important;border-color:#3d4585 !important}
+:root[data-theme=dark] :is(.badge.got){background:#3b3420 !important;border-color:#ffc93c !important}
+:root[data-theme=dark] :is(.badge-toast){background:#20254d !important}
+:root[data-theme=dark] :is(.badge-toast small){color:#ffd166 !important}
+:root[data-theme=dark] :is(.pr-row .bar,.pdash .bar){background:#363d78 !important}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) :is(.pr-sum small,.pdash small,.t-tbl td small){color:#b7bce6 !important}}
+:root[data-theme=dark] :is(.pr-sum small,.pdash small,.t-tbl td small){color:#b7bce6 !important}

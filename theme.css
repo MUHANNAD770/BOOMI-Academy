@@ -1,0 +1,90 @@
+/* theme.css — الهوية البصرية الجديدة لحروفي (تُحمَّل أخيرًا وتُحسّن كل الواجهات دون تغيير وظائفها).
+   ألوان مبهجة هادئة، بطاقات بظلال ناعمة، أزرار ثلاثية الأبعاد تنضغط عند اللمس، حركات خفيفة، ودعم الوضع الداكن. */
+:root{--bg:#f4f1ff;--bg2:#e9f6ff;--card:#fff;--ink:#1f2147;--mut:#5b5f8a;--sun:#ffc531;--sun2:#ff9f1c;--mint:#20b486;--berry:#ef4f8b;--sky:#4d7cfe;--grape:#8b5cf6;--line:#e3e4f6;
+ --shadow:0 6px 18px rgba(48,40,120,.10),0 2px 4px rgba(48,40,120,.06);--shadow-lg:0 14px 34px rgba(48,40,120,.16);--r:22px}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#15163a;--bg2:#101433;--card:#22245a;--ink:#f3f3ff;--mut:#b4b6e6;--line:#34377a;--shadow:0 6px 18px rgba(0,0,0,.35)}}
+:root[data-theme=dark]{--bg:#15163a;--bg2:#101433;--card:#22245a;--ink:#f3f3ff;--mut:#b4b6e6;--line:#34377a;--shadow:0 6px 18px rgba(0,0,0,.35)}
+body{background:radial-gradient(1200px 600px at 100% -10%,var(--bg2),transparent 60%),radial-gradient(900px 500px at -10% 110%,#fff3df,transparent 60%),var(--bg);background-attachment:fixed;min-height:100vh}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) body{background:radial-gradient(1200px 600px at 100% -10%,#1b2257,transparent 60%),var(--bg)}}
+main{padding-top:14px}
+h1,h2,h3{letter-spacing:-.01em}h2{font-size:1.65rem;font-weight:800}h3{font-size:1.2rem;font-weight:800;margin-top:1.1em}
+/* الأزرار */
+button{border-radius:18px;border:2px solid var(--line);background:var(--card);box-shadow:0 4px 0 var(--line);transition:transform .12s ease,box-shadow .12s ease,background .2s}
+button:active:not(:disabled){transform:translateY(3px);box-shadow:0 1px 0 var(--line)}
+button:disabled{opacity:.7}
+.big{background:linear-gradient(180deg,var(--sun),var(--sun2));border:0;color:#3a2400;box-shadow:0 5px 0 #d97a00,0 10px 20px rgba(255,140,0,.25);font-size:1.2rem;letter-spacing:.01em}
+.big:active:not(:disabled){box-shadow:0 2px 0 #d97a00}
+.alt{background:var(--card);border-color:#c9d6ff;box-shadow:0 4px 0 #c9d6ff;color:var(--ink);font-weight:700}
+.link{box-shadow:none;color:var(--sky);font-weight:800}.link:active{transform:none}
+/* القوائم والصفوف */
+.row{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:12px 14px;box-shadow:var(--shadow);transition:transform .15s,box-shadow .15s}
+.row:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.row>span:first-child{width:46px;height:46px;flex:0 0 46px;display:grid;place-items:center;border-radius:14px;background:linear-gradient(135deg,#eef1ff,#fdf0ff);font-size:1.5rem}
+.row small{background:#fff4d6;color:#8a5a00;border-radius:999px;padding:2px 10px;font-weight:800;font-size:.8rem}
+.row.rec{border-color:var(--mint);box-shadow:0 0 0 4px rgba(32,180,134,.18),var(--shadow)}
+/* بطاقات الدرس */
+.card{background:var(--card);border:0;box-shadow:var(--shadow);border-radius:24px;padding:16px 8px 14px;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-3px) rotate(-.5deg);box-shadow:var(--shadow-lg)}
+.card span{font-size:2.6rem;filter:drop-shadow(0 3px 2px rgba(0,0,0,.12))}.card b{font-size:1.35rem}.card i{color:var(--berry)}
+.card.ok{background:linear-gradient(180deg,#e8fff4,#d1f7e6)}
+/* الاختبار */
+.opt{background:var(--card);border:2px solid var(--line);box-shadow:0 5px 0 var(--line);font-weight:800;border-radius:20px}
+.opt.ok{background:linear-gradient(180deg,#34d399,var(--mint));border-color:var(--mint);box-shadow:0 5px 0 #13875f;color:#fff}
+.opt.no{background:linear-gradient(180deg,#ff7aa6,var(--berry));border-color:var(--berry);box-shadow:0 5px 0 #b02a5f;color:#fff;animation:wob .35s}
+.qh{gap:10px}.pb{height:16px!important;border-radius:999px!important;background:#e6e8fb!important;overflow:hidden}.pb>div{background:linear-gradient(90deg,#34d399,#20b486)!important;border-radius:999px!important}
+.sh{border-radius:24px!important;box-shadow:var(--shadow-lg)}
+.q{text-shadow:0 2px 0 rgba(0,0,0,.04)}
+.bub{background:var(--card);border:2px solid #f0e3b3;border-radius:20px;box-shadow:var(--shadow);padding:10px 14px}
+/* شريط التنقل */
+#gn{background:color-mix(in srgb,var(--card) 86%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-color:var(--line);box-shadow:0 6px 20px rgba(48,40,120,.08)}
+#gn nav button{box-shadow:none;border-radius:16px;transition:background .2s,transform .12s}
+#gn nav button.on{background:linear-gradient(135deg,var(--sky),var(--grape));color:#fff;box-shadow:0 6px 14px rgba(77,124,254,.35)}
+/* الصفحة الرئيسية */
+.hero{border-radius:0 0 34px 34px;overflow:hidden;box-shadow:var(--shadow)}
+.go{background:linear-gradient(180deg,#3ad16b,#1fa64f);border:0;box-shadow:0 6px 0 #157a39,0 12px 24px rgba(31,166,79,.3);animation:pulse-go 2.2s ease-in-out infinite}
+@keyframes pulse-go{50%{transform:scale(1.04)}}
+.tl button,.ic button{border-radius:26px;box-shadow:0 7px 0 rgba(0,0,0,.14),0 14px 26px rgba(48,40,120,.14);position:relative;overflow:hidden}
+.tl button::after{content:"";position:absolute;inset:-40% -10% auto auto;width:70%;height:90%;background:radial-gradient(closest-side,rgba(255,255,255,.35),transparent);transform:rotate(25deg);pointer-events:none}
+.tl button span{transition:transform .25s}.tl button:hover span{transform:scale(1.15) rotate(-6deg)}
+.nx{border-radius:24px;box-shadow:var(--shadow)}
+/* عناصر عامة */
+select,input:not([type=range]):not([type=radio]){border-radius:16px;border:2px solid var(--line);background:var(--card);padding:10px 12px;min-height:52px;width:100%}
+.bar{height:14px;border-radius:999px;background:#e6e8fb;overflow:hidden}.bar>div{background:linear-gradient(90deg,var(--sun),var(--sun2));border-radius:999px;height:100%}
+details>summary{cursor:pointer}
+.lesson-menu,.course-menu{background:var(--card);border-radius:22px;box-shadow:var(--shadow);border:2px solid var(--line)}
+.owl-dock{box-shadow:var(--shadow)}
+/* دخول الشاشات بنعومة + تتابع ظهور العناصر */
+#app.screen-in>*{animation:rise .35s ease both}#app.screen-in>*:nth-child(2){animation-delay:.04s}#app.screen-in>*:nth-child(3){animation-delay:.08s}#app.screen-in>*:nth-child(4){animation-delay:.12s}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}}
+.list>.row:nth-child(-n+12){animation:rise .35s ease both}.list>.row:nth-child(2){animation-delay:.03s}.list>.row:nth-child(3){animation-delay:.06s}.list>.row:nth-child(4){animation-delay:.09s}.list>.row:nth-child(5){animation-delay:.12s}.list>.row:nth-child(6){animation-delay:.15s}
+.grid>.card{animation:pop .4s cubic-bezier(.2,1.3,.4,1) both}.grid>.card:nth-child(2){animation-delay:.05s}.grid>.card:nth-child(3){animation-delay:.1s}.grid>.card:nth-child(4){animation-delay:.15s}.grid>.card:nth-child(5){animation-delay:.2s}.grid>.card:nth-child(6){animation-delay:.25s}
+@keyframes pop{from{opacity:0;transform:scale(.85)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* الكمبيوتر: محتوى أوسع ومريح */
+@media(min-width:900px){main{max-width:760px}body.hm main{max-width:1120px}.grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}}
+/* محرك بومي الذكي: السؤال الصوتي المفاجئ + وسوم التدريب */
+#vq{position:fixed;inset:0;z-index:9000;display:grid;place-items:center;padding:16px;background:rgba(20,18,60,.55);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);animation:rise .25s ease both}
+.vq-card{position:relative;width:min(420px,100%);max-height:92vh;overflow:auto;background:var(--card);color:var(--ink);border-radius:28px;padding:20px 18px 18px;text-align:center;box-shadow:var(--shadow-lg);border:3px solid var(--sun)}
+.vq-card.good{border-color:var(--mint)}.vq-card.soft{border-color:var(--sky)}
+.vq-x{position:absolute;top:10px;inset-inline-end:10px;width:44px;height:44px;border-radius:50%;padding:0;font-size:1.1rem}
+.vq-head{display:flex;align-items:center;justify-content:center;gap:8px;font-size:1.2rem;margin-bottom:6px}.vq-owl{font-size:2.2rem;animation:pulse-go 1.6s ease-in-out infinite}
+.vq-pic{font-size:5.5rem;line-height:1.2}.vq-word{font-size:2.6rem;font-weight:800;margin:8px 0}.vq-obs{font-size:2.2rem;letter-spacing:4px;line-height:1.5;word-break:break-all}
+.vq-ask{font-size:1.35rem;font-weight:800;margin:8px 0}
+.vq-timer{position:relative;width:92px;height:92px;margin:8px auto}.vq-timer svg{width:100%;height:100%;transform:rotate(-90deg)}
+.vq-timer circle{fill:none;stroke-width:8}.vq-bg{stroke:var(--line)}.vq-fg{stroke:var(--berry);stroke-linecap:round;transition:stroke-dashoffset .1s linear}
+.vq-timer b{position:absolute;inset:0;display:grid;place-items:center;font-size:1.7rem}
+.vq-st{min-height:2.2em;font-size:1.15rem;font-weight:700;margin:6px 0}
+.vq-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:10px;margin-top:8px}.vq-opts .opt{min-height:56px;font-size:1.3rem}
+.mind-tag{display:inline-block;margin:6px auto 0;padding:4px 14px;border-radius:999px;background:#eaf2ff;color:#2b4bb8;font-weight:800;font-size:.95rem}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .mind-tag{background:#2b2f7a;color:#dfe6ff}}
+#mind-report ul.plan{padding-inline-start:1.2em}
+#vq [hidden]{display:none!important}
+
+/* light-surface-fix — أي صندوق خلفيته بيضاء/فاتحة ثابتة يأخذ نصًا داكنًا وألوانًا فاتحة لأبنائه حتى في الوضع الداكن، فلا يختفي الكلام الأبيض على الأبيض */
+.ac-pad,.ac-c,.ac-dice,.ac-sg button,.ac-hv button,.story-card,.story-text,.dl.a,.dl.b,.slot,.slot.over,.slot.ok,.slot.no,.mw,.mp,.mw.sel,.mp.sel,.mw.ok,.mp.ok,
+.ct-paper,.ct-quiz,.ct-tbl,
+.lesson-menu[open] summary,.course-menu[open] summary,.course-entry,
+.pn,.pn.done,.pn.cur,.badge,.badge.got,.badge-toast,.pdash,.pr-sum div,.cloudbox,.cloud-code,
+.nx,.owl-dock,.vpersona.on,.chips button.ok,.chips button.no,.card.ok,.voice-provider button.on,.tsel.on,.voice-styles button,.voice-styles button.on,
+[style*="background:#f6f8ff"],[style*="background:#f4f8ff"]{
+ --ink:#1f2147;--mut:#5b5f8a;--line:#e3e4f6;--card:#fff;color:#1f2147}

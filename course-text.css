@@ -1,0 +1,43 @@
+/* النسخة النصية لدروس الكورس: ورقة مسطّرة تشبه صفحات الكورس الأصلية. */
+.ct-tabs{display:flex;gap:8px;margin:8px 0}.ct-tabs button{flex:1;min-height:44px;border:2px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font:inherit;font-weight:800}.ct-tabs button.on{background:var(--sky);border-color:var(--sky);color:#fff}
+.ct-paper{background:#fffdf6 repeating-linear-gradient(transparent 0 31px,#dbe7f7 31px 32px);border:2px solid var(--line);border-radius:18px;padding:14px 13px 18px;line-height:32px;box-shadow:0 4px 14px rgba(28,38,91,.08)}
+.ct-title{margin:0 0 10px;text-align:center;font-size:1.45rem;line-height:1.5;color:#1d3b8b;border-bottom:3px double #7aa6e8;padding-bottom:6px}.ct-sub{margin:-4px 0 12px;text-align:center;color:var(--mut);font-weight:700;line-height:1.6}
+.ct-sec{display:flex;align-items:center;gap:8px;margin:14px 0 6px;padding:4px 12px;background:#e9f1ff;border:2px solid #9bbcf0;border-radius:999px 999px 999px 999px;font-weight:800;color:#1d3b8b;line-height:1.5}.ct-sec i{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--sky);color:#fff;font-style:normal;font-size:.9rem}
+.ct-p{margin:4px 0}.ct-ul{margin:4px 0;padding:0 20px 0 0;list-style:none}.ct-ul li{position:relative;padding-right:16px;margin:2px 0;line-height:1.7}.ct-ul li:before{content:"•";position:absolute;right:0;color:var(--sky);font-weight:900}
+.ct-tbl{overflow-x:auto;margin:8px 0;border-radius:12px;border:2px solid #9bbcf0;background:#fff}.ct-tbl table{border-collapse:collapse;width:100%;min-width:100%;line-height:1.5}.ct-tbl th,.ct-tbl td{padding:6px 8px;border:1px solid #c9dbf6;text-align:center;font-size:.95rem}.ct-tbl th{background:#e9f1ff;color:#1d3b8b}.ct-tbl .en{direction:ltr;unicode-bidi:isolate}
+.ct-note,.ct-tip{margin:10px 0;padding:8px 12px;border-radius:14px;line-height:1.7;font-weight:700}.ct-note{border:2px dashed #e0a03a;background:#fff6df}.ct-tip{border:2px dashed #4ab98d;background:#e9fbf3}
+.ct-say{display:inline-flex;align-items:center;gap:6px;margin:3px 3px;padding:2px 11px;min-height:38px;border:2px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);font:inherit;font-weight:800;direction:ltr;unicode-bidi:isolate}.ct-say:active{background:#e9f1ff}.ct-words{display:flex;flex-wrap:wrap;gap:2px}
+.ct-quiz{margin:12px 0;padding:10px 12px;background:#fff;border:2px solid var(--line);border-radius:16px;line-height:1.6}.ct-quiz b{display:block;margin-bottom:6px}.ct-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}.ct-opts button{min-height:44px;border:2px solid var(--line);border-radius:12px;background:#f4f8ff;color:var(--ink);font:inherit;font-weight:800}.ct-opts button.ok{background:#d9f7e8;border-color:#35b57d}.ct-opts button.no{background:#ffe3e3;border-color:#ee6a6a}.ct-fb{min-height:24px;margin:6px 0 0;font-weight:800}
+.ct-soon{margin:10px 0;padding:14px;border:2px dashed var(--line);border-radius:16px;background:var(--card);text-align:center;line-height:1.7;color:var(--mut);font-weight:700}
+.ct-en{direction:ltr;unicode-bidi:isolate;display:inline-block}
+
+.ct-wide table{font-size:.85rem}.ct-wide th,.ct-wide td{padding:5px 6px;font-size:.85rem}.ct-tbl td,.ct-tbl th{overflow-wrap:normal;word-break:normal}.ct-tbl{-webkit-overflow-scrolling:touch}.ct-wide table{min-width:640px}.ct-wide td:first-child,.ct-wide th:first-child{white-space:nowrap;min-width:64px;background:#f4f8ff;font-weight:800}.ct-wide td{white-space:normal;min-width:62px}
+
+/* ===== الدفعة الثانية: وضوح وتباين عالٍ داخل مكتبة الكورس فقط ===== */
+.ct-paper{--ct-ink:#0a1230;--ct-blue:#14306f;--ct-line:#5f86c9;background:#fffef9 repeating-linear-gradient(transparent 0 31px,#e3ecf9 31px 32px);color:var(--ct-ink);border:2px solid var(--ct-line);font-weight:700}
+.ct-paper *{text-shadow:none}
+.ct-title{color:var(--ct-blue);font-weight:800;border-bottom-color:var(--ct-line)}
+.ct-sub{color:#2b3a66;font-weight:700}
+.ct-sec{background:var(--ct-blue);border-color:var(--ct-blue);color:#fff;font-weight:800}
+.ct-sec i{background:#ffc93c;color:#0a1230;font-weight:800}
+.ct-p,.ct-ul li{color:var(--ct-ink);font-weight:700}
+.ct-ul li:before{color:var(--ct-blue)}
+.ct-tbl{background:#fff;border:2px solid var(--ct-blue)}
+.ct-tbl th,.ct-tbl td{color:var(--ct-ink);border:1.5px solid #8fa9d6;font-weight:800;font-size:1.05rem;padding:8px 8px}
+.ct-tbl th{background:var(--ct-blue);color:#fff;font-size:1.5rem;font-weight:800}
+.ct-tbl tbody tr:nth-child(even) td{background:#f0f5ff}
+.ct-wide td:first-child,.ct-wide th:first-child{background:#dce8ff;color:var(--ct-ink);font-weight:800}
+.ct-wide th:first-child{background:var(--ct-blue);color:#fff}
+.ct-note{background:#ffeab0;border:2px dashed #a8660a;color:#3d2600;font-weight:800}
+.ct-tip{background:#c6f1dc;border:2px dashed #0f7a52;color:#04361f;font-weight:800}
+.ct-words{gap:6px}
+.ct-say{background:#fff;color:var(--ct-ink);border:2.5px solid var(--ct-blue);font-size:1.25rem;font-weight:800;min-height:46px;padding:3px 14px;box-shadow:0 2px 0 var(--ct-blue)}
+.ct-say[data-l="ar"]{direction:rtl;unicode-bidi:isolate}
+.ct-say:active{background:#ffe08a;transform:translateY(1px)}
+.ct-quiz{background:#fff;color:var(--ct-ink);border:2px solid var(--ct-line);font-weight:800}
+.ct-quiz b{color:var(--ct-blue)}
+.ct-opts button{background:#eaf1ff;color:var(--ct-ink);border:2px solid var(--ct-blue);font-weight:800}
+.ct-opts button.ok{background:#bdf0d6;border-color:#0f7a52;color:#04361f}
+.ct-opts button.no{background:#ffc9c9;border-color:#b32020;color:#5a0a0a}
+.ct-fb{color:var(--ct-ink)}
+.ct-soon{background:#fff;color:var(--ct-ink);border-color:var(--ct-line)}

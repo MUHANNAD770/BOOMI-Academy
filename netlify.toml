@@ -1,0 +1,41 @@
+[build]
+  publish = "."
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "no-cache"
+    # عزل الصفحة (cross-origin isolation) يتيح لمحرك الصوت المحلي استخدام عدة خيوط معالجة (أسرع 2–4 مرات) على Chrome/Edge/Android.
+    # credentialless لا يكسر الخطوط ولا ملفات CDN. Safari يتجاهله ويعمل بخيط واحد.
+    Cross-Origin-Opener-Policy = "same-origin"
+    Cross-Origin-Embedder-Policy = "credentialless"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+# ملفات المحرك (js/wasm) تُتحقَّق عند كل فتح (no-cache = تحقق سريع بـ ETag، بلا تنزيل إن لم تتغير)
+# كي لا يبقى المتصفح على نسخة قديمة بعد كل نشر. النماذج الصوتية نفسها يحفظها المحرك في ذاكرة المتصفح فلا تُعاد.
+[[headers]]
+  for = "/tts/*"
+  [headers.values]
+    Cache-Control = "no-cache"
+[[headers]]
+  for = "/*.wasm"
+  [headers.values]
+    Content-Type = "application/wasm"
+[[headers]]
+  for = "/*.mjs"
+  [headers.values]
+    Content-Type = "text/javascript; charset=utf-8"
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+  for = "/voices/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+[[headers]]
+  for = "/audio/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

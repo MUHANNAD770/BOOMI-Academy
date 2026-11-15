@@ -1,0 +1,80 @@
+#mc{position:fixed;z-index:11;inset-inline-end:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px));width:96px;display:none;flex-direction:column;align-items:flex-end;pointer-events:none}
+#mc.on{display:flex}#mc .ow{width:96px;height:104px;pointer-events:auto;cursor:pointer;animation:flt 3s ease-in-out infinite;filter:drop-shadow(0 4px 4px rgba(0,0,0,.25))}
+#mc .lid{transform-origin:50% 0;animation:bl 4.5s infinite}#mc .bk{transform-origin:60px 66px}#mc.talk .bk{animation:tk .22s infinite alternate}
+#mc .wl,#mc .wr{transform-origin:50% 10%}#mc .sp{opacity:0}
+#mc.happy .ow{animation:jmp .5s 3}#mc.happy .wl{animation:wv .25s 6 alternate}#mc.happy .wr{animation:wv .25s 6 alternate-reverse}#mc.happy .sp{opacity:1;animation:tw .6s infinite alternate}
+#mc.oops .ow{animation:wob .5s 2}
+#mc.inl{position:static;width:auto;inset:auto;margin:0 auto 4px}#mc.inl .ow{width:92px;height:100px}.qo{display:flex;justify-content:center;min-height:100px}#mc.tilt .ow{animation:tlt .9s 1}@keyframes tlt{30%{transform:rotate(-10deg) translateY(-6px)}60%{transform:rotate(8deg)}}
+@media(max-width:760px){body.hasnav #mc{bottom:calc(84px + env(safe-area-inset-bottom,0px))}}
+@keyframes flt{50%{transform:translateY(-5px)}}@keyframes bl{0%,92%,100%{transform:scaleY(0)}95%{transform:scaleY(1)}}@keyframes tk{to{transform:scaleY(.55)}}
+@keyframes jmp{40%{transform:translateY(-26px) rotate(-6deg)}}@keyframes wv{to{transform:rotate(-28deg)}}@keyframes tw{to{opacity:.3}}@keyframes wob{25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
+.nx{display:flex;align-items:center;gap:12px;width:100%;text-align:start;background:#fff7d6;border:3px solid #ffc93c;border-radius:22px;margin:12px 0;animation:pl 1.6s infinite}.nx span{font-size:2rem}.nx small{display:block;color:#7a5b00}
+.pt{text-align:center;font-weight:800;font-size:1.2rem;margin:10px 0 0;animation:bn2 1.2s infinite}@keyframes bn2{50%{transform:translateY(6px)}}@keyframes pl{50%{box-shadow:0 0 0 7px rgba(255,201,60,.35)}}
+.row.rec{border-color:#58cc02;box-shadow:0 0 0 3px rgba(88,204,2,.3)}.row.rec::after{content:"👈 ابدأ هنا";color:#46a302;font-weight:800;font-size:.85rem}
+@media(prefers-reduced-motion:reduce){#mc *,.nx,.pt{animation:none!important}}
+#mc.talk .wl{animation:wv2 .3s infinite alternate}#mc.talk .wr{animation:wv2 .3s infinite alternate-reverse}@keyframes wv2{to{transform:rotate(-16deg)}}
+
+/* بومي داخل الصفحة لا فوقها: شريط صغير أعلى كل شاشة مع فقاعة كلامه، فلا يغطي الدروس أو التمارين أو الأزرار */
+.owl-dock{display:flex;align-items:center;gap:10px;margin:4px 0 10px;padding:6px 10px;border-radius:20px;background:linear-gradient(90deg,#fff7e0,#eef5ff);border:2px solid #f3e3b5}
+.owl-dock #mc.inl{margin:0;flex:0 0 auto}.owl-dock #mc.inl .ow{width:62px;height:68px}
+.owl-say{margin:0;font-weight:800;font-size:.98rem;line-height:1.5;flex:1;min-width:0}
+.owl-say:empty::before{content:"🦉 اضغط على بومي ليتكلم";color:#8a7a52;font-weight:700}
+@media(min-width:900px){.owl-dock #mc.inl .ow{width:76px;height:82px}}
+
+/* تزامن الفم مع الصوت + تعبيرات جديدة */
+#mc.lips .bk{animation:none!important;transform:scaleY(var(--m,1));transition:transform .05s linear}
+#mc.wow #pl circle:nth-child(-n+2){transform-box:fill-box;transform-origin:center;animation:wow .5s 2 alternate}@keyframes wow{to{transform:scale(1.35)}}
+#mc.wow .ow{animation:jmp .45s 2}
+#mc.proud .wl{animation:prd .5s 4 alternate}#mc.proud .wr{animation:prd .5s 4 alternate-reverse}#mc.proud .sp{opacity:1;animation:tw .5s infinite alternate}@keyframes prd{to{transform:rotate(-45deg) translateY(-4px)}}
+#mc.think #pl{transform:translate(0,-4px)!important;transition:transform .3s}#mc.think .ow{animation:tlt 1.2s 1}
+/* شريط بومي + بطاقة الطالب */
+.owl-dock{flex-wrap:wrap;background:linear-gradient(120deg,#fff4d1 0%,#ffe9f3 45%,#e6f0ff 100%);border-color:#f1d68a;padding:8px 12px;gap:8px 12px}
+.owl-dock .owl-say{flex:1 1 200px}
+.owl-me{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"av b" "ch ch";align-items:center;gap:8px 10px;flex:1 1 100%;margin:0;padding:8px 10px;border-radius:18px;border:2px solid rgba(255,255,255,.9);background:rgba(255,255,255,.72);box-shadow:0 3px 0 rgba(0,0,0,.06);color:var(--ink,#1f2147);font:inherit;text-align:start;cursor:pointer;min-height:auto}
+.om-av{grid-area:av;width:46px;height:46px;display:grid;place-items:center;border-radius:50%;font-size:1.7rem;background:linear-gradient(135deg,#ffd76a,#ff9fc6);box-shadow:inset 0 -3px 0 rgba(0,0,0,.08)}
+.om-b{grid-area:b;display:flex;flex-direction:column;gap:4px;min-width:0}
+.om-n{font-size:1.1rem;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.om-lv{display:flex;align-items:center;gap:8px;font-size:.85rem;font-weight:800;color:#7a5a00;white-space:nowrap}
+.om-bar{display:block;flex:1 1 80px;min-width:60px;max-width:160px;height:10px;border-radius:9px;background:#f2e6c4;overflow:hidden}.om-bar>i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,#ffc531,#ff8a1c)}
+.om-ch{grid-area:ch;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.om-ch>span{display:flex;flex-direction:column;align-items:center;line-height:1.15;padding:5px 4px;border-radius:14px;background:#fff;border:1.5px solid #f0e2b8;font-size:.95rem;white-space:nowrap}
+.om-ch b{font-weight:800}.om-ch small{font-size:.72rem;color:#6b6f96;font-weight:700}
+@media(min-width:700px){.owl-me{flex:0 1 430px;margin-inline-start:auto;grid-template-columns:auto auto 1fr;grid-template-areas:"av b ch"}.owl-dock .owl-say{flex:1 1 260px}.om-ch>span{min-width:52px}}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .owl-dock{background:linear-gradient(120deg,#3a3270,#2a2a66 50%,#1f3060)}:root:not([data-theme=light]) .owl-me{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15)}:root:not([data-theme=light]) .om-ch>span{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2)}:root:not([data-theme=light]) .om-lv{color:#ffd76a}:root:not([data-theme=light]) .om-ch small{color:#c9cbf0}}
+.om-b{min-width:120px}
+@media(max-width:699px){.owl-me.mini{grid-template-columns:auto 1fr auto;grid-template-areas:"av b ch";padding:6px 8px}.owl-me.mini .om-ch{grid-template-columns:auto}.owl-me.mini .om-ch>span:not(:first-child){display:none}.owl-me.mini .om-av{width:38px;height:38px;font-size:1.4rem}}
+
+/* ===== شريط بومي الموحّد: البومة + اسم الطالب + المستوى + النقاط في بطاقة واحدة =====
+   السبب القديم لعدم الوضوح: الخلفية فاتحة دائماً بينما لون النص يرثه من الوضع الداكن (data-theme=dark) فيصير أبيض على كريمي.
+   الحل: ألوان الشريط مستقلة عن لون الصفحة وتتبدّل مع خلفيته فقط. */
+.owl-dock{--om-ink:#22254a;--om-sub:#7a5a00;--om-mut:#5d6290;--om-chip:rgba(255,255,255,.88);--om-chipb:#f0e2b8;--om-track:#f2e6c4;
+  display:flex;flex-wrap:nowrap;align-items:center;gap:12px;padding:10px 14px;color:var(--om-ink);
+  background:linear-gradient(120deg,#fff4d1 0%,#ffe9f3 50%,#e6f0ff 100%);border:2px solid #f1d68a;border-radius:22px;box-shadow:0 4px 0 rgba(241,214,138,.55)}
+:root[data-theme=dark] .owl-dock{--om-ink:#f4f4ff;--om-sub:#ffd76a;--om-mut:#c9cbf0;--om-chip:rgba(255,255,255,.1);--om-chipb:rgba(255,255,255,.2);--om-track:rgba(255,255,255,.18);
+  background:linear-gradient(120deg,#3a3270,#2a2a66 50%,#1f3060);border-color:rgba(255,255,255,.18);box-shadow:0 4px 0 rgba(0,0,0,.25)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .owl-dock{--om-ink:#f4f4ff;--om-sub:#ffd76a;--om-mut:#c9cbf0;--om-chip:rgba(255,255,255,.1);--om-chipb:rgba(255,255,255,.2);--om-track:rgba(255,255,255,.18);
+  background:linear-gradient(120deg,#3a3270,#2a2a66 50%,#1f3060);border-color:rgba(255,255,255,.18);box-shadow:0 4px 0 rgba(0,0,0,.25)}}
+/* نص الفقاعة القديم يبقى للقارئات الصوتية فقط */
+.owl-dock .owl-say{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;flex:none}
+.owl-dock .owl-say:empty::before{content:none}
+.owl-dock #mc.inl{flex:0 0 auto}
+/* البطاقة تذوب داخل الشريط بدل أن تكون صندوقاً ثانياً تحته */
+.owl-dock .owl-me{flex:1 1 auto;min-width:0;margin:0;padding:0;border:0;background:none;box-shadow:none;border-radius:14px;color:var(--om-ink);
+  display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"av b" "ch ch";gap:8px 12px;align-items:center;transform:none}
+.owl-dock .owl-me:active{transform:none;box-shadow:none}
+.owl-dock .owl-me:focus-visible{outline:3px solid #3b7bf0;outline-offset:3px}
+.owl-dock .om-av{width:48px;height:48px;font-size:1.7rem}
+.owl-dock .om-n{color:var(--om-ink);font-size:1.15rem}
+.owl-dock .om-lv{color:var(--om-sub);font-size:.9rem}
+.owl-dock .om-bar{background:var(--om-track)}
+.owl-dock .om-ch>span{background:var(--om-chip);border-color:var(--om-chipb);color:var(--om-ink)}
+.owl-dock .om-ch small{color:var(--om-mut)}
+@media(min-width:700px){.owl-dock .owl-me{flex:1 1 auto;margin-inline-start:0;grid-template-columns:auto minmax(150px,1fr) auto;grid-template-areas:"av b ch"}}
+@media(max-width:699px){
+  .owl-dock{gap:8px;padding:8px 10px}
+  .owl-dock #mc.inl .ow{width:56px;height:62px}
+  .owl-dock .owl-me.mini{grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"av b ch";gap:8px}
+  .owl-dock .owl-me.mini .om-av{width:38px;height:38px;font-size:1.4rem}
+  .owl-dock .owl-me.mini .om-ch{grid-template-columns:auto}
+  .owl-dock .owl-me.mini .om-ch>span:not(:first-child){display:none}
+}
