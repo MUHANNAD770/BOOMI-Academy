@@ -16,9 +16,35 @@ function profile(){const E=Object.entries(P.sk||{}).filter(([k])=>!k.startsWith(
 const weakList=()=>profile().weak.join('، ');
 const AGAIN=/لم\s*أفهم|ما\s*فهمت|مو\s*فاهم|مش\s*فاهم|لا\s*أفهم|وضّ?ح|اشرح.*(مرة|مره|ثاني|اخر|أخر)|بطريقة\s*(أخرى|اخرى|ثانية)/;
 let chOwner=null;
-function bomi(){if(chOwner!==P){ch=(P.chat||[]).slice(-60);chOwner=P}window.bmicStop&&bmicStop(1);document.getElementById('bm')?.remove();const ctx=V=='quiz'&&qs&&qs[qi]?strip(qs[qi].show)+(qs[qi].sp?' — '+qs[qi].sp[0]:''):cur?(cur.n+(cur.i?': '+cur.i.slice(0,8).map(x=>{const m=String(x[1]).replace(/[\p{Extended_Pictographic}\u{1F3FB}-\u{1F3FF}\uFE0F\u200D\u20E3]/gu,'').trim();return m&&m!==x[0]?x[0]+' ('+m+')':x[0]}).join('، '):'')).slice(0,280):'';
-const d=document.createElement('div');d.id='bm';d.className='bm';d.innerHTML=`<div class=bmh><b>🦉 بومي</b><small id=bnet class=bnet></small><button onclick="say.stop();bmicStop(1);document.getElementById('bm').remove()" aria-label="إغلاق">✕</button></div><div id=bl class=bl></div><div class=chips><button onclick="bex()">🎲 تمرين جديد</button><button onclick="bsend('لم أفهم، اشرح لي بطريقة أخرى')">🤔 لم أفهم</button>${localAI.topics().map(x=>`<button onclick="bsend(this.textContent)">${x}</button>`).join('')}</div><p id=bst class="bmic-state" aria-live="polite"></p><div class=bmi><input id=bi dir=auto placeholder="اكتب سؤالك…" onkeydown="event.key=='Enter'&&bsend()"><button onclick=bsend()>إرسال</button>${P.mic&&(window.SpeechRecognition||window.webkitSpeechRecognition)?'<button id=bmb onclick=bmic() aria-label="تحدث">🎤</button>':''}</div>`;
-d.dataset.ctx=ctx;d.dataset.topic=V=='quiz'?'':(cur&&cur.n||'');document.body.appendChild(d);netBadge();if(!ch.length)bpush('a','أهلاً! اسألني عن أي شيء في الدرس، أو اضغط «تمرين جديد» لأجهّز لك أسئلة 😊');else ch.forEach(m=>bpush(m.role=='user'?'u':'a',window.Tashkeel?Tashkeel.apply(m.content):m.content,1))}
+/* سياق الصفحة الحالية لبومي: نوع الصفحة + عنوانها + السؤال أو النص الظاهر فيها.
+   كان السياق يُؤخذ من آخر درس فُتح (cur) حتى لو كان الطالب في قصة أو لعبة أو صفحة كورس، فيشرح بومي درسًا قديمًا. */
+const PAGES={home:'الصفحة الرئيسية',sec:'قائمة الدروس',lesson:'درس',quiz:'اختبار',review:'مراجعة',daily:'تحدي اليوم',mstart:'تمرين رياضيات',wnum:'كتابة الأرقام',
+ courseLibrary:'مكتبة الكورس',courseModule:'وحدة من الكورس',courseViewer:'صفحة من الكورس',coursePractice:'تدريب الكورس',stories:'عالم القصص',story:'قصة',talk:'محادثة إنجليزية',
+ listenTest:'اختبار استماع',readTest:'اختبار قراءة',games2d:'عالم الألعاب',g2levels:'مراحل لعبة',g2play:'لعبة',puzzles:'جزيرة الألغاز',riddles:'ألغاز',logic:'تفكير منطقي',
+ measure:'القياس',wordProblems:'مسائل كلامية',advMath:'رياضيات متقدمة',advMul:'الضرب المتقدم',dictation:'إملاء',dictationAdv:'إملاء متقدم',syllables:'المقاطع',enTeach:'معلّم الإنجليزية',
+ world:'عالم المغامرات',path:'مسار التعلم',parent:'الإعدادات',speak:'تدريب النطق',act:'الأنشطة'};
+const clean=s=>String(s||'').replace(/[\p{Extended_Pictographic}\u{1F3FB}-\u{1F3FF}\uFE0F\u200D\u20E3]/gu,'').replace(/\s+/g,' ').trim();
+function pageCtx(){let fn='';try{const e=window.Router&&Router.entry();fn=e&&!e.ov?e.fn:''}catch(e){}
+ if(V=='game')fn='g2play'; /* الألعاب لا تمر عبر router فيبقى المدخل السابق */
+ const page=PAGES[fn]||(V=='quiz'?'اختبار':V=='lesson'?'درس':'نشاط تعليمي'),A=document.getElementById('app'),q=s=>A&&A.querySelector(s);
+ const head=clean((q('h2')||q('h1'))?.textContent).slice(0,80);let body='',topic=head;
+ if(V=='quiz'&&qs&&qs[qi]){body='السؤال: '+strip(qs[qi].show)+(qs[qi].sp?' — '+qs[qi].sp[0]:'');topic=cur&&cur.n||head}
+ else if(/^(lesson|review|daily)$/.test(fn)&&cur&&cur.i){topic=cur.n;body='كلمات الدرس: '+cur.i.slice(0,8).map(x=>{const m=clean(x[1]);return m&&m!==x[0]?x[0]+' ('+m+')':x[0]}).join('، ')}
+ else{const el=q('.ct-paper')||q('.q')||q('.story,.st-text,.story-text')||q('h2 ~ p')||q('p.mut');if(el)body=clean(el.innerText||el.textContent).slice(0,220);
+  try{const b=window.BumiContext&&BumiContext();if(b&&b[0]&&!/^(g2hub|g2lv)$/.test(b[1])){const t=clean(b[0]).slice(0,160);if(!body||!t.includes(body.slice(0,30)))body=t+(body?' — '+body:'');}}catch(e){}}
+ const ctx=[page+(head?': '+head:''),body].filter(Boolean).join(' | ').slice(0,380);
+ return{fn,page,topic:String(topic||'').slice(0,60),ctx}}
+/* اقتراحات تناسب الصفحة الحالية + موضوعان عامّان */
+function chipsFor(pc){const c=[];
+ if(pc.fn=='quiz'||V=='quiz')c.push('أعطني تلميحًا','اشرح هذا السؤال');
+ else if(/^(lesson|review|daily|courseViewer|coursePractice|enTeach)$/.test(pc.fn))c.push('اشرح هذا الدرس','أعطني مثالًا آخر');
+ else if(/^(story|talk|listenTest|readTest)$/.test(pc.fn))c.push('ما معنى هذه القصة؟','اشرح كلمة صعبة');
+ else if(/^(mstart|measure|wordProblems|advMath|advMul|wnum)$/.test(pc.fn))c.push('اشرح هذه المسألة خطوة خطوة');
+ else if(/^(g2play|g2levels)$/.test(pc.fn))c.push('كيف ألعب هذه اللعبة؟');
+ const t=localAI.topics();return c.concat(c.length?t.slice(0,3):t)}
+function bomi(){if(chOwner!==P){ch=(P.chat||[]).slice(-60);chOwner=P}window.bmicStop&&bmicStop(1);document.getElementById('bm')?.remove();const pc=pageCtx(),ctx=pc.ctx;
+const d=document.createElement('div');d.id='bm';d.className='bm';d.innerHTML=`<div class=bmh><b>🦉 بومي</b><small id=bnet class=bnet></small><button onclick="say.stop();bmicStop(1);document.getElementById('bm').remove()" aria-label="إغلاق">✕</button></div><div id=bl class=bl></div><div class=chips><button onclick="bex()">🎲 تمرين جديد</button><button onclick="bsend('لم أفهم، اشرح لي بطريقة أخرى')">🤔 لم أفهم</button>${chipsFor(pc).map(x=>`<button onclick="bsend(this.textContent)">${x}</button>`).join('')}</div><p id=bst class="bmic-state" aria-live="polite"></p><div class=bmi><input id=bi dir=auto placeholder="اكتب سؤالك…" onkeydown="event.key=='Enter'&&bsend()"><button onclick=bsend()>إرسال</button>${P.mic&&(window.SpeechRecognition||window.webkitSpeechRecognition)?'<button id=bmb onclick=bmic() aria-label="تحدث">🎤</button>':''}</div>`;
+d.dataset.ctx=ctx;d.dataset.topic=pc.topic;d.dataset.page=pc.page;document.body.appendChild(d);netBadge();if(!ch.length)bpush('a','أهلاً! اسألني عن أي شيء في الدرس، أو اضغط «تمرين جديد» لأجهّز لك أسئلة 😊');else if(pc.topic&&pc.fn!='home')bpush('a','نحن الآن في '+pc.page+(pc.topic?': '+pc.topic:'')+'. اسألني عنه 🦉');else ch.forEach(m=>bpush(m.role=='user'?'u':'a',window.Tashkeel?Tashkeel.apply(m.content):m.content,1))}
 function bpush(w,t,nosave){const l=document.getElementById('bl');if(!l)return;const e=document.createElement('div');e.className='bb '+w;e.textContent=t;l.appendChild(e);l.scrollTop=l.scrollHeight;return e}
 async function aiCall(body){const key=JSON.stringify([body.mode||'',body.message||'',body.topic||'',body.context||'']);if(AIC.has(key))return AIC.get(key);
  const task=(async()=>{const c=new AbortController(),tm=setTimeout(()=>c.abort(),14000);
@@ -41,7 +67,7 @@ async function aiStream(body,onText){aiStream.c&&aiStream.c.abort();const c=aiSt
   return all.trim()?{reply:all.trim()}:{err:'nostream'}}
  catch(e){return all.trim()?{reply:all.trim()}:{err:'nostream'}}finally{clearTimeout(tm)}}
 async function bsend(t){window.bmicStop&&bmicStop(1);const i=document.getElementById('bi'),m=(typeof t=='string'?t:i&&i.value||'').trim();if(!m||busy)return;if(i)i.value='';bpush('u',m);
-const lo=localAI.think(m);if(lo){const tx=shape(lo.t);ch.push({role:'user',content:m},{role:'assistant',content:tx});ch=ch.slice(-60);keep();bpush('a',tx);if(!muted())say(tx.slice(0,320),'ar',lo.en?()=>say(lo.en,'en'):null);return}
+const lo=localAI.think(m,document.getElementById('bm')?.dataset.ctx||'');if(lo){const tx=shape(lo.t);ch.push({role:'user',content:m},{role:'assistant',content:tx});ch=ch.slice(-60);keep();bpush('a',tx);if(!muted())say(tx.slice(0,320),'ar',lo.en?()=>say(lo.en,'en'):null);return}
 const again=AGAIN.test(m),ctx=document.getElementById('bm')?.dataset.ctx||'';
 /* 1) ذاكرة بومي: سؤال سبق جوابه ← إجابة فورية بلا إنترنت وبلا طلب */
 if(!again&&window.Brain){const k=Brain.find(m,ctx,.8);if(k)return serve(m,k.a)}
@@ -50,7 +76,7 @@ if(!onl()){const k=!again&&window.Brain&&Brain.find(m,ctx,.72);return k?serve(m,
 if(aiLeft()<=0)return bpush('a',LIM_MSG);
 busy=1;aiUse().n++;save();think();
 const w=bpush('a','');w.classList.add('think');w.innerHTML='<span class=dots><i></i><i></i><i></i></span> بومي تفكّر…';
-const sp=muted()?null:say.stream('ar'),body={message:m,history:ch.slice(-8),again,context:ctx,recall:window.Brain?Brain.recent(8):[]};let shown=false;
+const sp=muted()?null:say.stream('ar'),body={message:m,history:ch.slice(-8),again,context:ctx,page:document.getElementById('bm')?.dataset.page||'',recall:window.Brain?Brain.recent(8):[]};let shown=false;
 let d=await aiStream(body,(x,all)=>{if(!shown){shown=true;w.classList.remove('think')}w.textContent=all;const l=document.getElementById('bl');l&&(l.scrollTop=l.scrollHeight);sp&&sp.push(x)});
 if(d.err=='nostream'&&!shown){d=await aiCall(body);if(d.reply){w.classList.remove('think');w.textContent=d.reply;sp&&sp.push(d.reply.slice(0,360))}}
 w.classList.remove('think');
@@ -94,4 +120,5 @@ window.bmic=function(){if(BMIC)return bmicStop();if(!P||!P.mic)return bpush('a',
  rec.onresult=e=>{const row=e.results[e.results.length-1],heard=[...row].map(x=>x.transcript).filter(Boolean);if(heard[0]){final=heard[0];const i=document.getElementById('bi');if(i)i.value=final;bmicText('🗣️ '+final)}if(row.isFinal){bmicStop(1);bsend(final)}};
  rec.onerror=e=>{const msg=e.error==='not-allowed'||e.error==='service-not-allowed'?'لم يُسمح للمتصفح بالميكروفون. اسمح به ثم حاول مرة أخرى.':e.error==='no-speech'?'لم أسمع كلامًا، حاول مرة أخرى.':'تعذّر الاستماع الآن، حاول مرة أخرى.';bmicStop(1);bpush('a',msg)};
  rec.onend=()=>{if(BMIC&&BMIC.rec===rec){BMIC=null;if(!final)bmicText('انتهى الاستماع. اضغط الميكروفون للمحاولة مرة أخرى.');const x=document.getElementById('bmb');if(x){x.textContent='🎤';x.classList.remove('bmic-listen')}}};try{rec.start()}catch(e){bmicStop(1);bpush('a','تعذّر تشغيل الميكروفون الآن.')}};
-const oh=h;h=x=>{oh(x);if(V=='quiz'||V=='lesson'||V=='home')app.insertAdjacentHTML('beforeend','<button class=ask onclick=bomi()>🦉 اسأل بومي</button>')};
+const NOASK=/^(setup|who|g2play|speedGame)$/;
+const oh=h;h=x=>{oh(x);let fn='';try{const e=window.Router&&Router.entry();fn=e?e.fn:''}catch(e){}if(window.P&&V!='setup'&&V!='who'&&V!='game'&&!NOASK.test(fn)&&!app.querySelector('.ask'))app.insertAdjacentHTML('beforeend','<button class=ask onclick=bomi()>🦉 اسأل بومي</button>')};
