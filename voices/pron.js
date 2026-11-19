@@ -27,7 +27,8 @@ function canonWord(w,final){const u=units(w);if(u.length<2||!voweled(u))return w
  if(c==='ة'){if(m===SK||(final&&(v===DA||v===KA||v===FA)))L[1]='';return join(u)}
  /* حروف المد: واو بعد ضمة، ياء بعد كسرة */
  if(!m&&((c==='و'&&p[1].includes(DA))||(c==='ي'&&p[1].includes(KA))))return join(u);
- if(!m){L[1]=SK;return join(u)}
+ /* السكون للوقف فقط (آخر الجملة أو قبل علامة ترقيم)؛ في وسط الجملة تبقى بلا علامة كي لا تُقرأ «تَمْرِينْ جَدِيدْ» */
+ if(!m){if(final)L[1]=SK;return join(u)}
  /* ضمير المخاطبة المؤنثة: «أَنْتِ، أَحْسَنْتِ، لَكِ، مَعَكِ» — كسرتها تميّز المؤنث فلا تُسكَّن عند الوقف */
  if(final&&v===KA&&((c==='ت'&&p[1]&&p[1].includes(SK))||c==='ك'))return join(u);
  if(final&&(v===DA||v===KA)){L[1]=m.includes(SH)?SH:SK;return join(u)}

@@ -108,7 +108,7 @@ say=function(t,l,cb,mood){try{if(BumiAudio.stale())return DEAD;
  /* بومي يتكلم فقط بعد ضغطة من الطالب في الصفحة الحالية، لا وحده عند فتح الصفحة */
  if(!BumiAudio.tapped()&&!say.free)return DEAD; /* طلب من صفحة سابقة: لا يُسمع هنا */
  /* معلّم الإنجليزية: في المستويين ١–٢ تتبع الكلمةَ الإنجليزية ترجمتُها العربية في صفحات التعليم (mind/english.js) */
- if(l=='en'&&typeof t=='string'&&window.EnCoach&&!/[\u0600-\u06FF]/.test(t)){const g=EnCoach.gloss(t);if(g)t=t.replace(/[.!?]*\s*$/,'')+'. '+g}
+ if(l=='en'&&!say._word&&typeof t=='string'&&window.EnCoach&&!/[\u0600-\u06FF]/.test(t)){const g=EnCoach.gloss(t);if(g)t=t.replace(/[.!?]*\s*$/,'')+'. '+g}
  const L=l=='ar'?'ar':'en',k=L+'|'+t+'|'+mood,now=Date.now();
  if(say.live&&say.k==k&&now-say.at<350)return say.cur; /* نفس الطلب وصل مرتين في اللحظة نفسها: لا نكرره؛ أما الضغط مرة أخرى فيعيد الكلمة */
  const k0=fixAr(String(t==null?'':t).trim()),txt=SYL[k0]||t,st=say.stream(L,mood);say.k=k;say.at=now;say.cur=st;st.push(txt);st.end(cb);return st}catch(e){}};
@@ -131,4 +131,28 @@ window.say_unlock=()=>{};
 window.pickPersona=function(k){if(!P)return;P.teacher=/male/i.test(k)&&!/^female/i.test(k)?'male':'female';save();window.testT()};
 window.testT=function(){const x=P&&P.gender=='female'?'صَدِيقَتِي':'صَدِيقِي',me=teacher()=='male'?'مُعَلِّمُكَ':'مُعَلِّمَتُكَ';say(`أَهْلًا يَا ${x}! أَنَا ${me} بُومِي، هَلْ تَسْمَعُنِي بِوُضُوحٍ؟`,'ar',null,'cheer')};
 window.VT={fixAr,runs,clean};
+})();
+/* ===== اضغط على أي كلمة لتسمعها =====
+   ضغطة على كلمة ظاهرة في الصفحة (نص الدرس، السؤال، القصة، الشرح) تنطق تلك الكلمة وحدها، بلغتها وبصوت المعلّم المختار.
+   لا تعمل على الأزرار والروابط والاختيارات والبطاقات (لها سلوكها الخاص)، ولا تكرر الصوت عند الضغط السريع المتكرر. */
+(()=>{const W=/[\u0621-\u064A\u064B-\u0652\u0670\u0640A-Za-z0-9\u0660-\u0669'’]/;
+ const SKIP='button,a,input,select,textarea,label,canvas,svg,video,[onclick],[role=button],[contenteditable],.opt,.card,.row,[data-say],.owl-dock,#gn,.chips';
+ let last='',at=0,hT=0;
+ const pick=e=>{let n,o;
+  if(document.caretRangeFromPoint){const r=document.caretRangeFromPoint(e.clientX,e.clientY);if(!r)return null;n=r.startContainer;o=r.startOffset}
+  else if(document.caretPositionFromPoint){const q=document.caretPositionFromPoint(e.clientX,e.clientY);if(!q)return null;n=q.offsetNode;o=q.offset}else return null;
+  if(!n||n.nodeType!==3)return null;const s=n.data;let a=o,b=o;while(a>0&&W.test(s[a-1]))a--;while(b<s.length&&W.test(s[b]))b++;if(a===b)return null;
+  const rg=document.createRange();rg.setStart(n,a);rg.setEnd(n,b);
+  /* واجهات المؤشر تقفز إلى أقرب نص: نتأكد أن الإصبع فوق الكلمة نفسها */
+  if(![...rg.getClientRects()].some(r=>e.clientX>=r.left-3&&e.clientX<=r.right+3&&e.clientY>=r.top-3&&e.clientY<=r.bottom+3))return null;
+  const w=s.slice(a,b).replace(/^['’\u0640]+|['’\u0640]+$/g,'');return /[\p{L}\p{N}]/u.test(w)?{w,rg}:null};
+ document.addEventListener('click',e=>{try{const t=e.target;if(!t||!t.closest||!t.closest('#app')||t.closest(SKIP))return;
+  const sel=getSelection();if(sel&&!sel.isCollapsed)return;const r=pick(e);if(!r)return;
+  const now=Date.now();if(r.w===last&&now-at<700)return;last=r.w;at=now;
+  if(window.CSS&&CSS.highlights&&window.Highlight){CSS.highlights.set('bumi-word',new Highlight(r.rg));clearTimeout(hT);hT=setTimeout(()=>CSS.highlights.delete('bumi-word'),900)}
+  const l=/[\u0600-\u06FF]/.test(r.w)?'ar':'en';
+  /* الكلمة المعروضة قد تحمل سكون الوقف أو حركة سياقها (جَدِيدْ، مِنَ): نجرّب صيغتها الأساسية إن لم يكن للمعروضة مقطع */
+  const has=x=>{try{const ps=say.parts(x,l);return ps.length&&ps.every(([a,b])=>HurufiClips.has(a,b))}catch(e){return false}};
+  const w=[r.w,r.w.replace(/\u0652$/,''),r.w.replace(/[\u064B-\u0652]$/,'')].find(has)||r.w;
+  say._word=1;try{say(w,l)}finally{say._word=0}}catch(err){}});
 })();
