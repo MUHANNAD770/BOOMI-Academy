@@ -225,14 +225,14 @@ const GAMES=[
 window.G2GAMES=GAMES;window.G2eng=()=>eng;
 
 /* ================= الأغلفة (مرسومة بالمحرك نفسه) ================= */
-const coverCache={};
+const coverCache={},noOwl=new Set(); /* أغلفة رُسمت قبل تحميل صورة البومة: تُعاد وحدها لاحقًا ولا تُحفظ */
 function cover(game){if(coverCache[game.id])return coverCache[game.id];const c=document.createElement('canvas'),W=320,H=180;c.width=W;c.height=H;const g=c.getContext('2d');g.scale(W/480,H/270);
  const th=G2.THEMES[game.cover.th]||G2.THEMES[{ar:'desert',en:'forest',math:'night',iq:'space',adv:'forest'}[game.cat]];G2.background(g,480,270,(game.id.length*37)%300,th,1.3);
  g.fillStyle=th.ground[0];g.fillRect(0,236,480,40);
  if(game.cover.k==='plat'){G2.Art.platform(g,40,236,180,40,th);G2.Art.platform(g,250,170,140,20,th);G2.Art.coin(g,300,140,1);G2.Art.coin(g,330,140,1.4);G2.Art.star(g,420,90,1,20);if(game.cover.letters)game.cover.letters.split(' ').forEach((l,i)=>G2.Art.bubble(g,230+i*56,90+i*6,22,l,'#ffd89e',1))}
  else if(game.cover.k==='catch'){[[120,70],[220,120],[340,60]].forEach(([x,y],i)=>G2.Art.bubble(g,x,y,26,i===1?game.cover.t:['?','★','✿'][i],['#cfe3ff','#ffe9b0','#ffd6e7'][i],1))}
  else{g.font='900 64px "Baloo Bhaijaan 2",Tahoma,sans-serif';g.textAlign='center';g.textBaseline='middle';g.fillStyle='rgba(255,255,255,.85)';G2.rr(g,140,40,200,120,26);g.fill();g.fillStyle='#1c2c86';g.fillText(game.cover.e,240,104)}
- const owl=G2.Owl.get('happy');if(owl)g.drawImage(owl,30,120,100,108);
+ const owl=G2.Owl.get('happy');if(owl)g.drawImage(owl,30,120,100,108);else noOwl.add(game.id);
  try{return coverCache[game.id]=c.toDataURL('image/webp',.82)}catch(e){return''}}
 
 /* ================= الاقتراحات حسب نقاط الضعف ================= */
@@ -249,12 +249,16 @@ function suggest(){const sc={};const add=(id,v)=>{sc[id]=(sc[id]||0)+v};
 const CATS=[['adv','🗺️ المغامرات'],['ar','🔤 ألعاب اللغة العربية'],['en','🔠 ألعاب اللغة الإنجليزية'],['math','🔢 ألعاب الرياضيات'],['iq','🧩 ألعاب الذكاء والألغاز']];
 /* الأغلفة تُرسم تدريجيًا بعد ظهور الصفحة (بضعة أغلفة في كل إطار، ~12ms): كان رسم ٣٩ غلافًا دفعة واحدة يجمّد فتح الألعاب ~٤٥٠ms */
 const CV0='data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';let cvQ=0;
-const queueCovers=()=>{if(cvQ)return;cvQ=requestAnimationFrame(function step(){cvQ=0;const L=[...document.querySelectorAll('img.g2-cv[data-cv]')].filter(im=>!coverCache[im.dataset.cv]||im.src!==coverCache[im.dataset.cv]);if(!L.length)return;
- const t=performance.now();for(const im of L){const gm=GAMES.find(x=>x.id===im.dataset.cv);if(gm){const u=cover(gm);im.src=u||CV0;if(!u)im.removeAttribute('data-cv')}else im.removeAttribute('data-cv');if(performance.now()-t>12)break}cvQ=requestAnimationFrame(step)})};
+/* الأداء: الأغلفة تُرسم مرة واحدة ثم تُحفظ في ذاكرة الجهاز (Cache Storage)، فلا تُرسم من جديد في الزيارات التالية */
+const CVC='hurufi-g2cov-v2',cvU=id=>'./g2cov/'+id+'.webp';let cvLoaded=null;
+const cvLoad=()=>cvLoaded||(cvLoaded=(async()=>{try{const c=await caches.open(CVC);for(const g of GAMES){if(coverCache[g.id])continue;const r=await c.match(cvU(g.id));if(r)coverCache[g.id]=URL.createObjectURL(await r.blob())}}catch(e){}})());
+const cvSave=(id,u)=>{try{if(u&&u.startsWith('data:'))fetch(u).then(r=>r.blob()).then(b=>caches.open(CVC).then(c=>c.put(cvU(id),new Response(b,{headers:{'content-type':b.type}})))).catch(()=>{})}catch(e){}};
+const queueCovers=()=>{if(cvQ)return;cvQ=-1;cvLoad().then(()=>{cvQ=0;document.querySelectorAll('img.g2-cv[data-cv]').forEach(im=>{const u=coverCache[im.dataset.cv];if(u&&im.src!==u)im.src=u});cvQ=requestAnimationFrame(function step(){cvQ=0;const L=[...document.querySelectorAll('img.g2-cv[data-cv]')].filter(im=>!coverCache[im.dataset.cv]||im.src!==coverCache[im.dataset.cv]);if(!L.length)return;
+ const t=performance.now();for(const im of L){const gm=GAMES.find(x=>x.id===im.dataset.cv);if(gm){const fresh=!coverCache[gm.id],u=cover(gm);if(fresh&&!noOwl.has(gm.id))cvSave(gm.id,u);im.src=u||CV0;if(!u)im.removeAttribute('data-cv')}else im.removeAttribute('data-cv');if(performance.now()-t>12)break}cvQ=requestAnimationFrame(step)})})};
 const card=g=>{const r=(P.g2||{})[g.id]||{s:{},u:1},st=Object.values(r.s).reduce((a,b)=>a+b,0),comp=Object.keys(r.s).length>=g.levels;
  return `<button class="g2-gc ${comp?'done':''}" onclick="g2levels('${g.id}')"><img alt="" class=g2-cv data-cv="${g.id}" src="${coverCache[g.id]||CV0}">${coverCache[g.id]?'':(queueCovers(),'')}<span class=g2-gi>${g.icon}</span><b>${esc(g.name)}</b><small>${esc(g.desc)}</small><span class=g2-meta><i>${g.diff}</i><i>${D(g.levels)} مراحل</i><i>⭐ ${D(st)}/${D(g.levels*3)}</i></span>${comp?'<span class=g2-badge>✓ مكتملة</span>':''}</button>`};
 window.games2d=function(){stopEng();V='sec';window.CS='games';const had=!!G2.Owl.get('happy');paintHub();
- if(!had)G2.Owl.load().then(()=>{for(const k in coverCache)delete coverCache[k];if(!document.getElementById('g2hub'))return;document.querySelectorAll('.g2-gc').forEach(b=>{const id=(b.getAttribute('onclick')||'').match(/g2levels\('([^']+)'/);const g=id&&GAMES.find(x=>x.id===id[1]);const im=b.querySelector('img');if(g&&im)im.src=cover(g)})})};
+ if(!had)G2.Owl.load().then(()=>{for(const k of noOwl)delete coverCache[k];noOwl.clear();if(document.getElementById('g2hub'))queueCovers() /* تدريجيًا، لا كلها دفعة واحدة */})};
 function paintHub(){const sg=suggest(),done=GAMES.filter(g=>Object.keys(((P.g2||{})[g.id]||{s:{}}).s).length>=g.levels),tot=GAMES.reduce((a,g)=>a+totalStars(g.id),0),played=GAMES.filter(g=>((P.g2||{})[g.id]||{}).n).length;
  h(`<section class="sec g2-hubp" id=g2hub><button class=link onclick="home()">→ الرئيسية</button><div class=g2-hero><div><h2>🎮 عالم ألعاب بومي</h2><p>تعلّم وأنت تلعب: مغامرات، صيد، تركيب، وألغاز.</p></div><div class=g2-tot><b>⭐ ${D(tot)}</b><small>نجوم الألعاب</small><b>🎮 ${D(played)}</b><small>لعبة جرّبتها</small></div></div>
  ${sg.length?`<h3>✨ مقترحة لك يا ${esc(P.name)}</h3><div class=g2-grid>${sg.map(card).join('')}</div>`:''}

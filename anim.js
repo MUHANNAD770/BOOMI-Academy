@@ -7,7 +7,9 @@
    كل ذلك يتوقف تلقائيًا إذا فعّل المستخدم «تقليل الحركة» في جهازه. */
 (()=>{
 'use strict';
-const G=window.gsap;if(!G)return;
+const G=window.gsap;
+/* الأجهزة الضعيفة (≤٤ أنوية أو ≤٢ جيجا ذاكرة): ٣٠ إطارًا في الثانية تكفي للحركة وتترك المعالج للصفحة */
+try{if(G&&((navigator.hardwareConcurrency||8)<=4||(navigator.deviceMemory||8)<=2))G.ticker.fps(30)}catch(e){}if(!G)return;
 const RM=matchMedia('(prefers-reduced-motion: reduce)'),calm=()=>RM.matches;
 document.documentElement.classList.add('gs');
 G.defaults({ease:'power2.out',duration:.35,overwrite:'auto'});
@@ -29,6 +31,8 @@ const Owl=(()=>{const mc=$('#mc');if(!mc)return null;const sv=$('.ow',mc);if(!sv
   idle.push(G.to(P.wr,{rotation:-3,duration:2.2,yoyo:true,repeat:-1,ease:'sine.inOut'}));
   headLoop()}
  function stopIdle(){idle.forEach(t=>t.kill());idle=[];clearTimeout(lookT)}
+ /* الأداء: أثناء الانتقال بين الصفحات تتوقف حركة البومة المستمرة لحظةً كي يُبنى الصفحة ويظهر بسرعة */
+ let navT=0;document.addEventListener('hurufi-nav',()=>{if(!idle.length)return;idle.forEach(t=>t.pause());clearTimeout(navT);navT=setTimeout(()=>idle.forEach(t=>t.resume()),1100)});
  /* التفاتة رأس ونظرة عشوائية كل بضع ثوانٍ (كأنه يراقب الطالب) */
  function headLoop(){clearTimeout(lookT);lookT=setTimeout(()=>{if(!busy&&!calm()&&document.visibilityState==='visible'){
    const r=R(-6,6);G.to(P.hd,{rotation:r,y:R(-1.5,1),duration:R(.6,1),ease:'sine.inOut'});
@@ -103,11 +107,15 @@ const LISTS='.tl>*,.grid>*,.list>*,.ic>*,.zones>*,.pth>*,.badges>*,.sum>*,.pr-su
 const io='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);G.fromTo(e.target,{autoAlpha:0,y:18},{autoAlpha:1,y:0,duration:.45,clearProps:'transform,opacity,visibility'})}),{rootMargin:'0px 0px -6% 0px'}):null;
 function countUp(root){$$('.sum b,.pr-sum b,.om-ch b,.ach-sum b',root).forEach(b=>{const t=b.textContent.trim(),ar=/[٠-٩]/.test(t),n=+(ar?t.replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d)):t);if(!n||n>5000||!/^[\d٠-٩]+$/.test(t))return;
   const o={v:0};G.to(o,{v:n,duration:Math.min(1.2,.4+n/80),ease:'power1.out',onUpdate:()=>{const v=String(Math.round(o.v));b.textContent=ar?v.replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]):v}})})}
-function enter(){const app=$('#app');if(!app)return;if(calm())return;
+function enter(){const app=$('#app');if(!app)return;try{document.dispatchEvent(new Event('hurufi-nav'))}catch(e){}if(calm())return;
  const top=[...app.children].filter(e=>!e.matches('script,style'));
  G.fromTo(top,{autoAlpha:0,y:14},{autoAlpha:1,y:0,duration:.34,stagger:.045,clearProps:'transform,opacity,visibility'});
  const items=$$(LISTS,app),vh=innerHeight;let k=0;
- items.forEach(el=>{const r=el.getBoundingClientRect();if(r.top<vh*1.05){G.fromTo(el,{autoAlpha:0,y:16,scale:.96},{autoAlpha:1,y:0,scale:1,duration:.4,delay:.08+Math.min(k++,14)*.035,ease:'back.out(1.6)',clearProps:'transform,opacity,visibility'})}else if(io)io.observe(el)});
+ /* الأداء: نقرأ مواضع العناصر كلها أولًا ثم نحرّك (القراءة بعد كل تحريك كانت تعيد حساب الصفحة لكل عنصر)،
+    ونحرّك أول ١٦ عنصرًا ظاهرًا في حركة واحدة، ونراقب ٤٠ عنصرًا فقط مما تحت الشاشة */
+ const tops=items.map(el=>el.getBoundingClientRect().top),vis=[],below=[];items.forEach((el,i)=>{if(tops[i]<vh*1.05){if(vis.length<16)vis.push(el)}else if(below.length<40)below.push(el)});
+ if(vis.length)G.fromTo(vis,{autoAlpha:0,y:16,scale:.96},{autoAlpha:1,y:0,scale:1,duration:.4,delay:.08,stagger:.035,ease:'back.out(1.6)',clearProps:'transform,opacity,visibility'});
+ if(io)below.forEach(el=>io.observe(el));k=vis.length;
  /* الحروف والأرقام والصور التعليمية تظهر بنبضة لطيفة */
  $$('.q,.vq-word,.enword,.enpic,.vq-pic,.card>.e,.big-letter,.lt',app).slice(0,6).forEach((el,i)=>G.fromTo(el,{scale:.55,rotation:-8,autoAlpha:0},{scale:1,rotation:0,autoAlpha:1,duration:.6,delay:.12+i*.05,ease:'back.out(2.2)',clearProps:'transform,opacity,visibility'}));
  countUp(app);

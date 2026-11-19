@@ -1,3 +1,7 @@
+/* الأداء: محتوى القوائم المطوية (details) يُبنى عند فتحها فقط؛ كانت صفحة «الدروس» تبني ~٢٨٠٠ عنصر مخفي وتشكّلها وتعالج صورها في كل زيارة */
+window.lzList=(()=>{const M=new Map();let n=0;
+ document.addEventListener('toggle',e=>{const d=e.target;if(!d||!d.open||!d.querySelector)return;const L=d.querySelector(':scope>[data-lz]');if(!L)return;const k=L.dataset.lz;if(M.has(k)){L.innerHTML=M.get(k);M.delete(k);L.removeAttribute('data-lz')}},true);
+ return (html,cls)=>{const k='z'+(++n);if(M.size>400)M.clear();M.set(k,html);return `<div class="${cls||'list'}" data-lz="${k}"></div>`}})();
 /* nav.js — شريط تنقل ثابت + أقسام مستقلة (دروس/عربي/إنجليزي/رياضيات/ألعاب/إنجازات) + مهارات رياضيات جديدة */
 MS.tbl='جدول الضرب ١–١٢';MS.cry='الجمع مع الحمل';MS.bor='الطرح مع الاستلاف';
 const omq=mq;mq=function(k,l){if(!['tbl','cry','bor'].includes(k))return omq(k,l);
@@ -15,7 +19,7 @@ nv.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.k==(V
 const rid=()=>{const c=coach();return c&&c.u.id};
 const bt=u=>`<button class="row${u.id==rid()?' rec':''}" onclick="lesson('${u.id}')"><span>${P.done[u.id]?'✅':'⭐'}</span><b>${u.n}</b><small>${P.sc[u.id]!=null?P.sc[u.id]+'/5':''}</small></button>`;
 /* لا نعرض كل الدروس دفعة واحدة؛ كل مرحلة قائمة مستقلة تُفتح عند الضغط عليها. */
-const byLang=l=>S.map((s,a)=>({s,a,u:s.u.filter(u=>u.l==l)})).filter(x=>x.u.length).map(x=>`<details class="lesson-menu"><summary><span><b>${x.s.n}</b><small>${x.s.a} سنوات · ${x.u.length} درس</small></span><i>⌄</i></summary><div class=list>${x.u.map(bt).join('')}</div></details>`).join('');
+const byLang=l=>S.map((s,a)=>({s,a,u:s.u.filter(u=>u.l==l)})).filter(x=>x.u.length).map(x=>`<details class="lesson-menu"><summary><span><b>${x.s.n}</b><small>${x.s.a} سنوات · ${x.u.length} درس</small></span><i>⌄</i></summary>${lzList(x.u.map(bt).join(''))}</details>`).join('');
 const mathList=()=>`<div class=list>${Object.keys(MS).map(k=>`<button class=row onclick="mstart('${k}')"><span>${mp(k).d?'✅':'🔢'}</span><b>${MS[k]}</b><small>مستوى ${mp(k).l}/4</small></button>`).join('')}${['g1','g2','g3'].map(g=>`<button class=row onclick="lesson('${g}')"><span>${P.done[g]?'✅':'🔷'}</span><b>${G[g].n}</b></button>`).join('')}<button class=row onclick=wnum()><span>✍️</span><b>كتابة الأرقام بالإصبع</b></button></div>`;
 /* صفحة إنجازاتي: تُبنى من بيانات الطالب الحقيقية (الدروس المتقنة والتي بدأها، الرياضيات، القصص، الكورس، الأنشطة).
    إن لم يبدأ أي شيء تظهر رسالة البداية مع زر لأول درس مناسب. */
