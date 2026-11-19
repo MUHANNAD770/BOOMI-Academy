@@ -16,6 +16,10 @@ for(const f of files){const t=fs.readFileSync(f,'utf8');
 const WSPLIT=/[^\u0621-\u064A\u064B-\u0652\u0670A-Za-z']+/,okW=w=>w.length>1&&(/[\u0621-\u064A]/.test(w)||/^[A-Za-z][a-z']*$/.test(w));
 const words=new Set();for(const x of rawAll)for(const w0 of x.split(WSPLIT)){const w=w0.replace(/^'+|'+$/g,'');if(okW(w))words.add(w)}
 const out=new Map();
+/* كلمات صور الدروس تُنطق منوّنة (بَقَرَةٌ لا بَقَرْ): نحمّل بيانات الدروس ونطبّق Tashkeel.nunate كما يفعل الموقع */
+{const vm=require('vm'),c=mkCtx('male');for(const f of ['app.js','content1.js','content2.js','content3.js','content4.js','content5.js','content6.js','content7.js'])try{vm.runInContext(fs.readFileSync(path.join(ROOT,f),'utf8'),c)}catch(e){}
+ const nw=vm.runInContext(`(()=>{const o=[],E=/\\p{Extended_Pictographic}/u;try{for(const st of S)for(const un of st.u)if(un.l==='ar')for(const it of un.i)if(E.test(String(it[1])))o.push(Tashkeel.nunate(it[0]))}catch(e){}return o})()`,c);
+ for(const w of nw)cand.add(w);console.log('nunated lesson words',nw.length)}
 for(const c of [mkCtx('male'),mkCtx('female')])for(const s of cand){const l=AR.test(s)?'ar':'en';for(const [t,L] of c.say.parts(s,l)){const k=key(t,L);if(!out.has(k))out.set(k,[t,L]);for(const w0 of t.split(WSPLIT)){const w=w0.replace(/^'+|'+$/g,'');if(okW(w))words.add(w)}}}
 {const c=mkCtx('male');for(const w of words){const l=/[\u0621-\u064A]/.test(w)?'ar':'en';for(const [t,L] of c.say.parts(w,l)){const k=key(t,L);if(!out.has(k))out.set(k,[t,L])}}}
 const old=new Set(Object.keys(idx));let hit=0;for(const k of out.keys())if(old.has(k))hit++;

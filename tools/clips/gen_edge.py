@@ -2,8 +2,9 @@
 import asyncio, json, os, sys, subprocess, edge_tts
 W=os.path.dirname(os.path.abspath(__file__))
 # B (اختيار صاحب المشروع): سرعة عادية، وصل الكلمات داخل الجملة، وأصوات Ava/Andrew الطبيعية (Multilingual)
-VOICES={'female':{'ar':'ar-SA-ZariyahNeural','en':'en-US-AvaMultilingualNeural'},'male':{'ar':'ar-SA-HamedNeural','en':'en-US-AndrewMultilingualNeural'}}
-RATE={'ar':'+0%','en':'+0%'}
+# المعلّم يبقى بصوته الأصلي (طلب صاحب المشروع): أي مقاطع جديدة له تُسجَّل بإعداداته الأصلية كي تطابق صوته الحالي
+VOICES={'female':{'ar':'ar-SA-ZariyahNeural','en':'en-US-AvaMultilingualNeural'},'male':{'ar':'ar-SA-HamedNeural','en':'en-US-AndrewNeural'}}
+RATES={'female':{'ar':'+0%','en':'+0%'},'male':{'ar':'-8%','en':'-10%'}}
 import re
 # سكون آخر الكلمة داخل الجملة يجعل المحرك يقف بعد كل كلمة (نطق آلي): نحذفه إذا تلته كلمة عربية بلا علامة ترقيم، ويبقى في آخر الجملة
 def natural(t,l):
@@ -18,7 +19,7 @@ async def one(who,k,t,l,sem,stat):
     async with sem:
         for a in range(5):
             try:
-                c=edge_tts.Communicate(natural(t,l),VOICES[who][l],rate=RATE[l],proxy=PROXY)
+                c=edge_tts.Communicate(natural(t,l) if who=='female' else t,VOICES[who][l],rate=RATES[who][l],proxy=PROXY)
                 await c.save(raw)
                 if os.path.getsize(raw)<300: raise Exception('small')
                 break
