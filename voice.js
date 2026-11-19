@@ -1,4 +1,4 @@
-/* voice.js — نطق عربي وإنجليزي وصوت مرح للبومة عبر Supertonic 3 المدمج + مقاطع مسجّلة مسبقًا — لا يُستخدم صوت الجهاز إطلاقًا
+/* voice.js — نطق عربي وإنجليزي لبومي من مقاطع Microsoft Edge Neural المسجّلة مسبقًا فقط (المعلّمة: Zariyah/Ava، المعلّم: Hamed/Andrew) — لا محرك توليد ولا صوت جهاز
    • يحافظ على التشكيل ويصلح ترتيب الشدّة والحركة حتى يفهمها محرك النطق
    • يقسّم الكلام حسب اللغة (عربي/إنجليزي) فيقرأ كل جزء بصوته الصحيح
    • نبرة وسرعة تتغيران حسب الجملة (فرح، تشجيع، سؤال) مع فواصل طبيعية
@@ -28,7 +28,7 @@ const clean=(t,L)=>{let s=String(t==null?'':t);const k=fixAr(s.trim());if(SYL[k]
 s=s.replace(/<[^>]*>/g,' ').replace(EM,' ').replace(/[⟵⟶←→⬅➡«»“”"]/g,' ');
 if(L=='ar'&&!/[0-9\u0660-\u0669]/.test(s))s=s.replace(/\s*[=+]\s*/g,' ، '); /* «=» و«+» في الشرح (لا في الحساب) فاصلٌ لا «يساوي/زائد» */
 if(L=='ar')s=s.replace(/×/g,' ضَرْب ').replace(/÷/g,' قِسْمَة عَلَى ').replace(/\+/g,' زَائِد ').replace(/[−]/g,' نَاقِص ').replace(/(\d)\s*-\s*(\d)/g,'$1 نَاقِص $2').replace(/=/g,' يُسَاوِي ').replace(/[«»]/g,' ');
-s=fixAr(s); /* لا نستعمل Pron.speech: كان يكتب الكلمات بتهجئة خاصة لصوت الجهاز (كِتَابُنْ، دُبْبْ) فتربك Supertonic. المحرك يتولّى العربية بنفسه */
+s=fixAr(s); /* لا نستعمل Pron.speech: كان يكتب الكلمات بتهجئة خاصة لصوت الجهاز (كِتَابُنْ، دُبْبْ) فتخالف نص المقاطع المسجّلة */
 return s.replace(/\s+/g,' ').trim()};
 window.onTalk=window.onTalk||(()=>{});
 window.muted=()=>!!(P&&P.snd===0);
@@ -37,16 +37,16 @@ const cl=(x,a,b)=>Math.max(a,Math.min(b,x));
    say.stream(لغة، مزاج) ← يعيد {push(نص)، end(عند_الانتهاء)} لنطق الإجابة جملةً جملةً أثناء وصولها (بثّ تدريجي)
    say.stop() إيقاف فوري · say.replay() إعادة آخر كلام · الصوت من الجهاز مباشرة */
 const ENDS=/[.!؟?\n]/,CL=/[^،,;:]+[،,;:]?/g,SNT=/[^.!؟?\n]+[.!؟?\n]*/g;
-/* جملة ← أجزاء قصيرة يتولاها المحرك المحلي. */
-const NE=()=>window.HurufiTTS||null; /* المحرك المحلي الوحيد: Supertonic 3 */
-const mk=(sn,L)=>{const cloud=!!NE(),o=[],e=(sn.match(/[.!؟?]+\s*$/)||[''])[0].trim().slice(-1),body=sn.replace(/[.!؟?\n]+\s*$/,'').trim();if(!/[\p{L}\p{N}]/u.test(body))return o;
- const rr=cloud&&NE().multilingual?[[body,AR.test(body)?'ar':(LA.test(body)?'en':L)]]:runs(body,L);rr.forEach((r,i)=>{const last=i==rr.length-1,p={t:r[0],l:r[1],e:last?e:''};
-  const cs=(cloud?[p.t]:(p.t.match(CL)||[p.t])).map(x=>x.trim()).filter(x=>/[\p{L}\p{N}]/u.test(x));
+/* جملة ← أجزاء تُطابق مفاتيح المقاطع المسجّلة. */
+/* تقسيم الجملة إلى مقاطع حسب اللغة فقط (بلا تقسيم عند الفواصل): بهذه المفاتيح نفسها سُجّلت مقاطع Edge (tools/clips) */
+const mk=(sn,L)=>{const o=[],e=(sn.match(/[.!؟?]+\s*$/)||[''])[0].trim().slice(-1),body=sn.replace(/[.!؟?\n]+\s*$/,'').trim();if(!/[\p{L}\p{N}]/u.test(body))return o;
+ const rr=runs(body,L);rr.forEach((r,i)=>{const last=i==rr.length-1,p={t:r[0],l:r[1],e:last?e:''};
+  const cs=[p.t].map(x=>x.trim()).filter(x=>/[\p{L}\p{N}]/u.test(x));
   cs.forEach((x,j)=>{const m=(x.match(/[،,;:]$/)||[''])[0];o.push({t:x.replace(/[،,;:]$/,''),l:r[1],e:m||(last&&j==cs.length-1?e:'')})})});return o};
 function runner(tk,L,mood){const parts=[];let i=0,ended=false,cb=null,buf='',all='';
  const fin=()=>{if(tk!=say.tk)return;say.live=0;onTalk(false);document.dispatchEvent(new Event('hurufi-say'));cb&&cb()};
  const add=txt=>{if(L=='ar'&&window.studentGenderText&&genderOk(txt))txt=studentGenderText(txt);const c=clean(L=='ar'&&window.Tashkeel?Tashkeel.apply(txt):txt,L);if(!c)return;(c.match(SNT)||[c]).forEach(x=>mk(x.trim(),L).forEach(p=>parts.push(p)))};
- /* لا يوجد صوت جهاز: إن تعذّر المقطع على المحركين المحليين ننتقل للمقطع التالي بهدوء */
+ /* لا محرك توليد ولا صوت جهاز: نص بلا مقطع مسجّل (اسم الطالب، ردود بومي الذكية) لا يُنطق، فننتقل للمقطع التالي بهدوء */
  const device=p=>{if(tk!=say.tk)return;setTimeout(nx,60)};
 /* تركيب الجملة من مقاطع جاهزة: إن لم تكن الجملة كاملة محفوظة، نبنيها من أطول قطع محفوظة (مثل «اِسْتَمِعْ جَيِّدًا» + «صَاد»)
     فيبدأ الصوت فورًا بنفس صوت المعلّم؛ ويُسمح بقطعة قصيرة واحدة غير محفوظة (كاسم الطالب) تُولَّد محليًا. */
@@ -59,12 +59,10 @@ function runner(tk,L,mood){const parts=[];let i=0,ended=false,cb=null,buf='',all
 const browser=p=>{try{window.HurufiClips&&HurufiClips.record(p.t,p.l)}catch(e){}
   if(window.HurufiClips&&!p.sub&&!HurufiClips.has(p.t,p.l)){const sub=split(p);if(sub){parts.splice(i,0,...sub);return nx()}}
   const gap=/[.!؟?\n]/.test(p.e)?170:p.e?70:0,after=ok=>{if(tk!=say.tk)return;ok===true?(gap?setTimeout(nx,gap):nx()):device(p)};
-  /* لا انتظار: إن كان الصوت العصبي محفوظًا يُشغَّل فورًا؛ وإن لم يجهز خلال لحظة نبدأ بصوت الجهاز مباشرة، ويكمل العصبي توليده ويُحفظ للمرة القادمة */
-  /* المحرك المحلي Supertonic: ننتظر جاهزيته في أول مرة، والجمل التالية تُحضَّر مسبقًا */
-  const viaCloud=()=>{const E=NE();if(!E)return device(p);parts.slice(i,i+2).forEach(q=>E.prefetch(q.t,q.l,mood));
-   Promise.resolve(E.play(p.t,p.l,mood,()=>tk==say.tk,()=>{onTalk(true)})).then(r=>{if(tk!=say.tk)return;after(r)},()=>{if(tk==say.tk)after(false)})};
-  if(window.HurufiClips&&HurufiClips.has(p.t,p.l)){HurufiClips.play(p.t,p.l,()=>tk==say.tk,()=>{onTalk(true)}).then(ok=>{if(tk!=say.tk)return;ok===true?after(true):viaCloud()});return}
-  viaCloud()};
+  /* الأرقام تُكتب بالعربية (٣٥) والمقطع مسجّل بالأرقام اللاتينية (35) */
+  {const k0=!p.sub&&H(p.t,p.l);if(k0)p.t=k0}
+  if(window.HurufiClips&&HurufiClips.has(p.t,p.l)){HurufiClips.play(p.t,p.l,()=>tk==say.tk,()=>{onTalk(true)}).then(ok=>{if(tk!=say.tk)return;ok===true?after(true):device(p)});return}
+  device(p)};
  const nx=()=>{if(tk!=say.tk)return;
   if(i>=parts.length){if(ended&&!buf.trim())return fin();setTimeout(nx,60);return} /* ننتظر بقية الإجابة */
   const p=parts[i++];
@@ -87,9 +85,8 @@ window.BumiAudio=(()=>{let page=1,caller=null,drain=null,wq=null,wT=0;
  try{window.setTimeout=function(fn,ms,...a){return typeof fn==='function'?_st(tag(fn),ms,...a):_st(fn,ms,...a)};
   window.setInterval=function(fn,ms,...a){return typeof fn==='function'?_si(tag(fn),ms,...a):_si(fn,ms,...a)}}catch(e){}
  const CAP=3200,FADE=320;
- const T=()=>window.HurufiTTS;
- const busy=()=>{let b=false;try{b=!!(T()&&T().speaking&&T().speaking())}catch(e){}try{b=b||!!(window.HurufiClips&&HurufiClips.busy&&HurufiClips.busy())}catch(e){}return b};
- const hard=()=>{let f=false;try{f=T()&&T().fade&&T().fade(FADE)}catch(e){}try{window.HurufiClips&&HurufiClips.stop()}catch(e){}return f};
+ const busy=()=>{try{return!!(window.HurufiClips&&HurufiClips.busy&&HurufiClips.busy())}catch(e){return false}};
+ const hard=()=>{try{window.HurufiClips&&HurufiClips.stop()}catch(e){}return false};
  /* ينفّذ fn عندما يصبح الصوت هادئًا؛ آخر طلب فقط ينتظر (منع التكرار والتراكم) */
  function whenQuiet(fn){if(!drain&&!busy())return fn();wq=fn;if(wT)return;const tick=()=>{wT=0;
    if(!busy()){drain=null;const f=wq;wq=null;f&&f();return}
@@ -98,11 +95,11 @@ window.BumiAudio=(()=>{let page=1,caller=null,drain=null,wq=null,wT=0;
  /* ضغطة جديدة من الطالب بعد الانتقال (مثل الضغط على كلمة): نقطع الصوت السابق فورًا ولا ننتظر */
  let userAt=0,navAt=0;try{document.addEventListener('pointerdown',()=>{userAt=Date.now()},{capture:true,passive:true});document.addEventListener('keydown',()=>{userAt=Date.now()},{capture:true,passive:true})}catch(e){}
  const userAfter=()=>!!drain&&userAt>(drain.at||0)+120;
- function cancel(){drain=null;wq=null;if(wT){_ct(wT);wT=0}try{T()&&T().stop&&T().stop()}catch(e){}try{window.HurufiClips&&HurufiClips.stop()}catch(e){}}
+ function cancel(){drain=null;wq=null;if(wT){_ct(wT);wT=0}try{window.HurufiClips&&HurufiClips.stop()}catch(e){}}
  /* الانتقال إلى صفحة جديدة: أكمل الجملة الحالية فقط، وألغِ ما بعدها */
  function navigate(){page++;navAt=Date.now();wq=null;drain=null;if(wT){_ct(wT);wT=0}
   /* الانتقال لصفحة أخرى يوقف كل صوت فورًا: لا يُكمل كلام الصفحة السابقة في الصفحة الجديدة */
-  try{window.say&&say.stop&&say.stop()}catch(e){}try{T()&&T().stop&&T().stop()}catch(e){}try{window.HurufiClips&&HurufiClips.stop()}catch(e){}}
+  try{window.say&&say.stop&&say.stop()}catch(e){}try{window.HurufiClips&&HurufiClips.stop()}catch(e){}}
  /* تنفيذ دالة ضمن سياق الصفحة الحالية (تُستخدم عند رسم صفحة جديدة) */
  const within=fn=>{const pv=caller;caller=page;try{return fn()}finally{caller=pv}};
  return{navigate,whenQuiet,busy,hard,within,cancel,userAfter,tapped:()=>userAt>navAt,stale:()=>caller!==null&&caller!==page,page:()=>page,draining:()=>!!drain}})();
@@ -118,15 +115,15 @@ say=function(t,l,cb,mood){try{if(BumiAudio.stale())return DEAD;
 say.stream=function(l,mood){if(BumiAudio.stale())return DEAD;const L=l=='ar'?'ar':'en';say.paused=0;
  const tk=say.tk=(say.tk||0)+1,R=runner(tk,L,mood);
  if(BumiAudio.draining()){if(BumiAudio.userAfter())BumiAudio.cancel();else{BumiAudio.whenQuiet(()=>{if(tk==say.tk)R.start()});return R}} /* بعد انتقال: ننتظر انتهاء جملة الصفحة السابقة */
- try{window.HurufiClips&&HurufiClips.stop();window.HurufiTTS&&HurufiTTS.stop()}catch(e){}
+ try{window.HurufiClips&&HurufiClips.stop()}catch(e){}
  R.start();return R};
-say.stop=()=>{say.tk=(say.tk||0)+1;say.live=0;say.paused=0;try{window.HurufiClips&&HurufiClips.stop();window.HurufiTTS&&HurufiTTS.stop()}catch(e){}onTalk(false);document.dispatchEvent(new Event('hurufi-say'))};
+say.stop=()=>{say.tk=(say.tk||0)+1;say.live=0;say.paused=0;try{window.HurufiClips&&HurufiClips.stop();window.HurufiClips&&HurufiClips.resume()}catch(e){}onTalk(false);document.dispatchEvent(new Event('hurufi-say'))};
 /* إنهاء سلس: لا نقطع المقطع الذي يُنطق الآن؛ نلغي المقاطع التالية فقط (يستعملها نظام التنقل) */
-say.finish=()=>{say.tk=(say.tk||0)+1;say.live=0;say.paused=0;try{window.HurufiTTS&&HurufiTTS.flush&&HurufiTTS.flush()}catch(e){}document.dispatchEvent(new Event('hurufi-say'));
+say.finish=()=>{say.tk=(say.tk||0)+1;say.live=0;say.paused=0;document.dispatchEvent(new Event('hurufi-say'));
  const end=()=>{if(!BumiAudio.busy())onTalk(false);else setTimeout(end,120)};end()};
-/* إيقاف مؤقت واستكمال (المحرك المحلي) */
-say.pause=()=>{if(!say.live)return false;say.paused=1;try{window.HurufiTTS&&HurufiTTS.pause()}catch(e){}document.dispatchEvent(new Event('hurufi-say'));return true};
-say.resume=()=>{if(!say.paused)return false;say.paused=0;try{window.HurufiTTS&&HurufiTTS.resume()}catch(e){}document.dispatchEvent(new Event('hurufi-say'));return true};
+/* إيقاف مؤقت واستكمال */
+say.pause=()=>{if(!say.live)return false;say.paused=1;try{window.HurufiClips&&HurufiClips.pause()}catch(e){}document.dispatchEvent(new Event('hurufi-say'));return true};
+say.resume=()=>{if(!say.paused)return false;say.paused=0;try{window.HurufiClips&&HurufiClips.resume()}catch(e){}document.dispatchEvent(new Event('hurufi-say'));return true};
 say.replay=()=>{const x=say.last;if(x&&x.t)say(x.t,x.l,null,x.m)};
 /* الأجزاء التي ستُنطق فعلًا (نفس المعالجة تمامًا) — لتحضير الأصوات مسبقًا بنفس المفاتيح */
 say.parts=(t,l)=>{try{const L=l=='ar'?'ar':'en';let x=String(t==null?'':t);const k0=fixAr(x.trim());x=SYL[k0]||x;if(L=='ar'&&window.studentGenderText&&genderOk(x))x=studentGenderText(x);const c=clean(L=='ar'&&window.Tashkeel?Tashkeel.apply(x):x,L),o=[];if(!c)return o;(c.match(SNT)||[c]).forEach(y=>mk(y.trim(),L).forEach(p=>o.push([p.t,p.l])));return o}catch(e){return[]}};

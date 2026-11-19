@@ -46,10 +46,7 @@ document.body.appendChild(el);let msg='',lang='ar',act=false,said=new Set(),tm;
 const pl=el.querySelector('#pl'),ow=el.querySelector('.ow');
 document.addEventListener('pointerdown',e=>{act=true;try{const r=ow.getBoundingClientRect(),dx=Math.max(-1,Math.min(1,(e.clientX-(r.left+r.width/2))/150))*4,dy=Math.max(-1,Math.min(1,(e.clientY-(r.top+r.height/2))/150))*3;pl.setAttribute('transform',`translate(${dx} ${dy})`)}catch(_){}});
 window.onTalk=b=>el.classList.toggle('talk',b);
-/* نحضّر صوت جملة بومي في الخلفية فور ظهورها، فيكون الضغط على البومة فوريًا */
-const warm=t=>{try{const E=window.HurufiTTS;if(t&&E&&E.ok()&&window.say&&say.parts)E.warmup(say.parts(t,lang))}catch(e){}};
-const set=t=>{msg=t;const b=document.querySelector('.owl-dock .owl-say');if(b)b.textContent=window.studentGenderText?studentGenderText(t||''):(t||'');warm(t)};
-try{window.HurufiTTS&&HurufiTTS.on(m=>{if(m.t==='ready')warm(msg)})}catch(e){}
+const set=t=>{msg=t;const b=document.querySelector('.owl-dock .owl-say');if(b)b.textContent=window.studentGenderText?studentGenderText(t||''):(t||'')};
 let lvT=0,pv=0;const bk=el.querySelector('.bk');
 /* فم بومي يتبع شدة الصوت الفعلية (المحرك المحلي) أو نبضات الكلمات (صوت الجهاز) */
 const setM=v=>{pv=v;el.classList.add('lips');bk&&bk.style.setProperty('--m',(1-.55*Math.min(1,v)).toFixed(3));clearTimeout(lvT);lvT=setTimeout(()=>{el.classList.remove('lips');bk&&bk.style.removeProperty('--m')},260)};

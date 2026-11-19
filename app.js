@@ -19,7 +19,7 @@ d('V',()=>V,v=>{V=v});d('cur',()=>cur,v=>{cur=v});d('qs',()=>qs,v=>{qs=v});d('qi
 const shuf=a=>[...a].sort(()=>Math.random()-.5);
 const day=()=>new Date().toLocaleDateString('en-CA');
 const units=st=>S[st].u.filter(u=>P.lang=='both'||u.l==P.lang);
-var say=(t,l)=>{}; /* يُستبدل في voice.js بنظام الصوت المحلي Supertonic 3 — لا يوجد صوت جهاز */
+var say=(t,l)=>{}; /* يُستبدل في voice.js بنظام مقاطع Edge المسجّلة — لا يوجد صوت جهاز */
 var h=x=>{app.innerHTML=x;window.scrollTo(0,0)};
 function setup(){V='setup';const c=['#ffc93c','#7fd8be','#ff9db8','#9cc2ff','#ffc93c','#7fd8be'];
 h(`<h1>حروفي</h1><p class=mut>تعلّم العربية والإنجليزية خطوة بخطوة. اضغط على الحروف لتسمعها!</p>
