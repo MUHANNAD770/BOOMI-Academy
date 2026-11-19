@@ -13,7 +13,7 @@
   for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,0x01000193)>>>0}return h.toString(36)+'_'+s.length.toString(36)};
  const teacher=()=>window.P&&P.teacher==='male'?'male':'female';
  const engVoice=()=>null; /* لا يوجد محرك توليد على الجهاز: كل الصوت مقاطع Edge مسجّلة */
- const loadIx=who=>st.load[who]||(st.load[who]=fetch(base+who+'.json?v=63',{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(j=>{if(j&&j.idx){if(j.v)j.packs=j.packs.map(p=>p+'?v='+j.v);st.ix[who]=j;st.need=st.need||{};for(const[pi,off,len]of Object.values(j.idx)){const n=j.packs[pi];if((st.need[n]||0)<off+len)st.need[n]=off+len}}return st.ix[who]} /* لا تنزيل تلقائي لكل الحزم: كان ~130 م.ب في أول 30 ثانية فيبطئ الهاتف */).catch(()=>{st.load[who]=null;return null}));
+ const loadIx=who=>st.load[who]||(st.load[who]=fetch(base+who+'.json?v=64',{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(j=>{if(j&&j.idx){if(j.v)j.packs=j.packs.map(p=>p+'?v='+j.v);st.ix[who]=j;st.need=st.need||{};for(const[pi,off,len]of Object.values(j.idx)){const n=j.packs[pi];if((st.need[n]||0)<off+len)st.need[n]=off+len}}return st.ix[who]} /* لا تنزيل تلقائي لكل الحزم: كان ~130 م.ب في أول 30 ثانية فيبطئ الهاتف */).catch(()=>{st.load[who]=null;return null}));
  const ready=loadIx(teacher());
  try{window.caches&&['hurufi-clips-v1','hurufi-clips-v2','hurufi-clips-v3'].forEach(n=>caches.delete(n))}catch(e){} /* مقاطع الإصدارات السابقة */
  /* أُزيل محرك Supertonic 3: نحذف ملفاته المحفوظة سابقًا في المتصفح (~157 م.ب) وإعداداته */

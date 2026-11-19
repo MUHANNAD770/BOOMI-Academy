@@ -46,13 +46,18 @@ document.body.appendChild(el);let msg='',lang='ar',act=false,said=new Set(),tm;
 const pl=el.querySelector('#pl'),ow=el.querySelector('.ow');
 document.addEventListener('pointerdown',e=>{act=true;try{const r=ow.getBoundingClientRect(),dx=Math.max(-1,Math.min(1,(e.clientX-(r.left+r.width/2))/150))*4,dy=Math.max(-1,Math.min(1,(e.clientY-(r.top+r.height/2))/150))*3;pl.setAttribute('transform',`translate(${dx} ${dy})`)}catch(_){}});
 window.onTalk=b=>el.classList.toggle('talk',b);
+/* الصفحة الرئيسية: الضغط على بومي = ترحيب بالطالب باسمه حسب وقت اليوم، بعبارات متنوّعة وحركة فرح */
+const GREET=['أَنَا بُومِي، هَيَّا نَتَعَلَّمُ وَنَلْعَبُ مَعًا!','اشْتَقْتُ إِلَيْكَ! هَلْ أَنْتَ مُسْتَعِدٌّ لِدَرْسٍ جَدِيدٍ؟','يَوْمٌ رَائِعٌ لِلتَّعَلُّمِ! اضْغَطِ الْخُطْوَةَ التَّالِيَةَ وَنَبْدَأُ.','كُلَّ يَوْمٍ تَتَعَلَّمُ شَيْئًا جَدِيدًا، هَيَّا نُكْمِلُ!'];let gi=Math.floor(Math.random()*4);
+const greet=()=>{const hr=new Date().getHours(),g=hr>=4&&hr<12?'صَبَاحُ الْخَيْرِ!':hr<17?'أَهْلًا وَسَهْلًا!':'مَسَاءُ الْخَيْرِ!',rest=GREET[gi++%GREET.length],nm=(window.P&&P.name)||'';
+ set(g.replace('!','')+(nm?' يَا '+nm:'')+' 👋 '+rest);try{M.mood('proud',1800);const r=el.getBoundingClientRect();window.BumiFX&&BumiFX.burst&&BumiFX.burst(r.left+r.width/2,r.top+r.height/3,14)}catch(e){}
+ if(!(window.muted&&muted()))say(g+' '+rest,'ar',null,'cheer')};
 const set=t=>{msg=t;const b=document.querySelector('.owl-dock .owl-say');if(b)b.textContent=window.studentGenderText?studentGenderText(t||''):(t||'')};
 let lvT=0,pv=0;const bk=el.querySelector('.bk');
 /* فم بومي يتبع شدة الصوت الفعلية (المحرك المحلي) أو نبضات الكلمات (صوت الجهاز) */
 const setM=v=>{pv=v;el.classList.add('lips');bk&&bk.style.setProperty('--m',(1-.55*Math.min(1,v)).toFixed(3));clearTimeout(lvT);lvT=setTimeout(()=>{el.classList.remove('lips');bk&&bk.style.removeProperty('--m')},260)};
 const M={level:v=>setM(v),pulse(){setM(1);let k=0;const f=()=>{k++;setM(Math.max(0,1-k*.18));if(k<6)requestAnimationFrame(f)};requestAnimationFrame(f)},
 mood(m,ms=1800){el.classList.remove('happy','oops','tilt','listen','explain','wow','proud','think');void el.offsetWidth;el.classList.add(m);clearTimeout(tm);tm=setTimeout(()=>el.classList.remove(m),ms)},
-repeat(){M.mood('happy',900);if(V=='quiz'&&window.__L)return sayList(window.__L);
+repeat(){M.mood('happy',900);if(V=='home')return greet();if(V=='quiz'&&window.__L)return sayList(window.__L);
  /* داخل تمرين/اختبار/سؤال: بومي يقرأ السؤال الحالي وخياراته؛ وإلا يقول مقدمة الدرس/القسم الحالي */
  let r=null;try{r=window.BumiRead&&BumiRead()}catch(e){}
  if(r&&r.length){const q=r.find(x=>x[0]!=='الْخِيَارَاتُ');if(q)set(q[0]);window.sayList?sayList(r):say(r[0][0],r[0][1]);return}
