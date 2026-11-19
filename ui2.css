@@ -89,3 +89,45 @@ body:not([data-theme=dark]){background:radial-gradient(900px 420px at 85% -60px,
 .bm-acts{display:grid;gap:8px;margin:6px 0 4px}.bm-acts button{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid #ece7ff;border-radius:16px;padding:9px 14px;color:var(--u-ink);font-weight:800;box-shadow:0 3px 0 #e2dcff;text-align:start}
 .bm-acts button span{font-size:1.4rem}.bm-acts button:active{transform:translateY(2px);box-shadow:none}
 .bm-offer button{background:#fff!important;border:2px solid #d9d0ff!important;color:var(--u-pur2)!important;font-weight:800}
+
+/* بطاقة المظهر في الإعدادات */
+.th-card{background:#fff;border-radius:22px;box-shadow:var(--u-sh);padding:14px 16px;margin:12px 0;color:var(--u-ink)}
+.th-card>b{display:block;font-size:1.05rem;margin-bottom:10px}
+.th-opts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.th-o{display:flex;flex-direction:column;align-items:center;gap:4px;min-height:64px;padding:8px 4px;border-radius:16px;border:2px solid #e3defa;background:#f7f5ff;color:var(--u-ink);font:inherit;font-weight:700;cursor:pointer}
+.th-o>span{font-size:1.4rem}
+.th-o.on{border-color:var(--u-pur);background:linear-gradient(135deg,#efe9ff,#e4ecff);box-shadow:0 0 0 3px rgba(106,76,240,.18)}
+
+/* الوضع الداكن للبطاقات الجديدة (إذا اختاره الطالب أو كان الهاتف على الداكن والمظهر «حسب الهاتف») */
+:root[data-theme=dark] :is(.h2-parent,.pm-card,.th-card,.bb.a,.bm-acts button,.bm-offer button){background:#24275e!important;color:#eef0ff!important;border-color:#3a3f86!important;box-shadow:0 8px 22px rgba(0,0,0,.35)!important}
+:root[data-theme=dark] :is(.pm-who b,.pm-ring b,.th-card>b,.h2-parent b){color:#f4f4ff}
+:root[data-theme=dark] :is(.pm-who small,.h2-parent small){color:#b9bde8}
+:root[data-theme=dark] .pm-st li{background:#2e3270;color:#e6e8ff}
+:root[data-theme=dark] .pm-bg{stroke:#363b80}
+:root[data-theme=dark] .th-o{background:#2e3270;border-color:#3f4590;color:#eef0ff}
+:root[data-theme=dark] .th-o.on{background:linear-gradient(135deg,#4b3cb0,#3a4bb0);border-color:#9d88ff}
+:root[data-theme=dark] .h2-hero{background:radial-gradient(160px 70px at 18% 22%,rgba(255,255,255,.12),rgba(255,255,255,0) 70%),linear-gradient(165deg,#3b2f8f 0%,#2c3f99 52%,#245a5c 100%)}
+:root[data-theme=dark] .h2-cloud{opacity:.12}
+:root[data-theme=dark] .h2-txt h1{color:#eef0ff}
+:root[data-theme=dark] .h2-txt h1 b{color:#d9ceff;text-shadow:none}
+:root[data-theme=dark] .h2-txt p{color:#d5d8ff}
+@media (prefers-color-scheme: dark){
+:root:not([data-theme=light]) :is(.h2-parent,.pm-card,.th-card,.bb.a,.bm-acts button,.bm-offer button){background:#24275e!important;color:#eef0ff!important;border-color:#3a3f86!important;box-shadow:0 8px 22px rgba(0,0,0,.35)!important}
+:root:not([data-theme=light]) :is(.pm-who b,.pm-ring b,.th-card>b,.h2-parent b){color:#f4f4ff}
+:root:not([data-theme=light]) :is(.pm-who small,.h2-parent small){color:#b9bde8}
+:root:not([data-theme=light]) .pm-st li{background:#2e3270;color:#e6e8ff}
+:root:not([data-theme=light]) .pm-bg{stroke:#363b80}
+:root:not([data-theme=light]) .th-o{background:#2e3270;border-color:#3f4590;color:#eef0ff}
+:root:not([data-theme=light]) .th-o.on{background:linear-gradient(135deg,#4b3cb0,#3a4bb0);border-color:#9d88ff}
+:root:not([data-theme=light]) .h2-hero{background:radial-gradient(160px 70px at 18% 22%,rgba(255,255,255,.12),rgba(255,255,255,0) 70%),linear-gradient(165deg,#3b2f8f 0%,#2c3f99 52%,#245a5c 100%)}
+:root:not([data-theme=light]) .h2-cloud{opacity:.12}
+:root:not([data-theme=light]) .h2-txt h1{color:#eef0ff}
+:root:not([data-theme=light]) .h2-txt h1 b{color:#d9ceff;text-shadow:none}
+:root:not([data-theme=light]) .h2-txt p{color:#d5d8ff}
+}
+:root[data-theme=dark] .bm{background:linear-gradient(180deg,#1d1f4e,#15163a 40%)!important}
+:root[data-theme=dark] .bm :is(input,textarea){background:#24275e!important;color:#eef0ff!important;border-color:#3a3f86!important}
+@media (prefers-color-scheme: dark){
+:root:not([data-theme=light]) .bm{background:linear-gradient(180deg,#1d1f4e,#15163a 40%)!important}
+:root:not([data-theme=light]) .bm :is(input,textarea){background:#24275e!important;color:#eef0ff!important;border-color:#3a3f86!important}
+}

@@ -19,5 +19,14 @@ if(typeof oPar==='function'&&oPar!==window.top)window.parent=function(){const r=
   done=Object.keys(P0.done||{}).length,bd=Object.keys(P0.badges||{}).length,st=+P0.star||0,R=44,C=2*Math.PI*R;
  h2.insertAdjacentHTML('afterend',`<div class=pm-card><div class=pm-ring><svg viewBox="0 0 110 110" aria-hidden=true><circle cx=55 cy=55 r=${R} class=pm-bg /><circle cx=55 cy=55 r=${R} class=pm-fg stroke-dasharray="${C}" stroke-dashoffset="${C*(1-pct/100)}" /></svg><b>${pct}٪</b><small>مستوى الإتقان</small></div>
   <div class=pm-who><span class=pm-av>${P0.gender==='female'?'👧':'👦'}</span><div><b>${esc(P0.name)}</b><small>${P0.age?esc(P0.age)+' سنوات':''}</small></div></div>
-  <ul class=pm-st><li><span>🏆</span>الإنجازات<b>${bd}</b></li><li><span>⭐</span>النجوم<b>${st}</b></li><li><span>📚</span>الدروس المكتملة<b>${done}</b></li></ul></div>`)}catch(e){}return r};
+  <ul class=pm-st><li><span>🏆</span>الإنجازات<b>${bd}</b></li><li><span>⭐</span>النجوم<b>${st}</b></li><li><span>📚</span>الدروس المكتملة<b>${done}</b></li></ul></div>${themeCard()}`)}catch(e){}return r};
+/* المظهر: حسب الهاتف (افتراضي) / فاتح / داكن */
+const TH=[['auto','📱','حسب الهاتف'],['light','☀️','فاتح'],['dark','🌙','داكن']];
+const curTheme=()=>{try{const t=localStorage.getItem('ui-theme');return t==='light'||t==='dark'?t:'auto'}catch(e){return'auto'}};
+function themeCard(){const c=curTheme();return `<div class=th-card><b>🎨 المظهر</b><div class=th-opts role=radiogroup>${TH.map(([k,i,t])=>`<button class="th-o${k===c?' on':''}" role=radio aria-checked=${k===c} onclick="setTheme('${k}')"><span>${i}</span>${t}</button>`).join('')}</div></div>`}
+const meta=()=>{const m=document.querySelector('meta[name=theme-color]'),d=document.documentElement.dataset.theme==='dark'||(!document.documentElement.dataset.theme&&matchMedia('(prefers-color-scheme: dark)').matches);if(m)m.content=d?'#15163a':'#6a4cf0'};
+window.setTheme=function(k){try{k==='auto'?localStorage.removeItem('ui-theme'):localStorage.setItem('ui-theme',k)}catch(e){}
+ const de=document.documentElement;if(k==='auto')delete de.dataset.theme;else de.dataset.theme=k;meta();
+ document.querySelectorAll('.th-o').forEach((b,i)=>{const on=TH[i][0]===k;b.classList.toggle('on',on);b.setAttribute('aria-checked',on)})};
+meta();try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',meta)}catch(e){}
 })();
