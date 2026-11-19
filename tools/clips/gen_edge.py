@@ -9,6 +9,7 @@ import re
 def natural(t,l):
     return re.sub(r'([\u0621-\u064A][\u064B-\u0651]?)\u0652(?=[ \u00A0]+[\u0621-\u064A])',r'\1',t) if l=='ar' else t
 PROXY=os.environ.get('HTTPS_PROXY')
+WHOS=os.environ.get('WHO','female,male').split(',')  # WHO=female لتسجيل صوت المعلّمة وحده
 phr=json.load(open(os.environ.get('PHR') or os.path.join(W,'final.json')))
 async def one(who,k,t,l,sem,stat):
     out=os.path.join(W,'out',who,k+'.mp3')
@@ -39,9 +40,9 @@ async def one(who,k,t,l,sem,stat):
         if n%100==0: open(os.path.join(W,'progress.txt'),'w').write(json.dumps(stat))
 async def main():
     sem=asyncio.Semaphore(int(os.environ.get('CONC','8')))
-    stat={'ok':0,'skip':0,'fail':0,'total':len(phr)*2}
-    for who in ('female','male'): os.makedirs(os.path.join(W,'out',who),exist_ok=True)
-    jobs=[one(who,k,t,l,sem,stat) for who in ('female','male') for k,(t,l) in phr]
+    stat={'ok':0,'skip':0,'fail':0,'total':len(phr)*len(WHOS)}
+    for who in WHOS: os.makedirs(os.path.join(W,'out',who),exist_ok=True)
+    jobs=[one(who,k,t,l,sem,stat) for who in WHOS for k,(t,l) in phr]
     await asyncio.gather(*jobs)
     stat['done']=1; open(os.path.join(W,'progress.txt'),'w').write(json.dumps(stat))
 asyncio.run(main())
