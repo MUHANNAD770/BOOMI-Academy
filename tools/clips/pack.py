@@ -13,7 +13,7 @@ if len(sys.argv)>3 and sys.argv[3]=='append':
             name=f'{pre}{len(packs)}.bin'; open(os.path.join(DST,name),'wb').write(cur); packs.append(name); cur=bytearray()
         for k,(t,l) in phr:
             p=os.path.join(W,'out',who,k+'.mp3')
-            if k in idx or not os.path.exists(p): continue
+            if (k in idx and not os.environ.get('REPLACE')) or not os.path.exists(p): continue  # REPLACE=1: مقطع مُعاد تسجيله يحلّ محل القديم
             b=open(p,'rb').read()
             if len(cur)+len(b)>1_500_000 and cur: out_pack()
             idx[k]=[len(packs),len(cur),len(b)]; cur+=b; n+=1
