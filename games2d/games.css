@@ -22,11 +22,12 @@
 .g2-hud>span{background:rgba(255,255,255,.88);padding:3px 10px;border-radius:99px;box-shadow:0 3px 8px rgba(0,0,0,.12)}.h-word b{display:inline-block;min-width:22px;text-align:center;opacity:.35;font-size:1.15rem}.h-word b.on{opacity:1;color:#20b486}
 /* الهدف في شريط الأعلى وبحجم صغير: كان في وسط السماء فيغطي الفقاعات المتساقطة */
 .g2-target{direction:ltr;unicode-bidi:isolate;position:absolute;top:8px;left:50%;transform:translateX(-50%);pointer-events:none;z-index:2}.g2-target span{display:inline-block;background:rgba(255,255,255,.92);color:#1c2c86;font-weight:900;font-size:1.1rem;line-height:1.2;padding:3px 12px;border-radius:99px;border:2px solid #f7b500;box-shadow:0 3px 8px rgba(0,0,0,.12)}
-.g2-ctl{position:absolute;bottom:10px;inset-inline:10px;display:flex;justify-content:space-between;pointer-events:none;direction:ltr}
+/* أزرار التحكم في شريط تحت مساحة اللعب: كانت تطفو فوق الأرض فتغطي بومي والحروف */
+.g2-ctl{position:relative;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px;direction:ltr;background:linear-gradient(180deg,#e9eeff,#d7e0ff);border-top:2px solid rgba(28,44,134,.12)}
 .g2-b{pointer-events:auto;width:64px;height:64px;border-radius:50%;border:0;background:rgba(255,255,255,.82);color:#1c2c86;font-size:1.7rem;font-weight:900;box-shadow:0 5px 0 rgba(28,44,134,.35);touch-action:none}
 .g2-b.on,.g2-b:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(28,44,134,.35);background:#fff}
 .g2-b.l{margin-inline-end:auto}.g2-b.r{margin-inline-end:auto;margin-inline-start:10px}.g2-b.j,.g2-b.s{background:linear-gradient(180deg,#ffd24a,#f7b500);color:#3a2600}
-@media(hover:hover) and (pointer:fine){.g2-ctl{opacity:.75}}
+@media(hover:hover) and (pointer:fine){.g2-ctl{opacity:1}}
 /* نافذة سؤال الباب */
 .g2-ov{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:rgba(20,24,70,.45);backdrop-filter:blur(3px);padding:14px}
 .g2-card{width:min(520px,100%);max-height:90vh;overflow:auto;background:var(--card);color:var(--ink);border-radius:26px;padding:16px;border:3px solid #f7b500;box-shadow:0 20px 50px rgba(0,0,0,.3)}
