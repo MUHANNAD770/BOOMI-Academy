@@ -99,9 +99,10 @@ function nunate(w){w=String(w||'').trim();if(!w||/\s/.test(w)||!/[ء-ي]/.test(w
  if(/^اثن(تان|ان)$/.test(k))return w+'ِ';                                              /* المثنى: اِثْنَتَانِ */
  return w+'ٌ'}
 /* يُطبَّق مرة واحدة على كلمات الدروس العربية المصوّرة (فيشمل البطاقات والاختبارات والألعاب التي تأخذ كلماتها منها) */
-try{const EMJ=/\p{Extended_Pictographic}/u,MV={};for(const st of S)for(const un of st.u)if(un.l==='ar')for(const it of un.i)if(EMJ.test(String(it[1]))){const o=it[0],n=nunate(o);if(n!==o){it[0]=n;MV[o]=n}}
- /* إتقان كل كلمة محفوظ باسمها (P.sk): ننقله إلى الصيغة المنوّنة كي لا يضيع تقدّم الطالب */
- const D=window.DB;if(D&&D.kids)for(const kd of D.kids){const sk=kd&&kd.sk;if(sk)for(const o in MV)if(sk[o]){if(!sk[MV[o]])sk[MV[o]]=sk[o];delete sk[o]}}}catch(e){}
+/* الكتابة في الموقع لا تتغيّر (طلب صاحب المشروع): التنوين في النطق فقط (nunWord عند النطق في voice.js).
+ نسخة سابقة كانت تكتب التنوين في الدروس وتنقل إتقان الكلمات (P.sk) إلى الصيغة المنوّنة: نعيده إلى اسم الكلمة الأصلي. */
+try{const EMJ=/\p{Extended_Pictographic}/u,MV={};for(const st of S)for(const un of st.u)if(un.l==='ar')for(const it of un.i)if(EMJ.test(String(it[1]))){const o=it[0],n=nunate(o);if(n!==o)MV[n]=o}
+ const D=window.DB;if(D&&D.kids)for(const kd of D.kids){const sk=kd&&kd.sk;if(sk)for(const n in MV)if(sk[n]){if(!sk[MV[n]])sk[MV[n]]=sk[n];delete sk[n]}}}catch(e){}
 /* الأسماء المعروفة التي تُنطق منوّنة إذا قيلت وحدها: كلمات الصور، قوائم كلمات نصوص الكورس وجداولها وخياراتها، ومعاني الكلمات الإنجليزية.
    لا نُنوِّن أي كلمة منفردة كيفما اتفق (الأفعال يَلْعَبُ، والمعرّف وَالْكِتَابَة، والكلمات الأجنبية تخطئ). */
 let NN=null;const NV=/^(?:[وف][َ]?)?(?:[بلك][َِ]?)?(?:ال|لل)/;

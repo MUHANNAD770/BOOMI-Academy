@@ -9,6 +9,20 @@ import re
 # سكون آخر الكلمة داخل الجملة يجعل المحرك يقف بعد كل كلمة (نطق آلي): نحذفه إذا تلته كلمة عربية بلا علامة ترقيم، ويبقى في آخر الجملة
 def natural(t,l):
     return re.sub(r'([\u0621-\u064A][\u064B-\u0651]?)\u0652(?=[ \u00A0]+[\u0621-\u064A])',r'\1',t) if l=='ar' else t
+# الكلمة المنفردة المنوّنة بالضم أو الكسر: المحرك قد يقف عليها فيُسقط التنوين (ذُرَه بدل ذُرَتُن)، فنكتب له النون صريحة.
+# المفتاح يبقى بالنص المشكول (ذُرَةٌ)، والذي يُرسل للمحرك فقط هو ذُرَتُنْ / قَلْبُنْ / بَيْتِنْ. تنوين الفتح (شُكْرًا) يبقى كما هو.
+def _nun(w):
+    sh=w.endswith('\u0651') and len(w)>1 and w[-2] in '\u064C\u064D'
+    if sh: w=w[:-2]+'\u0651'+w[-2]  # دُبٌّ: الشدة قبل التنوين
+    if not re.search(r'[\u064C\u064D]$',w): return w
+    v='\u064F' if w.endswith('\u064C') else '\u0650'
+    w=w[:-1]
+    if w.endswith('\u0629'): w=w[:-1]+'\u062A'
+    return w+v+'\u0646\u0652'
+def tanween(t,l):
+    # كل كلمة منوّنة بالضم أو الكسر (منفردة أو في جملة) تُرسل للمحرك بالنون صريحة كي لا يقف عليها فيُسقطها
+    if l!='ar': return t
+    return re.sub(r'[\u0621-\u064A][\u0621-\u064A\u064B-\u0652\u0670]*[\u064C\u064D]\u0651?(?![\u0621-\u064A\u064B-\u0652])',lambda m:_nun(m.group(0)),t)
 PROXY=os.environ.get('HTTPS_PROXY')
 WHOS=os.environ.get('WHO','female,male').split(',')  # WHO=female لتسجيل صوت المعلّمة وحده
 phr=json.load(open(os.environ.get('PHR') or os.path.join(W,'final.json')))
@@ -19,7 +33,7 @@ async def one(who,k,t,l,sem,stat):
     async with sem:
         for a in range(5):
             try:
-                c=edge_tts.Communicate(natural(t,l) if who=='female' else t,VOICES[who][l],rate=RATES[who][l],proxy=PROXY)
+                c=edge_tts.Communicate(natural(tanween(t,l),l) if who=='female' else tanween(t,l),VOICES[who][l],rate=RATES[who][l],proxy=PROXY)
                 await c.save(raw)
                 if os.path.getsize(raw)<300: raise Exception('small')
                 break
