@@ -11,7 +11,7 @@ const now=()=>Date.now();
 const fmt=c=>c?c.slice(0,4)+'-'+c.slice(4):'';
 /* نحفظ على الإنترنت «الأشياء الثابتة» فقط: بيانات الطالب، الدروس المتقنة ودرجاتها، المرحلة، النجوم، الشارات، مستويات الرياضيات، الإنجازات.
    أما التفاصيل الكثيرة المتغيرة (إحصاءات كل كلمة، المحادثات، الإعدادات المؤقتة) فتبقى على الجهاز فقط. هذا يُبقي الحفظ مجانيًا. */
-const KEEP=['name','gender','age','lang','stage','teacher','mic','snd','vol','rate','star','done','sc','fd','ml','cd','act','courseDone','badges','unlockAll','stories','wk','speed','vq','days'];
+const KEEP=['name','gender','age','lang','stage','teacher','mic','snd','vol','rate','star','done','sc','fd','ml','cd','act','courseDone','badges','unlockAll','stories','wk','speed','vq','days','g2','courseQuiz','coursePractice']; /* g2: نجوم الألعاب ومراحلها المفتوحة */
 const payload=k=>{const o={};for(const x of KEEP)if(k[x]!==undefined)o[x]=k[x];return o};
 const sig=k=>{const s=JSON.stringify(payload(k));let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return h+':'+s.length};
 
@@ -34,6 +34,9 @@ function merge(L,R){if(!R)return L;const o={...R,...L};
  const pairMax=k=>{o[k]={...(R[k]||{})};for(const[x,v]of Object.entries(L[k]||{})){const r=o[k][x];o[k][x]=Array.isArray(v)&&Array.isArray(r)?v.map((n,i)=>Math.max(+n||0,+r[i]||0)):v}};pairMax('pr');pairMax('stat');
  o.wl={...(R.wl||{})};for(const[k,v]of Object.entries(L.wl||{}))o.wl[k]=Math.max(+v||0,+(o.wl[k]||0));
  o.coursePractice={...(R.coursePractice||{})};for(const[k,v]of Object.entries(L.coursePractice||{})){const r=o.coursePractice[k];o.coursePractice[k]=r?{best:Math.max(+v.best||0,+r.best||0),attempts:Math.max(+v.attempts||0,+r.attempts||0)}:v}
+ /* الألعاب: لكل لعبة أعلى نجوم في كل مرحلة، وأبعد مرحلة مفتوحة */
+ o.g2={...(R.g2||{})};for(const[k,v]of Object.entries(L.g2||{})){const r=o.g2[k];if(!r||typeof r!=='object'){o.g2[k]=v;continue}const s={...(r.s||{})};for(const[lv,st]of Object.entries(v.s||{}))s[lv]=Math.max(+st||0,+s[lv]||0);
+  o.g2[k]={...r,...v,s,u:Math.max(+v.u||1,+r.u||1),n:Math.max(+v.n||0,+r.n||0),last:Math.max(+v.last||0,+r.last||0),b:{...(r.b||{}),...(v.b||{})}}}
  return o}
 const apply=(k,m)=>{const c=k.cloud,chat=k.chat;for(const x of Object.keys(k))delete k[x];Object.assign(k,m);k.cloud=c;if(chat)k.chat=chat};
 const persist=()=>{try{origSave()}catch(e){}};
