@@ -131,3 +131,27 @@ body:not([data-theme=dark]){background:radial-gradient(900px 420px at 85% -60px,
 :root:not([data-theme=light]) .bm{background:linear-gradient(180deg,#1d1f4e,#15163a 40%)!important}
 :root:not([data-theme=light]) .bm :is(input,textarea){background:#24275e!important;color:#eef0ff!important;border-color:#3a3f86!important}
 }
+
+/* بطاقة «تحليل بومي» في لوحة ولي الأمر (العقل الموحّد mind/hub.js) */
+.mind-card{background:#fff;border-radius:22px;box-shadow:var(--u-sh);padding:14px 16px;margin:12px 0;color:var(--u-ink)}
+.mind-card .mc-h{display:block;font-size:1.1rem;margin-bottom:8px}
+.mind-card h4{margin:12px 0 6px;font-size:.95rem}
+.mc-empty{margin:4px 0;color:#6a6290}
+.mc-bars{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.mc-bars li{display:grid;grid-template-columns:6.5em 1fr 3em;align-items:center;gap:8px;font-weight:700}
+.mc-bars i{height:12px;border-radius:99px;background:#ece8ff;overflow:hidden}
+.mc-bars i b{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#7a5cff,#4fb4ff)}
+.mc-bars em{font-style:normal;text-align:end;color:#5a4bc0}
+.mc-weak{display:grid;gap:7px}
+.mc-weak button{display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:44px;padding:8px 12px;border-radius:14px;border:2px solid #ffd9a8;background:#fff8ee;color:#7a4300;font:inherit;text-align:start}
+.mc-weak small{color:#a0630a;white-space:nowrap}
+.mc-tags{display:flex;flex-wrap:wrap;gap:6px;margin:0}
+.mc-tags span{background:#f1edff;border-radius:99px;padding:3px 10px;font-weight:700;font-size:.85rem}
+.mc-next{display:flex;align-items:center;gap:10px;width:100%;margin-top:12px;min-height:52px;padding:10px 14px;border-radius:16px;border:0;background:linear-gradient(135deg,#ffdc4d,#ffb400);color:#3b2a00;font:inherit;text-align:start;box-shadow:0 4px 0 #e39a00}
+.mc-next span{font-size:1.4rem}.mc-next small{display:block;font-size:.78rem;opacity:.85}
+:root[data-theme=dark] .mind-card{background:#24275e;color:#eef0ff}
+:root[data-theme=dark] :is(.mc-bars i,.mc-tags span){background:#2e3270}
+:root[data-theme=dark] .mc-weak button{background:#3a2f22;border-color:#6a4a20;color:#ffd9a8}
+@media (prefers-color-scheme: dark){:root:not([data-theme=light]) .mind-card{background:#24275e;color:#eef0ff}
+ :root:not([data-theme=light]) :is(.mc-bars i,.mc-tags span){background:#2e3270}
+ :root:not([data-theme=light]) .mc-weak button{background:#3a2f22;border-color:#6a4a20;color:#ffd9a8}}

@@ -30,7 +30,7 @@ const SUBJ={ar:'اللغة العربية',en:'اللغة الإنجليزية',
 const HINT=/تلميح|ساعدني|hint|لا اعرف|لا أعرف|صعب/i;
 /* أسئلة تشير إلى الصفحة الحالية: لا تُجاب من ذاكرة بومي ولا تُحفظ فيها (جوابها يخص صفحة بعينها) */
 const DEIC=/هذا|هذه|هذي|السؤال|المسأل|الدرس|الصفحة|القصة|اللعبة|تلميح|ساعدني|لم\s*أفهم|ما\s*فهمت|this|hint/i;let hints={};
-function pageCtx(){let fn='',args=[];try{const e=window.Router&&Router.entry();if(e){fn=e.fn;args=e.args||[]}}catch(e){} /* مدخل نافذة بومي يحمل اسم الصفحة نفسها */
+function pageCtx(lite){let fn='',args=[];try{const e=window.Router&&Router.entry();if(e){fn=e.fn;args=e.args||[]}}catch(e){} /* مدخل نافذة بومي يحمل اسم الصفحة نفسها */
  if(V=='game')fn='g2play'; /* الألعاب لا تمر عبر router فيبقى المدخل السابق */
  const page=PAGES[fn]||(V=='quiz'?'اختبار':V=='lesson'?'درس':'نشاط تعليمي'),A=document.getElementById('app'),q=s=>A&&A.querySelector(s),qa=s=>A?[...A.querySelectorAll(s)]:[];
  const head=clean((q('h2')||q('h1'))?.textContent).slice(0,80),I={page};let topic=head;
@@ -62,9 +62,11 @@ function pageCtx(){let fn='',args=[];try{const e=window.Router&&Router.entry();i
  try{const b=window.BumiContext&&BumiContext();if(b&&b[0]&&!/^(g2hub|g2lv)$/.test(b[1])){const t=clean(b[0]).slice(0,160);if(!I.instructions||!t.includes(I.instructions.slice(0,20)))I.instructions=(I.instructions?I.instructions+' / ':'')+t}}catch(e){}
  const qk=I.question||I.lesson||page;
  const L=[['الصفحة',page],['المادة',I.subject],['الكورس',I.course],['مرحلة الطالب',I.stage],['الدرس/الوحدة',I.lesson],['كلمات الدرس',I.words],['السؤال الحالي',I.question],['التعليمات',I.instructions],
-  ['الاختيارات',I.choices&&I.choices.map((x,k)=>'أبجد'[k]?('أبجده'[k]+') '+x):x).join('، ')],['إجابة الطالب',I.studentAnswer||(I.choices?'لم يُجب بعد':'')],['تقدم الطالب في النشاط',I.progress],['نص الصفحة',I.text]];
- const ctx=L.filter(x=>x[1]).map(x=>x[0]+': '+x[1]).join(' | ').slice(0,1100);
+  ['الاختيارات',I.choices&&I.choices.map((x,k)=>'أبجد'[k]?('أبجده'[k]+') '+x):x).join('، ')],['إجابة الطالب',I.studentAnswer||(I.choices?'لم يُجب بعد':'')],['تقدم الطالب في النشاط',I.progress],['نص الصفحة',I.text],['ما يعرفه بومي عن الطالب',lite?'':(window.Mind&&Mind.brief())]];
+ const ctx=lite?'':L.filter(x=>x[1]).map(x=>x[0]+': '+x[1]).join(' | ').slice(0,1400);
  return{fn,page,topic:String(topic||'').slice(0,60),ctx,qk,info:I}}
+/* سياق الصفحة للعقل الموحّد (mind/hub.js): المادة والدرس دون بناء نص السياق كاملًا */
+window.BomiCtx=()=>pageCtx(true);
 /* بلا إنترنت: جواب من معلومات الصفحة نفسها (شرح الدرس، إعادة السؤال، تلميح متدرّج) بدل الاعتذار */
 function offlineCtx(m,pc,hintN){const I=pc.info||{};
  {const x=m.match(/اشرح الاختيار «(.+)»/);if(x)return `الاختيار «${x[1]}». ${I.question?'اقرأ السؤال: «'+I.question+'»، ثم فكّر: هل هذا الاختيار يناسبه؟':''} اضغط عليه لتسمعه 🔊`}
@@ -90,6 +92,8 @@ d.dataset.ctx=ctx;d.dataset.topic=pc.topic;d.dataset.page=pc.page;document.body.
 /* قائمة البداية في نافذة بومي (كما في التصميم): شرح الدرس، حل تمرين، سؤال، ألعاب */
 function acts(pc){const l=document.getElementById('bl');if(!l)return;const box=document.createElement('div');box.className='bm-acts';
  const A=[['📖',pc&&pc.topic&&pc.fn!='home'?'اشرح هذا الدرس':'شرح درس جديد',()=>pc&&pc.topic&&pc.fn!='home'?bsend('اشرح هذا الدرس'):(closeBm(),sec('les'))],['✏️','حل تمرين',()=>bex()],['❓','أطرح سؤالًا',()=>{const i=document.getElementById('bi');i&&i.focus()}],['🎮','ألعاب تعليمية',()=>{closeBm();(window.games2d||sec)('games')}]];
+ /* اقتراح من عقل بومي الموحّد (mind/hub.js): ما يحتاجه الطالب الآن (مراجعة، مهارة ضعيفة، الدرس التالي) */
+ try{const nx=window.Mind&&Mind.next();if(nx&&nx.go)A.unshift([nx.icon,nx.t,()=>{closeBm();try{(0,eval)(nx.go)}catch(e){}}])}catch(e){}
  A.forEach(([e,t,f])=>{const b=document.createElement('button');b.innerHTML=`<span>${e}</span><b>${t}</b>`;b.onclick=f;box.appendChild(b)});l.appendChild(box)}
 const closeBm=()=>{try{say.stop();window.bmicStop&&bmicStop(1);document.getElementById('bm')?.remove()}catch(e){}};
 /* اختيارات يضغطها الطالب بدل أن يكتب: تظهر تحت رسالة بومي، والضغط يرسل الاختيار */

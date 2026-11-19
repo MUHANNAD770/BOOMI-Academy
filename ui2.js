@@ -19,7 +19,15 @@ if(typeof oPar==='function'&&oPar!==window.top)window.parent=function(){const r=
   done=Object.keys(P0.done||{}).length,bd=Object.keys(P0.badges||{}).length,st=+P0.star||0,R=44,C=2*Math.PI*R;
  h2.insertAdjacentHTML('afterend',`<div class=pm-card><div class=pm-ring><svg viewBox="0 0 110 110" aria-hidden=true><circle cx=55 cy=55 r=${R} class=pm-bg /><circle cx=55 cy=55 r=${R} class=pm-fg stroke-dasharray="${C}" stroke-dashoffset="${C*(1-pct/100)}" /></svg><b>${pct}٪</b><small>مستوى الإتقان</small></div>
   <div class=pm-who><span class=pm-av>${P0.gender==='female'?'👧':'👦'}</span><div><b>${esc(P0.name)}</b><small>${P0.age?esc(P0.age)+' سنوات':''}</small></div></div>
-  <ul class=pm-st><li><span>🏆</span>الإنجازات<b>${bd}</b></li><li><span>⭐</span>النجوم<b>${st}</b></li><li><span>📚</span>الدروس المكتملة<b>${done}</b></li></ul></div>${themeCard()}`)}catch(e){}return r};
+  <ul class=pm-st><li><span>🏆</span>الإنجازات<b>${bd}</b></li><li><span>⭐</span>النجوم<b>${st}</b></li><li><span>📚</span>الدروس المكتملة<b>${done}</b></li></ul></div>${mindCard()}${themeCard()}`)}catch(e){}return r};
+/* تحليل بومي: من العقل الموحّد (mind/hub.js) — إتقان كل مادة، ما يحتاج تدريبًا (بزر تدريب مباشر)، المتقن، الأخطاء المتكررة، والخطوة المقترحة */
+function mindCard(){const M=window.Mind;if(!M)return'';const bs=M.bySubject(),w=M.weak(4),g=M.strong(3),nx=M.next();let errs=[];try{errs=(window.MindMemory&&MindMemory.summary().errs)||[]}catch(e){}
+ const bars=Object.values(bs).map(x=>`<li><span>${esc(x.name)}</span><i><b style="width:${M.pct(x.p)}%"></b></i><em>${M.pct(x.p)}٪</em></li>`).join('');
+ const go=c=>String(c||'').replace(/"/g,'&quot;');
+ const body=!bars&&!w.length?'<p class=mc-empty>سيبدأ بومي تحليل مستوى الطالب بعد بضع إجابات في الدروس والألعاب والتمارين.</p>':
+  `${bars?`<ul class=mc-bars>${bars}</ul>`:''}${w.length?`<h4>🎯 يحتاج تدريبًا</h4><div class=mc-weak>${w.map(s=>`<button onclick="${go(s.go)}"${s.go?'':' disabled'}><b>${esc(s.name)}</b><small>${M.pct(s.p)}٪ · ${esc(M.NAME[s.sub]||'')}</small></button>`).join('')}</div>`:''}
+  ${g.length?`<h4>🌟 متقن</h4><p class=mc-tags>${g.map(s=>`<span>${esc(s.name)}</span>`).join('')}</p>`:''}${errs.length?`<h4>🔍 أخطاء متكررة</h4><p class=mc-tags>${errs.slice(0,3).map(e=>`<span>${esc(e.label)} ×${e.n}</span>`).join('')}</p>`:''}`;
+ return `<div class=mind-card><b class=mc-h>🎯 خطة بومي لطفلك</b>${body}${nx?`<button class=mc-next onclick="${go(nx.go)}"><span>${nx.icon}</span><div><small>الخطوة المقترحة · ${esc(nx.why||'')}</small><b>${esc(nx.t)}</b></div></button>`:''}</div>`}
 /* المظهر: حسب الهاتف (افتراضي) / فاتح / داكن */
 const TH=[['auto','📱','حسب الهاتف'],['light','☀️','فاتح'],['dark','🌙','داكن']];
 const curTheme=()=>{try{const t=localStorage.getItem('ui-theme');return t==='light'||t==='dark'?t:'auto'}catch(e){return'auto'}};
