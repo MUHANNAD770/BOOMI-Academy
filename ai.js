@@ -67,6 +67,7 @@ function pageCtx(){let fn='',args=[];try{const e=window.Router&&Router.entry();i
  return{fn,page,topic:String(topic||'').slice(0,60),ctx,qk,info:I}}
 /* بلا إنترنت: جواب من معلومات الصفحة نفسها (شرح الدرس، إعادة السؤال، تلميح متدرّج) بدل الاعتذار */
 function offlineCtx(m,pc,hintN){const I=pc.info||{};
+ {const x=m.match(/اشرح الاختيار «(.+)»/);if(x)return `الاختيار «${x[1]}». ${I.question?'اقرأ السؤال: «'+I.question+'»، ثم فكّر: هل هذا الاختيار يناسبه؟':''} اضغط عليه لتسمعه 🔊`}
  if(HINT.test(m)||/السؤال|المسألة/.test(m)){if(!I.question)return null;
   if(I.answered&&I._correct)return `السؤال: ${I.question}. الجواب الصحيح: ${I._correct}. ${I.studentAnswer&&/خطأ/.test(I.studentAnswer)?'لا بأس، راجع الفكرة وجرّب السؤال التالي 💪':'أحسنت 🌟'}`;
   return hintN<=1?`اقرأ السؤال مرة أخرى بهدوء: «${I.question}» ${I.choices?'ثم قارن بين الاختيارات واحدًا واحدًا.':''} 🤔`
@@ -86,6 +87,16 @@ function chipsFor(pc){const c=[];
 function bomi(){if(chOwner!==P){ch=(P.chat||[]).slice(-60);chOwner=P}window.bmicStop&&bmicStop(1);document.getElementById('bm')?.remove();const pc=pageCtx(),ctx=pc.ctx;
 const d=document.createElement('div');d.id='bm';d.className='bm';d.innerHTML=`<div class=bmh><b>🦉 بومي</b><small id=bnet class=bnet></small><button onclick="say.stop();bmicStop(1);document.getElementById('bm').remove()" aria-label="إغلاق">✕</button></div><div id=bl class=bl></div><div class=chips><button onclick="bex()">🎲 تمرين جديد</button><button onclick="bsend('لم أفهم، اشرح لي بطريقة أخرى')">🤔 لم أفهم</button>${chipsFor(pc).map(x=>`<button onclick="bsend(this.textContent)">${x}</button>`).join('')}</div><p id=bst class="bmic-state" aria-live="polite"></p><div class=bmi><input id=bi dir=auto placeholder="اكتب سؤالك…" onkeydown="event.key=='Enter'&&bsend()"><button onclick=bsend()>إرسال</button>${P.mic&&(window.SpeechRecognition||window.webkitSpeechRecognition)?'<button id=bmb onclick=bmic() aria-label="تحدث">🎤</button>':''}</div>`;
 d.dataset.ctx=ctx;d.dataset.topic=pc.topic;d.dataset.page=pc.page;document.body.appendChild(d);netBadge();if(!ch.length)bpush('a','أهلاً! اسألني عن أي شيء في الدرس، أو اضغط «تمرين جديد» لأجهّز لك أسئلة 😊');else if(pc.topic&&pc.fn!='home')bpush('a','نحن الآن في '+pc.page+(pc.topic?': '+pc.topic:'')+'. اسألني عنه 🦉');else ch.forEach(m=>bpush(m.role=='user'?'u':'a',window.Tashkeel?Tashkeel.apply(m.content):m.content,1))}
+/* اختيارات يضغطها الطالب بدل أن يكتب: تظهر تحت رسالة بومي، والضغط يرسل الاختيار */
+function offer(list){const l=document.getElementById('bl');if(!l||!list||!list.length)return;const box=document.createElement('div');box.className='chips bm-offer';
+ list.slice(0,4).forEach(o=>{const b=document.createElement('button');b.textContent=o;b.dir='auto';b.onclick=()=>{box.querySelectorAll('button').forEach(x=>x.disabled=true);b.classList.add('ok');bsend(o)};box.appendChild(b)});l.appendChild(box);l.scrollTop=l.scrollHeight}
+/* بومي لم يفهم: يسأل «هل تقصد…» ويعطي اختيارات تناسب الصفحة الحالية */
+function clarify(pc,offline){const I=(pc&&pc.info)||{},o=[];
+ if(I.question){o.push('أعطني تلميحًا','اشرح هذا السؤال');if(I.choices)o.push('لم أفهم الخيارات')}
+ if(I.words||/درس|كورس/.test((pc&&pc.page)||''))o.push('اشرح هذا الدرس');
+ o.push(I.subject==='اللغة الإنجليزية'?'ما معنى كلمة إنجليزية؟':'اشرح قاعدة لغوية','مسألة حساب');
+ bpush('a',shape(offline?'📴 لَا يُوجَدُ إِنْتَرْنِت، لَكِنْ أَسْتَطِيعُ مُسَاعَدَتَكَ فِي هَذِهِ الصَّفْحَةِ. اخْتَرْ مَا تُرِيدُ:':'لَمْ أَفْهَمْ سُؤَالَكَ تَمَامًا 🦉 هَلْ تَقْصِدُ وَاحِدًا مِنْ هَذِهِ؟ اخْتَرْ:'));offer([...new Set(o)])}
+const CHO=/(لم|ما|مو|مش)\s*(أفهم|افهم|فهمت|فاهم).*(الخيار|الاختيار|الخيارات|الاختيارات)|^(اشرح|ما معنى)\s*(الخيارات|الاختيارات)/;
 function bpush(w,t,nosave){const l=document.getElementById('bl');if(!l)return;const e=document.createElement('div');e.className='bb '+w;e.textContent=t;l.appendChild(e);l.scrollTop=l.scrollHeight;return e}
 async function aiCall(body){const key=JSON.stringify([body.mode||'',body.message||'',body.topic||'',body.context||'']);if(AIC.has(key))return AIC.get(key);
  const task=(async()=>{const c=new AbortController(),tm=setTimeout(()=>c.abort(),14000);
@@ -111,13 +122,14 @@ async function bsend(t){window.bmicStop&&bmicStop(1);const i=document.getElement
 /* السياق يُقرأ من الصفحة لحظة الإرسال: إن انتقل الطالب لدرس آخر لا يُستعمل الدرس السابق */
 const pc=pageCtx(),bmE=document.getElementById('bm');if(bmE){bmE.dataset.ctx=pc.ctx;bmE.dataset.topic=pc.topic;bmE.dataset.page=pc.page}
 const wantHint=HINT.test(m);if(wantHint)hints[pc.qk]=(hints[pc.qk]||0)+1;const hintN=hints[pc.qk]||0;
+if(CHO.test(m)&&pc.info&&pc.info.choices&&pc.info.choices.length){const t=shape('هَذِهِ هِيَ الِاخْتِيَارَاتُ 👇 اضْغَطْ عَلَى أَيِّ اخْتِيَارٍ لِأَشْرَحَهُ لَكَ:');ch.push({role:'user',content:m},{role:'assistant',content:t});keep();bpush('a',t);if(!muted())say(t,'ar');offer(pc.info.choices.map(x=>'اشرح الاختيار «'+x+'»'));return}
 const lo=localAI.think(m,pc.ctx);if(lo){const tx=shape(lo.t);ch.push({role:'user',content:m},{role:'assistant',content:tx});ch=ch.slice(-60);keep();bpush('a',tx);if(!muted())say(tx.slice(0,320),'ar',lo.en?()=>say(lo.en,'en'):null);return}
 const again=AGAIN.test(m),ctx=pc.ctx;
 /* 1) ذاكرة بومي: سؤال سبق جوابه ← إجابة فورية بلا إنترنت وبلا طلب */
 const deic=DEIC.test(m);
 if(!again&&!deic&&window.Brain){const k=Brain.find(m,ctx,.8);if(k)return serve(m,k.a)}
 /* 2) بلا إنترنت: أقرب جواب محفوظ، وإلا اعتذار لطيف */
-if(!onl()){const k=!again&&!deic&&window.Brain&&Brain.find(m,ctx,.72);if(k)return serve(m,k.a,'📴 ');const o=offlineCtx(m,pc,hintN);return o?serve(m,o,'📴 '):bpush('a',OFFMSG)}
+if(!onl()){const k=!again&&!deic&&window.Brain&&Brain.find(m,ctx,.72);if(k)return serve(m,k.a,'📴 ');const o=offlineCtx(m,pc,hintN);return o?serve(m,o,'📴 '):clarify(pc,true)}
 if(aiLeft()<=0)return bpush('a',LIM_MSG);
 busy=1;aiUse().n++;save();think();
 const w=bpush('a','');w.classList.add('think');w.innerHTML='<span class=dots><i></i><i></i><i></i></span> بومي تفكّر…';
@@ -127,13 +139,16 @@ const sp=muted()?null:say.stream('ar'),body={message:m,history:ch.slice(-8),agai
 let d=await aiStream(body,(x,all)=>{if(!shown){shown=true;w.classList.remove('think')}w.textContent=all;const l=document.getElementById('bl');l&&(l.scrollTop=l.scrollHeight);sp&&sp.push(x)});
 if(d.err=='nostream'&&!shown){d=await aiCall(body);if(d.reply){w.classList.remove('think');w.textContent=d.reply;sp&&sp.push(d.reply.slice(0,360))}}
 w.classList.remove('think');
-if(d.reply){sp&&sp.end();const tx=shape(d.reply);ch.push({role:'user',content:m},{role:'assistant',content:tx});ch=ch.slice(-60);keep();w.textContent=tx;
+if(d.reply){sp&&sp.end();const tx=shape(d.reply);ch.push({role:'user',content:m},{role:'assistant',content:tx});ch=ch.slice(-60);keep();
+ /* أسطر تبدأ بـ «•» = اختيارات يعرضها بومي: تصير أزرارًا */
+ const BL=/^\s*[•▪◦\-–]\s+/,lines=tx.split('\n'),ops=lines.filter(x=>BL.test(x)).map(x=>x.replace(BL,'').trim()).filter(Boolean);
+ w.textContent=ops.length?lines.filter(x=>!BL.test(x)).join('\n').trim():tx;if(ops.length)offer(ops);
  if(!again&&!deic){window.Brain&&Brain.learn(m,tx,ctx,P.name)} /* بومي الداخلية تتعلّم من الخارجية */
  window.Tashkeel&&Tashkeel.learn(d.reply);unthink(1)}
 else{sp&&say.stop();aiUse().n=Math.max(0,aiUse().n-1);save(); /* لا نخصم من الحدّ اليومي عند الفشل */
  const k=!again&&!deic&&window.Brain&&Brain.find(m,ctx,.72),o=!k&&offlineCtx(m,pc,hintN);
  if(k||o){w.remove();serve(m,k?k.a:o,'📴 ')}
- else w.textContent=d.err=='busy'?'أنا أحتاج استراحة صغيرة 😴 جرّب بعد دقيقة.':(onl()?'لم أفهم سؤالك تمامًا 🦉 جرّب أن تسألني عن قاعدة، أو مسألة حساب، أو معنى كلمة. مثلاً: «'+pickc()+'»':OFFMSG);unthink(!!k)}
+ else if(d.err=='busy')w.textContent='أنا أحتاج استراحة صغيرة 😴 جرّب بعد دقيقة.';else{w.remove();clarify(pc,!onl())}unthink(!!k)}
 busy=0;netBadge()}
 /* تمارين يولّدها الذكاء الاصطناعي حسب الموضوع المكتوب أو الدرس الحالي أو أضعف مهارة */
 /* تمارين محلية (بلا إنترنت أو إذا تعذّر الذكاء الخارجي): من كلمات الدرس الحالي، أو دروس مرحلة الطالب والدروس التي أتقنها.
