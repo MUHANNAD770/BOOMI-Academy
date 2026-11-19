@@ -48,5 +48,12 @@ function speakWord(w){const u=units(w);if(u.length<2||!voweled(u))return w;
  if(m.replace(SK,'')===SH){L[1]=SK;return join(u)+L[0]+SK}
  return w}
 function speech(text){return canon(text,true).replace(WORD,speakWord)}
-window.Pron={canon,display:canon,speech,canonWord,speakWord};
+/* العرض: لا يُحذف أي تشكيل مكتوب (طلب صاحب المشروع): الضمة والكسرة في آخر الجملة والحركة على التاء المربوطة تبقى كما هي،
+   ويُضاف السكون فقط لآخر حرف بلا أي علامة عند الوقف. (canon ما زال يحوّلها للوقف لمن يحتاجه في النطق.) */
+function displayWord(w,final){const u=units(w);if(u.length<2||!voweled(u))return w;const L=u[u.length-1],p=u[u.length-2],c=L[0];
+ if(L[1]||'اىآٱة'.includes(c))return w;if((c==='و'&&p[1].includes(DA))||(c==='ي'&&p[1].includes(KA)))return w;
+ if(final){L[1]=SK;return join(u)}return w}
+function display(text,endFinal){const s=String(text==null?'':text);if(!LET.test(s))return s;
+ return s.replace(WORD,(w,i)=>{const rest=s.slice(i+w.length);const fin=rest.trim()===''?endFinal!==false:STOP.test(rest);return displayWord(w,fin)})}
+window.Pron={canon,display,speech,canonWord,speakWord};
 })();

@@ -66,7 +66,7 @@ function burst(sc,x,y,tint,n){if(calm())n=Math.min(n,8);
  const e=sc.add.particles(x,y,'px-star',{speed:{min:120,max:420},angle:{min:0,max:360},scale:{start:.9,end:0},lifespan:{min:500,max:900},gravityY:300,rotate:{min:0,max:360},emitting:false,tint:tint||[0xffd23f,0xffffff,0xff8fb1,0x8fe3ff]});
  e.explode(n||24);sc.time.delayedCall(1200,()=>e.destroy());
  const d=sc.add.particles(x,y,'px-dot',{speed:{min:60,max:260},scale:{start:.6,end:0},lifespan:600,blendMode:'ADD',emitting:false,tint:tint||0xffe9a8});d.explode(Math.round((n||24)*.8));sc.time.delayedCall(900,()=>d.destroy())}
-function label(sc,x,y,txt,size,color,stroke){const ar=/[\u0621-\u064A]/.test(txt);
+function label(sc,x,y,txt,size,color,stroke){const ar=/[\u0621-\u064A]/.test(txt);try{if(ar&&window.Tashkeel&&Tashkeel.nunWord&&/^[\u0621-\u064A\u064B-\u0652\u0670]+$/.test(txt))txt=Tashkeel.nunWord(txt)}catch(e){} /* الاسم المنفرد منوّن كما يُنطق (ذُرَةٌ) */
  return sc.add.text(x,y,txt,{fontFamily:FONT,fontSize:size+'px',fontStyle:'900',color:color||'#1c2c86',stroke:stroke||'#ffffff',strokeThickness:stroke===null?0:Math.round(size/7),rtl:ar,align:'center',padding:{x:6,y:Math.round(size*.25)}}).setOrigin(.5)}
 /* لوحة السؤال أعلى الشاشة + زر 🔊 */
 /* لوحة السؤال: مدمجة أعلى اللعبة (كانت ٨٤٪ من العرض × ٩٦ فتغطي مساحة اللعب، وبأيقونتي سماعة) */
