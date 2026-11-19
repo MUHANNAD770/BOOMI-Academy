@@ -2,8 +2,8 @@
 const MC=(()=>{const el=document.createElement('div');el.id='mc';
 el.innerHTML=`<svg class=ow viewBox="0 0 120 130" role=img aria-label="بومي" onclick="MC.repeat()">
 <defs>
-<radialGradient id=bmH cx=50% cy=38% r=62%><stop offset=0 stop-color=#d08a4c /><stop offset=.75 stop-color=#a4622d /><stop offset=1 stop-color=#7c4520 /></radialGradient>
-<radialGradient id=bmF cx=50% cy=42% r=58%><stop offset=0 stop-color=#fff7ea /><stop offset=1 stop-color=#f0cfa3 /></radialGradient>
+<radialGradient id=bmH cx=50% cy=38% r=62%><stop offset=0 stop-color=#9a86ff /><stop offset=.75 stop-color=#6c50e8 /><stop offset=1 stop-color=#4a32b5 /></radialGradient>
+<radialGradient id=bmF cx=50% cy=42% r=58%><stop offset=0 stop-color=#ffffff /><stop offset=1 stop-color=#e3dcff /></radialGradient>
 <radialGradient id=bmI cx=42% cy=38% r=62%><stop offset=0 stop-color=#ffbf52 /><stop offset=.65 stop-color=#c06c18 /><stop offset=1 stop-color=#6e350c /></radialGradient>
 <linearGradient id=bmR x1=0 y1=0 x2=0 y2=1><stop offset=0 stop-color=#3d5ad6 /><stop offset=1 stop-color=#1c2c86 /></linearGradient>
 <linearGradient id=bmC x1=0 y1=0 x2=0 y2=1><stop offset=0 stop-color=#3c55d0 /><stop offset=1 stop-color=#1a2878 /></linearGradient>
@@ -14,26 +14,26 @@ el.innerHTML=`<svg class=ow viewBox="0 0 120 130" role=img aria-label="بومي"
 <g class=ft fill=#f6a019 stroke=#c97806 stroke-width=.8><path d="M44 118q-6 4-4 7h12q2-3-3-7z"/><path d="M71 118q-5 4-3 7h12q2-3-4-7z"/></g>
 <g class=bd>
 <path d="M30 80Q27 112 36 121H84Q93 112 90 80Q60 70 30 80Z" fill=url(#bmR) />
-<path d="M50 81L46 120H74L70 81Q60 77 50 81Z" fill=#f6e2c3 />
-<g stroke=#e3c497 stroke-width=1 fill=none stroke-linecap=round><path d="M54 92q3 2 6 0q3 2 6 0"/><path d="M53 100q3.5 2 7 0q3.5 2 7 0"/><path d="M52 108q4 2 8 0q4 2 8 0"/></g>
+<path d="M50 81L46 120H74L70 81Q60 77 50 81Z" fill=#efeaff />
+<g stroke=#d2c8fb stroke-width=1 fill=none stroke-linecap=round><path d="M54 92q3 2 6 0q3 2 6 0"/><path d="M53 100q3.5 2 7 0q3.5 2 7 0"/><path d="M52 108q4 2 8 0q4 2 8 0"/></g>
 <path d="M50 81L45.5 120M70 81L74.5 120" stroke=#f7b500 stroke-width=2.6 fill=none />
 <path d="M32 79Q60 95 88 79Q60 86 32 79Z" fill=#2a3fae stroke=#f7b500 stroke-width=1.6 />
 <circle cx=60 cy=89 r=6.4 fill=#f7b500 stroke=#d48e00 stroke-width=.8 /><circle cx=60 cy=89 r=4.6 fill=#1f2f8c />
 <path d="M57 87.6q1.5-.6 3 .4q1.5-1 3-.4v3.4q-1.5-.6-3 .4q-1.5-1-3-.4z" fill=#ffd24a />
 </g>
-<g class=wl><path d="M33 84Q16 84 7 96Q15 97 22 95Q16 101 14 106Q26 101 34 96Z" fill=#9a5a28 stroke=#6e3a14 stroke-width=.8 /><path d="M30 88Q19 90 13 97" stroke=#c98a52 stroke-width=1.2 fill=none /></g>
-<g class=wr><path d="M87 84Q101 90 102 106Q95 106 88 101Z" fill=#9a5a28 stroke=#6e3a14 stroke-width=.8 />
+<g class=wl><path d="M33 84Q16 84 7 96Q15 97 22 95Q16 101 14 106Q26 101 34 96Z" fill=#5a3fd0 stroke=#3d2899 stroke-width=.8 /><path d="M30 88Q19 90 13 97" stroke=#9480f7 stroke-width=1.2 fill=none /></g>
+<g class=wr><path d="M87 84Q101 90 102 106Q95 106 88 101Z" fill=#5a3fd0 stroke=#3d2899 stroke-width=.8 />
 <g class=tb transform="rotate(-10 98 104)"><rect x=86 y=90 width=24 height=30 rx=3.5 fill=url(#bmT) stroke=#5b7cff stroke-width=1.4 /><path class=tbg d="M92 104q3.5-2 6 0q2.5-2 6 0v6q-3.5-2-6 0q-2.5-2-6 0z" fill=#7fe3ff /><circle cx=98 cy=93 r=.8 fill=#5b7cff /></g>
-<ellipse cx=88 cy=107 rx=4.6 ry=6.5 fill=#9a5a28 stroke=#6e3a14 stroke-width=.7 transform="rotate(-20 88 107)" /></g>
+<ellipse cx=88 cy=107 rx=4.6 ry=6.5 fill=#5a3fd0 stroke=#3d2899 stroke-width=.7 transform="rotate(-20 88 107)" /></g>
 <g class=hd>
-<path d="M28 36L20 16L42 28Z" fill=#b8743a /><path d="M92 36L100 16L78 28Z" fill=#b8743a />
+<path d="M28 36L20 16L42 28Z" fill=#7d64f2 /><path d="M92 36L100 16L78 28Z" fill=#7d64f2 />
 <path d="M46 22l4-10l4 9l5-11l4 11l5-9l3 10z" fill=#c98440 />
-<ellipse cx=60 cy=52 rx=37 ry=32 fill=url(#bmH) /><path d="M24 50l-4 6l5 1l-3 6l6 0M96 50l4 6l-5 1l3 6l-6 0" fill=#a4622d />
+<ellipse cx=60 cy=52 rx=37 ry=32 fill=url(#bmH) /><path d="M24 50l-4 6l5 1l-3 6l6 0M96 50l4 6l-5 1l3 6l-6 0" fill=#6c50e8 />
 <path d="M60 30C42 28 26 38 28 56C30 74 46 82 60 82C74 82 90 74 92 56C94 38 78 28 60 30Z" fill=url(#bmF) />
 <g class=brow stroke=#6b3816 stroke-width=3 fill=none stroke-linecap=round><path class=bl d="M34 35Q42 30 51 34"/><path class=br d="M69 34Q78 30 86 35"/></g>
 <circle cx=44 cy=52 r=12.5 fill=#fff /><circle cx=76 cy=52 r=12.5 fill=#fff />
 <g id=pl><circle cx=44 cy=53 r=8 fill=url(#bmI) /><circle cx=76 cy=53 r=8 fill=url(#bmI) /><circle cx=44 cy=53 r=4.2 fill=#1b0e05 /><circle cx=76 cy=53 r=4.2 fill=#1b0e05 /><circle cx=41 cy=49.5 r=2.6 fill=#fff /><circle cx=73 cy=49.5 r=2.6 fill=#fff /><circle cx=46.5 cy=56 r=1.1 fill=#fff /><circle cx=78.5 cy=56 r=1.1 fill=#fff /></g>
-<g class=lid><ellipse cx=44 cy=52 rx=13 ry=13 fill=#e8c08e /><ellipse cx=76 cy=52 rx=13 ry=13 fill=#e8c08e /></g>
+<g class=lid><ellipse cx=44 cy=52 rx=13 ry=13 fill=#d8cffd /><ellipse cx=76 cy=52 rx=13 ry=13 fill=#d8cffd /></g>
 <g class=gl fill=none><circle cx=44 cy=52 r=14.5 stroke=#2447c9 stroke-width=3.2 /><circle cx=76 cy=52 r=14.5 stroke=#2447c9 stroke-width=3.2 /><circle cx=44 cy=52 r=13 stroke=#7f9bff stroke-width=.8 opacity=.7 /><circle cx=76 cy=52 r=13 stroke=#7f9bff stroke-width=.8 opacity=.7 /><path d="M57.5 50Q60 47 62.5 50" stroke=#2447c9 stroke-width=2.6 /><path d="M29.5 50L24 47M90.5 50L96 47" stroke=#2447c9 stroke-width=2.6 stroke-linecap=round /><path d="M35 45q3-4 7-5" stroke=#fff stroke-width=1.4 opacity=.8 stroke-linecap=round /></g>
 <circle cx=31 cy=67 r=4.2 fill=#ff9db8 opacity=.55 /><circle cx=89 cy=67 r=4.2 fill=#ff9db8 opacity=.55 />
 <g class=bk><path d="M52.5 65.5Q60 84 67.5 65.5Q60 69 52.5 65.5Z" fill=#9e2318 /><ellipse cx=60 cy=74 rx=4.3 ry=2.8 fill=#ff7182 /><path d="M52.5 65.5Q60 83 67.5 65.5" stroke=#e08a00 stroke-width=2 fill=none stroke-linecap=round /></g>
