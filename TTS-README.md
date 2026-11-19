@@ -28,3 +28,6 @@
 1. `node tools/clips/build.js` ثم `node tools/clips/filter.js` (بعد ضبط ROOT على مجلد المشروع) ← يستخرج كل الجمل بنفس معالجة الموقع (say.parts) إلى `final.json`.
 2. `pip install edge-tts` ثم `python tools/clips/gen_edge.py` ← يولّد المقاطع الناقصة فقط (يتخطى الموجود في out/).
 3. `python tools/clips/pack.py x 62` ← حزم جديدة + فهرس، ثم انسخ `packs/*` إلى `voices/clips/` وارفع رقم `?v=` في voice-cloud.js وإصدار sw.js.
+   - **الأفضل بعد إصلاح تشكيل أو إضافة جمل:** ولّد الجمل الناقصة فقط (التي لا يوجد مفتاحها في `voices/clips/female.json`) ثم
+     `python tools/clips/pack.py voices/clips 61 append` ← تُضاف حزم جديدة فقط ويُحدَّث الفهرس، ولا تُعاد كتابة الحزم القديمة ولا يُعيد الطلاب تنزيلها.
+   - أداة الاستخراج تولّد صيغ الطالب والطالبة معًا (تحويل الخطاب في phase9.js).
