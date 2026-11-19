@@ -88,6 +88,12 @@ function good(el){el=el||lastEl;if(!el||!document.body.contains(el))return;const
 function bad(el){el=el||lastEl;if(!el||!document.body.contains(el)||calm())return;G.to(el,{keyframes:{x:[0,-9,8,-6,5,-2,0]},duration:.5,ease:'none',clearProps:'transform'})}
 function party(){confetti();try{const h1=$('#app h1');if(h1&&!calm())G.fromTo(h1,{scale:.3,rotation:-15},{scale:1,rotation:0,duration:.9,ease:'elastic.out(1,.45)'})}catch(_){}}
 window.BumiFX={burst,confetti,good,bad,party};
+/* استجابة مرئية موحّدة لكل أنواع الأسئلة (الدروس، الرياضيات، الأنشطة، الألغاز، تدريبات الكورس وأسئلته):
+   بعد الضغط على اختيار نقرأ حالته التي تضعها الصفحة (ok/good للصحيح، no/bad للخطأ) فنُظهر نجومًا أو اهتزازًا لطيفًا.
+   الألعاب لها استجابتها الخاصة فلا نكرّرها. */
+const ANS='.opt,.practice-options button,.ct-opts button';
+addEventListener('click',e=>{const el=e.target.closest&&e.target.closest(ANS);if(!el||el.closest('.g2-pz,.g2-ov,.g2-match'))return;
+ setTimeout(()=>{if(!document.body.contains(el))return;const c=' '+el.className+' ';if(/ (ok|good|right) /.test(c))window.BumiFX.good(el);else if(/ (no|bad|wrong) /.test(c))window.BumiFX.bad(el)},40)},true);
 /* ربط فعلي: كل مكان في الموقع يشغّل صوت «صحيح/خطأ/إنهاء» يحصل على المؤثر المناسب تلقائيًا */
 if(window.HurufiSound&&HurufiSound.play){const op=HurufiSound.play;HurufiSound.play=function(k){const r=op.apply(this,arguments);try{
   if(k==='correct')good();else if(k==='wrong')bad();else if(k==='finish')party()}catch(_){}return r}}
