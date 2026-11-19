@@ -7,15 +7,15 @@
  /* المقاطع المسجّلة مسبقًا (مثل دولينجو): كل جمل الموقع الثابتة مسجّلة مسبقًا بأصوات Edge العصبية (عربي: Zariyah/Hamed، إنجليزي: Ava/Andrew) بتشكيل كامل،
     ومحفوظة في حزم صغيرة voices/clips/{f,m}N.bin مع فهرس female.json / male.json. التشغيل فوري بلا توليد.
     ما لا يوجد له مقطع (نص متغيّر) يُولَّد بالمحرك المحلي. */
- const CC='hurufi-clips-v3',base='voices/clips/';
+ const CC='hurufi-clips-v4' /* v4: نسخ الحزم القديمة المحفوظة في الأجهزة (v1–v3) قد لا تطابق الفهرس الحالي فتُسمع كلمة أخرى؛ تُحذف وتُجلب من جديد */,base='voices/clips/';
  const st={ix:{},load:{},blob:{},ep:0,audio:null,url:'',ac:null,an:null,raf:0,done:null,pre:{}};
  const key=(t,l)=>{const s=((l==='ar'?'ar':'en')+'|'+String(t||'').replace(/\s+/g,' ').trim()).normalize('NFC');let h=0x811c9dc5;
   for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,0x01000193)>>>0}return h.toString(36)+'_'+s.length.toString(36)};
  const teacher=()=>window.P&&P.teacher==='male'?'male':'female';
  const engVoice=()=>null; /* لا يوجد محرك توليد على الجهاز: كل الصوت مقاطع Edge مسجّلة */
- const loadIx=who=>st.load[who]||(st.load[who]=fetch(base+who+'.json?v=61',{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(j=>{if(j&&j.idx){if(j.v)j.packs=j.packs.map(p=>p+'?v='+j.v);st.ix[who]=j;st.need=st.need||{};for(const[pi,off,len]of Object.values(j.idx)){const n=j.packs[pi];if((st.need[n]||0)<off+len)st.need[n]=off+len}}return st.ix[who]} /* لا تنزيل تلقائي لكل الحزم: كان ~130 م.ب في أول 30 ثانية فيبطئ الهاتف */).catch(()=>{st.load[who]=null;return null}));
+ const loadIx=who=>st.load[who]||(st.load[who]=fetch(base+who+'.json?v=62',{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(j=>{if(j&&j.idx){if(j.v)j.packs=j.packs.map(p=>p+'?v='+j.v);st.ix[who]=j;st.need=st.need||{};for(const[pi,off,len]of Object.values(j.idx)){const n=j.packs[pi];if((st.need[n]||0)<off+len)st.need[n]=off+len}}return st.ix[who]} /* لا تنزيل تلقائي لكل الحزم: كان ~130 م.ب في أول 30 ثانية فيبطئ الهاتف */).catch(()=>{st.load[who]=null;return null}));
  const ready=loadIx(teacher());
- try{window.caches&&['hurufi-clips-v1','hurufi-clips-v2'].forEach(n=>caches.delete(n))}catch(e){} /* مقاطع الإصدارات السابقة */
+ try{window.caches&&['hurufi-clips-v1','hurufi-clips-v2','hurufi-clips-v3'].forEach(n=>caches.delete(n))}catch(e){} /* مقاطع الإصدارات السابقة */
  /* أُزيل محرك Supertonic 3: نحذف ملفاته المحفوظة سابقًا في المتصفح (~157 م.ب) وإعداداته */
  try{window.caches&&caches.keys().then(ks=>ks.filter(k=>/^hurufi-(model-|tts-)/.test(k)).forEach(k=>caches.delete(k))).catch(()=>{})}catch(e){}
  try{localStorage.removeItem('hurufi-tts')}catch(e){}
