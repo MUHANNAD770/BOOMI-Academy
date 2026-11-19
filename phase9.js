@@ -27,6 +27,7 @@
    for(const[p,pv]of PRE)if(b.length>2&&b[0]===p&&(b.slice(1) in FEMV))return pv+FEMV[b.slice(1)];
    return w})};
  window.studentGenderText=feminine;
+ const VC=new Map();
  const vocalize=root=>{
   if(!window.Tashkeel||!root)return;
   const walk=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>{
@@ -39,10 +40,14 @@
    const nx=x.nextSibling,endFinal=!nx||(nx.nodeType===1&&/^(BR|DIV|P|LI|UL|OL|BUTTON|H[1-6]|SECTION|TD|TH|TR|TABLE|DETAILS|SUMMARY|INPUT|SELECT|TEXTAREA|CANVAS|SVG|IMG)$/i.test(nx.tagName));
    /* القصص والمحادثات ونصوص الكورس سرد لا خطاب: لا نحوّلها حسب جنس الطالب (كانت «وَصَلَتْ» تصير «وَصَلْتِ») */
    const narr=x.parentElement&&x.parentElement.closest('.story,.stories,.talk,.ct-paper,.course-frame,.card,.opt,.q,.grid,[data-nogender]');
-   let t=window.Tashkeel.apply(narr?v:feminine(v));
+   /* الأداء: نتيجة التشكيل لكل نص محفوظة في ذاكرة (كانت كل صفحة تعيد تشكيل كل النصوص من جديد) */
+   const pf=(narr?'n':'g')+(endFinal?1:0)+(window.P&&P.gender==='female'?'f':'m')+(x.parentElement&&x.parentElement.textContent.trim()===v.trim()?'s':'-')+'|',mk=pf+v;
+   let t=VC.get(mk);if(t===undefined){
+   t=window.Tashkeel.apply(narr?v:feminine(v));
    /* اسم نكرة معروض وحده (بطاقة درس، قائمة كلمات، خانة جدول، خيار): يُكتب منوّنًا (ذُرَةٌ) بدل تسكين آخره، وهو نفسه ما ينطقه بومي (voice.js nun1) */
    if(window.Tashkeel.nunWord&&/^\s*[\u0621-\u064A][\u0621-\u064A\u064B-\u0652\u0670]*\s*$/.test(t)&&x.parentElement&&x.parentElement.textContent.trim()===v.trim()){const w=t.trim(),n=Tashkeel.nunWord(w);if(n!==w)t=t.replace(w,n)}
    if(window.Pron)t=Pron.display(t,endFinal);
+   if(VC.size>6000)VC.clear();VC.set(mk,t);VC.set(pf+t,t)}
    if(t!==v)x.nodeValue=t});
  };
  const observer=new MutationObserver(rows=>rows.forEach(row=>row.addedNodes.forEach(node=>{if(node.nodeType===1)vocalize(node);else if(node.nodeType===3&&node.parentElement)vocalize(node.parentElement)})));
