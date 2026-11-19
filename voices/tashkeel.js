@@ -101,14 +101,14 @@ function nunate(w){w=String(w||'').trim();if(!w||/\s/.test(w)||!/[ء-ي]/.test(w
 /* يُطبَّق مرة واحدة على كلمات الدروس العربية المصوّرة (فيشمل البطاقات والاختبارات والألعاب التي تأخذ كلماتها منها) */
 /* الكتابة في الموقع لا تتغيّر (طلب صاحب المشروع): التنوين في النطق فقط (nunWord عند النطق في voice.js).
  نسخة سابقة كانت تكتب التنوين في الدروس وتنقل إتقان الكلمات (P.sk) إلى الصيغة المنوّنة: نعيده إلى اسم الكلمة الأصلي. */
-try{const EMJ=/\p{Extended_Pictographic}/u,MV={};for(const st of S)for(const un of st.u)if(un.l==='ar')for(const it of un.i)if(EMJ.test(String(it[1]))){const o=it[0],n=nunate(o);if(n!==o)MV[n]=o}
+try{const EMJ=/\p{Extended_Pictographic}/u,MV={};for(const st of S)for(const un of st.u)for(const it of un.i)if((it[2]||un.l)==='ar'&&EMJ.test(String(it[1]))){const o=it[0],n=nunate(o);if(n!==o)MV[n]=o}
  const D=window.DB;if(D&&D.kids)for(const kd of D.kids){const sk=kd&&kd.sk;if(sk)for(const n in MV)if(sk[n]){if(!sk[MV[n]])sk[MV[n]]=sk[n];delete sk[n]}}}catch(e){}
 /* الأسماء المعروفة التي تُنطق منوّنة إذا قيلت وحدها: كلمات الصور، قوائم كلمات نصوص الكورس وجداولها وخياراتها، ومعاني الكلمات الإنجليزية.
    لا نُنوِّن أي كلمة منفردة كيفما اتفق (الأفعال يَلْعَبُ، والمعرّف وَالْكِتَابَة، والكلمات الأجنبية تخطئ). */
-let NN=null;const NV=/^(?:[وف][َ]?)?(?:[بلك][َِ]?)?(?:ال|لل)/;
+let NN=null; /* بِالْ، وَالْ، لِلْ… (بَالُون ليست منها: اللام فيها متحركة) */const NV=/^(?:[وف][َ]?)?(?:[بلك][َِ]?)?(?:ال|لل)/;
 function nouns(){if(NN&&NN.size)return NN;const o=new Set(),E=/\p{Extended_Pictographic}/u,EA=/[\p{Extended_Pictographic}\u200d\ufe0f]/gu;
- const add=w=>{w=String(w||'').replace(EA,'').trim();if(!w||/\s/.test(w)||!/[\u064B-\u0652]/.test(w))return;const k=nk(strip(w));if(k.length<2||NV.test(k)||(/^ي/.test(k)&&k.length>=4))return;o.add(k)};
- try{for(const st of S)for(const un of st.u)for(const it of un.i)if(E.test(String(it[1]))){if(un.l==='ar')add(it[0]);else if(/[\u0600-\u06FF]/.test(it[1]))add(it[1])}}catch(e){}
+ const add=w=>{w=String(w||'').replace(EA,'').trim();if(!w||/\s/.test(w)||!/[\u064B-\u0652]/.test(w))return;const k=nk(strip(w));if(k.length<2||/^ال/.test(k)||(NV.test(k)&&!/^[\u0621-\u064A]\u064E?ا[\u0621-\u064A][\u064E\u064F\u0650]/.test(w))||(/^ي/.test(k)&&k.length>=4))return;o.add(k)};
+ try{for(const st of S)for(const un of st.u)for(const it of un.i)if(E.test(String(it[1]))){if((it[2]||un.l)==='ar')add(it[0]);else if(/[\u0600-\u06FF]/.test(it[1]))add(it[1])}}catch(e){}
  try{(window.EnCoach&&EnCoach.dictAll?EnCoach.dictAll():[]).forEach(add)}catch(e){}
  try{const C=window.COURSE_TEXT||{};for(const k in C)for(const b of C[k]||[]){if(b.t==='words')(b.x||[]).forEach(add);else if(b.t==='table')(b.rows||[]).forEach(r=>add(r&&r[0]));else if(b.t==='quiz'&&b.o)add(b.o[b.a]) /* الجواب الصحيح فقط: بعض الخيارات أخطاء إملائية مقصودة (طَابِل) */}}catch(e){}
  if(window.COURSE_TEXT)NN=o;return o}
