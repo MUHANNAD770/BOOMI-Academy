@@ -1,4 +1,4 @@
-const fs=require('fs');const p=JSON.parse(fs.readFileSync('phrases.json'));const f=JSON.parse(fs.readFileSync('found.json'));
+const fs=require('fs');const p=JSON.parse(fs.readFileSync('phrases.json'));let f={};try{f=JSON.parse(fs.readFileSync('found.json'))}catch(e){} /* اختياري: ناتج recover.js */
 const en=p.filter(x=>x[1][1]=='en').map(x=>x[1][0]);
 const vocab=new Set();for(const s of en)if(/\s/.test(s)&&/^[A-Za-z ,.'!?’–]+$/.test(s))for(const w of s.toLowerCase().split(/[^a-z']+/))if(w)vocab.add(w);
 const ok=t=>{if(/[{}:=\/\\#@_<>()\[\]$;]/.test(t))return false;if(/[a-z][A-Z]/.test(t))return false;if(/\d/.test(t)&&/[A-Za-z]/.test(t)&&!/^\d+(st|nd|rd|th)$/.test(t))return false;

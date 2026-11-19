@@ -37,13 +37,16 @@ const PREPS=new Set(['في','على','من','الى','إلى','عن','حتى','�
 /* سوابق: [الحروف، التشكيل، فيها «ال»؟] — الأطول أولًا */
 const PR=[['وبال','وَبِ',1],['وكال','وَكَ',1],['وفال','وَفَ',1],['ولل','وَلِ',2],['وال','وَ',1],['فال','فَ',1],['بال','بِ',1],['كال','كَ',1],['لل','لِ',2],['ال','',1],
  ['وب','وَبِ'],['ول','وَلِ'],['وك','وَكَ'],['فب','فَبِ'],['ف','فَ'],['و','وَ'],['ب','بِ'],['ك','كَ'],['ل','لِ']];
+/* لام التعليل + مضارع ← منصوب: لِتَسْمَعُهَا ← لِتَسْمَعَهَا */
+const SUBJ=/ُ((?:هَا|هُ|هُمْ|كَ|كِ|كُمْ|نِي|نَا)?)$/;
 function build1(p,r){
- if(/[بلك][\u064E\u0650]$/.test(p[1])&&!/^[يتنأا]/.test(nk(units(r)[0][0]))&&p[2]!==1)r=gen(r);
+ if(p[1]==='لِ'&&!p[2]&&/^[يتن]/.test(units(r)[0][0])&&SUBJ.test(r))return p[1]+r.replace(SUBJ,'َ$1');
+ if(/[بلك][\u064E\u0650]$/.test(p[1])&&!/^[يتنأا]/.test(units(r)[0][0])&&p[2]!==1)r=gen(r);
  if(p[2]===1)return p[1]+article(gen2(p,r));
  if(p[2]===2){const u0=units(r);if(u0[0][0]==='ا'&&u0[0][1].includes('\u0650'))return p[1]+'لِ'+join([['ا','']].concat(u0.slice(1)));const c=nk(u0[0][0]);if(SHAMS.includes(c)){const u=units(r);if(!u[0][1].includes(SH))u[0][1]=SH+u[0][1];return p[1]+'ل'+join(u)}return p[1]+'لْ'+r}
  return p[1]+r}
 function gen2(p,r){return /[بلك][\u064E\u0650]$/.test(p[1])||p[2]===2?gen(r):r}
-function build(p,rest){return lookAll(rest).map(r=>build1(p,r))}
+function build(p,rest){let c=lookAll(rest);if(p[2])c=c.filter(r=>!/\u0652$/.test(r));return c.map(r=>build1(p,r))}
 function fullAll(k){let r=lookAll(k);if(r.length)return r;
  for(const p of PR){if(k.length>p[0].length+1&&k.startsWith(p[0])){r=build(p,k.slice(p[0].length));if(r.length)return r}}
  return[]}
@@ -70,7 +73,12 @@ function word(w){let r;
 /* تنوين الفتح يُكتب على الحرف قبل الألف (كِتَابًا): ننقله إن كُتب على الألف، ونحذف التكرار */
 function tanwinAlif(w){const u=units(w),n=u.length;if(n<2)return w;const L=u[n-1];if(L[0]!=='ا'||!L[1].includes('\u064B'))return w;
  L[1]=L[1].replace('\u064B','');const p=u[n-2];if(!p[1].includes('\u064B'))p[1]=p[1].replace(/[\u064E-\u0650\u0652]/g,'')+'\u064B';return join(u)}
-function apply(t){let prev='';return String(t==null?'':t).replace(AW,w=>{let r=tanwinAlif(word(w));const b=strip(w);if(PREPS.has(prev)&&HAS.test(r))r=gen(r);prev=b;return r})}
+/* همزة الوصل داخل الجملة: لا تُنطق بعد كلمة متصلة بها، والساكن قبلها يُحرَّك (مِنَ الْ، عَنِ الْ، أَوِ اخْتَرْ، هُمُ الْ، اخْتَرِ الْ).
+   كانت تُكتب «مِنْ الْقَائِمَة» و«أَوْ اِضْغَطْ» فيقرؤها المحرك بقطع الهمزة. */
+const WV=/(^|[^\u0621-\u064A\u064B-\u0652\u0670])([\u0621-\u064A\u064B-\u0652\u0670]*?)([\u0621-\u064A]\u0651?)\u0652([ \u00A0]+)ا[\u0650\u064F]?(?=ل|[\u0621-\u064A]\u0651?\u0652)/g;
+const WK=/([\u0621-\u064A\u064B-\u0652\u0670][ \u00A0]+|(?:^|[^\u0621-\u064A\u064B-\u0652\u0670])[وف]\u064E)ا[\u0650\u064F](?=ل|[\u0621-\u064A]\u0651?\u0652)/g;
+function wasl(s){return s.replace(WV,(m,a,w,c,sp,o,str)=>{const nx=str.slice(o+m.length,o+m.length+1);const v=(w+c==='مِن'&&nx==='ل')?'\u064E':/\u064Fم$/.test(w+c)?'\u064F':'\u0650';return a+w+c+v+sp+'ا'}).replace(WK,'$1ا')}
+function apply(t){let prev='';return wasl(String(t==null?'':t).replace(AW,w=>{let r=tanwinAlif(word(w));const b=strip(w);if(PREPS.has(prev)&&HAS.test(r))r=gen(r);prev=b;return r}))}
 function learn(t){let n=0;try{for(const w of String(t).match(AW)||[]){const k=strip(w);if(k.length<2||!HAS.test(w))continue;
   const letters=k.length,d=(w.match(DIA)||[]).length;if(d<Math.ceil(letters*.6))continue;
   const f=fix(w);if(!B()[k]&&!E()[k]&&L[k]!==f){if(Object.keys(L).length>=CAP)delete L[Object.keys(L)[0]];L[k]=f;n++}}
