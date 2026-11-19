@@ -4,7 +4,7 @@ W=os.path.dirname(os.path.abspath(__file__))
 VOICES={'female':{'ar':'ar-SA-ZariyahNeural','en':'en-US-AvaNeural'},'male':{'ar':'ar-SA-HamedNeural','en':'en-US-AndrewNeural'}}
 RATE={'ar':'-8%','en':'-10%'}
 PROXY=os.environ.get('HTTPS_PROXY')
-phr=json.load(open(os.path.join(W,'final.json')))
+phr=json.load(open(os.environ.get('PHR') or os.path.join(W,'final.json')))
 async def one(who,k,t,l,sem,stat):
     out=os.path.join(W,'out',who,k+'.mp3')
     if os.path.exists(out) and os.path.getsize(out)>500: stat['skip']+=1; return

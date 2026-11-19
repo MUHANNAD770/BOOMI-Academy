@@ -1,6 +1,6 @@
 /* home.js — الصفحة الرئيسية بتصميم الصور + معلم محلي (بومي) يقترح الدرس الأنسب */
 const SFX=()=>{try{window.HurufiSound&&HurufiSound.play('tap')}catch(e){}};
-/* النطق يتولاه voice.js بالمحرك المحلي Supertonic 3 — لا يوجد صوت جهاز */
+/* النطق يتولاه voice.js من مقاطع Edge المسجّلة — لا يوجد صوت جهاز */
 /* مؤثرات الواجهة المحلية تُدار من sounds.js. */
 const oldH=h;h=x=>{document.body.classList.toggle('hm',V=='home'||V=='sec');oldH(x)};
 const goTo=id=>{const e=document.getElementById(id);e&&e.scrollIntoView({behavior:'smooth'})};

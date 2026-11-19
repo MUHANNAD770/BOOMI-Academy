@@ -54,16 +54,9 @@
   A.classList.remove('screen-in');void A.offsetWidth;A.classList.add('screen-in');
   A.querySelectorAll('button,.card,.row,.tl button').forEach(b=>b.classList.add('motion-ready'));
   rendered=true;
-  clearTimeout(warmT);warmT=setTimeout(warmPage,400);
+
  };
- /* تحضير أصوات الصفحة في الخلفية (المحرك المحلي فقط): كلمات الدرس، سؤال الاختبار، أزرار النطق */
- let warmT=0;
- const warmPage=()=>{const E=window.HurufiTTS;if(!E||!E.ok()||!window.say||!say.parts)return;const L=[];
-  try{if(window.V==='lesson'&&window.cur&&cur.i)cur.i.forEach(x=>L.push([x[0],x[2]]));
-   if(window.V==='quiz'&&window.qs){const x=qs[window.qi||0],n=qs[(window.qi||0)+1];[x,n].forEach(q=>q&&q.sp&&L.push([q.sp[0],q.sp[1]]))}
-   A.querySelectorAll('[data-say]').forEach(b=>L.push([b.dataset.say,b.dataset.l||'en']))}catch(e){}
-  E.warmup(L.flatMap(([t,l])=>say.parts(t,l)))};
- try{window.HurufiTTS&&HurufiTTS.on(m=>{if(m.t==='ready')setTimeout(warmPage,300)})}catch(e){}
+
 
  /* كل محركات المشروع تستدعي h؛ لفّه هنا يحافظ على كل المزايا السابقة. */
 const oldH=window.h;

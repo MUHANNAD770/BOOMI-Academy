@@ -7,7 +7,7 @@ function mkCtx(gender){
   localStorage:{getItem:k=>store[k]??null,setItem:(k,v)=>store[k]=String(v),removeItem(k){delete store[k]}},
   document:{addEventListener(){},getElementById:()=>null,querySelector:()=>null,querySelectorAll:()=>[],createElement:el,body:el(),documentElement:el(),dispatchEvent(){}},
   navigator:{userAgent:'node'},MutationObserver:function(){this.observe=()=>{};this.disconnect=()=>{}},requestAnimationFrame:()=>0,location:{href:'http://x/',pathname:'/'},Event:function(){},addEventListener(){},
-  P:{teacher:'female',gender},save(){},HurufiTTS:{multilingual:false}};
+  P:{teacher:'female',gender},save(){}};
  w.window=w;w.self=w;w.globalThis=w;
  const ctx=vm.createContext(w);
  /* phase9.js: تحويل الخطاب حسب جنس الطالب (اضغطي، أحسنتِ…) كما يحدث في الموقع، فتُسجَّل صيغ الطالبات أيضًا */

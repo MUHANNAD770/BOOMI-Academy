@@ -32,7 +32,7 @@ function achBody(){const sf=id=>{try{return find(id)}catch(e){return null}},K=o=
  h+=`<h3>✅ الدروس المتقنة (${done.length})</h3><div class=list>${done.map(row).join('')||`<p class=mut>لم تُتقن درسًا بعد — تحتاج ٤ من ٥ في اختبار الدرس.</p>`}</div>`;
  if(started.length)h+=`<h3>📘 دروس بدأتها ولم تُتقنها بعد</h3><div class=list>${started.map(row).join('')}</div>`;
  if(ml.length)h+=`<h3>🔢 مهارات الرياضيات</h3><div class=list>${ml.map(k=>`<button class=row onclick="mstart('${k}')"><span>${P.ml[k].d?'🏆':'🔢'}</span><b>${MS[k]}</b><small>مستوى ${P.ml[k].l||1}/4</small></button>`).join('')}</div>`;
- const more=[[st,'📚','قصة مقروءة','stories()'],[cd,'🗂️','مادة كورس مكتملة','courseLibrary()'],[ac,'🎨','نشاط منجز','act()']].filter(x=>x[0]&&typeof window[x[3].slice(0,-2)]==='function');
+ const more=[[st,'📚','قصة مقروءة','stories()'],[cd,'🗂️','مادة كورس مكتملة',"sec('les')"],[ac,'🎨','نشاط منجز','act()']].filter(x=>x[0]&&typeof window[x[3].slice(0,-2)]==='function');
  if(more.length)h+=`<h3>🌟 إنجازات أخرى</h3><div class=list>${more.map(x=>`<button class=row onclick="${x[3]}"><span>${x[1]}</span><b>${x[0]} ${x[2]}</b></button>`).join('')}</div>`;
  if(nx)h+=`<button class=big onclick="lesson('${nx.id}')">▶️ الدرس التالي: ${nx.n}</button>`;
  return h}
