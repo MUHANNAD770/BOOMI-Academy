@@ -69,10 +69,12 @@ function burst(sc,x,y,tint,n){if(calm())n=Math.min(n,8);
 function label(sc,x,y,txt,size,color,stroke){const ar=/[\u0621-\u064A]/.test(txt);
  return sc.add.text(x,y,txt,{fontFamily:FONT,fontSize:size+'px',fontStyle:'900',color:color||'#1c2c86',stroke:stroke||'#ffffff',strokeThickness:stroke===null?0:Math.round(size/7),rtl:ar,align:'center',padding:{x:6,y:Math.round(size*.25)}}).setOrigin(.5)}
 /* لوحة السؤال أعلى الشاشة + زر 🔊 */
-function qPanel(sc,W){const c=sc.add.container(W/2,62).setDepth(50);const bg=sc.add.graphics();bg.fillStyle(0xffffff,.92);bg.fillRoundedRect(-W*.42,-48,W*.84,96,26);bg.lineStyle(4,0x3c55d0,.25);bg.strokeRoundedRect(-W*.42,-48,W*.84,96,26);
- const big=label(sc,-W*.12,-4,'',46,'#1c2c86',null),sub=label(sc,W*.16,-2,'',22,'#5a5f7a',null);sub.setWordWrapWidth(W*.4);
- const sp=label(sc,-W*.36,0,'🔊',34,'#000',null).setInteractive({useHandCursor:true});
- c.add([bg,big,sub,sp]);c.set=q=>{big.style.rtl=!q.math&&/[\u0621-\u064A]/.test(q.show);big.setText(q.show);big.setFontSize(q.show.length>8?30:46);sub.style.rtl=q.l==='ar';sub.setText(q.sub);
+/* لوحة السؤال: مدمجة أعلى اللعبة (كانت ٨٤٪ من العرض × ٩٦ فتغطي مساحة اللعب، وبأيقونتي سماعة) */
+function qPanel(sc,W){const PW=Math.min(W*.7,420),c=sc.add.container(W/2,40).setDepth(50);const bg=sc.add.graphics();bg.fillStyle(0xffffff,.86);bg.fillRoundedRect(-PW/2,-30,PW,60,22);bg.lineStyle(3,0x3c55d0,.22);bg.strokeRoundedRect(-PW/2,-30,PW,60,22);
+ const big=label(sc,-PW*.12,-2,'',34,'#1c2c86',null),sub=label(sc,PW*.2,-1,'',17,'#5a5f7a',null);sub.setWordWrapWidth(PW*.42);
+ const sp=label(sc,-PW/2+30,0,'🔊',28,'#000',null).setInteractive({useHandCursor:true});
+ c.add([bg,big,sub,sp]);c.set=q=>{const only=/^\s*🔊\s*$/.test(q.show);big.setVisible(!only); /* سؤال استماع فقط: زر السماعة وحده */
+  big.style.rtl=!q.math&&/[\u0621-\u064A]/.test(q.show);big.setText(only?'':q.show);big.setFontSize(q.show.length>8?24:34);sub.style.rtl=q.l==='ar';sub.setText(q.sub);
   sc.tweens.add({targets:c,scale:{from:.85,to:1},duration:320,ease:'Back.Out'})};
  sp.on('pointerdown',(p,lx,ly,ev)=>{ev&&ev.stopPropagation();sc.events.emit('replay')});return c}
 /* القلوب والنتيجة */
