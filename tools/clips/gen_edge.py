@@ -1,8 +1,13 @@
 # توليد مقاطع بومي بخدمة Edge TTS (أصوات Microsoft العصبية) — نسخة لكل معلّم/معلّمة
 import asyncio, json, os, sys, subprocess, edge_tts
 W=os.path.dirname(os.path.abspath(__file__))
-VOICES={'female':{'ar':'ar-SA-ZariyahNeural','en':'en-US-AvaNeural'},'male':{'ar':'ar-SA-HamedNeural','en':'en-US-AndrewNeural'}}
-RATE={'ar':'-8%','en':'-10%'}
+# B (اختيار صاحب المشروع): سرعة عادية، وصل الكلمات داخل الجملة، وأصوات Ava/Andrew الطبيعية (Multilingual)
+VOICES={'female':{'ar':'ar-SA-ZariyahNeural','en':'en-US-AvaMultilingualNeural'},'male':{'ar':'ar-SA-HamedNeural','en':'en-US-AndrewMultilingualNeural'}}
+RATE={'ar':'+0%','en':'+0%'}
+import re
+# سكون آخر الكلمة داخل الجملة يجعل المحرك يقف بعد كل كلمة (نطق آلي): نحذفه إذا تلته كلمة عربية بلا علامة ترقيم، ويبقى في آخر الجملة
+def natural(t,l):
+    return re.sub(r'([\u0621-\u064A][\u064B-\u0651]?)\u0652(?=[ \u00A0]+[\u0621-\u064A])',r'\1',t) if l=='ar' else t
 PROXY=os.environ.get('HTTPS_PROXY')
 phr=json.load(open(os.environ.get('PHR') or os.path.join(W,'final.json')))
 async def one(who,k,t,l,sem,stat):
@@ -12,7 +17,7 @@ async def one(who,k,t,l,sem,stat):
     async with sem:
         for a in range(5):
             try:
-                c=edge_tts.Communicate(t,VOICES[who][l],rate=RATE[l],proxy=PROXY)
+                c=edge_tts.Communicate(natural(t,l),VOICES[who][l],rate=RATE[l],proxy=PROXY)
                 await c.save(raw)
                 if os.path.getsize(raw)<300: raise Exception('small')
                 break
