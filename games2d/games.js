@@ -63,8 +63,10 @@ function done(win,info){const c=cur;if(!c)return;stopEng();const game=c.game,lv=
   <h2>${win?'🎉 '+msg:'💪 '+msg}</h2><div class=sum><div>⏱️<br><b>${D(Math.round(time))}</b><small>ثانية</small></div><div>🎯<br><b>${D(Math.round(acc*100))}٪</b><small>دقة</small></div><div>⭐<br><b>+${D(gained)}</b><small>نجوم جديدة</small></div></div>
   ${next?`<button class=big onclick="g2play('${game.id}',${lv+1})">▶ المرحلة التالية</button>`:''}<button class=alt onclick="g2play('${game.id}',${lv})">🔁 إعادة اللعب</button><button class=alt onclick="g2levels('${game.id}')">🗺️ المراحل</button></div>`));
  talk(msg);if(win&&!calm())setTimeout(()=>{try{BumiFX.confetti(stars*25)}catch(e){}},200);cur=null}
-const good=(el)=>{if(cur)cur.ok++;try{HurufiSound.play('correct')}catch(e){}mood('happy',900);if(el)try{BumiFX.good(el)}catch(e){}};
-const bad=(el)=>{if(cur)cur.mist++;try{HurufiSound.play('wrong')}catch(e){}mood('oops',1000);if(el)try{BumiFX.bad(el)}catch(e){}};
+/* العقل الموحّد: كل إجابة في لعبة تُسجَّل لمهارة اللعبة (مادتها + اسمها) وطريقة العودة إليها */
+const mindRec=ok=>{try{if(cur&&cur.game&&window.Mind)Mind.record({ok,subject:cur.game.cat,topic:'لعبة: '+cur.game.name,src:'لعبة',go:`g2levels('${cur.game.id}')`})}catch(e){}};
+const good=(el)=>{if(cur)cur.ok++;mindRec(true);try{HurufiSound.play('correct')}catch(e){}mood('happy',900);if(el)try{BumiFX.good(el)}catch(e){}};
+const bad=(el)=>{if(cur)cur.mist++;mindRec(false);try{HurufiSound.play('wrong')}catch(e){}mood('oops',1000);if(el)try{BumiFX.bad(el)}catch(e){}};
 const CHEER=['أَحْسَنْت!','رَائِع!','مُمْتَاز!','اسْتَمِرّ!','بَطَل!'];
 
 /* ================= محرك المنصات ================= */
@@ -118,7 +120,7 @@ function sortGame(host,lv,cfg){const n=4+lv;const items=shuf(cfg.items()).slice(
  show()}
 /* اختيار سريع (استماع، ناقص، مقارنة، أشكال، نمط) */
 function chooseGame(host,lv,cfg){const n=cfg.n||(5+lv);let k=0;host.innerHTML=`<div class=g2-prog><i style="width:0%"></i></div><div class=g2-pz></div>`;const pz=host.querySelector('.g2-pz');
- const show=()=>{if(k>=n)return setTimeout(()=>done(true),400);host.querySelector('.g2-prog i').style.width=(k/n*100)+'%';const q=cfg.make(lv,k);
+ const show=()=>{if(k>=n)return setTimeout(()=>done(true),400);host.querySelector('.g2-prog i').style.width=(k/n*100)+'%';const gid=cur&&cur.game?cur.game.id:'',q=window.Mind?Mind.fresh(()=>cfg.make(lv,k),q=>gid+'|'+(q.ask||'')+q.show):cfg.make(lv,k); /* لا يتكرر سؤال ظهر قريبًا */
   pz.innerHTML=`<div class=g2-q>${q.show}${q.sp?'<button class="alt g2-say">🔊 اسمع</button>':''}</div><div class="grid g2-opts ${q.wide?'wide':''}">${q.opts.map((o,i)=>`<button class=opt data-i=${i} dir=auto>${o.h}</button>`).join('')}</div>`;
   if(q.sp){talk(q.sp[0],q.sp[1]);pz.querySelector('.g2-say').onclick=()=>talk(q.sp[0],q.sp[1])}else if(q.ask)talk(q.ask);
   pz.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const ok=q.opts[+b.dataset.i].ok;if(ok){pz.querySelectorAll('.opt').forEach(x=>x.disabled=true);b.classList.add('ok');good(b);k++;setTimeout(show,800)}else{b.classList.add('no');b.disabled=true;bad(b);if(q.why)talk(q.why)}})};show()}

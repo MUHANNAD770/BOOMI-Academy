@@ -23,7 +23,7 @@ const limited = (req, key, max) => {
 };
 /* تنظيف بيانات الطالب قبل الحفظ */
 /* نحفظ الأشياء الثابتة فقط (نفس القائمة في sync.js) — تبقى البيانات صغيرة والحفظ مجانيًا */
-const KEEP = ['name', 'gender', 'age', 'lang', 'stage', 'teacher', 'mic', 'snd', 'vol', 'rate', 'star', 'done', 'sc', 'fd', 'ml', 'cd', 'act', 'courseDone', 'badges', 'unlockAll', 'stories', 'wk', 'speed', 'vq', 'days', 'g2', 'courseQuiz', 'coursePractice']; /* نفس قائمة sync.js (كانت vq وdays تُحذف هنا) */
+const KEEP = ['name', 'gender', 'age', 'lang', 'stage', 'teacher', 'mic', 'snd', 'vol', 'rate', 'star', 'done', 'sc', 'fd', 'ml', 'cd', 'act', 'courseDone', 'badges', 'unlockAll', 'stories', 'wk', 'speed', 'vq', 'days', 'g2', 'courseQuiz', 'coursePractice', 'sk', 'mind']; /* نفس قائمة sync.js (كانت vq وdays تُحذف هنا) */
 function clean(d) {
   if (!d || typeof d !== 'object' || Array.isArray(d)) return null;
   const o = {}; for (const k of KEEP) if (d[k] !== undefined) o[k] = d[k];

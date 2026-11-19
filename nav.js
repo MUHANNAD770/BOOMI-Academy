@@ -52,7 +52,9 @@ const tl=[[IC.ar,'اللغة العربية','حروف وكلمات',"sec('ar')"
 const go=c?`lesson('${c.u.id}')`:"sec('les')";
 h(`<section class="h2-hero"><div class=h2-cloud></div><img class=h2-castle src="img/3d/1f3f0.webp" alt=""><span class="h2-star s1">⭐</span><span class="h2-star s2">✨</span>
 <div class=h2-txt><h1>مرحبًا بك في<b>البومة التعليمية الذكية</b></h1><p>تعلّم بمتعة.. وحقّق إنجازات رائعة!</p><button class=h2-cta onclick="${go}">▶ ابدأ رحلتك التعليمية</button></div></section>
-${c?`<button class="nx h2-next" onclick="lesson('${c.u.id}')"><span>▶️</span><div><small>الخطوة التالية لك</small><b>${c.u.n}</b></div></button>`:''}
+${(()=>{/* الخطوة التالية يقررها عقل بومي (mind/hub.js): مراجعة حان موعدها، أو مهارة ضعيفة، أو الدرس التالي */let nx=null;try{nx=window.Mind&&Mind.next()}catch(e){}
+ if(!nx&&c)nx={icon:'▶️',t:c.u.n,go:`lesson('${c.u.id}')`};if(!nx)return'';
+ return `<button class="nx h2-next" onclick="${nx.go.replace(/"/g,'&quot;')}"><span>${nx.icon}</span><div><small>الخطوة التالية لك${nx.why?' · '+nx.why:''}</small><b>${nx.t}</b></div></button>`})()}
 <div class=h2-acad>
 <button class="h2-card ar" onclick="sec('ar')"><span class=h2-ic>ض</span><b>أكاديمية العربية</b><small>حروف .. قراءة .. كتابة</small><i class=h2-go>ابدأ الآن ▶</i></button>
 <button class="h2-card en" onclick="sec('en')"><span class=h2-ic dir=ltr>ABC</span><b>أكاديمية الإنجليزية</b><small dir=ltr>Letters • Phonics • Words</small><i class=h2-go>ابدأ الآن ▶</i></button>
