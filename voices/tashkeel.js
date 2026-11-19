@@ -84,5 +84,23 @@ function learn(t){let n=0;try{for(const w of String(t).match(AW)||[]){const k=st
   const f=fix(w);if(!B()[k]&&!E()[k]&&L[k]!==f){if(Object.keys(L).length>=CAP)delete L[Object.keys(L)[0]];L[k]=f;n++}}
   if(n)localStorage.setItem(KEY,JSON.stringify(L))}catch(e){}return n}
 function ratio(t){const ws=String(t).match(AW)||[];if(!ws.length)return 1;return ws.filter(w=>HAS.test(w)||w.length<2).length/ws.length}
-window.Tashkeel={apply,learn,ratio,size:()=>Object.keys(L).length,full,fixArt};
+/* تنوين أسماء الدروس المصوّرة (بَقَرَةٌ، أَسَدٌ…): الكلمة المفردة الموقوف عليها كانت تُنطق «بَقَرَهْ» فتُسمع «بَقَر».
+   القاعدة: الاسم النكرة المفرد يأخذ تنوين الضم؛ الممنوع من الصرف يأخذ ضمة بلا تنوين (الألوان أَفْعَل، فَعْلَاء، مَفَاعِل)؛
+   لا يُغيَّر ما فيه «ال» أو ما آخره علامة أصلًا (الأفعال المشكولة) أو حرف مدّ (حَلْوَى، مَانْجُو، يُسَاوِي)؛ المثنى بكسر النون. */
+const COLORS=new Set(['احمر','ازرق','اخضر','اصفر','اسود','ابيض','اسمر','اشقر','ابيض']);
+function nunate(w){w=String(w||'').trim();if(!w||/\s/.test(w)||!/[ء-ي]/.test(w))return w;const u=units(w),n=u.length,k=nk(strip(w));
+ if(n<2||/^ال/.test(k))return w;const L=u[n-1],mk=L[1].replace(SH,'');if(/[ً-ْ]/.test(mk))return w;
+ const pv=u[n-2];
+ if('اى'.includes(L[0])||(L[0]==='و'&&pv[1].includes('ُ')&&!L[1].includes(SH))||(L[0]==='ي'&&pv[1].includes('ِ')&&!L[1].includes(SH)))return w;
+ const D='ُ';
+ if(COLORS.has(k))return w+D;
+ if(L[0]==='ء'&&pv[0]==='ا'&&u[1]&&u[1][1].includes(SK))return w+D;                       /* فَعْلَاء: صَحْرَاءُ */
+ if(n>=5&&n<=6&&u[0][1].includes('\u064E')&&u[2][0]==='ا'&&u[3][1].includes('ِ')&&!'ةي'.includes(L[0]))return w+D;   /* مَفَاعِل/مَفَاعِيل: طَمَاطِمُ */
+ if(/^اثن(تان|ان)$/.test(k))return w+'ِ';                                              /* المثنى: اِثْنَتَانِ */
+ return w+'ٌ'}
+/* يُطبَّق مرة واحدة على كلمات الدروس العربية المصوّرة (فيشمل البطاقات والاختبارات والألعاب التي تأخذ كلماتها منها) */
+try{const EMJ=/\p{Extended_Pictographic}/u,MV={};for(const st of S)for(const un of st.u)if(un.l==='ar')for(const it of un.i)if(EMJ.test(String(it[1]))){const o=it[0],n=nunate(o);if(n!==o){it[0]=n;MV[o]=n}}
+ /* إتقان كل كلمة محفوظ باسمها (P.sk): ننقله إلى الصيغة المنوّنة كي لا يضيع تقدّم الطالب */
+ const D=window.DB;if(D&&D.kids)for(const kd of D.kids){const sk=kd&&kd.sk;if(sk)for(const o in MV)if(sk[o]){if(!sk[MV[o]])sk[MV[o]]=sk[o];delete sk[o]}}}catch(e){}
+window.Tashkeel={apply,learn,ratio,size:()=>Object.keys(L).length,full,fixArt,nunate};
 })();

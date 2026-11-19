@@ -44,10 +44,19 @@ const[t,b]=T[k];h(`<section class=sec><h2>${t}</h2>${b}</section>`)}
 function home(){V='home';window.CS='home';ens();const st=P.stage,us=units(st),dn=us.filter(u=>P.done[u.id]).length,c=coach(),pc=us.length?Math.round(dn/us.length*100):0;
 const IC={ar:'<i class="ico ico-ar"><b>أ</b><em>📖</em></i>',en:'<i class="ico ico-en" dir=ltr><b>A</b><b>B</b><b>C</b></i>',math:'<i class="ico ico-math"><b>+</b><b>−</b><b>×</b><b>÷</b></i>',games:'<i class="ico ico-em">🎮</i>',ach:'<i class="ico ico-em ico-cup">🏆<s>✦</s><s>✦</s></i>',les:'<i class="ico ico-em">📚</i>'};
 const tl=[[IC.ar,'اللغة العربية','حروف وكلمات',"sec('ar')"],[IC.en,'English','Learn English',"sec('en')"],[IC.math,'الرياضيات','أرقام وحساب',"sec('math')"],[IC.ach,'إنجازاتي','⭐ '+P.star,"sec('ach')"],[IC.games,'الألعاب','تعلّم بالمرح',"sec('games')"],[IC.les,'كل الدروس','خطوة بخطوة',"sec('les')"]];
-h(`<section class="hero hero-bumi"><div class=hb-txt><span class=hb-bub><b>مرحبًا بك يا ${P.name}!</b><small>أنا بومي 💗 معًا نتعلّم ونحقّق النجاح ⭐</small></span><button class=go onclick="${c?`lesson('${c.u.id}')`:"sec('les')"}">ابدأ التعلم ▶</button></div></section>
-<div class=sec>${c?`<button class=nx onclick="lesson('${c.u.id}')"><span>▶️</span><div><small>الخطوة التالية لك</small><b>${c.u.n}</b></div></button>`:''}<p class=pt>👇 أو اختر ما تحب أن تتعلم</p></div>
-<div class="tl tl-glass">${tl.map(t=>`<button class=gt onclick="${t[3]}">${t[0]}<b>${t[1]}</b><small>${t[2]}</small></button>`).join('')}</div>
-<div class=ic><div><h3 style="background:#2fb84a">📊 مستوى الطالب</h3><p>${dn}/${us.length} دروس مكتملة</p><div class=bar><div style="width:${pc}%"></div></div></div><div><h3 style="background:#2f7df0">🦉 إعدادات بومي</h3><p>صوتٌ وشخصيةٌ مخصّصان للطالب.</p><button style="background:#2f7df0" onclick=voiceSet()>اختيار الصوت</button>${DB.kids.length>1?'<button style="background:#2f7df0" onclick=who()>تبديل الطالب</button>':''}</div><div><h3 style="background:#e0457b">💡 نصائح للآباء</h3><p>شجّعوا الطالب واستخدموا الموقع بانتظام.</p><button style="background:#e0457b" onclick=parent()>لوحة ولي الأمر</button></div></div>`)}
+/* الواجهة الجديدة (ui2.css): ترحيب كبير + زر البدء + بطاقات الأكاديميات الأربع + لوحة ولي الأمر، ثم تعلّم والعب */
+const go=c?`lesson('${c.u.id}')`:"sec('les')";
+h(`<section class="h2-hero"><div class=h2-cloud></div><img class=h2-castle src="img/3d/1f3f0.webp" alt=""><span class="h2-star s1">⭐</span><span class="h2-star s2">✨</span>
+<div class=h2-txt><h1>مرحبًا بك في<b>البومة التعليمية الذكية</b></h1><p>تعلّم بمتعة.. وحقّق إنجازات رائعة!</p><button class=h2-cta onclick="${go}">▶ ابدأ رحلتك التعليمية</button></div></section>
+${c?`<button class="nx h2-next" onclick="lesson('${c.u.id}')"><span>▶️</span><div><small>الخطوة التالية لك</small><b>${c.u.n}</b></div></button>`:''}
+<div class=h2-acad>
+<button class="h2-card ar" onclick="sec('ar')"><span class=h2-ic>ض</span><b>أكاديمية العربية</b><small>حروف .. قراءة .. كتابة</small><i class=h2-go>ابدأ الآن ▶</i></button>
+<button class="h2-card en" onclick="sec('en')"><span class=h2-ic dir=ltr>ABC</span><b>أكاديمية الإنجليزية</b><small dir=ltr>Letters • Phonics • Words</small><i class=h2-go>ابدأ الآن ▶</i></button>
+<button class="h2-card math" onclick="sec('math')"><span class="h2-ic e">🔢</span><b>أكاديمية الرياضيات</b><small>أرقام .. عمليات .. أشكال</small><i class=h2-go>ابدأ الآن ▶</i></button>
+<button class="h2-card ai" onclick="bomi()"><span class="h2-ic e">💬</span><b>المعلم الذكي بومي</b><small>اسأل وتعلّم معي</small><i class=h2-go>تحدّث الآن ▶</i></button></div>
+<button class=h2-parent onclick=parent()><span class=e>👨‍👩‍👧</span><span><b>لوحة ولي الأمر</b><small>متابعة تقدّم طفلك · ${dn}/${us.length} دروس مكتملة</small></span><i>←</i></button>
+<h3 class=h2-h>🎮 تعلّم والعب</h3>
+<div class="tl tl-glass">${tl.slice(3).map(t=>`<button class=gt onclick="${t[3]}">${t[0]}<b>${t[1]}</b><small>${t[2]}</small></button>`).join('')}</div>`)}
 
 /* إعادة رسم الصفحة بعد تحميل كل الملفات حتى تظهر الصفحة الرئيسية الجديدة (smart.js يرسم الصفحة القديمة عند تحميله) */
 P=load();ens();DB.kids.length>1?who():P?home():setup();

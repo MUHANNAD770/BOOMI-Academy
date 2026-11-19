@@ -1,0 +1,91 @@
+/* ui2.css — الواجهة الجديدة «البومة التعليمية الذكية»: خلفية بنفسجية فاتحة، بطاقات ملوّنة مستديرة، أزرار صفراء،
+   وصور ثلاثية الأبعاد (emoji3d.js). يُحمَّل بعد كل ملفات التصميم فيعلو عليها. */
+:root{--u-bg1:#f4f0ff;--u-bg2:#e6ecff;--u-pur:#6a4cf0;--u-pur2:#4b32c9;--u-ink:#2a1f6b;--u-yel1:#ffdc4d;--u-yel2:#ffb400;--u-yel3:#e39a00;--u-sh:0 10px 26px rgba(76,56,200,.16)}
+
+/* الصور ثلاثية الأبعاد بدل الرموز: الرمز الأصلي يبقى نصًّا مخفيًا (للقراءة والنطق) */
+.e3w{display:inline-flex;align-items:center;justify-content:center;vertical-align:-.2em;line-height:1}
+.e3d{width:1.22em;height:1.22em;object-fit:contain;pointer-events:none;-webkit-user-drag:none}
+/* الرمز داخل نص صغير يبقى بحجم النص (قواعد قديمة تكبّر كل صور البطاقات) */
+:is(small,b,p,span,h1,h2,h3,label,li,td,.bb) .e3w>.e3d{width:1.22em!important;height:1.22em!important;max-width:none;margin:0}
+.e3t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* الخلفية */
+body:not([data-theme=dark]){background:radial-gradient(900px 420px at 85% -60px,#fff 0,rgba(255,255,255,0) 70%),linear-gradient(180deg,var(--u-bg1),var(--u-bg2)) fixed}
+
+/* ===== الصفحة الرئيسية ===== */
+.h2-hero{position:relative;overflow:hidden;border-radius:30px;margin:8px 0 14px;padding:26px 18px 22px;min-height:230px;
+ background:radial-gradient(160px 70px at 18% 22%,rgba(255,255,255,.75),rgba(255,255,255,0) 70%),radial-gradient(220px 90px at 88% 12%,rgba(255,255,255,.6),rgba(255,255,255,0) 70%),linear-gradient(165deg,#c9b6ff 0%,#aac3ff 52%,#b9ecc4 100%);
+ box-shadow:var(--u-sh);isolation:isolate}
+.h2-cloud{position:absolute;inset:auto -30px -40px -30px;height:90px;background:radial-gradient(60px 40px at 15% 40%,#fff,transparent 70%),radial-gradient(90px 50px at 45% 60%,#fff,transparent 70%),radial-gradient(70px 40px at 80% 45%,#fff,transparent 70%);opacity:.8;z-index:-1}
+.h2-castle{position:absolute;left:-10px;bottom:-8px;width:140px;height:auto;z-index:-1;filter:drop-shadow(0 8px 10px rgba(60,40,140,.25));animation:h2float 6s ease-in-out infinite}
+.h2-star{position:absolute;font-size:1.4rem;animation:h2twink 2.8s ease-in-out infinite}.h2-star.s1{left:22%;top:14%}.h2-star.s2{left:8%;top:40%;animation-delay:1.2s}
+.h2-txt{position:relative;text-align:center;margin-left:min(31%,128px)} /* القلعة على اليسار دائمًا */
+.h2-txt h1{margin:0;font-size:1.15rem;line-height:1.35;color:var(--u-ink);font-weight:800}
+.h2-txt h1 b{display:block;font-size:1.65rem;color:var(--u-pur2);text-shadow:0 2px 0 rgba(255,255,255,.7)}
+.h2-txt p{margin:6px 0 12px;color:#3b3170;font-weight:700}
+.h2-cta,.big{background:linear-gradient(180deg,var(--u-yel1),var(--u-yel2))!important;color:var(--u-ink)!important;border:0!important;border-radius:99px!important;font-weight:900!important;box-shadow:0 6px 0 var(--u-yel3),0 12px 20px rgba(0,0,0,.14)!important;transition:transform .12s,box-shadow .12s}
+.h2-cta{padding:12px 22px;font-size:1.05rem}
+.h2-cta:active,.big:active{transform:translateY(4px);box-shadow:0 2px 0 var(--u-yel3),0 6px 10px rgba(0,0,0,.12)!important}
+.h2-next{margin-bottom:14px}
+
+.h2-acad{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:4px 0 12px}
+.h2-card{position:relative;overflow:hidden;border:0;border-radius:26px;padding:16px 10px 12px;min-height:168px;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:3px;text-align:center;
+ box-shadow:0 7px 0 rgba(0,0,0,.13),var(--u-sh);transition:transform .15s}
+.h2-card:active{transform:translateY(4px) scale(.98)}
+.h2-card::after{content:"";position:absolute;inset:0 0 auto 0;height:46%;background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,0));pointer-events:none}
+.h2-card.ar{background:linear-gradient(160deg,#a68cff,#6a3fe0)}.h2-card.en{background:linear-gradient(160deg,#6cc7ff,#2f7ee8)}
+.h2-card.math{background:linear-gradient(160deg,#6fdc86,#27a84b)}.h2-card.ai{background:linear-gradient(160deg,#ffbf5e,#f27a14)}
+.h2-ic{font-size:2.7rem;font-weight:900;line-height:1.05;color:#fff;text-shadow:0 3px 0 rgba(0,0,0,.18);min-height:62px;display:flex;align-items:center}
+.h2-card.ar .h2-ic{color:#ffe36b}.h2-card.en .h2-ic{font-size:2.2rem;letter-spacing:1px;background:linear-gradient(90deg,#ff6fa8,#ffd54a,#6fe08a);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;-webkit-text-stroke:1.5px rgba(255,255,255,.9)}
+.h2-ic.e .e3d{width:2.5em;height:2.5em}.h2-ic.e{font-size:1.5rem}
+.h2-card b{font-size:1.05rem;text-shadow:0 2px 0 rgba(0,0,0,.15)}.h2-card small{font-size:.78rem;opacity:.95;font-weight:700}
+.h2-go{margin-top:auto;background:rgba(255,255,255,.95);color:var(--u-pur2);font-style:normal;font-weight:900;font-size:.82rem;padding:5px 12px;border-radius:99px;box-shadow:0 3px 0 rgba(0,0,0,.12)}
+
+.h2-parent{display:flex;align-items:center;gap:12px;width:100%;border:0;background:#fff;border-radius:24px;padding:12px 16px;margin:0 0 16px;box-shadow:var(--u-sh);text-align:start;color:var(--u-ink)}
+.h2-parent .e{font-size:2rem}.h2-parent span:not(.e):not(.e3w):not(.e3t){display:flex;flex-direction:column;flex:1}.h2-parent b{font-size:1.05rem}.h2-parent small{color:#6a6290;font-weight:700}.h2-parent>i{font-style:normal;color:var(--u-pur);font-weight:900}
+.h2-h{color:var(--u-ink);margin:6px 4px 10px}
+
+/* حركات لطيفة (تتوقف مع «تقليل الحركة») */
+@keyframes h2float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes h2twink{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.25);opacity:.55}}
+.h2-acad .h2-card{animation:h2pop .5s cubic-bezier(.2,1.4,.4,1) both}.h2-acad .h2-card:nth-child(2){animation-delay:.06s}.h2-acad .h2-card:nth-child(3){animation-delay:.12s}.h2-acad .h2-card:nth-child(4){animation-delay:.18s}
+@keyframes h2pop{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
+@media(prefers-reduced-motion:reduce){.h2-castle,.h2-star,.h2-acad .h2-card{animation:none}}
+@media(min-width:760px){.h2-acad{grid-template-columns:repeat(4,1fr)}.h2-hero{min-height:260px}.h2-castle{width:200px}.h2-txt h1 b{font-size:2.1rem}}
+
+/* ===== لافتات الأكاديميات ===== */
+.acad-h2{display:none}
+.acad-hd{position:relative;overflow:hidden;display:flex;align-items:center;gap:14px;border-radius:26px;padding:16px 18px;margin:6px 0 14px;color:#fff;box-shadow:0 7px 0 rgba(0,0,0,.12),var(--u-sh)}
+.acad-hd.ar{background:linear-gradient(150deg,#86e28f,#2fae55)}.acad-hd.en{background:linear-gradient(150deg,#7fcbff,#2f7ee8)}.acad-hd.math{background:linear-gradient(150deg,#ffa9cb,#ec5f98)}
+.acad-hd::after{content:"";position:absolute;inset:0 0 auto 0;height:50%;background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(255,255,255,0))}
+.acad-ic{flex:none;width:72px;height:72px;border-radius:22px;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;font-size:2.4rem;font-weight:900;color:#ffb400;box-shadow:0 5px 0 rgba(0,0,0,.1)}
+.acad-hd.en .acad-ic{font-size:1.5rem;color:#e8457f}.acad-ic.e .e3d{width:1.6em;height:1.6em}
+.acad-hd b{display:block;font-size:1.3rem;text-shadow:0 2px 0 rgba(0,0,0,.15)}.acad-hd small{font-weight:700;opacity:.95}
+.acad-em{margin-inline-start:auto;font-size:2rem;opacity:.9}
+
+/* ===== إنجازاتي ===== */
+.ach-hd{position:relative;overflow:hidden;text-align:center;border-radius:28px;padding:18px 16px 16px;margin:6px 0 14px;background:radial-gradient(200px 90px at 50% 0,#fff7cf,rgba(255,255,255,0) 70%),linear-gradient(170deg,#efe8ff,#dfe7ff);box-shadow:var(--u-sh)}
+.ach-cup{display:block;font-size:3.4rem;animation:h2float 3s ease-in-out infinite}
+.ach-rib{display:inline-block;margin:6px 0 8px;padding:6px 30px;background:linear-gradient(180deg,#7a5cff,#5a3fe0);color:#fff;font-weight:900;font-size:1.25rem;clip-path:polygon(0 0,100% 0,94% 50%,100% 100%,0 100%,6% 50%);box-shadow:0 4px 0 #3d2aa8}
+.ach-hd b{display:block;color:var(--u-ink);font-size:1.3rem}.ach-hd small{color:#5c5390;font-weight:700}
+.ach-conf{position:absolute;font-size:1.6rem;animation:h2twink 2.4s ease-in-out infinite}.ach-conf.c1{left:12%;top:18%}.ach-conf.c2{right:12%;top:26%;animation-delay:1s}
+
+/* ===== لوحة ولي الأمر: مستوى الإتقان ===== */
+.pm-card{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;background:#fff;border-radius:26px;padding:16px;margin:8px 0 14px;box-shadow:var(--u-sh)}
+.pm-ring{position:relative;width:118px;height:118px;grid-row:span 2;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.pm-ring svg{position:absolute;inset:0;transform:rotate(-90deg)}.pm-ring circle{fill:none;stroke-width:11}.pm-bg{stroke:#ece8ff}.pm-fg{stroke:url(#pmG);stroke:#2fb6d8;stroke-linecap:round;transition:stroke-dashoffset 1s}
+.pm-ring b{position:relative;font-size:1.6rem;color:var(--u-ink)}.pm-ring small{position:relative;font-size:.72rem;font-weight:800;color:#6a6290}
+.pm-who{display:flex;align-items:center;gap:10px}.pm-av{font-size:2.2rem}.pm-who b{display:block;color:var(--u-ink);font-size:1.1rem}.pm-who small{color:#6a6290}
+.pm-st{list-style:none;margin:0;padding:0;display:grid;gap:6px}.pm-st li{display:flex;align-items:center;gap:8px;background:#f6f4ff;border-radius:14px;padding:6px 10px;font-weight:700;color:#3b3170}.pm-st li b{margin-inline-start:auto;color:var(--u-pur2)}
+
+/* ===== نافذة «المعلم الذكي بومي» ===== */
+.bm{background:linear-gradient(180deg,#f3efff,#ffffff 40%)!important;border:0!important;box-shadow:0 -10px 30px rgba(60,40,160,.25)}
+.bmh{background:linear-gradient(135deg,#7a5cff,#5a3fe0);color:#fff;margin:-10px -12px 8px;padding:12px 16px;border-radius:24px 24px 0 0}
+.bmh b{font-size:1.1rem}.bmh button{background:rgba(255,255,255,.2)!important;color:#fff!important;border:0!important;border-radius:50%!important;min-width:36px;min-height:36px}
+.bnet{background:#e7fff0;color:#1d8a4c;font-weight:800;border-radius:99px;padding:2px 10px 2px 8px;font-size:.78rem}.bnet::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:#2ecc71;margin-inline-end:5px}
+.bnet.off{background:#fff0f0;color:#b23b3b}.bnet.off::before{background:#e55}
+.bb.a{background:#fff!important;color:var(--u-ink)!important;border-radius:6px 20px 20px 20px!important;box-shadow:0 4px 14px rgba(80,60,200,.12);font-weight:700}
+.bb.u{background:linear-gradient(135deg,#7a5cff,#5a3fe0)!important;color:#fff!important;border-radius:20px 6px 20px 20px!important}
+.bm-acts{display:grid;gap:8px;margin:6px 0 4px}.bm-acts button{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid #ece7ff;border-radius:16px;padding:9px 14px;color:var(--u-ink);font-weight:800;box-shadow:0 3px 0 #e2dcff;text-align:start}
+.bm-acts button span{font-size:1.4rem}.bm-acts button:active{transform:translateY(2px);box-shadow:none}
+.bm-offer button{background:#fff!important;border:2px solid #d9d0ff!important;color:var(--u-pur2)!important;font-weight:800}
