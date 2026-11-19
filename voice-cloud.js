@@ -13,7 +13,7 @@
   for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,0x01000193)>>>0}return h.toString(36)+'_'+s.length.toString(36)};
  const teacher=()=>window.P&&P.teacher==='male'?'male':'female';
  const engVoice=()=>null; /* لا يوجد محرك توليد على الجهاز: كل الصوت مقاطع Edge مسجّلة */
- const loadIx=who=>st.load[who]||(st.load[who]=fetch(base+who+'.json?v=61',{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(j=>{if(j&&j.idx){if(j.v)j.packs=j.packs.map(p=>p+'?v='+j.v);st.ix[who]=j;warm(who)}return st.ix[who]}).catch(()=>{st.load[who]=null;return null}));
+ const loadIx=who=>st.load[who]||(st.load[who]=fetch(base+who+'.json?v=61',{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(j=>{if(j&&j.idx){if(j.v)j.packs=j.packs.map(p=>p+'?v='+j.v);st.ix[who]=j}return st.ix[who]} /* لا تنزيل تلقائي لكل الحزم: كان ~130 م.ب في أول 30 ثانية فيبطئ الهاتف */).catch(()=>{st.load[who]=null;return null}));
  const ready=loadIx(teacher());
  try{window.caches&&['hurufi-clips-v1','hurufi-clips-v2'].forEach(n=>caches.delete(n))}catch(e){} /* مقاطع الإصدارات السابقة */
  /* أُزيل محرك Supertonic 3: نحذف ملفاته المحفوظة سابقًا في المتصفح (~157 م.ب) وإعداداته */
@@ -23,19 +23,24 @@
  const has=(t,l)=>{const who=teacher(),j=st.ix[who];if(!j){loadIx(who);return false}const v=engVoice(who);return(j.engine==='edge'||!v||v===j.voice)&&!!j.idx[key(t,l)]}; /* مقاطع Edge تعمل مع أي نبرة مختارة */
  const cache=()=>window.caches?caches.open(CC).catch(()=>null):Promise.resolve(null);
  /* حزمة كاملة من الذاكرة الدائمة أو الشبكة (تُحفظ فتعمل بلا إنترنت) */
+ /* الحزم المحفوظة في الذاكرة: آخر ١٢ فقط (الباقي في ذاكرة المتصفح الدائمة) */
+ const keep=(name,b)=>{delete st.blob[name];st.blob[name]=b;const ks=Object.keys(st.blob);if(ks.length>12)delete st.blob[ks[0]];return b};
+ /* بعد سماع مقطع من حزمة: نحفظ حزمته (~1.5 م.ب) بهدوء فتعمل بلا إنترنت لاحقًا — فقط الحزم المستعملة فعلًا */
+ const later=name=>{if(st.pre[name])return;try{const n=navigator.connection;if(n&&(n.saveData||/(^|-)2g|3g/.test(n.effectiveType||'')))return}catch(e){}st.pre[name]=1;
+  (window.requestIdleCallback||(f=>setTimeout(f,1500)))(()=>pack(name).catch(()=>{st.pre[name]=0}),{timeout:6000})};
  const pack=async name=>{if(st.blob[name])return st.blob[name];const u=new URL(base+name,location.href).href,c=await cache();
   let r=c&&await c.match(u);if(!r){r=await fetch(u);if(!r.ok)throw new Error('pack');if(c)try{await c.put(u,r.clone())}catch(e){}}
-  return st.blob[name]=await r.blob()};
+  return keep(name,await r.blob())};
  /* تحميل كل الحزم في الخلفية بهدوء (واحدة تلو الأخرى) بعد أن يستقر الموقع */
- const warm=who=>{if(st.pre[who])return;try{const n=navigator.connection;if(n&&(n.saveData||/(^|-)2g|3g/.test(n.effectiveType||'')))return}catch(e){} /* بيانات محدودة: لا نحمّل كل الحزم مسبقًا؛ كل مقطع يُطلب وحده عند الحاجة */st.pre[who]=1;const j=st.ix[who];let i=0;
-  const step=()=>{if(i>=j.packs.length)return;const n=j.packs[i++];pack(n).then(()=>setTimeout(step,250),()=>setTimeout(step,4000))};
-  setTimeout(step,2500)};
+ const warm=(who,force)=>{if(st.pre[who])return;if(!force)try{const n=navigator.connection;if(n&&(n.saveData||/(^|-)2g|3g/.test(n.effectiveType||'')))return}catch(e){} /* بيانات محدودة: لا نحمّل كل الحزم مسبقًا؛ كل مقطع يُطلب وحده عند الحاجة */st.pre[who]=1;const j=st.ix[who];let i=0;
+  const step=()=>{st.prog=[i,j.packs.length];if(i>=j.packs.length)return;const n=j.packs[i++];pack(n).then(()=>setTimeout(step,250),()=>setTimeout(step,4000))};
+  setTimeout(step,300)};
  /* مقطع واحد: من الحزمة إن كانت محمّلة، وإلا نطلب جزءه فقط من الخادم (سريع جدًا) */
  const clip=async(who,k)=>{const j=st.ix[who],[p,off,len]=j.idx[k],name=j.packs[p];
   if(st.blob[name])return st.blob[name].slice(off,off+len,'audio/mpeg');
-  try{const c=await cache(),hit=c&&await c.match(new URL(base+name,location.href).href);if(hit){const b=await hit.blob();st.blob[name]=b;return b.slice(off,off+len,'audio/mpeg')}}catch(e){}
-  try{const r=await fetch(base+name,{headers:{Range:'bytes='+off+'-'+(off+len-1)}});if(r.status===206){const b=await r.blob();return new Blob([b],{type:'audio/mpeg'})}
-   if(r.ok){const b=await r.blob();st.blob[name]=b;return b.slice(off,off+len,'audio/mpeg')}}catch(e){}
+  try{const c=await cache(),hit=c&&await c.match(new URL(base+name,location.href).href);if(hit){const b=keep(name,await hit.blob());return b.slice(off,off+len,'audio/mpeg')}}catch(e){}
+  try{const r=await fetch(base+name,{headers:{Range:'bytes='+off+'-'+(off+len-1)}});if(r.status===206){const b=await r.blob();later(name);return new Blob([b],{type:'audio/mpeg'})}
+   if(r.ok){const b=keep(name,await r.blob());return b.slice(off,off+len,'audio/mpeg')}}catch(e){}
   return(await pack(name)).slice(off,off+len,'audio/mpeg')};
  /* التشغيل عبر Web Audio (وليس عنصر <audio>): يبدأ فورًا بلا قصّ لأول المقطع على الجوال، ويتوقف فورًا عند الضغط على كلمة أخرى.
     عند تغيير سرعة الكلام نستعمل <audio> مع الحفاظ على طبقة الصوت. */
@@ -74,7 +79,9 @@
  const exp=()=>{try{return Object.keys(JSON.parse(localStorage.getItem('hurufiPhrases')||'{}')).join('\n')}catch(e){return''}};
  const pause=()=>{try{if(st.ac&&st.ac.state==='running'&&st.playing){st.ac.suspend();return true}}catch(e){}return false};
  const resume=()=>{try{if(st.ac&&st.ac.state==='suspended'){st.ac.resume();return true}}catch(e){}return false};
- window.HurufiClips={has,play,stop,pause,resume,warm:warmText,busy:()=>!!st.playing,record,export:exp,key,ready,load:loadIx,
+ /* «نزّل كل الأصوات»: للاستعمال الكامل بلا إنترنت (اختياري من الإعدادات) */
+ const offline=async()=>{const who=teacher();await loadIx(who);if(!st.ix[who])return false;st.pre[who]=0;warm(who,1);return true};
+ window.HurufiClips={has,play,stop,pause,resume,warm:warmText,offline,progress:()=>st.prog||null,busy:()=>!!st.playing,record,export:exp,key,ready,load:loadIx,
   count:()=>[st.ix.female?Object.keys(st.ix.female.idx).length:0,st.ix.male?Object.keys(st.ix.male.idx).length:0],voice:who=>st.ix[who||teacher()]?.voice||null};
  /* بعد رسم كل صفحة: نجهّز مقاطع الكلمات القابلة للضغط فيها (بطاقات الدرس، أزرار 🔊) */
  const warmPage=()=>{try{if(!window.say||!say.parts)return;const L=[],add=(t,l)=>{for(const p of say.parts(t,l))L.push(p)};
@@ -96,6 +103,8 @@
   <h3>اختر المعلّم</h3><div class="voice-provider"><button data-teacher="female" class="${t==='female'?'on':''}" onclick="voiceTeacher('female')">👩 معلمة</button><button data-teacher="male" class="${t==='male'?'on':''}" onclick="voiceTeacher('male')">👨 معلم</button></div>
   <p class="mut">🎙️ ${t==='male'?'المعلّم':'المعلّمة'}: العربية بصوت ${vv.ar}، والإنجليزية بصوت ${vv.en} (أصوات Microsoft العصبية المسجّلة مسبقًا). يُختار الصوت العربي أو الإنجليزي تلقائيًا حسب لغة الكلام.</p>
   <button class="alt" onclick="testT()">🔊 جرّب الصوت</button>
+  <h3>الاستخدام بلا إنترنت</h3><p class="mut">الأصوات تُنزَّل عند سماعها فقط. لتعمل كل أصوات الموقع بلا إنترنت نزّلها مرة واحدة (نحو ${t==='male'?'١٢٠':'١٢٧'} م.ب، يُفضَّل على Wi‑Fi).</p>
+  <button class="alt" id="clips-dl" onclick="HurufiClips.offline().then(()=>{const b=document.getElementById('clips-dl');if(!b)return;const tick=()=>{const g=HurufiClips.progress(),x=document.getElementById('clips-dl');if(!x)return;if(g&&g[0]>=g[1]){x.textContent='✅ نُزّلت كل الأصوات';return}x.textContent='⏳ جارٍ التنزيل… '+(g?Math.round(g[0]/g[1]*100):0)+'٪';setTimeout(tick,1000)};tick()})">📥 نزّل كل الأصوات</button>
   <h3>مستوى الصوت</h3><input type=range min=.1 max=1 step=.05 value="${P.vol==null?1:P.vol}" oninput="P.vol=+this.value;save()">
   <h3>سرعة الكلام</h3><input type=range min=.75 max=1.3 step=.05 value="${P.rate||.92}" onchange="P.rate=+this.value;save()">
   <button class="big" onclick="home()">تم</button></section>`)};

@@ -31,6 +31,10 @@ if(L=='ar')s=s.replace(/×/g,' ضَرْب ').replace(/÷/g,' قِسْمَة عَ
 s=fixAr(s); /* لا نستعمل Pron.speech: كان يكتب الكلمات بتهجئة خاصة لصوت الجهاز (كِتَابُنْ، دُبْبْ) فتخالف نص المقاطع المسجّلة */
 return s.replace(/\s+/g,' ').trim()};
 window.onTalk=window.onTalk||(()=>{});
+/* تنبيه واضح عند تعذّر صوت موجود (بلا إنترنت ولم يُنزَّل مقطعه بعد)؛ النص الذي لا مقطع له أصلًا (كاسم الطالب) لا ينبّه */
+let noteAt=0;const soundNote=p=>{try{if(navigator.onLine!==false||!window.HurufiClips||!HurufiClips.has(p.t,p.l)||Date.now()-noteAt<30000)return;noteAt=Date.now();
+ let n=document.getElementById('snd-note');if(!n){n=document.createElement('div');n.id='snd-note';n.setAttribute('role','status');n.style.cssText='position:fixed;inset-inline:12px;top:calc(10px + env(safe-area-inset-top,0px));z-index:40;background:#22254a;color:#fff;font-weight:700;padding:10px 14px;border-radius:14px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.25)';document.body.appendChild(n)}
+ n.textContent='📴 هَذَا الصَّوْتُ لَمْ يُنَزَّلْ بَعْدُ، وَسَيَعْمَلُ عِنْدَ عَوْدَةِ الْإِنْتَرْنِت. (تَنْزِيلُ كُلِّ الْأَصْوَاتِ مِنْ: الْإِعْدَادَات ← صَوْتُ بُومِي)';n.hidden=false;clearTimeout(n._t);n._t=setTimeout(()=>{n.hidden=true},4500)}catch(e){}};
 window.muted=()=>!!(P&&P.snd===0);
 const cl=(x,a,b)=>Math.max(a,Math.min(b,x));
 /* say(نص، لغة، عند الانتهاء، مزاج) — المزاج: happy | soft | explain | cheer | ask | oops
@@ -47,7 +51,7 @@ function runner(tk,L,mood){const parts=[];let i=0,ended=false,cb=null,buf='',all
  const fin=()=>{if(tk!=say.tk)return;say.live=0;onTalk(false);document.dispatchEvent(new Event('hurufi-say'));cb&&cb()};
  const add=txt=>{if(L=='ar'&&window.studentGenderText&&genderOk(txt))txt=studentGenderText(txt);const c=clean(L=='ar'&&window.Tashkeel?Tashkeel.apply(txt):txt,L);if(!c)return;(c.match(SNT)||[c]).forEach(x=>mk(x.trim(),L).forEach(p=>parts.push(p)))};
  /* لا محرك توليد ولا صوت جهاز: نص بلا مقطع مسجّل (اسم الطالب، ردود بومي الذكية) لا يُنطق، فننتقل للمقطع التالي بهدوء */
- const device=p=>{if(tk!=say.tk)return;setTimeout(nx,60)};
+ const device=p=>{if(tk!=say.tk)return;soundNote(p);setTimeout(nx,60)};
 /* تركيب الجملة من مقاطع جاهزة: إن لم تكن الجملة كاملة محفوظة، نبنيها من أطول قطع محفوظة (مثل «اِسْتَمِعْ جَيِّدًا» + «صَاد»)
     فيبدأ الصوت فورًا بنفس صوت المعلّم؛ ويُسمح بقطعة قصيرة واحدة غير محفوظة (كاسم الطالب) تُولَّد محليًا. */
  const D2L=x=>x.replace(/[\u0660-\u0669]/g,d=>String(d.charCodeAt(0)-1632)),TRIM=/^[\s:،,؛—\-]+|[\s:،,؛—\-]+$/g,TRIM2=/[\s؟?!.…]+$/g;

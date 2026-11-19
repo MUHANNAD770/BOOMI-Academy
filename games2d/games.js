@@ -247,8 +247,12 @@ function suggest(){const sc={};const add=(id,v)=>{sc[id]=(sc[id]||0)+v};
 
 /* ================= صفحة الألعاب ================= */
 const CATS=[['adv','🗺️ المغامرات'],['ar','🔤 ألعاب اللغة العربية'],['en','🔠 ألعاب اللغة الإنجليزية'],['math','🔢 ألعاب الرياضيات'],['iq','🧩 ألعاب الذكاء والألغاز']];
+/* الأغلفة تُرسم تدريجيًا بعد ظهور الصفحة (بضعة أغلفة في كل إطار، ~12ms): كان رسم ٣٩ غلافًا دفعة واحدة يجمّد فتح الألعاب ~٤٥٠ms */
+const CV0='data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';let cvQ=0;
+const queueCovers=()=>{if(cvQ)return;cvQ=requestAnimationFrame(function step(){cvQ=0;const L=[...document.querySelectorAll('img.g2-cv[data-cv]')].filter(im=>!coverCache[im.dataset.cv]||im.src!==coverCache[im.dataset.cv]);if(!L.length)return;
+ const t=performance.now();for(const im of L){const gm=GAMES.find(x=>x.id===im.dataset.cv);if(gm){const u=cover(gm);im.src=u||CV0;if(!u)im.removeAttribute('data-cv')}else im.removeAttribute('data-cv');if(performance.now()-t>12)break}cvQ=requestAnimationFrame(step)})};
 const card=g=>{const r=(P.g2||{})[g.id]||{s:{},u:1},st=Object.values(r.s).reduce((a,b)=>a+b,0),comp=Object.keys(r.s).length>=g.levels;
- return `<button class="g2-gc ${comp?'done':''}" onclick="g2levels('${g.id}')"><img alt="" src="${cover(g)}"><span class=g2-gi>${g.icon}</span><b>${esc(g.name)}</b><small>${esc(g.desc)}</small><span class=g2-meta><i>${g.diff}</i><i>${D(g.levels)} مراحل</i><i>⭐ ${D(st)}/${D(g.levels*3)}</i></span>${comp?'<span class=g2-badge>✓ مكتملة</span>':''}</button>`};
+ return `<button class="g2-gc ${comp?'done':''}" onclick="g2levels('${g.id}')"><img alt="" class=g2-cv data-cv="${g.id}" src="${coverCache[g.id]||CV0}">${coverCache[g.id]?'':(queueCovers(),'')}<span class=g2-gi>${g.icon}</span><b>${esc(g.name)}</b><small>${esc(g.desc)}</small><span class=g2-meta><i>${g.diff}</i><i>${D(g.levels)} مراحل</i><i>⭐ ${D(st)}/${D(g.levels*3)}</i></span>${comp?'<span class=g2-badge>✓ مكتملة</span>':''}</button>`};
 window.games2d=function(){stopEng();V='sec';window.CS='games';const had=!!G2.Owl.get('happy');paintHub();
  if(!had)G2.Owl.load().then(()=>{for(const k in coverCache)delete coverCache[k];if(!document.getElementById('g2hub'))return;document.querySelectorAll('.g2-gc').forEach(b=>{const id=(b.getAttribute('onclick')||'').match(/g2levels\('([^']+)'/);const g=id&&GAMES.find(x=>x.id===id[1]);const im=b.querySelector('img');if(g&&im)im.src=cover(g)})})};
 function paintHub(){const sg=suggest(),done=GAMES.filter(g=>Object.keys(((P.g2||{})[g.id]||{s:{}}).s).length>=g.levels),tot=GAMES.reduce((a,g)=>a+totalStars(g.id),0),played=GAMES.filter(g=>((P.g2||{})[g.id]||{}).n).length;
