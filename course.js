@@ -65,15 +65,9 @@
  const levelName=l=>`المستوى ${l}`;
  const resourceIcon=r=>'📖';
  const esc=s=>String(s).replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
- function courseLibrary(filter='all'){
-  V='course';window.CS='les';
-  const visible=MODULES.filter(m=>filter==='all'||m.lang===filter);
-  const all=MODULES.reduce((n,m)=>n+m.resources.length,0),complete=MODULES.reduce((n,m)=>n+moduleDone(m),0);
-  h(`<section class="sec course"><button class="link" onclick="home()">← رجوع للرئيسية</button><div class="course-head"><h2>🗂️ مكتبة الكورس</h2><p>دروس الكورس الأصلية مرتبة حسب اللغة ثم المستوى. الإنجاز ${complete}/${all} مادة.</p></div><div class="course-filters"><button class="${filter==='all'?'on':''}" onclick="courseLibrary('all')">الكل</button><button class="${filter==='ar'?'on':''}" onclick="courseLibrary('ar')">🔤 العربية</button><button class="${filter==='en'?'on':''}" onclick="courseLibrary('en')">🔠 English</button><button class="${filter==='both'?'on':''}" onclick="courseLibrary('both')">🌈 مواد مشتركة</button></div><div class="course-stack">${visible.map(m=>{const n=moduleDone(m),pct=Math.round(n/m.resources.length*100);return `<button class="course-unit" onclick="courseModule('${m.id}','${filter}')"><span class="course-icon">${m.icon}</span><span><span class="course-level">${levelName(m.level)}</span><span class="course-lang">${langName(m.lang)}</span><b>${m.title}</b><small>${m.detail}</small><span class="course-progress"><i style="width:${pct}%"></i></span></span><span class="course-count">${n}/${m.resources.length}<br>←</span></button>`}).join('')}</div></section>`);
- }
  function courseModule(moduleId,filter='all'){
   const m=getModule(moduleId);if(!m)return window.courseLibrary(filter);V='course-module';window.CS='les';const n=moduleDone(m);
-  h(`<section class="sec course"><button class="link" onclick="courseLibrary('${filter}')">← كل مستويات الكورس</button><div class="course-module-title"><span>${m.icon}</span><div><span class="course-level">${levelName(m.level)}</span><h2>${m.title}</h2></div></div><p class="mut">${m.detail}</p><p class="mut">أُنجز ${n} من ${m.resources.length} مادة.</p>${resourceGroups(m).map(g=>`<details class="course-menu"><summary><span><b>📚 ${g.title}</b><small>${g.resources.length} درس${g.resources.length>1?'اً':''}</small></span><i>⌄</i></summary><div class="course-stack">${g.resources.map(r=>{const d=done()[`${m.id}:${r.id}`];return `<button class="course-resource" onclick="courseViewer('${m.id}','${r.id}','${filter}')"><span>${resourceIcon(r)}</span><span><b>${r.title}</b><small>${r.pages===1?'صفحة واحدة':`${r.pages} صفحات`}</small></span><span class="${d?'complete':''}">${d?'✅ أُنجز':'فتح ←'}</span></button>`}).join('')}</div></details>`).join('')}</section>`);
+  h(`<section class="sec course"><button class="link" data-back>← رجوع</button><div class="course-module-title"><span>${m.icon}</span><div><span class="course-level">${levelName(m.level)}</span><h2>${m.title}</h2></div></div><p class="mut">${m.detail}</p><p class="mut">أُنجز ${n} من ${m.resources.length} مادة.</p>${resourceGroups(m).map(g=>`<details class="course-menu"><summary><span><b>📚 ${g.title}</b><small>${g.resources.length} درس${g.resources.length>1?'اً':''}</small></span><i>⌄</i></summary><div class="course-stack">${g.resources.map(r=>{const d=done()[`${m.id}:${r.id}`];return `<button class="course-resource" onclick="courseViewer('${m.id}','${r.id}','${filter}')"><span>${resourceIcon(r)}</span><span><b>${r.title}</b><small>${r.pages===1?'صفحة واحدة':`${r.pages} صفحات`}</small></span><span class="${d?'complete':''}">${d?'✅ أُنجز':'فتح ←'}</span></button>`}).join('')}</div></details>`).join('')}</section>`);
  }
  let imageState=null;
  function courseViewer(moduleId,resourceId,filter='all',page){
@@ -82,13 +76,25 @@
   const av=r.avail||null;let cur=Math.max(r.start,Math.min(r.end,+page||r.start));if(av&&av.indexOf(cur)<0)cur=av.find(x=>x>=cur)||av[av.length-1];const ix=av?av.indexOf(cur):cur-r.start,last=av?av.length-1:r.end-r.start;imageState={moduleId,resourceId,filter,current:cur};
   const pager=r.pages>1?`<div class="course-pager"><button onclick="courseImageStep(-1)" ${ix===0?'disabled':''}>→ السابق</button><b id="course-page-label">${ix+1} / ${r.pages}</b><button onclick="courseImageStep(1)" ${ix===last?'disabled':''}>التالي ←</button></div>`:'';
   const viewer=`${CT.render(r,cur,key+':'+cur)}${pager}`;
-  h(`<section class="sec course"><button class="link" onclick="courseModule('${m.id}','${filter}')">← ${esc(m.title)}</button><p class="course-lang">${levelName(m.level)} · ${langName(m.lang)}</p><h2 class="course-view-title">${resourceIcon(r)} ${r.title}</h2><p class="course-view-meta">${r.pages===1?'صفحة واحدة':`${r.pages} صفحات`}</p>${viewer}<div class="course-actions"><span></span><button class="${isDone?'course-done':'alt'}" onclick="courseToggleDone('${m.id}','${r.id}','${filter}',${cur})">${isDone?'✓ تم الإنجاز - تراجع':'✓ علّم كمُنجز'}</button></div></section>`);
+  h(`<section class="sec course"><button class="link" data-back>← رجوع</button><p class="course-lang">${levelName(m.level)} · ${langName(m.lang)}</p><h2 class="course-view-title">${resourceIcon(r)} ${r.title}</h2><p class="course-view-meta">${r.pages===1?'صفحة واحدة':`${r.pages} صفحات`}</p>${viewer}<div class="course-actions"><span></span><button class="${isDone?'course-done':'alt'}" onclick="courseToggleDone('${m.id}','${r.id}','${filter}',${cur})">${isDone?'✓ تم الإنجاز - تراجع':'✓ علّم كمُنجز'}</button></div></section>`);
  }
  function courseImageStep(step){if(!imageState)return;const m=getModule(imageState.moduleId),r=getResource(m,imageState.resourceId);let next;if(r.avail){const j=r.avail.indexOf(imageState.current)+step;next=r.avail[Math.max(0,Math.min(r.avail.length-1,j))]}else next=Math.max(r.start,Math.min(r.end,imageState.current+step));if(next!==imageState.current)window.courseViewer(imageState.moduleId,imageState.resourceId,imageState.filter,next)}
  function courseToggleDone(moduleId,resourceId,filter,page){const key=`${moduleId}:${resourceId}`;saveDone(key,!done()[key]);window.courseViewer(moduleId,resourceId,filter,page)}
- window.courseLibrary=courseLibrary;window.courseModule=courseModule;window.courseViewer=courseViewer;window.courseImageStep=courseImageStep;window.courseToggleDone=courseToggleDone;
- const oldSec=window.sec;window.sec=function(k){oldSec(k);if(k==='les'){const target=app.querySelector('.sec');if(target)target.insertAdjacentHTML('afterbegin','<div class="course-entry"><b>🗂️ مكتبة الكورس الأصلية</b><p>العربية وEnglish والمواد المشتركة مرتبة حسب المستوى.</p><button class="big" onclick="courseLibrary()">افتح مكتبة الكورس</button></div>')}};
- const oldHome=window.home;window.home=function(){oldHome();if(!P)return;const tiles=app.querySelector('.tl');if(tiles&&!tiles.querySelector('.course-home-card'))tiles.insertAdjacentHTML('afterbegin','<button class="gt course-home-card" onclick="courseLibrary()"><i class="ico ico-em">🗂️</i><b>مكتبة الكورس</b><small>الدروس الأصلية مرتبة</small></button>')};
- /* course.js يُحمَّل بعد الصفحة الرئيسية؛ أعد عرضها مرة واحدة لإظهار مدخل المكتبة فور فتح الموقع. */
- if(window.P)window.home();
+ window.courseModule=courseModule;window.courseViewer=courseViewer;window.courseImageStep=courseImageStep;window.courseToggleDone=courseToggleDone;
+ /* أُلغيت «مكتبة الكورس» كقسم منفصل: كل درس منها يظهر في القسم المناسب لمادته
+    (العربية / English داخل «الدروس»، والأرقام والأشكال داخل «الرياضيات»). مفاتيح التقدّم (وحدة:درس) لم تتغيّر. */
+ const SEC_OF=(m,r)=>{const t=r.title||'';
+  if(m.id==='ar-numbers'||(m.lang!=='en'&&/الأرقام|الرقم/.test(t))||/الأشكال|shapes/i.test(t))return 'math';
+  if(m.lang==='both')return /[A-Za-z]/.test(t)?'en':'ar';
+  return m.lang==='en'?'en':'ar'};
+ const groupsFor=key=>MODULES.map(m=>({m,rs:m.resources.filter(r=>SEC_OF(m,r)===key)})).filter(g=>g.rs.length);
+ const courseBlock=key=>{const G=groupsFor(key);if(!G.length)return '';
+  return `<p class="mut course-books">📚 ${key==='en'?'English: كتب ودروس مصوّرة':key==='math'?'الأرقام والأشكال: كتب ودروس':'كتب ودروس العربية'}</p>`+G.map(({m,rs})=>{const n=rs.filter(r=>done()[`${m.id}:${r.id}`]).length;
+   return `<details class="lesson-menu course-menu-sec"><summary><span><b>${m.icon} ${esc(key==='en'&&m.lang==='both'?'Colors':key==='math'&&m.lang==='both'?'الأشكال – Shapes':m.title)}</b><small>${levelName(m.level)} · ${rs.length} درس · أُنجز ${n}</small></span><i>⌄</i></summary><div class="list">${rs.map(r=>{const d=done()[`${m.id}:${r.id}`];return `<button class="row" onclick="courseViewer('${m.id}','${r.id}')"><span>${d?'✅':'📖'}</span><b>${esc(r.title)}</b><small>${r.pages===1?'صفحة':r.pages+' صفحات'}</small></button>`}).join('')}</div></details>`}).join('')};
+ const oldSec=window.sec;window.sec=function(k){const res=oldSec.apply(this,arguments);try{const S0=app.querySelector('.sec');if(!S0)return res;
+  if(k==='les'){const enH=[...S0.querySelectorAll('h3')].find(x=>/English/i.test(x.textContent));const ar=courseBlock('ar'),en=courseBlock('en');
+   if(enH)enH.insertAdjacentHTML('beforebegin',ar);else S0.insertAdjacentHTML('beforeend',ar);S0.insertAdjacentHTML('beforeend',en)}
+  else if(k==='math'){const l=S0.querySelector('.list');(l||S0).insertAdjacentHTML(l?'afterend':'beforeend',courseBlock('math'))}}catch(e){}return res};
+ /* توافق: أي رابط قديم للمكتبة يفتح قسم الدروس */
+ window.courseLibrary=function(){return window.sec('les')};
 })();
