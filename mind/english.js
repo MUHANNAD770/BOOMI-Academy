@@ -268,5 +268,5 @@ window.enTeach=enTeach;
 /* التثبيت بعد تحميل كل الملفات (بعض الدوال تُعرَّف لاحقًا) */
 function install(){hookQuiz();hookJudge();hookH();dict()}
 install();addEventListener('load',()=>{install();setTimeout(install,500)});
-return Object.assign(api,{level,levelName:()=>NAMES[level()],setLevel,meaning,emoji,pronAr,ipaToAr,profile,stats,recMeaning,recPron,recSent,recQ,recConv,gloss,enTeach,NAMES,POLICY});
+return Object.assign(api,{level,levelName:()=>NAMES[level()],setLevel,meaning,dictAll:()=>Object.values(dict()),emoji,pronAr,ipaToAr,profile,stats,recMeaning,recPron,recSent,recQ,recConv,gloss,enTeach,NAMES,POLICY});
 })();

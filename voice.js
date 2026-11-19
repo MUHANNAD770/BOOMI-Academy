@@ -40,6 +40,8 @@ const cl=(x,a,b)=>Math.max(a,Math.min(b,x));
 /* say(نص، لغة، عند الانتهاء، مزاج) — المزاج: happy | soft | explain | cheer | ask | oops
    say.stream(لغة، مزاج) ← يعيد {push(نص)، end(عند_الانتهاء)} لنطق الإجابة جملةً جملةً أثناء وصولها (بثّ تدريجي)
    say.stop() إيقاف فوري · say.replay() إعادة آخر كلام · الصوت من الجهاز مباشرة */
+/* كلمة عربية تُنطق وحدها (قوائم الكلمات، الخيارات، الضغط على كلمة) وهي نكرة: تُنطق منوّنة كما تُقرأ (بَقَرَةٌ لا «بَقَر») */
+const nun1=s=>{const m=String(s).trim().match(/^([\u0621-\u064A\u064B-\u0652\u0670]+)([.!؟?،]*)$/);return m&&Tashkeel.nunWord?Tashkeel.nunWord(m[1])+m[2]:s};
 const ENDS=/[.!؟?\n]/,CL=/[^،,;:]+[،,;:]?/g,SNT=/[^.!؟?\n]+[.!؟?\n]*/g;
 /* جملة ← أجزاء تُطابق مفاتيح المقاطع المسجّلة. */
 /* تقسيم الجملة إلى مقاطع حسب اللغة فقط (بلا تقسيم عند الفواصل): بهذه المفاتيح نفسها سُجّلت مقاطع Edge (tools/clips) */
@@ -49,7 +51,7 @@ const mk=(sn,L)=>{const o=[],e=(sn.match(/[.!؟?]+\s*$/)||[''])[0].trim().slice(
   cs.forEach((x,j)=>{const m=(x.match(/[،,;:]$/)||[''])[0];o.push({t:x.replace(/[،,;:]$/,''),l:r[1],e:m||(last&&j==cs.length-1?e:'')})})});return o};
 function runner(tk,L,mood){const parts=[];let i=0,ended=false,cb=null,buf='',all='';
  const fin=()=>{if(tk!=say.tk)return;say.live=0;onTalk(false);document.dispatchEvent(new Event('hurufi-say'));cb&&cb()};
- const add=txt=>{if(L=='ar'&&window.studentGenderText&&genderOk(txt))txt=studentGenderText(txt);const c=clean(L=='ar'&&window.Tashkeel?Tashkeel.apply(txt):txt,L);if(!c)return;(c.match(SNT)||[c]).forEach(x=>mk(x.trim(),L).forEach(p=>parts.push(p)))};
+ const add=txt=>{if(L=='ar'&&window.studentGenderText&&genderOk(txt))txt=studentGenderText(txt);const c=clean(L=='ar'&&window.Tashkeel?nun1(Tashkeel.apply(txt)):txt,L);if(!c)return;(c.match(SNT)||[c]).forEach(x=>mk(x.trim(),L).forEach(p=>parts.push(p)))};
  /* لا محرك توليد ولا صوت جهاز: نص بلا مقطع مسجّل (اسم الطالب، ردود بومي الذكية) لا يُنطق، فننتقل للمقطع التالي بهدوء */
  const device=p=>{if(tk!=say.tk)return;soundNote(p);setTimeout(nx,60)};
 /* تركيب الجملة من مقاطع جاهزة: إن لم تكن الجملة كاملة محفوظة، نبنيها من أطول قطع محفوظة (مثل «اِسْتَمِعْ جَيِّدًا» + «صَاد»)
@@ -132,7 +134,7 @@ say.pause=()=>{if(!say.live)return false;say.paused=1;try{window.HurufiClips&&Hu
 say.resume=()=>{if(!say.paused)return false;say.paused=0;try{window.HurufiClips&&HurufiClips.resume()}catch(e){}document.dispatchEvent(new Event('hurufi-say'));return true};
 say.replay=()=>{const x=say.last;if(x&&x.t)say(x.t,x.l,null,x.m)};
 /* الأجزاء التي ستُنطق فعلًا (نفس المعالجة تمامًا) — لتحضير الأصوات مسبقًا بنفس المفاتيح */
-say.parts=(t,l)=>{try{const L=l=='ar'?'ar':'en';let x=String(t==null?'':t);const k0=fixAr(x.trim());x=SYL[k0]||x;if(L=='ar'&&window.studentGenderText&&genderOk(x))x=studentGenderText(x);const c=clean(L=='ar'&&window.Tashkeel?Tashkeel.apply(x):x,L),o=[];if(!c)return o;(c.match(SNT)||[c]).forEach(y=>mk(y.trim(),L).forEach(p=>o.push([p.t,p.l])));return o}catch(e){return[]}};
+say.parts=(t,l)=>{try{const L=l=='ar'?'ar':'en';let x=String(t==null?'':t);const k0=fixAr(x.trim());x=SYL[k0]||x;if(L=='ar'&&window.studentGenderText&&genderOk(x))x=studentGenderText(x);const c=clean(L=='ar'&&window.Tashkeel?nun1(Tashkeel.apply(x)):x,L),o=[];if(!c)return o;(c.match(SNT)||[c]).forEach(y=>mk(y.trim(),L).forEach(p=>o.push([p.t,p.l])));return o}catch(e){return[]}};
 window.say_unlock=()=>{};
 window.pickPersona=function(k){if(!P)return;P.teacher=/male/i.test(k)&&!/^female/i.test(k)?'male':'female';save();window.testT()};
 window.testT=function(){const x=P&&P.gender=='female'?'صَدِيقَتِي':'صَدِيقِي',me=teacher()=='male'?'مُعَلِّمُكَ':'مُعَلِّمَتُكَ';say(`أَهْلًا يَا ${x}! أَنَا ${me} بُومِي، هَلْ تَسْمَعُنِي بِوُضُوحٍ؟`,'ar',null,'cheer')};

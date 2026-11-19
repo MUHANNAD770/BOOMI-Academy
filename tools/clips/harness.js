@@ -11,8 +11,9 @@ function mkCtx(gender){
  w.window=w;w.self=w;w.globalThis=w;
  const ctx=vm.createContext(w);
  /* phase9.js: تحويل الخطاب حسب جنس الطالب (اضغطي، أحسنتِ…) كما يحدث في الموقع، فتُسجَّل صيغ الطالبات أيضًا */
- for(const f of ['voices/lex.js','voices/lex-ext.js','voices/tashkeel.js','voices/pron.js','voice.js','phase9.js']){
-  try{vm.runInContext(fs.readFileSync(path.join(ROOT,f),'utf8'),ctx,{filename:f})}catch(e){console.error('ERR',f,e.message)}}
+ /* بيانات الدروس ونصوص الكورس ومعاني الإنجليزية بالترتيب نفسه في index.html: منها يُعرف أي كلمة منفردة تُنطق منوّنة (Tashkeel.nunWord) */
+ for(const f of ['app.js','content1.js','content2.js','content3.js','content4.js','content5.js','content6.js','content7.js','voices/lex.js','voices/lex-ext.js','voices/tashkeel.js','voices/pron.js','voice.js','phase9.js','course-text-data.js','course-text-data2.js','course-text-data3.js','course-text-data4.js','mind/english.js']){
+  try{vm.runInContext(fs.readFileSync(path.join(ROOT,f),'utf8'),ctx,{filename:f})}catch(e){if(!/app\.js$/.test(f))console.error('ERR',f,e.message)}}
  return ctx;
 }
 const key=(t,l)=>{const s=((l==='ar'?'ar':'en')+'|'+String(t||'').replace(/\s+/g,' ').trim()).normalize('NFC');let h=0x811c9dc5;

@@ -102,5 +102,21 @@ function nunate(w){w=String(w||'').trim();if(!w||/\s/.test(w)||!/[ء-ي]/.test(w
 try{const EMJ=/\p{Extended_Pictographic}/u,MV={};for(const st of S)for(const un of st.u)if(un.l==='ar')for(const it of un.i)if(EMJ.test(String(it[1]))){const o=it[0],n=nunate(o);if(n!==o){it[0]=n;MV[o]=n}}
  /* إتقان كل كلمة محفوظ باسمها (P.sk): ننقله إلى الصيغة المنوّنة كي لا يضيع تقدّم الطالب */
  const D=window.DB;if(D&&D.kids)for(const kd of D.kids){const sk=kd&&kd.sk;if(sk)for(const o in MV)if(sk[o]){if(!sk[MV[o]])sk[MV[o]]=sk[o];delete sk[o]}}}catch(e){}
-window.Tashkeel={apply,learn,ratio,size:()=>Object.keys(L).length,full,fixArt,nunate};
+/* الأسماء المعروفة التي تُنطق منوّنة إذا قيلت وحدها: كلمات الصور، قوائم كلمات نصوص الكورس وجداولها وخياراتها، ومعاني الكلمات الإنجليزية.
+   لا نُنوِّن أي كلمة منفردة كيفما اتفق (الأفعال يَلْعَبُ، والمعرّف وَالْكِتَابَة، والكلمات الأجنبية تخطئ). */
+let NN=null;const NV=/^(?:[وف][َ]?)?(?:[بلك][َِ]?)?(?:ال|لل)/;
+function nouns(){if(NN&&NN.size)return NN;const o=new Set(),E=/\p{Extended_Pictographic}/u,EA=/[\p{Extended_Pictographic}\u200d\ufe0f]/gu;
+ const add=w=>{w=String(w||'').replace(EA,'').trim();if(!w||/\s/.test(w)||!/[\u064B-\u0652]/.test(w))return;const k=nk(strip(w));if(k.length<2||NV.test(k)||(/^ي/.test(k)&&k.length>=4))return;o.add(k)};
+ try{for(const st of S)for(const un of st.u)for(const it of un.i)if(E.test(String(it[1]))){if(un.l==='ar')add(it[0]);else if(/[\u0600-\u06FF]/.test(it[1]))add(it[1])}}catch(e){}
+ try{(window.EnCoach&&EnCoach.dictAll?EnCoach.dictAll():[]).forEach(add)}catch(e){}
+ try{const C=window.COURSE_TEXT||{};for(const k in C)for(const b of C[k]||[]){if(b.t==='words')(b.x||[]).forEach(add);else if(b.t==='table')(b.rows||[]).forEach(r=>add(r&&r[0]));else if(b.t==='quiz'&&b.o)add(b.o[b.a]) /* الجواب الصحيح فقط: بعض الخيارات أخطاء إملائية مقصودة (طَابِل) */}}catch(e){}
+ if(window.COURSE_TEXT)NN=o;return o}
+/* كلمة منفردة: تُنوَّن إن كانت اسمًا معروفًا */
+/* حروف وظروف وأسماء حروف الهجاء والأشهر (أعلام أجنبية) وأفعال قصيرة لا تُنوَّن */
+const NOT=new Set('نعم لا تحت فوق امس اين او لان بين عند مع قبل بعد كل ثم ان من عن قد هل بل لكن منذ حيث كيف متى يقف يجلس ينام يكل يقول يصل يزن يعد يضع يقع يجد يلد يرث الف باء تاء ثاء جيم حاء خاء دال ذال راء زاي سين شين صاد ضاد طاء ظاء عين غين فاء قاف كاف لام ميم نون هاء واو ياء همزة يناير فبراير مارس ابريل مايو يونيو يوليو اغسطس سبتمبر اكتوبر نوفمبر ديسمبر'.split(' '));
+function nunWord(w){try{w=String(w);const k=nk(strip(w)),N=nouns();if(!N.has(k)||NOT.has(k))return w;
+ /* المثنى (طَائِرَتَانِ، وَلَدَانِ) يُختم بكسرة لا بتنوين؛ أما فُسْتَانٌ وبُسْتَانٌ وكَمَانٌ فمفردة */
+ if(/ان$/.test(k)&&((/تان$/.test(k)&&/[\u064E\u064F\u0650]\u062A[\u064E]?\u0627/.test(w))||(k.length>=5&&(N.has(k.slice(0,-2))||N.has(k.slice(0,-2)+'ة')))))return /[\u064B-\u0652]$/.test(w)?w:w+'\u0650';
+ return nunate(w)}catch(e){return w}}
+window.Tashkeel={apply,learn,ratio,size:()=>Object.keys(L).length,full,fixArt,nunate,nunWord,nouns};
 })();
