@@ -70,6 +70,8 @@ const browser=p=>{try{window.HurufiClips&&HurufiClips.record(p.t,p.l)}catch(e){}
  const nx=()=>{if(tk!=say.tk)return;
   if(i>=parts.length){if(ended&&!buf.trim())return fin();setTimeout(nx,60);return} /* ننتظر بقية الإجابة */
   const p=parts[i++];
+  /* نجهّز المقطعين التاليين أثناء نطق الحالي: لا فجوات بين أجزاء الجملة */
+  try{if(window.HurufiClips&&HurufiClips.warm)parts.slice(i,i+2).forEach(q=>{const d=q.t.replace(/[\u0660-\u0669]/g,x=>String(x.charCodeAt(0)-1632));HurufiClips.warm(HurufiClips.has(q.t,q.l)?q.t:d,q.l)})}catch(e){}
   browser(p)};
  const flush=final=>{let m=buf.match(/^[\s\S]*[.!؟?\n]/);if(m){add(m[0]);buf=buf.slice(m[0].length)}
   else if(buf.length>150){const k=Math.max(buf.lastIndexOf('،'),buf.lastIndexOf(','));if(k>40){add(buf.slice(0,k+1)+'،');buf=buf.slice(k+1)}}

@@ -20,7 +20,8 @@
 .g2-stage canvas{display:block;width:100%}
 .g2-hud{position:absolute;top:8px;inset-inline:10px;display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;pointer-events:none;font-weight:800;color:#1c2c86}
 .g2-hud>span{background:rgba(255,255,255,.88);padding:3px 10px;border-radius:99px;box-shadow:0 3px 8px rgba(0,0,0,.12)}.h-word b{display:inline-block;min-width:22px;text-align:center;opacity:.35;font-size:1.15rem}.h-word b.on{opacity:1;color:#20b486}
-.g2-target{direction:ltr;unicode-bidi:isolate;position:absolute;top:46px;left:50%;transform:translateX(-50%);pointer-events:none}.g2-target span{display:inline-block;background:#fff;color:#1c2c86;font-weight:900;font-size:1.5rem;padding:4px 18px;border-radius:18px;border:3px solid #f7b500;box-shadow:0 6px 16px rgba(0,0,0,.15)}
+/* الهدف في شريط الأعلى وبحجم صغير: كان في وسط السماء فيغطي الفقاعات المتساقطة */
+.g2-target{direction:ltr;unicode-bidi:isolate;position:absolute;top:8px;left:50%;transform:translateX(-50%);pointer-events:none;z-index:2}.g2-target span{display:inline-block;background:rgba(255,255,255,.92);color:#1c2c86;font-weight:900;font-size:1.1rem;line-height:1.2;padding:3px 12px;border-radius:99px;border:2px solid #f7b500;box-shadow:0 3px 8px rgba(0,0,0,.12)}
 .g2-ctl{position:absolute;bottom:10px;inset-inline:10px;display:flex;justify-content:space-between;pointer-events:none;direction:ltr}
 .g2-b{pointer-events:auto;width:64px;height:64px;border-radius:50%;border:0;background:rgba(255,255,255,.82);color:#1c2c86;font-size:1.7rem;font-weight:900;box-shadow:0 5px 0 rgba(28,44,134,.35);touch-action:none}
 .g2-b.on,.g2-b:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(28,44,134,.35);background:#fff}
