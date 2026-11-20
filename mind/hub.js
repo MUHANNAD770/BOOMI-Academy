@@ -35,7 +35,8 @@ function weak(n){return skills().filter(s=>(s.n||0)>=3&&s.p<.6).sort((a,b)=>a.p-
 function strong(n){return skills().filter(s=>(s.n||0)>=3&&s.p>=.85).sort((a,b)=>b.p-a.p).slice(0,n||5)}
 function bySubject(){const o={};for(const s of skills()){if(!(s.n>=2))continue;const x=o[s.sub]=o[s.sub]||{n:0,sum:0,name:NAME[s.sub]||s.sub};x.n++;x.sum+=s.p}for(const k in o)o[k].p=o[k].sum/o[k].n;return o}
 /* الدرس التالي في المسار (أول درس غير مكتمل في مرحلة الطالب) */
-function nextLesson(){try{const st=S[+P.stage||0];for(const u of st.u)if(!(P.done||{})[u.id])return u}catch(e){}return null}
+function nextLesson(){try{const W=window.nextLesson;if(W){const L=P.lang==='en'?['en','ar']:P.lang==='ar'?['ar','en']:['ar','en'];for(const l of L){const u=W(l);if(u)return u}return null} /* درس مفتوح من مسار الطالب ولغته (world.js)، لا درس مقفل */
+ const st=S[+P.stage||0];for(const u of st.u)if(!(P.done||{})[u.id])return u}catch(e){}return null}
 /* الخطوة التالية: قرار واحد يستعمله الصفحة الرئيسية وبومي ولوحة ولي الأمر */
 function next(){if(!window.P)return null;
  try{const due=window.MindMemory?MindMemory.dueItems(null,30).filter(it=>{const s=P.sk[it[0]];return s&&(s.due||0)<now()}).length:0;

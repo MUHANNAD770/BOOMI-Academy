@@ -1,8 +1,14 @@
 /* بعد إتقان الدرس: «الدرس التالي» يفتح الدرس التالي في المادة نفسها (كان يعود إلى الرئيسية) */
-window.nextAfterCur=()=>{try{const id=window.cur&&cur.id,u=id&&find(id);const l=(u&&u.l)||'ar';let n=window.nextLesson&&nextLesson(l);
- if(!n||n.id===id){const all=S.flatMap(st=>st.u).filter(x=>x.l===l);const i=all.findIndex(x=>x.id===id);n=i>=0?all.slice(i+1).find(x=>!(P.done||{})[x.id])||all[i+1]||null:n}return n&&n.id!==id?n:null}catch(e){return null}};
-window.nextLabel=()=>{const n=nextAfterCur();return n?'▶️ الدرس التالي: '+n.n:'📚 كل الدروس'};
-window.goNextLesson=()=>{const n=nextAfterCur();if(n)return lesson(n.id);sec('les')};
+/* الدرس التالي = الدرس الذي يلي الحالي مباشرة في المادة نفسها وبالترتيب (المرحلة نفسها ثم التي بعدها).
+   كان يفتح «أول درس غير مكتمل في الخريطة» فيرجع إلى درس قديم أو يقفز إلى مرحلة/مادة أخرى.
+   إن كان الدرس التالي مقفلًا (المرحلة التالية لم تُفتح بعد): أول درس غير مكتمل في المرحلة الحالية من المادة نفسها. */
+window.nextAfterCur=()=>{try{const id=window.cur&&cur.id;if(!id||!/^\d+-\d+$/.test(id))return null;const u=find(id);if(!u)return null;
+ const all=S.flatMap(st=>st.u).filter(x=>x.l===u.l),i=all.indexOf(u);if(i<0)return null;const n=all[i+1];
+ const open=x=>!window.lessonUnlocked||lessonUnlocked(x);if(n&&open(n))return n;
+ const a=+id.split('-')[0],here=S[a].u.filter(x=>x.l===u.l&&x!==u&&!(P.done||{})[x.id]&&open(x));return here[0]||null}catch(e){return null}};
+window.nextLabel=()=>{const n=nextAfterCur();return n?'▶️ الدرس التالي: '+n.n:'📚 '+(((window.cur&&find0l())==='en')?'دروس English':'دروس العربية')};
+const find0l=()=>{try{return find(cur.id).l}catch(e){return ''}};
+window.goNextLesson=()=>{const n=nextAfterCur();if(n)return lesson(n.id);const l=find0l();sec(l==='en'?'en':l==='ar'?'ar':'les')}; /* لا درس بعده: قائمة دروس المادة نفسها */
 /* smart.js — محرك التعلم التكيّفي، الرياضيات، المعلم، النطق، التقارير، الملفات */
 var DB=(()=>{try{return JSON.parse(localStorage.getItem('hrw2'))}catch(e){return null}})()||{kids:[],cur:0};
 if(!DB.kids.length){try{const o=JSON.parse(localStorage.getItem('hrw'));if(o)DB.kids.push(o)}catch(e){}}
