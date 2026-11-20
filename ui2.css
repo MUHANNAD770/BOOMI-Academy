@@ -294,3 +294,9 @@ button.bank-sub{width:100%;border:0;font:inherit;text-align:start;cursor:pointer
 :root[data-theme=dark] .lesson-menu[open] summary,:root[data-theme=dark] .course-menu[open] summary{background:rgba(255,255,255,.06)}
 @media (prefers-color-scheme: dark){:root:not([data-theme=light]) .lesson-menu summary b,:root:not([data-theme=light]) .course-menu summary b{color:#ece6ff}
 :root:not([data-theme=light]) .lesson-menu[open] summary,:root:not([data-theme=light]) .course-menu[open] summary{background:rgba(255,255,255,.06)}}
+/* الاختبار الشامل للقصص */
+.sb-testbtn{background:linear-gradient(180deg,#7a5cff,#5a3be0)!important;color:#fff!important;box-shadow:0 5px 0 #3a26a0!important}
+.sb-sec{display:inline-block;background:rgba(122,92,255,.14);border-radius:99px;padding:3px 12px;font-weight:800;margin:2px 0 6px}
+.sb-secs{display:grid;gap:8px;margin:10px 0}.sb-srow{display:grid;grid-template-columns:8.5em 1fr 4.2em;align-items:center;gap:8px;font-weight:800}
+.sb-srow i{height:10px;border-radius:99px;background:rgba(127,127,200,.25);overflow:hidden}.sb-srow i b{display:block;height:100%;background:linear-gradient(90deg,#ffd54a,#22a35a);border-radius:99px}
+.sb-srow em{font-style:normal;text-align:center}
