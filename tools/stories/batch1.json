@@ -1,0 +1,369 @@
+{
+ "bank": "Boomi Bilingual Story Academy",
+ "batch": 1,
+ "stories": [
+  {
+   "id": "story_ar_001",
+   "language": "ar",
+   "stage": "مرحلة التأسيس",
+   "level": "A1",
+   "title": "الْقِطَّةُ الصَّغِيرَةُ",
+   "text": "فِي صَبَاحٍ جَمِيلٍ، خَرَجَتْ قِطَّةٌ صَغِيرَةٌ مِنَ الْبَيْتِ. كَانَ لَوْنُهَا أَبْيَضَ، وَعَيْنَاهَا زَرْقَاوَيْنِ. رَأَتْ فَرَاشَةً جَمِيلَةً تَطِيرُ فِي الْحَدِيقَةِ. تَبِعَتِ الْقِطَّةُ الْفَرَاشَةَ، ثُمَّ تَوَقَّفَتْ عِنْدَ زَهْرَةٍ حَمْرَاءَ. شَمَّتِ الزَّهْرَةَ وَعَادَتْ إِلَى أُمِّهَا سَعِيدَةً.",
+   "vocabulary": [
+    {
+     "word": "قِطَّةٌ",
+     "meaning": "حَيَوَانٌ أَلِيفٌ"
+    },
+    {
+     "word": "فَرَاشَةٌ",
+     "meaning": "حَشَرَةٌ لَهَا أَجْنِحَةٌ جَمِيلَةٌ"
+    },
+    {
+     "word": "حَدِيقَةٌ",
+     "meaning": "مَكَانٌ فِيهِ أَزْهَارٌ وَنَبَاتَاتٌ"
+    },
+    {
+     "word": "شَمَّتْ",
+     "meaning": "اسْتَخْدَمَتْ أَنْفَهَا لِتَعْرِفَ الرَّائِحَةَ"
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ar001_q1",
+     "type": "multiple_choice",
+     "question": "مَا لَوْنُ الْقِطَّةِ؟",
+     "options": [
+      "أَبْيَضُ",
+      "أَسْوَدُ",
+      "بُنِّيٌّ"
+     ],
+     "answer": "أَبْيَضُ",
+     "explanation": "ذَكَرَ النَّصُّ أَنَّ لَوْنَ الْقِطَّةِ أَبْيَضُ."
+    },
+    {
+     "id": "ar001_q2",
+     "type": "multiple_choice",
+     "question": "مَاذَا رَأَتِ الْقِطَّةُ فِي الْحَدِيقَةِ؟",
+     "options": [
+      "عُصْفُورًا",
+      "فَرَاشَةً",
+      "أَرْنَبًا"
+     ],
+     "answer": "فَرَاشَةً",
+     "explanation": "رَأَتِ الْقِطَّةُ فَرَاشَةً جَمِيلَةً تَطِيرُ."
+    },
+    {
+     "id": "ar001_q3",
+     "type": "true_false",
+     "question": "عَادَتِ الْقِطَّةُ إِلَى أُمِّهَا سَعِيدَةً.",
+     "answer": true,
+     "explanation": "تَنْتَهِي الْقِصَّةُ بِعَوْدَةِ الْقِطَّةِ إِلَى أُمِّهَا وَهِيَ سَعِيدَةٌ."
+    },
+    {
+     "id": "ar001_q4",
+     "type": "short_answer",
+     "question": "أَيْنَ تَوَقَّفَتِ الْقِطَّةُ؟",
+     "answer": "عِنْدَ زَهْرَةٍ حَمْرَاءَ.",
+     "explanation": "تَوَقَّفَتِ الْقِطَّةُ عِنْدَ زَهْرَةٍ حَمْرَاءَ وَشَمَّتْهَا."
+    }
+   ],
+   "image": {
+    "url": "",
+    "alt": "قِطَّةٌ بَيْضَاءُ صَغِيرَةٌ تَنْظُرُ إِلَى فَرَاشَةٍ فِي حَدِيقَةٍ مُزْهِرَةٍ",
+    "prompt": "A cute small white kitten with bright blue eyes looking at a colorful butterfly beside a red flower in a beautiful sunny garden, high-quality 3D animated children's storybook illustration, cheerful atmosphere, soft lighting, no text."
+   }
+  },
+  {
+   "id": "story_en_002",
+   "language": "en",
+   "stage": "مرحلة التأسيس",
+   "level": "A1",
+   "title": "The Little Bird",
+   "text": "A little bird lives in a tall tree. Every morning, it sings a happy song. One day, the bird sees a small worm on the ground. It flies down and eats the worm. Then it sees a thirsty rabbit near a tree. The bird finds a little bowl of water and shows it to the rabbit. The rabbit drinks the water and feels happy. The bird flies back to its nest.",
+   "vocabulary": [
+    {
+     "word": "Bird",
+     "meaning": "طائر"
+    },
+    {
+     "word": "Tree",
+     "meaning": "شجرة"
+    },
+    {
+     "word": "Worm",
+     "meaning": "دودة"
+    },
+    {
+     "word": "Thirsty",
+     "meaning": "عطشان"
+    },
+    {
+     "word": "Nest",
+     "meaning": "عش"
+    }
+   ],
+   "exercises": [
+    {
+     "id": "en002_q1",
+     "type": "multiple_choice",
+     "question": "Where does the little bird live?",
+     "options": [
+      "In a tall tree",
+      "In a house",
+      "In a cave"
+     ],
+     "answer": "In a tall tree",
+     "explanation": "The first sentence says that the bird lives in a tall tree."
+    },
+    {
+     "id": "en002_q2",
+     "type": "multiple_choice",
+     "question": "What does the bird see on the ground?",
+     "options": [
+      "A flower",
+      "A small worm",
+      "A red ball"
+     ],
+     "answer": "A small worm",
+     "explanation": "The bird sees a small worm on the ground."
+    },
+    {
+     "id": "en002_q3",
+     "type": "true_false",
+     "question": "The rabbit is thirsty.",
+     "answer": true,
+     "explanation": "The story describes a thirsty rabbit."
+    },
+    {
+     "id": "en002_q4",
+     "type": "short_answer",
+     "question": "What does the bird show the rabbit?",
+     "answer": "A little bowl of water.",
+     "explanation": "The bird finds water and shows it to the rabbit."
+    }
+   ],
+   "image": {
+    "url": "",
+    "alt": "A little colorful bird helping a thirsty rabbit near a tree",
+    "prompt": "A cute small colorful bird helping a friendly little rabbit by showing it a small bowl of clean water under a tall green tree, beautiful 3D animated children's storybook style, warm sunlight, expressive characters, no text."
+   }
+  },
+  {
+   "id": "story_ar_003",
+   "language": "ar",
+   "stage": "مرحلة التأسيس",
+   "level": "A1",
+   "title": "الْأَرْنَبُ وَالْجَزَرَةُ",
+   "text": "خَرَجَ أَرْنَبٌ صَغِيرٌ إِلَى الْحَقْلِ فِي الصَّبَاحِ. كَانَ جَائِعًا، فَبَحَثَ عَنْ طَعَامٍ. وَجَدَ جَزَرَةً كَبِيرَةً بَيْنَ النَّبَاتَاتِ. حَاوَلَ أَنْ يَسْحَبَهَا، وَلَكِنَّهَا كَانَتْ مُثَبَّتَةً فِي التُّرَابِ. جَاءَ صَدِيقُهُ الْفَأْرُ وَسَاعَدَهُ. سَحَبَا الْجَزَرَةَ مَعًا، ثُمَّ تَقَاسَمَا الطَّعَامَ بِسَعَادَةٍ.",
+   "vocabulary": [
+    {
+     "word": "حَقْلٌ",
+     "meaning": "أَرْضٌ تُزْرَعُ فِيهَا النَّبَاتَاتُ"
+    },
+    {
+     "word": "جَائِعٌ",
+     "meaning": "يَحْتَاجُ إِلَى الطَّعَامِ"
+    },
+    {
+     "word": "يَسْحَبُ",
+     "meaning": "يَجُرُّ الشَّيْءَ نَحْوَهُ"
+    },
+    {
+     "word": "تَقَاسَمَا",
+     "meaning": "وَزَّعَا الشَّيْءَ بَيْنَهُمَا"
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ar003_q1",
+     "type": "multiple_choice",
+     "question": "مَاذَا وَجَدَ الْأَرْنَبُ فِي الْحَقْلِ؟",
+     "options": [
+      "تُفَّاحَةً",
+      "جَزَرَةً كَبِيرَةً",
+      "كُرَةً"
+     ],
+     "answer": "جَزَرَةً كَبِيرَةً",
+     "explanation": "وَجَدَ الْأَرْنَبُ جَزَرَةً كَبِيرَةً بَيْنَ النَّبَاتَاتِ."
+    },
+    {
+     "id": "ar003_q2",
+     "type": "multiple_choice",
+     "question": "مَنْ سَاعَدَ الْأَرْنَبَ؟",
+     "options": [
+      "الْفَأْرُ",
+      "الْقِطَّةُ",
+      "الْعُصْفُورُ"
+     ],
+     "answer": "الْفَأْرُ",
+     "explanation": "جَاءَ صَدِيقُهُ الْفَأْرُ وَسَاعَدَهُ فِي سَحْبِ الْجَزَرَةِ."
+    },
+    {
+     "id": "ar003_q3",
+     "type": "true_false",
+     "question": "أَكَلَ الْأَرْنَبُ الْجَزَرَةَ وَحْدَهُ.",
+     "answer": false,
+     "explanation": "تَقَاسَمَ الْأَرْنَبُ وَالْفَأْرُ الطَّعَامَ مَعًا."
+    },
+    {
+     "id": "ar003_q4",
+     "type": "short_answer",
+     "question": "مَاذَا تَعَلَّمْنَا مِنَ الْقِصَّةِ؟",
+     "answer": "أَنَّ التَّعَاوُنَ وَمُسَاعَدَةَ الْأَصْدِقَاءِ أَمْرٌ مُهِمٌّ.",
+     "explanation": "اسْتَطَاعَ الصَّدِيقَانِ سَحْبَ الْجَزَرَةِ بِالتَّعَاوُنِ."
+    }
+   ],
+   "image": {
+    "url": "",
+    "alt": "أَرْنَبٌ وَفَأْرٌ يَسْحَبَانِ جَزَرَةً كَبِيرَةً مِنَ التُّرَابِ",
+    "prompt": "A cute white rabbit and a tiny friendly brown mouse working together to pull a large orange carrot from the soil in a green vegetable field, joyful 3D animated children's storybook illustration, bright colors, no text."
+   }
+  },
+  {
+   "id": "story_en_004",
+   "language": "en",
+   "stage": "مرحلة التأسيس",
+   "level": "A1",
+   "title": "The Red Balloon",
+   "text": "Sara has a red balloon. She takes it to the park. The wind blows, and the balloon flies into the sky. Sara feels sad. A kind boy sees her and brings a long stick. He carefully gets the balloon down from a low tree branch. Sara smiles and says, Thank you! They play together in the park.",
+   "vocabulary": [
+    {
+     "word": "Balloon",
+     "meaning": "بالون"
+    },
+    {
+     "word": "Wind",
+     "meaning": "رياح"
+    },
+    {
+     "word": "Sky",
+     "meaning": "سماء"
+    },
+    {
+     "word": "Kind",
+     "meaning": "لطيف"
+    },
+    {
+     "word": "Branch",
+     "meaning": "غصن"
+    }
+   ],
+   "exercises": [
+    {
+     "id": "en004_q1",
+     "type": "multiple_choice",
+     "question": "What color is Sara's balloon?",
+     "options": [
+      "Blue",
+      "Red",
+      "Yellow"
+     ],
+     "answer": "Red",
+     "explanation": "The story says that Sara has a red balloon."
+    },
+    {
+     "id": "en004_q2",
+     "type": "multiple_choice",
+     "question": "Where does Sara take the balloon?",
+     "options": [
+      "To school",
+      "To the park",
+      "To the shop"
+     ],
+     "answer": "To the park",
+     "explanation": "Sara takes her balloon to the park."
+    },
+    {
+     "id": "en004_q3",
+     "type": "true_false",
+     "question": "A kind boy helps Sara.",
+     "answer": true,
+     "explanation": "The boy uses a long stick to bring the balloon down."
+    },
+    {
+     "id": "en004_q4",
+     "type": "short_answer",
+     "question": "Where does the balloon get stuck?",
+     "answer": "On a low tree branch.",
+     "explanation": "The balloon is caught on a low branch of a tree."
+    }
+   ],
+   "image": {
+    "url": "",
+    "alt": "A girl and a boy retrieving a red balloon from a tree in a park",
+    "prompt": "A cheerful young girl and a kind boy in a sunny green park, the boy carefully retrieving a bright red balloon from a low tree branch using a long stick, colorful 3D animated children's storybook illustration, no text."
+   }
+  },
+  {
+   "id": "story_ar_005",
+   "language": "ar",
+   "stage": "مرحلة التأسيس",
+   "level": "A1",
+   "title": "سَمَكَةٌ صَغِيرَةٌ",
+   "text": "عَاشَتْ سَمَكَةٌ صَغِيرَةٌ فِي بَحْرٍ أَزْرَقَ. كَانَتْ تُحِبُّ السِّبَاحَةَ بَيْنَ النَّبَاتَاتِ الْبَحْرِيَّةِ. فِي يَوْمٍ مِنَ الْأَيَّامِ، رَأَتْ سَمَكَةً أُخْرَى عَالِقَةً بَيْنَ صَخْرَتَيْنِ. اقْتَرَبَتْ مِنْهَا وَسَاعَدَتْهَا عَلَى الْخُرُوجِ. شَكَرَتِ السَّمَكَةُ الْأُخْرَى صَدِيقَتَهَا، وَسَبَحَتَا مَعًا فِي الْبَحْرِ.",
+   "vocabulary": [
+    {
+     "word": "بَحْرٌ",
+     "meaning": "مَسَاحَةٌ كَبِيرَةٌ مِنَ الْمَاءِ الْمَالِحِ"
+    },
+    {
+     "word": "سِبَاحَةٌ",
+     "meaning": "الْحَرَكَةُ فِي الْمَاءِ"
+    },
+    {
+     "word": "نَبَاتَاتٌ بَحْرِيَّةٌ",
+     "meaning": "نَبَاتَاتٌ تَنْبُتُ فِي الْبَحْرِ"
+    },
+    {
+     "word": "عَالِقَةٌ",
+     "meaning": "مُحْتَجَزَةٌ وَلَا تَسْتَطِيعُ الْخُرُوجَ"
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ar005_q1",
+     "type": "multiple_choice",
+     "question": "أَيْنَ عَاشَتِ السَّمَكَةُ الصَّغِيرَةُ؟",
+     "options": [
+      "فِي بُحَيْرَةٍ",
+      "فِي بَحْرٍ أَزْرَقَ",
+      "فِي نَهْرٍ"
+     ],
+     "answer": "فِي بَحْرٍ أَزْرَقَ",
+     "explanation": "تَبْدَأُ الْقِصَّةُ بِوَصْفِ مَوْطِنِ السَّمَكَةِ."
+    },
+    {
+     "id": "ar005_q2",
+     "type": "multiple_choice",
+     "question": "بَيْنَ مَاذَا كَانَتِ السَّمَكَةُ الْأُخْرَى عَالِقَةً؟",
+     "options": [
+      "بَيْنَ صَخْرَتَيْنِ",
+      "بَيْنَ شَجَرَتَيْنِ",
+      "بَيْنَ زَهْرَتَيْنِ"
+     ],
+     "answer": "بَيْنَ صَخْرَتَيْنِ",
+     "explanation": "رَأَتِ السَّمَكَةُ صَدِيقَتَهَا عَالِقَةً بَيْنَ صَخْرَتَيْنِ."
+    },
+    {
+     "id": "ar005_q3",
+     "type": "true_false",
+     "question": "تَرَكَتِ السَّمَكَةُ صَدِيقَتَهَا دُونَ مُسَاعَدَةٍ.",
+     "answer": false,
+     "explanation": "سَاعَدَتِ السَّمَكَةُ صَدِيقَتَهَا عَلَى الْخُرُوجِ."
+    },
+    {
+     "id": "ar005_q4",
+     "type": "short_answer",
+     "question": "مَاذَا فَعَلَتِ السَّمَكَةُ بَعْدَ مُسَاعَدَةِ صَدِيقَتِهَا؟",
+     "answer": "سَبَحَتَا مَعًا فِي الْبَحْرِ.",
+     "explanation": "بَعْدَ أَنْ خَرَجَتِ السَّمَكَةُ الْعَالِقَةُ، سَبَحَتَا مَعًا."
+    }
+   ],
+   "image": {
+    "url": "",
+    "alt": "سَمَكَةٌ صَغِيرَةٌ تُسَاعِدُ سَمَكَةً أُخْرَى بَيْنَ صَخْرَتَيْنِ تَحْتَ الْمَاءِ",
+    "prompt": "Two adorable colorful little fish underwater, one fish helping another fish safely escape between two rocks, beautiful blue ocean with sea plants and bubbles, high-quality 3D animated children's storybook illustration, no text."
+   }
+  }
+ ]
+}

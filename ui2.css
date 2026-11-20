@@ -266,3 +266,20 @@ button.bank-sub{width:100%;border:0;font:inherit;text-align:start;cursor:pointer
 /* معلّم العربية (mind/arabic-teacher.js) */
 .arteach .artx{text-align:center}.arword{direction:rtl;letter-spacing:0;line-height:1.6}.artx .enword.arword{font-size:2.6rem}
 .artx .engrid .opt.arword{font-size:1.5rem;min-height:64px}.arteach .mut{text-align:center}
+/* المكتبة المتدرّجة (stories-bank.js) */
+.sb-langs{display:flex;gap:8px;margin:8px 0}.sb-langs button{flex:1;border:0;border-radius:99px;padding:8px;font:inherit;font-weight:800;background:rgba(37,164,58,.12);color:inherit;cursor:pointer}.sb-langs button.on{background:#25a43a;color:#fff}
+.sb-scene{display:flex;justify-content:center;align-items:flex-end;gap:2px;font-size:2.3rem;line-height:1.2;min-height:64px}
+.sb-scene i{font-style:normal;display:inline-block;animation:sbBob 2.6s calc(var(--k)*.3s) ease-in-out infinite}.sb-scene i:first-child{font-size:1.35em}
+@keyframes sbBob{50%{transform:translateY(-5px)}}
+.sb-photo{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px}
+.sb-card{position:relative}.sb-card small{display:flex;gap:4px;align-items:center;justify-content:center;flex-wrap:wrap}
+.sb-lang,.sb-lv{font-style:normal;font-size:.72rem;font-weight:800;border-radius:99px;padding:1px 8px;background:rgba(122,92,255,.14)}.sb-lv{background:rgba(255,190,40,.25)}
+.sb-next{box-shadow:0 0 0 3px #25a43a,0 6px 18px rgba(37,164,58,.35)}
+.sb-hero{text-align:center;margin:6px 0 10px}.sb-hero .sb-scene{font-size:3.6rem;min-height:100px}.sb-hero h2{margin:6px 0 2px}
+.sb-vocab{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin:6px 0 14px}
+.sb-w{border:0;border-radius:14px;padding:10px;background:var(--card,#fff);box-shadow:0 3px 10px rgba(60,40,140,.1);font:inherit;color:inherit;display:flex;flex-direction:column;gap:2px;cursor:pointer;margin:0}
+.sb-w b{font-size:1.15rem}.sb-w small{opacity:.8}
+.sb-qar{background:rgba(37,164,58,.1);border-radius:12px;padding:6px 12px;font-weight:700;margin:4px 0}
+.sb-type{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+@media(prefers-reduced-motion:reduce){.sb-scene i{animation:none}}
+:root[data-theme=dark] .sb-w{background:#221d3a}@media (prefers-color-scheme: dark){:root:not([data-theme=light]) .sb-w{background:#221d3a}}
