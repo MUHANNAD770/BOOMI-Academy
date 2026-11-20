@@ -41,7 +41,9 @@ export default async req=>{
  const k=createHash('sha1').update(who+'|'+l+'|'+t).digest('hex');let store=null;
  try{store=getStore('tts-cache');const hit=await store.get(k,{type:'arrayBuffer'});if(hit)return audio(hit,'hit')}catch(e){store=null}
  const ip=req.headers.get('x-nf-client-connection-ip')||'x';if(limited(ip))return new Response('rate',{status:429});
- const [voice,rate]=VOICES[who][l];let x=t;if(l==='ar'){x=allah(tanween(x));if(who==='female')x=natural(x)}
+ let [voice,rate]=VOICES[who][l];let x=t;
+ /* كلمة مفردة (عربية منوّنة، أو إنجليزية ≤٣ كلمات): أبطأ لتكون واضحة — مثل المقاطع المسجّلة */
+ const one=t.replace(/[.!?؟،]+$/,'').trim();if(l==='en'&&one.split(/\s+/).length<=3)rate=who==='male'?'-35%':'-20%';else if(l==='ar'&&!/\s/.test(one)&&/[\u064B-\u064D]\u0651?$/.test(one))rate=who==='male'?'-25%':'-15%';if(l==='ar'){x=allah(tanween(x));if(who==='female')x=natural(x)}
  try{const mp3=await synth(x,voice,rate);if(!mp3.length)return new Response('empty',{status:502});
   if(store)try{await store.set(k,mp3)}catch(e){}return audio(mp3,'miss')}catch(e){return new Response('tts '+e.message,{status:502})}};
 const audio=(b,c)=>new Response(b,{status:200,headers:{'content-type':'audio/mpeg','cache-control':'public, max-age=31536000, immutable','x-tts-cache':c}});

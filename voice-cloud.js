@@ -65,7 +65,7 @@
  const vol=()=>Math.max(.05,Math.min(1,window.P&&P.vol!=null?+P.vol:1));
  /* play → true عند الاكتمال/الإيقاف، false إذا تعذّر (فيُقرأ بالمحرك المحلي) */
  /* الكلمة أو العبارة الإنجليزية القصيرة (٣ كلمات فأقل) تُنطق أبطأ قليلًا لتكون واضحة للطالب العربي؛ الجمل الطويلة بسرعتها الطبيعية */
- const slowEn=(t,l)=>l==='en'&&String(t).trim().split(/\s+/).length<=3?.82:1;
+ const slowEn=()=>1; /* الكلمات القصيرة صارت مسجّلة أبطأ (gen_edge RATES_JSON، وخادم الصوت)، فلا إبطاء عند التشغيل */
  const play=async(t,l,valid,onStart)=>{if(!has(t,l))return false;stop();const ep=++st.ep,who=teacher(),k=key(t,l);
   try{const r=rate()*slowEn(t,l),c=ctx(),fast=c&&Math.abs(r-1)<.02;
    /* مقطع مفكوك مسبقًا (تجهيز الصفحة): يبدأ فورًا بلا أي طلب شبكة */

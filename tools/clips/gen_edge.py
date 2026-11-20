@@ -5,6 +5,8 @@ W=os.path.dirname(os.path.abspath(__file__))
 # المعلّم يبقى بصوته الأصلي (طلب صاحب المشروع): أي مقاطع جديدة له تُسجَّل بإعداداته الأصلية كي تطابق صوته الحالي
 VOICES={'female':{'ar':'ar-SA-ZariyahNeural','en':'en-US-AvaMultilingualNeural'},'male':{'ar':'ar-SA-HamedNeural','en':'en-US-AndrewNeural'}}
 RATES={'female':{'ar':'+0%','en':'+0%'},'male':{'ar':'-8%','en':'-10%'}}
+# الكلمات المفردة (عربية بتنوين، وإنجليزية قصيرة ≤٣ كلمات) تُسجَّل أبطأ لتكون واضحة: RATES_JSON='{"male":{...},"female":{...}}'
+if os.environ.get('RATES_JSON'):RATES=json.loads(os.environ['RATES_JSON'])
 import re
 # سكون آخر الكلمة داخل الجملة يجعل المحرك يقف بعد كل كلمة (نطق آلي): نحذفه إذا تلته كلمة عربية بلا علامة ترقيم، ويبقى في آخر الجملة
 def natural(t,l):
