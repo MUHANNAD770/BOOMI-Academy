@@ -22,6 +22,9 @@ pinned: false
 
 ## التشغيل على Hugging Face Spaces (مجانًا)
 
+> **ملاحظة:** نوع Docker صار مدفوعًا في Hugging Face. استخدم نوع **Gradio** مع الملفات الثلاثة في `space-gradio/` (app.py وrequirements.txt وpackages.txt)، وهي تجلب بقية ملفات الخادم من GitHub تلقائيًا. الخادم الحالي للموقع: `https://muhannad770-boomi-voice.hf.space`.
+
+
 1. أنشئ حسابًا مجانيًا على huggingface.co.
 2. **New Space**:
    - الاسم مثلًا `boomi-voice`.
