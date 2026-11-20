@@ -15,6 +15,9 @@ const STOPC='(?=\\s*(?:[.!؟?،,:;؛]|$))';
 function tanween(t){return t.replace(new RegExp('[\\u0621-\\u064A][\\u0621-\\u064A\\u064B-\\u0652\\u0670]*[\\u064C\\u064D]\\u0651?'+STOPC,'g'),w=>{
  if(w.endsWith('ّ')&&'ٌٍ'.includes(w[w.length-2]))w=w.slice(0,-2)+'ّ'+w[w.length-2];
  const v=w.endsWith('ٌ')?'ُ':'ِ';w=w.slice(0,-1);if(w.endsWith('ة'))w=w.slice(0,-1)+'ت';return w+v+'نّْ'}).replace(new RegExp('ة\u064B'+STOPC,'g'),'تَنّْ')} /* «مَدْرَسَةً» قبل الوقف ← «مَدْرَسَتَنّْ» (مثل gen_edge.py) */
+/* التاء المربوطة بلا حركة وبعدها كلمة (وصل): المحرك ينطقها هاءً («صُورَه حَاسُوب»). نكتبها تاءً: ساكنة («صُورَتْ حَاسُوب»)،
+   أو مكسورة قبل همزة الوصل لالتقاء الساكنين («لُغَتِ الصَّفّ»). عند الوقف تبقى هاءً كما في القاعدة. للمحرك فقط؛ النص المعروض كما هو. */
+function tamarbuta(t){return t.replace(/\u0629(?=[ \u00A0]+[\u0627\u0671])/g,'\u062a\u0650').replace(/\u0629(?=[ \u00A0]+[\u0621-\u064A])/g,'\u062a\u0652')}
 function allah(t){const G='(ل\\u0650?)ل(?:\\u0651\\u064E|\\u064E\\u0651)ه([\\u064F\\u0650\\u064E]?)';
  t=t.replace(new RegExp(G+STOPC,'g'),(m,a)=>a+'لَّاهْ');return t.replace(new RegExp(G,'g'),(m,a,v)=>a+'لَّاه'+v)}
 /* المعلّمة: سكون آخر الكلمة داخل الجملة يجعل المحرك يقف بعد كل كلمة */
@@ -43,8 +46,8 @@ export default async req=>{
  const ip=req.headers.get('x-nf-client-connection-ip')||'x';if(limited(ip))return new Response('rate',{status:429});
  let [voice,rate]=VOICES[who][l];let x=t;
  /* كلمة مفردة (عربية منوّنة، أو إنجليزية ≤٣ كلمات): أبطأ لتكون واضحة — مثل المقاطع المسجّلة */
- const one=t.replace(/[.!?؟،]+$/,'').trim();if(l==='en'&&one.split(/\s+/).length<=3)rate=who==='male'?'-35%':'-20%';else if(l==='ar'&&!/\s/.test(one)&&/[\u064B-\u064D]\u0651?$/.test(one))rate=who==='male'?'-25%':'-15%';if(l==='ar'){x=allah(tanween(x));if(who==='female')x=natural(x)}
+ const one=t.replace(/[.!?؟،]+$/,'').trim();if(l==='en'&&one.split(/\s+/).length<=3)rate=who==='male'?'-35%':'-20%';else if(l==='ar'&&!/\s/.test(one)&&/[\u064B-\u064D]\u0651?$/.test(one))rate=who==='male'?'-25%':'-15%';if(l==='ar'){x=allah(tanween(tamarbuta(x)));if(who==='female')x=natural(x)}
  try{const mp3=await synth(x,voice,rate);if(!mp3.length)return new Response('empty',{status:502});
   if(store)try{await store.set(k,mp3)}catch(e){}return audio(mp3,'miss')}catch(e){return new Response('tts '+e.message,{status:502})}};
 const audio=(b,c)=>new Response(b,{status:200,headers:{'content-type':'audio/mpeg','cache-control':'public, max-age=31536000, immutable','x-tts-cache':c}});
-export {synth,tanween,allah};
+export {synth,tanween,allah,tamarbuta};

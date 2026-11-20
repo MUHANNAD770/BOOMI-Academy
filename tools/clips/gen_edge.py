@@ -47,6 +47,12 @@ def tanween(t,l):
     # كل كلمة منوّنة بالضم أو الكسر (منفردة أو في جملة) تُرسل للمحرك بالنون صريحة كي لا يقف عليها فيُسقطها
     if l!='ar': return t
     return re.sub(r'[\u0621-\u064A][\u0621-\u064A\u064B-\u0652\u0670]*[\u064C\u064D]\u0651?(?![\u0621-\u064A\u064B-\u0652])',lambda m:_nun(m.group(0)),t)
+# التاء المربوطة بلا حركة وبعدها كلمة (وصل): المحرك ينطقها هاءً («صُورَه حَاسُوب»، قياس MFCC: أقرب للهاء في ٧ من ٨).
+# نكتبها للمحرك تاءً ساكنة («صُورَتْ حَاسُوب»)، أو مكسورة قبل همزة الوصل لالتقاء الساكنين («لُغَتِ الصَّفّ»). عند الوقف تبقى هاءً.
+def tamarbuta(t,l):
+    if l!='ar': return t
+    t=re.sub(r'\u0629(?=[ \u00A0]+[\u0627\u0671])','\u062a\u0650',t)
+    return re.sub(r'\u0629(?=[ \u00A0]+[\u0621-\u064A])','\u062a\u0652',t)
 PROXY=os.environ.get('HTTPS_PROXY')
 WHOS=os.environ.get('WHO','female,male').split(',')  # WHO=female لتسجيل صوت المعلّمة وحده
 phr=json.load(open(os.environ.get('PHR') or os.path.join(W,'final.json')))
@@ -57,7 +63,7 @@ async def one(who,k,t,l,sem,stat):
     async with sem:
         for a in range(5):
             try:
-                c=edge_tts.Communicate(natural(allah(tanween_male(t,l),l),l) if who=='female' else allah(tanween_male(t,l),l),VOICES[who][l],rate=RATES[who][l],proxy=PROXY)
+                c=edge_tts.Communicate(natural(allah(tanween_male(tamarbuta(t,l),l),l),l) if who=='female' else allah(tanween_male(tamarbuta(t,l),l),l),VOICES[who][l],rate=RATES[who][l],proxy=PROXY)
                 await c.save(raw)
                 if os.path.getsize(raw)<300: raise Exception('small')
                 break
