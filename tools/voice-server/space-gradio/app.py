@@ -11,4 +11,20 @@ for f in FILES:
 sys.path.insert(0, os.path.join(D, 'shim'))  # بديل torchtune المصغّر قبل المكتبات المثبّتة
 sys.path.insert(0, D)
 import uvicorn, voice_app
-uvicorn.run(voice_app.app, host='0.0.0.0', port=int(os.environ.get('PORT', 7860)))
+app = voice_app.app
+# عتاد ZeroGPU (المجاني) يتطلّب دالة GPU واحدة على الأقل وواجهة Gradio؛ الخادم نفسه يعمل على المعالج، فنضيفهما دون أن نغيّر عمله
+try:
+    import spaces
+    @spaces.GPU
+    def _gpu_probe():
+        return 1
+except Exception:
+    pass
+try:
+    import gradio as gr
+    with gr.Blocks(title='Boomi personal voice') as ui:
+        gr.Markdown('🦉 خادم «صوتي الشخصي» لموقع البومة التعليمية الذكية يعمل. حالته: /health')
+    app = gr.mount_gradio_app(app, ui, path='/ui')
+except Exception:
+    pass
+uvicorn.run(app, host='0.0.0.0', port=int(os.environ.get('PORT', 7860)))
