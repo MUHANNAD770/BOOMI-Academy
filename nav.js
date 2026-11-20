@@ -32,7 +32,7 @@ function achBody(){const sf=id=>{try{return find(id)}catch(e){return null}},K=o=
  const row=u=>{const s=P.sc[u.id];return `<button class=row onclick="lesson('${u.id}')"><span>${P.done[u.id]?'✅':'📘'}</span><b>${u.n}</b><small>${s!=null?s+'/5':''}</small></button>`};
  let h=`<div class="sum ach-sum">${tile('⭐',P.star||0,'نجمة')}${tile('✅',done.length,'درس متقن')}${tile('📘',started.length,'درس بدأته')}${tile('🎯',ch,'تحدٍّ يومي')}</div>`;
  h+=(P.star||0)>=50?'<button class=big onclick=cert()>🏆 شهادة إنجاز</button>':`<p class=mut>اجمع ${50-(P.star||0)} نجمة للحصول على الشهادة</p>`;
- if(!any)return h+`<div class=ach-empty><span>🦉</span><h3>ابدأ درسك الأول!</h3><p class=mut>عندما تُنهي الدروس ستظهر إنجازاتك ونجومك وشاراتك هنا.</p>${nx?`<button class=big onclick="lesson('${nx.id}')">▶️ ابدأ: ${nx.n}</button>`:''}</div>`;
+ if(!any)return h+`<div class=ach-empty><span>🦉</span><h3>${P.gender==='female'?'اِبْدَئِي دَرْسَكِ الْأَوَّلَ!':'اِبْدَأْ دَرْسَكَ الْأَوَّلَ!'}</h3><p class=mut>${P.gender==='female'?'عِنْدَمَا تُنْهِينَ الدُّرُوسَ سَتَظْهَرُ إِنْجَازَاتُكِ وَنُجُومُكِ وَشَارَاتُكِ هُنَا.':'عِنْدَمَا تُنْهِي الدُّرُوسَ سَتَظْهَرُ إِنْجَازَاتُكَ وَنُجُومُكَ وَشَارَاتُكَ هُنَا.'}</p>${nx?`<button class=big onclick="lesson('${nx.id}')">▶️ ابدأ: ${nx.n}</button>`:''}</div>`;
  h+=`<h3>✅ الدروس المتقنة (${done.length})</h3><div class=list>${done.map(row).join('')||`<p class=mut>لم تُتقن درسًا بعد — تحتاج ٤ من ٥ في اختبار الدرس.</p>`}</div>`;
  if(started.length)h+=`<h3>📘 دروس بدأتها ولم تُتقنها بعد</h3><div class=list>${started.map(row).join('')}</div>`;
  if(ml.length)h+=`<h3>🔢 مهارات الرياضيات</h3><div class=list>${ml.map(k=>`<button class=row onclick="mstart('${k}')"><span>${P.ml[k].d?'🏆':'🔢'}</span><b>${MS[k]}</b><small>مستوى ${P.ml[k].l||1}/4</small></button>`).join('')}</div>`;
@@ -51,7 +51,7 @@ const tl=[[IC.ar,'اللغة العربية','حروف وكلمات',"sec('ar')"
 /* الواجهة الجديدة (ui2.css): ترحيب كبير + زر البدء + بطاقات الأكاديميات الأربع + لوحة ولي الأمر، ثم تعلّم والعب */
 const go=c?`lesson('${c.u.id}')`:"sec('les')";
 h(`<section class="h2-hero"><div class=h2-cloud></div><img class=h2-castle src="img/3d/1f3f0.webp" alt=""><span class="h2-star s1">⭐</span><span class="h2-star s2">✨</span>
-<div class=h2-txt><h1>مرحبًا بك في<b>البومة التعليمية الذكية</b></h1><p>تعلّم بمتعة.. وحقّق إنجازات رائعة!</p><button class=h2-cta onclick="${go}">▶ ابدأ رحلتك التعليمية</button></div></section>
+<div class=h2-txt><h1>${P.gender==='female'?'مَرْحَبًا بِكِ فِي':'مَرْحَبًا بِكَ فِي'}<b>البومة التعليمية الذكية</b></h1><p>${P.gender==='female'?'تَعَلَّمِي بِمُتْعَةٍ.. وَحَقِّقِي إِنْجَازَاتٍ رَائِعَةً!':'تَعَلَّمْ بِمُتْعَةٍ.. وَحَقِّقْ إِنْجَازَاتٍ رَائِعَةً!'}</p><button class=h2-cta onclick="${go}">▶ ${P.gender==='female'?'اِبْدَئِي رِحْلَتَكِ':'اِبْدَأْ رِحْلَتَكَ'} التَّعْلِيمِيَّةَ</button></div></section>
 ${(()=>{/* الخطوة التالية يقررها عقل بومي (mind/hub.js): مراجعة حان موعدها، أو مهارة ضعيفة، أو الدرس التالي */let nx=null;try{nx=window.Mind&&Mind.next()}catch(e){}
  if(!nx&&c)nx={icon:'▶️',t:c.u.n,go:`lesson('${c.u.id}')`};if(!nx)return'';
  return `<button class="nx h2-next" onclick="${nx.go.replace(/"/g,'&quot;')}"><span>${nx.icon}</span><div><small>الخطوة التالية لك${nx.why?' · '+nx.why:''}</small><b>${nx.t}</b></div></button>`})()}
@@ -62,7 +62,7 @@ ${(()=>{/* الخطوة التالية يقررها عقل بومي (mind/hub.js
 <button class="h2-card ai" onclick="bank()"><span class="h2-ic e">🎓</span><b>المنهج المتكامل</b><small>عربي • English</small><i class=h2-go>ابدأ الآن ▶</i></button></div>
 <h3 class=h2-h>🎮 تعلّم والعب</h3>
 <div class="tl tl-glass">${tl.slice(3).map(t=>`<button class=gt onclick="${t[3]}">${t[0]}<b>${t[1]}</b><small>${t[2]}</small></button>`).join('')}</div>
-<button class="h2-parent h2-parent-end" onclick=parent()><span class=e>👨‍👩‍👧</span><span><b>لوحة ولي الأمر</b><small>متابعة تقدّم طفلك · ${dn}/${us.length} دروس مكتملة</small></span><i>←</i></button> <!-- لوحة ولي الأمر في أسفل الصفحة (طلب صاحب المشروع) -->`)}
+<button class="h2-parent h2-parent-end" onclick=parent()><span class=e>👨‍👩‍👧</span><span><b>لَوْحَةُ وَلِيِّ الْأَمْرِ</b><small>مُتَابَعَةُ تَقَدُّمِ طِفْلِكَ · ${dn}/${us.length} دروس مكتملة</small></span><i>←</i></button> <!-- لوحة ولي الأمر في أسفل الصفحة (طلب صاحب المشروع) -->`)}
 
 /* إعادة رسم الصفحة بعد تحميل كل الملفات حتى تظهر الصفحة الرئيسية الجديدة (smart.js يرسم الصفحة القديمة عند تحميله) */
 P=load();ens();DB.kids.length>1?who():P?home():setup();

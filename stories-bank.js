@@ -27,7 +27,7 @@ window.stories=function(tab,lang){if(tab&&tab!=='lib'){const r=oStories.apply(th
  load().then(d=>{const sec=document.querySelector('.sb-lib');if(!sec)return;const L=s=>lang==='all'||s.l===lang;
   const done=all().filter(s=>best(s.id)!=null).length,next=all().find(s=>L(s)&&best(s.id)==null);
   let html=`<div class=sb-langs>${[['all','الكل'],['ar','📖 عربي'],['en','📘 English']].map(([k,t])=>`<button class="${lang===k?'on':''}" onclick="stories('lib','${k}')">${t}</button>`).join('')}</div>
-   <p class=mut>${NS(all().length)} · المقروءة ${D(done)}. ابدأ من الأعلى، والقصة التالية عليها ▶.</p>`;
+   <p class=mut>${NS(all().length)} · المقروءة ${D(done)}. ${window.P&&P.gender==='female'?'اِبْدَئِي':'اِبْدَأْ'} مِنَ الْأَعْلَى، وَالْقِصَّةُ التَّالِيَةُ عَلَيْهَا ▶.</p>`;
   d.stages.forEach((g,gi)=>{const S0=g.stories.filter(L);if(!S0.length)return;const dn=S0.filter(s=>best(s.id)!=null).length;
    html+=`<details class="lesson-menu sb-stage"${S0.includes(next)?' open':''}><summary><span><b>${g.ic} ${esc(g.name)}</b><small>${esc(g.levels)} · ${NS(S0.length)} · المقروءة ${D(dn)}</small></span><i>⌄</i></summary>
     <div class="story-grid sb-grid">${S0.map(s=>`<button class="story-card sb-card${s===next?' sb-next':''}" onclick="sbStory('${s.id}')">${pic(s,3)}<b dir=auto>${esc(s.t)}</b><small><em class=sb-lang>${s.l==='en'?'English':'عربي'}</em> <em class=sb-lv>${esc(s.lv)}</em> ${best(s.id)!=null?stars(best(s.id)):s===next?'▶ التالية':''}${tb(s.id)!=null?` <em class=sb-lv>📝 ${D(tb(s.id))}٪</em>`:''}</small></button>`).join('')}</div></details>`});

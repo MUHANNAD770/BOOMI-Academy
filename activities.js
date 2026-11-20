@@ -31,7 +31,7 @@ function tracer(txt,font,ok){const cg=document.getElementById('ag'),cu=document.
  window.aFree=b=>{const off=cg.style.opacity==='0';cg.style.opacity=off?'1':'0';b.textContent=off?'✍️ اكتب بدون نموذج':'👀 أظهر النموذج';aClr()}}
 /* القائمة */
 const MN=[['🔠','حروف إنجليزية A–Z','aLet'],['🔢','أرقام إنجليزية 0–10','aNumEn'],['١٢٣','أرقام عربية ١–١٠','aNumAr'],['🐮','عدّ الحيوانات حتى ٢٠','aCount'],['🔍','الرقم المفقود','aMiss'],['🐝','مسار النحلة (تدريب اليد)','aPath'],['🎲','لوّن نقاط النرد','aDice']];
-window.act=()=>{V='lesson';h(`<button class=link onclick="sec('games')">رجوع ←</button><h2>🎨 أنشطة تفاعلية</h2><p class=mut>تتبّع بإصبعك، عُدّ، ولوّن</p><div class=list>${MN.map(x=>`<button class=row onclick="${x[2]}()"><span>${x[0]}</span><b>${x[1]}</b></button>`).join('')}</div>`)};
+window.act=()=>{V='lesson';h(`<button class=link onclick="sec('games')">رجوع ←</button><h2>🎨 أنشطة تفاعلية</h2><p class=mut>${window.P&&P.gender==='female'?'تَتَبَّعِي بِإِصْبَعِكِ، عُدِّي، وَلَوِّنِي':'تَتَبَّعْ بِإِصْبَعِكَ، عُدَّ، وَلَوِّنْ'}</p><div class=list>${MN.map(x=>`<button class=row onclick="${x[2]}()"><span>${x[0]}</span><b>${x[1]}</b></button>`).join('')}</div>`)};
 /* الحروف */
 window.aLet=()=>{V='lesson';h(`${back()}<h2>🔠 الحروف الإنجليزية</h2><p class=mut>اضغط حرفاً لتتعلّمه وتتبّعه</p><div class=grid dir=ltr>${LT.map((x,i)=>`<button class=opt onclick="aLetP(${i})">${x[0][0]}${x[0][0].toLowerCase()}</button>`).join('')}</div>`)};
 window.aLetP=i=>{V='lesson';const[w,e]=LT[i],L=w[0],n=LT.length;
@@ -71,7 +71,7 @@ window.aPath=(i=0,s=0)=>{V='lesson';if(i>=PT.length)return fin(s,PT.length,'aPat
  cv.onpointerdown=e=>{e.preventDefault();cv.setPointerCapture(e.pointerId);d=1;mv(e)};cv.onpointermove=mv;cv.onpointerup=cv.onpointercancel=()=>{d=0};draw()};
 /* ربط القسم بالموقع: قائمة الألعاب + بلاطة الصفحة الرئيسية */
 const os=sec;sec=function(k){os(k);if(k=='games'){const l=document.querySelector('.list');l&&l.insertAdjacentHTML('afterbegin','<button class=row onclick=act()><span>🎨</span><b>أنشطة تفاعلية</b><small>جديد</small></button>')}};
-const actTile=()=>{const t=document.querySelector('.tl');if(t&&!t.querySelector('.act-tile'))t.insertAdjacentHTML('beforeend','<button class="gt act-tile" onclick=act()><i class="ico ico-em">🎨</i><b>أنشطة</b><small>تتبّع وعدّ ولوّن</small></button>')};
+const actTile=()=>{const t=document.querySelector('.tl');if(t&&!t.querySelector('.act-tile'))t.insertAdjacentHTML('beforeend','<button class="gt act-tile" onclick=act()><i class="ico ico-em">🎨</i><b>أَنْشِطَةٌ</b><small>'+(window.P&&P.gender==='female'?'تَتَبَّعِي وَعُدِّي وَلَوِّنِي':'تَتَبَّعْ وَعُدَّ وَلَوِّنْ')+'</small></button>')};
 const oh=home;home=function(){oh();actTile()};if(window.V==='home')actTile(); /* الصفحة الأولى رُسمت قبل تحميل هذا الملف */
 window.AC={MN,q5,opts,pal,pad,tracer,back,good,star,sh,pk,R,ad,COL};
 if(V=='home')home();
