@@ -1,0 +1,418 @@
+{
+ "bank": "Boomi English Academy",
+ "batch": 11,
+ "question_range": "251-275",
+ "stage": "Elementary",
+ "level": "Elementary Plus",
+ "grade": "Primary",
+ "language": "English",
+ "explanation_language": "Arabic",
+ "questions": [
+  {
+   "id": 251,
+   "skill": "Grammar",
+   "topic": "Countable and Uncountable Nouns",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Choose the correct sentence.",
+   "options": [
+    "I have three apples.",
+    "I have three water.",
+    "I have three milk.",
+    "I have three rice."
+   ],
+   "correct_answer": "I have three apples.",
+   "explanation_ar": "نستخدم الأعداد مع الأسماء المعدودة مثل apples، أما الماء والحليب والأرز فلا تُعد عادةً مباشرة."
+  },
+  {
+   "id": 252,
+   "skill": "Grammar",
+   "topic": "Much and Many",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "How _____ books do you have?",
+   "correct_answer": "many",
+   "accepted_answers": [
+    "many"
+   ],
+   "explanation_ar": "نستخدم many مع الأسماء المعدودة في صيغة الجمع، مثل books."
+  },
+  {
+   "id": 253,
+   "skill": "Grammar",
+   "topic": "Much and Many",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "How _____ milk is in the glass?",
+   "options": [
+    "much",
+    "many",
+    "few",
+    "several"
+   ],
+   "correct_answer": "much",
+   "explanation_ar": "نستخدم much مع الأسماء غير المعدودة مثل milk."
+  },
+  {
+   "id": 254,
+   "skill": "Grammar",
+   "topic": "A Few and A Little",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "There are _____ oranges in the basket.",
+   "options": [
+    "a little",
+    "a few",
+    "much",
+    "any"
+   ],
+   "correct_answer": "a few",
+   "explanation_ar": "نستخدم a few مع الأسماء المعدودة الجمع مثل oranges."
+  },
+  {
+   "id": 255,
+   "skill": "Grammar",
+   "topic": "A Few and A Little",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "There is _____ sugar in my tea.",
+   "correct_answer": "a little",
+   "accepted_answers": [
+    "a little"
+   ],
+   "explanation_ar": "نستخدم a little مع الأسماء غير المعدودة مثل sugar."
+  },
+  {
+   "id": 256,
+   "skill": "Grammar",
+   "topic": "Some and Any",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Would you like _____ juice?",
+   "options": [
+    "some",
+    "any",
+    "many",
+    "few"
+   ],
+   "correct_answer": "some",
+   "explanation_ar": "نستخدم some غالبًا في عروض الضيافة والطلبات المهذبة."
+  },
+  {
+   "id": 257,
+   "skill": "Grammar",
+   "topic": "Some and Any",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "There are not _____ eggs in the fridge.",
+   "correct_answer": "any",
+   "accepted_answers": [
+    "any"
+   ],
+   "explanation_ar": "نستخدم any غالبًا في الجمل المنفية والأسئلة."
+  },
+  {
+   "id": 258,
+   "skill": "Grammar",
+   "topic": "Containers and Quantities",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Choose the correct phrase: a _____ of water.",
+   "options": [
+    "bottle",
+    "slice",
+    "loaf",
+    "piece"
+   ],
+   "correct_answer": "bottle",
+   "explanation_ar": "نقول a bottle of water أي زجاجة ماء."
+  },
+  {
+   "id": 259,
+   "skill": "Vocabulary",
+   "topic": "Food Containers",
+   "type": "matching",
+   "difficulty": "medium",
+   "question": "Match each phrase with its meaning.",
+   "pairs": [
+    {
+     "left": "A loaf of bread",
+     "right": "رغيف خبز"
+    },
+    {
+     "left": "A glass of milk",
+     "right": "كوب حليب"
+    },
+    {
+     "left": "A slice of cheese",
+     "right": "شريحة جبن"
+    },
+    {
+     "left": "A cup of tea",
+     "right": "فنجان شاي"
+    }
+   ],
+   "explanation_ar": "تُستخدم هذه الكلمات لتحديد كمية الطعام أو الشراب وطريقة تقديمه."
+  },
+  {
+   "id": 260,
+   "skill": "Grammar",
+   "topic": "Too and Enough",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "This bag is _____ heavy. I cannot carry it.",
+   "options": [
+    "too",
+    "enough",
+    "many",
+    "a few"
+   ],
+   "correct_answer": "too",
+   "explanation_ar": "نستخدم too قبل الصفة عندما يكون الشيء أكثر من الحد المناسب، أي ثقيل جدًا."
+  },
+  {
+   "id": 261,
+   "skill": "Grammar",
+   "topic": "Too and Enough",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "The water is warm _____ to swim in.",
+   "correct_answer": "enough",
+   "accepted_answers": [
+    "enough"
+   ],
+   "explanation_ar": "تأتي enough بعد الصفة، ومعناها كافٍ أو بدرجة مناسبة."
+  },
+  {
+   "id": 262,
+   "skill": "Grammar",
+   "topic": "Gerunds",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "I enjoy _____ books in the evening.",
+   "options": [
+    "read",
+    "reading",
+    "reads",
+    "to reading"
+   ],
+   "correct_answer": "reading",
+   "explanation_ar": "يأتي الفعل مع ing بعد enjoy، فنقول enjoy reading."
+  },
+  {
+   "id": 263,
+   "skill": "Grammar",
+   "topic": "Gerunds",
+   "type": "error_correction",
+   "difficulty": "medium",
+   "question": "Correct the sentence: She likes play tennis.",
+   "correct_answer": "She likes playing tennis.",
+   "explanation_ar": "يمكن أن يأتي الفعل مع ing بعد like، لذلك نقول likes playing."
+  },
+  {
+   "id": 264,
+   "skill": "Grammar",
+   "topic": "Infinitive of Purpose",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "I went to the shop _____ some bread.",
+   "options": [
+    "to buy",
+    "buying",
+    "bought",
+    "buys"
+   ],
+   "correct_answer": "to buy",
+   "explanation_ar": "نستخدم to مع الفعل لبيان الهدف أو الغرض من القيام بالفعل."
+  },
+  {
+   "id": 265,
+   "skill": "Grammar",
+   "topic": "Infinitive of Purpose",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "He studies hard _____ pass the exam.",
+   "correct_answer": "to",
+   "accepted_answers": [
+    "to"
+   ],
+   "explanation_ar": "نستخدم to قبل الفعل pass لبيان الهدف من الدراسة."
+  },
+  {
+   "id": 266,
+   "skill": "Vocabulary",
+   "topic": "Shopping",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Where do you go to buy medicine?",
+   "options": [
+    "Pharmacy",
+    "Bakery",
+    "Library",
+    "Museum"
+   ],
+   "correct_answer": "Pharmacy",
+   "explanation_ar": "Pharmacy تعني صيدلية، وهي المكان الذي نشتري منه الأدوية."
+  },
+  {
+   "id": 267,
+   "skill": "Vocabulary",
+   "topic": "Money",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "You give money to the shopkeeper and receive your _____ back.",
+   "options": [
+    "change",
+    "ticket",
+    "recipe",
+    "letter"
+   ],
+   "correct_answer": "change",
+   "explanation_ar": "كلمة change هنا تعني الباقي من النقود بعد الدفع."
+  },
+  {
+   "id": 268,
+   "skill": "Grammar",
+   "topic": "Prepositions with Verbs",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "Please listen _____ the teacher.",
+   "correct_answer": "to",
+   "accepted_answers": [
+    "to"
+   ],
+   "explanation_ar": "نستخدم listen to عند الحديث عن الاستماع إلى شخص أو شيء."
+  },
+  {
+   "id": 269,
+   "skill": "Grammar",
+   "topic": "Prepositions with Verbs",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "I am waiting _____ the school bus.",
+   "options": [
+    "for",
+    "at",
+    "on",
+    "from"
+   ],
+   "correct_answer": "for",
+   "explanation_ar": "نقول wait for بمعنى ينتظر شيئًا أو شخصًا."
+  },
+  {
+   "id": 270,
+   "skill": "Vocabulary",
+   "topic": "Materials",
+   "type": "matching",
+   "difficulty": "easy",
+   "question": "Match the material with the correct Arabic meaning.",
+   "pairs": [
+    {
+     "left": "Wood",
+     "right": "خشب"
+    },
+    {
+     "left": "Glass",
+     "right": "زجاج"
+    },
+    {
+     "left": "Plastic",
+     "right": "بلاستيك"
+    },
+    {
+     "left": "Metal",
+     "right": "معدن"
+    }
+   ],
+   "explanation_ar": "هذه أسماء مواد شائعة نستخدمها لوصف الأشياء التي تُصنع منها."
+  },
+  {
+   "id": 271,
+   "skill": "Reading",
+   "topic": "At the Grocery Shop",
+   "type": "reading_comprehension",
+   "difficulty": "easy",
+   "passage": "Sara goes to the grocery shop with her mother. They buy a loaf of bread, a bottle of milk, six apples, and some rice. Sara pays ten rials. The shopkeeper gives her two rials back.",
+   "question": "Who goes to the grocery shop with Sara?",
+   "options": [
+    "Her mother",
+    "Her teacher",
+    "Her friend",
+    "Her sister"
+   ],
+   "correct_answer": "Her mother",
+   "explanation_ar": "يذكر النص أن سارة ذهبت إلى متجر البقالة مع والدتها."
+  },
+  {
+   "id": 272,
+   "skill": "Reading",
+   "topic": "At the Grocery Shop",
+   "type": "reading_comprehension",
+   "difficulty": "easy",
+   "passage": "Sara goes to the grocery shop with her mother. They buy a loaf of bread, a bottle of milk, six apples, and some rice. Sara pays ten rials. The shopkeeper gives her two rials back.",
+   "question": "How many apples do they buy?",
+   "options": [
+    "Four",
+    "Five",
+    "Six",
+    "Eight"
+   ],
+   "correct_answer": "Six",
+   "explanation_ar": "ورد في النص أنهما اشترتا six apples، أي ست تفاحات."
+  },
+  {
+   "id": 273,
+   "skill": "Reading",
+   "topic": "At the Grocery Shop",
+   "type": "reading_comprehension",
+   "difficulty": "medium",
+   "passage": "Sara goes to the grocery shop with her mother. They buy a loaf of bread, a bottle of milk, six apples, and some rice. Sara pays ten rials. The shopkeeper gives her two rials back.",
+   "question": "How much does the shopping cost?",
+   "options": [
+    "Six rials",
+    "Eight rials",
+    "Ten rials",
+    "Twelve rials"
+   ],
+   "correct_answer": "Eight rials",
+   "explanation_ar": "دفعت سارة عشرة ريالات وأعاد لها البائع ريالين؛ إذن التكلفة 8 ريالات."
+  },
+  {
+   "id": 274,
+   "skill": "Writing",
+   "topic": "Shopping List",
+   "type": "open_ended",
+   "difficulty": "medium",
+   "question": "Write three things you would like to buy from a supermarket.",
+   "accepted_answers": [],
+   "rubric": {
+    "minimum_items": 3,
+    "criteria": [
+     "Write at least three suitable shopping items.",
+     "Use understandable English spelling."
+    ]
+   },
+   "explanation_ar": "اكتب ثلاثة أشياء باللغة الإنجليزية، مثل bread وmilk وapples. تُقبل الإجابات الصحيحة المختلفة."
+  },
+  {
+   "id": 275,
+   "skill": "Writing",
+   "topic": "Shopping Conversation",
+   "type": "open_ended",
+   "difficulty": "medium",
+   "question": "Complete the conversation: Shopkeeper: Can I help you? Customer: _____",
+   "accepted_answers": [
+    "Yes, please. I would like a bottle of water.",
+    "Yes, please. I want a bottle of water.",
+    "I would like some bread, please."
+   ],
+   "rubric": {
+    "criteria": [
+     "Give a suitable customer response.",
+     "Use polite and understandable English."
+    ]
+   },
+   "explanation_ar": "يمكن الرد بأدب بذكر الشيء الذي تريد شراءه، وتُقبل العبارات الصحيحة الأخرى."
+  }
+ ]
+}

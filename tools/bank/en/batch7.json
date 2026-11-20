@@ -1,0 +1,503 @@
+{
+ "bank": "Boomi English Academy",
+ "batch": 7,
+ "question_range": "151-175",
+ "stage": "Elementary English",
+ "level": "Elementary",
+ "grade": "Primary",
+ "language": "English",
+ "explanation_language": "Arabic",
+ "questions": [
+  {
+   "id": 151,
+   "skill": "Grammar",
+   "topic": "Object Pronouns",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "My mother loves _____.",
+   "options": [
+    "me",
+    "I",
+    "my",
+    "mine"
+   ],
+   "correct_answer": "me",
+   "explanation_ar": "نستخدم me ضمير مفعول به بعد الفعل loves. أما I فهو ضمير فاعل.",
+   "wrong_answers_ar": {
+    "I": "ضمير فاعل وليس مفعولًا به.",
+    "my": "صفة ملكية تحتاج إلى اسم بعدها.",
+    "mine": "ضمير ملكية ولا يناسب موقع المفعول به هنا."
+   }
+  },
+  {
+   "id": 152,
+   "skill": "Grammar",
+   "topic": "Object Pronouns",
+   "type": "matching",
+   "difficulty": "medium",
+   "question": "Match each subject pronoun with its object pronoun.",
+   "pairs": [
+    {
+     "item": "I",
+     "match": "Me"
+    },
+    {
+     "item": "He",
+     "match": "Him"
+    },
+    {
+     "item": "She",
+     "match": "Her"
+    },
+    {
+     "item": "They",
+     "match": "Them"
+    },
+    {
+     "item": "We",
+     "match": "Us"
+    }
+   ],
+   "explanation_ar": "ضمائر المفعول به هي me وhim وher وthem وus، ونستخدمها بعد الفعل أو حرف الجر."
+  },
+  {
+   "id": 153,
+   "skill": "Grammar",
+   "topic": "Object Pronouns",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "I can see Ahmed. I can see _____.",
+   "correct_answer": "him",
+   "explanation_ar": "نستخدم him بدل اسم أحمد لأنه مذكر مفرد ويقع موقع المفعول به.",
+   "accepted_answers": [
+    "him"
+   ]
+  },
+  {
+   "id": 154,
+   "skill": "Grammar",
+   "topic": "Possessive Pronouns",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "This book belongs to me. It is _____.",
+   "options": [
+    "mine",
+    "my",
+    "me",
+    "I"
+   ],
+   "correct_answer": "mine",
+   "explanation_ar": "نستخدم mine للدلالة على الملكية دون ذكر الاسم بعده.",
+   "wrong_answers_ar": {
+    "my": "صفة ملكية يجب أن يأتي بعدها اسم، مثل my book.",
+    "me": "ضمير مفعول به.",
+    "I": "ضمير فاعل."
+   }
+  },
+  {
+   "id": 155,
+   "skill": "Grammar",
+   "topic": "Possessive Pronouns",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "This pencil belongs to Sara. It is _____.",
+   "correct_answer": "hers",
+   "explanation_ar": "نستخدم hers للدلالة على أن الشيء يخص أنثى، دون تكرار الاسم.",
+   "accepted_answers": [
+    "hers"
+   ]
+  },
+  {
+   "id": 156,
+   "skill": "Grammar",
+   "topic": "Conjunctions",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "I like apples _____ bananas.",
+   "options": [
+    "and",
+    "but",
+    "because",
+    "or"
+   ],
+   "correct_answer": "and",
+   "explanation_ar": "نستخدم and للربط بين شيئين أو فكرتين معًا.",
+   "wrong_answers_ar": {
+    "but": "تعني لكن وتُستخدم للتعارض.",
+    "because": "تعني لأن وتقدم سببًا.",
+    "or": "تعني أو وتقدم اختيارًا."
+   }
+  },
+  {
+   "id": 157,
+   "skill": "Grammar",
+   "topic": "Conjunctions",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "I was tired, _____ I went to bed early.",
+   "options": [
+    "so",
+    "but",
+    "or",
+    "because"
+   ],
+   "correct_answer": "so",
+   "explanation_ar": "نستخدم so لبيان النتيجة. كنت متعبًا، لذلك ذهبت إلى النوم مبكرًا.",
+   "wrong_answers_ar": {
+    "but": "تعني لكن وتدل على التعارض.",
+    "or": "تعني أو وتستخدم للاختيار.",
+    "because": "تعني لأن وتقدم السبب، ولا تناسب ترتيب هذه الجملة."
+   }
+  },
+  {
+   "id": 158,
+   "skill": "Grammar",
+   "topic": "Conjunctions",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "I stayed at home _____ it was raining.",
+   "correct_answer": "because",
+   "explanation_ar": "نستخدم because لتقديم السبب، أي بقيت في المنزل لأن المطر كان يهطل.",
+   "accepted_answers": [
+    "because"
+   ]
+  },
+  {
+   "id": 159,
+   "skill": "Grammar",
+   "topic": "Conjunctions",
+   "type": "error_correction",
+   "difficulty": "medium",
+   "question": "Correct the sentence: I like tea because coffee.",
+   "correct_answer": "I like tea and coffee.",
+   "explanation_ar": "نستخدم and للربط بين الشاي والقهوة لأن الجملة تتحدث عن شيئين يحبهما المتكلم."
+  },
+  {
+   "id": 160,
+   "skill": "Vocabulary",
+   "topic": "Nature",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Which of these is a natural source of light?",
+   "options": [
+    "The Sun",
+    "A lamp",
+    "A television",
+    "A torch"
+   ],
+   "correct_answer": "The Sun",
+   "explanation_ar": "الشمس مصدر طبيعي للضوء، بينما المصباح والتلفاز والمصباح اليدوي مصادر صناعية.",
+   "wrong_answers_ar": {
+    "A lamp": "المصباح مصدر صناعي للضوء.",
+    "A television": "التلفاز جهاز صناعي.",
+    "A torch": "المصباح اليدوي جهاز صناعي."
+   }
+  },
+  {
+   "id": 161,
+   "skill": "Vocabulary",
+   "topic": "Nature",
+   "type": "matching",
+   "difficulty": "easy",
+   "question": "Match each natural feature with its description.",
+   "pairs": [
+    {
+     "item": "Mountain",
+     "match": "A very high area of land"
+    },
+    {
+     "item": "River",
+     "match": "A natural flowing body of water"
+    },
+    {
+     "item": "Forest",
+     "match": "A large area covered with trees"
+    },
+    {
+     "item": "Desert",
+     "match": "A very dry area of land"
+    }
+   ],
+   "explanation_ar": "Mountain جبل، River نهر، Forest غابة، Desert صحراء."
+  },
+  {
+   "id": 162,
+   "skill": "Vocabulary",
+   "topic": "Nature",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "A _____ is a place where many trees grow.",
+   "correct_answer": "forest",
+   "explanation_ar": "Forest تعني غابة، وهي منطقة تنمو فيها أشجار كثيرة.",
+   "accepted_answers": [
+    "forest"
+   ]
+  },
+  {
+   "id": 163,
+   "skill": "Grammar",
+   "topic": "Future with Going To",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "I _____ going to visit my aunt tomorrow.",
+   "options": [
+    "am",
+    "is",
+    "are",
+    "be"
+   ],
+   "correct_answer": "am",
+   "explanation_ar": "نستخدم am مع I في تركيب am going to للتعبير عن خطة مستقبلية.",
+   "wrong_answers_ar": {
+    "is": "تُستخدم مع He وShe وIt.",
+    "are": "تُستخدم مع You وWe وThey.",
+    "be": "الصيغة الأساسية ولا تناسب هذا التركيب."
+   }
+  },
+  {
+   "id": 164,
+   "skill": "Grammar",
+   "topic": "Future with Going To",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "She is going to _____ a cake tomorrow. (make)",
+   "correct_answer": "make",
+   "explanation_ar": "بعد going to نستخدم الفعل بصيغته الأساسية دون إضافة ing أو ed.",
+   "accepted_answers": [
+    "make"
+   ]
+  },
+  {
+   "id": 165,
+   "skill": "Grammar",
+   "topic": "Future with Going To",
+   "type": "sentence_ordering",
+   "difficulty": "medium",
+   "question": "Arrange the words to make a correct sentence.",
+   "words": [
+    "They",
+    "are",
+    "going",
+    "to",
+    "travel",
+    "tomorrow",
+    "."
+   ],
+   "correct_sentence": "They are going to travel tomorrow.",
+   "explanation_ar": "الترتيب الصحيح: الفاعل، ثم are going to، ثم الفعل travel، ثم ظرف الزمن tomorrow."
+  },
+  {
+   "id": 166,
+   "skill": "Grammar",
+   "topic": "Future with Will",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "I think it _____ rain tomorrow.",
+   "options": [
+    "will",
+    "was",
+    "does",
+    "has"
+   ],
+   "correct_answer": "will",
+   "explanation_ar": "نستخدم will للتعبير عن توقع أو حدث في المستقبل.",
+   "wrong_answers_ar": {
+    "was": "صيغة الماضي من فعل be.",
+    "does": "تُستخدم في المضارع البسيط.",
+    "has": "تُستخدم للتعبير عن الملكية أو ضمن أزمنة أخرى."
+   }
+  },
+  {
+   "id": 167,
+   "skill": "Grammar",
+   "topic": "Future with Will",
+   "type": "error_correction",
+   "difficulty": "medium",
+   "question": "Correct the sentence: She will goes to school.",
+   "correct_answer": "She will go to school.",
+   "explanation_ar": "بعد will نستخدم الفعل بصيغته الأساسية go، ولا نضيف s."
+  },
+  {
+   "id": 168,
+   "skill": "Vocabulary",
+   "topic": "Food and Cooking",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Which tool do you use to cut vegetables?",
+   "options": [
+    "Knife",
+    "Cup",
+    "Plate",
+    "Spoon"
+   ],
+   "correct_answer": "Knife",
+   "explanation_ar": "Knife تعني سكين، وتُستخدم لتقطيع الخضراوات.",
+   "wrong_answers_ar": {
+    "Cup": "الكوب يُستخدم للشرب.",
+    "Plate": "الطبق يُستخدم لتقديم الطعام.",
+    "Spoon": "الملعقة تُستخدم لتناول الطعام أو تحريكه."
+   }
+  },
+  {
+   "id": 169,
+   "skill": "Vocabulary",
+   "topic": "Food and Cooking",
+   "type": "matching",
+   "difficulty": "easy",
+   "question": "Match each cooking action with its meaning.",
+   "pairs": [
+    {
+     "item": "Boil",
+     "match": "Cook in hot water"
+    },
+    {
+     "item": "Fry",
+     "match": "Cook in hot oil"
+    },
+    {
+     "item": "Bake",
+     "match": "Cook in an oven"
+    },
+    {
+     "item": "Mix",
+     "match": "Combine ingredients"
+    }
+   ],
+   "explanation_ar": "Boil يغلي، Fry يقلي، Bake يخبز في الفرن، Mix يخلط المكونات."
+  },
+  {
+   "id": 170,
+   "skill": "Vocabulary",
+   "topic": "Food and Cooking",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "We use an oven to _____ a cake.",
+   "correct_answer": "bake",
+   "explanation_ar": "نستخدم الفرن لخبز الكعكة، والفعل المناسب هو bake.",
+   "accepted_answers": [
+    "bake"
+   ]
+  },
+  {
+   "id": 171,
+   "skill": "Grammar",
+   "topic": "Adverbs of Frequency",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "I _____ brush my teeth twice a day.",
+   "options": [
+    "always",
+    "never",
+    "yesterday",
+    "tomorrow"
+   ],
+   "correct_answer": "always",
+   "explanation_ar": "Always تعني دائمًا، وهي مناسبة لوصف عادة منتظمة.",
+   "wrong_answers_ar": {
+    "never": "تعني أبدًا، وهي عكس المعنى المقصود.",
+    "yesterday": "تعني أمس، وهي ظرف زمن وليس تكرارًا.",
+    "tomorrow": "تعني غدًا، وهي ظرف زمن."
+   }
+  },
+  {
+   "id": 172,
+   "skill": "Grammar",
+   "topic": "Adverbs of Frequency",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "Which word means 'not ever'?",
+   "options": [
+    "Never",
+    "Usually",
+    "Often",
+    "Sometimes"
+   ],
+   "correct_answer": "Never",
+   "explanation_ar": "Never تعني أبدًا، أي لا يحدث الشيء في أي وقت.",
+   "wrong_answers_ar": {
+    "Usually": "تعني عادةً.",
+    "Often": "تعني غالبًا.",
+    "Sometimes": "تعني أحيانًا."
+   }
+  },
+  {
+   "id": 173,
+   "skill": "Reading",
+   "topic": "A School Garden",
+   "type": "reading_comprehension",
+   "difficulty": "medium",
+   "passage": "Our school has a small garden. Every Tuesday, the students water the plants. They grow tomatoes, mint, and flowers. Their science teacher helps them learn about plants.",
+   "question": "When do the students water the plants?",
+   "options": [
+    "Every Tuesday",
+    "Every Friday",
+    "Every Sunday",
+    "Every Monday"
+   ],
+   "correct_answer": "Every Tuesday",
+   "explanation_ar": "النص يذكر أن الطلاب يسقون النباتات كل يوم ثلاثاء.",
+   "wrong_answers_ar": {
+    "Every Friday": "الجمعة لم يُذكر في النص.",
+    "Every Sunday": "الأحد لم يُذكر في النص.",
+    "Every Monday": "الاثنين لم يُذكر في النص."
+   }
+  },
+  {
+   "id": 174,
+   "skill": "Reading",
+   "topic": "A School Garden",
+   "type": "reading_comprehension",
+   "difficulty": "medium",
+   "passage": "Our school has a small garden. Every Tuesday, the students water the plants. They grow tomatoes, mint, and flowers. Their science teacher helps them learn about plants.",
+   "question": "Who helps the students learn about plants?",
+   "options": [
+    "Their science teacher",
+    "Their bus driver",
+    "Their doctor",
+    "Their neighbour"
+   ],
+   "correct_answer": "Their science teacher",
+   "explanation_ar": "ورد في النص أن معلم العلوم يساعد الطلاب على التعلم عن النباتات.",
+   "wrong_answers_ar": {
+    "Their bus driver": "سائق الحافلة لم يُذكر في النص.",
+    "Their doctor": "الطبيب لم يُذكر في النص.",
+    "Their neighbour": "الجار لم يُذكر في النص."
+   }
+  },
+  {
+   "id": 175,
+   "skill": "Writing",
+   "topic": "My Future Plans",
+   "type": "open_ended",
+   "difficulty": "medium",
+   "question": "Write three sentences about what you are going to do next weekend.",
+   "example_answer": [
+    "I am going to visit my grandmother.",
+    "I am going to play with my friends.",
+    "I am going to read a new book."
+   ],
+   "explanation_ar": "اكتب ثلاث جمل عن خططك لعطلة نهاية الأسبوع القادمة. استخدم تركيب am أو is أو are going to.",
+   "rubric": {
+    "total_score": 5,
+    "criteria": [
+     {
+      "criterion": "Writes three relevant future plans",
+      "score": 2
+     },
+     {
+      "criterion": "Uses going to correctly",
+      "score": 1
+     },
+     {
+      "criterion": "Uses correct sentence structure",
+      "score": 1
+     },
+     {
+      "criterion": "Uses capitalization and punctuation",
+      "score": 1
+     }
+    ]
+   }
+  }
+ ]
+}

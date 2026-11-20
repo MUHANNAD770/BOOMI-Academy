@@ -1,0 +1,406 @@
+{
+ "bank": "Boomi English Academy",
+ "batch": 13,
+ "question_range": "301-325",
+ "stage": "Elementary",
+ "level": "Elementary Plus",
+ "grade": "Primary",
+ "language": "English",
+ "explanation_language": "Arabic",
+ "questions": [
+  {
+   "id": 301,
+   "skill": "Grammar",
+   "topic": "Present Perfect",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "I _____ finished my homework.",
+   "options": [
+    "has",
+    "have",
+    "had",
+    "am"
+   ],
+   "correct_answer": "have",
+   "explanation_ar": "نستخدم have مع I لتكوين المضارع التام، ويأتي بعده التصريف الثالث للفعل."
+  },
+  {
+   "id": 302,
+   "skill": "Grammar",
+   "topic": "Present Perfect",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "She has _____ her breakfast. (eat)",
+   "correct_answer": "eaten",
+   "accepted_answers": [
+    "eaten"
+   ],
+   "explanation_ar": "التصريف الثالث من eat هو eaten."
+  },
+  {
+   "id": 303,
+   "skill": "Grammar",
+   "topic": "Present Perfect",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "They have _____ to Dubai twice.",
+   "options": [
+    "be",
+    "been",
+    "being",
+    "was"
+   ],
+   "correct_answer": "been",
+   "explanation_ar": "نستخدم been وهو التصريف الثالث من be في المضارع التام."
+  },
+  {
+   "id": 304,
+   "skill": "Grammar",
+   "topic": "Already and Yet",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "I have _____ cleaned my room.",
+   "options": [
+    "already",
+    "yet",
+    "tomorrow",
+    "last"
+   ],
+   "correct_answer": "already",
+   "explanation_ar": "نستخدم already غالبًا في الجمل المثبتة للتعبير عن أن الفعل حدث بالفعل."
+  },
+  {
+   "id": 305,
+   "skill": "Grammar",
+   "topic": "Already and Yet",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "Have you finished your project _____?",
+   "correct_answer": "yet",
+   "accepted_answers": [
+    "yet"
+   ],
+   "explanation_ar": "تأتي yet غالبًا في نهاية السؤال بالمضارع التام، بمعنى حتى الآن."
+  },
+  {
+   "id": 306,
+   "skill": "Grammar",
+   "topic": "Since and For",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "I have lived here _____ 2020.",
+   "options": [
+    "for",
+    "since",
+    "during",
+    "from"
+   ],
+   "correct_answer": "since",
+   "explanation_ar": "نستخدم since مع نقطة بداية زمنية محددة مثل سنة 2020."
+  },
+  {
+   "id": 307,
+   "skill": "Grammar",
+   "topic": "Since and For",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "She has studied English _____ three years.",
+   "options": [
+    "since",
+    "for",
+    "at",
+    "on"
+   ],
+   "correct_answer": "for",
+   "explanation_ar": "نستخدم for مع مدة زمنية مثل three years."
+  },
+  {
+   "id": 308,
+   "skill": "Grammar",
+   "topic": "Present Perfect Negatives",
+   "type": "error_correction",
+   "difficulty": "medium",
+   "question": "Correct the sentence: He have not finished his work.",
+   "correct_answer": "He has not finished his work.",
+   "explanation_ar": "نستخدم has مع he وshe وit، وليس have."
+  },
+  {
+   "id": 309,
+   "skill": "Grammar",
+   "topic": "Future with Will",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "I think it _____ rain tomorrow.",
+   "options": [
+    "will",
+    "did",
+    "has",
+    "was"
+   ],
+   "correct_answer": "will",
+   "explanation_ar": "نستخدم will للتعبير عن توقع أو قرار يتعلق بالمستقبل."
+  },
+  {
+   "id": 310,
+   "skill": "Grammar",
+   "topic": "Future with Will",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "Do not worry. I _____ help you.",
+   "correct_answer": "will",
+   "accepted_answers": [
+    "will"
+   ],
+   "explanation_ar": "نستخدم will للتعبير عن قرار أو وعد بالمساعدة."
+  },
+  {
+   "id": 311,
+   "skill": "Grammar",
+   "topic": "Be Going To",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "Look at those dark clouds! It _____ rain.",
+   "options": [
+    "is going to",
+    "going",
+    "will be",
+    "was"
+   ],
+   "correct_answer": "is going to",
+   "explanation_ar": "نستخدم is going to عندما توجد دلائل واضحة على حدوث شيء في المستقبل."
+  },
+  {
+   "id": 312,
+   "skill": "Grammar",
+   "topic": "Be Going To",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "They are _____ to visit their grandparents next week.",
+   "correct_answer": "going",
+   "accepted_answers": [
+    "going"
+   ],
+   "explanation_ar": "التركيب الصحيح هو am/is/are going to ثم الفعل الأساسي."
+  },
+  {
+   "id": 313,
+   "skill": "Grammar",
+   "topic": "Will and Going To",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "The phone is ringing. I _____ answer it.",
+   "options": [
+    "will",
+    "am going",
+    "did",
+    "have"
+   ],
+   "correct_answer": "will",
+   "explanation_ar": "نستخدم will هنا لقرار اتُّخذ لحظة التحدث."
+  },
+  {
+   "id": 314,
+   "skill": "Grammar",
+   "topic": "First Conditional",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "If you study hard, you _____ pass the exam.",
+   "correct_answer": "will",
+   "accepted_answers": [
+    "will"
+   ],
+   "explanation_ar": "في الشرط الأول نستخدم المضارع البسيط بعد if، وwill في النتيجة المتوقعة."
+  },
+  {
+   "id": 315,
+   "skill": "Grammar",
+   "topic": "First Conditional",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "If it rains, we _____ at home.",
+   "options": [
+    "will stay",
+    "stayed",
+    "staying",
+    "stays"
+   ],
+   "correct_answer": "will stay",
+   "explanation_ar": "النتيجة المستقبلية في الشرط الأول تأتي عادةً مع will."
+  },
+  {
+   "id": 316,
+   "skill": "Vocabulary",
+   "topic": "Technology",
+   "type": "matching",
+   "difficulty": "easy",
+   "question": "Match each technology word with its Arabic meaning.",
+   "pairs": [
+    {
+     "left": "Keyboard",
+     "right": "لوحة المفاتيح"
+    },
+    {
+     "left": "Screen",
+     "right": "شاشة"
+    },
+    {
+     "left": "Printer",
+     "right": "طابعة"
+    },
+    {
+     "left": "Password",
+     "right": "كلمة المرور"
+    },
+    {
+     "left": "Headphones",
+     "right": "سماعات الرأس"
+    }
+   ],
+   "explanation_ar": "هذه مفردات تقنية شائعة في استخدام الحاسوب والأجهزة الإلكترونية."
+  },
+  {
+   "id": 317,
+   "skill": "Vocabulary",
+   "topic": "Internet Safety",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Which information should you keep private online?",
+   "options": [
+    "Your password",
+    "Your favourite colour",
+    "Your favourite animal",
+    "A public story"
+   ],
+   "correct_answer": "Your password",
+   "explanation_ar": "يجب عدم مشاركة كلمة المرور مع الآخرين حفاظًا على الحسابات والخصوصية."
+  },
+  {
+   "id": 318,
+   "skill": "Vocabulary",
+   "topic": "Technology Verbs",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "You can _____ a photo with a camera.",
+   "correct_answer": "take",
+   "accepted_answers": [
+    "take"
+   ],
+   "explanation_ar": "نقول take a photo بمعنى يلتقط صورة."
+  },
+  {
+   "id": 319,
+   "skill": "Grammar",
+   "topic": "Relative Pronouns",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "The girl _____ won the race is my sister.",
+   "options": [
+    "who",
+    "where",
+    "when",
+    "which"
+   ],
+   "correct_answer": "who",
+   "explanation_ar": "نستخدم who للإشارة إلى الأشخاص."
+  },
+  {
+   "id": 320,
+   "skill": "Grammar",
+   "topic": "Relative Pronouns",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "This is the house _____ I was born.",
+   "correct_answer": "where",
+   "accepted_answers": [
+    "where"
+   ],
+   "explanation_ar": "نستخدم where للإشارة إلى المكان."
+  },
+  {
+   "id": 321,
+   "skill": "Reading",
+   "topic": "A New Tablet",
+   "type": "reading_comprehension",
+   "difficulty": "easy",
+   "passage": "Mona has bought a new tablet. She uses it to read stories and learn English. She has already downloaded two educational games. Her mother helps her choose safe websites. Mona does not share her password with anyone. Next week, she is going to create a school presentation.",
+   "question": "What does Mona use her tablet for?",
+   "options": [
+    "Reading stories and learning English",
+    "Cooking food",
+    "Driving a car",
+    "Washing clothes"
+   ],
+   "correct_answer": "Reading stories and learning English",
+   "explanation_ar": "يذكر النص أن منى تستخدم الجهاز لقراءة القصص وتعلم اللغة الإنجليزية."
+  },
+  {
+   "id": 322,
+   "skill": "Reading",
+   "topic": "A New Tablet",
+   "type": "reading_comprehension",
+   "difficulty": "easy",
+   "passage": "Mona has bought a new tablet. She uses it to read stories and learn English. She has already downloaded two educational games. Her mother helps her choose safe websites. Mona does not share her password with anyone. Next week, she is going to create a school presentation.",
+   "question": "How many educational games has Mona downloaded?",
+   "options": [
+    "One",
+    "Two",
+    "Three",
+    "Four"
+   ],
+   "correct_answer": "Two",
+   "explanation_ar": "ورد في النص أنها حمّلت لعبتين تعليميتين."
+  },
+  {
+   "id": 323,
+   "skill": "Reading",
+   "topic": "A New Tablet",
+   "type": "reading_comprehension",
+   "difficulty": "medium",
+   "passage": "Mona has bought a new tablet. She uses it to read stories and learn English. She has already downloaded two educational games. Her mother helps her choose safe websites. Mona does not share her password with anyone. Next week, she is going to create a school presentation.",
+   "question": "What is Mona going to do next week?",
+   "options": [
+    "Create a school presentation",
+    "Buy a new phone",
+    "Visit another country",
+    "Join a football team"
+   ],
+   "correct_answer": "Create a school presentation",
+   "explanation_ar": "تقول الجملة الأخيرة إنها تخطط لإعداد عرض مدرسي في الأسبوع القادم."
+  },
+  {
+   "id": 324,
+   "skill": "Grammar",
+   "topic": "Sentence Ordering",
+   "type": "sentence_ordering",
+   "difficulty": "medium",
+   "question": "Put the words in the correct order: has / already / she / arrived",
+   "words": [
+    "has",
+    "already",
+    "she",
+    "arrived"
+   ],
+   "correct_answer": "She has already arrived.",
+   "explanation_ar": "يأتي الفاعل أولًا، ثم has، ثم already، ثم التصريف الثالث arrived."
+  },
+  {
+   "id": 325,
+   "skill": "Writing",
+   "topic": "Future Plans",
+   "type": "open_ended",
+   "difficulty": "medium",
+   "question": "Write three sentences about what you are going to do next weekend.",
+   "accepted_answers": [],
+   "rubric": {
+    "minimum_sentences": 3,
+    "criteria": [
+     "Write three understandable English sentences.",
+     "Use am, is, or are going to correctly.",
+     "Mention suitable future activities."
+    ],
+    "sample_answer": "I am going to visit my grandmother. I am going to play football with my friends. I am going to read a new book."
+   },
+   "explanation_ar": "اكتب ثلاث جمل عن خططك القادمة، واستخدم am/is/are going to بصورة صحيحة."
+  }
+ ]
+}

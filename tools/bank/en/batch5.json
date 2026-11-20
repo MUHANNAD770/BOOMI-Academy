@@ -1,0 +1,506 @@
+{
+ "bank": "Boomi English Academy",
+ "batch": 5,
+ "question_range": "101-125",
+ "stage": "Elementary English",
+ "level": "Beginner",
+ "grade": "Primary",
+ "language": "English",
+ "explanation_language": "Arabic",
+ "questions": [
+  {
+   "id": 101,
+   "skill": "Vocabulary",
+   "topic": "Places in Town",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Where can you borrow books?",
+   "options": [
+    "Library",
+    "Hospital",
+    "Airport",
+    "Restaurant"
+   ],
+   "correct_answer": "Library",
+   "explanation_ar": "المكتبة Library هي المكان الذي نستعير منه الكتب.",
+   "wrong_answers_ar": {
+    "Hospital": "المستشفى مكان علاج المرضى.",
+    "Airport": "المطار مكان السفر بالطائرة.",
+    "Restaurant": "المطعم مكان تناول الطعام."
+   }
+  },
+  {
+   "id": 102,
+   "skill": "Vocabulary",
+   "topic": "Places in Town",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Where do doctors work?",
+   "options": [
+    "School",
+    "Hospital",
+    "Bank",
+    "Park"
+   ],
+   "correct_answer": "Hospital",
+   "explanation_ar": "الأطباء يعملون في المستشفى Hospital.",
+   "wrong_answers_ar": {
+    "School": "المدرسة مكان الدراسة.",
+    "Bank": "البنك مكان التعاملات المالية.",
+    "Park": "الحديقة مكان التنزه."
+   }
+  },
+  {
+   "id": 103,
+   "skill": "Vocabulary",
+   "topic": "Jobs",
+   "type": "matching",
+   "difficulty": "easy",
+   "question": "Match each job with its workplace.",
+   "pairs": [
+    {
+     "item": "Teacher",
+     "match": "School"
+    },
+    {
+     "item": "Doctor",
+     "match": "Hospital"
+    },
+    {
+     "item": "Chef",
+     "match": "Kitchen"
+    },
+    {
+     "item": "Pilot",
+     "match": "Airplane"
+    }
+   ],
+   "explanation_ar": "المعلم يعمل في المدرسة، والطبيب في المستشفى، والطاهي في المطبخ، والطيار يقود الطائرة."
+  },
+  {
+   "id": 104,
+   "skill": "Grammar",
+   "topic": "Present Continuous",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "Look! The baby _____ sleeping.",
+   "options": [
+    "is",
+    "are",
+    "am",
+    "do"
+   ],
+   "correct_answer": "is",
+   "explanation_ar": "نستخدم is مع المفرد مثل The baby، لتكوين المضارع المستمر.",
+   "wrong_answers_ar": {
+    "are": "تُستخدم مع you وwe وthey.",
+    "am": "تُستخدم مع I فقط.",
+    "do": "لا تُستخدم لتكوين المضارع المستمر."
+   }
+  },
+  {
+   "id": 105,
+   "skill": "Grammar",
+   "topic": "Present Continuous",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "They are _____ football now.",
+   "correct_answer": "playing",
+   "explanation_ar": "بعد are في المضارع المستمر نستخدم الفعل مع ing.",
+   "accepted_answers": [
+    "playing"
+   ]
+  },
+  {
+   "id": 106,
+   "skill": "Grammar",
+   "topic": "Present Continuous",
+   "type": "error_correction",
+   "difficulty": "medium",
+   "question": "Correct the sentence: She are reading.",
+   "correct_answer": "She is reading.",
+   "explanation_ar": "نستخدم is مع She وليس are، لأن She مفرد."
+  },
+  {
+   "id": 107,
+   "skill": "Grammar",
+   "topic": "Present Continuous",
+   "type": "sentence_ordering",
+   "difficulty": "medium",
+   "question": "Arrange the words to make a correct sentence.",
+   "words": [
+    "is",
+    "The",
+    "boy",
+    "running",
+    "."
+   ],
+   "correct_sentence": "The boy is running.",
+   "explanation_ar": "الترتيب الصحيح: الفاعل The boy، ثم is، ثم الفعل running."
+  },
+  {
+   "id": 108,
+   "skill": "Vocabulary",
+   "topic": "Sports",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Which sport is played with a racket?",
+   "options": [
+    "Tennis",
+    "Football",
+    "Swimming",
+    "Running"
+   ],
+   "correct_answer": "Tennis",
+   "explanation_ar": "لعبة التنس Tennis تُلعب باستخدام المضرب.",
+   "wrong_answers_ar": {
+    "Football": "كرة القدم تُلعب بالكرة والقدم.",
+    "Swimming": "السباحة تتم في الماء.",
+    "Running": "الجري رياضة تعتمد على الركض."
+   }
+  },
+  {
+   "id": 109,
+   "skill": "Vocabulary",
+   "topic": "Sports",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "You use your feet to kick a _____ in football.",
+   "correct_answer": "ball",
+   "explanation_ar": "نستخدم القدمين لركل الكرة في كرة القدم.",
+   "accepted_answers": [
+    "ball"
+   ]
+  },
+  {
+   "id": 110,
+   "skill": "Vocabulary",
+   "topic": "Transport",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Which vehicle travels on railway tracks?",
+   "options": [
+    "Train",
+    "Bus",
+    "Boat",
+    "Car"
+   ],
+   "correct_answer": "Train",
+   "explanation_ar": "القطار Train يسير على قضبان السكك الحديدية.",
+   "wrong_answers_ar": {
+    "Bus": "الحافلة تسير على الطرق.",
+    "Boat": "القارب يسير في الماء.",
+    "Car": "السيارة تسير على الطرق."
+   }
+  },
+  {
+   "id": 111,
+   "skill": "Vocabulary",
+   "topic": "Transport",
+   "type": "matching",
+   "difficulty": "easy",
+   "question": "Match each vehicle with where it travels.",
+   "pairs": [
+    {
+     "item": "Ship",
+     "match": "Sea"
+    },
+    {
+     "item": "Airplane",
+     "match": "Sky"
+    },
+    {
+     "item": "Car",
+     "match": "Road"
+    },
+    {
+     "item": "Train",
+     "match": "Railway"
+    }
+   ],
+   "explanation_ar": "السفينة تسير في البحر، والطائرة في السماء، والسيارة على الطريق، والقطار على السكة الحديدية."
+  },
+  {
+   "id": 112,
+   "skill": "Grammar",
+   "topic": "Comparative Adjectives",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "An elephant is _____ than a cat.",
+   "options": [
+    "bigger",
+    "big",
+    "biggest",
+    "small"
+   ],
+   "correct_answer": "bigger",
+   "explanation_ar": "نستخدم صيغة المقارنة bigger عند مقارنة شيئين في الحجم.",
+   "wrong_answers_ar": {
+    "big": "صفة عادية وليست صيغة مقارنة.",
+    "biggest": "صيغة التفضيل وتعني الأكبر.",
+    "small": "تعني صغير، وهي عكس المعنى المطلوب."
+   }
+  },
+  {
+   "id": 113,
+   "skill": "Grammar",
+   "topic": "Comparative Adjectives",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "A car is _____ than a bicycle. (fast)",
+   "correct_answer": "faster",
+   "explanation_ar": "نضيف er إلى الصفة القصيرة fast لتصبح faster عند المقارنة.",
+   "accepted_answers": [
+    "faster"
+   ]
+  },
+  {
+   "id": 114,
+   "skill": "Grammar",
+   "topic": "Comparative Adjectives",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "Which sentence is correct?",
+   "options": [
+    "My bag is heavier than yours.",
+    "My bag is heavy than yours.",
+    "My bag is heaviest than yours.",
+    "My bag heavier yours."
+   ],
+   "correct_answer": "My bag is heavier than yours.",
+   "explanation_ar": "نستخدم heavier than للمقارنة بين حقيبتين في الوزن.",
+   "wrong_answers_ar": {
+    "My bag is heavy than yours.": "نحتاج إلى صيغة المقارنة heavier.",
+    "My bag is heaviest than yours.": "لا نستخدم صيغة التفضيل heaviest مع than.",
+    "My bag heavier yours.": "الجملة تفتقد الفعل is وأداة المقارنة than."
+   }
+  },
+  {
+   "id": 115,
+   "skill": "Grammar",
+   "topic": "Superlative Adjectives",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "Mount Everest is the _____ mountain in the world.",
+   "options": [
+    "highest",
+    "higher",
+    "high",
+    "most high"
+   ],
+   "correct_answer": "highest",
+   "explanation_ar": "نستخدم the highest عند الحديث عن أعلى شيء ضمن مجموعة.",
+   "wrong_answers_ar": {
+    "higher": "صيغة مقارنة بين شيئين.",
+    "high": "الصفة الأساسية وليست صيغة التفضيل.",
+    "most high": "الصيغة الصحيحة للصفة هنا هي highest."
+   }
+  },
+  {
+   "id": 116,
+   "skill": "Vocabulary",
+   "topic": "Weather",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "What is the weather like when water falls from clouds?",
+   "options": [
+    "Rainy",
+    "Sunny",
+    "Windy",
+    "Dry"
+   ],
+   "correct_answer": "Rainy",
+   "explanation_ar": "Rainy تعني ممطر، وتُستخدم عندما ينزل المطر من السحب.",
+   "wrong_answers_ar": {
+    "Sunny": "تعني مشمس.",
+    "Windy": "تعني عاصف أو كثير الرياح.",
+    "Dry": "تعني جاف."
+   }
+  },
+  {
+   "id": 117,
+   "skill": "Vocabulary",
+   "topic": "Weather",
+   "type": "matching",
+   "difficulty": "easy",
+   "question": "Match the weather word with its meaning.",
+   "pairs": [
+    {
+     "item": "Sunny",
+     "match": "Full of sunshine"
+    },
+    {
+     "item": "Windy",
+     "match": "A lot of wind"
+    },
+    {
+     "item": "Cloudy",
+     "match": "Full of clouds"
+    },
+    {
+     "item": "Snowy",
+     "match": "Covered with snow"
+    }
+   ],
+   "explanation_ar": "Sunny مشمس، Windy كثير الرياح، Cloudy غائم، Snowy مثلج."
+  },
+  {
+   "id": 118,
+   "skill": "Grammar",
+   "topic": "Past Simple - Was and Were",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "I _____ at home yesterday.",
+   "options": [
+    "was",
+    "were",
+    "am",
+    "are"
+   ],
+   "correct_answer": "was",
+   "explanation_ar": "نستخدم was مع I في الماضي من فعل be.",
+   "wrong_answers_ar": {
+    "were": "تُستخدم مع you وwe وthey.",
+    "am": "صيغة المضارع مع I.",
+    "are": "صيغة المضارع مع you وwe وthey."
+   }
+  },
+  {
+   "id": 119,
+   "skill": "Grammar",
+   "topic": "Past Simple - Was and Were",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "The children _____ happy yesterday.",
+   "correct_answer": "were",
+   "explanation_ar": "نستخدم were مع الجمع مثل The children.",
+   "accepted_answers": [
+    "were"
+   ]
+  },
+  {
+   "id": 120,
+   "skill": "Grammar",
+   "topic": "Past Simple - Was and Were",
+   "type": "error_correction",
+   "difficulty": "medium",
+   "question": "Correct the sentence: They was tired.",
+   "correct_answer": "They were tired.",
+   "explanation_ar": "نستخدم were مع They وليس was."
+  },
+  {
+   "id": 121,
+   "skill": "Vocabulary",
+   "topic": "Feelings",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "How do you feel when you receive a wonderful gift?",
+   "options": [
+    "Happy",
+    "Angry",
+    "Sad",
+    "Afraid"
+   ],
+   "correct_answer": "Happy",
+   "explanation_ar": "Happy تعني سعيد، وهي الشعور المناسب عند الحصول على هدية جميلة.",
+   "wrong_answers_ar": {
+    "Angry": "تعني غاضب.",
+    "Sad": "تعني حزين.",
+    "Afraid": "تعني خائف."
+   }
+  },
+  {
+   "id": 122,
+   "skill": "Vocabulary",
+   "topic": "Feelings",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "I feel _____ when I see a scary monster.",
+   "correct_answer": "afraid",
+   "explanation_ar": "Afraid تعني خائف، وهي مناسبة عند رؤية شيء مخيف.",
+   "accepted_answers": [
+    "afraid",
+    "scared"
+   ]
+  },
+  {
+   "id": 123,
+   "skill": "Reading",
+   "topic": "A Day at the Beach",
+   "type": "reading_comprehension",
+   "difficulty": "easy",
+   "passage": "Last Friday, Sara went to the beach with her family. The weather was sunny. She played with a ball and collected small shells. Her brother swam in the sea.",
+   "question": "Where did Sara go last Friday?",
+   "options": [
+    "To the beach",
+    "To the zoo",
+    "To school",
+    "To the library"
+   ],
+   "correct_answer": "To the beach",
+   "explanation_ar": "النص يذكر أن Sara went to the beach، أي ذهبت إلى الشاطئ.",
+   "wrong_answers_ar": {
+    "To the zoo": "لم يذكر النص زيارة حديقة الحيوانات.",
+    "To school": "لم يذكر النص الذهاب إلى المدرسة.",
+    "To the library": "لم يذكر النص زيارة المكتبة."
+   }
+  },
+  {
+   "id": 124,
+   "skill": "Reading",
+   "topic": "A Day at the Beach",
+   "type": "reading_comprehension",
+   "difficulty": "easy",
+   "passage": "Last Friday, Sara went to the beach with her family. The weather was sunny. She played with a ball and collected small shells. Her brother swam in the sea.",
+   "question": "What did Sara collect?",
+   "options": [
+    "Small shells",
+    "Flowers",
+    "Books",
+    "Stones"
+   ],
+   "correct_answer": "Small shells",
+   "explanation_ar": "ورد في النص أنها جمعت أصدافًا صغيرة small shells.",
+   "wrong_answers_ar": {
+    "Flowers": "الزهور لم تُذكر في النص.",
+    "Books": "الكتب لم تُذكر في النص.",
+    "Stones": "الأحجار لم تُذكر في النص."
+   }
+  },
+  {
+   "id": 125,
+   "skill": "Writing",
+   "topic": "My Favourite Place",
+   "type": "open_ended",
+   "difficulty": "medium",
+   "question": "Write three sentences about your favourite place.",
+   "example_answer": [
+    "My favourite place is the park.",
+    "It is beautiful and quiet.",
+    "I play with my friends there."
+   ],
+   "explanation_ar": "اكتب ثلاث جمل عن مكانك المفضل. اذكر اسم المكان وصفة واحدة أو أكثر، ثم اكتب ماذا تفعل فيه.",
+   "rubric": {
+    "total_score": 5,
+    "criteria": [
+     {
+      "criterion": "Writes three relevant sentences",
+      "score": 2
+     },
+     {
+      "criterion": "Uses suitable vocabulary",
+      "score": 1
+     },
+     {
+      "criterion": "Uses correct sentence structure",
+      "score": 1
+     },
+     {
+      "criterion": "Uses capitalization and punctuation",
+      "score": 1
+     }
+    ]
+   }
+  }
+ ]
+}

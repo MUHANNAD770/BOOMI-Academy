@@ -1,0 +1,417 @@
+{
+ "bank": "Boomi English Academy",
+ "batch": 16,
+ "question_range": "376-400",
+ "stage": "Elementary",
+ "level": "Elementary Plus",
+ "grade": "Primary",
+ "language": "English",
+ "explanation_language": "Arabic",
+ "questions": [
+  {
+   "id": 376,
+   "skill": "Grammar",
+   "topic": "Gerunds and Infinitives",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "She decided _____ a new language.",
+   "options": [
+    "to learn",
+    "learning",
+    "learn",
+    "learned"
+   ],
+   "correct_answer": "to learn",
+   "explanation_ar": "يأتي الفعل بصيغة to + الفعل الأساسي بعد decide."
+  },
+  {
+   "id": 377,
+   "skill": "Grammar",
+   "topic": "Gerunds and Infinitives",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "He avoids _____ too much sugar.",
+   "options": [
+    "eating",
+    "to eat",
+    "eat",
+    "eats"
+   ],
+   "correct_answer": "eating",
+   "explanation_ar": "يأتي الفعل مع ing بعد avoid."
+  },
+  {
+   "id": 378,
+   "skill": "Grammar",
+   "topic": "Gerunds and Infinitives",
+   "type": "error_correction",
+   "difficulty": "challenging",
+   "question": "Correct the sentence: They enjoy to swim in the sea.",
+   "correct_answer": "They enjoy swimming in the sea.",
+   "explanation_ar": "يأتي الفعل مع ing بعد enjoy، لذلك نقول enjoy swimming."
+  },
+  {
+   "id": 379,
+   "skill": "Grammar",
+   "topic": "Passive Voice",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "The homework must _____ before Monday.",
+   "options": [
+    "be completed",
+    "completed",
+    "is complete",
+    "be completing"
+   ],
+   "correct_answer": "be completed",
+   "explanation_ar": "بعد must في المبني للمجهول نستخدم be ثم التصريف الثالث."
+  },
+  {
+   "id": 380,
+   "skill": "Grammar",
+   "topic": "Modal Verbs",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "You _____ be tired after such a long journey.",
+   "options": [
+    "must",
+    "cannot",
+    "should not",
+    "needn't"
+   ],
+   "correct_answer": "must",
+   "explanation_ar": "يمكن استخدام must للتعبير عن استنتاج قوي بناءً على دليل."
+  },
+  {
+   "id": 381,
+   "skill": "Grammar",
+   "topic": "Past Perfect",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "When we arrived, the film _____.",
+   "options": [
+    "had started",
+    "has start",
+    "starts",
+    "starting"
+   ],
+   "correct_answer": "had started",
+   "explanation_ar": "نستخدم الماضي التام للحدث الذي وقع قبل حدث آخر في الماضي."
+  },
+  {
+   "id": 382,
+   "skill": "Grammar",
+   "topic": "Past Perfect",
+   "type": "fill_blank",
+   "difficulty": "challenging",
+   "question": "She had _____ her lunch before the lesson began. (finish)",
+   "correct_answer": "finished",
+   "accepted_answers": [
+    "finished"
+   ],
+   "explanation_ar": "يتكون الماضي التام من had + التصريف الثالث للفعل."
+  },
+  {
+   "id": 383,
+   "skill": "Grammar",
+   "topic": "Past Perfect",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "I could not enter the house because I _____ my key.",
+   "options": [
+    "had lost",
+    "lose",
+    "am losing",
+    "have lose"
+   ],
+   "correct_answer": "had lost",
+   "explanation_ar": "فقدان المفتاح حدث قبل عدم القدرة على دخول المنزل، لذلك نستخدم الماضي التام."
+  },
+  {
+   "id": 384,
+   "skill": "Grammar",
+   "topic": "Wish",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "I wish I _____ taller.",
+   "options": [
+    "were",
+    "am",
+    "will",
+    "be"
+   ],
+   "correct_answer": "were",
+   "explanation_ar": "نستخدم wish مع الماضي البسيط للتعبير عن أمنية تتعلق بالحاضر، ويشيع استخدام were مع جميع الضمائر في هذا التركيب."
+  },
+  {
+   "id": 385,
+   "skill": "Grammar",
+   "topic": "Prepositions of Time",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "The meeting starts _____ 9:30 a.m.",
+   "options": [
+    "at",
+    "on",
+    "in",
+    "by"
+   ],
+   "correct_answer": "at",
+   "explanation_ar": "نستخدم at مع الوقت المحدد مثل 9:30 a.m."
+  },
+  {
+   "id": 386,
+   "skill": "Grammar",
+   "topic": "Prepositions of Time",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "My birthday is _____ November.",
+   "options": [
+    "in",
+    "on",
+    "at",
+    "from"
+   ],
+   "correct_answer": "in",
+   "explanation_ar": "نستخدم in مع الأشهر والفصول والسنوات."
+  },
+  {
+   "id": 387,
+   "skill": "Grammar",
+   "topic": "Prepositions of Place",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "The picture is hanging _____ the wall.",
+   "correct_answer": "on",
+   "accepted_answers": [
+    "on"
+   ],
+   "explanation_ar": "نستخدم on عندما يكون الشيء مثبتًا أو موجودًا على سطح."
+  },
+  {
+   "id": 388,
+   "skill": "Grammar",
+   "topic": "Phrasal Verbs",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "Please turn _____ the lights before leaving the room.",
+   "options": [
+    "off",
+    "up",
+    "after",
+    "into"
+   ],
+   "correct_answer": "off",
+   "explanation_ar": "Turn off تعني إطفاء الجهاز أو الضوء."
+  },
+  {
+   "id": 389,
+   "skill": "Grammar",
+   "topic": "Phrasal Verbs",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "Please look _____ this word in the dictionary.",
+   "correct_answer": "up",
+   "accepted_answers": [
+    "up"
+   ],
+   "explanation_ar": "Look up تعني يبحث عن معلومة أو كلمة في مرجع."
+  },
+  {
+   "id": 390,
+   "skill": "Vocabulary",
+   "topic": "Academic Vocabulary",
+   "type": "matching",
+   "difficulty": "challenging",
+   "question": "Match each academic word with its Arabic meaning.",
+   "pairs": [
+    {
+     "left": "Compare",
+     "right": "يقارن"
+    },
+    {
+     "left": "Describe",
+     "right": "يصف"
+    },
+    {
+     "left": "Explain",
+     "right": "يشرح"
+    },
+    {
+     "left": "Predict",
+     "right": "يتنبأ"
+    },
+    {
+     "left": "Conclusion",
+     "right": "استنتاج"
+    }
+   ],
+   "explanation_ar": "تُستخدم هذه الأفعال والمفردات في الأسئلة المدرسية والأنشطة التي تتطلب التفكير والتحليل."
+  },
+  {
+   "id": 391,
+   "skill": "Vocabulary",
+   "topic": "Science and Nature",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "Which part of a plant absorbs water from the soil?",
+   "options": [
+    "Roots",
+    "Flowers",
+    "Fruits",
+    "Leaves"
+   ],
+   "correct_answer": "Roots",
+   "explanation_ar": "تمتص الجذور الماء والأملاح المعدنية من التربة."
+  },
+  {
+   "id": 392,
+   "skill": "Vocabulary",
+   "topic": "Space",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "Which planet is known as the Red Planet?",
+   "options": [
+    "Mars",
+    "Venus",
+    "Jupiter",
+    "Neptune"
+   ],
+   "correct_answer": "Mars",
+   "explanation_ar": "يُعرف كوكب Mars باسم الكوكب الأحمر بسبب مظهره المحمر."
+  },
+  {
+   "id": 393,
+   "skill": "Vocabulary",
+   "topic": "Energy",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "Solar panels use energy from the _____.",
+   "correct_answer": "sun",
+   "accepted_answers": [
+    "sun",
+    "the sun"
+   ],
+   "explanation_ar": "تستخدم الألواح الشمسية طاقة الشمس لإنتاج الكهرباء."
+  },
+  {
+   "id": 394,
+   "skill": "Grammar",
+   "topic": "Word Formation",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "Choose the correct word: The instructions were very _____.",
+   "options": [
+    "helpful",
+    "helpfully",
+    "help",
+    "helplessly"
+   ],
+   "correct_answer": "helpful",
+   "explanation_ar": "نحتاج إلى صفة بعد were لوصف التعليمات، والكلمة المناسبة helpful."
+  },
+  {
+   "id": 395,
+   "skill": "Grammar",
+   "topic": "Word Formation",
+   "type": "fill_blank",
+   "difficulty": "challenging",
+   "question": "A person who invents something is an _____.",
+   "correct_answer": "inventor",
+   "accepted_answers": [
+    "inventor"
+   ],
+   "explanation_ar": "Inventor تعني مخترع، وهي اسم الشخص الذي يقوم بالاختراع."
+  },
+  {
+   "id": 396,
+   "skill": "Reading",
+   "topic": "A Visit to the Museum",
+   "type": "reading_comprehension",
+   "difficulty": "challenging",
+   "passage": "Our class visited a history museum on Tuesday. Before the visit, our teacher had explained the rules and divided us into small groups. At the museum, we saw old tools, traditional clothes, and photographs. A guide told us how people lived many years ago. I was especially interested in the old fishing equipment because my grandfather used similar tools. After the visit, we wrote a short report about what we had learned.",
+   "question": "What had the teacher done before the visit?",
+   "options": [
+    "Explained the rules and divided the students into groups",
+    "Bought new clothes for everyone",
+    "Cancelled the museum visit",
+    "Prepared a sports competition"
+   ],
+   "correct_answer": "Explained the rules and divided the students into groups",
+   "explanation_ar": "يوضح النص أن المعلم شرح القواعد وقسّم الطلاب إلى مجموعات قبل الزيارة."
+  },
+  {
+   "id": 397,
+   "skill": "Reading",
+   "topic": "A Visit to the Museum",
+   "type": "reading_comprehension",
+   "difficulty": "challenging",
+   "passage": "Our class visited a history museum on Tuesday. Before the visit, our teacher had explained the rules and divided us into small groups. At the museum, we saw old tools, traditional clothes, and photographs. A guide told us how people lived many years ago. I was especially interested in the old fishing equipment because my grandfather used similar tools. After the visit, we wrote a short report about what we had learned.",
+   "question": "Why was the writer interested in the old fishing equipment?",
+   "options": [
+    "Because the grandfather used similar tools",
+    "Because the writer wanted to buy a boat",
+    "Because the guide gave it as a gift",
+    "Because it was made of gold"
+   ],
+   "correct_answer": "Because the grandfather used similar tools",
+   "explanation_ar": "اهتم الكاتب بأدوات الصيد القديمة لأن جده كان يستخدم أدوات مشابهة."
+  },
+  {
+   "id": 398,
+   "skill": "Reading",
+   "topic": "A Visit to the Museum",
+   "type": "reading_comprehension",
+   "difficulty": "challenging",
+   "passage": "Our class visited a history museum on Tuesday. Before the visit, our teacher had explained the rules and divided us into small groups. At the museum, we saw old tools, traditional clothes, and photographs. A guide told us how people lived many years ago. I was especially interested in the old fishing equipment because my grandfather used similar tools. After the visit, we wrote a short report about what we had learned.",
+   "question": "What did the students do after the visit?",
+   "options": [
+    "They wrote a short report",
+    "They went fishing",
+    "They built a museum",
+    "They bought old photographs"
+   ],
+   "correct_answer": "They wrote a short report",
+   "explanation_ar": "بعد الزيارة كتب الطلاب تقريرًا قصيرًا عمّا تعلموه."
+  },
+  {
+   "id": 399,
+   "skill": "Grammar",
+   "topic": "Sentence Transformation",
+   "type": "sentence_ordering",
+   "difficulty": "challenging",
+   "question": "Put the words in the correct order: had / before / left / the train / we / arrived",
+   "words": [
+    "had",
+    "before",
+    "left",
+    "the train",
+    "we",
+    "arrived"
+   ],
+   "correct_answer": "The train had left before we arrived.",
+   "explanation_ar": "القطار غادر قبل وصولنا؛ لذلك نستخدم الماضي التام had left للحدث الأسبق."
+  },
+  {
+   "id": 400,
+   "skill": "Writing",
+   "topic": "Opinion Writing",
+   "type": "open_ended",
+   "difficulty": "challenging",
+   "question": "Do you think children should learn about science through experiments? Write four or five sentences explaining your opinion.",
+   "accepted_answers": [],
+   "rubric": {
+    "minimum_sentences": 4,
+    "maximum_sentences": 5,
+    "criteria": [
+     "Clearly state an opinion.",
+     "Give at least two reasons.",
+     "Use linking words such as because, also, or so.",
+     "Write understandable English sentences."
+    ],
+    "sample_answer": "I think children should learn science through experiments. Experiments make lessons interesting. Students can see how things work. They can ask questions and discover new ideas. This helps them remember what they learn."
+   },
+   "explanation_ar": "اكتب رأيك بوضوح، واذكر سببين على الأقل، واستخدم كلمات الربط لتوضيح أفكارك."
+  }
+ ]
+}

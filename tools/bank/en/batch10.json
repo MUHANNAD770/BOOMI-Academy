@@ -1,0 +1,527 @@
+{
+ "bank": "Boomi English Academy",
+ "batch": 10,
+ "question_range": "226-250",
+ "stage": "Elementary English",
+ "level": "Elementary",
+ "grade": "Primary",
+ "language": "English",
+ "explanation_language": "Arabic",
+ "questions": [
+  {
+   "id": 226,
+   "skill": "Grammar",
+   "topic": "Passive Voice - Present Simple",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "English _____ in many countries.",
+   "options": [
+    "is spoken",
+    "speaks",
+    "are spoken",
+    "speaking"
+   ],
+   "correct_answer": "is spoken",
+   "explanation_ar": "نستخدم المبني للمجهول عندما نركز على الشيء الذي يقع عليه الفعل. English مفرد، لذلك نستخدم is مع التصريف الثالث spoken.",
+   "wrong_answers_ar": {
+    "speaks": "صيغة المبني للمعلوم، والفاعل غير موجود في الجملة.",
+    "are spoken": "are تُستخدم مع الجمع، بينما English مفرد هنا.",
+    "speaking": "صيغة ing ولا تكوّن المبني للمجهول وحدها."
+   }
+  },
+  {
+   "id": 227,
+   "skill": "Grammar",
+   "topic": "Passive Voice - Present Simple",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "These cars _____ in Japan.",
+   "options": [
+    "are made",
+    "is made",
+    "make",
+    "making"
+   ],
+   "correct_answer": "are made",
+   "explanation_ar": "These cars جمع، لذلك نستخدم are ثم التصريف الثالث made.",
+   "wrong_answers_ar": {
+    "is made": "تُستخدم مع المفرد.",
+    "make": "صيغة المبني للمعلوم.",
+    "making": "صيغة ing ولا تكوّن المبني للمجهول هنا."
+   }
+  },
+  {
+   "id": 228,
+   "skill": "Grammar",
+   "topic": "Passive Voice - Present Simple",
+   "type": "error_correction",
+   "difficulty": "medium",
+   "question": "Correct the sentence: The letters is written by Ali.",
+   "correct_answer": "The letters are written by Ali.",
+   "explanation_ar": "نستخدم are لأن letters جمع، ثم التصريف الثالث written."
+  },
+  {
+   "id": 229,
+   "skill": "Grammar",
+   "topic": "Passive Voice - Past Simple",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "The window _____ yesterday.",
+   "options": [
+    "was broken",
+    "is broken",
+    "were broken",
+    "break"
+   ],
+   "correct_answer": "was broken",
+   "explanation_ar": "الجملة في الماضي، والنافذة مفرد، لذلك نستخدم was مع التصريف الثالث broken.",
+   "wrong_answers_ar": {
+    "is broken": "صيغة الحاضر وليس الماضي.",
+    "were broken": "were تُستخدم مع الجمع أو you.",
+    "break": "الفعل الأساسي ولا يكوّن المبني للمجهول."
+   }
+  },
+  {
+   "id": 230,
+   "skill": "Grammar",
+   "topic": "Passive Voice",
+   "type": "sentence_ordering",
+   "difficulty": "medium",
+   "question": "Arrange the words to make a correct passive sentence.",
+   "words": [
+    "The",
+    "cake",
+    "was",
+    "made",
+    "by",
+    "Mum",
+    "."
+   ],
+   "correct_sentence": "The cake was made by Mum.",
+   "explanation_ar": "تركيب المبني للمجهول في الماضي هو المفعول به ثم was أو were ثم التصريف الثالث، ويمكن إضافة by لذكر من قام بالفعل."
+  },
+  {
+   "id": 231,
+   "skill": "Grammar",
+   "topic": "First Conditional",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "If it rains, we _____ at home.",
+   "options": [
+    "will stay",
+    "stayed",
+    "stays",
+    "staying"
+   ],
+   "correct_answer": "will stay",
+   "explanation_ar": "في الشرط الأول نستخدم المضارع البسيط بعد If، ثم will مع الفعل الأساسي في النتيجة.",
+   "wrong_answers_ar": {
+    "stayed": "ماضٍ ولا يناسب النتيجة المستقبلية هنا.",
+    "stays": "مضارع مع المفرد ولا يناسب وجود will.",
+    "staying": "صيغة ing ولا تكوّن النتيجة المستقبلية وحدها."
+   }
+  },
+  {
+   "id": 232,
+   "skill": "Grammar",
+   "topic": "First Conditional",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "If you study hard, you _____ pass the exam.",
+   "correct_answer": "will",
+   "explanation_ar": "نستخدم will في جملة النتيجة للتعبير عن أمر متوقع في المستقبل.",
+   "accepted_answers": [
+    "will"
+   ]
+  },
+  {
+   "id": 233,
+   "skill": "Grammar",
+   "topic": "First Conditional",
+   "type": "sentence_ordering",
+   "difficulty": "medium",
+   "question": "Arrange the words to make a correct conditional sentence.",
+   "words": [
+    "If",
+    "I",
+    "am",
+    "free",
+    ",",
+    "I",
+    "will",
+    "help",
+    "you",
+    "."
+   ],
+   "correct_sentence": "If I am free, I will help you.",
+   "explanation_ar": "نبدأ بجملة الشرط If I am free، ثم نضع فاصلة، ثم النتيجة I will help you."
+  },
+  {
+   "id": 234,
+   "skill": "Grammar",
+   "topic": "Present Perfect",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "I have _____ my homework.",
+   "options": [
+    "finished",
+    "finish",
+    "finishing",
+    "finishes"
+   ],
+   "correct_answer": "finished",
+   "explanation_ar": "يتكون المضارع التام من have أو has ثم التصريف الثالث للفعل. التصريف الثالث من finish هو finished.",
+   "wrong_answers_ar": {
+    "finish": "الفعل الأساسي وليس التصريف الثالث.",
+    "finishing": "صيغة ing.",
+    "finishes": "صيغة المضارع مع He أو She أو It."
+   }
+  },
+  {
+   "id": 235,
+   "skill": "Grammar",
+   "topic": "Present Perfect",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "She has _____ to London.",
+   "options": [
+    "been",
+    "be",
+    "being",
+    "was"
+   ],
+   "correct_answer": "been",
+   "explanation_ar": "التصريف الثالث من be هو been، ويأتي بعد has في المضارع التام.",
+   "wrong_answers_ar": {
+    "be": "الصيغة الأساسية للفعل.",
+    "being": "صيغة ing.",
+    "was": "الماضي من be وليس التصريف الثالث."
+   }
+  },
+  {
+   "id": 236,
+   "skill": "Grammar",
+   "topic": "Present Perfect",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "They have _____ lunch. (eat)",
+   "correct_answer": "eaten",
+   "explanation_ar": "التصريف الثالث من eat هو eaten.",
+   "accepted_answers": [
+    "eaten"
+   ]
+  },
+  {
+   "id": 237,
+   "skill": "Grammar",
+   "topic": "Present Perfect",
+   "type": "matching",
+   "difficulty": "medium",
+   "question": "Match each verb with its past participle.",
+   "pairs": [
+    {
+     "item": "Go",
+     "match": "Gone"
+    },
+    {
+     "item": "See",
+     "match": "Seen"
+    },
+    {
+     "item": "Take",
+     "match": "Taken"
+    },
+    {
+     "item": "Give",
+     "match": "Given"
+    },
+    {
+     "item": "Speak",
+     "match": "Spoken"
+    }
+   ],
+   "explanation_ar": "هذه تصريفات ثالثة لأفعال غير منتظمة، ونستخدمها بعد have أو has في المضارع التام."
+  },
+  {
+   "id": 238,
+   "skill": "Grammar",
+   "topic": "Present Perfect",
+   "type": "error_correction",
+   "difficulty": "medium",
+   "question": "Correct the sentence: He have finished his work.",
+   "correct_answer": "He has finished his work.",
+   "explanation_ar": "نستخدم has مع He وShe وIt، بينما have تُستخدم مع I وYou وWe وThey."
+  },
+  {
+   "id": 239,
+   "skill": "Vocabulary",
+   "topic": "Environment",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "What should we do with plastic bottles to help the environment?",
+   "options": [
+    "Recycle them",
+    "Throw them into rivers",
+    "Burn them anywhere",
+    "Leave them on the road"
+   ],
+   "correct_answer": "Recycle them",
+   "explanation_ar": "إعادة تدوير العبوات البلاستيكية تساعد على تقليل النفايات والمحافظة على البيئة.",
+   "wrong_answers_ar": {
+    "Throw them into rivers": "رمي البلاستيك في الأنهار يلوث الماء.",
+    "Burn them anywhere": "حرق البلاستيك قد يسبب تلوث الهواء.",
+    "Leave them on the road": "ترك النفايات في الطريق يضر بالبيئة."
+   }
+  },
+  {
+   "id": 240,
+   "skill": "Vocabulary",
+   "topic": "Environment",
+   "type": "matching",
+   "difficulty": "easy",
+   "question": "Match each environmental word with its meaning.",
+   "pairs": [
+    {
+     "item": "Recycle",
+     "match": "Use materials again"
+    },
+    {
+     "item": "Pollution",
+     "match": "Harmful substances in the environment"
+    },
+    {
+     "item": "Protect",
+     "match": "Keep safe"
+    },
+    {
+     "item": "Waste",
+     "match": "Unwanted material"
+    }
+   ],
+   "explanation_ar": "Recycle إعادة التدوير، Pollution التلوث، Protect يحمي، Waste نفايات أو مواد غير مرغوبة."
+  },
+  {
+   "id": 241,
+   "skill": "Vocabulary",
+   "topic": "Environment",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "We should plant more trees to keep the air _____.",
+   "correct_answer": "clean",
+   "explanation_ar": "Clean تعني نظيف، وزراعة الأشجار تساعد في المحافظة على هواء أنظف.",
+   "accepted_answers": [
+    "clean"
+   ]
+  },
+  {
+   "id": 242,
+   "skill": "Vocabulary",
+   "topic": "Natural Disasters",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "What is a long period with very little or no rain called?",
+   "options": [
+    "Drought",
+    "Flood",
+    "Storm",
+    "Earthquake"
+   ],
+   "correct_answer": "Drought",
+   "explanation_ar": "Drought تعني الجفاف، وهو فترة طويلة يقل فيها المطر أو ينعدم.",
+   "wrong_answers_ar": {
+    "Flood": "تعني فيضانًا.",
+    "Storm": "تعني عاصفة.",
+    "Earthquake": "تعني زلزالًا."
+   }
+  },
+  {
+   "id": 243,
+   "skill": "Vocabulary",
+   "topic": "Natural Disasters",
+   "type": "matching",
+   "difficulty": "medium",
+   "question": "Match each natural event with its meaning.",
+   "pairs": [
+    {
+     "item": "Flood",
+     "match": "Too much water covering land"
+    },
+    {
+     "item": "Earthquake",
+     "match": "Sudden shaking of the ground"
+    },
+    {
+     "item": "Storm",
+     "match": "Strong wind and often rain"
+    },
+    {
+     "item": "Drought",
+     "match": "A long period with little rain"
+    }
+   ],
+   "explanation_ar": "Flood فيضان، Earthquake زلزال، Storm عاصفة، Drought جفاف."
+  },
+  {
+   "id": 244,
+   "skill": "Vocabulary",
+   "topic": "Environment",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "Which action saves water?",
+   "options": [
+    "Turning off the tap while brushing your teeth",
+    "Leaving the tap running",
+    "Washing one cup for a long time",
+    "Playing with running water"
+   ],
+   "correct_answer": "Turning off the tap while brushing your teeth",
+   "explanation_ar": "إغلاق الصنبور أثناء تنظيف الأسنان يقلل هدر الماء.",
+   "wrong_answers_ar": {
+    "Leaving the tap running": "ترك الماء جاريًا يسبب الهدر.",
+    "Washing one cup for a long time": "استخدام ماء أكثر من الحاجة يهدر الماء.",
+    "Playing with running water": "اللعب بالماء الجاري يسبب الهدر."
+   }
+  },
+  {
+   "id": 245,
+   "skill": "Reading",
+   "topic": "A Clean Beach",
+   "type": "reading_comprehension",
+   "difficulty": "medium",
+   "passage": "Last weekend, a group of students visited a beach to clean it. They collected plastic bottles, paper, and food wrappers. Their teacher explained that rubbish can harm sea animals. At the end of the day, the beach looked much cleaner.",
+   "question": "Why did the students visit the beach?",
+   "options": [
+    "To clean it",
+    "To build a house",
+    "To catch fish",
+    "To play football"
+   ],
+   "correct_answer": "To clean it",
+   "explanation_ar": "النص يوضح أن الطلاب زاروا الشاطئ لتنظيفه وجمع النفايات.",
+   "wrong_answers_ar": {
+    "To build a house": "بناء منزل لم يُذكر في النص.",
+    "To catch fish": "صيد الأسماك لم يُذكر في النص.",
+    "To play football": "لعب كرة القدم لم يُذكر في النص."
+   }
+  },
+  {
+   "id": 246,
+   "skill": "Reading",
+   "topic": "A Clean Beach",
+   "type": "reading_comprehension",
+   "difficulty": "medium",
+   "passage": "Last weekend, a group of students visited a beach to clean it. They collected plastic bottles, paper, and food wrappers. Their teacher explained that rubbish can harm sea animals. At the end of the day, the beach looked much cleaner.",
+   "question": "Which animals can be harmed by rubbish?",
+   "options": [
+    "Sea animals",
+    "Farm animals only",
+    "Pet cats only",
+    "Birds in the forest only"
+   ],
+   "correct_answer": "Sea animals",
+   "explanation_ar": "المعلم شرح أن النفايات يمكن أن تضر بالحيوانات البحرية.",
+   "wrong_answers_ar": {
+    "Farm animals only": "الحيوانات البحرية هي المذكورة في النص.",
+    "Pet cats only": "القطط المنزلية لم تُذكر في النص.",
+    "Birds in the forest only": "طيور الغابة لم تُذكر في النص."
+   }
+  },
+  {
+   "id": 247,
+   "skill": "Reading",
+   "topic": "A Clean Beach",
+   "type": "reading_comprehension",
+   "difficulty": "medium",
+   "passage": "Last weekend, a group of students visited a beach to clean it. They collected plastic bottles, paper, and food wrappers. Their teacher explained that rubbish can harm sea animals. At the end of the day, the beach looked much cleaner.",
+   "question": "What did the students collect?",
+   "options": [
+    "Plastic bottles, paper, and food wrappers",
+    "Shells and stones only",
+    "Books and pencils",
+    "Flowers and leaves"
+   ],
+   "correct_answer": "Plastic bottles, paper, and food wrappers",
+   "explanation_ar": "جمع الطلاب عبوات بلاستيكية وورقًا وأغلفة الطعام.",
+   "wrong_answers_ar": {
+    "Shells and stones only": "الأصداف والأحجار لم تُذكر في النص.",
+    "Books and pencils": "الكتب والأقلام لم تُذكر في النص.",
+    "Flowers and leaves": "الزهور والأوراق النباتية لم تُذكر في النص."
+   }
+  },
+  {
+   "id": 248,
+   "skill": "Writing",
+   "topic": "Protecting the Environment",
+   "type": "open_ended",
+   "difficulty": "medium",
+   "question": "Write four sentences about how children can protect the environment.",
+   "example_answer": [
+    "We should plant trees.",
+    "We should recycle paper and plastic.",
+    "We should save water.",
+    "We should keep our streets clean."
+   ],
+   "explanation_ar": "اكتب أربع جمل عن طرق حماية البيئة. استخدم should لتقديم النصائح، واختر أفعالًا مناسبة مثل plant وrecycle وsave وkeep.",
+   "rubric": {
+    "total_score": 6,
+    "criteria": [
+     {
+      "criterion": "Writes four relevant ideas",
+      "score": 2
+     },
+     {
+      "criterion": "Uses suitable environmental vocabulary",
+      "score": 1
+     },
+     {
+      "criterion": "Uses should correctly",
+      "score": 1
+     },
+     {
+      "criterion": "Uses correct sentence structure",
+      "score": 1
+     },
+     {
+      "criterion": "Uses capitalization and punctuation",
+      "score": 1
+     }
+    ]
+   }
+  },
+  {
+   "id": 249,
+   "skill": "Grammar",
+   "topic": "Relative Pronouns",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "The boy _____ lives next door is my friend.",
+   "options": [
+    "who",
+    "where",
+    "when",
+    "which"
+   ],
+   "correct_answer": "who",
+   "explanation_ar": "نستخدم who للإشارة إلى الأشخاص، والجملة تصف الولد الذي يسكن بجوارنا.",
+   "wrong_answers_ar": {
+    "where": "تُستخدم للإشارة إلى المكان.",
+    "when": "تُستخدم للإشارة إلى الزمن.",
+    "which": "تُستخدم غالبًا للأشياء والحيوانات، وليس للشخص هنا."
+   }
+  },
+  {
+   "id": 250,
+   "skill": "Grammar",
+   "topic": "Relative Pronouns",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "This is the book _____ I bought yesterday.",
+   "correct_answer": "that",
+   "explanation_ar": "يمكن استخدام that للإشارة إلى الأشياء، مثل الكتاب في هذه الجملة.",
+   "accepted_answers": [
+    "that",
+    "which"
+   ]
+  }
+ ]
+}

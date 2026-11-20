@@ -1,0 +1,408 @@
+{
+ "bank": "Boomi English Academy",
+ "batch": 17,
+ "question_range": "401-425",
+ "stage": "Elementary",
+ "level": "Elementary Plus",
+ "grade": "Primary",
+ "language": "English",
+ "explanation_language": "Arabic",
+ "questions": [
+  {
+   "id": 401,
+   "skill": "Grammar",
+   "topic": "Future Continuous",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "This time tomorrow, I _____ on the beach.",
+   "options": [
+    "will be relaxing",
+    "relaxed",
+    "am relax",
+    "have relaxed"
+   ],
+   "correct_answer": "will be relaxing",
+   "explanation_ar": "نستخدم المستقبل المستمر للتعبير عن حدث سيكون جاريًا في وقت محدد في المستقبل."
+  },
+  {
+   "id": 402,
+   "skill": "Grammar",
+   "topic": "Future Continuous",
+   "type": "fill_blank",
+   "difficulty": "challenging",
+   "question": "At 9 p.m. tonight, she will be _____ (study).",
+   "correct_answer": "studying",
+   "accepted_answers": [
+    "studying"
+   ],
+   "explanation_ar": "يتكون المستقبل المستمر من will be ثم الفعل مع ing."
+  },
+  {
+   "id": 403,
+   "skill": "Grammar",
+   "topic": "Future Time Clauses",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "I will call you when I _____ home.",
+   "options": [
+    "get",
+    "will get",
+    "got",
+    "getting"
+   ],
+   "correct_answer": "get",
+   "explanation_ar": "بعد when عند الحديث عن المستقبل نستخدم المضارع البسيط في جملة الزمن."
+  },
+  {
+   "id": 404,
+   "skill": "Grammar",
+   "topic": "Unless",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "You will miss the bus _____ you hurry.",
+   "options": [
+    "unless",
+    "because",
+    "although",
+    "so"
+   ],
+   "correct_answer": "unless",
+   "explanation_ar": "Unless تعني ما لم، والجملة تعني أنك ستفوت الحافلة إذا لم تسرع."
+  },
+  {
+   "id": 405,
+   "skill": "Grammar",
+   "topic": "Unless",
+   "type": "fill_blank",
+   "difficulty": "challenging",
+   "question": "You cannot enter the room _____ you have a ticket.",
+   "correct_answer": "unless",
+   "accepted_answers": [
+    "unless"
+   ],
+   "explanation_ar": "Unless تعني ما لم، أي لا يمكنك دخول الغرفة إلا إذا كان لديك تذكرة."
+  },
+  {
+   "id": 406,
+   "skill": "Grammar",
+   "topic": "Neither and Either",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "I do not like coffee. I do not like tea _____.",
+   "options": [
+    "either",
+    "too",
+    "also",
+    "neither"
+   ],
+   "correct_answer": "either",
+   "explanation_ar": "نستخدم either في نهاية الجملة المنفية لإضافة معلومة منفية مشابهة."
+  },
+  {
+   "id": 407,
+   "skill": "Grammar",
+   "topic": "Neither and Either",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "_____ of the two answers is correct. Both are wrong.",
+   "options": [
+    "Neither",
+    "Either",
+    "Both",
+    "All"
+   ],
+   "correct_answer": "Neither",
+   "explanation_ar": "Neither تعني لا واحد من الاثنين، وهي مناسبة لأن الإجابتين خاطئتان."
+  },
+  {
+   "id": 408,
+   "skill": "Grammar",
+   "topic": "Both and All",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "_____ my parents work in the city. (two people)",
+   "correct_answer": "Both",
+   "accepted_answers": [
+    "Both",
+    "both"
+   ],
+   "explanation_ar": "نستخدم Both عند الحديث عن شخصين أو شيئين معًا."
+  },
+  {
+   "id": 409,
+   "skill": "Grammar",
+   "topic": "So and Such",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "The film was _____ interesting that I watched it twice.",
+   "options": [
+    "so",
+    "such",
+    "too",
+    "enough"
+   ],
+   "correct_answer": "so",
+   "explanation_ar": "نستخدم so قبل الصفة، ويتبعها that لبيان النتيجة."
+  },
+  {
+   "id": 410,
+   "skill": "Grammar",
+   "topic": "So and Such",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "It was _____ a beautiful day that we went to the beach.",
+   "options": [
+    "such",
+    "so",
+    "too",
+    "very much"
+   ],
+   "correct_answer": "such",
+   "explanation_ar": "نستخدم such قبل عبارة الاسم التي تبدأ غالبًا بأداة وصفية وصفة."
+  },
+  {
+   "id": 411,
+   "skill": "Grammar",
+   "topic": "Adjective Order",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "Choose the correct phrase.",
+   "options": [
+    "A beautiful small wooden box",
+    "A wooden small beautiful box",
+    "A small wooden beautiful box",
+    "A box wooden beautiful small"
+   ],
+   "correct_answer": "A beautiful small wooden box",
+   "explanation_ar": "الترتيب الشائع للصفات هو الرأي ثم الحجم ثم المادة، وبعدها الاسم."
+  },
+  {
+   "id": 412,
+   "skill": "Grammar",
+   "topic": "Adjective Order",
+   "type": "error_correction",
+   "difficulty": "challenging",
+   "question": "Correct the phrase: A red big car.",
+   "correct_answer": "A big red car.",
+   "explanation_ar": "يأتي وصف الحجم عادةً قبل اللون، لذلك نقول big red car."
+  },
+  {
+   "id": 413,
+   "skill": "Grammar",
+   "topic": "Comparative Structures",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "This exercise is _____ than the previous one.",
+   "options": [
+    "more difficult",
+    "most difficult",
+    "difficultest",
+    "more difficulter"
+   ],
+   "correct_answer": "more difficult",
+   "explanation_ar": "نستخدم more قبل الصفات الطويلة للمقارنة بين شيئين."
+  },
+  {
+   "id": 414,
+   "skill": "Grammar",
+   "topic": "As ... As",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "My sister is as tall _____ my mother.",
+   "correct_answer": "as",
+   "accepted_answers": [
+    "as"
+   ],
+   "explanation_ar": "التركيب as + adjective + as يستخدم للتعبير عن تساوي الصفة بين شيئين."
+  },
+  {
+   "id": 415,
+   "skill": "Grammar",
+   "topic": "Question Formation",
+   "type": "sentence_ordering",
+   "difficulty": "medium",
+   "question": "Put the words in the correct order: does / where / live / your uncle",
+   "words": [
+    "does",
+    "where",
+    "live",
+    "your uncle"
+   ],
+   "correct_answer": "Where does your uncle live?",
+   "explanation_ar": "يبدأ السؤال بأداة الاستفهام، ثم does، ثم الفاعل، ثم الفعل الأساسي."
+  },
+  {
+   "id": 416,
+   "skill": "Vocabulary",
+   "topic": "Travel and Accommodation",
+   "type": "matching",
+   "difficulty": "medium",
+   "question": "Match each travel word with its Arabic meaning.",
+   "pairs": [
+    {
+     "left": "Reservation",
+     "right": "حجز"
+    },
+    {
+     "left": "Reception",
+     "right": "الاستقبال"
+    },
+    {
+     "left": "Departure",
+     "right": "مغادرة"
+    },
+    {
+     "left": "Arrival",
+     "right": "وصول"
+    },
+    {
+     "left": "Accommodation",
+     "right": "إقامة"
+    }
+   ],
+   "explanation_ar": "هذه الكلمات مهمة عند السفر وحجز الفنادق والتنقل."
+  },
+  {
+   "id": 417,
+   "skill": "Vocabulary",
+   "topic": "Hotel",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Where do hotel guests usually check in?",
+   "options": [
+    "At the reception desk",
+    "In the kitchen",
+    "At the swimming pool",
+    "In the garden"
+   ],
+   "correct_answer": "At the reception desk",
+   "explanation_ar": "يتم تسجيل دخول النزلاء عادةً عند مكتب الاستقبال."
+  },
+  {
+   "id": 418,
+   "skill": "Vocabulary",
+   "topic": "Directions",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "If you turn right, which direction do you go?",
+   "options": [
+    "To your right",
+    "To your left",
+    "Straight back",
+    "Upstairs"
+   ],
+   "correct_answer": "To your right",
+   "explanation_ar": "Turn right تعني انعطف إلى اليمين."
+  },
+  {
+   "id": 419,
+   "skill": "Vocabulary",
+   "topic": "Communication",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "When you do not understand someone, you can ask them to _____ the question.",
+   "correct_answer": "repeat",
+   "accepted_answers": [
+    "repeat"
+   ],
+   "explanation_ar": "Repeat تعني يكرر، ويمكن طلب إعادة السؤال عند عدم فهمه."
+  },
+  {
+   "id": 420,
+   "skill": "Vocabulary",
+   "topic": "Emotions",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "You feel _____ when something unexpected and amazing happens.",
+   "options": [
+    "surprised",
+    "bored",
+    "sleepy",
+    "angry"
+   ],
+   "correct_answer": "surprised",
+   "explanation_ar": "Surprised تعني متفاجئ أو مندهش."
+  },
+  {
+   "id": 421,
+   "skill": "Reading",
+   "topic": "Planning a School Trip",
+   "type": "reading_comprehension",
+   "difficulty": "medium",
+   "passage": "The students are planning a trip to a nature reserve. Their teacher has asked everyone to bring a water bottle, a hat, and a notebook. They will leave school at seven in the morning and return before three in the afternoon. During the visit, a guide will explain how animals and plants live in the reserve. The students must stay with their groups and never feed wild animals.",
+   "question": "Where are the students planning to go?",
+   "options": [
+    "A nature reserve",
+    "A shopping centre",
+    "A cinema",
+    "A sports stadium"
+   ],
+   "correct_answer": "A nature reserve",
+   "explanation_ar": "يذكر النص أن الطلاب يخططون لزيارة محمية طبيعية."
+  },
+  {
+   "id": 422,
+   "skill": "Reading",
+   "topic": "Planning a School Trip",
+   "type": "reading_comprehension",
+   "difficulty": "medium",
+   "passage": "The students are planning a trip to a nature reserve. Their teacher has asked everyone to bring a water bottle, a hat, and a notebook. They will leave school at seven in the morning and return before three in the afternoon. During the visit, a guide will explain how animals and plants live in the reserve. The students must stay with their groups and never feed wild animals.",
+   "question": "What time will the students leave school?",
+   "options": [
+    "Seven in the morning",
+    "Nine in the morning",
+    "Three in the afternoon",
+    "Seven in the evening"
+   ],
+   "correct_answer": "Seven in the morning",
+   "explanation_ar": "سيغادر الطلاب المدرسة في الساعة السابعة صباحًا."
+  },
+  {
+   "id": 423,
+   "skill": "Reading",
+   "topic": "Planning a School Trip",
+   "type": "reading_comprehension",
+   "difficulty": "challenging",
+   "passage": "The students are planning a trip to a nature reserve. Their teacher has asked everyone to bring a water bottle, a hat, and a notebook. They will leave school at seven in the morning and return before three in the afternoon. During the visit, a guide will explain how animals and plants live in the reserve. The students must stay with their groups and never feed wild animals.",
+   "question": "Why should students never feed wild animals?",
+   "options": [
+    "To protect the animals and follow safety rules",
+    "Because the animals are all asleep",
+    "Because the guide does not like food",
+    "To make the trip shorter"
+   ],
+   "correct_answer": "To protect the animals and follow safety rules",
+   "explanation_ar": "هذا استنتاج مناسب من تعليمات حماية الحيوانات واتباع قواعد السلامة في المحمية."
+  },
+  {
+   "id": 424,
+   "skill": "Grammar",
+   "topic": "Sentence Transformation",
+   "type": "error_correction",
+   "difficulty": "challenging",
+   "question": "Correct the sentence: She is the most tallest girl in the class.",
+   "correct_answer": "She is the tallest girl in the class.",
+   "explanation_ar": "لا نجمع بين most و-est في صيغة التفضيل؛ نستخدم tallest وحدها."
+  },
+  {
+   "id": 425,
+   "skill": "Writing",
+   "topic": "Travel Planning",
+   "type": "open_ended",
+   "difficulty": "medium",
+   "question": "Imagine you are planning a one-day trip. Write four sentences about where you will go, what you will take, and what you will do.",
+   "accepted_answers": [],
+   "rubric": {
+    "minimum_sentences": 4,
+    "criteria": [
+     "Mention a destination.",
+     "Mention at least two things to take.",
+     "Describe at least one planned activity.",
+     "Use understandable future sentences."
+    ],
+    "sample_answer": "I am going to visit a nature reserve. I will take a water bottle and a hat. I will walk with my family. I hope to see some birds."
+   },
+   "explanation_ar": "اكتب خطة رحلة قصيرة، واذكر المكان والأشياء التي ستأخذها والأنشطة التي ستقوم بها."
+  }
+ ]
+}

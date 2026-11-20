@@ -1,0 +1,488 @@
+{
+ "bank": "Boomi English Academy",
+ "batch": 6,
+ "question_range": "126-150",
+ "stage": "Elementary English",
+ "level": "Beginner to Elementary",
+ "grade": "Primary",
+ "language": "English",
+ "explanation_language": "Arabic",
+ "questions": [
+  {
+   "id": 126,
+   "skill": "Grammar",
+   "topic": "Past Simple - Regular Verbs",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "Yesterday, I _____ my room.",
+   "options": [
+    "cleaned",
+    "clean",
+    "cleans",
+    "cleaning"
+   ],
+   "correct_answer": "cleaned",
+   "explanation_ar": "نضيف ed إلى الفعل المنتظم clean لتكوين الماضي cleaned.",
+   "wrong_answers_ar": {
+    "clean": "صيغة الفعل الأساسية.",
+    "cleans": "صيغة المضارع مع He أو She أو It.",
+    "cleaning": "صيغة ing وليست الماضي البسيط."
+   }
+  },
+  {
+   "id": 127,
+   "skill": "Grammar",
+   "topic": "Past Simple - Regular Verbs",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "Last night, we _____ a movie. (watch)",
+   "correct_answer": "watched",
+   "explanation_ar": "الفعل watch منتظم، ونضيف إليه ed ليصبح watched.",
+   "accepted_answers": [
+    "watched"
+   ]
+  },
+  {
+   "id": 128,
+   "skill": "Grammar",
+   "topic": "Past Simple - Regular Verbs",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "Choose the correct past form of 'study'.",
+   "options": [
+    "studied",
+    "studyed",
+    "studys",
+    "studying"
+   ],
+   "correct_answer": "studied",
+   "explanation_ar": "عندما ينتهي الفعل بحرف ساكن ثم y، نحذف y ونضيف ied، فتصبح study: studied.",
+   "wrong_answers_ar": {
+    "studyed": "لا نضيف ed مباشرة بعد y في هذه الحالة.",
+    "studys": "ليست صيغة الماضي.",
+    "studying": "صيغة المضارع المستمر أو اسم الفعل."
+   }
+  },
+  {
+   "id": 129,
+   "skill": "Grammar",
+   "topic": "Past Simple - Irregular Verbs",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "Yesterday, she _____ to the market.",
+   "options": [
+    "went",
+    "go",
+    "goes",
+    "going"
+   ],
+   "correct_answer": "went",
+   "explanation_ar": "الماضي من الفعل go هو went، وهو فعل غير منتظم.",
+   "wrong_answers_ar": {
+    "go": "الصيغة الأساسية للفعل.",
+    "goes": "صيغة المضارع مع He أو She أو It.",
+    "going": "صيغة ing."
+   }
+  },
+  {
+   "id": 130,
+   "skill": "Grammar",
+   "topic": "Past Simple - Irregular Verbs",
+   "type": "matching",
+   "difficulty": "medium",
+   "question": "Match each verb with its past form.",
+   "pairs": [
+    {
+     "item": "Eat",
+     "match": "Ate"
+    },
+    {
+     "item": "Drink",
+     "match": "Drank"
+    },
+    {
+     "item": "See",
+     "match": "Saw"
+    },
+    {
+     "item": "Write",
+     "match": "Wrote"
+    }
+   ],
+   "explanation_ar": "هذه أفعال غير منتظمة، وتتغير صورتها في الماضي: eat إلى ate، وdrink إلى drank، وsee إلى saw، وwrite إلى wrote."
+  },
+  {
+   "id": 131,
+   "skill": "Grammar",
+   "topic": "Past Simple - Irregular Verbs",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "He _____ a glass of water yesterday. (drink)",
+   "correct_answer": "drank",
+   "explanation_ar": "الماضي من drink هو drank.",
+   "accepted_answers": [
+    "drank"
+   ]
+  },
+  {
+   "id": 132,
+   "skill": "Grammar",
+   "topic": "Past Simple Questions",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "_____ you visit your grandmother yesterday?",
+   "options": [
+    "Did",
+    "Do",
+    "Does",
+    "Are"
+   ],
+   "correct_answer": "Did",
+   "explanation_ar": "نستخدم Did في بداية السؤال عن حدث في الماضي، ثم يأتي الفعل بصيغته الأساسية visit.",
+   "wrong_answers_ar": {
+    "Do": "تُستخدم للسؤال في المضارع مع I وYou وWe وThey.",
+    "Does": "تُستخدم في المضارع مع He وShe وIt.",
+    "Are": "فعل be ولا يناسب تركيب هذا السؤال."
+   }
+  },
+  {
+   "id": 133,
+   "skill": "Grammar",
+   "topic": "Past Simple Questions",
+   "type": "error_correction",
+   "difficulty": "medium",
+   "question": "Correct the sentence: Did she went home?",
+   "correct_answer": "Did she go home?",
+   "explanation_ar": "بعد Did نستخدم الفعل بصيغته الأساسية go، وليس الماضي went."
+  },
+  {
+   "id": 134,
+   "skill": "Grammar",
+   "topic": "Past Simple Negative",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "I _____ see him yesterday.",
+   "options": [
+    "didn't",
+    "don't",
+    "doesn't",
+    "wasn't"
+   ],
+   "correct_answer": "didn't",
+   "explanation_ar": "نستخدم didn't لنفي حدث في الماضي، ويأتي بعدها الفعل بصيغته الأساسية.",
+   "wrong_answers_ar": {
+    "don't": "تُستخدم للنفي في المضارع مع I وYou وWe وThey.",
+    "doesn't": "تُستخدم للنفي في المضارع مع He وShe وIt.",
+    "wasn't": "تنفي فعل be في الماضي."
+   }
+  },
+  {
+   "id": 135,
+   "skill": "Grammar",
+   "topic": "Past Simple Negative",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "They _____ play football yesterday.",
+   "correct_answer": "didn't",
+   "explanation_ar": "نستخدم didn't لنفي اللعب في الماضي.",
+   "accepted_answers": [
+    "didn't",
+    "did not"
+   ]
+  },
+  {
+   "id": 136,
+   "skill": "Vocabulary",
+   "topic": "Household Items",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Which object do you use to tell the time?",
+   "options": [
+    "Clock",
+    "Plate",
+    "Pillow",
+    "Spoon"
+   ],
+   "correct_answer": "Clock",
+   "explanation_ar": "Clock تعني ساعة، ونستخدمها لمعرفة الوقت.",
+   "wrong_answers_ar": {
+    "Plate": "تعني طبق.",
+    "Pillow": "تعني وسادة.",
+    "Spoon": "تعني ملعقة."
+   }
+  },
+  {
+   "id": 137,
+   "skill": "Vocabulary",
+   "topic": "Household Items",
+   "type": "matching",
+   "difficulty": "easy",
+   "question": "Match each object with its use.",
+   "pairs": [
+    {
+     "item": "Refrigerator",
+     "match": "Keeps food cold"
+    },
+    {
+     "item": "Washing machine",
+     "match": "Washes clothes"
+    },
+    {
+     "item": "Oven",
+     "match": "Bakes food"
+    },
+    {
+     "item": "Vacuum cleaner",
+     "match": "Cleans floors"
+    }
+   ],
+   "explanation_ar": "الثلاجة تحفظ الطعام باردًا، والغسالة تغسل الملابس، والفرن يخبز الطعام، والمكنسة الكهربائية تنظف الأرضيات."
+  },
+  {
+   "id": 138,
+   "skill": "Vocabulary",
+   "topic": "Household Items",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "You sleep on a _____.",
+   "correct_answer": "bed",
+   "explanation_ar": "Bed تعني سرير، وننام عليه.",
+   "accepted_answers": [
+    "bed"
+   ]
+  },
+  {
+   "id": 139,
+   "skill": "Grammar",
+   "topic": "There Is and There Are",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "There _____ a book on the desk.",
+   "options": [
+    "is",
+    "are",
+    "am",
+    "be"
+   ],
+   "correct_answer": "is",
+   "explanation_ar": "نستخدم There is مع الاسم المفرد، مثل a book.",
+   "wrong_answers_ar": {
+    "are": "تُستخدم مع الأسماء الجمع.",
+    "am": "تُستخدم مع I.",
+    "be": "الصيغة الأساسية ولا تناسب الجملة هنا."
+   }
+  },
+  {
+   "id": 140,
+   "skill": "Grammar",
+   "topic": "There Is and There Are",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "There _____ five students in the classroom.",
+   "correct_answer": "are",
+   "explanation_ar": "نستخدم There are مع الأسماء الجمع، وfive students تعني خمسة طلاب.",
+   "accepted_answers": [
+    "are"
+   ]
+  },
+  {
+   "id": 141,
+   "skill": "Grammar",
+   "topic": "There Is and There Are",
+   "type": "error_correction",
+   "difficulty": "medium",
+   "question": "Correct the sentence: There is three apples.",
+   "correct_answer": "There are three apples.",
+   "explanation_ar": "نستخدم There are لأن apples جمع، وليس There is."
+  },
+  {
+   "id": 142,
+   "skill": "Grammar",
+   "topic": "Some and Any",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "There are _____ apples in the basket.",
+   "options": [
+    "some",
+    "any",
+    "much",
+    "a"
+   ],
+   "correct_answer": "some",
+   "explanation_ar": "نستخدم some غالبًا في الجمل المثبتة مع الأسماء المعدودة الجمع.",
+   "wrong_answers_ar": {
+    "any": "تُستخدم غالبًا في النفي والأسئلة.",
+    "much": "تُستخدم مع الأسماء غير المعدودة.",
+    "a": "تُستخدم مع اسم مفرد معدود."
+   }
+  },
+  {
+   "id": 143,
+   "skill": "Grammar",
+   "topic": "Some and Any",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "Are there _____ eggs in the fridge?",
+   "correct_answer": "any",
+   "explanation_ar": "نستخدم any غالبًا في الأسئلة مع الأسماء المعدودة الجمع.",
+   "accepted_answers": [
+    "any"
+   ]
+  },
+  {
+   "id": 144,
+   "skill": "Grammar",
+   "topic": "Countable and Uncountable Nouns",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "Which word is uncountable?",
+   "options": [
+    "Water",
+    "Apple",
+    "Chair",
+    "Book"
+   ],
+   "correct_answer": "Water",
+   "explanation_ar": "Water اسم غير معدود، بينما apple وchair وbook أسماء معدودة.",
+   "wrong_answers_ar": {
+    "Apple": "يمكن عدّ التفاح باستخدام apples.",
+    "Chair": "يمكن عدّ الكراسي.",
+    "Book": "يمكن عدّ الكتب."
+   }
+  },
+  {
+   "id": 145,
+   "skill": "Grammar",
+   "topic": "Much and Many",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "How _____ oranges do you have?",
+   "options": [
+    "many",
+    "much",
+    "any",
+    "a little"
+   ],
+   "correct_answer": "many",
+   "explanation_ar": "نستخدم How many للسؤال عن عدد الأشياء المعدودة الجمع مثل oranges.",
+   "wrong_answers_ar": {
+    "much": "تُستخدم مع الأسماء غير المعدودة.",
+    "any": "لا تكوّن صيغة السؤال عن العدد هنا.",
+    "a little": "تُستخدم للتعبير عن كمية قليلة من اسم غير معدود."
+   }
+  },
+  {
+   "id": 146,
+   "skill": "Grammar",
+   "topic": "Much and Many",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "How _____ milk is there in the glass?",
+   "options": [
+    "much",
+    "many",
+    "few",
+    "several"
+   ],
+   "correct_answer": "much",
+   "explanation_ar": "نستخدم How much للسؤال عن كمية اسم غير معدود مثل milk.",
+   "wrong_answers_ar": {
+    "many": "تُستخدم مع الأسماء المعدودة الجمع.",
+    "few": "تُستخدم مع الأسماء المعدودة الجمع.",
+    "several": "تعني عدة وتُستخدم مع الأسماء المعدودة الجمع."
+   }
+  },
+  {
+   "id": 147,
+   "skill": "Vocabulary",
+   "topic": "Clothing",
+   "type": "matching",
+   "difficulty": "easy",
+   "question": "Match each item of clothing with the body part where it is worn.",
+   "pairs": [
+    {
+     "item": "Hat",
+     "match": "Head"
+    },
+    {
+     "item": "Gloves",
+     "match": "Hands"
+    },
+    {
+     "item": "Socks",
+     "match": "Feet"
+    },
+    {
+     "item": "Belt",
+     "match": "Waist"
+    }
+   ],
+   "explanation_ar": "القبعة تُلبس على الرأس، والقفازات في اليدين، والجوارب في القدمين، والحزام حول الخصر."
+  },
+  {
+   "id": 148,
+   "skill": "Vocabulary",
+   "topic": "Clothing",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "What do you wear on your feet inside your shoes?",
+   "options": [
+    "Socks",
+    "Gloves",
+    "Scarf",
+    "Hat"
+   ],
+   "correct_answer": "Socks",
+   "explanation_ar": "Socks تعني الجوارب، ونلبسها في القدمين داخل الأحذية.",
+   "wrong_answers_ar": {
+    "Gloves": "تعني قفازات اليدين.",
+    "Scarf": "تعني وشاحًا.",
+    "Hat": "تعني قبعة."
+   }
+  },
+  {
+   "id": 149,
+   "skill": "Reading",
+   "topic": "A Visit to the Farm",
+   "type": "reading_comprehension",
+   "difficulty": "medium",
+   "passage": "Yesterday, Adam visited his uncle's farm. He saw three horses, five sheep, and two cows. He helped his uncle feed the animals. Before going home, he drank a glass of fresh milk.",
+   "question": "How many sheep did Adam see?",
+   "options": [
+    "Three",
+    "Five",
+    "Two",
+    "Seven"
+   ],
+   "correct_answer": "Five",
+   "explanation_ar": "النص يذكر أنه رأى five sheep، أي خمسة خراف.",
+   "wrong_answers_ar": {
+    "Three": "ثلاثة هو عدد الخيول.",
+    "Two": "اثنان هو عدد الأبقار.",
+    "Seven": "هذا العدد غير موجود في النص."
+   }
+  },
+  {
+   "id": 150,
+   "skill": "Reading",
+   "topic": "A Visit to the Farm",
+   "type": "reading_comprehension",
+   "difficulty": "medium",
+   "passage": "Yesterday, Adam visited his uncle's farm. He saw three horses, five sheep, and two cows. He helped his uncle feed the animals. Before going home, he drank a glass of fresh milk.",
+   "question": "What did Adam drink before going home?",
+   "options": [
+    "Fresh milk",
+    "Orange juice",
+    "Water",
+    "Tea"
+   ],
+   "correct_answer": "Fresh milk",
+   "explanation_ar": "النص يذكر أنه شرب كوبًا من الحليب الطازج قبل العودة إلى المنزل.",
+   "wrong_answers_ar": {
+    "Orange juice": "عصير البرتقال غير مذكور في النص.",
+    "Water": "الماء غير مذكور في النص.",
+    "Tea": "الشاي غير مذكور في النص."
+   }
+  }
+ ]
+}

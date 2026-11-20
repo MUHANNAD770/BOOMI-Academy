@@ -1,0 +1,428 @@
+{
+ "bank": "Boomi English Academy",
+ "batch": 12,
+ "question_range": "276-300",
+ "stage": "Elementary",
+ "level": "Elementary Plus",
+ "grade": "Primary",
+ "language": "English",
+ "explanation_language": "Arabic",
+ "questions": [
+  {
+   "id": 276,
+   "skill": "Grammar",
+   "topic": "Irregular Past Simple Verbs",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Yesterday, I _____ a beautiful bird.",
+   "options": [
+    "see",
+    "saw",
+    "seen",
+    "seeing"
+   ],
+   "correct_answer": "saw",
+   "explanation_ar": "الماضي من see هو saw، فنقول Yesterday, I saw."
+  },
+  {
+   "id": 277,
+   "skill": "Grammar",
+   "topic": "Irregular Past Simple Verbs",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "Last night, we _____ dinner at home. (eat)",
+   "correct_answer": "ate",
+   "accepted_answers": [
+    "ate"
+   ],
+   "explanation_ar": "الماضي من eat هو ate."
+  },
+  {
+   "id": 278,
+   "skill": "Grammar",
+   "topic": "Irregular Past Simple Verbs",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "My father _____ me a new book yesterday.",
+   "options": [
+    "buy",
+    "buys",
+    "bought",
+    "buying"
+   ],
+   "correct_answer": "bought",
+   "explanation_ar": "الماضي من buy هو bought."
+  },
+  {
+   "id": 279,
+   "skill": "Grammar",
+   "topic": "Past Simple Questions",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "_____ you go to the park yesterday?",
+   "options": [
+    "Do",
+    "Did",
+    "Does",
+    "Are"
+   ],
+   "correct_answer": "Did",
+   "explanation_ar": "نستخدم Did لتكوين سؤال في الماضي البسيط، ويأتي بعدها الفعل بصيغته الأساسية."
+  },
+  {
+   "id": 280,
+   "skill": "Grammar",
+   "topic": "Past Simple Negatives",
+   "type": "error_correction",
+   "difficulty": "medium",
+   "question": "Correct the sentence: She did not went to school.",
+   "correct_answer": "She did not go to school.",
+   "explanation_ar": "بعد did not نستخدم الفعل في صورته الأساسية go وليس went."
+  },
+  {
+   "id": 281,
+   "skill": "Grammar",
+   "topic": "Used To",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "When I was young, I _____ play with toy cars.",
+   "options": [
+    "used to",
+    "use to",
+    "using to",
+    "uses to"
+   ],
+   "correct_answer": "used to",
+   "explanation_ar": "نستخدم used to للتعبير عن عادة كانت تحدث في الماضي ولم تعد تحدث الآن."
+  },
+  {
+   "id": 282,
+   "skill": "Grammar",
+   "topic": "Used To",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "My grandfather used to _____ a bicycle. (ride)",
+   "correct_answer": "ride",
+   "accepted_answers": [
+    "ride"
+   ],
+   "explanation_ar": "بعد used to يأتي الفعل بصيغته الأساسية ride."
+  },
+  {
+   "id": 283,
+   "skill": "Grammar",
+   "topic": "Future Arrangements",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "We _____ our cousins tomorrow. We have already made plans.",
+   "options": [
+    "are visiting",
+    "visited",
+    "visits",
+    "visit yesterday"
+   ],
+   "correct_answer": "are visiting",
+   "explanation_ar": "يمكن استخدام المضارع المستمر للتعبير عن ترتيب أو موعد مستقبلي تم الاتفاق عليه."
+  },
+  {
+   "id": 284,
+   "skill": "Grammar",
+   "topic": "Adverbs of Manner",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "The tortoise walks _____.",
+   "options": [
+    "slowly",
+    "slow",
+    "slower",
+    "slowness"
+   ],
+   "correct_answer": "slowly",
+   "explanation_ar": "نستخدم slowly لوصف طريقة المشي، وهي حال بمعنى ببطء."
+  },
+  {
+   "id": 285,
+   "skill": "Grammar",
+   "topic": "Adverbs of Manner",
+   "type": "error_correction",
+   "difficulty": "medium",
+   "question": "Correct the sentence: He speaks English fluent.",
+   "correct_answer": "He speaks English fluently.",
+   "explanation_ar": "نستخدم الحال fluently لوصف طريقة التحدث، وليس الصفة fluent."
+  },
+  {
+   "id": 286,
+   "skill": "Vocabulary",
+   "topic": "Phrasal Verbs",
+   "type": "matching",
+   "difficulty": "medium",
+   "question": "Match each phrasal verb with its Arabic meaning.",
+   "pairs": [
+    {
+     "left": "Wake up",
+     "right": "يستيقظ"
+    },
+    {
+     "left": "Turn on",
+     "right": "يشغّل"
+    },
+    {
+     "left": "Pick up",
+     "right": "يلتقط أو يرفع"
+    },
+    {
+     "left": "Put away",
+     "right": "يرتب ويضع في مكانه"
+    },
+    {
+     "left": "Look after",
+     "right": "يعتني بـ"
+    }
+   ],
+   "explanation_ar": "الأفعال المركبة تتكون من فعل وكلمة أخرى، ويختلف معناها أحيانًا عن معنى الفعل وحده."
+  },
+  {
+   "id": 287,
+   "skill": "Vocabulary",
+   "topic": "Phrasal Verbs",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Please _____ the television. I want to watch the news.",
+   "options": [
+    "turn on",
+    "wake up",
+    "put away",
+    "look after"
+   ],
+   "correct_answer": "turn on",
+   "explanation_ar": "Turn on تعني يشغّل، وهي المناسبة لتشغيل التلفاز."
+  },
+  {
+   "id": 288,
+   "skill": "Vocabulary",
+   "topic": "Phrasal Verbs",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "A mother must _____ her young children.",
+   "correct_answer": "look after",
+   "accepted_answers": [
+    "look after"
+   ],
+   "explanation_ar": "Look after تعني يعتني بـ."
+  },
+  {
+   "id": 289,
+   "skill": "Word Formation",
+   "topic": "Nouns and Adjectives",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "The noun form of happy is _____.",
+   "options": [
+    "happiness",
+    "happily",
+    "happier",
+    "unhappy"
+   ],
+   "correct_answer": "happiness",
+   "explanation_ar": "Happiness اسم بمعنى السعادة، وهو مشتق من الصفة happy."
+  },
+  {
+   "id": 290,
+   "skill": "Word Formation",
+   "topic": "Jobs",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "A person who teaches students is a _____.",
+   "correct_answer": "teacher",
+   "accepted_answers": [
+    "teacher"
+   ],
+   "explanation_ar": "Teacher تعني معلّم أو معلّمة، وهي اسم الشخص الذي يعلّم الطلاب."
+  },
+  {
+   "id": 291,
+   "skill": "Word Formation",
+   "topic": "Adjectives",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "Choose the correct word: My little brother is very _____. He always helps people.",
+   "options": [
+    "careful",
+    "carefully",
+    "care",
+    "careless"
+   ],
+   "correct_answer": "careful",
+   "explanation_ar": "Careful صفة بمعنى حريص أو منتبه، وتصف brother."
+  },
+  {
+   "id": 292,
+   "skill": "Vocabulary",
+   "topic": "Travel and Transport",
+   "type": "matching",
+   "difficulty": "easy",
+   "question": "Match each transport word with its Arabic meaning.",
+   "pairs": [
+    {
+     "left": "Airport",
+     "right": "مطار"
+    },
+    {
+     "left": "Train",
+     "right": "قطار"
+    },
+    {
+     "left": "Ship",
+     "right": "سفينة"
+    },
+    {
+     "left": "Passport",
+     "right": "جواز سفر"
+    },
+    {
+     "left": "Suitcase",
+     "right": "حقيبة سفر"
+    }
+   ],
+   "explanation_ar": "هذه مفردات أساسية نستخدمها عند الحديث عن السفر والمواصلات."
+  },
+  {
+   "id": 293,
+   "skill": "Vocabulary",
+   "topic": "Airport",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Where do passengers collect their bags after a flight?",
+   "options": [
+    "Baggage claim",
+    "Classroom",
+    "Restaurant",
+    "Garden"
+   ],
+   "correct_answer": "Baggage claim",
+   "explanation_ar": "Baggage claim هي منطقة استلام الأمتعة في المطار."
+  },
+  {
+   "id": 294,
+   "skill": "Vocabulary",
+   "topic": "Weather",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "The sky is full of dark clouds. It may be _____.",
+   "options": [
+    "rainy",
+    "sunny",
+    "dry",
+    "hot"
+   ],
+   "correct_answer": "rainy",
+   "explanation_ar": "الغيوم الداكنة قد تدل على احتمال هطول المطر، لذلك rainy هي الإجابة المناسبة."
+  },
+  {
+   "id": 295,
+   "skill": "Reading",
+   "topic": "A Family Trip",
+   "type": "reading_comprehension",
+   "difficulty": "easy",
+   "passage": "Last Friday, Ali travelled with his family to Nizwa. They left home early in the morning by car. First, they visited the old fort. Then, they walked around the market and bought some dates. They returned home in the evening. Ali enjoyed the trip very much.",
+   "question": "Where did Ali travel with his family?",
+   "options": [
+    "Nizwa",
+    "Salalah",
+    "Sohar",
+    "Sur"
+   ],
+   "correct_answer": "Nizwa",
+   "explanation_ar": "يذكر النص أن عليًا سافر مع عائلته إلى نزوى."
+  },
+  {
+   "id": 296,
+   "skill": "Reading",
+   "topic": "A Family Trip",
+   "type": "reading_comprehension",
+   "difficulty": "easy",
+   "passage": "Last Friday, Ali travelled with his family to Nizwa. They left home early in the morning by car. First, they visited the old fort. Then, they walked around the market and bought some dates. They returned home in the evening. Ali enjoyed the trip very much.",
+   "question": "How did the family travel?",
+   "options": [
+    "By car",
+    "By train",
+    "By plane",
+    "By ship"
+   ],
+   "correct_answer": "By car",
+   "explanation_ar": "ورد في النص أنهم غادروا المنزل بالسيارة، by car."
+  },
+  {
+   "id": 297,
+   "skill": "Reading",
+   "topic": "A Family Trip",
+   "type": "reading_comprehension",
+   "difficulty": "medium",
+   "passage": "Last Friday, Ali travelled with his family to Nizwa. They left home early in the morning by car. First, they visited the old fort. Then, they walked around the market and bought some dates. They returned home in the evening. Ali enjoyed the trip very much.",
+   "question": "What did they buy at the market?",
+   "options": [
+    "Dates",
+    "Books",
+    "Shoes",
+    "Toys"
+   ],
+   "correct_answer": "Dates",
+   "explanation_ar": "يذكر النص أنهم اشتروا بعض التمور من السوق."
+  },
+  {
+   "id": 298,
+   "skill": "Reading",
+   "topic": "A Family Trip",
+   "type": "reading_comprehension",
+   "difficulty": "medium",
+   "passage": "Last Friday, Ali travelled with his family to Nizwa. They left home early in the morning by car. First, they visited the old fort. Then, they walked around the market and bought some dates. They returned home in the evening. Ali enjoyed the trip very much.",
+   "question": "When did the family return home?",
+   "options": [
+    "In the evening",
+    "At noon",
+    "At midnight",
+    "Early in the morning"
+   ],
+   "correct_answer": "In the evening",
+   "explanation_ar": "عادوا إلى المنزل في المساء، كما ورد في الجملة الأخيرة من أحداث الرحلة."
+  },
+  {
+   "id": 299,
+   "skill": "Grammar",
+   "topic": "Sentence Ordering",
+   "type": "sentence_ordering",
+   "difficulty": "medium",
+   "question": "Put the words in the correct order: yesterday / visited / we / the museum",
+   "words": [
+    "yesterday",
+    "visited",
+    "we",
+    "the museum"
+   ],
+   "correct_answer": "We visited the museum yesterday.",
+   "explanation_ar": "الترتيب الصحيح: الفاعل We ثم الفعل الماضي visited ثم المفعول the museum ثم ظرف الزمن yesterday."
+  },
+  {
+   "id": 300,
+   "skill": "Writing",
+   "topic": "Describing a Trip",
+   "type": "open_ended",
+   "difficulty": "medium",
+   "question": "Write three or four sentences about a trip you enjoyed. Say where you went, who went with you, what you did, and how you felt.",
+   "accepted_answers": [],
+   "rubric": {
+    "minimum_sentences": 3,
+    "maximum_sentences": 4,
+    "criteria": [
+     "Mention the place visited.",
+     "Mention the people who went with you.",
+     "Describe at least one activity.",
+     "Use understandable English sentences.",
+     "Use past simple when describing a completed trip."
+    ],
+    "sample_answer": "Last weekend, I went to the beach with my family. We played in the sand and swam in the sea. We ate lunch together. I felt very happy."
+   },
+   "explanation_ar": "اكتب ثلاث أو أربع جمل عن رحلة سابقة، واستخدم الماضي البسيط مثل went وplayed وate."
+  }
+ ]
+}

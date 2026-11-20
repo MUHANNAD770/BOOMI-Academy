@@ -1,0 +1,455 @@
+{
+ "bank": "Boomi English Academy",
+ "batch": 3,
+ "question_range": "51-75",
+ "stage": "Early Foundation",
+ "level": "Beginner",
+ "grade": "Grade 1-2",
+ "language": "English",
+ "explanation_language": "Arabic",
+ "questions": [
+  {
+   "id": 51,
+   "skill": "Vocabulary",
+   "topic": "Family Members",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Who is your father's mother?",
+   "options": [
+    "Aunt",
+    "Grandmother",
+    "Sister",
+    "Cousin"
+   ],
+   "correct_answer": "Grandmother",
+   "explanation_ar": "Grandmother تعني الجدة، وهي أم الأب أو أم الأم."
+  },
+  {
+   "id": 52,
+   "skill": "Grammar",
+   "topic": "Possessive Adjectives",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "This is Sara. ______ bag is pink.",
+   "options": [
+    "His",
+    "Her",
+    "My",
+    "Their"
+   ],
+   "correct_answer": "Her",
+   "explanation_ar": "نستخدم Her للملكية عند الحديث عن فتاة. حقيبتها وردية."
+  },
+  {
+   "id": 53,
+   "skill": "Grammar",
+   "topic": "Possessive Adjectives",
+   "type": "fill_in_the_blank",
+   "difficulty": "easy",
+   "question": "I have a dog. ______ dog is brown.",
+   "options": [
+    "My",
+    "Her",
+    "His",
+    "Your"
+   ],
+   "correct_answer": "My",
+   "explanation_ar": "نستخدم My عندما نتحدث عن شيء نملكه نحن. My dog تعني كلبي."
+  },
+  {
+   "id": 54,
+   "skill": "Grammar",
+   "topic": "Possessive 's",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "This is ______ pencil.",
+   "options": [
+    "Ali",
+    "Alis",
+    "Ali's",
+    "Alies"
+   ],
+   "correct_answer": "Ali's",
+   "explanation_ar": "نضيف 's إلى الاسم للدلالة على الملكية. Ali's pencil تعني قلم علي."
+  },
+  {
+   "id": 55,
+   "skill": "Vocabulary",
+   "topic": "School Objects",
+   "type": "matching",
+   "difficulty": "easy",
+   "question": "Match each school object with its Arabic meaning.",
+   "pairs": [
+    {
+     "english": "Book",
+     "arabic": "كتاب"
+    },
+    {
+     "english": "Ruler",
+     "arabic": "مسطرة"
+    },
+    {
+     "english": "Eraser",
+     "arabic": "ممحاة"
+    },
+    {
+     "english": "Bag",
+     "arabic": "حقيبة"
+    }
+   ],
+   "correct_answer": [
+    "Book = كتاب",
+    "Ruler = مسطرة",
+    "Eraser = ممحاة",
+    "Bag = حقيبة"
+   ],
+   "explanation_ar": "يتدرب الطالب على ربط أسماء الأدوات المدرسية بمعانيها العربية."
+  },
+  {
+   "id": 56,
+   "skill": "Grammar",
+   "topic": "Prepositions of Place",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "The cat is ______ the table.",
+   "options": [
+    "on",
+    "in",
+    "at",
+    "between"
+   ],
+   "correct_answer": "on",
+   "explanation_ar": "On تعني على. نستخدمها عندما يكون الشيء فوق سطح شيء آخر."
+  },
+  {
+   "id": 57,
+   "skill": "Grammar",
+   "topic": "Prepositions of Place",
+   "type": "fill_in_the_blank",
+   "difficulty": "easy",
+   "question": "The ball is ______ the box.",
+   "options": [
+    "in",
+    "under",
+    "behind",
+    "between"
+   ],
+   "correct_answer": "in",
+   "explanation_ar": "In تعني داخل. الجملة تعني أن الكرة داخل الصندوق."
+  },
+  {
+   "id": 58,
+   "skill": "Vocabulary",
+   "topic": "Opposites",
+   "type": "matching",
+   "difficulty": "easy",
+   "question": "Match each word with its opposite.",
+   "pairs": [
+    {
+     "word": "Hot",
+     "opposite": "Cold"
+    },
+    {
+     "word": "Happy",
+     "opposite": "Sad"
+    },
+    {
+     "word": "Big",
+     "opposite": "Small"
+    },
+    {
+     "word": "Fast",
+     "opposite": "Slow"
+    }
+   ],
+   "correct_answer": [
+    "Hot = Cold",
+    "Happy = Sad",
+    "Big = Small",
+    "Fast = Slow"
+   ],
+   "explanation_ar": "يتعلم الطالب الكلمات المتضادة، مثل Hot حار وCold بارد."
+  },
+  {
+   "id": 59,
+   "skill": "Grammar",
+   "topic": "Demonstratives",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "______ are my shoes.",
+   "options": [
+    "This",
+    "That",
+    "These",
+    "It"
+   ],
+   "correct_answer": "These",
+   "explanation_ar": "نستخدم These مع الأشياء القريبة عندما تكون جمعًا."
+  },
+  {
+   "id": 60,
+   "skill": "Grammar",
+   "topic": "Demonstratives",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "______ is a bird in the tree over there.",
+   "options": [
+    "These",
+    "Those",
+    "That",
+    "They"
+   ],
+   "correct_answer": "That",
+   "explanation_ar": "نستخدم That للإشارة إلى شيء مفرد بعيد."
+  },
+  {
+   "id": 61,
+   "skill": "Grammar",
+   "topic": "Articles",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "She has ______ orange.",
+   "options": [
+    "a",
+    "an",
+    "are",
+    "the"
+   ],
+   "correct_answer": "an",
+   "explanation_ar": "نستخدم an قبل صوت متحرك، وكلمة orange تبدأ بصوت متحرك."
+  },
+  {
+   "id": 62,
+   "skill": "Grammar",
+   "topic": "Singular and Plural",
+   "type": "fill_in_the_blank",
+   "difficulty": "easy",
+   "question": "One box, two ______.",
+   "options": [
+    "box",
+    "boxs",
+    "boxes",
+    "boxies"
+   ],
+   "correct_answer": "boxes",
+   "explanation_ar": "نضيف es إلى كلمة box لتصبح boxes لأنها تنتهي بالحرفين x."
+  },
+  {
+   "id": 63,
+   "skill": "Vocabulary",
+   "topic": "Daily Activities",
+   "type": "ordering",
+   "difficulty": "easy",
+   "question": "Put the daily routine actions in a logical order.",
+   "items": [
+    "Go to school",
+    "Wake up",
+    "Have breakfast",
+    "Brush my teeth"
+   ],
+   "correct_answer": [
+    "Wake up",
+    "Brush my teeth",
+    "Have breakfast",
+    "Go to school"
+   ],
+   "explanation_ar": "يستيقظ الطالب أولًا، ثم ينظف أسنانه، ويتناول الإفطار، وبعد ذلك يذهب إلى المدرسة."
+  },
+  {
+   "id": 64,
+   "skill": "Grammar",
+   "topic": "Present Simple",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "My father ______ to work every day.",
+   "options": [
+    "go",
+    "goes",
+    "going",
+    "are going"
+   ],
+   "correct_answer": "goes",
+   "explanation_ar": "مع My father نستخدم الفعل في المضارع البسيط مع s أو es. الفعل go يصبح goes."
+  },
+  {
+   "id": 65,
+   "skill": "Grammar",
+   "topic": "Present Simple",
+   "type": "fill_in_the_blank",
+   "difficulty": "easy",
+   "question": "They ______ football after school.",
+   "options": [
+    "plays",
+    "playing",
+    "play",
+    "is play"
+   ],
+   "correct_answer": "play",
+   "explanation_ar": "مع They نستخدم الفعل الأساسي play دون إضافة s."
+  },
+  {
+   "id": 66,
+   "skill": "Grammar",
+   "topic": "Question Words",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "______ is your birthday?",
+   "options": [
+    "Where",
+    "When",
+    "Who",
+    "Why"
+   ],
+   "correct_answer": "When",
+   "explanation_ar": "When تعني متى، وتستخدم للسؤال عن الوقت أو التاريخ."
+  },
+  {
+   "id": 67,
+   "skill": "Grammar",
+   "topic": "Question Words",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "______ is your best friend?",
+   "options": [
+    "Who",
+    "Where",
+    "When",
+    "How"
+   ],
+   "correct_answer": "Who",
+   "explanation_ar": "Who تعني مَن، ونستخدمها للسؤال عن الأشخاص."
+  },
+  {
+   "id": 68,
+   "skill": "Reading",
+   "topic": "Reading Comprehension",
+   "type": "reading_comprehension",
+   "difficulty": "easy",
+   "passage": "Omar is a young boy. He lives in Oman. He has two brothers and one sister. He likes playing football with his friends.",
+   "question": "Where does Omar live?",
+   "options": [
+    "Egypt",
+    "Oman",
+    "India",
+    "England"
+   ],
+   "correct_answer": "Oman",
+   "explanation_ar": "يذكر النص أن عمر يعيش في سلطنة عُمان."
+  },
+  {
+   "id": 69,
+   "skill": "Reading",
+   "topic": "Reading Comprehension",
+   "type": "reading_comprehension",
+   "difficulty": "easy",
+   "passage": "Omar is a young boy. He lives in Oman. He has two brothers and one sister. He likes playing football with his friends.",
+   "question": "How many brothers does Omar have?",
+   "options": [
+    "One",
+    "Two",
+    "Three",
+    "Four"
+   ],
+   "correct_answer": "Two",
+   "explanation_ar": "يذكر النص أن عمر لديه أخوان."
+  },
+  {
+   "id": 70,
+   "skill": "Reading",
+   "topic": "Reading Comprehension",
+   "type": "reading_comprehension",
+   "difficulty": "easy",
+   "passage": "Omar is a young boy. He lives in Oman. He has two brothers and one sister. He likes playing football with his friends.",
+   "question": "What does Omar like doing?",
+   "options": [
+    "Swimming",
+    "Cooking",
+    "Playing football",
+    "Reading"
+   ],
+   "correct_answer": "Playing football",
+   "explanation_ar": "يذكر النص أن عمر يحب لعب كرة القدم مع أصدقائه."
+  },
+  {
+   "id": 71,
+   "skill": "Grammar",
+   "topic": "Error Correction",
+   "type": "correct_the_error",
+   "difficulty": "easy",
+   "question": "Find and correct the mistake: She have a red bag.",
+   "incorrect_sentence": "She have a red bag.",
+   "correct_answer": "She has a red bag.",
+   "explanation_ar": "نستخدم has مع She في المضارع البسيط، وليس have."
+  },
+  {
+   "id": 72,
+   "skill": "Writing",
+   "topic": "Sentence Ordering",
+   "type": "ordering",
+   "difficulty": "easy",
+   "question": "Arrange the words to make a correct sentence.",
+   "words": [
+    "is",
+    "My",
+    "teacher",
+    "kind"
+   ],
+   "correct_answer": "My teacher is kind.",
+   "explanation_ar": "الترتيب الصحيح: الفاعل My teacher ثم الفعل is ثم الصفة kind."
+  },
+  {
+   "id": 73,
+   "skill": "Conversation",
+   "topic": "Asking for Help",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "A: Can you help me, please? B: ______",
+   "options": [
+    "Of course!",
+    "Good night!",
+    "I am ten.",
+    "It is blue."
+   ],
+   "correct_answer": "Of course!",
+   "explanation_ar": "Of course تعني بالتأكيد، وهي إجابة مناسبة للموافقة على المساعدة."
+  },
+  {
+   "id": 74,
+   "skill": "Writing",
+   "topic": "Describing Yourself",
+   "type": "open_ended",
+   "difficulty": "easy",
+   "question": "Write three sentences about your family.",
+   "model_answer": [
+    "I have a small family.",
+    "I love my mother and father.",
+    "I have one brother."
+   ],
+   "accepted_answers": "تُقبل الجمل الأخرى الصحيحة نحويًا والتي تصف عائلة الطالب.",
+   "grading_criteria": {
+    "sentence_1": 1,
+    "sentence_2": 1,
+    "sentence_3": 1,
+    "grammar_and_spelling": 1
+   },
+   "total_marks": 4,
+   "explanation_ar": "يتدرب الطالب على كتابة جمل بسيطة عن العائلة واستخدام الكلمات والضمائر المناسبة."
+  },
+  {
+   "id": 75,
+   "skill": "Phonics",
+   "topic": "Long and Short Vowel Sounds",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Which word has the long /iː/ sound?",
+   "options": [
+    "Fish",
+    "Sit",
+    "Tree",
+    "Pen"
+   ],
+   "correct_answer": "Tree",
+   "explanation_ar": "كلمة Tree تحتوي على صوت ee الطويل /iː/، بينما الكلمات الأخرى لا تحتوي على هذا الصوت."
+  }
+ ]
+}

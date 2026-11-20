@@ -187,3 +187,31 @@ button.bank-sub{width:100%;border:0;font:inherit;text-align:start;cursor:pointer
 .bq-img{font-size:5rem;text-align:center;line-height:1.1;margin:4px 0}
 .bq-img .e3d{width:1.15em;height:1.15em}
 .bq-tr{font-weight:700}
+/* المنهج المتكامل: أنواع الأسئلة الجديدة */
+.bq-kind{display:inline-block;background:rgba(122,92,255,.14);color:var(--ink,#3a2a8a);border-radius:99px;padding:4px 12px;font-weight:800;margin:4px 0}
+.bq-pass{background:#f4f1ff;border-inline-start:5px solid #7a5cff;border-radius:14px;padding:12px 14px;font-size:1.15rem;line-height:1.9;margin:8px 0;text-align:start}
+.bq-pass small{display:block;font-weight:800;opacity:.75;margin-bottom:4px;direction:rtl;text-align:right}
+.bq-bad{background:#ffecec;color:#8a1f1f;border-radius:14px;padding:10px 14px;font-size:1.2rem;text-decoration:line-through wavy rgba(200,40,40,.5);margin:8px 0;text-align:start}
+.bq-type{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.bq-in{font:inherit;font-size:1.3rem;padding:12px 14px;border-radius:14px;border:2px solid rgba(122,92,255,.4);background:var(--card,#fff);color:inherit;width:100%;box-sizing:border-box;resize:vertical}
+.bq-in.ok,.bq-line.ok{border-color:#22a35a;background:#e6fbef}.bq-in.no,.bq-line.no{border-color:#e0703a;background:#fff3e6}
+.bq-line{min-height:62px;border:2px dashed rgba(122,92,255,.45);border-radius:16px;padding:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.bq-line small{opacity:.6;direction:rtl;width:100%;text-align:center}
+.bq-pool{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:6px 0 10px}
+.bq-tile{font:inherit;font-size:1.2rem;font-weight:700;padding:10px 14px;border-radius:12px;border:0;background:linear-gradient(180deg,#fff,#eee9ff);box-shadow:0 3px 0 #b9a8ff;color:#2b1f6b;cursor:pointer;min-width:44px;margin:0}
+.bq-tile:disabled{opacity:.85;cursor:default}
+.bq-undo{align-self:center}
+.bq-match{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}.bq-match>div{display:flex;flex-direction:column;gap:8px}
+.bq-m{font:inherit;font-size:1.1rem;font-weight:700;padding:12px 8px;border-radius:14px;border:2px solid rgba(122,92,255,.35);background:var(--card,#fff);color:inherit;cursor:pointer;min-height:54px;margin:0}
+.bq-m.sel{border-color:#7a5cff;background:#efe9ff;transform:scale(1.03)}
+.bq-m.ok{border-color:#22a35a;background:#e6fbef;color:#14643a;cursor:default}
+.bq-m.no{border-color:#e0703a;background:#fff3e6;animation:bqshake .4s}
+@keyframes bqshake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.bq-ans{font-size:1.2rem;background:rgba(255,255,255,.6);border-radius:10px;padding:6px 10px;text-align:start}
+.bq-sm,.bq-cr{text-align:start;margin:6px 0;padding-inline-start:22px;line-height:1.8}
+:root[data-theme=dark] .bq-pass{background:#25213d}:root[data-theme=dark] .bq-bad{background:#3d1d1d;color:#ffc2c2}:root[data-theme=dark] .bq-tile{background:linear-gradient(180deg,#3a3360,#2c2650);color:#ece6ff;box-shadow:0 3px 0 #18143a}
+:root[data-theme=dark] .bq-m.sel{background:#3a3360}:root[data-theme=dark] .bq-m.ok,:root[data-theme=dark] .bq-in.ok,:root[data-theme=dark] .bq-line.ok{background:#163d2b;color:#bff3d4}:root[data-theme=dark] .bq-m.no,:root[data-theme=dark] .bq-in.no,:root[data-theme=dark] .bq-line.no{background:#3d2a16}
+:root[data-theme=dark] .bq-ans{background:rgba(0,0,0,.25)}:root[data-theme=dark] .bq-kind{color:#d8ccff}
+@media (prefers-color-scheme: dark){:root:not([data-theme=light]) .bq-pass{background:#25213d}:root:not([data-theme=light]) .bq-bad{background:#3d1d1d;color:#ffc2c2}:root:not([data-theme=light]) .bq-tile{background:linear-gradient(180deg,#3a3360,#2c2650);color:#ece6ff;box-shadow:0 3px 0 #18143a}
+:root:not([data-theme=light]) .bq-m.sel{background:#3a3360}:root:not([data-theme=light]) .bq-m.ok,:root:not([data-theme=light]) .bq-in.ok,:root:not([data-theme=light]) .bq-line.ok{background:#163d2b;color:#bff3d4}:root:not([data-theme=light]) .bq-m.no,:root:not([data-theme=light]) .bq-in.no,:root:not([data-theme=light]) .bq-line.no{background:#3d2a16}
+:root:not([data-theme=light]) .bq-ans{background:rgba(0,0,0,.25)}:root:not([data-theme=light]) .bq-kind{color:#d8ccff}}
