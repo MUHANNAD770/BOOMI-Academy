@@ -4,7 +4,7 @@
   "lang":"ar",
   "dir":"rtl",
   "start_url":"./",
-  "display":"standalone",
+  "display":"browser",
   "background_color":"#221d6e",
   "theme_color":"#221d6e",
   "description":"تعلّم العربية والإنجليزية والرياضيات مع بومي.",
