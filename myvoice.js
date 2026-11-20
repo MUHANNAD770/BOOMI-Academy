@@ -19,10 +19,12 @@
  const fetchT=(u,o,ms)=>{const c=new AbortController(),k=setTimeout(()=>c.abort(),ms);return fetch(u,{...o,signal:c.signal}).finally(()=>clearTimeout(k))};
  const note=m=>{try{const e=document.createElement('div');e.className='mv-toast';e.textContent=m;document.body.appendChild(e);setTimeout(()=>e.remove(),3800)}catch(x){}};
  /* توليد جملة بصوت معيّن (v) ← Blob mp3. ذاكرة: في الجلسة (MEM) ثم في الجهاز (Cache Storage) ثم الخادم */
+ /* التاء المربوطة حسب موضعها (voices/tamarbuta.js): الوقف هاء ساكنة، والوصل تاء بحركتها — نفس قاعدة صوت بومي */
+ let TMAP=null;const tmText=async t=>{try{if(!window.TaMarbuta||t.indexOf('\u0629')<0)return t;if(!TMAP)TMAP=fetch('voices/tm-map.json?v=1').then(r=>r.ok?r.json():{}).catch(()=>({}));return TaMarbuta.engine(t,await TMAP)}catch(e){return t}};
  const gen=(v,t,l,ms)=>{const k=ck(v,t,l);if(MEM.has(k))return MEM.get(k);
   const pr=(async()=>{try{const c=await caches.open(CN),h=await c.match(k);if(h)return await h.blob()}catch(e){}
    const g=await cfg();const url=(g&&g.configured&&g.url)||v.url;if(!url)return null;st.inflight++;
-   try{const r=await fetchT(url+'/tts',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({codes:v.codes,ref_text:v.rt,vt:v.vt,text:norm(t),lang:l==='en'?'en':'ar'})},ms||45000);
+   try{const r=await fetchT(url+'/tts',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({codes:v.codes,ref_text:v.rt,vt:v.vt,text:l==='en'?norm(t):await tmText(norm(t)),lang:l==='en'?'en':'ar'})},ms||45000);
     if(!r.ok)throw new Error('http '+r.status);const b=await r.blob();if(!b.size)throw new Error('empty');
     try{(await caches.open(CN)).put(k,new Response(b.slice(0,b.size,'audio/mpeg'),{headers:{'content-type':'audio/mpeg'}}))}catch(e){}return b}
    finally{st.inflight--}})().catch(e=>{MEM.delete(k);if(v===me()){st.down=Date.now()+120e3; /* نرجع لصوت بومي دقيقتين ثم نحاول من جديد */
@@ -40,7 +42,7 @@
  const msg=(t,cls)=>{const e=$('mv-msg');if(e){e.textContent=t||'';e.className='mv-msg '+(cls||'')}};
  const fmt=ts=>{try{return new Date(ts).toLocaleDateString('ar',{day:'numeric',month:'long',year:'numeric'})}catch(e){return''}};
  const panel=()=>{const v=me(),mode=window.P&&P.vmode==='mine'&&v?'mine':'bomi';
-  return `<div class="mv-card" id="mv-card"><h3>🗣️ اختر صوت بومي</h3>
+  return `<div class="mv-card" id="mv-card"><h3>🗣️ اِخْتَرْ صَوْتَ بُومِي</h3>
   <div class="voice-provider mv-mode"><button class="${mode==='bomi'?'on':''}" onclick="mvMode('bomi')">🦉 صوت بومي</button><button class="${mode==='mine'?'on':''}" ${v?'':'disabled title="أنشئ صوتك أولًا"'} onclick="mvMode('mine')">🎙️ صوتي الشخصي</button></div>
   <p class="mut">${mode==='mine'?'✅ بومي يتكلّم الآن بصوتك في كل الموقع. إذا تعذّر صوتك (بلا إنترنت مثلًا) يكمل بصوته المعتاد تلقائيًا.':v?'صوت بومي المعتاد مفعّل. يمكنك التبديل إلى صوتك بضغطة واحدة.':'صوت بومي المعتاد مفعّل. أنشئ صوتك الشخصي أدناه ليتكلّم به بومي.'}</p>
   ${v?`<div class="mv-have"><b>🎙️ صوتك الشخصي جاهز</b><span class="mut">أُنشئ ${fmt(v.at)}</span>
