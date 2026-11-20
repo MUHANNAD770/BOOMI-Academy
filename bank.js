@@ -11,7 +11,7 @@
    • «تدريب لمستواك»: أسئلة من المواضيع الأضعف في المرحلة الحالية + «مراجعة أخطائي». */
 (()=>{'use strict';
 const SUBJ={ar:{file:'data/ar-bank.json?v=2',name:'اللغة العربية',sub:'حروف • نحو • إملاء • بلاغة',ic:'ض',cls:'ar',l:'ar'},
- en:{file:'data/en-bank.json?v=3',name:'اللغة الإنجليزية',sub:'Letters • Phonics • Words • Grammar',ic:'ABC',cls:'en',l:'en'}};
+ en:{file:'data/en-bank.json?v=4',name:'اللغة الإنجليزية',sub:'Letters • Phonics • Words • Grammar',ic:'ABC',cls:'en',l:'en'}};
 const DATA={},LOAD={};
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const AD='٠١٢٣٤٥٦٧٨٩',D=n=>String(n).replace(/\d/g,d=>AD[d]);
@@ -87,6 +87,11 @@ function body(q,dir){const X=S.L==='en'?' dir=ltr':'';
  case 'match':{const R=shuf(q.pr.map((p,k)=>k));return `<div class=bq-match${X}><div>${q.pr.map((p,k)=>`<button class=bq-m data-s=l data-k="${k}" onclick="bankPick(this)">${esc(p[0])}</button>`).join('')}</div><div>${R.map(k=>`<button class=bq-m data-s=r data-k="${k}" dir=auto onclick="bankPick(this)">${esc(q.pr[k][1])}</button>`).join('')}</div></div>`}
  case 'write':return `<div class=bq-type><textarea id=bq-in class=bq-in${X} rows=5 placeholder="Write here…" spellcheck=false></textarea><small class=bq-need>✍️ المطلوب: ${D(q.min||1)} ${q.unit==='items'?'أشياء على الأقل':q.min>2?'جمل على الأقل':q.min==2?'جملتان على الأقل':'جملة على الأقل'}</small><button class=big onclick="bankCheck()">انتهيت ✓</button></div>`;
  default:return `<div class="grid bq-opts${q.o.some(o=>o.length>18)?' wide':''}">${q.o.map(o=>`<button class=opt dir=${dir} data-ok="${o===q.a?1:0}" data-v="${esc(o)}" onclick="bankAns(this)">${esc(o)}</button>`).join('')}</div>`}}
+/* سؤال المبتدئ بالعربية: «أَكْمِلِ الْجُمْلَةَ: The fish is ___ the water.» ← التعليمات بالعربية والجملة الإنجليزية في سطر مستقل من اليسار */
+const isAr=t=>/[\u0600-\u06FF]/.test(t||'');
+function qText(q,dir){if(!isAr(q.t)||S.L!=='en')return `<div class="q bq-text" dir=${dir}>${esc(q.t)}</div>`;
+ const m=q.t.match(/^([^A-Za-z]*?[:：])\s*([A-Za-z].*)$/);
+ return m?`<div class="q bq-text" dir=rtl>${esc(m[1])}<span class=bq-en dir=ltr>${esc(m[2])}</span></div>`:`<div class="q bq-text" dir=rtl>${esc(q.t)}</div>`}
 function show(){const{i,qs,L}=S;if(i>=qs.length)return finish();const q=qs[i];S.answered=false;S.miss=0;S.pick=null;S.hn=0;S.rub=null;const dir=L==='en'?'ltr':'rtl';
  h(`<section class="sec bank-q"><button class=link onclick="bankSub('${S.sub}')">→ ${SUBJ[S.sub].name}</button>
  <div class=bq-top><b>${esc(S.name)}</b><small>سؤال ${D(i+1)} من ${D(qs.length)}${S.streak>=2?` · <span class=bq-streak>🔥 ${D(S.streak)}</span>`:''}</small></div>
@@ -94,12 +99,12 @@ function show(){const{i,qs,L}=S;if(i>=qs.length)return finish();const q=qs[i];S.
  <div class=bq-card>
  ${q.p?`<div class=bq-pass dir=${dir}><small>📖 اقرأ النص:</small>${esc(q.p)}</div>`:''}
  ${NAMES[q.m]?`<div class=bq-kind>${NAMES[q.m]}</div>`:''}
- ${q.img?`<div class="bq-img">${q.img}</div>`:''}<div class="q bq-text" dir=${dir}>${esc(q.t)}</div>
+ ${q.img?`<div class="bq-img">${q.img}</div>`:''}${qText(q,dir)}
  <div class=bq-tools><button class=alt onclick="bankSay()">🔊 اسمع ${q.p?'النص والسؤال':'السؤال'}</button><button class=alt onclick="bankHint()">💡 تلميح</button><button class="alt bq-ask" onclick="bankBomi()">🦉 اسأل بومي</button></div><p id=bq-hint class=bq-hint hidden></p>
  ${body(q,dir)}
  <div id=bq-fb class=bq-fb hidden></div></div></section>`)}
 /* السؤال (والنص المقروء) وخياراته بلغة القسم (الإنجليزية بالصوت الإنجليزي) */
-window.bankSay=()=>{const q=S&&S.qs[S.i];if(!q)return;const L=[...(q.p?[[q.p,S.L]]:[]),[q.t,S.L]];
+window.bankSay=()=>{const q=S&&S.qs[S.i];if(!q)return;const L=[...(q.p?[[q.p,S.L]]:[]),[q.t,isAr(q.t)?'ar':S.L]]; /* سؤال عربي فيه كلمات إنجليزية: الصوت يقسمه بين المعلّم العربي والإنجليزي */
  if(q.m==='mc')L.push(['الخِيَارَات','ar'],...q.o.map(o=>[o,S.L]));
  if(q.m==='fix')L.push([q.bad,S.L]);
  if(q.m==='order')L.push(...q.o.map(k=>[q.o0[k],S.L]));
@@ -191,7 +196,7 @@ window.bankNext=()=>{if(!S)return;S.i++;try{say.stop()}catch(_){}show()};
 /* ما يعرفه بومي عن السؤال الحالي (ai.js → pageCtx): النص، نوع السؤال، إجابة الطالب، الصحيح، القاعدة */
 window.BankNow=function(){if(!S||!document.querySelector('.bank-q'))return null;const q=S.qs[S.i];if(!q)return null;
  const I={subject:SUBJ[S.sub].name+' — المنهج المتكامل',lesson:S.name+(q.topic?' (موضوع: '+q.topic+')':''),
-  question:q.m==='fix'?q.t+' — الجملة الخاطئة: '+q.bad:q.m==='order'?q.t+' — البطاقات: '+q.o0.join(' / '):q.m==='match'?q.t+' — الأزواج: '+q.pr.map(p=>p[0]).join('، '):q.t,
+  question:(q.t_en?'('+q.t_en+') ':'')+(q.m==='fix'?q.t+' — الجملة الخاطئة: '+q.bad:q.m==='order'?q.t+' — البطاقات: '+q.o0.join(' / '):q.m==='match'?q.t+' — الأزواج: '+q.pr.map(p=>p[0]).join('، '):q.t),
   instructions:NAMES[q.m]||'اختر الإجابة الصحيحة'};
  if(q.p)I.text='نص القراءة: '+q.p;
  if(S.answered){I.answered=true;I._correct=q.a||(q.sm||[]).join(' ')||'إجابة مفتوحة: تُقبل الإجابات الصحيحة المختلفة';I.studentAnswer=(S.given||'')+(q._ok?' (صحيح)':' (خطأ)');if(q.e)I.instructions+=' | الشرح: '+q.e}

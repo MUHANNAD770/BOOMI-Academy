@@ -260,3 +260,4 @@ button.bank-sub{width:100%;border:0;font:inherit;text-align:start;cursor:pointer
 :root:not([data-theme=light]) .bq-rub li{background:rgba(0,0,0,.25)}:root:not([data-theme=light]) .bq-ask{background:linear-gradient(180deg,#4a3a1a,#3a2c12)!important;color:#ffe2a8!important}}
 @media(prefers-reduced-motion:reduce){.bq-card,.bq-fb,.be-hero,.bq-dots i.cur,.bq-opts .opt.ok{animation:none}}
 .be-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}.be-chip{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:99px;padding:6px 12px;background:rgba(122,92,255,.12);color:inherit;cursor:pointer;margin:0}
+.bq-en{display:block;direction:ltr;text-align:left;margin-top:6px;font-weight:700}

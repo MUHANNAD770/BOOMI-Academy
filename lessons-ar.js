@@ -80,7 +80,7 @@ const firstG=w=>{const g=graphemes(w);if(g.length>2&&base(g[0])==='ا'&&base(g[1
 const pool=u=>u.i.filter(x=>x&&x[0]);
 const SPK=it=>[it[0],it[2]||'ar'];
 /* الكلمة كما تُركَّب من حروفها (بلا تنوين ظاهر): تُنطق بالوقف «جَدّ، قِطَّةْ» لا «جَدٌّ، قِطَّةٌ» — النطق يطابق المكتوب */
-const WAQF=w=>/[\u064B-\u064D\u0652]$/.test(w)||/[^\u0621-\u064A\u064B-\u0652\u0670]/.test(w)?w:w+'\u0652';
+const WAQF=w=>/[\u064B-\u0650\u0652]$/.test(w)||/[^\u0621-\u064A\u064B-\u0652\u0670]/.test(w)?w:w+'\u0652';
 const SPKW=it=>(it[2]||'ar')==='ar'?[WAQF(it[0]),'ar']:SPK(it);
 const exOf=it=>[`الصحيح: ${it[0]} ${isPic(it[1])?it[1]:'— '+it[1]}`,`استمع 🔊 ثم انظر: ${it[0]} ⟵ ${it[1]}`];
 const others=(u,it,f)=>shuf(pool(u).filter(x=>x!==it&&(f?f(x):true)));
