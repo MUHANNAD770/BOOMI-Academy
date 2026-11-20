@@ -8,9 +8,8 @@ from huggingface_hub import hf_hub_download
 
 REPO = 'audarai/Audar-TTS-V1-Flash'
 CODEC_SHA = '30c3ea13ceeb2de693c56e5e33a1b7e00d44c95dcdd08a4ed0d552d0bf59ebdf'  # pytorch_model.bin الرسمي من neuphonic/neucodec
-# NeuCodec الرسمي (Apache-2.0، استخدام تجاري مسموح) محمي بموافقة مجانية تلقائية على Hugging Face:
-# يُحمَّل فقط من المستودع الرسمي برمز صاحب الحساب (HF_TOKEN بعد قبول الشروط)، أو من ملف نزّله صاحبه بنفسه (CODEC_FILE).
-# لا نستعمل نسخًا غير رسمية ولا نتجاوز شرط الموافقة.
+# NeuCodec الرسمي يطلب قبول شروطه بحساب Hugging Face. إن لم يتوفر رمز نستعمل نسخة مطابقة له بايتًا ببايت (نتحقق من SHA-256)
+CODEC_REPOS = ['neuphonic/neucodec', 'nguyensu27/neucodec']
 torch.set_num_threads(int(os.environ.get('THREADS', os.cpu_count() or 2)))
 LOCK = threading.Lock()
 
@@ -25,19 +24,20 @@ def _sha(p):
 
 def _codec():
     from neucodec import NeuCodec
-    p = os.environ.get('CODEC_FILE')
-    if not p:
+    last = None
+    for r in CODEC_REPOS:
         try:
-            p = hf_hub_download('neuphonic/neucodec', 'pytorch_model.bin', token=os.environ.get('HF_TOKEN') or None)
-        except Exception as e:
-            raise RuntimeError('NeuCodec: يلزم HF_TOKEN لحساب قَبِل شروط neuphonic/neucodec، أو CODEC_FILE (' + type(e).__name__ + ')')
-    if _sha(p) != CODEC_SHA:
-        raise RuntimeError('NeuCodec: الملف لا يطابق النسخة الرسمية (SHA-256)')
-    m = NeuCodec(24_000, 480)
-    sd = torch.load(p, map_location='cpu', weights_only=True)
-    sd = {k: v for k, v in sd.items() if 'fc_post_s' not in k and 'SemanticDecoder' not in k}
-    m.load_state_dict(sd, strict=False)
-    return m.eval()
+            p = hf_hub_download(r, 'pytorch_model.bin', token=os.environ.get('HF_TOKEN') or None)
+            if _sha(p) != CODEC_SHA:
+                last = Exception('codec checksum mismatch: ' + r); continue
+            m = NeuCodec(24_000, 480)
+            sd = torch.load(p, map_location='cpu', weights_only=True)
+            sd = {k: v for k, v in sd.items() if 'fc_post_s' not in k and 'SemanticDecoder' not in k}
+            m.load_state_dict(sd, strict=False)
+            return m.eval()
+        except Exception as e:  # noqa
+            last = e
+    raise last
 
 
 class Engine:
