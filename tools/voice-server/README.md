@@ -15,10 +15,9 @@ pinned: false
 - **النموذج:** [Audar-TTS-V1-Flash](https://huggingface.co/audarai/Audar-TTS-V1-Flash) (‏553 مليون معامل، نسخة GGUF Q8 عبر llama.cpp)
   - الترخيص: AudarAI Open License v1.0، ويسمح بالاستخدام التجاري وإعادة التوزيع.
   - يُستعمل باستنساخ الصوت بموافقة صاحبه فقط.
-- **المرمِّز الصوتي:** [NeuCodec](https://huggingface.co/neuphonic/neucodec) الرسمي (Apache-2.0، يسمح بالاستخدام التجاري).
-  - مستودعه يطلب موافقة مجانية تُمنح فورًا بعد تسجيل الدخول (الاسم/البريد، الجهة، الدور).
-  - الخادم يحمّله من المستودع الرسمي فقط برمز `HF_TOKEN` من حساب قَبِل الشروط، أو من ملف نزّلته بنفسك (`CODEC_FILE`)، ويتحقق من SHA-256.
-  - لا بديل متوافق: النموذج يولّد رموز NeuCodec تحديدًا، ونسخة Audar المعدّلة (audar-codec) غير منشورة.
+- **المرمِّز الصوتي:** [NeuCodec](https://huggingface.co/neuphonic/neucodec) (Apache-2.0).
+  - يُحمَّل الملف الرسمي إذا توفّر رمز Hugging Face قَبِل صاحبه شروطه.
+  - وإلا تُحمَّل نسخة مطابقة له بايتًا ببايت، مع التحقق من SHA-256.
 - **التكلفة:** بلا رسوم لكل جملة. يعمل على المعالج (CPU) في Hugging Face Spaces المجاني أو على أي حاسوب.
 
 ## التشغيل على Hugging Face Spaces (مجانًا)
@@ -38,7 +37,7 @@ pinned: false
    - مجلد `shim/`
 4. من **Settings ← Variables and secrets ← New secret** أضف:
    - `VOICE_SECRET`: كلمة سرّ طويلة تختارها أنت (30 حرفًا أو أكثر)، وتضع القيمة نفسها في Netlify باسم `VOICE_SECRET`. لا تضعها في GitHub ولا في المحادثة.
-   - `HF_TOKEN` (مطلوب): رمز قراءة (Read) من حسابك، بعد قبول شروط neuphonic/neucodec.
+   - اختياريًا `HF_TOKEN`: رمز قراءة من حسابك، بعد قبول شروط neuphonic/neucodec.
 5. انتظر انتهاء البناء (10–20 دقيقة أول مرة). عنوان الخادم يكون مثل `https://USER-boomi-voice.hf.space`، وفتح `/health` يجب أن يعرض `"ready": true`.
 6. في Netlify ← Site configuration ← Environment variables أضف `VOICE_SERVER_URL` = عنوان الخادم، ثم أعد النشر.
 
