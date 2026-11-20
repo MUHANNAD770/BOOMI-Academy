@@ -1,3 +1,8 @@
+/* بعد إتقان الدرس: «الدرس التالي» يفتح الدرس التالي في المادة نفسها (كان يعود إلى الرئيسية) */
+window.nextAfterCur=()=>{try{const id=window.cur&&cur.id,u=id&&find(id);const l=(u&&u.l)||'ar';let n=window.nextLesson&&nextLesson(l);
+ if(!n||n.id===id){const all=S.flatMap(st=>st.u).filter(x=>x.l===l);const i=all.findIndex(x=>x.id===id);n=i>=0?all.slice(i+1).find(x=>!(P.done||{})[x.id])||all[i+1]||null:n}return n&&n.id!==id?n:null}catch(e){return null}};
+window.nextLabel=()=>{const n=nextAfterCur();return n?'▶️ الدرس التالي: '+n.n:'📚 كل الدروس'};
+window.goNextLesson=()=>{const n=nextAfterCur();if(n)return lesson(n.id);sec('les')};
 /* smart.js — محرك التعلم التكيّفي، الرياضيات، المعلم، النطق، التقارير، الملفات */
 var DB=(()=>{try{return JSON.parse(localStorage.getItem('hrw2'))}catch(e){return null}})()||{kids:[],cur:0};
 if(!DB.kids.length){try{const o=JSON.parse(localStorage.getItem('hrw'));if(o)DB.kids.push(o)}catch(e){}}
@@ -60,7 +65,7 @@ return h(`<h1>${pass?'🌟':'💪'}</h1><h2>${sc} من 5 — المستوى ${m.
 if(c.id=='dy'){let m='أحسنت!';if(sc>=4&&!P.cd[day()]){P.cd[day()]=1;P.star+=3;m='أنجزت تحدي اليوم! +٣ نجوم ⭐'}save();return h(`<h1>🎯</h1><h2>${sc} من ${qs.length}</h2><p>${m}</p><button class=big onclick=home()>رجوع</button>`)}
 if(c.id=='rv'){save();return h(`<h1>🔁</h1><h2>${sc} من 5</h2><p>مراجعة رائعة! الكلمات التي أخطأت فيها ستظهر لك أكثر.</p><button class=big onclick=home()>رجوع</button>`)}
 P.sc[c.id]=Math.max(P.sc[c.id]||0,sc);P.fd[c.id]=P.fd[c.id]||day();if(pass&&!P.done[c.id])P.star+=5;if(pass)P.done[c.id]={s:sc,d:day()};save();
-h(pass?`<h1>🌟</h1><h2>أتقنت الدرس! ${sc} من 5</h2><button class=big onclick=home()>الدرس التالي</button>`:`<h1>💪</h1><h2>${sc} من 5 – قريب جداً!</h2><p>نحتاج 4 على الأقل. سنعيد التدريب بطريقة مختلفة.</p><button class=big onclick="lesson('${c.id}')">أعد التدريب</button>`)}
+h(pass?`<h1>🌟</h1><h2>أتقنت الدرس! ${sc} من 5</h2><button class=big onclick=goNextLesson()>${nextLabel()}</button>`:`<h1>💪</h1><h2>${sc} من 5 – قريب جداً!</h2><p>نحتاج 4 على الأقل. سنعيد التدريب بطريقة مختلفة.</p><button class=big onclick="lesson('${c.id}')">أعد التدريب</button>`)}
 function mstart(k){P.ml[k]=P.ml[k]||{l:1};cur={id:'m-'+k,mk:k,n:MS[k]};quiz()}
 const dueN=()=>Object.keys(P.done||{}).flatMap(k=>{try{const u=find(k);return u&&u.i||[]}catch(e){return[]}}).filter(x=>{const s=P.sk[x[0]]||{};return s.m>0||Date.now()-(s.t||0)>2*864e5}).length;
 function review(){const it=Object.keys(P.done).filter(k=>{try{return find(k)}catch(e){return 0}}).flatMap(k=>find(k).i);

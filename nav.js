@@ -47,7 +47,7 @@ ach:['🏆 إنجازاتي',achBody()]};
 const[t,b]=T[k];h(`<section class=sec><h2>${t}</h2>${b}</section>`)}
 function home(){V='home';window.CS='home';ens();const st=P.stage,us=units(st),dn=us.filter(u=>P.done[u.id]).length,c=coach(),pc=us.length?Math.round(dn/us.length*100):0;
 const IC={ar:'<i class="ico ico-ar"><b>أ</b><em>📖</em></i>',en:'<i class="ico ico-en" dir=ltr><b>A</b><b>B</b><b>C</b></i>',math:'<i class="ico ico-math"><b>+</b><b>−</b><b>×</b><b>÷</b></i>',games:'<i class="ico ico-em">🎮</i>',ach:'<i class="ico ico-em ico-cup">🏆<s>✦</s><s>✦</s></i>',les:'<i class="ico ico-em">📚</i>'};
-const tl=[[IC.ar,'اللغة العربية','حروف وكلمات',"sec('ar')"],[IC.en,'English','Learn English',"sec('en')"],[IC.math,'الرياضيات','أرقام وحساب',"sec('math')"],[IC.ach,'إنجازاتي','⭐ '+P.star,"sec('ach')"],[IC.games,'الألعاب','تعلّم بالمرح',"sec('games')"],[IC.les,'كل الدروس','خطوة بخطوة',"sec('les')"]];
+const tl=[[IC.ar,'اللغة العربية','حروف وكلمات',"sec('ar')"],[IC.en,'English','Learn English',"sec('en')"],[IC.math,'الرياضيات','أرقام وحساب',"sec('math')"],[IC.ach,'إنجازاتي','⭐ '+P.star,"sec('ach')"],[IC.games,'الألعاب','تعلّم بالمرح',"sec('games')"],[IC.les,'كل الدروس','خطوة بخطوة',"sec('les')"],['📚','القصص','قصص مصوّرة للقراءة',"stories()"]];
 /* الواجهة الجديدة (ui2.css): ترحيب كبير + زر البدء + بطاقات الأكاديميات الأربع + لوحة ولي الأمر، ثم تعلّم والعب */
 const go=c?`lesson('${c.u.id}')`:"sec('les')";
 h(`<section class="h2-hero"><div class=h2-cloud></div><img class=h2-castle src="img/3d/1f3f0.webp" alt=""><span class="h2-star s1">⭐</span><span class="h2-star s2">✨</span>
