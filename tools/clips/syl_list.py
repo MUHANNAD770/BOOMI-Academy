@@ -36,8 +36,8 @@ async def one(letter,keys,dst,sem,stat):
                 if segs:break
             except Exception as e: await asyncio.sleep(2+2*a)
         else: stat['fail'].append(letter);return
-    for (s,t),k in zip(segs,keys):
-        if not k:continue
+    for n_,((s,t),k) in enumerate(zip(segs,keys)):
+        if not k or n_>=3:continue  # السكون والشدة: syl_sukun_shadda.py (تسجيل مستقل لكل منهما)
         for who in ('male','female'):
             os.makedirs(os.path.join(dst,'out',who),exist_ok=True);enc(x[max(0,s-int(.01*SR)):t],os.path.join(dst,'out',who,k+'.mp3'))
     stat['ok']+=1
