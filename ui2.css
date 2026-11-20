@@ -328,5 +328,29 @@ button.bank-sub{width:100%;border:0;font:inherit;text-align:start;cursor:pointer
 .mv-priv{font-size:.85rem}
 .mv-del{color:#d9480f}
 .mv-toast{position:fixed;bottom:84px;left:50%;transform:translateX(-50%);background:#221d6e;color:#fff;padding:8px 14px;border-radius:14px;z-index:9999;font-size:.9rem;box-shadow:0 6px 18px rgba(0,0,0,.25);max-width:88vw;text-align:center}
-:root[data-theme=dark] .mv-card{background:#24275e;color:#eef0ff}
+:root[data-theme=dark] .mv-card{background:#24275e;color:#eef0ff;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+:root[data-theme=dark] .mv-card :is(h3,b,summary,label,li,p){color:#eef0ff}
+:root[data-theme=dark] .mv-card .mut{color:#b7bce6}
+:root[data-theme=dark] .mv-read{background:rgba(255,255,255,.08);color:#fff}
 :root[data-theme=dark] .mv-make textarea{background:#1b1d4a;color:#eef0ff;border:1px solid #3a3f86}
+:root[data-theme=dark] .mv-have{background:rgba(34,163,90,.18)}
+:root[data-theme=dark] .mv-up{background:#2f3577;color:#eef0ff;border:1px solid #4a52a0;border-radius:16px;min-height:48px;padding:8px 12px}
+:root[data-theme=dark] .mv-mode button[disabled]{background:#30355f;color:#9aa0c8}
+:root[data-theme=dark] .mv-msg.bad{color:#ffb08a}:root[data-theme=dark] .mv-msg.good{color:#7fe0a5}
+@media(prefers-color-scheme:dark){
+:root:not([data-theme=light]) .mv-card{background:#24275e;color:#eef0ff;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+:root:not([data-theme=light]) .mv-card :is(h3,b,summary,label,li,p){color:#eef0ff}
+:root:not([data-theme=light]) .mv-card .mut{color:#b7bce6}
+:root:not([data-theme=light]) .mv-read{background:rgba(255,255,255,.08);color:#fff}
+:root:not([data-theme=light]) .mv-make textarea{background:#1b1d4a;color:#eef0ff;border:1px solid #3a3f86}
+:root:not([data-theme=light]) .mv-have{background:rgba(34,163,90,.18)}
+:root:not([data-theme=light]) .mv-up{background:#2f3577;color:#eef0ff;border:1px solid #4a52a0;border-radius:16px;min-height:48px;padding:8px 12px}
+:root:not([data-theme=light]) .mv-mode button[disabled]{background:#30355f;color:#9aa0c8}
+:root:not([data-theme=light]) .mv-msg.bad{color:#ffb08a}:root:not([data-theme=light]) .mv-msg.good{color:#7fe0a5}
+}
+.mv-up{background:#eef0ff;color:#2a1f6b;border-radius:16px;min-height:48px;padding:8px 12px;font-weight:800}
+/* عالم المغامرات: الأيقونة كانت فوق العنوان (موضعها مطلق). صارت في سطر مستقل أعلى البطاقة والنص تحتها */
+.zone{justify-content:flex-start!important;gap:4px!important}
+.zone .zi{position:relative!important;top:auto!important;inset-inline-end:auto!important;align-self:flex-end;font-size:2.3rem!important;line-height:1;margin-bottom:2px}
+.zone .zi img,.zone .zi .e3d{width:1.1em!important;height:1.1em!important}
+.zone .zp{margin-top:auto!important}

@@ -15,9 +15,11 @@ const STOPC='(?=\\s*(?:[.!؟?،,:;؛]|$))';
 function tanween(t){return t.replace(new RegExp('[\\u0621-\\u064A][\\u0621-\\u064A\\u064B-\\u0652\\u0670]*[\\u064C\\u064D]\\u0651?'+STOPC,'g'),w=>{
  if(w.endsWith('ّ')&&'ٌٍ'.includes(w[w.length-2]))w=w.slice(0,-2)+'ّ'+w[w.length-2];
  const v=w.endsWith('ٌ')?'ُ':'ِ';w=w.slice(0,-1);if(w.endsWith('ة'))w=w.slice(0,-1)+'ت';return w+v+'نّْ'}).replace(new RegExp('ة\u064B'+STOPC,'g'),'تَنّْ')} /* «مَدْرَسَةً» قبل الوقف ← «مَدْرَسَتَنّْ» (مثل gen_edge.py) */
-/* التاء المربوطة بلا حركة وبعدها كلمة (وصل): المحرك ينطقها هاءً («صُورَه حَاسُوب»). نكتبها تاءً: ساكنة («صُورَتْ حَاسُوب»)،
-   أو مكسورة قبل همزة الوصل لالتقاء الساكنين («لُغَتِ الصَّفّ»). عند الوقف تبقى هاءً كما في القاعدة. للمحرك فقط؛ النص المعروض كما هو. */
-function tamarbuta(t){return t.replace(/\u0629(?=[ \u00A0]+[\u0627\u0671])/g,'\u062a\u0650').replace(/\u0629(?=[ \u00A0]+[\u0621-\u064A])/g,'\u062a\u0652')}
+/* التاء المربوطة حسب موضعها: الوقف هاء ساكنة «ةْ»، والوصل تاء بحركتها الإعرابية (خريطة التشكيل لجمل الموقع، وقواعد للنص الجديد).
+   مصدر واحد مع المقاطع المسجّلة والصوت المستنسخ: voices/tamarbuta.js */
+import TMR from '../../voices/tamarbuta.js';
+import TMAP from '../../voices/tm-map.json' with {type:'json'};
+const tamarbuta=t=>TMR.engine(t,TMAP);
 function allah(t){const G='(ل\\u0650?)ل(?:\\u0651\\u064E|\\u064E\\u0651)ه([\\u064F\\u0650\\u064E]?)';
  t=t.replace(new RegExp(G+STOPC,'g'),(m,a)=>a+'لَّاهْ');return t.replace(new RegExp(G,'g'),(m,a,v)=>a+'لَّاه'+v)}
 /* المعلّمة: سكون آخر الكلمة داخل الجملة يجعل المحرك يقف بعد كل كلمة */

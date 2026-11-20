@@ -47,15 +47,19 @@ def tanween(t,l):
     # كل كلمة منوّنة بالضم أو الكسر (منفردة أو في جملة) تُرسل للمحرك بالنون صريحة كي لا يقف عليها فيُسقطها
     if l!='ar': return t
     return re.sub(r'[\u0621-\u064A][\u0621-\u064A\u064B-\u0652\u0670]*[\u064C\u064D]\u0651?(?![\u0621-\u064A\u064B-\u0652])',lambda m:_nun(m.group(0)),t)
-# التاء المربوطة بلا حركة وبعدها كلمة (وصل): المحرك ينطقها هاءً («صُورَه حَاسُوب»، قياس MFCC: أقرب للهاء في ٧ من ٨).
-# نكتبها للمحرك تاءً ساكنة («صُورَتْ حَاسُوب»)، أو مكسورة قبل همزة الوصل لالتقاء الساكنين («لُغَتِ الصَّفّ»). عند الوقف تبقى هاءً.
+# التاء المربوطة حسب موضعها (voices/tamarbuta.js، مصدر واحد مع خادم النطق والصوت المستنسخ):
+# الوقف «ةْ» (هاء ساكنة مسموعة)، والوصل تاء بحركتها الإعرابية (من خريطة التشكيل voices/tm-map.json أو القواعد).
+TM={}
 def tamarbuta(t,l):
-    if l!='ar': return t
-    t=re.sub(r'\u0629(?=[ \u00A0]+[\u0627\u0671])','\u062a\u0650',t)
-    return re.sub(r'\u0629(?=[ \u00A0]+[\u0621-\u064A])','\u062a\u0652',t)
+    return TM.get(t,t) if l=='ar' else t
 PROXY=os.environ.get('HTTPS_PROXY')
 WHOS=os.environ.get('WHO','female,male').split(',')  # WHO=female لتسجيل صوت المعلّمة وحده
 phr=json.load(open(os.environ.get('PHR') or os.path.join(W,'final.json')))
+import tempfile
+with tempfile.TemporaryDirectory() as _d:
+    json.dump([[t,l] for k,(t,l) in phr],open(_d+'/i.json','w'),ensure_ascii=False)
+    subprocess.run(['node',os.path.join(W,'..','tamarbuta','engine_cli.js'),_d+'/i.json',_d+'/o.json'],check=True)
+    TM=json.load(open(_d+'/o.json'))
 async def one(who,k,t,l,sem,stat):
     out=os.path.join(W,'out',who,k+'.mp3')
     if os.path.exists(out) and os.path.getsize(out)>500: stat['skip']+=1; return
