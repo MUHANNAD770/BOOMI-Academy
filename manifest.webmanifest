@@ -1,12 +1,35 @@
 {
-  "name":"حُرُوفِي — البومة التعليمية",
-  "short_name":"حُرُوفِي",
-  "lang":"ar",
-  "dir":"rtl",
-  "start_url":"./",
-  "display":"browser",
-  "background_color":"#221d6e",
-  "theme_color":"#221d6e",
-  "description":"تعلّم العربية والإنجليزية والرياضيات مع بومي.",
-  "icons":[{"src":"img/icon.png","sizes":"192x192","type":"image/png","purpose":"any"},{"src":"img/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"}]
+  "name": "حُرُوفِي — البومة التعليمية",
+  "short_name": "حُرُوفِي",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./",
+  "display": "fullscreen",
+  "background_color": "#221d6e",
+  "theme_color": "#221d6e",
+  "description": "تعلّم العربية والإنجليزية والرياضيات مع بومي.",
+  "icons": [
+    {
+      "src": "img/icon-192c.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "img/icon-512c.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "img/icon-512m.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "display_override": [
+    "fullscreen",
+    "standalone"
+  ]
 }
