@@ -1,0 +1,428 @@
+{
+ "bank": "Boomi English Academy",
+ "batch": 20,
+ "question_range": "476-500",
+ "stage": "Elementary",
+ "level": "Elementary Plus",
+ "grade": "Primary",
+ "language": "English",
+ "explanation_language": "Arabic",
+ "questions": [
+  {
+   "id": 476,
+   "skill": "Grammar",
+   "topic": "Present Perfect and Past Simple",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "We _____ that museum last year.",
+   "options": [
+    "visit",
+    "have visited",
+    "visited",
+    "visiting"
+   ],
+   "correct_answer": "visited",
+   "explanation_ar": "نستخدم الماضي البسيط مع وقت ماضٍ محدد مثل last year."
+  },
+  {
+   "id": 477,
+   "skill": "Grammar",
+   "topic": "Present Perfect",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "She has _____ her homework already.",
+   "correct_answer": "finished",
+   "accepted_answers": [
+    "finished"
+   ],
+   "explanation_ar": "يتكون المضارع التام من has أو have مع التصريف الثالث للفعل، وfinished هو التصريف الثالث من finish."
+  },
+  {
+   "id": 478,
+   "skill": "Grammar",
+   "topic": "Present Simple and Continuous",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Look! The children _____ in the garden.",
+   "options": [
+    "play",
+    "plays",
+    "are playing",
+    "played"
+   ],
+   "correct_answer": "are playing",
+   "explanation_ar": "نستخدم المضارع المستمر لحدث يحدث الآن، وكلمة Look تدل على ذلك."
+  },
+  {
+   "id": 479,
+   "skill": "Grammar",
+   "topic": "First Conditional",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "If it rains tomorrow, we _____ at home.",
+   "options": [
+    "stay",
+    "will stay",
+    "stayed",
+    "staying"
+   ],
+   "correct_answer": "will stay",
+   "explanation_ar": "في الشرط الأول نستخدم المضارع البسيط بعد if، ثم will مع الفعل الأساسي في النتيجة."
+  },
+  {
+   "id": 480,
+   "skill": "Grammar",
+   "topic": "Modal Verbs",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "You _____ wear a helmet when riding a bicycle.",
+   "options": [
+    "should",
+    "shouldn't",
+    "wouldn't",
+    "couldn't"
+   ],
+   "correct_answer": "should",
+   "explanation_ar": "should تستخدم للنصيحة، وارتداء الخوذة نصيحة مهمة للسلامة."
+  },
+  {
+   "id": 481,
+   "skill": "Grammar",
+   "topic": "Passive Voice",
+   "type": "error_correction",
+   "difficulty": "medium",
+   "question": "Correct the sentence: The letters is delivered every morning.",
+   "correct_answer": "The letters are delivered every morning.",
+   "explanation_ar": "الفاعل letters جمع، لذلك نستخدم are وليس is في المبني للمجهول."
+  },
+  {
+   "id": 482,
+   "skill": "Grammar",
+   "topic": "Articles",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "My father bought _____ umbrella yesterday.",
+   "correct_answer": "an",
+   "accepted_answers": [
+    "an"
+   ],
+   "explanation_ar": "نستخدم an قبل صوت حرف العلة، وكلمة umbrella تبدأ بصوت علة."
+  },
+  {
+   "id": 483,
+   "skill": "Grammar",
+   "topic": "Quantifiers",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "There are _____ apples in the basket.",
+   "options": [
+    "much",
+    "a little",
+    "many",
+    "any"
+   ],
+   "correct_answer": "many",
+   "explanation_ar": "نستخدم many مع الأسماء المعدودة في صيغة الجمع مثل apples."
+  },
+  {
+   "id": 484,
+   "skill": "Grammar",
+   "topic": "Conjunctions",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "I studied hard _____ I wanted to pass the exam.",
+   "correct_answer": "because",
+   "accepted_answers": [
+    "because"
+   ],
+   "explanation_ar": "نستخدم because لذكر السبب."
+  },
+  {
+   "id": 485,
+   "skill": "Vocabulary",
+   "topic": "Daily Life",
+   "type": "matching",
+   "difficulty": "easy",
+   "question": "Match each action with its correct meaning.",
+   "pairs": [
+    {
+     "left": "Repair",
+     "right": "Fix something that is broken"
+    },
+    {
+     "left": "Deliver",
+     "right": "Take something to a person or place"
+    },
+    {
+     "left": "Protect",
+     "right": "Keep someone or something safe"
+    },
+    {
+     "left": "Prepare",
+     "right": "Get something ready"
+    }
+   ],
+   "explanation_ar": "اربط كل فعل بالمعنى المناسب له."
+  },
+  {
+   "id": 486,
+   "skill": "Grammar",
+   "topic": "Sentence Ordering",
+   "type": "sentence_ordering",
+   "difficulty": "medium",
+   "question": "Arrange the words to make a correct sentence.",
+   "words": [
+    "has",
+    "never",
+    "my",
+    "visited",
+    "brother",
+    "London"
+   ],
+   "correct_answer": "My brother has never visited London.",
+   "explanation_ar": "نرتب الجملة بالفاعل ثم has ثم never ثم التصريف الثالث للفعل visited ثم المكان."
+  },
+  {
+   "id": 487,
+   "skill": "Vocabulary",
+   "topic": "Environment",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Which action helps reduce plastic waste?",
+   "options": [
+    "Using reusable bags",
+    "Throwing bottles into rivers",
+    "Using more plastic bags",
+    "Leaving rubbish on the beach"
+   ],
+   "correct_answer": "Using reusable bags",
+   "explanation_ar": "استخدام الأكياس القابلة لإعادة الاستخدام يقلل الحاجة إلى الأكياس البلاستيكية."
+  },
+  {
+   "id": 488,
+   "skill": "Reading",
+   "topic": "Community Project",
+   "type": "reading_comprehension",
+   "difficulty": "medium",
+   "passage": "Last month, students at Green School started a community project. They planted flowers and small trees near the school entrance. Some students watered the plants, while others collected rubbish. Their teacher explained that plants make the area more beautiful and help the environment. After three weeks, the entrance looked cleaner and greener.",
+   "question": "What did the students plant?",
+   "options": [
+    "Vegetables and fruit",
+    "Flowers and small trees",
+    "Only large trees",
+    "Grass inside classrooms"
+   ],
+   "correct_answer": "Flowers and small trees",
+   "explanation_ar": "يذكر النص أن الطلاب زرعوا الزهور والأشجار الصغيرة بالقرب من مدخل المدرسة."
+  },
+  {
+   "id": 489,
+   "skill": "Reading",
+   "topic": "Community Project",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "What did some students do while others collected rubbish?",
+   "passage_reference": 488,
+   "options": [
+    "Watered the plants",
+    "Painted the classrooms",
+    "Played football",
+    "Read stories"
+   ],
+   "correct_answer": "Watered the plants",
+   "explanation_ar": "يوضح النص أن بعض الطلاب كانوا يسقون النباتات بينما جمع الآخرون النفايات."
+  },
+  {
+   "id": 490,
+   "skill": "Reading",
+   "topic": "Community Project",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "How did the entrance look after three weeks?",
+   "passage_reference": 488,
+   "options": [
+    "Darker and dirtier",
+    "Cleaner and greener",
+    "Empty and dry",
+    "Smaller and noisier"
+   ],
+   "correct_answer": "Cleaner and greener",
+   "explanation_ar": "في نهاية النص، أصبح مدخل المدرسة أنظف وأكثر خضرة."
+  },
+  {
+   "id": 491,
+   "skill": "Reading",
+   "topic": "Inference",
+   "type": "open_ended",
+   "difficulty": "medium",
+   "question": "Why was the school community project useful?",
+   "accepted_answers": [],
+   "rubric": {
+    "criteria": [
+     "Mentions improving the school area",
+     "Mentions helping the environment",
+     "Uses a meaningful English sentence"
+    ],
+    "sample_answer": "It made the school entrance cleaner and more beautiful and helped the environment."
+   },
+   "explanation_ar": "استنتج الفائدة من المعلومات الموجودة في النص، ولا تكتفِ بنسخ جملة واحدة."
+  },
+  {
+   "id": 492,
+   "skill": "Vocabulary",
+   "topic": "Context Clues",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "The path was slippery because of the rain. What does slippery mean?",
+   "options": [
+    "Easy to slide on",
+    "Very hot",
+    "Full of flowers",
+    "Extremely noisy"
+   ],
+   "correct_answer": "Easy to slide on",
+   "explanation_ar": "كلمة slippery تعني زلقًا، أي يمكن أن ينزلق الشخص عليه بسهولة."
+  },
+  {
+   "id": 493,
+   "skill": "Grammar",
+   "topic": "Mixed Tenses",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "While I _____ dinner, my brother called me.",
+   "options": [
+    "cook",
+    "was cooking",
+    "am cooking",
+    "have cooked"
+   ],
+   "correct_answer": "was cooking",
+   "explanation_ar": "نستخدم الماضي المستمر للحدث الذي كان جاريًا عندما وقع حدث آخر في الماضي."
+  },
+  {
+   "id": 494,
+   "skill": "Grammar",
+   "topic": "Error Correction",
+   "type": "error_correction",
+   "difficulty": "medium",
+   "question": "Correct the sentence: He don't like cold weather.",
+   "correct_answer": "He doesn't like cold weather.",
+   "explanation_ar": "مع he نستخدم doesn't في النفي بالمضارع البسيط، ويأتي الفعل بعده بصيغته الأساسية."
+  },
+  {
+   "id": 495,
+   "skill": "Vocabulary",
+   "topic": "Word Formation",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "The opposite of \"careful\" is _____.",
+   "options": [
+    "Careless",
+    "Carefully",
+    "Carefulness",
+    "Caring"
+   ],
+   "correct_answer": "Careless",
+   "explanation_ar": "نضيف اللاحقة less إلى care لتكوين careless، وتعني غير حذر."
+  },
+  {
+   "id": 496,
+   "skill": "Writing",
+   "topic": "Personal Experience",
+   "type": "open_ended",
+   "difficulty": "medium",
+   "question": "Write three or four sentences about a school activity you enjoyed.",
+   "accepted_answers": [],
+   "rubric": {
+    "criteria": [
+     "Names a school activity",
+     "Explains what happened",
+     "Uses understandable sentences",
+     "Uses suitable vocabulary"
+    ],
+    "sample_answer": "I enjoyed our school sports day. I played football with my friends. We worked as a team and had a great time."
+   },
+   "explanation_ar": "اكتب عن نشاط مدرسي استمتعت به، واذكر ماذا فعلت ولماذا أعجبك."
+  },
+  {
+   "id": 497,
+   "skill": "Writing",
+   "topic": "Simple Letter",
+   "type": "open_ended",
+   "difficulty": "medium",
+   "question": "Write a short message to your friend inviting them to your birthday party. Include the day, time, and place.",
+   "accepted_answers": [],
+   "rubric": {
+    "criteria": [
+     "Greets the friend",
+     "Invites the friend",
+     "Includes day and time",
+     "Includes the place",
+     "Uses understandable English"
+    ],
+    "sample_answer": "Hi Ahmed, I am having a birthday party on Friday at 5 p.m. at my house. I hope you can come!"
+   },
+   "explanation_ar": "اكتب رسالة قصيرة تتضمن التحية والدعوة واليوم والوقت والمكان."
+  },
+  {
+   "id": 498,
+   "skill": "Thinking",
+   "topic": "Critical Thinking",
+   "type": "open_ended",
+   "difficulty": "medium",
+   "question": "If your friend finds a lost wallet at school, what should your friend do? Explain why.",
+   "accepted_answers": [],
+   "rubric": {
+    "criteria": [
+     "Suggests giving the wallet to a teacher or responsible adult",
+     "Explains that the owner should get it back",
+     "Uses clear English"
+    ],
+    "sample_answer": "My friend should give the wallet to a teacher. The teacher can help find the owner and return it."
+   },
+   "explanation_ar": "فكر في التصرف الصحيح والأمين، واشرح سبب اختيارك باللغة الإنجليزية."
+  },
+  {
+   "id": 499,
+   "skill": "Grammar",
+   "topic": "Mixed Grammar Challenge",
+   "type": "sentence_ordering",
+   "difficulty": "hard",
+   "question": "Arrange the words to make a correct sentence.",
+   "words": [
+    "if",
+    "we",
+    "save",
+    "water",
+    "we",
+    "will",
+    "help",
+    "the",
+    "environment"
+   ],
+   "correct_answer": "If we save water, we will help the environment.",
+   "explanation_ar": "هذه جملة شرطية من النوع الأول: المضارع البسيط في جملة if، وwill مع الفعل الأساسي في النتيجة."
+  },
+  {
+   "id": 500,
+   "skill": "Comprehensive Assessment",
+   "topic": "Final English Challenge",
+   "type": "open_ended",
+   "difficulty": "hard",
+   "question": "Imagine you are planning a school trip. Write five or six sentences explaining where you want to go, what you will take, what you will do there, and how students should stay safe.",
+   "accepted_answers": [],
+   "rubric": {
+    "criteria": [
+     "Names a suitable destination",
+     "Mentions items to take",
+     "Describes planned activities",
+     "Includes at least one safety rule",
+     "Uses understandable English sentences",
+     "Uses suitable vocabulary and grammar"
+    ],
+    "sample_answer": "I want to visit a nature park with my classmates. We will take water, food, and notebooks. We will walk along the safe paths and learn about plants. We will take photos of the trees and birds. Everyone should stay with the group and follow the teacher's instructions."
+   },
+   "explanation_ar": "هذا سؤال ختامي يجمع مهارات الكتابة والتخطيط والمفردات والقواعد والتفكير. اكتب إجابة مترابطة من خمس إلى ست جمل."
+  }
+ ]
+}

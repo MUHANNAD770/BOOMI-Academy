@@ -56,10 +56,12 @@ const BADGES=[['first','🌟','أول درس',()=>doneN()>=1],['l5','📗','٥ �
  ['d3','🎯','٣ تحديات يومية',()=>Object.keys(P.cd||{}).length>=3],['d7','🔥','٧ تحديات يومية',()=>Object.keys(P.cd||{}).length>=7],
  ['math','🧮','بطل مهارة حسابية',()=>Object.values(P.ml||{}).some(m=>m.d)],['talk','🎤','١٠ نطق صحيح',()=>((P.stat||{}).p||[0,0])[1]>=10],
  ['act','🎨','١٠ أنشطة',()=>Object.keys(P.act||{}).length>=10],['ar','🔤','بطل العربية',()=>doneN('ar')>=15],['en','🔠','English star',()=>doneN('en')>=15],['all','🗺️','مستكشف العالم',()=>ZONES().every(z=>z.open)]];
+window.BADGES=BADGES; /* المنهج المتكامل (bank.js) يضيف شاراته */
 const earned=()=>BADGES.filter(b=>{try{return b[3]()}catch(e){return false}});
 const badgeGrid=()=>`<div class=badges>${BADGES.map(b=>{let e=false;try{e=b[3]()}catch(_){}return `<div class="badge ${e?'got':''}" title="${b[2]}"><span>${b[1]}</span><small>${b[2]}${e?' ✓':''}</small></div>`}).join('')}</div>`;
 window.badgeGrid=badgeGrid;
 /* تهنئة بالشارة الجديدة بعد كل نتيجة */
+window.checkBadges=()=>checkBadges(); /* المنهج المتكامل (bank.js) يتحقق بعد كل درس */
 function checkBadges(){if(!P)return;P.badges=P.badges||{};const n=earned().filter(b=>!P.badges[b[0]]);if(!n.length)return;n.forEach(b=>P.badges[b[0]]=Date.now());save();
  const b=n[0],t=document.createElement('div');t.className='badge-toast';t.innerHTML=`<span>${b[1]}</span><div><small>شارة جديدة!</small><b>${b[2]}</b></div>`;document.body.appendChild(t);setTimeout(()=>t.classList.add('out'),3600);setTimeout(()=>t.remove(),4200);
  try{HurufiSound.play('finish');MC.mood('proud',2400);say('رَائِعٌ! حَصَلْتَ عَلَى شَارَةٍ جَدِيدَةٍ: '+b[2],'ar',null,'cheer')}catch(e){}}

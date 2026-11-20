@@ -32,7 +32,16 @@ function choices(q){if(q.kind==='num'){const s=new Set([q.answer]);let g=0;while
  const o=sh((q.pool||[]).filter(w=>w!==q.answer)).slice(0,2);return sh([q.answer,...o]).map(w=>({t:w,ok:w===q.answer}))}
 
 /* ---------- فهم الإجابة المنطوقة ---------- */
-function numFrom(t){const n=Grade.norm(t),m=n.match(/\d+/);if(m)return +m[0];const w=n.split(' ');for(let i=0;i<w.length;i++){if(i<w.length-1){const b=Grade.asNum(w[i]+' '+w[i+1]);if(b!=null)return b}const a=Grade.asNum(w[i]);if(a!=null)return a}return null}
+/* كل الأعداد في الكلام بالترتيب: أرقام (5، ٥)، كلمات (خمسة، اتنين)، مركّبة (خمسة وعشرين، اثنا عشر)، وبادئة «و» (وخمسة) */
+function numsFrom(t){const w=Grade.norm(t).replace(/(\d+)/g,' $1 ').split(' ').filter(Boolean),o=[];
+ const one=x=>{let v=Grade.asNum(x);if(v==null&&/^و./.test(x))v=Grade.asNum(x.slice(1));return v};
+ for(let i=0;i<w.length;i++){let v=null;
+  if(i<w.length-1){const b=Grade.asNum(w[i]+' '+w[i+1]);if(b!=null){v=b;i++}}
+  if(v==null)v=one(w[i]);if(v==null)continue;
+  if(v>=20&&v%10===0&&o.length&&o[o.length-1]<10&&/^و/.test(w[i]))o[o.length-1]+=v;else o.push(v)}  /* «خمسة وعشرين» = ٢٥ */
+ return o}
+/* الطفل قد يعدّ بصوت مسموع (واحد، اثنان، ثلاثة) أو يعيد السؤال (اثنان زائد ثلاثة يساوي خمسة): الجواب آخر عدد قاله */
+function numFrom(t){const o=numsFrom(t);return o.length?o[o.length-1]:null}
 function judge(q,alts){alts=alts.filter(Boolean);if(!alts.length)return{ok:false,heard:''};
  if(q.kind==='num'){for(const a of alts)if(numFrom(a)===q.answer)return{ok:true,heard:a};return{ok:false,heard:alts[0],num:numFrom(alts[0])}}
  for(const a of alts){if(Grade.text(a,[q.answer],{speech:true}).ok)return{ok:true,heard:a};for(const tok of Grade.norm(a).split(' '))if(tok.length>1&&Grade.text(tok,[q.answer],{speech:true}).ok)return{ok:true,heard:a}}
@@ -71,10 +80,10 @@ function ask(manual){if(open||!window.P)return false;const q=make();if(!q)return
   if(!mic){st('👆 اِخْتَرِ الْإِجَابَةَ');showChoices();return}
   const start=()=>{if(done)return;try{rec=new (SR())();rec.lang=q.lang==='en'?'en-US':'ar-SA';rec.interimResults=true;rec.maxAlternatives=5;rec.continuous=false;
     rec.onresult=e=>{if(done)return; /* بعد الإجابة لا نعرض ما يلتقطه الميكروفون (كان يكتب فوق رسالة النجاح) */const r=e.results[e.results.length-1],a=[...r].map(x=>x.transcript);st('🗣️ '+a[0]);a.forEach(x=>{if(!alts.includes(x))alts.unshift(x)});
-     if(r.isFinal){const j=judge(q,alts);if(j.ok)finish(true,j.heard);else if(left>4){st('🎧 حَاوِلْ مَرَّةً أُخْرَى…');setTimeout(start,250)}else finish(false,j.heard)}};
+     if(r.isFinal){const j=judge(q,alts);if(j.ok)finish(true,j.heard);else if(left>4){st('🎧 حَاوِلْ مَرَّةً أُخْرَى، أَوِ اخْتَرِ الْجَوَابَ…');showChoices();setTimeout(start,250)}else finish(false,j.heard)}};
     rec.onerror=e=>{if(e.error==='not-allowed'||e.error==='service-not-allowed'||e.error==='audio-capture'){st('👆 اِخْتَرِ الْإِجَابَةَ');showChoices()}};
     rec.onend=()=>{if(!done&&left>3&&rec)setTimeout(()=>{if(!done&&document.getElementById('vq-opts').hidden)start()},200)};
-    rec.start();st('🎤 أَسْمَعُكَ… تَكَلَّمِ الْآنَ');try{MC.mood('listen',T*1000)}catch(_){}}catch(_){st('👆 اِخْتَرِ الْإِجَابَةَ');showChoices()}};start()}
+    rec.start();st('🎤 أَسْمَعُكَ… تَكَلَّمِ الْآنَ');if(!start.fb)start.fb=setTimeout(()=>{if(!done)showChoices()},Math.min(6000,T*450)); /* إن لم يلتقط الميكروفون الجواب (بعض الهواتف) تظهر الخيارات للضغط مع بقاء الميكروفون */try{MC.mood('listen',T*1000)}catch(_){}}catch(_){st('👆 اِخْتَرِ الْإِجَابَةَ');showChoices()}};start()}
  /* بومي يتكلم أولًا، ثم يُفتح الميكروفون تلقائيًا */
  let started=false;const go=()=>{if(started||done||!document.body.contains(d))return;started=true;listen()};
  if(muted())setTimeout(go,900);else{say(q.ask,q.askLang||'ar',go,'ask');

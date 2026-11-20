@@ -18,7 +18,7 @@ const AGAIN=/لم\s*أفهم|ما\s*فهمت|مو\s*فاهم|مش\s*فاهم|ل�
 let chOwner=null;
 /* سياق الصفحة الحالية لبومي: نوع الصفحة + عنوانها + السؤال أو النص الظاهر فيها.
    كان السياق يُؤخذ من آخر درس فُتح (cur) حتى لو كان الطالب في قصة أو لعبة أو صفحة كورس، فيشرح بومي درسًا قديمًا. */
-const PAGES={home:'الصفحة الرئيسية',sec:'قائمة الدروس',lesson:'درس',quiz:'اختبار',review:'مراجعة',daily:'تحدي اليوم',mstart:'تمرين رياضيات',wnum:'كتابة الأرقام',
+const PAGES={bank:'المنهج المتكامل',bankSub:'المنهج المتكامل',bankLesson:'درس من المنهج المتكامل',bankReview:'مراجعة الأخطاء',bankPractice:'تدريب لمستوى الطالب',home:'الصفحة الرئيسية',sec:'قائمة الدروس',lesson:'درس',quiz:'اختبار',review:'مراجعة',daily:'تحدي اليوم',mstart:'تمرين رياضيات',wnum:'كتابة الأرقام',
  courseLibrary:'مكتبة الكورس',courseModule:'وحدة من الكورس',courseViewer:'صفحة من الكورس',coursePractice:'تدريب الكورس',stories:'عالم القصص',story:'قصة',talk:'محادثة إنجليزية',
  listenTest:'اختبار استماع',readTest:'اختبار قراءة',games2d:'عالم الألعاب',g2levels:'مراحل لعبة',g2play:'لعبة',puzzles:'جزيرة الألغاز',riddles:'ألغاز',logic:'تفكير منطقي',
  measure:'القياس',wordProblems:'مسائل كلامية',advMath:'رياضيات متقدمة',advMul:'الضرب المتقدم',dictation:'إملاء',dictationAdv:'إملاء متقدم',syllables:'المقاطع',enTeach:'معلّم الإنجليزية',
@@ -60,6 +60,8 @@ function pageCtx(lite){let fn='',args=[];try{const e=window.Router&&Router.entry
  /* النص التعليمي الظاهر (صفحة الكورس، القصة، النشاط) */
  const el=q('.ct-paper')||q('.story,.st-text,.story-text');if(vis(el))I.text=clean(el.innerText||el.textContent).slice(0,320);
  try{const b=window.BumiContext&&BumiContext();if(b&&b[0]&&!/^(g2hub|g2lv)$/.test(b[1])){const t=clean(b[0]).slice(0,160);if(!I.instructions||!t.includes(I.instructions.slice(0,20)))I.instructions=(I.instructions?I.instructions+' / ':'')+t}}catch(e){}
+ /* المنهج المتكامل (bank.js): السؤال الحالي بنوعه ونص القراءة وإجابة الطالب والشرح */
+ try{const bq=window.BankNow&&BankNow();if(bq){Object.assign(I,bq);topic=bq.lesson}}catch(e){}
  const qk=I.question||I.lesson||page;
  const L=[['الصفحة',page],['المادة',I.subject],['الكورس',I.course],['مرحلة الطالب',I.stage],['الدرس/الوحدة',I.lesson],['كلمات الدرس',I.words],['السؤال الحالي',I.question],['التعليمات',I.instructions],
   ['الاختيارات',I.choices&&I.choices.map((x,k)=>'أبجد'[k]?('أبجده'[k]+') '+x):x).join('، ')],['إجابة الطالب',I.studentAnswer||(I.choices?'لم يُجب بعد':'')],['تقدم الطالب في النشاط',I.progress],['نص الصفحة',I.text],['ما يعرفه بومي عن الطالب',lite?'':(window.Mind&&Mind.brief())]];
@@ -81,6 +83,7 @@ function offlineCtx(m,pc,hintN){const I=pc.info||{};
 /* اقتراحات تناسب الصفحة الحالية + موضوعان عامّان */
 function chipsFor(pc){const c=[];
  if(pc.fn=='quiz'||V=='quiz')c.push('أعطني تلميحًا','اشرح هذا السؤال');
+ else if(/^bank(Lesson|Review|Practice)$/.test(pc.fn))c.push('أعطني تلميحًا','اشرح القاعدة بمثال','أعطني تمرينًا مشابهًا');
  else if(/^(lesson|review|daily|courseViewer|coursePractice|enTeach)$/.test(pc.fn))c.push('اشرح هذا الدرس','أعطني مثالًا آخر');
  else if(/^(story|talk|listenTest|readTest)$/.test(pc.fn))c.push('ما معنى هذه القصة؟','اشرح كلمة صعبة');
  else if(/^(mstart|measure|wordProblems|advMath|advMul|wnum)$/.test(pc.fn))c.push('اشرح هذه المسألة خطوة خطوة');

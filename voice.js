@@ -8,7 +8,7 @@
 const teacher=()=>P&&P.teacher=='male'?'male':'female';
 /* تحويل الخطاب حسب جنس الطالب (اضغطْ/اضغطي…) يخص الجمل الموجّهة للطالب فقط؛ القصص والسرد والقراءة لا تُحوَّل
    (كان يحوّل «وَصَلَتِ السلحفاةُ» إلى «وَصَلْتِ» خطأً). */
-const NOG=/^(story|stories|listenTest|readTest|courseViewer|courseModule|talk|dictation|dictationAdv|lesson|quiz|review|daily|bank|bankSub|bankLesson)$/; /* صفحات محتوى تعليمي: لا تأنيث لكلمات الدرس (كانت «نَجْمٌ» تُقرأ «نَجْمَة») */
+const NOG=/^(story|stories|listenTest|readTest|courseViewer|courseModule|talk|dictation|dictationAdv|lesson|quiz|review|daily|bank|bankSub|bankLesson|bankReview|bankPractice)$/; /* صفحات محتوى تعليمي: لا تأنيث لكلمات الدرس (كانت «نَجْمٌ» تُقرأ «نَجْمَة») */
 /* كلمة أو كلمتان = محتوى درس (مُمْتَاز، بَطَل…) لا خطاب؛ جمل التشجيع تصل مُحوَّلة أصلًا من مصدرها (المدرّب، بومي، معلّم الإنجليزية) */
 const genderOk=t=>{if(window.__noGender)return false;if(t!=null&&String(t).trim().split(/\s+/).length<=2)return false;try{const e=window.Router&&Router.entry();return!(e&&NOG.test(e.fn))}catch(e){return true}};
 window.teacherOf=teacher;
@@ -42,7 +42,10 @@ const cl=(x,a,b)=>Math.max(a,Math.min(b,x));
    say.stream(لغة، مزاج) ← يعيد {push(نص)، end(عند_الانتهاء)} لنطق الإجابة جملةً جملةً أثناء وصولها (بثّ تدريجي)
    say.stop() إيقاف فوري · say.replay() إعادة آخر كلام · الصوت من الجهاز مباشرة */
 /* كلمة عربية تُنطق وحدها (قوائم الكلمات، الخيارات، الضغط على كلمة) وهي نكرة: تُنطق منوّنة كما تُقرأ (بَقَرَةٌ لا «بَقَر») */
-const nun1=s=>{const m=String(s).trim().match(/^([\u0621-\u064A\u064B-\u0652\u0670]+)([.!؟?،]*)$/);return m&&Tashkeel.nunWord?Tashkeel.nunWord(m[1])+m[2]:s};
+const nun1=s=>{const m=String(s).trim().match(/^([\u0621-\u064A\u064B-\u0652\u0670]+)([.!؟?،]*)$/);if(!m)return s;
+ /* سكون صريح في آخرها = قراءة بالوقف كما كُتبت (ألعاب تركيب الكلمة من حروفها: لا تنوين ظاهر، فلا تنوين في النطق) */
+ if(/\u0652$/.test(m[1])){const H=window.HurufiClips;return(H&&!H.has(m[1],'ar')&&H.has(m[1].slice(0,-1),'ar')?m[1].slice(0,-1):m[1])+m[2]} /* «جَدّْ، أَرْنَبْ» ← «جَدّ، أَرْنَب»: المحرك يقف على الكلمة المجرّدة، ومفتاحها مسجّل */
+ return Tashkeel.nunWord?Tashkeel.nunWord(m[1])+m[2]:s};
 const ENDS=/[.!؟?\n]/,CL=/[^،,;:]+[،,;:]?/g,SNT=/[^.!؟?\n]+[.!؟?\n]*/g;
 /* جملة ← أجزاء تُطابق مفاتيح المقاطع المسجّلة. */
 /* تقسيم الجملة إلى مقاطع حسب اللغة فقط (بلا تقسيم عند الفواصل): بهذه المفاتيح نفسها سُجّلت مقاطع Edge (tools/clips) */

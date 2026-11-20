@@ -21,7 +21,7 @@ if(typeof oPar==='function'&&oPar!==window.top)window.parent=function(){const r=
   done=Object.keys(P0.done||{}).length,bd=Object.keys(P0.badges||{}).length,st=+P0.star||0,R=44,C=2*Math.PI*R;
  h2.insertAdjacentHTML('afterend',`<div class=pm-card><div class=pm-ring><svg viewBox="0 0 110 110" aria-hidden=true><circle cx=55 cy=55 r=${R} class=pm-bg /><circle cx=55 cy=55 r=${R} class=pm-fg stroke-dasharray="${C}" stroke-dashoffset="${C*(1-pct/100)}" /></svg><b>${pct}٪</b><small>مستوى الإتقان</small></div>
   <div class=pm-who><span class=pm-av>${P0.gender==='female'?'👧':'👦'}</span><div><b>${esc(P0.name)}</b><small>${P0.age?esc(P0.age)+' سنوات':''}</small></div></div>
-  <ul class=pm-st><li><span>🏆</span>الإنجازات<b>${bd}</b></li><li><span>⭐</span>النجوم<b>${st}</b></li><li><span>📚</span>الدروس المكتملة<b>${done}</b></li></ul></div>${mindCard()}${themeCard()}`)}catch(e){}return r};
+  <ul class=pm-st><li><span>🏆</span>الإنجازات<b>${bd}</b></li><li><span>⭐</span>النجوم<b>${st}</b></li><li><span>📚</span>الدروس المكتملة<b>${done}</b></li></ul></div>${mindCard()}${(window.BankReport&&BankReport())||''}${themeCard()}`)}catch(e){}return r};
 /* تحليل بومي: من العقل الموحّد (mind/hub.js) — إتقان كل مادة، ما يحتاج تدريبًا (بزر تدريب مباشر)، المتقن، الأخطاء المتكررة، والخطوة المقترحة */
 function mindCard(){const M=window.Mind;if(!M)return'';const bs=M.bySubject(),w=M.weak(4),g=M.strong(3),nx=M.next();let errs=[];try{errs=(window.MindMemory&&MindMemory.summary().errs)||[]}catch(e){}
  const bars=Object.values(bs).map(x=>`<li><span>${esc(x.name)}</span><i><b style="width:${M.pct(x.p)}%"></b></i><em>${M.pct(x.p)}٪</em></li>`).join('');
