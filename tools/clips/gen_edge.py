@@ -31,6 +31,13 @@ def tanween_male(t,l):
         if w.endswith('\u0629'): w=w[:-1]+'\u062A'
         return w+v+'\u0646\u0651\u0652'
     return re.sub(r'[\u0621-\u064A][\u0621-\u064A\u064B-\u0652\u0670]*[\u064C\u064D]\u0651?'+STOPC,f,t)
+# لفظ الجلالة: المحرك ينطق «اللَّه» بلام مفتوحة قصيرة (0.38 ث، كأنها «اللَه»). نكتب له الألف صريحة (اللَّاه، 0.5 ث، والتعرّف يسمع «الله»)،
+# وعند الوقف بسكون (اللَّاهْ) لأن «اللَّاهُ» وحدها تشوّشت. للمحرك فقط؛ النص المعروض ومفاتيح المقاطع بلا تغيير.
+def allah(t,l):
+    if l!='ar': return t
+    G=r'(ل\u0650?)ل(?:\u0651\u064E|\u064E\u0651)ه([\u064F\u0650\u064E]?)'  # الشدة والفتحة بأي ترتيب
+    t=re.sub(G+STOPC,lambda m:m.group(1)+'ل\u0651\u064Eا\u0647\u0652',t)
+    return re.sub(G,lambda m:m.group(1)+'ل\u0651\u064Eا\u0647'+m.group(2),t)
 def tanween(t,l):
     # كل كلمة منوّنة بالضم أو الكسر (منفردة أو في جملة) تُرسل للمحرك بالنون صريحة كي لا يقف عليها فيُسقطها
     if l!='ar': return t
@@ -45,7 +52,7 @@ async def one(who,k,t,l,sem,stat):
     async with sem:
         for a in range(5):
             try:
-                c=edge_tts.Communicate(natural(tanween_male(t,l),l) if who=='female' else tanween_male(t,l),VOICES[who][l],rate=RATES[who][l],proxy=PROXY)
+                c=edge_tts.Communicate(natural(allah(tanween_male(t,l),l),l) if who=='female' else allah(tanween_male(t,l),l),VOICES[who][l],rate=RATES[who][l],proxy=PROXY)
                 await c.save(raw)
                 if os.path.getsize(raw)<300: raise Exception('small')
                 break
