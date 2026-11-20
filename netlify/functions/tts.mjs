@@ -14,7 +14,7 @@ const STOPC='(?=\\s*(?:[.!؟?،,:;؛]|$))';
 /* مطابقة gen_edge.py: التنوين بالضم/الكسر قبل الوقف ← «ـُنّْ» (المحرك يُسقط النون وإلا) */
 function tanween(t){return t.replace(new RegExp('[\\u0621-\\u064A][\\u0621-\\u064A\\u064B-\\u0652\\u0670]*[\\u064C\\u064D]\\u0651?'+STOPC,'g'),w=>{
  if(w.endsWith('ّ')&&'ٌٍ'.includes(w[w.length-2]))w=w.slice(0,-2)+'ّ'+w[w.length-2];
- const v=w.endsWith('ٌ')?'ُ':'ِ';w=w.slice(0,-1);if(w.endsWith('ة'))w=w.slice(0,-1)+'ت';return w+v+'نّْ'})}
+ const v=w.endsWith('ٌ')?'ُ':'ِ';w=w.slice(0,-1);if(w.endsWith('ة'))w=w.slice(0,-1)+'ت';return w+v+'نّْ'}).replace(new RegExp('ة\u064B'+STOPC,'g'),'تَنّْ')} /* «مَدْرَسَةً» قبل الوقف ← «مَدْرَسَتَنّْ» (مثل gen_edge.py) */
 function allah(t){const G='(ل\\u0650?)ل(?:\\u0651\\u064E|\\u064E\\u0651)ه([\\u064F\\u0650\\u064E]?)';
  t=t.replace(new RegExp(G+STOPC,'g'),(m,a)=>a+'لَّاهْ');return t.replace(new RegExp(G,'g'),(m,a,v)=>a+'لَّاه'+v)}
 /* المعلّمة: سكون آخر الكلمة داخل الجملة يجعل المحرك يقف بعد كل كلمة */
