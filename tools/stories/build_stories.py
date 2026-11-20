@@ -8,15 +8,38 @@ import json,os,glob,re
 R=os.path.dirname(os.path.abspath(__file__));ROOT=os.path.dirname(os.path.dirname(R))
 LEVELS=['Pre-A1','A1','A2','B1','B2','C1','C2']
 LEVEL_AR={'Pre-A1':'مبتدئ تمامًا','A1':'مبتدئ','A2':'مبتدئ متقدّم','B1':'متوسط','B2':'فوق المتوسط','C1':'متقدّم','C2':'متقن'}
-STAGES=['مرحلة التأسيس','المرحلة الابتدائية','المرحلة المتوسطة','المرحلة المتقدمة','مرحلة الإتقان']
-STAGE_IC={'مرحلة التأسيس':'🌱','المرحلة الابتدائية':'🌿','المرحلة المتوسطة':'🌳','المرحلة المتقدمة':'🏔️','مرحلة الإتقان':'🏆'}
+STAGES=['مرحلة التأسيس','مرحلة التطوير','مرحلة الإتقان المتوسط','مرحلة الإتقان المتقدم']
+# أسماء المراحل بالإنجليزية في بعض الدفعات ← المرحلة العربية نفسها
+STAGE_ALIAS={'Foundation':'مرحلة التأسيس','Beginner':'مرحلة التأسيس','Elementary':'مرحلة التطوير','Development':'مرحلة التطوير','Intermediate':'مرحلة الإتقان المتوسط','Upper Intermediate':'مرحلة الإتقان المتقدم','Advanced':'مرحلة الإتقان المتقدم'}
+STAGE_IC={'مرحلة التأسيس':'🌱','مرحلة التطوير':'🌿','مرحلة الإتقان المتوسط':'🌳','مرحلة الإتقان المتقدم':'🏆'}
+# تصحيحات بعد المراجعة (القصة ← [الخطأ، الصواب]) تُطبَّق على كل نصوص القصة
+FIX={'story_ar_009':[('الْمَشْتَرِيَ','الْمُشْتَرِيَ')],
+ 'story_ar_013':[('فَكَرَ مَازِنٌ','فَكَّرَ مَازِنٌ'),('عِنْدَمَا يَتْرُكُ الصُّنْبُورَ','عِنْدَمَا يُتْرَكُ الصُّنْبُورُ'),('يُبْتَكِرُ','يَبْتَكِرُ')],
+ 'story_ar_015':[('الْاِخْتِرَاعَاتُ','الِاخْتِرَاعَاتُ'),('تَسَاعِدَهَا','تُسَاعِدَهَا')],
+ 'story_ar_017':[('تَحْوِّلَهُ','تُحَوِّلَهُ')],
+ 'story_ar_019':[('فَقَدْ اهْتَمَّ','فَقَدِ اهْتَمَّ'),('مُشَارَكَتِهِمْ الْمُسْتَمِرَّةِ','مُشَارَكَتِهِمُ الْمُسْتَمِرَّةِ'),('تَحَافِظُ','تُحَافِظُ'),('وَالْمُسَاحَاتِ','وَالْمَسَاحَاتِ')],
+ 'story_ar_023':[('بَوْصْفِهِمَا','بِوَصْفِهِمَا'),('يَنَاقِشُونَ','يُنَاقِشُونَ')],
+ 'story_ar_025':[]}
+FIX['story_ar_023'].append(('الْمَعْيَارُ','الْمِعْيَارُ'))
+FIX['story_ar_025'].append(('الْمَعْيَارُ','الْمِعْيَارُ'))
+def fixall(o,rules):
+    if isinstance(o,str):
+        for a,b in rules:o=o.replace(a,b)
+        return o
+    if isinstance(o,list):return [fixall(x,rules) for x in o]
+    if isinstance(o,dict):return {k:fixall(v,rules) for k,v in o.items()}
+    return o
 # كلمات وصف الصورة ← صور المشهد (بالترتيب، ٤ على الأكثر)
-SCENE=[('kitten|cat','🐱'),('butterfly','🦋'),('flower','🌹'),('bird','🐦'),('rabbit','🐰'),('mouse','🐭'),('carrot','🥕'),('balloon','🎈'),
- ('girl','👧'),('boy','👦'),('fish','🐟'),('rock','🪨'),('water|bowl','💧'),('ocean|sea','🌊'),('tree','🌳'),('garden|park|field','🌳'),('sun','☀️'),
+SCENE=[('football','⚽'),('wallet','👛'),('police','👮'),('bicycle','🚲'),('telescope','🔭'),('planet|planets','🪐'),('picnic','🧺'),('lake','🏞️'),('key','🔑'),('city','🏙️'),('solar','☀️'),('clock|schedule|planner','⏰'),('laptop|news','💻'),('magnifying','🔍'),('scientists|scientific|science','🔬'),('library','📚'),('backpack|travel','🎒'),('international|world','🌍'),('stream|branches','🌿'),('seeds|plant','🌱'),('faucet|water-saving','🚰'),('rubbish|recycling','♻️'),('kitten|cat','🐱'),('butterfly','🦋'),('flower','🌹'),('bird','🐦'),('rabbit','🐰'),('mouse','🐭'),('carrot','🥕'),('balloon','🎈'),
+ ('girl|schoolgirl','👧'),('boy|schoolboy','👦'),('exhibition|machines|device','⚙️'),('guide|teacher|educators','🧑‍🏫'),('fish','🐟'),('rock','🪨'),('water|bowl','💧'),('ocean|sea','🌊'),('tree','🌳'),('garden|park|field','🌳'),('sun','☀️'),
  ('dog|puppy','🐶'),('owl','🦉'),('book','📖'),('school','🏫'),('star','⭐'),('moon','🌙'),('house|home','🏠'),('car','🚗'),('ball','⚽'),('cake','🎂'),
  ('horse','🐴'),('camel','🐪'),('lion','🦁'),('elephant','🐘'),('bear','🐻'),('duck','🦆'),('frog','🐸'),('turtle','🐢'),('rain','🌧️'),('snow','❄️'),('apple','🍎')]
 # ترجمة أسئلة القصص الإنجليزية للمبتدئ (معرّف التمرين ← السؤال بالعربية)
-QAR={'en002_q1':'أَيْنَ يَعِيشُ الطَّائِرُ الصَّغِيرُ؟','en002_q2':'مَاذَا يَرَى الطَّائِرُ عَلَى الْأَرْضِ؟','en002_q3':'صَحٌّ أَمْ خَطَأٌ: الْأَرْنَبُ عَطْشَانُ.',
+QAR={'en006_q1':'مَنْ هُوَ آدَمُ؟','en006_q2':'أَيْنَ يَجْلِسُ آدَمُ وَقْتَ الِاسْتِرَاحَةِ؟','en006_q3':'صَحٌّ أَمْ خَطَأٌ: تُومُ يَدْعُو آدَمَ لِلَّعِبِ.','en006_q4':'بِمَاذَا يَشْعُرُ آدَمُ فِي نِهَايَةِ الْيَوْمِ؟',
+ 'en008_q1':'إِلَى أَيْنَ يُرِيدُ جَاك أَنْ يَذْهَبَ؟','en008_q2':'مَا الْعُطْلُ فِي الدَّرَّاجَةِ؟','en008_q3':'صَحٌّ أَمْ خَطَأٌ: أَصْلَحَ جَاك الدَّرَّاجَةَ دُونَ مُسَاعَدَةٍ.','en008_q4':'مَا الدَّرْسُ الَّذِي تَعَلَّمَهُ جَاك؟',
+ 'en010_q1':'مَاذَا تُرِيدُ إِيمَا أَنْ تَفْعَلَ؟','en010_q2':'مَاذَا اقْتَرَحَتْ أُمُّهَا؟','en010_q3':'صَحٌّ أَمْ خَطَأٌ: أَكَلَتْ عَائِلَةُ إِيمَا شَطَائِرَ وَفَاكِهَةً.','en010_q4':'مَاذَا تَعَلَّمَتْ إِيمَا فِي النِّهَايَةِ؟',
+ 'en012_q1':'مَا الْمُشْكِلَةُ الَّتِي لَاحَظَهَا الطُّلَّابُ؟','en012_q2':'مَاذَا جَمَعَ الْفَرِيقُ الثَّالِثُ؟','en012_q3':'صَحٌّ أَمْ خَطَأٌ: تَوَقَّفَ الطُّلَّابُ عَنْ رِعَايَةِ النَّبَاتَاتِ بَعْدَ يَوْمٍ وَاحِدٍ.','en012_q4':'لِمَاذَا عَمِلَ الطُّلَّابُ فِي فِرَقٍ؟','en012_q5':'مَا الدَّرْسُ الَّذِي تَعَلَّمَهُ الطُّلَّابُ؟',
+ 'en002_q1':'أَيْنَ يَعِيشُ الطَّائِرُ الصَّغِيرُ؟','en002_q2':'مَاذَا يَرَى الطَّائِرُ عَلَى الْأَرْضِ؟','en002_q3':'صَحٌّ أَمْ خَطَأٌ: الْأَرْنَبُ عَطْشَانُ.',
  'en002_q4':'مَاذَا يُرِي الطَّائِرُ الْأَرْنَبَ؟','en004_q1':'مَا لَوْنُ بَالُونِ سَارَةَ؟','en004_q2':'إِلَى أَيْنَ تَأْخُذُ سَارَةُ الْبَالُونَ؟',
  'en004_q3':'صَحٌّ أَمْ خَطَأٌ: وَلَدٌ لَطِيفٌ يُسَاعِدُ سَارَةَ.','en004_q4':'أَيْنَ عَلِقَ الْبَالُونُ؟'}
 def scene(st):
@@ -30,6 +53,8 @@ stories=[];seen=set()
 for f in sorted(glob.glob(os.path.join(R,'batch*.json')),key=lambda p:int(re.findall(r'\d+',os.path.basename(p))[0])):
     b=json.load(open(f,encoding='utf8'))
     for i,st in enumerate(b['stories']):
+        st=fixall(st,FIX.get(st['id'],[]))
+        st['stage']=STAGE_ALIAS.get(st.get('stage',''),st.get('stage',''))
         k=(st['id'],);kt=st['title'].strip()
         if st['id'] in seen or kt in seen:continue
         seen.add(st['id']);seen.add(kt)
@@ -39,7 +64,9 @@ for f in sorted(glob.glob(os.path.join(R,'batch*.json')),key=lambda p:int(re.fin
             if t=='multiple_choice':
                 assert e['answer'] in e['options'],(e['id'],e['answer']);q.update(o=e['options'],a=e['answer'])
             elif t=='true_false':q['a']=bool(e['answer'])
-            elif t=='short_answer':q['a']=e['answer'];q['acc']=e.get('accepted_answers',[])
+            elif t in('short_answer','inference'):q['a']=e['answer'];q['acc']=e.get('accepted_answers',[])  # inference: استنتاج بإجابة مكتوبة
+            elif t=='ordering':
+                assert sorted(e['items'])==sorted(e['answer']),e['id'];q['o']=e['items'];q['a']=e['answer']
             else:raise AssertionError(('نوع تمرين جديد',e['id'],t))
             if st['language']=='en' and st.get('level') in ('Pre-A1','A1','A2') and e['id'] in QAR:q['qar']=QAR[e['id']]
             ex.append(q)

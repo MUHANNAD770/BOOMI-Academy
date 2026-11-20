@@ -283,3 +283,14 @@ button.bank-sub{width:100%;border:0;font:inherit;text-align:start;cursor:pointer
 .sb-type{display:flex;flex-direction:column;gap:10px;margin-top:8px}
 @media(prefers-reduced-motion:reduce){.sb-scene i{animation:none}}
 :root[data-theme=dark] .sb-w{background:#221d3a}@media (prefers-color-scheme: dark){:root:not([data-theme=light]) .sb-w{background:#221d3a}}
+.sb-pool{flex-direction:column;align-items:stretch}.sb-tile{text-align:start;font-size:1rem!important;line-height:1.7}#sb-line{flex-direction:column;align-items:stretch}
+.sb-self{background:rgba(255,255,255,.5);border-radius:12px;padding:8px;margin:6px 0;display:flex;flex-wrap:wrap;gap:6px}.sb-self p{width:100%;margin:0 0 4px}.sb-self .alt{flex:1 1 140px;margin:0}
+.sb-hintq{margin:0;font-weight:700;opacity:.85}
+/* إصلاحات من صورة صاحب المشروع: مشهد القصة داخل البطاقة، تبويبات القصص، عنوان المرحلة في الوضع الداكن */
+.sb-card{overflow:hidden}.sb-card .sb-scene{font-size:1.55rem;gap:0;max-width:100%;flex-wrap:nowrap;overflow:hidden;min-height:56px}.sb-card .sb-scene i:first-child{font-size:1.25em}
+.sb-card .sb-scene .e3d,.sb-card .sb-scene img{max-width:100%}
+.stories .course-filters{display:grid;grid-template-columns:1fr 1fr;gap:8px}.stories .course-filters button{white-space:normal;margin:0;width:100%}
+:root[data-theme=dark] .lesson-menu summary b,:root[data-theme=dark] .course-menu summary b{color:#ece6ff}
+:root[data-theme=dark] .lesson-menu[open] summary,:root[data-theme=dark] .course-menu[open] summary{background:rgba(255,255,255,.06)}
+@media (prefers-color-scheme: dark){:root:not([data-theme=light]) .lesson-menu summary b,:root:not([data-theme=light]) .course-menu summary b{color:#ece6ff}
+:root:not([data-theme=light]) .lesson-menu[open] summary,:root:not([data-theme=light]) .course-menu[open] summary{background:rgba(255,255,255,.06)}}

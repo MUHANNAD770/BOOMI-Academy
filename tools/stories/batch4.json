@@ -1,0 +1,448 @@
+{
+ "bank": "Boomi Bilingual Story Academy",
+ "batch": 4,
+ "stories": [
+  {
+   "id": "story_en_016",
+   "language": "en",
+   "stage": "Intermediate",
+   "level": "B1",
+   "title": "The Power of a Small Decision",
+   "text": "Every morning, Liam walked past a small community park on his way to school. He often noticed plastic bottles and paper scattered across the grass. At first, he thought cleaning the park was someone else's responsibility. One morning, however, he saw a young child trying to play near the rubbish. Liam decided to do something. He collected the rubbish and placed it in the correct bins. The next day, he invited two friends to help him. Soon, more students joined their effort. Their teacher noticed the change and suggested organizing a weekly clean-up activity. Within a month, the park became cleaner and more welcoming. Liam realized that meaningful change does not always begin with a big plan. Sometimes, it starts with one small decision.",
+   "vocabulary": [
+    {
+     "word": "Community",
+     "meaning": "المجتمع المحلي"
+    },
+    {
+     "word": "Scattered",
+     "meaning": "مبعثر"
+    },
+    {
+     "word": "Responsibility",
+     "meaning": "المسؤولية"
+    },
+    {
+     "word": "Invited",
+     "meaning": "دعا"
+    },
+    {
+     "word": "Effort",
+     "meaning": "جهد"
+    },
+    {
+     "word": "Meaningful",
+     "meaning": "ذو معنى أو قيمة"
+    }
+   ],
+   "exercises": [
+    {
+     "id": "en016_q1",
+     "type": "multiple_choice",
+     "question": "What problem did Liam notice in the park?",
+     "options": [
+      "Broken playground equipment",
+      "Rubbish scattered across the grass",
+      "A lack of trees"
+     ],
+     "answer": "Rubbish scattered across the grass",
+     "explanation": "Liam repeatedly noticed plastic bottles and paper on the grass."
+    },
+    {
+     "id": "en016_q2",
+     "type": "multiple_choice",
+     "question": "What made Liam decide to take action?",
+     "options": [
+      "He saw a young child playing near the rubbish.",
+      "His teacher ordered him to clean the park.",
+      "He wanted to win a competition."
+     ],
+     "answer": "He saw a young child playing near the rubbish.",
+     "explanation": "Seeing the child near the rubbish encouraged Liam to act."
+    },
+    {
+     "id": "en016_q3",
+     "type": "true_false",
+     "question": "Liam worked alone throughout the entire project.",
+     "answer": false,
+     "explanation": "He invited friends, and more students later joined the effort."
+    },
+    {
+     "id": "en016_q4",
+     "type": "inference",
+     "question": "Why did the teacher suggest a weekly clean-up activity?",
+     "answer": "Because the students' effort had improved the park, and regular cleaning could help maintain it.",
+     "explanation": "The suggestion followed the positive results of the students' work."
+    },
+    {
+     "id": "en016_q5",
+     "type": "short_answer",
+     "question": "What is the main message of the story?",
+     "answer": "Small decisions and individual actions can lead to meaningful community change.",
+     "explanation": "Liam's simple decision encouraged others to participate and improved the park."
+    }
+   ],
+   "image": {
+    "url": "",
+    "alt": "Students cleaning a community park together",
+    "prompt": "A group of schoolchildren cleaning a beautiful community park together, collecting plastic bottles and paper into recycling bins, a young boy leading the activity, green grass and trees, inspiring cinematic 3D animated children's educational illustration, no text."
+   }
+  },
+  {
+   "id": "story_ar_017",
+   "language": "ar",
+   "stage": "مرحلة الإتقان المتوسط",
+   "level": "B1",
+   "title": "بَيْنَ الْحُلْمِ وَالْعَمَلِ",
+   "text": "كَانَتْ هِنْدٌ تَحْلُمُ مُنْذُ صِغَرِهَا بِأَنْ تُصْبِحَ مُهَنْدِسَةً تُسَاهِمُ فِي تَصْمِيمِ مَبَانٍ صَدِيقَةٍ لِلْبِيئَةِ. وَكَانَتْ تَتَخَيَّلُ الْمُسْتَقْبَلَ بِحَمَاسٍ، لَكِنَّهَا كَانَتْ تُؤَجِّلُ بَعْضَ الْأَعْمَالِ الَّتِي تُقَرِّبُهَا مِنْ هَدَفِهَا. فِي أَحَدِ الْأَيَّامِ، تَحَدَّثَتْ مَعَ مُعَلِّمَتِهَا عَنْ هَذَا الْحُلْمِ، فَنَصَحَتْهَا بِأَنْ تَحْوِّلَهُ إِلَى خُطُوَاتٍ وَاضِحَةٍ وَقَابِلَةٍ لِلتَّنْفِيذِ. بَدَأَتْ هِنْدٌ بِتَنْظِيمِ وَقْتِهَا، وَخَصَّصَتْ سَاعَةً يَوْمِيَّةً لِدِرَاسَةِ الرِّيَاضِيَّاتِ وَمُشَاهَدَةِ دُرُوسٍ عِلْمِيَّةٍ. كَمَا انْضَمَّتْ إِلَى نَادٍ مَدْرَسِيٍّ لِلْهَنْدَسَةِ، وَشَارَكَتْ فِي تَصْمِيمِ نَمُوذَجٍ لِمَنْزِلٍ يَسْتَخْدِمُ الطَّاقَةَ الشَّمْسِيَّةَ. لَمْ تَكُنِ الطَّرِيقُ سَهْلَةً؛ فَقَدْ وَاجَهَتْ صُعُوبَاتٍ فِي بَعْضِ الْحِسَابَاتِ وَاحْتَاجَتْ إِلَى إِعَادَةِ التَّصْمِيمِ أَكْثَرَ مِنْ مَرَّةٍ. وَمَعَ ذَلِكَ، لَمْ تَتَخَلَّ عَنْ هَدَفِهَا. وَبَعْدَ أَشْهُرٍ، عَرَضَتْ مَشْرُوعَهَا فِي مَعْرِضٍ مَدْرَسِيٍّ، وَتَلَقَّتْ تَشْجِيعًا مِنَ الْمُعَلِّمِينَ وَالطُّلَّابِ. أَدْرَكَتْ هِنْدٌ أَنَّ الْأَحْلَامَ لَا تَتَحَقَّقُ بِالتَّمَنِّي وَحْدَهُ، بَلْ تَحْتَاجُ إِلَى عَمَلٍ مُنَظَّمٍ وَصَبْرٍ وَاسْتِمْرَارٍ.",
+   "vocabulary": [
+    {
+     "word": "تُسَاهِمُ",
+     "meaning": "تُشَارِكُ فِي تَحْقِيقِ شَيْءٍ"
+    },
+    {
+     "word": "تُؤَجِّلُ",
+     "meaning": "تَنْقُلُ الْعَمَلَ إِلَى وَقْتٍ لَاحِقٍ"
+    },
+    {
+     "word": "قَابِلَةٌ لِلتَّنْفِيذِ",
+     "meaning": "يُمْكِنُ تَطْبِيقُهَا وَالْقِيَامُ بِهَا"
+    },
+    {
+     "word": "نَمُوذَجٌ",
+     "meaning": "شَكْلٌ تَجْرِيبِيٌّ يُمَثِّلُ شَيْئًا"
+    },
+    {
+     "word": "الطَّاقَةُ الشَّمْسِيَّةُ",
+     "meaning": "الطَّاقَةُ الَّتِي نَحْصُلُ عَلَيْهَا مِنْ أَشِعَّةِ الشَّمْسِ"
+    },
+    {
+     "word": "الِاسْتِمْرَارُ",
+     "meaning": "مُوَاصَلَةُ الْعَمَلِ دُونَ تَوَقُّفٍ"
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ar017_q1",
+     "type": "multiple_choice",
+     "question": "مَا الْمِهْنَةُ الَّتِي حَلُمَتْ هِنْدٌ بِهَا؟",
+     "options": [
+      "طَبِيبَةٌ",
+      "مُهَنْدِسَةٌ",
+      "مُعَلِّمَةٌ"
+     ],
+     "answer": "مُهَنْدِسَةٌ",
+     "explanation": "ذَكَرَتِ الْقِصَّةُ أَنَّ هِنْدًا تَحْلُمُ بِأَنْ تُصْبِحَ مُهَنْدِسَةً."
+    },
+    {
+     "id": "ar017_q2",
+     "type": "multiple_choice",
+     "question": "مَاذَا نَصَحَتِ الْمُعَلِّمَةُ هِنْدًا؟",
+     "options": [
+      "أَنْ تَتْرُكَ حُلْمَهَا",
+      "أَنْ تُحَوِّلَ حُلْمَهَا إِلَى خُطُوَاتٍ وَاضِحَةٍ",
+      "أَنْ تُؤَجِّلَ دِرَاسَتَهَا"
+     ],
+     "answer": "أَنْ تُحَوِّلَ حُلْمَهَا إِلَى خُطُوَاتٍ وَاضِحَةٍ",
+     "explanation": "نَصَحَتْهَا الْمُعَلِّمَةُ بِتَحْوِيلِ الْحُلْمِ إِلَى خُطَّةٍ قَابِلَةٍ لِلتَّنْفِيذِ."
+    },
+    {
+     "id": "ar017_q3",
+     "type": "true_false",
+     "question": "صَمَّمَتْ هِنْدٌ نَمُوذَجًا لِمَنْزِلٍ يَسْتَخْدِمُ الطَّاقَةَ الشَّمْسِيَّةَ.",
+     "answer": true,
+     "explanation": "شَارَكَتْ فِي تَصْمِيمِ نَمُوذَجٍ لِمَنْزِلٍ يَسْتَخْدِمُ الطَّاقَةَ الشَّمْسِيَّةَ."
+    },
+    {
+     "id": "ar017_q4",
+     "type": "inference",
+     "question": "لِمَاذَا كَانَ تَنْظِيمُ الْوَقْتِ مُهِمًّا لِهِنْدٍ؟",
+     "answer": "لِأَنَّهُ سَاعَدَهَا عَلَى تَحْوِيلِ حُلْمِهَا إِلَى أَعْمَالٍ يَوْمِيَّةٍ تُقَرِّبُهَا مِنْ هَدَفِهَا.",
+     "explanation": "تُظْهِرُ أَحْدَاثُ الْقِصَّةِ أَنَّ تَنْظِيمَ الْوَقْتِ جَعَلَهَا تُوَاظِبُ عَلَى التَّعَلُّمِ وَالْمُشَارَكَةِ."
+    },
+    {
+     "id": "ar017_q5",
+     "type": "short_answer",
+     "question": "مَا الْفَرْقُ بَيْنَ الْحُلْمِ وَالْعَمَلِ كَمَا تُوَضِّحُ الْقِصَّةُ؟",
+     "answer": "الْحُلْمُ هُوَ الْهَدَفُ الَّذِي نَتَمَنَّاهُ، أَمَّا الْعَمَلُ فَهُوَ الْخُطُوَاتُ الْعَمَلِيَّةُ الَّتِي تُسَاعِدُنَا عَلَى تَحْقِيقِهِ.",
+     "explanation": "تُبَيِّنُ تَجْرِبَةُ هِنْدٍ أَنَّ التَّمَنِّي وَحْدَهُ لَا يَكْفِي دُونَ جُهْدٍ مُنَظَّمٍ."
+    }
+   ],
+   "image": {
+    "url": "",
+    "alt": "هِنْدٌ تَعْرِضُ نَمُوذَجَ مَنْزِلٍ يَعْمَلُ بِالطَّاقَةِ الشَّمْسِيَّةِ",
+    "prompt": "A talented young Arab schoolgirl presenting a detailed miniature eco-friendly house powered by solar panels at a modern school engineering exhibition, teachers and students watching proudly, bright professional 3D animated educational illustration, no text."
+   }
+  },
+  {
+   "id": "story_en_018",
+   "language": "en",
+   "stage": "Upper Intermediate",
+   "level": "B2",
+   "title": "The Unexpected Leader",
+   "text": "When the school announced a competition to develop solutions for reducing food waste, most students immediately expected the class president to lead the project. However, she was absent that week, and the deadline was approaching. Surprisingly, Maya, a quiet student who rarely spoke during discussions, offered to organize the team. At first, some classmates doubted her ability to lead. Instead of arguing, Maya listened to everyone's suggestions and divided the work according to each student's strengths. One group studied how much food was being wasted in the cafeteria, while another interviewed students about their eating habits. A third group developed a campaign encouraging everyone to take only the food they could finish. During the final presentation, Maya explained their findings clearly and responded confidently to difficult questions. Their project received first prize. More importantly, the students recognized that leadership is not always about being the loudest person in the room. It is often about listening carefully, making thoughtful decisions, and helping others succeed.",
+   "vocabulary": [
+    {
+     "word": "Competition",
+     "meaning": "مسابقة"
+    },
+    {
+     "word": "Deadline",
+     "meaning": "موعد نهائي"
+    },
+    {
+     "word": "Doubted",
+     "meaning": "شكّ في"
+    },
+    {
+     "word": "Strengths",
+     "meaning": "نقاط القوة"
+    },
+    {
+     "word": "Cafeteria",
+     "meaning": "مقصف أو كافتيريا"
+    },
+    {
+     "word": "Recognized",
+     "meaning": "أدرك أو تعرّف إلى"
+    },
+    {
+     "word": "Leadership",
+     "meaning": "القيادة"
+    }
+   ],
+   "exercises": [
+    {
+     "id": "en018_q1",
+     "type": "multiple_choice",
+     "question": "What was the school's competition about?",
+     "options": [
+      "Reducing food waste",
+      "Building a sports stadium",
+      "Improving school transport"
+     ],
+     "answer": "Reducing food waste",
+     "explanation": "The competition focused on developing solutions to reduce food waste."
+    },
+    {
+     "id": "en018_q2",
+     "type": "multiple_choice",
+     "question": "Why did Maya take responsibility for organizing the team?",
+     "options": [
+      "The class president was absent and the deadline was approaching.",
+      "She wanted to work alone.",
+      "The teacher asked her to leave the competition."
+     ],
+     "answer": "The class president was absent and the deadline was approaching.",
+     "explanation": "The team needed someone to organize the work while the usual leader was absent."
+    },
+    {
+     "id": "en018_q3",
+     "type": "true_false",
+     "question": "Maya ignored the suggestions of her classmates.",
+     "answer": false,
+     "explanation": "Maya listened to everyone's suggestions and assigned tasks according to their strengths."
+    },
+    {
+     "id": "en018_q4",
+     "type": "inference",
+     "question": "Why did some classmates initially doubt Maya's leadership?",
+     "answer": "Because she was quiet and rarely spoke during discussions, so they had not recognized her leadership abilities.",
+     "explanation": "The story contrasts Maya's quiet personality with the classmates' expectations of a leader."
+    },
+    {
+     "id": "en018_q5",
+     "type": "short_answer",
+     "question": "What does the story suggest about effective leadership?",
+     "answer": "Effective leadership involves listening, thoughtful decisions, teamwork, and helping others succeed.",
+     "explanation": "Maya's approach demonstrates that leadership is not simply about speaking loudly or having a title."
+    }
+   ],
+   "image": {
+    "url": "",
+    "alt": "Maya leading a student team presenting a food waste reduction project",
+    "prompt": "A confident young schoolgirl leading a diverse student team during a science and sustainability competition presentation, a display showing food waste reduction ideas and cafeteria research, classmates supporting her, modern school auditorium, cinematic premium 3D animated educational illustration, no text."
+   }
+  },
+  {
+   "id": "story_ar_019",
+   "language": "ar",
+   "stage": "مرحلة الإتقان المتقدم",
+   "level": "B2",
+   "title": "الْمَدِينَةُ الَّتِي تَتَنَفَّسُ",
+   "text": "فِي الْمُسْتَقْبَلِ، لَمْ تَعُدِ الْمُدُنُ تُقَاسُ بِعَدَدِ مَبَانِيهَا الشَّاهِقَةِ أَوْ بِسُرْعَةِ شَوَارِعِهَا فَقَطْ، بَلْ بِقُدْرَتِهَا عَلَى تَوْفِيرِ بِيئَةٍ صِحِّيَّةٍ لِسُكَّانِهَا. فِي إِحْدَى الْمُدُنِ الْحَدِيثَةِ، قَرَّرَ الْمُخَطِّطُونَ أَنْ يُعِيدُوا النَّظَرَ فِي طَرِيقَةِ تَصْمِيمِ الْأَحْيَاءِ السَّكَنِيَّةِ. خَصَّصُوا مَسَاحَاتٍ وَاسِعَةً لِلْحَدَائِقِ، وَزَرَعُوا أَشْجَارًا تُسَاعِدُ عَلَى تَلْطِيفِ الْجَوِّ وَتَقْلِيلِ الْغُبَارِ. كَمَا أَنْشَؤُوا مَمَرَّاتٍ آمِنَةً لِلْمُشَاةِ وَالدَّرَّاجَاتِ، وَطَوَّرُوا شَبَكَةَ نَقْلٍ عَامٍّ تُقَلِّلُ الِاعْتِمَادَ عَلَى السَّيَّارَاتِ الْخَاصَّةِ. وَلَمْ تَقْتَصِرِ الْمَشْرُوعَاتُ عَلَى الْمَظْهَرِ الْجَمِيلِ؛ فَقَدْ اهْتَمَّ الْمُخَطِّطُونَ بِإِعَادَةِ اسْتِخْدَامِ الْمِيَاهِ، وَتَرْشِيدِ اسْتِهْلَاكِ الطَّاقَةِ، وَتَشْجِيعِ الْمُبَادَرَاتِ الْمُجْتَمَعِيَّةِ. وَمَعَ مُرُورِ الْوَقْتِ، لَاحَظَ السُّكَّانُ أَنَّ الْحَيَاةَ أَصْبَحَتْ أَكْثَرَ هُدُوءًا، وَأَنَّ الْمَسَاحَاتِ الْخَضْرَاءَ أَصْبَحَتْ جُزْءًا مِنْ حَيَاتِهِمُ الْيَوْمِيَّةِ. وَمَعَ ذَلِكَ، أَدْرَكَ الْمُخَطِّطُونَ أَنَّ الْمَدِينَةَ الْمُسْتَدَامَةَ لَا تَتَحَقَّقُ بِالْمَشَارِيعِ الْهَنْدَسِيَّةِ وَحْدَهَا، بَلْ تَحْتَاجُ إِلَى وَعْيِ السُّكَّانِ وَمُشَارَكَتِهِمْ الْمُسْتَمِرَّةِ. فَالْمَدِينَةُ الَّتِي تَتَنَفَّسُ هِيَ الَّتِي تَجْمَعُ بَيْنَ التَّطَوُّرِ وَاحْتِرَامِ الطَّبِيعَةِ وَجَوْدَةِ الْحَيَاةِ.",
+   "vocabulary": [
+    {
+     "word": "الشَّاهِقَةُ",
+     "meaning": "الْمُرْتَفِعَةُ جِدًّا"
+    },
+    {
+     "word": "الْأَحْيَاءُ السَّكَنِيَّةُ",
+     "meaning": "الْمَنَاطِقُ الَّتِي تَقَعُ فِيهَا الْمَنَازِلُ وَيَسْكُنُهَا النَّاسُ"
+    },
+    {
+     "word": "تَلْطِيفُ الْجَوِّ",
+     "meaning": "جَعْلُ الْهَوَاءِ أَلْطَفَ وَأَقَلَّ حَرَارَةً"
+    },
+    {
+     "word": "تَرْشِيدُ الِاسْتِهْلَاكِ",
+     "meaning": "اسْتِخْدَامُ الْمَوَارِدِ بِحِكْمَةٍ وَدُونَ إِسْرَافٍ"
+    },
+    {
+     "word": "الْمُسْتَدَامَةُ",
+     "meaning": "الَّتِي تَحَافِظُ عَلَى الْمَوَارِدِ وَتَسْتَمِرُّ فِي الْمُسْتَقْبَلِ"
+    },
+    {
+     "word": "الْمُبَادَرَاتُ",
+     "meaning": "أَعْمَالٌ وَأَفْكَارٌ يَبْدَأُهَا الْأَفْرَادُ أَوِ الْمُجْتَمَعُ"
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ar019_q1",
+     "type": "multiple_choice",
+     "question": "بِمَاذَا أَصْبَحَتِ الْمُدُنُ تُقَاسُ فِي الْمُسْتَقْبَلِ حَسَبَ الْقِصَّةِ؟",
+     "options": [
+      "بِعَدَدِ الْمَبَانِي فَقَطْ",
+      "بِقُدْرَتِهَا عَلَى تَوْفِيرِ بِيئَةٍ صِحِّيَّةٍ لِلسُّكَّانِ",
+      "بِعَدَدِ السَّيَّارَاتِ فِي شَوَارِعِهَا"
+     ],
+     "answer": "بِقُدْرَتِهَا عَلَى تَوْفِيرِ بِيئَةٍ صِحِّيَّةٍ لِلسُّكَّانِ",
+     "explanation": "تُؤَكِّدُ الْقِصَّةُ أَنَّ جَوْدَةَ الْحَيَاةِ أَصْبَحَتْ مِعْيَارًا مُهِمًّا لِتَقْيِيمِ الْمُدُنِ."
+    },
+    {
+     "id": "ar019_q2",
+     "type": "multiple_choice",
+     "question": "لِمَاذَا طَوَّرَ الْمُخَطِّطُونَ شَبَكَةَ النَّقْلِ الْعَامِّ؟",
+     "options": [
+      "لِزِيَادَةِ عَدَدِ السَّيَّارَاتِ الْخَاصَّةِ",
+      "لِتَقْلِيلِ الِاعْتِمَادِ عَلَى السَّيَّارَاتِ الْخَاصَّةِ",
+      "لِإِغْلَاقِ مَمَرَّاتِ الْمُشَاةِ"
+     ],
+     "answer": "لِتَقْلِيلِ الِاعْتِمَادِ عَلَى السَّيَّارَاتِ الْخَاصَّةِ",
+     "explanation": "يَرْبِطُ النَّصُّ تَطْوِيرَ النَّقْلِ الْعَامِّ بِتَقْلِيلِ اسْتِخْدَامِ السَّيَّارَاتِ الْخَاصَّةِ."
+    },
+    {
+     "id": "ar019_q3",
+     "type": "true_false",
+     "question": "اعْتَمَدَ الْمُخَطِّطُونَ عَلَى تَحْسِينِ مَظْهَرِ الْمَدِينَةِ فَقَطْ.",
+     "answer": false,
+     "explanation": "اهْتَمُّوا أَيْضًا بِالْمِيَاهِ وَالطَّاقَةِ وَالْمُبَادَرَاتِ الْمُجْتَمَعِيَّةِ."
+    },
+    {
+     "id": "ar019_q4",
+     "type": "inference",
+     "question": "لِمَاذَا لَا تَكْفِي الْمَشَارِيعُ الْهَنْدَسِيَّةُ وَحْدَهَا لِتَحْقِيقِ الِاسْتِدَامَةِ؟",
+     "answer": "لِأَنَّ اسْتِمْرَارَ النَّتَائِجِ يَحْتَاجُ إِلَى وَعْيِ السُّكَّانِ وَمُشَارَكَتِهِمْ فِي الْمُحَافَظَةِ عَلَى الْمَوَارِدِ وَالْبِيئَةِ.",
+     "explanation": "تَحْتَاجُ الْمَشَارِيعُ إِلَى سُلُوكٍ مُجْتَمَعِيٍّ يَدْعَمُهَا وَيُحَافِظُ عَلَى نَتَائِجِهَا."
+    },
+    {
+     "id": "ar019_q5",
+     "type": "short_answer",
+     "question": "مَا الْمَقْصُودُ بِعِبَارَةِ الْمَدِينَةِ الَّتِي تَتَنَفَّسُ؟",
+     "answer": "مَدِينَةٌ تَجْمَعُ بَيْنَ التَّطَوُّرِ وَالْمُسَاحَاتِ الْخَضْرَاءِ وَالْبِيئَةِ الصِّحِّيَّةِ وَجَوْدَةِ الْحَيَاةِ.",
+     "explanation": "الْعِبَارَةُ تَعْبِيرٌ مَجَازِيٌّ عَنْ مَدِينَةٍ تَعِيشُ فِيهَا الطَّبِيعَةُ وَالتَّنْمِيَةُ بِتَوَازُنٍ."
+    }
+   ],
+   "image": {
+    "url": "",
+    "alt": "مَدِينَةٌ مُسْتَدَامَةٌ حَدِيثَةٌ تَضُمُّ حَدَائِقَ وَمَمَرَّاتٍ خَضْرَاءَ وَمَبَانِيَ عَصْرِيَّةً",
+    "prompt": "A breathtaking futuristic sustainable city with modern elegant buildings integrated with lush green parks, rooftop gardens, solar panels, clean public transportation, bicycle lanes and walking paths, families enjoying nature, beautiful cinematic 3D animated educational concept art, no text."
+   }
+  },
+  {
+   "id": "story_en_020",
+   "language": "en",
+   "stage": "Upper Intermediate",
+   "level": "B2",
+   "title": "Beyond the Horizon",
+   "text": "For as long as she could remember, Elena had been fascinated by the stars. While other children dreamed of becoming famous athletes or entertainers, she imagined exploring distant planets and understanding the mysteries of the universe. Her interest grew stronger after she attended a public astronomy event and looked through a powerful telescope for the first time. However, pursuing her ambition was not always easy. Scientific subjects required patience, and some lessons seemed difficult at first. Rather than allowing frustration to stop her, Elena developed a study routine and began asking questions whenever she encountered something she did not understand. She also joined a local astronomy club, where experienced members encouraged her curiosity. Years later, she earned a place in a university research program focused on planetary science. During her first major project, she helped analyze observations of a distant planet. Although the discovery was only a small contribution to a much larger scientific effort, she felt proud to be part of it. Elena understood that exploration was not simply about reaching distant places. It was also about questioning assumptions, learning from evidence, and remaining curious about what had not yet been discovered.",
+   "vocabulary": [
+    {
+     "word": "Fascinated",
+     "meaning": "مفتون أو شديد الاهتمام"
+    },
+    {
+     "word": "Universe",
+     "meaning": "الكون"
+    },
+    {
+     "word": "Ambition",
+     "meaning": "طموح"
+    },
+    {
+     "word": "Frustration",
+     "meaning": "إحباط"
+    },
+    {
+     "word": "Observations",
+     "meaning": "ملاحظات أو رصد"
+    },
+    {
+     "word": "Contribution",
+     "meaning": "مساهمة"
+    },
+    {
+     "word": "Assumptions",
+     "meaning": "افتراضات"
+    },
+    {
+     "word": "Evidence",
+     "meaning": "أدلة"
+    }
+   ],
+   "exercises": [
+    {
+     "id": "en020_q1",
+     "type": "multiple_choice",
+     "question": "What first strengthened Elena's interest in astronomy?",
+     "options": [
+      "A school sports competition",
+      "A public astronomy event where she used a telescope",
+      "A television interview"
+     ],
+     "answer": "A public astronomy event where she used a telescope",
+     "explanation": "Looking through a powerful telescope at the event strengthened her interest."
+    },
+    {
+     "id": "en020_q2",
+     "type": "multiple_choice",
+     "question": "How did Elena respond when scientific subjects became difficult?",
+     "options": [
+      "She stopped studying them.",
+      "She developed a study routine and asked questions.",
+      "She changed her ambition immediately."
+     ],
+     "answer": "She developed a study routine and asked questions.",
+     "explanation": "Elena responded to difficulties with patience and active learning."
+    },
+    {
+     "id": "en020_q3",
+     "type": "true_false",
+     "question": "Elena's first research project involved studying observations of a distant planet.",
+     "answer": true,
+     "explanation": "She helped analyze observations of a distant planet during her first major project."
+    },
+    {
+     "id": "en020_q4",
+     "type": "inference",
+     "question": "Why did Elena feel proud even though her contribution was small?",
+     "answer": "Because she was participating in meaningful scientific research and contributing to a larger effort.",
+     "explanation": "Her satisfaction came from being part of scientific discovery, not simply from receiving personal recognition."
+    },
+    {
+     "id": "en020_q5",
+     "type": "short_answer",
+     "question": "What does exploration mean to Elena beyond traveling to distant places?",
+     "answer": "It means questioning assumptions, learning from evidence, and remaining curious about the unknown.",
+     "explanation": "The final sentence explains Elena's broader understanding of exploration."
+    }
+   ],
+   "image": {
+    "url": "",
+    "alt": "Elena studying a distant planet through a telescope in an observatory",
+    "prompt": "A young female astronomy student observing a distant planet through a large telescope inside a modern observatory at night, a beautiful star-filled sky visible through the dome, scientific charts and glowing screens nearby, inspiring cinematic 3D animated educational illustration, no text."
+   }
+  }
+ ]
+}

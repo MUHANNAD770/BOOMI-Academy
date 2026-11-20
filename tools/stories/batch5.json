@@ -1,0 +1,460 @@
+{
+ "bank": "Boomi Bilingual Story Academy",
+ "batch": 5,
+ "stories": [
+  {
+   "id": "story_ar_021",
+   "language": "ar",
+   "stage": "مرحلة الإتقان المتقدم",
+   "level": "B2",
+   "title": "قِيمَةُ الْوَقْتِ",
+   "text": "كَانَ عُمَرُ يَعْتَقِدُ أَنَّ الْيَوْمَ الطَّوِيلَ يَكْفِي لِإِنْجَازِ جَمِيعِ أَعْمَالِهِ، لَكِنَّهُ كَانَ يُضِيعُ جُزْءًا كَبِيرًا مِنْ وَقْتِهِ فِي أَنْشِطَةٍ غَيْرِ مُهِمَّةٍ. وَكَانَ يَشْكُو دَائِمًا مِنْ تَرَاكُمِ الْوَاجِبَاتِ وَعَدَمِ الْقُدْرَةِ عَلَى إِكْمَالِ مَشَارِيعِهِ. فِي أَحَدِ الْأَيَّامِ، طَلَبَ مِنْهُ مُعَلِّمُهُ أَنْ يُسَجِّلَ كَيْفَ يَقْضِي سَاعَاتِ يَوْمِهِ. بَعْدَ أُسْبُوعٍ، رَاجَعَ عُمَرُ سِجِلَّهُ، فَاكْتَشَفَ أَنَّهُ يَقْضِي وَقْتًا طَوِيلًا فِي تَصَفُّحِ الْهَاتِفِ وَالِانْتِقَالِ بَيْنَ الْأَنْشِطَةِ دُونَ هَدَفٍ مُحَدَّدٍ. قَرَّرَ أَنْ يُغَيِّرَ عَادَاتِهِ، فَوَضَعَ جَدْوَلًا يَتَضَمَّنُ أَوْلَوِيَّاتِهِ، وَخَصَّصَ أَوْقَاتًا لِلدِّرَاسَةِ وَالرَّاحَةِ وَالنَّشَاطِ الْبَدَنِيِّ. كَمَا تَعَلَّمَ أَنْ يُنْجِزَ مَهَمَّةً وَاحِدَةً بِتَرْكِيزٍ قَبْلَ الِانْتِقَالِ إِلَى غَيْرِهَا. فِي الْبِدَايَةِ، وَاجَهَ صُعُوبَةً فِي الِالْتِزَامِ بِالْجَدْوَلِ، لَكِنَّهُ اسْتَمَرَّ فِي مُحَاوَلَاتِهِ وَعَدَّلَ خُطَّتَهُ بِحَسَبِ حَاجَتِهِ. بَعْدَ مُدَّةٍ، أَصْبَحَ أَكْثَرَ انْضِبَاطًا، وَتَحَسَّنَ أَدَاؤُهُ الدِّرَاسِيُّ، وَوَجَدَ وَقْتًا لِهَوَايَاتِهِ أَيْضًا. وَفَهِمَ أَنَّ قِيمَةَ الْوَقْتِ لَا تَكْمُنُ فِي عَدَدِ سَاعَاتِ الْيَوْمِ، بَلْ فِي حُسْنِ اسْتِخْدَامِهَا وَاخْتِيَارِ مَا يَسْتَحِقُّ الِاهْتِمَامَ.",
+   "vocabulary": [
+    {
+     "word": "تَرَاكُمُ",
+     "meaning": "اجْتِمَاعُ الْأَشْيَاءِ وَتَزَايُدُهَا"
+    },
+    {
+     "word": "سِجِلٌّ",
+     "meaning": "دَفْتَرٌ أَوْ وَثِيقَةٌ تُدَوَّنُ فِيهَا الْمَعْلُومَاتُ"
+    },
+    {
+     "word": "أَوْلَوِيَّاتٌ",
+     "meaning": "أُمُورٌ تَسْتَحِقُّ الِاهْتِمَامَ أَوَّلًا"
+    },
+    {
+     "word": "الِانْضِبَاطُ",
+     "meaning": "الِالْتِزَامُ بِالنِّظَامِ وَالْقَوَاعِدِ"
+    },
+    {
+     "word": "الْهَوَايَاتُ",
+     "meaning": "أَنْشِطَةٌ يُمَارِسُهَا الْإِنْسَانُ فِي وَقْتِ فَرَاغِهِ"
+    },
+    {
+     "word": "حُسْنُ الِاسْتِخْدَامِ",
+     "meaning": "اسْتِعْمَالُ الشَّيْءِ بِطَرِيقَةٍ مُنَاسِبَةٍ وَمُفِيدَةٍ"
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ar021_q1",
+     "type": "multiple_choice",
+     "question": "مَا السَّبَبُ الرَّئِيسِيُّ لِتَرَاكُمِ وَاجِبَاتِ عُمَرَ؟",
+     "options": [
+      "كَثْرَةُ الْمَوَادِّ الدِّرَاسِيَّةِ فَقَطْ",
+      "إِضَاعَةُ الْوَقْتِ فِي أَنْشِطَةٍ غَيْرِ مُهِمَّةٍ",
+      "عَدَمُ وُجُودِ وَقْتٍ لِلنَّوْمِ"
+     ],
+     "answer": "إِضَاعَةُ الْوَقْتِ فِي أَنْشِطَةٍ غَيْرِ مُهِمَّةٍ",
+     "explanation": "كَشَفَ سِجِلُّ عُمَرَ أَنَّهُ يُضِيعُ وَقْتًا طَوِيلًا فِي تَصَفُّحِ الْهَاتِفِ وَالتَّنَقُّلِ بِلَا هَدَفٍ."
+    },
+    {
+     "id": "ar021_q2",
+     "type": "multiple_choice",
+     "question": "مَاذَا طَلَبَ الْمُعَلِّمُ مِنْ عُمَرَ؟",
+     "options": [
+      "أَنْ يَتْرُكَ هَوَايَاتِهِ",
+      "أَنْ يُسَجِّلَ كَيْفَ يَقْضِي وَقْتَهُ",
+      "أَنْ يَدْرُسَ طَوَالَ الْيَوْمِ"
+     ],
+     "answer": "أَنْ يُسَجِّلَ كَيْفَ يَقْضِي وَقْتَهُ",
+     "explanation": "طَلَبَ الْمُعَلِّمُ مِنْهُ تَسْجِيلَ أَنْشِطَتِهِ لِمُرَاجَعَةِ اسْتِخْدَامِهِ لِلْوَقْتِ."
+    },
+    {
+     "id": "ar021_q3",
+     "type": "true_false",
+     "question": "نَجَحَ عُمَرُ فِي الِالْتِزَامِ بِالْجَدْوَلِ دُونَ أَيِّ صُعُوبَةٍ.",
+     "answer": false,
+     "explanation": "تَذْكُرُ الْقِصَّةُ أَنَّهُ وَاجَهَ صُعُوبَةً فِي الْبِدَايَةِ، ثُمَّ اسْتَمَرَّ وَعَدَّلَ خُطَّتَهُ."
+    },
+    {
+     "id": "ar021_q4",
+     "type": "inference",
+     "question": "لِمَاذَا كَانَ تَسْجِيلُ الْأَنْشِطَةِ مُفِيدًا لِعُمَرَ؟",
+     "answer": "لِأَنَّهُ سَاعَدَهُ عَلَى اكْتِشَافِ مَصَادِرِ إِضَاعَةِ وَقْتِهِ وَمَعْرِفَةِ مَا يَحْتَاجُ إِلَى تَغْيِيرٍ.",
+     "explanation": "بَعْدَ مُرَاجَعَةِ السِّجِلِّ، تَمَكَّنَ عُمَرُ مِنْ تَحْدِيدِ عَادَاتِهِ غَيْرِ الْمُفِيدَةِ."
+    },
+    {
+     "id": "ar021_q5",
+     "type": "short_answer",
+     "question": "كَيْفَ تُفَسِّرُ عِبَارَةَ قِيمَةُ الْوَقْتِ لَا تَكْمُنُ فِي عَدَدِ سَاعَاتِ الْيَوْمِ؟",
+     "answer": "أَنَّ الْأَهَمَّ هُوَ اسْتِخْدَامُ الْوَقْتِ بِطَرِيقَةٍ مُنَظَّمَةٍ وَمُفِيدَةٍ، وَلَيْسَ مُجَرَّدَ امْتِلَاكِ وَقْتٍ طَوِيلٍ.",
+     "explanation": "تُبَيِّنُ تَجْرِبَةُ عُمَرَ أَنَّ تَنْظِيمَ الْوَقْتِ وَتَحْدِيدَ الْأَوْلَوِيَّاتِ يُحَسِّنَانِ الْإِنْجَازَ."
+    }
+   ],
+   "image": {
+    "url": "",
+    "alt": "عُمَرُ يُنَظِّمُ وَقْتَهُ وَيَكْتُبُ جَدْوَلَهُ الْيَوْمِيَّ",
+    "prompt": "A thoughtful Arab schoolboy organizing his daily schedule at a tidy desk, colorful planner, clock, books and a smartphone placed aside, warm morning light, inspiring modern 3D animated educational storybook illustration, no text."
+   }
+  },
+  {
+   "id": "story_en_022",
+   "language": "en",
+   "stage": "Advanced",
+   "level": "B2",
+   "title": "The Choice That Changed Everything",
+   "text": "When Nora received an opportunity to join an international student exchange program, she was excited but uncertain. The program would allow her to study abroad for several months, experience a different culture, and meet students from many countries. However, accepting the offer meant leaving her family and familiar surroundings temporarily. Her friends encouraged her to go, but she worried about adapting to a new environment and communicating confidently in another language. After discussing the decision with her parents and teachers, Nora began to consider the opportunity from a different perspective. She realized that avoiding every unfamiliar situation would prevent her from developing important life skills. She finally accepted the offer. During the first few weeks abroad, she experienced moments of loneliness and confusion, but she gradually became more independent. She learned to manage her daily responsibilities, communicate with people from different backgrounds, and approach challenges with an open mind. When she returned home, Nora was not simply carrying memories of another country. She had gained confidence, flexibility, and a deeper understanding of the world. She realized that one difficult decision had opened doors she had never imagined.",
+   "vocabulary": [
+    {
+     "word": "Opportunity",
+     "meaning": "فرصة"
+    },
+    {
+     "word": "Uncertain",
+     "meaning": "غير متأكد أو متردد"
+    },
+    {
+     "word": "Exchange Program",
+     "meaning": "برنامج تبادل طلابي"
+    },
+    {
+     "word": "Adapting",
+     "meaning": "التأقلم"
+    },
+    {
+     "word": "Perspective",
+     "meaning": "وجهة نظر"
+    },
+    {
+     "word": "Independent",
+     "meaning": "مستقل"
+    },
+    {
+     "word": "Flexibility",
+     "meaning": "المرونة"
+    }
+   ],
+   "exercises": [
+    {
+     "id": "en022_q1",
+     "type": "multiple_choice",
+     "question": "What opportunity did Nora receive?",
+     "options": [
+      "A chance to join an international student exchange program",
+      "A full-time job",
+      "A place on a sports team"
+     ],
+     "answer": "A chance to join an international student exchange program",
+     "explanation": "The opening paragraph introduces the international exchange opportunity."
+    },
+    {
+     "id": "en022_q2",
+     "type": "multiple_choice",
+     "question": "What was one of Nora's main concerns?",
+     "options": [
+      "Losing her school books",
+      "Adapting to a new environment and communicating in another language",
+      "Learning to drive"
+     ],
+     "answer": "Adapting to a new environment and communicating in another language",
+     "explanation": "Nora worried about adjusting to unfamiliar surroundings and speaking another language confidently."
+    },
+    {
+     "id": "en022_q3",
+     "type": "true_false",
+     "question": "Nora experienced no difficulties during her time abroad.",
+     "answer": false,
+     "explanation": "She experienced loneliness and confusion during the first few weeks."
+    },
+    {
+     "id": "en022_q4",
+     "type": "inference",
+     "question": "Why did Nora eventually decide to accept the offer?",
+     "answer": "She realized that avoiding unfamiliar situations could prevent her from developing important life skills.",
+     "explanation": "She changed her perspective and recognized the value of facing new challenges."
+    },
+    {
+     "id": "en022_q5",
+     "type": "short_answer",
+     "question": "How did the exchange program change Nora?",
+     "answer": "It helped her become more confident, independent, flexible, and understanding of different cultures.",
+     "explanation": "The final paragraphs describe the personal skills and broader perspective she gained."
+    }
+   ],
+   "image": {
+    "url": "",
+    "alt": "Nora exploring a new country during an international student exchange",
+    "prompt": "A confident teenage Arab girl with a travel backpack standing in a beautiful international university campus, diverse students from different cultures greeting one another, historic and modern architecture, hopeful cinematic 3D animated educational storybook illustration, no text."
+   }
+  },
+  {
+   "id": "story_ar_023",
+   "language": "ar",
+   "stage": "مرحلة الإتقان المتقدم",
+   "level": "C1",
+   "title": "عِنْدَمَا أَصْبَحَ الْعِلْمُ مَسْؤُولِيَّةً",
+   "text": "لَمْ يَعُدِ الْعِلْمُ فِي عَصْرِنَا مُجَرَّدَ مَجْمُوعَةٍ مِنَ الْمَعْلُومَاتِ الَّتِي يَجْمَعُهَا الْإِنْسَانُ لِتَوْسِيعِ مَعْرِفَتِهِ، بَلْ أَصْبَحَ قُوَّةً تُؤَثِّرُ فِي حَيَاةِ الْمُجْتَمَعَاتِ وَتُشَكِّلُ مُسْتَقْبَلَهَا. وَمَعَ تَسَارُعِ الِاكْتِشَافَاتِ وَالتَّقْنِيَاتِ، ظَهَرَتْ فُرَصٌ وَاسِعَةٌ لِمُعَالَجَةِ الْمُشْكِلَاتِ، إِلَّا أَنَّ هَذِهِ الْفُرَصَ صَاحَبَتْهَا تَحَدِّيَاتٌ أَخْلَاقِيَّةٌ وَاجْتِمَاعِيَّةٌ. فَقَدْ تُسَاهِمُ تِقْنِيَّةٌ مُتَقَدِّمَةٌ فِي تَحْسِينِ الْخَدَمَاتِ الصِّحِّيَّةِ وَتَطْوِيرِ التَّعْلِيمِ، وَلَكِنَّ سُوءَ اسْتِخْدَامِهَا قَدْ يُؤَدِّي إِلَى انْتِهَاكِ الْخُصُوصِيَّةِ أَوْ تَزْيِيفِ الْمَعْلُومَاتِ. وَلِذَلِكَ، لَا يَنْبَغِي أَنْ يَنْفَصِلَ التَّقَدُّمُ الْعِلْمِيُّ عَنِ الْمَسْؤُولِيَّةِ الْإِنْسَانِيَّةِ. فَالْبَاحِثُ لَا يَكْتَفِي بِالسُّؤَالِ عَمَّا يُمْكِنُ تَحْقِيقُهُ، بَلْ يَحْتَاجُ أَيْضًا إِلَى التَّفْكِيرِ فِي آثَارِ مَا يَكْتَشِفُهُ وَفِي الْفِئَاتِ الَّتِي قَدْ تَتَأَثَّرُ بِهِ. وَتَتَطَلَّبُ هَذِهِ الْمَسْؤُولِيَّةُ تَعَاوُنًا بَيْنَ الْعُلَمَاءِ وَالْمُؤَسَّسَاتِ التَّعْلِيمِيَّةِ وَصُنَّاعِ الْقَرَارِ وَأَفْرَادِ الْمُجْتَمَعِ. فَالْمَعْرِفَةُ تَكْتَسِبُ قِيمَتَهَا الْحَقِيقِيَّةَ عِنْدَمَا تُوَظَّفُ لِخِدْمَةِ الْإِنْسَانِ، وَعِنْدَمَا يَسِيرُ الِابْتِكَارُ جَنْبًا إِلَى جَنْبٍ مَعَ الْوَعْيِ وَالْعَدْلِ وَاحْتِرَامِ الْحُقُوقِ.",
+   "vocabulary": [
+    {
+     "word": "تَسَارُعُ",
+     "meaning": "الزِّيَادَةُ فِي السُّرْعَةِ بِشَكْلٍ مُتَوَاصِلٍ"
+    },
+    {
+     "word": "التَّحَدِّيَاتُ الْأَخْلَاقِيَّةُ",
+     "meaning": "الْمَسَائِلُ الَّتِي تَتَعَلَّقُ بِالصَّوَابِ وَالْخَطَأِ وَالْقِيَمِ"
+    },
+    {
+     "word": "انْتِهَاكُ الْخُصُوصِيَّةِ",
+     "meaning": "الْمَسَاسُ بِحَقِّ الْفَرْدِ فِي حِمَايَةِ مَعْلُومَاتِهِ الشَّخْصِيَّةِ"
+    },
+    {
+     "word": "تَزْيِيفُ الْمَعْلُومَاتِ",
+     "meaning": "تَغْيِيرُ الْمَعْلُومَاتِ أَوْ تَقْدِيمُهَا بِصُورَةٍ مُضَلِّلَةٍ"
+    },
+    {
+     "word": "تُوَظَّفُ",
+     "meaning": "تُسْتَخْدَمُ لِغَرَضٍ مُحَدَّدٍ"
+    },
+    {
+     "word": "الِابْتِكَارُ",
+     "meaning": "إِنْتَاجُ أَفْكَارٍ أَوْ طُرُقٍ جَدِيدَةٍ"
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ar023_q1",
+     "type": "multiple_choice",
+     "question": "مَا الْفِكْرَةُ الْمَحْوَرِيَّةُ فِي النَّصِّ؟",
+     "options": [
+      "أَنَّ الْعِلْمَ يَجِبُ أَنْ يَقْتَصِرَ عَلَى الْمَعْلُومَاتِ النَّظَرِيَّةِ",
+      "أَنَّ التَّقَدُّمَ الْعِلْمِيَّ يَحْتَاجُ إِلَى مَسْؤُولِيَّةٍ أَخْلَاقِيَّةٍ",
+      "أَنَّ التِّقْنِيَةَ تُسَبِّبُ الْمُشْكِلَاتِ دَائِمًا"
+     ],
+     "answer": "أَنَّ التَّقَدُّمَ الْعِلْمِيَّ يَحْتَاجُ إِلَى مَسْؤُولِيَّةٍ أَخْلَاقِيَّةٍ",
+     "explanation": "يَرْبِطُ النَّصُّ بَيْنَ فَوَائِدِ الْعِلْمِ وَضَرُورَةِ اسْتِخْدَامِهِ بِمَسْؤُولِيَّةٍ."
+    },
+    {
+     "id": "ar023_q2",
+     "type": "multiple_choice",
+     "question": "أَيُّ مِمَّا يَأْتِي ذُكِرَ مِثَالًا عَلَى سُوءِ اسْتِخْدَامِ التِّقْنِيَةِ؟",
+     "options": [
+      "تَحْسِينُ الْخَدَمَاتِ الصِّحِّيَّةِ",
+      "تَطْوِيرُ التَّعْلِيمِ",
+      "انْتِهَاكُ الْخُصُوصِيَّةِ وَتَزْيِيفُ الْمَعْلُومَاتِ"
+     ],
+     "answer": "انْتِهَاكُ الْخُصُوصِيَّةِ وَتَزْيِيفُ الْمَعْلُومَاتِ",
+     "explanation": "يَذْكُرُ النَّصُّ هَذَيْنِ الْأَمْرَيْنِ بَوْصْفِهِمَا نَتَائِجَ مُحْتَمَلَةً لِسُوءِ الِاسْتِخْدَامِ."
+    },
+    {
+     "id": "ar023_q3",
+     "type": "true_false",
+     "question": "يَرَى النَّصُّ أَنَّ مَسْؤُولِيَّةَ التَّقَدُّمِ الْعِلْمِيِّ تَقَعُ عَلَى الْبَاحِثِينَ وَحْدَهُمْ.",
+     "answer": false,
+     "explanation": "يَدْعُو النَّصُّ إِلَى التَّعَاوُنِ بَيْنَ الْعُلَمَاءِ وَالْمُؤَسَّسَاتِ وَصُنَّاعِ الْقَرَارِ وَالْمُجْتَمَعِ."
+    },
+    {
+     "id": "ar023_q4",
+     "type": "inference",
+     "question": "لِمَاذَا يَنْبَغِي لِلْبَاحِثِ أَنْ يُفَكِّرَ فِي آثَارِ اكْتِشَافَاتِهِ؟",
+     "answer": "لِأَنَّ الِاكْتِشَافَاتِ قَدْ تُؤَثِّرُ فِي حُقُوقِ الْأَفْرَادِ وَحَيَاةِ الْمُجْتَمَعِ، وَقَدْ تَحْمِلُ نَتَائِجَ غَيْرَ مَقْصُودَةٍ.",
+     "explanation": "يُؤَكِّدُ النَّصُّ أَنَّ تَقْيِيمَ آثَارِ الِابْتِكَارِ جُزْءٌ مِنَ الْمَسْؤُولِيَّةِ الْعِلْمِيَّةِ."
+    },
+    {
+     "id": "ar023_q5",
+     "type": "short_answer",
+     "question": "مَا الْمَعْيَارُ الَّذِي يَجْعَلُ الْمَعْرِفَةَ ذَاتَ قِيمَةٍ حَقِيقِيَّةٍ حَسَبَ النَّصِّ؟",
+     "answer": "أَنْ تُوَظَّفَ لِخِدْمَةِ الْإِنْسَانِ وَتَحْقِيقِ النَّفْعِ مَعَ احْتِرَامِ الْحُقُوقِ وَالْعَدْلِ.",
+     "explanation": "يَرْبِطُ النَّصُّ قِيمَةَ الْمَعْرِفَةِ بِغَايَاتِهَا وَطَرِيقَةِ اسْتِخْدَامِهَا."
+    }
+   ],
+   "image": {
+    "url": "",
+    "alt": "عُلَمَاءُ يَنَاقِشُونَ تَطْبِيقَاتِ الْعِلْمِ وَالتِّقْنِيَةِ بِمَسْؤُولِيَّةٍ",
+    "prompt": "A diverse group of scientists and educators discussing responsible technology in a futuristic research center, transparent digital displays showing healthcare, education, privacy and scientific innovation concepts, thoughtful professional atmosphere, cinematic high-quality 3D educational illustration, no text."
+   }
+  },
+  {
+   "id": "story_en_024",
+   "language": "en",
+   "stage": "Advanced",
+   "level": "C1",
+   "title": "The Responsibility of Progress",
+   "text": "Throughout history, scientific progress has transformed the way human societies understand the world and respond to complex challenges. Advances in medicine, communication, transportation, and artificial intelligence have created opportunities that previous generations could scarcely imagine. Yet progress itself does not automatically guarantee a better future. Every powerful innovation introduces questions about its purpose, consequences, and distribution. For example, a technology may improve access to education while simultaneously widening the gap between communities that can afford it and those that cannot. Similarly, automated systems may increase efficiency, but they can also reproduce unfair decisions if they are designed without sufficient attention to bias and accountability. This does not mean that innovation should be discouraged. Rather, it suggests that progress must be accompanied by careful evaluation, public discussion, and responsible governance. Scientists, policymakers, educators, and ordinary citizens all have a role in determining how new technologies are developed and used. A truly advanced society is not simply one that possesses the most sophisticated tools. It is one that can use its knowledge wisely, protect human dignity, and ensure that the benefits of progress are shared as fairly as possible.",
+   "vocabulary": [
+    {
+     "word": "Transformed",
+     "meaning": "غيّر بصورة كبيرة"
+    },
+    {
+     "word": "Scarcely",
+     "meaning": "بالكاد"
+    },
+    {
+     "word": "Innovation",
+     "meaning": "ابتكار"
+    },
+    {
+     "word": "Distribution",
+     "meaning": "توزيع"
+    },
+    {
+     "word": "Automated",
+     "meaning": "آلي"
+    },
+    {
+     "word": "Bias",
+     "meaning": "تحيز"
+    },
+    {
+     "word": "Accountability",
+     "meaning": "المساءلة"
+    },
+    {
+     "word": "Governance",
+     "meaning": "الحوكمة"
+    },
+    {
+     "word": "Human dignity",
+     "meaning": "الكرامة الإنسانية"
+    }
+   ],
+   "exercises": [
+    {
+     "id": "en024_q1",
+     "type": "multiple_choice",
+     "question": "What is the central argument of the passage?",
+     "options": [
+      "Scientific innovation should be stopped.",
+      "Progress should be accompanied by responsibility and careful evaluation.",
+      "Technology always benefits everyone equally."
+     ],
+     "answer": "Progress should be accompanied by responsibility and careful evaluation.",
+     "explanation": "The passage argues that innovation creates opportunities but also requires ethical consideration and responsible governance."
+    },
+    {
+     "id": "en024_q2",
+     "type": "multiple_choice",
+     "question": "What problem can automated systems create if they are poorly designed?",
+     "options": [
+      "They may reproduce unfair decisions.",
+      "They always reduce efficiency.",
+      "They prevent scientific research."
+     ],
+     "answer": "They may reproduce unfair decisions.",
+     "explanation": "The passage explains that automated systems can reproduce bias without proper attention to accountability."
+    },
+    {
+     "id": "en024_q3",
+     "type": "true_false",
+     "question": "The passage suggests that innovation should be discouraged.",
+     "answer": false,
+     "explanation": "It explicitly states that innovation should not be discouraged; it should be evaluated and governed responsibly."
+    },
+    {
+     "id": "en024_q4",
+     "type": "inference",
+     "question": "Why does the author mention the gap between communities that can afford technology and those that cannot?",
+     "answer": "To show that technological progress can increase inequality if its benefits are not distributed fairly.",
+     "explanation": "The example illustrates that an innovation can be useful while also creating social disadvantages."
+    },
+    {
+     "id": "en024_q5",
+     "type": "short_answer",
+     "question": "According to the passage, what makes a society truly advanced?",
+     "answer": "Using knowledge wisely, protecting human dignity, and sharing the benefits of progress fairly.",
+     "explanation": "The final paragraph defines genuine progress through responsible and fair use of knowledge."
+    }
+   ],
+   "image": {
+    "url": "",
+    "alt": "Scientists and policymakers discussing responsible technological progress",
+    "prompt": "An advanced international research and policy conference where scientists, educators and policymakers discuss responsible artificial intelligence and scientific progress, elegant futuristic hall, large transparent digital screens, diverse participants, sophisticated cinematic 3D educational illustration, no text."
+   }
+  },
+  {
+   "id": "story_ar_025",
+   "language": "ar",
+   "stage": "مرحلة الإتقان المتقدم",
+   "level": "C1",
+   "title": "لَيْسَ كُلُّ مَا نَرَاهُ حَقِيقَةً",
+   "text": "فِي عَالَمٍ تَتَدَفَّقُ فِيهِ الْمَعْلُومَاتُ بِسُرْعَةٍ غَيْرِ مَسْبُوقَةٍ، أَصْبَحَ التَّمْيِيزُ بَيْنَ الْحَقِيقَةِ وَالْمَظْهَرِ مِنْ أَهَمِّ مَهَارَاتِ الْإِنْسَانِ الْمُعَاصِرِ. فَقَدْ يَصِلُ إِلَى الْمُتَلَقِّي خَبَرٌ مُثِيرٌ أَوْ صُورَةٌ مُؤَثِّرَةٌ، فَيَسْتَجِيبُ لَهَا عَاطِفِيًّا قَبْلَ أَنْ يَتَحَقَّقَ مِنْ مَصْدَرِهَا وَسِيَاقِهَا. وَهُنَا تَكْمُنُ خُطُورَةُ الْمُحْتَوَى الْمُضَلِّلِ؛ إِذْ لَا يَعْتَمِدُ دَائِمًا عَلَى اخْتِلَاقِ الْمَعْلُومَاتِ، بَلْ قَدْ يَسْتَخْدِمُ حَقَائِقَ جُزْئِيَّةً وَيَعْرِضُهَا بِطَرِيقَةٍ تُغَيِّرُ مَعْنَاهَا. وَلِمُوَاجَهَةِ ذَلِكَ، لَا يَكْفِي أَنْ يَكُونَ الْإِنْسَانُ قَادِرًا عَلَى الْوُصُولِ إِلَى الْمَعْلُومَاتِ، بَلْ يَجِبُ أَنْ يَمْتَلِكَ مَهَارَةَ تَحْلِيلِهَا وَمُقَارَنَةِ مَصَادِرِهَا وَفَهْمِ السِّيَاقِ الَّذِي وَرَدَتْ فِيهِ. وَمِنَ الْمُهِمِّ أَيْضًا أَنْ يُدْرِكَ أَنَّ كَثْرَةَ تَكْرَارِ الْخَبَرِ لَا تَجْعَلُهُ صَحِيحًا، وَأَنَّ شُهْرَةَ الْمَنْصَّةِ لَا تَضْمَنُ دِقَّةَ كُلِّ مَا يُنْشَرُ فِيهَا. إِنَّ التَّفْكِيرَ النَّقْدِيَّ لَا يَعْنِي رَفْضَ كُلِّ مَا نَسْمَعُهُ، بَلْ يَعْنِي تَعْلِيقَ الْحُكْمِ حَتَّى تَتَوَفَّرَ الْأَدِلَّةُ الْكَافِيَةُ. وَبِذَلِكَ يَتَحَوَّلُ الْإِنْسَانُ مِنْ مُجَرَّدِ مُسْتَقْبِلٍ لِلْمَعْلُومَاتِ إِلَى مُشَارِكٍ وَاعٍ يَتَحَمَّلُ مَسْؤُولِيَّةَ مَا يَفْهَمُهُ وَمَا يُعِيدُ نَشْرَهُ.",
+   "vocabulary": [
+    {
+     "word": "غَيْرُ مَسْبُوقَةٍ",
+     "meaning": "لَمْ يَحْدُثْ لَهَا مِثِيلٌ مِنْ قَبْلُ"
+    },
+    {
+     "word": "الْمُتَلَقِّي",
+     "meaning": "الشَّخْصُ الَّذِي يَسْتَقْبِلُ الْمَعْلُومَاتِ"
+    },
+    {
+     "word": "الْمُضَلِّلُ",
+     "meaning": "الَّذِي يُؤَدِّي إِلَى فَهْمٍ خَاطِئٍ"
+    },
+    {
+     "word": "حَقَائِقُ جُزْئِيَّةٌ",
+     "meaning": "مَعْلُومَاتٌ صَحِيحَةٌ جُزْئِيًّا وَلَا تَعْرِضُ الصُّورَةَ كَامِلَةً"
+    },
+    {
+     "word": "السِّيَاقُ",
+     "meaning": "الظُّرُوفُ وَالْمَعْلُومَاتُ الْمُحِيطَةُ بِالْحَدَثِ أَوِ الْكَلَامِ"
+    },
+    {
+     "word": "التَّفْكِيرُ النَّقْدِيُّ",
+     "meaning": "فَحْصُ الْمَعْلُومَاتِ وَتَحْلِيلُهَا قَبْلَ قَبُولِهَا"
+    },
+    {
+     "word": "تَعْلِيقُ الْحُكْمِ",
+     "meaning": "تَأْجِيلُ اتِّخَاذِ الْقَرَارِ حَتَّى تَظْهَرَ الْأَدِلَّةُ"
+    },
+    {
+     "word": "الْمَسْؤُولِيَّةُ",
+     "meaning": "الِالْتِزَامُ بِمَا يَتَرَتَّبُ عَلَى الْأَفْعَالِ وَالْقَرَارَاتِ"
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ar025_q1",
+     "type": "multiple_choice",
+     "question": "مَا الْمَهَارَةُ الَّتِي يَعُدُّهَا النَّصُّ مِنْ أَهَمِّ مَهَارَاتِ الْإِنْسَانِ الْمُعَاصِرِ؟",
+     "options": [
+      "سُرْعَةُ نَشْرِ الْأَخْبَارِ",
+      "التَّمْيِيزُ بَيْنَ الْحَقِيقَةِ وَالْمَظْهَرِ",
+      "حِفْظُ جَمِيعِ الْمَعْلُومَاتِ"
+     ],
+     "answer": "التَّمْيِيزُ بَيْنَ الْحَقِيقَةِ وَالْمَظْهَرِ",
+     "explanation": "يَبْدَأُ النَّصُّ بِالتَّأْكِيدِ عَلَى أَهَمِّيَّةِ التَّمْيِيزِ بَيْنَ الْحَقِيقَةِ وَالْمَظْهَرِ."
+    },
+    {
+     "id": "ar025_q2",
+     "type": "multiple_choice",
+     "question": "كَيْفَ قَدْ يُضَلِّلُ الْمُحْتَوَى الْمُتَلَقِّيَ دُونَ اخْتِلَاقِ مَعْلُومَاتٍ؟",
+     "options": [
+      "بِعَرْضِ حَقَائِقَ جُزْئِيَّةٍ بِطَرِيقَةٍ تُغَيِّرُ مَعْنَاهَا",
+      "بِتَقْدِيمِ مَصَادِرَ مُتَعَدِّدَةٍ",
+      "بِشَرْحِ السِّيَاقِ كَامِلًا"
+     ],
+     "answer": "بِعَرْضِ حَقَائِقَ جُزْئِيَّةٍ بِطَرِيقَةٍ تُغَيِّرُ مَعْنَاهَا",
+     "explanation": "يُوَضِّحُ النَّصُّ أَنَّ التَّضْلِيلَ قَدْ يَنْشَأُ مِنَ الِانْتِقَاءِ وَطَرِيقَةِ الْعَرْضِ."
+    },
+    {
+     "id": "ar025_q3",
+     "type": "true_false",
+     "question": "يَعْنِي التَّفْكِيرُ النَّقْدِيُّ رَفْضَ كُلِّ مَا يَسْمَعُهُ الْإِنْسَانُ.",
+     "answer": false,
+     "explanation": "يُفَرِّقُ النَّصُّ بَيْنَ رَفْضِ الْمَعْلُومَاتِ وَتَأْجِيلِ الْحُكْمِ حَتَّى تَتَوَفَّرَ الْأَدِلَّةُ."
+    },
+    {
+     "id": "ar025_q4",
+     "type": "inference",
+     "question": "لِمَاذَا لَا تَكْفِي شُهْرَةُ الْمَنْصَّةِ لِلْحُكْمِ عَلَى صِحَّةِ الْمَعْلُومَةِ؟",
+     "answer": "لِأَنَّ شُهْرَةَ الْمَنْصَّةِ لَا تَضْمَنُ دِقَّةَ كُلِّ مَا تَنْشُرُهُ، وَيَجِبُ فَحْصُ الْمَصْدَرِ وَالْمُحْتَوَى نَفْسِهِ.",
+     "explanation": "يُؤَكِّدُ النَّصُّ أَنَّ الْمَصْدَرَ الْمَشْهُورَ لَا يَجْعَلُ جَمِيعَ مَنْشُورَاتِهِ صَحِيحَةً."
+    },
+    {
+     "id": "ar025_q5",
+     "type": "short_answer",
+     "question": "مَا الْمَسْؤُولِيَّةُ الَّتِي تَقَعُ عَلَى الْإِنْسَانِ عِنْدَ إِعَادَةِ نَشْرِ الْمَعْلُومَاتِ؟",
+     "answer": "التَّحَقُّقُ مِنْ صِحَّتِهَا وَفَهْمُ سِيَاقِهَا قَبْلَ نَشْرِهَا لِتَجَنُّبِ الْمُسَاهَمَةِ فِي نَشْرِ التَّضْلِيلِ.",
+     "explanation": "يَخْتِمُ النَّصُّ بِرَبْطِ الْوَعْيِ بِالْمَسْؤُولِيَّةِ عَمَّا نَفْهَمُهُ وَنُعِيدُ نَشْرَهُ."
+    }
+   ],
+   "image": {
+    "url": "",
+    "alt": "طَالِبَةٌ تَفْحَصُ مَصَادِرَ الْمَعْلُومَاتِ وَتُقَارِنُ بَيْنَ الْأَخْبَارِ",
+    "prompt": "A thoughtful Arab teenage student practicing media literacy at a modern desk, comparing news sources on a laptop and printed documents, magnifying glass, verification symbols and a digital screen showing abstract information networks, cinematic high-quality 3D educational illustration, no readable text."
+   }
+  }
+ ]
+}
