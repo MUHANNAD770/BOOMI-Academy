@@ -11,7 +11,7 @@ const now=()=>Date.now();
 const fmt=c=>c?c.slice(0,4)+'-'+c.slice(4):'';
 /* نحفظ على الإنترنت «الأشياء الثابتة» فقط: بيانات الطالب، الدروس المتقنة ودرجاتها، المرحلة، النجوم، الشارات، مستويات الرياضيات، الإنجازات.
    أما التفاصيل الكثيرة المتغيرة (إحصاءات كل كلمة، المحادثات، الإعدادات المؤقتة) فتبقى على الجهاز فقط. هذا يُبقي الحفظ مجانيًا. */
-const KEEP=['name','gender','age','lang','stage','teacher','mic','snd','vol','rate','star','done','sc','fd','ml','cd','act','courseDone','badges','unlockAll','stories','wk','speed','vq','days','g2','courseQuiz','coursePractice','sk','mind','bank']; /* g2: نجوم الألعاب ومراحلها المفتوحة */
+const KEEP=['name','gender','age','lang','stage','teacher','mic','snd','vol','rate','star','done','sc','fd','ml','cd','act','courseDone','badges','unlockAll','stories','wk','speed','vq','days','g2','courseQuiz','coursePractice','sk','mind','bank','en','arw']; /* g2: نجوم الألعاب ومراحلها المفتوحة */
 const payload=k=>{const o={};for(const x of KEEP)if(k[x]!==undefined)o[x]=k[x];return o};
 const sig=k=>{const s=JSON.stringify(payload(k));let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return h+':'+s.length};
 

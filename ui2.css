@@ -263,3 +263,6 @@ button.bank-sub{width:100%;border:0;font:inherit;text-align:start;cursor:pointer
 .bq-en{display:block;direction:ltr;text-align:left;margin-top:6px;font-weight:700}
 .bq-retry{display:inline-block;background:#fff1d6;color:#7a4300;border-radius:99px;padding:4px 12px;font-weight:800;margin:4px 0}
 :root[data-theme=dark] .bq-retry{background:#3d2a16;color:#ffd9a8}@media (prefers-color-scheme: dark){:root:not([data-theme=light]) .bq-retry{background:#3d2a16;color:#ffd9a8}}
+/* معلّم العربية (mind/arabic-teacher.js) */
+.arteach .artx{text-align:center}.arword{direction:rtl;letter-spacing:0;line-height:1.6}.artx .enword.arword{font-size:2.6rem}
+.artx .engrid .opt.arword{font-size:1.5rem;min-height:64px}.arteach .mut{text-align:center}
