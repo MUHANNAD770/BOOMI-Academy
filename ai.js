@@ -172,7 +172,8 @@ function localEx(){const units=[],add=u=>{if(u&&u.i){const its=[],seen=new Set()
  if(!units.length)return null;const sh=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);
  const U=units[0===units.length-1?0:Math.floor(Math.random()*Math.min(units.length,cur&&cur.i?1:units.length))];
  return sh(U).slice(0,3).map(it=>{const o=sh([it,...sh(U.filter(x=>x!==it)).slice(0,3)]),pic=!/[\p{L}\p{N}]/u.test(String(it[1]));
-  return{q:pic?`أين صورة «${it[0]}»؟`:`ما معنى «${it[0]}»؟`,o:o.map(x=>String(x[1])),a:o.indexOf(it),w:pic?`الصورة الصحيحة هي ${it[1]}`:`«${it[0]}» معناها: ${it[1]}`}})}
+  const num=/^[\d\u0660-\u0669]+$/.test(String(it[1]).trim());
+  return{q:pic?`أين صورة «${it[0]}»؟`:num?`أَيُّ رَقْمٍ هُوَ «${it[0]}»؟`:`ما معنى «${it[0]}»؟`,o:o.map(x=>String(x[1])),a:o.indexOf(it),w:pic?`الصورة الصحيحة هي ${it[1]}`:`«${it[0]}» معناها: ${it[1]}`}})}
 async function bex(){if(busy)return;const i=document.getElementById('bi'),bm=document.getElementById('bm'),topic=(i&&i.value.trim())||bm?.dataset.topic||bm?.dataset.ctx||profile().weak[0]||'';if(i)i.value='';
 if(aiLeft()<=0&&onl())return bpush('a',LIM_MSG);if(onl()){aiUse().n++;save()}
 busy=1;think();const w=bpush('a','أجهّز لك تمارين جديدة ✍️…');w.classList.add('think');let d=onl()?await aiCall({mode:'exercise',topic}):{err:'net'};if(d.items&&window.Brain)Brain.exLearn(topic,d.items);else if(window.Brain){const f=Brain.exFind(topic);if(f)d={items:f}}if(!d.items){const L=localEx();if(L)d={items:L}}busy=0;w.classList.remove('think');unthink(!!d.items);
@@ -181,11 +182,11 @@ const lab=(bm&&bm.dataset.topic)||'';w.textContent='هيا نتدرّب'+(lab&&l
 function runEx(L,i,s,topic){if(!document.getElementById('bl'))return;
 if(i>=L.length){P.star+=s;save();const m=s==L.length?'ممتاز! أجبت عن الكل بشكل صحيح 🌟':(s===0?`لا بأس! لم تكن الإجابات صحيحة هذه المرة 💪 سنتدرّب عليها معًا خطوة خطوة`:`أحسنت! أجبت صحيحًا عن ${s} من ${L.length} 💪 ونتدرّب أكثر معًا`);bpush('a',m);window.MC&&MC.mood(s>=2?'happy':'oops',1800);if(!muted())say(m.replace(/[🌟💪]/g,''),'ar',null,'cheer');return}
 const q=L[i];q.q=shape(q.q);q.o=q.o.map(shape);q.w=shape(q.w||'');bpush('a',`(${i+1}/${L.length}) ${q.q}`);if(!muted()&&i==0)say(q.q,'ar');
-const pics=q.o.every(o=>!/[\p{L}\p{N}]/u.test(o)),box=document.createElement('div');box.className=pics?'chips bm-pics':'chips'; /* خيارات الصور: شبكة بطاقات كبيرة واضحة */
+const pics=q.o.every(o=>!/[\p{L}\p{N}]/u.test(o)),nums=!pics&&q.o.every(o=>/^[\d\u0660-\u0669]{1,3}$/.test(String(o).trim())),box=document.createElement('div');box.className=pics?'chips bm-pics':nums?'chips bm-pics bm-nums':'chips'; /* الأرقام أيضًا بطاقات كبيرة (كانت أزرارًا صغيرة مخفية أسفل المحادثة) */ /* خيارات الصور: شبكة بطاقات كبيرة واضحة */
 q.o.forEach((o,j)=>{const b=document.createElement('button');b.textContent=o;b.dir='auto';b.onclick=()=>{box.querySelectorAll('button').forEach(x=>x.disabled=true);const ok=j==q.a;b.classList.add(ok?'ok':'no');
 const k='ai:'+String(topic||q.q).slice(0,24),sk=P.sk[k]=P.sk[k]||{n:0,m:0};sk.n++;sk.t=Date.now();if(ok)sk.m=Math.max(0,sk.m-1);else{sk.m++;sk.e=(sk.e||0)+1}save();
 const m=ok?pk(OKS.ar):'لا بأس 🌱 '+(q.w||'');bpush('a',m);window.MC&&MC.mood(ok?'happy':'oops',1200);if(!muted())say(m.replace(/[🌱]/g,''),'ar',null,ok?'happy':'soft');setTimeout(()=>runEx(L,i+1,s+ok,topic),ok?700:1250)};box.appendChild(b)});
-const l=document.getElementById('bl');l.appendChild(box);l.scrollTop=l.scrollHeight}
+const l=document.getElementById('bl');l.appendChild(box);l.scrollTop=l.scrollHeight;requestAnimationFrame(()=>setTimeout(()=>{try{box.scrollIntoView({block:'end',behavior:'smooth'})}catch(e){l.scrollTop=l.scrollHeight}},120))}
 const pickc=()=>{const a=localAI.topics();return a[Math.floor(Math.random()*a.length)]};
 let BMIC=null;
 const bmicText=t=>{const e=document.getElementById('bst');if(e)e.textContent=t||''};
