@@ -123,7 +123,7 @@ function check(strokes,target,o){o=o||{};const u=prep(strokes);if(!u||u.len<u.si
  let s=me.s;if(mk.ok)s+=.03;
  const mir=s<OK&&scoreFor({...u,pts:u.flip,P:u.P.map(([x,y])=>[-x,y])},target);
  const res={ok:false,close:false,score:+s.toFixed(3),tip:'',as:other&&other.s>s?other.c:null};
- if(other&&other.s>=.74&&other.s>s+.12){res.tip=`هذا يشبه حرف «${other.c}» 😊 ونحن نكتب «${target}»، انظر إلى الشكل وحاول مرة أخرى`;res.close=s>=NEARV;return res}
+ if(other&&other.s>=.74&&other.s>s+.12){res.tip=`هذا يشبه حرف «${other.c}». ونحن نكتب «${target}». انظر إلى الشكل وحاول مرة أخرى 😊`; /* ثلاث جمل قصيرة: لكلٍّ مقطع مسجّل لكل حرف */res.close=s>=NEARV;return res}
  if(s>=OK){if(mk.miss&&ar){res.close=true;res.tip='رائع! لا تنسَ النقاط ✨';return res}
   res.ok=true;res.tip=mk.miss?'أحسنت! وأضف النقطة أيضًا ✨':!mk.ok&&me.t&&me.t.n?(mk.side?'أحسنت! انتبه: النقاط في المكان الآخر (فوق/تحت) 👀':'أحسنت! انتبه لعدد النقاط 👀'):'';return res}
  if(mir&&mir.s>=OK&&mir.s>s+.1){res.close=true;res.tip='الحرف مقلوب مثل المرآة 🪞 اكتبه في الاتجاه الآخر';return res}

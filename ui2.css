@@ -155,3 +155,10 @@ body:not([data-theme=dark]){background:radial-gradient(900px 420px at 85% -60px,
 @media (prefers-color-scheme: dark){:root:not([data-theme=light]) .mind-card{background:#24275e;color:#eef0ff}
  :root:not([data-theme=light]) :is(.mc-bars i,.mc-tags span){background:#2e3270}
  :root:not([data-theme=light]) .mc-weak button{background:#3a2f22;border-color:#6a4a20;color:#ffd9a8}}
+
+/* تسلسل الأعداد (أكمل العدّ): خانات مستقلة من اليمين، والناقص في خانة متقطعة */
+.q.seq{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;direction:rtl;font-size:clamp(1.5rem,8vw,2.3rem)!important;line-height:1.2}
+.q.seq .sq{display:inline-flex;align-items:center;justify-content:center;min-width:1.8em;padding:.15em .25em;border-radius:14px;background:rgba(255,255,255,.12);border:2px solid rgba(160,150,255,.45);font-size:1em;font-weight:900}
+.q.seq .sq.gap{border-style:dashed;color:#5b8cff;background:transparent}
+:root[data-theme=light] .q.seq .sq{background:#f4f1ff;border-color:#d6ccff}
+@media (prefers-color-scheme: light){:root:not([data-theme=dark]) .q.seq .sq{background:#f4f1ff;border-color:#d6ccff}}
