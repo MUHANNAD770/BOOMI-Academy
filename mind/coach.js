@@ -37,7 +37,7 @@ function onAnswer(o){const x=o.x,en=x.l==='en',chosen=o.chosen||'';let type='';
   out.msg=choose(cat);if(s.streak>=5)out.mood='wow';if(cat==='recovered'||cat==='streak8')out.mood='proud'}
  else{const open=choose(s.wrongRow>=2?'soft2':'soft');out.msg=[open,a&&a.why,a&&a.fix].filter(Boolean).join(' ');
   /* إعادة التدريب: نعيد السؤال بصيغة أخرى لاحقًا (مرتين على الأكثر في الاختبار) */
-  if(s.redrill<2&&!x.rd){s.redrill++;out.redrill=true}}
+  if(!x.rd){s.redrill++;out.redrill=true} /* quiz.js يعيد السؤال نفسه */}
  return out}
 /* تسهيل السؤال بعد خطأين متتاليين: نحذف خيارين خاطئين ونُبقي خيارين */
 function shape(x){const s=Mem.sess();if(!x||x.eased||x.typ||!x.opts||x.opts.length<=2)return x;
