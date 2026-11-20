@@ -19,6 +19,18 @@ def _nun(w):
     w=w[:-1]
     if w.endswith('\u0629'): w=w[:-1]+'\u062A'
     return w+v+'\u0646\u0652'
+# الصوتان (Hamed وZariyah) يُسقطان النون تمامًا عند الوقف حتى لو كُتبت صريحة (قَلْبٌ = قَلْبُنْ = قَلْبْ في الصوت، بالقياس)،
+# ويُظهرها فقط إذا كانت مشدّدة ساكنة: قَلْبُنّْ (قياس: +0.2 ثانية ونون أنفية واضحة). داخل الجملة ينطق التنوين صحيحًا فلا نغيّره.
+STOPC=r'(?=\s*(?:[.!؟?،,:;؛]|$))'
+def tanween_male(t,l):
+    if l!='ar': return t
+    def f(m):
+        w=m.group(0);sh=w.endswith('\u0651') and w[-2] in '\u064C\u064D'
+        if sh: w=w[:-2]+'\u0651'+w[-2]
+        v='\u064F' if w.endswith('\u064C') else '\u0650';w=w[:-1]
+        if w.endswith('\u0629'): w=w[:-1]+'\u062A'
+        return w+v+'\u0646\u0651\u0652'
+    return re.sub(r'[\u0621-\u064A][\u0621-\u064A\u064B-\u0652\u0670]*[\u064C\u064D]\u0651?'+STOPC,f,t)
 def tanween(t,l):
     # كل كلمة منوّنة بالضم أو الكسر (منفردة أو في جملة) تُرسل للمحرك بالنون صريحة كي لا يقف عليها فيُسقطها
     if l!='ar': return t
@@ -33,7 +45,7 @@ async def one(who,k,t,l,sem,stat):
     async with sem:
         for a in range(5):
             try:
-                c=edge_tts.Communicate(natural(tanween(t,l),l) if who=='female' else tanween(t,l),VOICES[who][l],rate=RATES[who][l],proxy=PROXY)
+                c=edge_tts.Communicate(natural(tanween_male(t,l),l) if who=='female' else tanween_male(t,l),VOICES[who][l],rate=RATES[who][l],proxy=PROXY)
                 await c.save(raw)
                 if os.path.getsize(raw)<300: raise Exception('small')
                 break
