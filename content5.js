@@ -40,7 +40,7 @@ add(2,'Greetings','en','Hello,مَرْحَبًا|Goodbye,مَعَ السَّلَ
 add(2,'Big family','en','Grandma,👵|Uncle,🧔|Aunt,👩|Cousin,🧒|Parents,👨‍👩‍👧');
 add(2,'Opposites with pictures','en','Hot,🔥|Cold,🥶|Up,⬆️|Down,⬇️|Day,🌞|Night,🌙');
 add(3,'Present continuous','en','I am reading,📖|He is running,🏃|She is singing,🎤|They are swimming,🏊|We are eating,🍽️');
-add(3,'My, your, his, her','en','My,ـِي|Your,ـكَ|His,لَهُ|Her,لَهَا|Our,لَنَا|Their,لَهُمْ');
+add(3,'My, your, his, her','en','My,مِثْلُ كِتَابِي|Your,مِثْلُ كِتَابِكَ|His,مِثْلُ كِتَابِهِ|Her,مِثْلُ كِتَابِهَا|Our,مِثْلُ كِتَابِنَا|Their,مِثْلُ كِتَابِهِمْ');
 add(3,'Amazing animals','en','Giraffe,tallest animal|Elephant,biggest land animal|Cheetah,fastest land animal|Camel,ship of the desert|Chameleon,changes its color|Blue whale,biggest animal in the world');
 add(3,'Water cycle','en','Evaporation,water goes up as vapor|Condensation,vapor becomes clouds|Precipitation,rain or snow falls|Collection,water returns to rivers');
 add(3,'Punctuation','en','Period,end of a sentence|Comma,between words in a list|Question mark,after a question|Exclamation mark,shows surprise|Apostrophe,shows belonging');
@@ -49,7 +49,7 @@ add(3,'Directions','en','Turn left,⬅️|Turn right,➡️|Go straight,⬆️|S
 add(4,'Proverbs','en','Practice makes perfect,💪|Time is money,⏳|Smile and the world smiles back,😊|Actions speak louder than words,🗣️|A friend in need is a friend indeed,🤝|The early bird catches the worm,🐦');
 add(4,'Modal verbs','en','Can,ability|Must,necessity|Should,advice|May,permission|Could,polite request|Might,possibility');
 add(4,'Story words','en','Beginning,the start of a story|Character,a person in a story|Setting,where a story happens|Problem,what goes wrong|Ending,how a story finishes');
-add(4,'Our planet','en','Recycle,♻️|Pollution,🏭|Forest,🌲|Energy,⚡|Planet,🌍|Save water,🚰');
+add(4,'Our planet','en','Recycle,♻️|Pollution,🏭|Forest,🌲|Energy,⚡|Planet,🪐|Save water,🚰');
 add(4,'Healthy habits','en','Exercise every day,🏃|Drink more water,💧|Eat vegetables,🥦|Sleep eight hours,😴|Wash your hands,🧼');
 add(4,'Technology','en','Internet,🌐|Password,🔑|Email,📧|Download,⬇️|Screen,🖥️');
 add(4,'Dream jobs','en','Engineer,👷|Scientist,🧑‍🔬|Artist,🧑‍🎨|Judge,🧑‍⚖️|Firefighter,🧑‍🚒|Astronaut,🧑‍🚀');

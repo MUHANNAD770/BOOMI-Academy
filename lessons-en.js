@@ -17,13 +17,13 @@ const findId=id=>{const a=+String(id).split('-')[0];return S[a]&&S[a].u.find(u=>
 
 /* ---------- ١) إزالة التكرار ---------- */
 const swap=(id,from,to)=>{const u=findId(id);if(!u)return;const i=u.i.findIndex(x=>String(x[0]).toLowerCase()===from.toLowerCase());if(i>=0)u.i[i]=[to[0],to[1],'en']};
-swap('1-42','Ice',['Lemonade','🍋']);swap('1-42','Juice',['Soup','🍲']);
+swap('1-42','Ice',['Lemonade','🍋']);swap('1-42','Juice',['Smoothie','🥤']); /* كانت Soup: الحساء ليس مشروبًا */
 swap('1-57','Red',['Pink','🩷']);
 swap('3-0','Thank you',['See you later','👋']);
 /* كلمات مكررة بين درس المفردات ودرس الصوتيات أو الحروف: نستبدلها بكلمات جديدة من النمط نفسه */
 swap('1-29','Cat',['Van','🚐']);swap('4-18','Map',['Tent','⛺']);swap('1-3','Orange',['Otter','🦦']);swap('1-3','Kite',['Koala','🐨']);
 swap('2-28','Duck',['Rock','🪨']);swap('2-28','Clock',['Jacket','🧥']);swap('2-27','Sheep',['Shampoo','🧴']);swap('2-27','Cheese',['Chips','🍟']);swap('2-27','Shell',['Brush','🖌️']);
-swap('1-31','Pot',['Mop','🧹']);swap('2-56','Flower',['Branch','🌿']);swap('1-2','Goat',['Gift','🎁']);swap('1-2','Hat',['Hippo','🦛']);
+swap('1-31','Pot',['Mop','🧹']);swap('2-56','Flower',['Branch','غُصْن']);swap('1-2','Goat',['Gift','🎁']);swap('1-2','Hat',['Hippo','🦛']);
 swap('2-29','Cake',['Grape','🍇']);swap('2-29','Bike',['Smile','😊']);swap('2-29','Moon',['Boot','👢']);swap('1-30','Pig',['Bin','🗑️']);swap('1-22','Violin',['Volcano','🌋']);swap('4-28','Forest',['Earth','🌍']);swap('2-27','Ship',['Shop','🏪']);swap('4-19','Planet',['Microscope','🔬']);swap('3-25','Hot',['Warm','☀️']);swap('3-9','Cold',['Empty','opposite of full']);
 swap('2-0','Bed',['Web','🕸️']);swap('2-0','Sun',['Jam','🍯']);
 
@@ -86,7 +86,7 @@ for(const[a,u]of NEW){if(!S[a])continue;const id=a+'-'+S[a].u.length;u.id=id;u.l
 /* ---------- ٣) أنواع التمارين الإنجليزية ---------- */
 const LET='abcdefghijklmnopqrstuvwxyz'.split(''),VOW='aeiou';
 const mk=(it,show,right,wrongs,extra)=>{const o=shuf([right,...wrongs.filter(w=>w!==right)].filter((x,i,a)=>a.indexOf(x)===i).slice(0,4));if(o.length<2)return null;
- return Object.assign({k:it[0],m:0,l:'en',show,opts:o.map(h=>({h,ok:h===right})),ex:[`${it[0]} = ${it[1]}`,`Listen: ${it[0]}`]},extra||{})};
+ return Object.assign({k:it[0],m:0,l:'en',show,opts:o.map(h=>({h,ok:h===right})),ex:[`${it[0]} = ${it[1]}`,`الْكَلِمَةُ: ${it[0]}`]},extra||{})};
 const others=(u,it,f)=>shuf(u.i.filter(x=>x!==it&&(!f||f(x))));
 const ar=it=>{const m=String(it[1]);if(/[؀-ۿ]/.test(m))return m.replace(/[\p{Extended_Pictographic}️‍]/gu,'').trim();try{return window.EnCoach&&EnCoach.meaning(it[0])||''}catch(e){return''}}; /* (القاموس لا يعطي معنى لجملة كاملة إلا إذا كُتبت ترجمتها في الدرس) */
 const emo=it=>(String(it[1]).match(/[\p{Extended_Pictographic}️‍]+/u)||[''])[0];
@@ -94,16 +94,16 @@ const E={
  firstEn(u,it){const w=String(it[0]);if(/\s/.test(w))return null;const f=w[0].toLowerCase();return mk(it,`<div class=q>${isPic(it[1])?it[1]:esc(w)}</div><p class=mut>What letter does it start with? بِأَيِّ حَرْفٍ تَبْدَأ؟</p>`,f.toUpperCase(),shuf(LET.filter(x=>x!==f)).slice(0,3).map(x=>x.toUpperCase()),{sp:[w,'en']})},
  missingEn(u,it){const w=String(it[0]).toLowerCase();if(/[\s’']/.test(w)||w.length<3)return null;const vi=[...w].map((c,i)=>VOW.includes(c)?i:-1).filter(i=>i>=0);const i=vi.length&&Math.random()<.7?vi[Math.floor(Math.random()*vi.length)]:Math.floor(Math.random()*w.length),r=w[i];
   const pool=VOW.includes(r)?VOW.split(''):LET;return mk(it,`<div class=q>${isPic(it[1])?it[1]:''}</div><div class=spell dir=ltr>${[...w].map((c,j)=>j===i?'<i class=gap>?</i>':`<span>${c}</span>`).join('')}</div><p class=mut>Missing letter — الحَرْفُ النَّاقِص</p>`,r,shuf(pool.filter(x=>x!==r)).slice(0,3),{sp:[it[0],'en']})},
- spell(u,it){const w=String(it[0]).toLowerCase();if(/[\s’']/.test(w)||w.length<2||w.length>8)return null;const t=[...w];return{k:it[0],m:4,l:'en',sp:[it[0],'en'],w:'build',tiles:shuf([...t,...(t.length<5?shuf(LET.filter(x=>!t.includes(x))).slice(0,1):[])]),target:t,hint:isPic(it[1])?it[1]:emo(it),title:'Spell the word — رَكِّبِ الكَلِمَة',ex:[`Spelling: ${w.toUpperCase().split('').join(', ')}`,`It starts with ${w[0]}`]}},
+ spell(u,it){const w=String(it[0]).toLowerCase();if(/[\s’']/.test(w)||w.length<2||w.length>8)return null;const t=[...w];return{k:it[0],m:4,l:'en',sp:[it[0],'en'],w:'build',tiles:shuf([...t,...(t.length<5?shuf(LET.filter(x=>!t.includes(x))).slice(0,1):[])]),target:t,hint:isPic(it[1])?it[1]:emo(it),title:'Spell the word — رَكِّبِ الكَلِمَة',ex:[`تُكْتَبُ هَكَذَا: ${w.toUpperCase().split('').join(', ')}`,`تَبْدَأُ بِحَرْفِ ${w[0].toUpperCase()}`]}},
  meaningAr(u,it){const m=ar(it);if(!m)return null;const wr=others(u,it).map(ar).filter(x=>x&&x!==m);return mk(it,`<div class=q dir=ltr>${esc(it[0])}</div><p class=mut>مَا مَعْنَاهَا بِالعَرَبِيَّة؟</p>`,m,wr,{sp:[it[0],'en']})},
  fromAr(u,it){const m=ar(it);if(!m)return null;return mk(it,`<div class=q style="font-size:1.4rem">${emo(it)} ${esc(m)}</div><p class=mut>How do we say it in English? كَيْفَ نَقُولُهَا بِالإِنْجِلِيزِيَّة؟</p>`,it[0],others(u,it).map(x=>x[0]))},
  listenEn(u,it){return mk(it,`<div class=q>🔊</div><p class=mut>Listen and choose — اسْتَمِعْ وَاخْتَر</p>`,it[0],others(u,it).map(x=>x[0]),{sp:[it[0],'en'],m:1})},
- orderEn(u,it){const ws=String(it[0]).replace(/[?.!,]/g,'').split(/\s+/).filter(Boolean);if(ws.length<2||ws.length>8)return null;return{k:it[0],m:5,l:'en',sp:[it[0],'en'],w:'order',tiles:shuf(ws),target:ws,hint:emo(it),title:'Put the words in order — رَتِّبِ الكَلِمَات',ex:[`The sentence: ${it[0]}`,`It starts with “${ws[0]}”`]}},
+ orderEn(u,it){const ws=String(it[0]).replace(/[?.!,]/g,'').split(/\s+/).filter(Boolean);if(ws.length<2||ws.length>8)return null;return{k:it[0],m:5,l:'en',sp:[it[0],'en'],w:'order',tiles:shuf(ws),target:ws,hint:emo(it),title:'Put the words in order — رَتِّبِ الكَلِمَات',ex:[`الْجُمْلَةُ الصَّحِيحَةُ: ${it[0]}`,`تَبْدَأُ بِكَلِمَةِ “${ws[0]}”`]}},
  /* الفراغ بالقاعدة: نحذف كلمة القاعدة من الجملة ونختار الصحيح من بدائلها */
  blank(u,it){const gw=u.gw;if(!gw)return null;const toks=String(it[0]).split(/(\s+)/);const lw=gw.map(x=>x.toLowerCase());const i=toks.findIndex(t=>lw.includes(t.replace(/[?.!,]/g,'').toLowerCase()));if(i<0)return null;
   const right=toks[i].replace(/[?.!,]/g,''),punc=toks[i].slice(right.length);const shown=toks.map((t,j)=>j===i?'<i class=gap>___</i>'+punc:esc(t)).join('');
   const alts=gw.filter(x=>x.toLowerCase()!==right.toLowerCase());const pairs=alts.filter(x=>/’s$/.test(x)===/’s$/.test(right));
-  return mk(it,`<div class=q dir=ltr style="font-size:1.45rem">${emo(it)} ${shown}</div><p class=mut>${esc(ar(it))}</p><p class=mut>Choose the right word — اخْتَرِ الكَلِمَةَ الصَّحِيحَة</p>`,right,(pairs.length?pairs:alts).slice(0,3),{ex:[`${it[0]} — ${u.g?strip(u.g).slice(0,90):''}`,`The answer is “${right}”`]})},
+  return mk(it,`<div class=q dir=ltr style="font-size:1.45rem">${emo(it)} ${shown}</div><p class=mut>${esc(ar(it))}</p><p class=mut>Choose the right word — اخْتَرِ الكَلِمَةَ الصَّحِيحَة</p>`,right,(pairs.length?pairs:alts).slice(0,3),{ex:[`${it[0]} — ${u.g?strip(u.g).slice(0,90):''}`,`الْجَوَابُ الصَّحِيحُ: “${right}”`]})},
  /* a أم an */
  article(u,it){const m=String(it[0]).match(/^(a|an)\s+(.+)$/i);if(!m)return null;return mk(it,`<div class=q dir=ltr>${emo(it)} ___ ${esc(m[2])}</div><p class=mut>a or an?</p>`,m[1].toLowerCase(),[m[1].toLowerCase()==='a'?'an':'a'],{sp:[m[2],'en'],ex:[`${it[0]}: «${m[2]}» ${/^[aeiou]/i.test(m[2])?'تَبْدَأُ بِصَوْتٍ مُتَحَرِّكٍ ← an':'لَا تَبْدَأُ بِصَوْتٍ مُتَحَرِّكٍ ← a'}`,'an قبل a e i o u']})},
  /* القافية / نفس الصوت (دروس الأصوات) */
