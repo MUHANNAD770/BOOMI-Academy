@@ -7,14 +7,21 @@ function qSegs(s){let t=tx(s).replace(/\(\s*[\u0621-\u064A][\u064B-\u0652]*\s*\)
  t=t.replace(FR,m=>/[؟?]/.test(m)&&(m.trim().split(/\s+/).length>=2)?' ':m).replace(/_{2,}/g,' … ').replace(/\s+([؟?!.،,])/g,'$1').replace(/\s+/g,' ').trim();
  const out=[];for(const m of t.matchAll(/[A-Za-z][A-Za-z0-9’'.,!?…\s]*|[^A-Za-z]+/g)){let y=m[0].replace(/^[\s,،.…]+|[\s,،…]+$/g,'').trim();if(!y||!/[\p{L}]/u.test(y))continue;out.push([y,/[A-Za-z]/.test(y)?'en':'ar'])}return out}
 function qList(x){const L=[];const add=(t,l)=>{if(t)L.push([t,l])};
-if(x.k.startsWith('m-'))add(tx(x.show),'ar');
+if(x.k.startsWith('m-')){ /* الرياضيات: نقرأ السؤال بكلماته لا بشكله المرسوم («٢ + ٣ = ؟» ← «كَمْ يُسَاوِي ٢ زَائِد ٣»)، كل جزء بمقطعه المسجّل */
+ const d=document.createElement('div');d.innerHTML=x.show;const OP={'+':'زَائِد','−':'نَاقِص','-':'نَاقِص','×':'ضَرْب','÷':'قِسْمَة عَلَى'};
+ d.querySelectorAll('p.mut').forEach(e=>add(tx(e.innerHTML),'ar'));
+ const sq=[...d.querySelectorAll('.sq')];if(sq.length)sq.forEach(e=>add(e.classList.contains('gap')?'مَاذَا':e.textContent.trim(),'ar'));
+ d.querySelectorAll('.q').forEach(e=>{if(e.classList.contains('seq'))return;const t=e.textContent.replace(/\s+/g,' ').trim();let m;
+  if(m=t.match(/^(\S+) ?([+−×÷-]) ?(\S+) ?= ?[؟?]$/)){add('كَمْ يُسَاوِي','ar');add(m[1],'ar');add(OP[m[2]],'ar');add(m[3],'ar')}
+  else if(m=t.match(/^([0-9\u0660-\u0669]+) ?[—–-] ?([0-9\u0660-\u0669]+)$/)){add(m[1],'ar');add('أَمْ','ar');add(m[2],'ar')}});
+}
 else if(x.typ)add('اُكْتُبِ الكَلِمَةَ الَّتِي تَسْمَعُهَا','ar');
 else if(x.w)add(x.w=='build'?'رَتِّبِ الحُرُوفَ لِتُكَوِّنَ الكَلِمَة':'رَتِّبِ الكَلِمَاتِ لِتُكَوِّنَ الجُمْلَة','ar');
 else if(x.m==1)add('اِسْتَمِعْ جَيِّدًا، ثُمَّ اخْتَرِ الإِجَابَةَ المُنَاسِبَةَ','ar');
 else if(x.m==0||x.m==null){const sg=qSegs(x.show);if(!sg.length||!sg.some(z=>/[؟?]|اخْتَر|اِخْتَر|Choose/.test(z[0])))add('اِخْتَرِ الإِجَابَةَ المُنَاسِبَةَ','ar');sg.forEach(z=>L.push(z))}
 else add('اِقْرَأِ الكَلِمَةَ، ثُمَّ اخْتَرْ مَعْنَاهَا','ar');
 if(x.sp&&!/^m-(tbl|cry|bor)/.test(x.k)&&!L.some(z=>z[0]===x.sp[0]&&z[1]===x.sp[1]))L.push([x.sp[0],x.sp[1]]);
-if(!x.typ&&!x.w){const os=(x.opts||[]).map(o=>tx(o.h)).filter(t=>t&&t.length<=40&&/[\p{L}\p{N}]/u.test(t));if(os.length>=2){L.push(['الخِيَارَات','ar']);os.forEach(t=>qSegs(t).forEach(z=>L.push(z)))}}return L}
+if(!x.typ&&!x.w){const os=(x.opts||[]).map(o=>tx(o.h)).filter(t=>t&&t.length<=40&&/[\p{L}\p{N}]/u.test(t));if(os.length>=2){L.push(['الخِيَارَات','ar']);os.forEach(t=>{const sg=qSegs(t);if(sg.length)sg.forEach(z=>L.push(z));else if(/^[0-9\u0660-\u0669]+$/.test(t.trim()))L.push([t.trim(),'ar']) /* الخيارات الرقمية كانت تُحذف فيسكت بعد «الخيارات» */})}}return L}
 function sayList(L,i=0){if(!L||i>=L.length||(window.muted&&muted()))return;say(L[i][0],L[i][1],()=>{const m=say.tk;setTimeout(()=>{if(say.tk==m)sayList(L,i+1)},250)})}
 const oq=quiz;quiz=()=>{hr=3;oq()};
 q=function(){const x=qs[qi];try{if(window.MindCoach&&!(cur&&cur.id==='pl'))MindCoach.shape(x)}catch(e){}V='quiz';t0=Date.now();const L=qList(x);

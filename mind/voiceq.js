@@ -57,27 +57,29 @@ function ask(manual){if(open||!window.P)return false;const q=make();if(!q)return
   m.vq.push(q.id);if(m.vq.length>30)m.vq.shift();m.vqLast=Date.now();const day=new Date().toDateString();if(m.vqDay!==day){m.vqDay=day;m.vqN=0}m.vqN=(m.vqN||0)+1;
   const stat=P.stat.v=P.stat.v||[0,0];stat[0]++;stat[1]+=+ok;Mem.observe({k:q.key,ok,ms:(T-left)*1000,type:ok?'':'voice'});
   let msg;const ans=q.kind==='num'?D(q.answer):q.answer;
-  if(ok){P.star=(P.star||0)+2;msg=Coach.choose(q.lang==='en'?'en':'ok')+' +٢ ⭐'}
+  if(ok){P.star=(P.star||0)+2;msg=Coach.choose(q.lang==='en'?'en':'ok')+(P.gender==='female'?' رَبِحْتِ':' رَبِحْتَ')+' نَجْمَتَيْنِ ⭐⭐'} /* كانت «+٢ ⭐»: تبدو إجابة ثانية، وتُقرأ «زَائِد اثْنَان» */
   else if(!heard)msg=`لَمْ أَسْمَعْ جَوَابًا، لَا بَأْسَ! الْجَوَابُ: ${ans}.`;
   else{let why='';if(q.mx&&window.MindAnalyzer){const a=MindAnalyzer.analyze({k:q.key,show:`${q.mx.a} ${q.mx.op} ${q.mx.b}`},heard);why=a.fix||''}
    msg=`${Coach.choose('soft')} ${why||`الْجَوَابُ الصَّحِيحُ: ${ans}.`}`}
   save();st((ok?'✅ ':'💡 ')+msg);d.querySelector('.vq-card').classList.add(ok?'good':'soft');const b=document.getElementById('vq-opts');if(b&&!b.hidden)b.querySelectorAll('button').forEach(x=>{x.disabled=true;if(x.dataset.ok==='1')x.classList.add('ok')});
   try{HurufiSound.play(ok?'correct':'wrong');MC.mood(ok?'proud':'tilt',1800)}catch(_){}
   let closed=false;const end=()=>{if(closed)return;closed=true;setTimeout(close,900)};
-  if(!muted())say(msg.replace(/[^\p{L}\p{M}\p{N}\s،.!؟:+−×]/gu,' '),'ar',end,ok?'cheer':'soft');setTimeout(end,ok?4500:7500)}
+  if(!muted())say(fem(msg).replace(/[^\p{L}\p{M}\p{N}\s،.!؟:+−×]/gu,' '),'ar',end,ok?'cheer':'soft');setTimeout(end,ok?4500:7500)}
  function listen(){if(done)return;const t=d.querySelector('.vq-timer');t.hidden=false;const fg=d.querySelector('.vq-fg'),C=2*Math.PI*34;fg.style.strokeDasharray=C;const t0=Date.now();
   timer=setInterval(()=>{const el2=(Date.now()-t0)/1000;left=Math.max(0,T-el2);fg.style.strokeDashoffset=C*(el2/T);const s=document.getElementById('vq-sec');if(s)s.textContent=D(Math.ceil(left));
    if(left<=0){clearInterval(timer);const j=judge(q,alts);finish(j.ok,j.heard)}},100);
   if(!mic){st('👆 اِخْتَرِ الْإِجَابَةَ');showChoices();return}
   const start=()=>{if(done)return;try{rec=new (SR())();rec.lang=q.lang==='en'?'en-US':'ar-SA';rec.interimResults=true;rec.maxAlternatives=5;rec.continuous=false;
-    rec.onresult=e=>{const r=e.results[e.results.length-1],a=[...r].map(x=>x.transcript);st('🗣️ '+a[0]);a.forEach(x=>{if(!alts.includes(x))alts.unshift(x)});
+    rec.onresult=e=>{if(done)return; /* بعد الإجابة لا نعرض ما يلتقطه الميكروفون (كان يكتب فوق رسالة النجاح) */const r=e.results[e.results.length-1],a=[...r].map(x=>x.transcript);st('🗣️ '+a[0]);a.forEach(x=>{if(!alts.includes(x))alts.unshift(x)});
      if(r.isFinal){const j=judge(q,alts);if(j.ok)finish(true,j.heard);else if(left>4){st('🎧 حَاوِلْ مَرَّةً أُخْرَى…');setTimeout(start,250)}else finish(false,j.heard)}};
     rec.onerror=e=>{if(e.error==='not-allowed'||e.error==='service-not-allowed'||e.error==='audio-capture'){st('👆 اِخْتَرِ الْإِجَابَةَ');showChoices()}};
     rec.onend=()=>{if(!done&&left>3&&rec)setTimeout(()=>{if(!done&&document.getElementById('vq-opts').hidden)start()},200)};
     rec.start();st('🎤 أَسْمَعُكَ… تَكَلَّمِ الْآنَ');try{MC.mood('listen',T*1000)}catch(_){}}catch(_){st('👆 اِخْتَرِ الْإِجَابَةَ');showChoices()}};start()}
  /* بومي يتكلم أولًا، ثم يُفتح الميكروفون تلقائيًا */
  let started=false;const go=()=>{if(started||done)return;started=true;listen()};
- if(muted())setTimeout(go,900);else{say(q.ask,q.askLang||'ar',go,'ask');setTimeout(go,6500)}
+ if(muted())setTimeout(go,900);else{say(q.ask,q.askLang||'ar',go,'ask');
+  /* احتياط إن لم يصل إشعار انتهاء الكلام: لا نفتح الميكروفون وبومي ما زال يتكلم (كان يلتقط صوته هو: «زَائِد ٢») */
+  const wait=()=>{if(started||done)return;if(window.say&&say.live)setTimeout(wait,400);else go()};setTimeout(wait,6500)}
  return true}
 
 /* ---------- متى يسأل بومي؟ ---------- */
