@@ -50,7 +50,7 @@ function judge(q,alts){alts=alts.filter(Boolean);if(!alts.length)return{ok:false
 /* ---------- الواجهة ---------- */
 const el=()=>document.getElementById('vq');
 function close(){open=false;clearInterval(timer);const e=el();if(e)e.remove();try{say.stop();window.HurufiClips&&HurufiClips.stop()}catch(_){}}
-function ask(manual){if(open||!window.P)return false;const q=make();if(!q)return false;q.ask=fem(q.ask);open=true;const m=Mem.M(),T=(+P.age||7)<7?15:12,mic=micMode();
+function ask(manual,rq){if(open||!window.P)return false;const q=rq||make();if(!q)return false;if(!rq)q.ask=fem(q.ask); /* rq: السؤال نفسه مرة ثانية بعد الخطأ */open=true;const m=Mem.M(),T=(+P.age||7)<7?15:12,mic=micMode();
  const d=document.createElement('div');d.id='vq';d.setAttribute('role','dialog');d.setAttribute('aria-label','سؤال من بومي');
  d.innerHTML=`<div class=vq-card><button class=vq-x aria-label="تخطّي">✕</button><div class=vq-head><span class=vq-owl>🦉</span><b>سُؤَالٌ مِنْ بُومِي!</b></div>${q.show}<p class=vq-ask dir=auto>${q.ask}</p>
   <div class=vq-timer hidden><svg viewBox="0 0 80 80"><circle cx=40 cy=40 r=34 class=vq-bg /><circle cx=40 cy=40 r=34 class=vq-fg /></svg><b id=vq-sec>${D(T)}</b></div>
@@ -68,11 +68,12 @@ function ask(manual){if(open||!window.P)return false;const q=make();if(!q)return
   let msg;const ans=q.kind==='num'?D(q.answer):q.answer;
   if(ok){P.star=(P.star||0)+2;msg=Coach.choose(q.lang==='en'?'en':'ok')+(P.gender==='female'?' رَبِحْتِ':' رَبِحْتَ')+' نَجْمَتَيْنِ ⭐⭐'} /* كانت «+٢ ⭐»: تبدو إجابة ثانية، وتُقرأ «زَائِد اثْنَان» */
   else if(!heard)msg=`لَمْ أَسْمَعْ جَوَابًا، لَا بَأْسَ! الْجَوَابُ: ${ans}.`;
+  else if(!q.rt)msg=`${Coach.choose('soft')} فَكِّرْ جَيِّدًا وَحَاوِلْ مَرَّةً أُخْرَى!`; /* لا نكشف الجواب: السؤال نفسه يعود ليصحّح خطأه */
   else{let why='';if(q.mx&&window.MindAnalyzer){const a=MindAnalyzer.analyze({k:q.key,show:`${q.mx.a} ${q.mx.op} ${q.mx.b}`},heard);why=a.fix||''}
    msg=`${Coach.choose('soft')} ${why||`الْجَوَابُ الصَّحِيحُ: ${ans}.`}`}
-  save();st((ok?'✅ ':'💡 ')+msg);d.querySelector('.vq-card').classList.add(ok?'good':'soft');const b=document.getElementById('vq-opts');if(b&&!b.hidden)b.querySelectorAll('button').forEach(x=>{x.disabled=true;if(x.dataset.ok==='1')x.classList.add('ok')});
+  save();st((ok?'✅ ':'💡 ')+msg);d.querySelector('.vq-card').classList.add(ok?'good':'soft');const again=!ok&&heard&&!q.rt;const b=document.getElementById('vq-opts');if(b&&!b.hidden)b.querySelectorAll('button').forEach(x=>{x.disabled=true;if(x.dataset.ok==='1'&&!again)x.classList.add('ok')});
   try{HurufiSound.play(ok?'correct':'wrong');MC.mood(ok?'proud':'tilt',1800)}catch(_){}
-  let closed=false;const end=()=>{if(closed)return;closed=true;setTimeout(close,900)};
+  let closed=false;const end=()=>{if(closed)return;closed=true;setTimeout(()=>{const alive=document.body.contains(d);close();if(again&&alive)setTimeout(()=>ask(true,{...q,rt:1}),350)},900) /* ✕ أثناء الرسالة: لا إعادة */};
   if(!muted())say(fem(msg).replace(/[^\p{L}\p{M}\p{N}\s،.!؟:+−×]/gu,' '),'ar',end,ok?'cheer':'soft');setTimeout(end,ok?4500:7500)}
  function listen(){if(done)return;const t=d.querySelector('.vq-timer');t.hidden=false;const fg=d.querySelector('.vq-fg'),C=2*Math.PI*34;fg.style.strokeDasharray=C;const t0=Date.now();
   timer=setInterval(()=>{const el2=(Date.now()-t0)/1000;left=Math.max(0,T-el2);fg.style.strokeDashoffset=C*(el2/T);const s=document.getElementById('vq-sec');if(s)s.textContent=D(Math.ceil(left));

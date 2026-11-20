@@ -97,6 +97,7 @@ function show(){const{i,qs,L}=S;if(i>=qs.length)return finish();const q=qs[i];S.
  <div class=bq-top><b>${esc(S.name)}</b><small>سؤال ${D(i+1)} من ${D(qs.length)}${S.streak>=2?` · <span class=bq-streak>🔥 ${D(S.streak)}</span>`:''}</small></div>
  <div class=bq-dots>${qs.map((x,k)=>`<i class="${k<i?(x._ok?'ok':'no'):k===i?'cur':''}"></i>`).join('')}</div>
  <div class=bq-card>
+ ${q._rt?`<p class=bq-retry>🔁 فُرْصَةٌ ثَانِيَةٌ لِهَذَا السُّؤَالِ</p>`:''}
  ${q.p?`<div class=bq-pass dir=${dir}><small>📖 اقرأ النص:</small>${esc(q.p)}</div>`:''}
  ${NAMES[q.m]?`<div class=bq-kind>${NAMES[q.m]}</div>`:''}
  ${q.img?`<div class="bq-img">${q.img}</div>`:''}${qText(q,dir)}
@@ -169,7 +170,9 @@ window.bankAns=function(b){if(!S||S.answered)return;const q=S.qs[S.i],ok=b.datas
  result(ok,!ok?((q.wa&&q.wa[b.dataset.v])||''):'',0,b.dataset.v)};
 /* النتيجة المشتركة: الإحصاءات، عقل بومي، الصوت، الشرح بالعربية، أزرار بومي */
 function result(ok,why,wrote,given){S.answered=true;const q=S.qs[S.i],L=S.L;q._ok=ok;S.given=given;S.helped=0;
- if(ok){S.ok++;S.streak++;S.best=Math.max(S.best,S.streak)}else{S.streak=0;S.wrong.push({q,given})}
+ if(ok){if(!q._rt)S.ok++;S.streak++;S.best=Math.max(S.best,S.streak)}else{S.streak=0;if(!q._rt)S.wrong.push({q,given});
+  /* خطأ ← السؤال نفسه يعود بعد سؤالين ليصحّح الطالب خطأه (مرتين على الأكثر؛ لا تُحسب الإعادة في النتيجة) */
+  if((q._rt||0)<2)S.qs.splice(Math.min(S.qs.length,S.i+3),0,{...q,_ok:undefined,_rt:(q._rt||0)+1,o:q.m==='order'?mix(q.seq):q.o&&shuf(q.o)})}
  const topic=q.topic||(S.l&&S.l.name)||S.name;stat(S.sub,q,topic,ok);const tp=S.tops[topic]=S.tops[topic]||[0,0];tp[1]++;if(ok)tp[0]++;
  try{window.Mind&&Mind.record({ok,subject:S.sub,topic,src:'المنهج المتكامل',go:S.si!=null?`bankLesson(${S.si},${S.li},'${S.sub}')`:`bankPractice('${S.sub}')`})}catch(_){}
  try{HurufiSound.play(ok?'correct':'wrong')}catch(_){}
@@ -202,7 +205,7 @@ window.BankNow=function(){if(!S||!document.querySelector('.bank-q'))return null;
  if(S.answered){I.answered=true;I._correct=q.a||(q.sm||[]).join(' ')||'إجابة مفتوحة: تُقبل الإجابات الصحيحة المختلفة';I.studentAnswer=(S.given||'')+(q._ok?' (صحيح)':' (خطأ)');if(q.e)I.instructions+=' | الشرح: '+q.e}
  return I};
 /* ===== نهاية الدرس: النتيجة، نقاط القوة والضعف، الأخطاء، الخطوة التالية ===== */
-function finish(){const{sub,si,li,ok,qs}=S,sc=qs.length?ok/qs.length:0,secs=Math.round((Date.now()-S.t0)/1000);
+function finish(){const{sub,si,li,ok}=S,qs=S.qs.filter(q=>!q._rt),sc=qs.length?ok/qs.length:0,secs=Math.round((Date.now()-S.t0)/1000);
  let nx=null;const d=DATA[sub];
  if(S.si!=null){const k=key(sub,si,li),bk=B(),r=bk[k]=bk[k]||{};r.b=Math.max(r.b||0,+sc.toFixed(2));r.n=(r.n||0)+1;r.t=Math.round(Date.now()/1000);r.l=+sc.toFixed(2);
   nx=d.stages[si].lessons[li+1]?[si,li+1]:d.stages[si+1]?[si+1,0]:null}
