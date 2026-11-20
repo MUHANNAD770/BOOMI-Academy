@@ -1,0 +1,12 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
+torchaudio
+neucodec
+llama-cpp-python
+python-multipart
+soundfile
+numpy
+huggingface_hub
+transformers
+fastapi
+uvicorn

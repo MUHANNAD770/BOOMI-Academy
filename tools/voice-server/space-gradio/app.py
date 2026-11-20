@@ -1,0 +1,14 @@
+# خادم «صوتي الشخصي» على Hugging Face Spaces بنوع Gradio (المجاني): هذا الملف يجلب ملفات الخادم من مستودع الموقع
+# على GitHub عند التشغيل، ثم يشغّله على المنفذ 7860. لا يحتاج رفع ملفات أخرى غير هذا الملف وrequirements.txt وpackages.txt.
+import os, sys, urllib.request
+SRC = 'https://raw.githubusercontent.com/MUHANNAD770/BOOMI-Academy/main/tools/voice-server/'
+FILES = ['app.py', 'engine.py', 'shim/torchtune/__init__.py', 'shim/torchtune/modules/__init__.py', 'shim/torchtune/modules/position_embeddings.py']
+D = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'srv')
+for f in FILES:
+    p = os.path.join(D, f.replace('app.py', 'voice_app.py') if f == 'app.py' else f)
+    os.makedirs(os.path.dirname(p), exist_ok=True)
+    urllib.request.urlretrieve(SRC + f, p)
+sys.path.insert(0, os.path.join(D, 'shim'))  # بديل torchtune المصغّر قبل المكتبات المثبّتة
+sys.path.insert(0, D)
+import uvicorn, voice_app
+uvicorn.run(voice_app.app, host='0.0.0.0', port=int(os.environ.get('PORT', 7860)))
