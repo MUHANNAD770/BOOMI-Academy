@@ -10,6 +10,8 @@ if(typeof oSec==='function')window.sec=function(k){const r=oSec.apply(this,argum
  const h2=S.querySelector(':scope>h2');
  if(HD[k]&&h2&&!S.querySelector('.acad-hd')){const[c,ic,t,sub,em]=HD[k];h2.classList.add('acad-h2');
   h2.insertAdjacentHTML('beforebegin',`<div class="acad-hd ${c}"><span class="acad-ic${/^[\p{L}]/u.test(ic)?'':' e'}"${c=='en'?' dir=ltr':''}>${ic}</span><div><b>${t}</b><small${c=='en'?' dir=ltr':''}>${sub}</small></div><span class=acad-em>${em}</span></div>`)}
+  /* القصص في أكاديمية العربية (كانت داخل صفحة الألعاب فقط) */
+  if(k==='ar'&&typeof window.stories==='function'&&!S.querySelector('.acad-stories'))h2.insertAdjacentHTML('afterend',`<button class="row acad-stories" onclick="stories()"><span>📚</span><b>عَالَمُ الْقِصَصِ</b><small>قصص مصوّرة للقراءة والاستماع</small></button>`);
  if(k==='ach'&&h2&&!S.querySelector('.ach-hd')){const st=+(window.P&&P.star)||0,bd=Object.keys((window.P&&P.badges)||{}).length;h2.classList.add('acad-h2');
   h2.insertAdjacentHTML('beforebegin',`<div class=ach-hd><span class=ach-cup>🏆</span><div class=ach-rib>إنجازاتي</div><b>${st?'أحسنت يا بطل!':'هيا نبدأ رحلة الإنجازات!'}</b><small>${st?`جمعت ${st} نجمة${bd?` و${bd} شارة`:''} 🌟`:'كل درس تتقنه يمنحك نجومًا وشارات جديدة'}</small><span class="ach-conf c1">🎉</span><span class="ach-conf c2">✨</span></div>`)}}catch(e){}return r};
 /* لوحة ولي الأمر: مستوى الإتقان (متوسط أفضل نتائج الدروس من ٥) + الإنجازات + الدروس المكتملة + النجوم */

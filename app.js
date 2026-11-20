@@ -60,7 +60,7 @@ function fin(){const pass=sc>=4;let msg='';
 if(cur.id=='pl'){P.stage=Math.max(0,P.stage-(sc>=4?0:sc>=2?1:2));save();return h(`<h1>🎉</h1><h2>أحسنت يا ${P.name}!</h2><p>نتيجتك ${sc} من 5، وسنبدأ من المرحلة ${P.stage+1}: ${S[P.stage].n}. يمكن لولي الأمر تغيير المرحلة في أي وقت.</p><button class=big onclick=home()>هيا نتعلم</button>`)}
 if(cur.id=='rv')return h(`<h1>🔁</h1><h2>${sc} من 5</h2><p>مراجعة رائعة!</p><button class=big onclick=home()>رجوع</button>`);
 P.sc[cur.id]=Math.max(P.sc[cur.id]||0,sc);if(pass)P.done[cur.id]={s:sc,d:day()};save();
-h(pass?`<h1>🌟</h1><h2>أتقنت الدرس! ${sc} من 5</h2><button class=big onclick=home()>الدرس التالي</button>`:`<h1>💪</h1><h2>${sc} من 5 – قريب جداً!</h2><p>نحتاج 4 على الأقل للانتقال. سنعيد التدريب بطريقة مختلفة.</p><button class=big onclick="tries++;lesson('${cur.id}')">أعد التدريب</button>`)}
+h(pass?`<h1>🌟</h1><h2>أتقنت الدرس! ${sc} من 5</h2><button class=big onclick=goNextLesson()>${nextLabel()}</button>`:`<h1>💪</h1><h2>${sc} من 5 – قريب جداً!</h2><p>نحتاج 4 على الأقل للانتقال. سنعيد التدريب بطريقة مختلفة.</p><button class=big onclick="tries++;lesson('${cur.id}')">أعد التدريب</button>`)}
 function parent(){V='parent';h(`<button class=link onclick=home()>رجوع ←</button><h2>لوحة ولي الأمر – ${P.name}</h2>
 <label for=ps>المرحلة الحالية</label><select id=ps onchange="P.stage=+this.value;save()">${S.map((s,i)=>`<option value=${i} ${i==P.stage?'selected':''}>${i+1}. ${s.n} (${s.a})</option>`)}</select>
 <label for=pl>اللغة</label><select id=pl onchange="P.lang=this.value;save()">${[['both','العربية والإنجليزية'],['ar','العربية'],['en','الإنجليزية']].map(x=>`<option value=${x[0]} ${x[0]==P.lang?'selected':''}>${x[1]}</option>`)}</select>
