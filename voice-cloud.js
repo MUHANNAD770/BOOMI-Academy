@@ -92,8 +92,10 @@
    if(navigator.onLine===false)return null;const r=await fetch(u);if(!r.ok)return null;const b=await r.blob();if(!b.size||!/audio/.test(b.type))return null;
    try{(await caches.open(TC)).put(u,new Response(b.slice(0,b.size,'audio/mpeg'),{headers:{'content-type':'audio/mpeg'}}))}catch(e){}return b})().catch(()=>null);
   TM.set(u,pr);if(TM.size>60)TM.delete(TM.keys().next().value);pr.then(b=>{if(!b)TM.delete(u)});return pr};
- const speak=async(t,l,valid,onStart)=>{stop();const ep=++st.ep;
-  try{const b=await ttsBlob(t,l);if(!b)return false;if(ep!==st.ep||(valid&&!valid()))return true;const r=rate()*slowEn(t,l),c=ctx(),id='tts:'+ttsUrl(t,l);
+ const speak=(t,l,valid,onStart)=>playBlob(()=>ttsBlob(t,l),'tts:'+ttsUrl(t,l),valid,onStart);
+ /* تشغيل أي مقطع صوتي (Blob) بنفس المشغّل: الإيقاف والسرعة ومستوى الصوت وحركة فم بومي. يستعمله «صوتي الشخصي» (myvoice.js) */
+ const playBlob=async(get,id,valid,onStart)=>{stop();const ep=++st.ep;
+  try{const b=await get();if(!b)return false;if(ep!==st.ep||(valid&&!valid()))return true;const r=rate(),c=ctx();
    if(c&&Math.abs(r-1)<.02){if(c.state!=='running')try{await c.resume()}catch(e){}const buf=await decode(id,b);if(ep!==st.ep||(valid&&!valid()))return true;
     const src=c.createBufferSource();src.buffer=buf;st.gain.gain.value=vol();src.connect(st.gain);st.src=src;st.playing=1;
     await new Promise(ok=>{st.done=ok;src.onended=()=>{if(st.src===src){st.src=null;st.playing=0}if(st.done===ok){st.done=null;ok()}};src.start(c.currentTime+.015);onStart&&onStart();mouthLoop()});return true}
@@ -129,7 +131,7 @@
  const reset=async()=>{try{for(const k of await caches.keys())await caches.delete(k)}catch(e){}try{for(const r of await navigator.serviceWorker.getRegistrations())await r.unregister()}catch(e){}
   try{localStorage.removeItem('hurufi-tts')}catch(e){}location.replace(location.pathname+'?fresh='+Date.now())};
  const offline=async()=>{const who=teacher();await loadIx(who);if(!st.ix[who])return false;st.pre[who]=0;warm(who,1);return true};
- window.HurufiClips={has,play,speak,warmTts,stop,pause,resume,warm:warmText,offline,diag,reset,progress:()=>st.prog||null,busy:()=>!!st.playing,record,export:exp,key,ready,load:loadIx,
+ window.HurufiClips={has,play,speak,playBlob,warmTts,stop,pause,resume,warm:warmText,offline,diag,reset,progress:()=>st.prog||null,busy:()=>!!st.playing,record,export:exp,key,ready,load:loadIx,
   count:()=>[st.ix.female?Object.keys(st.ix.female.idx).length:0,st.ix.male?Object.keys(st.ix.male.idx).length:0],voice:who=>st.ix[who||teacher()]?.voice||null};
  /* بعد رسم كل صفحة: نجهّز مقاطع الكلمات القابلة للضغط فيها (بطاقات الدرس، أزرار 🔊) */
  const warmPage=()=>{try{if(!window.say||!say.parts)return;const L=[],add=(t,l)=>{for(const p of say.parts(t,l))L.push(p)};
