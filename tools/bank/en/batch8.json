@@ -1,0 +1,527 @@
+{
+ "bank": "Boomi English Academy",
+ "batch": 8,
+ "question_range": "176-200",
+ "stage": "Elementary English",
+ "level": "Elementary",
+ "grade": "Primary",
+ "language": "English",
+ "explanation_language": "Arabic",
+ "questions": [
+  {
+   "id": 176,
+   "skill": "Grammar",
+   "topic": "Question Words",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "_____ is your birthday?",
+   "options": [
+    "When",
+    "Where",
+    "Who",
+    "Why"
+   ],
+   "correct_answer": "When",
+   "explanation_ar": "نستخدم When للسؤال عن الوقت أو التاريخ، مثل موعد عيد الميلاد.",
+   "wrong_answers_ar": {
+    "Where": "تُستخدم للسؤال عن المكان.",
+    "Who": "تُستخدم للسؤال عن الشخص.",
+    "Why": "تُستخدم للسؤال عن السبب."
+   }
+  },
+  {
+   "id": 177,
+   "skill": "Grammar",
+   "topic": "Question Words",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "_____ is your English teacher?",
+   "options": [
+    "Who",
+    "When",
+    "Where",
+    "How"
+   ],
+   "correct_answer": "Who",
+   "explanation_ar": "نستخدم Who للسؤال عن الشخص.",
+   "wrong_answers_ar": {
+    "When": "تُستخدم للسؤال عن الوقت.",
+    "Where": "تُستخدم للسؤال عن المكان.",
+    "How": "تُستخدم للسؤال عن الطريقة أو الحال."
+   }
+  },
+  {
+   "id": 178,
+   "skill": "Grammar",
+   "topic": "Question Words",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "_____ do you go to school? By bus.",
+   "correct_answer": "How",
+   "explanation_ar": "نستخدم How للسؤال عن الطريقة أو وسيلة التنقل، والإجابة By bus توضح الطريقة.",
+   "accepted_answers": [
+    "How"
+   ]
+  },
+  {
+   "id": 179,
+   "skill": "Grammar",
+   "topic": "Question Words",
+   "type": "matching",
+   "difficulty": "easy",
+   "question": "Match each question word with its meaning.",
+   "pairs": [
+    {
+     "item": "Who",
+     "match": "Person"
+    },
+    {
+     "item": "Where",
+     "match": "Place"
+    },
+    {
+     "item": "When",
+     "match": "Time"
+    },
+    {
+     "item": "Why",
+     "match": "Reason"
+    },
+    {
+     "item": "How",
+     "match": "Way or manner"
+    }
+   ],
+   "explanation_ar": "Who للشخص، Where للمكان، When للوقت، Why للسبب، How للطريقة أو الحال."
+  },
+  {
+   "id": 180,
+   "skill": "Grammar",
+   "topic": "Question Words",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "_____ are you laughing? Because the story is funny.",
+   "options": [
+    "Why",
+    "Who",
+    "Where",
+    "When"
+   ],
+   "correct_answer": "Why",
+   "explanation_ar": "نستخدم Why للسؤال عن السبب، والإجابة تبدأ بـ Because.",
+   "wrong_answers_ar": {
+    "Who": "تُستخدم للسؤال عن الشخص.",
+    "Where": "تُستخدم للسؤال عن المكان.",
+    "When": "تُستخدم للسؤال عن الوقت."
+   }
+  },
+  {
+   "id": 181,
+   "skill": "Grammar",
+   "topic": "Prepositions of Movement",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "The cat jumped _____ the box.",
+   "options": [
+    "into",
+    "between",
+    "behind",
+    "under"
+   ],
+   "correct_answer": "into",
+   "explanation_ar": "Into تعني إلى داخل، أي أن القطة قفزت إلى داخل الصندوق.",
+   "wrong_answers_ar": {
+    "between": "تعني بين شيئين.",
+    "behind": "تعني خلف.",
+    "under": "تعني تحت."
+   }
+  },
+  {
+   "id": 182,
+   "skill": "Grammar",
+   "topic": "Prepositions of Movement",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "The boy walked _____ the bridge.",
+   "options": [
+    "across",
+    "inside",
+    "under",
+    "between"
+   ],
+   "correct_answer": "across",
+   "explanation_ar": "Across تعني عبر أو من جانب إلى الجانب الآخر، أي مشى الصبي عبر الجسر.",
+   "wrong_answers_ar": {
+    "inside": "تعني داخل.",
+    "under": "تعني تحت.",
+    "between": "تعني بين شيئين."
+   }
+  },
+  {
+   "id": 183,
+   "skill": "Grammar",
+   "topic": "Prepositions of Movement",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "The bird flew _____ the tree and disappeared behind it.",
+   "correct_answer": "over",
+   "explanation_ar": "Over تعني فوق أو من أعلى الشيء، وهي مناسبة لوصف طيران الطائر فوق الشجرة.",
+   "accepted_answers": [
+    "over"
+   ]
+  },
+  {
+   "id": 184,
+   "skill": "Vocabulary",
+   "topic": "Health and Body",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Which body part helps you smell?",
+   "options": [
+    "Nose",
+    "Ear",
+    "Hand",
+    "Foot"
+   ],
+   "correct_answer": "Nose",
+   "explanation_ar": "الأنف Nose هو العضو الذي نستخدمه للشم.",
+   "wrong_answers_ar": {
+    "Ear": "الأذن تساعدنا على السمع.",
+    "Hand": "اليد نستخدمها للإمساك بالأشياء.",
+    "Foot": "القدم نستخدمها للوقوف والمشي."
+   }
+  },
+  {
+   "id": 185,
+   "skill": "Vocabulary",
+   "topic": "Health and Body",
+   "type": "matching",
+   "difficulty": "easy",
+   "question": "Match each body part with its main function.",
+   "pairs": [
+    {
+     "item": "Eyes",
+     "match": "Seeing"
+    },
+    {
+     "item": "Ears",
+     "match": "Hearing"
+    },
+    {
+     "item": "Tongue",
+     "match": "Tasting"
+    },
+    {
+     "item": "Skin",
+     "match": "Feeling touch"
+    }
+   ],
+   "explanation_ar": "العينان للرؤية، والأذنان للسمع، واللسان للتذوق، والجلد للإحساس باللمس."
+  },
+  {
+   "id": 186,
+   "skill": "Vocabulary",
+   "topic": "Health and Body",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "We use our _____ to chew food.",
+   "correct_answer": "teeth",
+   "explanation_ar": "نستخدم الأسنان Teeth لمضغ الطعام.",
+   "accepted_answers": [
+    "teeth"
+   ]
+  },
+  {
+   "id": 187,
+   "skill": "Vocabulary",
+   "topic": "Healthy Habits",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Which habit helps keep your teeth healthy?",
+   "options": [
+    "Brushing your teeth",
+    "Eating sweets all day",
+    "Never drinking water",
+    "Sleeping very late"
+   ],
+   "correct_answer": "Brushing your teeth",
+   "explanation_ar": "تنظيف الأسنان بالفرشاة يساعد على المحافظة على نظافتها وصحتها.",
+   "wrong_answers_ar": {
+    "Eating sweets all day": "الإكثار من الحلويات قد يضر الأسنان.",
+    "Never drinking water": "عدم شرب الماء ليس عادة صحية.",
+    "Sleeping very late": "السهر ليس طريقة للعناية بالأسنان."
+   }
+  },
+  {
+   "id": 188,
+   "skill": "Grammar",
+   "topic": "Modal Verb Should",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "You have a headache. You _____ tell an adult.",
+   "options": [
+    "should",
+    "shouldn't",
+    "are",
+    "has"
+   ],
+   "correct_answer": "should",
+   "explanation_ar": "نستخدم should لتقديم نصيحة، وهنا ننصح بإخبار شخص بالغ عند الشعور بالصداع.",
+   "wrong_answers_ar": {
+    "shouldn't": "تعني لا ينبغي، وهي عكس النصيحة المطلوبة.",
+    "are": "فعل be ولا يعبّر عن النصيحة.",
+    "has": "فعل ملكية ولا يناسب تركيب الجملة."
+   }
+  },
+  {
+   "id": 189,
+   "skill": "Grammar",
+   "topic": "Modal Verb Should",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "You _____ eat too much candy.",
+   "correct_answer": "shouldn't",
+   "explanation_ar": "نستخدم shouldn't للنصيحة بعدم القيام بشيء، مثل عدم الإكثار من الحلوى.",
+   "accepted_answers": [
+    "shouldn't",
+    "should not"
+   ]
+  },
+  {
+   "id": 190,
+   "skill": "Grammar",
+   "topic": "Modal Verb Must",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "You _____ wear a seat belt in a car.",
+   "options": [
+    "must",
+    "mustn't",
+    "can",
+    "might"
+   ],
+   "correct_answer": "must",
+   "explanation_ar": "Must تعبّر عن الإلزام أو الضرورة، مثل ضرورة ربط حزام الأمان.",
+   "wrong_answers_ar": {
+    "mustn't": "تعني ممنوع، وهي عكس المعنى المطلوب.",
+    "can": "تعني يستطيع أو يمكن، ولا تعبّر عن الإلزام.",
+    "might": "تعبّر عن احتمال."
+   }
+  },
+  {
+   "id": 191,
+   "skill": "Grammar",
+   "topic": "Modal Verb Mustn't",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "You _____ touch a hot oven.",
+   "options": [
+    "mustn't",
+    "must",
+    "should",
+    "can"
+   ],
+   "correct_answer": "mustn't",
+   "explanation_ar": "Mustn't تعني ممنوع أو يجب ألا تفعل، وهي مناسبة للتحذير من لمس الفرن الساخن.",
+   "wrong_answers_ar": {
+    "must": "تعني يجب أن، وهي عكس التحذير المطلوب.",
+    "should": "تعني ينبغي، ولا تعبّر عن المنع بنفس القوة.",
+    "can": "تعني يستطيع أو يمكن."
+   }
+  },
+  {
+   "id": 192,
+   "skill": "Grammar",
+   "topic": "Modal Verbs",
+   "type": "sentence_ordering",
+   "difficulty": "medium",
+   "question": "Arrange the words to make a correct sentence.",
+   "words": [
+    "You",
+    "should",
+    "drink",
+    "enough",
+    "water",
+    "."
+   ],
+   "correct_sentence": "You should drink enough water.",
+   "explanation_ar": "نضع الفاعل You ثم should ثم الفعل الأساسي drink ثم بقية الجملة."
+  },
+  {
+   "id": 193,
+   "skill": "Vocabulary",
+   "topic": "Technology",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Which device do you use to type letters and numbers on a computer?",
+   "options": [
+    "Keyboard",
+    "Speaker",
+    "Monitor",
+    "Printer"
+   ],
+   "correct_answer": "Keyboard",
+   "explanation_ar": "لوحة المفاتيح Keyboard تُستخدم لكتابة الحروف والأرقام على الكمبيوتر.",
+   "wrong_answers_ar": {
+    "Speaker": "مكبر الصوت يُستخدم لسماع الصوت.",
+    "Monitor": "الشاشة تعرض الصور والمعلومات.",
+    "Printer": "الطابعة تطبع الأوراق."
+   }
+  },
+  {
+   "id": 194,
+   "skill": "Vocabulary",
+   "topic": "Technology",
+   "type": "matching",
+   "difficulty": "easy",
+   "question": "Match each computer device with its function.",
+   "pairs": [
+    {
+     "item": "Mouse",
+     "match": "Moves the pointer"
+    },
+    {
+     "item": "Monitor",
+     "match": "Displays information"
+    },
+    {
+     "item": "Printer",
+     "match": "Prints documents"
+    },
+    {
+     "item": "Speaker",
+     "match": "Plays sound"
+    }
+   ],
+   "explanation_ar": "الفأرة تحرك المؤشر، والشاشة تعرض المعلومات، والطابعة تطبع المستندات، ومكبر الصوت يشغل الصوت."
+  },
+  {
+   "id": 195,
+   "skill": "Vocabulary",
+   "topic": "Technology",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "You can use a _____ to take photos.",
+   "correct_answer": "camera",
+   "explanation_ar": "Camera تعني كاميرا، ونستخدمها لالتقاط الصور.",
+   "accepted_answers": [
+    "camera"
+   ]
+  },
+  {
+   "id": 196,
+   "skill": "Reading",
+   "topic": "A Trip to the Museum",
+   "type": "reading_comprehension",
+   "difficulty": "medium",
+   "passage": "On Saturday, Lina visited a museum with her class. They saw old coins, traditional clothes, and ancient tools. A guide explained how people lived in the past. Lina took notes because she wanted to remember what she learned.",
+   "question": "Who visited the museum with Lina?",
+   "options": [
+    "Her class",
+    "Her neighbours",
+    "Her football team",
+    "Her cousins"
+   ],
+   "correct_answer": "Her class",
+   "explanation_ar": "النص يقول إنها زارت المتحف مع صفها الدراسي، أي Her class.",
+   "wrong_answers_ar": {
+    "Her neighbours": "الجيران لم يُذكروا في النص.",
+    "Her football team": "فريق كرة القدم لم يُذكر في النص.",
+    "Her cousins": "أبناء عمومتها لم يُذكروا في النص."
+   }
+  },
+  {
+   "id": 197,
+   "skill": "Reading",
+   "topic": "A Trip to the Museum",
+   "type": "reading_comprehension",
+   "difficulty": "medium",
+   "passage": "On Saturday, Lina visited a museum with her class. They saw old coins, traditional clothes, and ancient tools. A guide explained how people lived in the past. Lina took notes because she wanted to remember what she learned.",
+   "question": "Why did Lina take notes?",
+   "options": [
+    "To remember what she learned",
+    "To draw a picture",
+    "To buy old coins",
+    "To write a letter"
+   ],
+   "correct_answer": "To remember what she learned",
+   "explanation_ar": "النص يذكر أن لينا كتبت ملاحظات لأنها أرادت تذكر ما تعلمته.",
+   "wrong_answers_ar": {
+    "To draw a picture": "الرسم ليس سبب كتابة الملاحظات في النص.",
+    "To buy old coins": "لم يذكر النص شراء العملات.",
+    "To write a letter": "لم يذكر النص كتابة رسالة."
+   }
+  },
+  {
+   "id": 198,
+   "skill": "Writing",
+   "topic": "Describing a Person",
+   "type": "open_ended",
+   "difficulty": "medium",
+   "question": "Write four sentences describing a person you know.",
+   "example_answer": [
+    "My friend is kind.",
+    "He has short black hair.",
+    "He likes playing football.",
+    "He is helpful and funny."
+   ],
+   "explanation_ar": "اكتب أربع جمل تصف فيها شخصًا تعرفه. يمكنك ذكر صفاته وشكله وهواياته وطريقة تعامله.",
+   "rubric": {
+    "total_score": 6,
+    "criteria": [
+     {
+      "criterion": "Writes four relevant sentences",
+      "score": 2
+     },
+     {
+      "criterion": "Uses suitable describing adjectives",
+      "score": 1
+     },
+     {
+      "criterion": "Uses has or is correctly",
+      "score": 1
+     },
+     {
+      "criterion": "Uses correct word order",
+      "score": 1
+     },
+     {
+      "criterion": "Uses capitalization and punctuation",
+      "score": 1
+     }
+    ]
+   }
+  },
+  {
+   "id": 199,
+   "skill": "Grammar",
+   "topic": "Adjectives and Adverbs",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "The turtle walks _____.",
+   "options": [
+    "slowly",
+    "slow",
+    "slower",
+    "slowness"
+   ],
+   "correct_answer": "slowly",
+   "explanation_ar": "نستخدم slowly لوصف طريقة المشي، لأنها حال يصف الفعل walks.",
+   "wrong_answers_ar": {
+    "slow": "صفة تصف الاسم، وليست الحال المناسب هنا.",
+    "slower": "صيغة مقارنة.",
+    "slowness": "اسم يعني البطء."
+   }
+  },
+  {
+   "id": 200,
+   "skill": "Grammar",
+   "topic": "Adjectives and Adverbs",
+   "type": "error_correction",
+   "difficulty": "medium",
+   "question": "Correct the sentence: The boy runs quick.",
+   "correct_answer": "The boy runs quickly.",
+   "explanation_ar": "نستخدم quickly لوصف طريقة الركض؛ لأنها حال يصف الفعل runs، بينما quick صفة."
+  }
+ ]
+}

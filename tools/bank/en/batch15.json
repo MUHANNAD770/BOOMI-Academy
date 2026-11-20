@@ -1,0 +1,430 @@
+{
+ "bank": "Boomi English Academy",
+ "batch": 15,
+ "question_range": "351-375",
+ "stage": "Elementary",
+ "level": "Elementary Plus",
+ "grade": "Primary",
+ "language": "English",
+ "explanation_language": "Arabic",
+ "questions": [
+  {
+   "id": 351,
+   "skill": "Grammar",
+   "topic": "Past Continuous",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "At 8 o'clock last night, I _____ a book.",
+   "options": [
+    "was reading",
+    "read",
+    "am reading",
+    "reads"
+   ],
+   "correct_answer": "was reading",
+   "explanation_ar": "نستخدم الماضي المستمر لحدث كان جاريًا في وقت محدد في الماضي."
+  },
+  {
+   "id": 352,
+   "skill": "Grammar",
+   "topic": "Past Continuous",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "The children _____ playing when it started to rain.",
+   "correct_answer": "were",
+   "accepted_answers": [
+    "were"
+   ],
+   "explanation_ar": "نستخدم were مع الجمع في تركيب الماضي المستمر: were + verb-ing."
+  },
+  {
+   "id": 353,
+   "skill": "Grammar",
+   "topic": "Past Continuous and Past Simple",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "I was sleeping when the phone _____.",
+   "options": [
+    "rang",
+    "was ringing",
+    "rings",
+    "ring"
+   ],
+   "correct_answer": "rang",
+   "explanation_ar": "نستخدم الماضي المستمر للحدث الطويل، والماضي البسيط للحدث الذي قطعه."
+  },
+  {
+   "id": 354,
+   "skill": "Grammar",
+   "topic": "While and When",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "_____ I was walking home, I saw an old friend.",
+   "correct_answer": "While",
+   "accepted_answers": [
+    "While",
+    "While"
+   ],
+   "explanation_ar": "نستخدم While غالبًا قبل الحدث المستمر الذي كان يحدث أثناء وقوع حدث آخر."
+  },
+  {
+   "id": 355,
+   "skill": "Grammar",
+   "topic": "Past Continuous Questions",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "What _____ you doing at 6 p.m. yesterday?",
+   "options": [
+    "were",
+    "was",
+    "did",
+    "are"
+   ],
+   "correct_answer": "were",
+   "explanation_ar": "نستخدم were مع you في سؤال الماضي المستمر."
+  },
+  {
+   "id": 356,
+   "skill": "Grammar",
+   "topic": "Passive Voice",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "English _____ in many countries.",
+   "options": [
+    "is spoken",
+    "speaks",
+    "is speaking",
+    "spoke"
+   ],
+   "correct_answer": "is spoken",
+   "explanation_ar": "المبني للمجهول في المضارع البسيط يتكون من am/is/are + التصريف الثالث."
+  },
+  {
+   "id": 357,
+   "skill": "Grammar",
+   "topic": "Passive Voice",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "The classroom _____ cleaned every day.",
+   "correct_answer": "is",
+   "accepted_answers": [
+    "is"
+   ],
+   "explanation_ar": "نستخدم is لأن classroom مفرد، ويكون التركيب الكامل is cleaned."
+  },
+  {
+   "id": 358,
+   "skill": "Grammar",
+   "topic": "Passive Voice Past",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "The old bridge _____ last year.",
+   "options": [
+    "was repaired",
+    "is repairing",
+    "repairs",
+    "has repair"
+   ],
+   "correct_answer": "was repaired",
+   "explanation_ar": "المبني للمجهول في الماضي البسيط يتكون من was أو were + التصريف الثالث."
+  },
+  {
+   "id": 359,
+   "skill": "Grammar",
+   "topic": "Active and Passive Voice",
+   "type": "error_correction",
+   "difficulty": "challenging",
+   "question": "Correct the sentence: The letters is delivered every morning.",
+   "correct_answer": "The letters are delivered every morning.",
+   "explanation_ar": "Letters جمع، لذلك نستخدم are وليس is في المبني للمجهول."
+  },
+  {
+   "id": 360,
+   "skill": "Grammar",
+   "topic": "Too and Enough",
+   "type": "sentence_ordering",
+   "difficulty": "medium",
+   "question": "Put the words in the correct order: old / enough / is / to drive / he",
+   "words": [
+    "old",
+    "enough",
+    "is",
+    "to drive",
+    "he"
+   ],
+   "correct_answer": "He is old enough to drive.",
+   "explanation_ar": "تأتي enough بعد الصفة، والترتيب الصحيح هو He is old enough to drive."
+  },
+  {
+   "id": 361,
+   "skill": "Grammar",
+   "topic": "Indefinite Pronouns",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "There is _____ at the door. Can you open it?",
+   "options": [
+    "someone",
+    "anything",
+    "nowhere",
+    "everyone"
+   ],
+   "correct_answer": "someone",
+   "explanation_ar": "Someone تعني شخصًا ما، وهي مناسبة عند الإشارة إلى شخص عند الباب."
+  },
+  {
+   "id": 362,
+   "skill": "Grammar",
+   "topic": "Indefinite Pronouns",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "I looked everywhere, but I found _____.",
+   "options": [
+    "nothing",
+    "someone",
+    "everything",
+    "anywhere"
+   ],
+   "correct_answer": "nothing",
+   "explanation_ar": "Nothing تعني لا شيء، وهي مناسبة لمعنى أنني لم أجد أي شيء."
+  },
+  {
+   "id": 363,
+   "skill": "Grammar",
+   "topic": "Relative Clauses",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "This is the book _____ I borrowed from the library.",
+   "options": [
+    "which",
+    "who",
+    "where",
+    "when"
+   ],
+   "correct_answer": "which",
+   "explanation_ar": "نستخدم which للإشارة إلى الأشياء، مثل book."
+  },
+  {
+   "id": 364,
+   "skill": "Grammar",
+   "topic": "Possessive Pronouns",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "This blue bag belongs to me. It is _____.",
+   "correct_answer": "mine",
+   "accepted_answers": [
+    "mine"
+   ],
+   "explanation_ar": "Mine ضمير ملكية يعني لي أو ملكي، ويأتي دون اسم بعده."
+  },
+  {
+   "id": 365,
+   "skill": "Grammar",
+   "topic": "Reflexive Pronouns",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "She made this cake by _____.",
+   "options": [
+    "herself",
+    "himself",
+    "myself",
+    "ourselves"
+   ],
+   "correct_answer": "herself",
+   "explanation_ar": "نستخدم herself مع she عندما يقوم الشخص بالفعل بنفسه."
+  },
+  {
+   "id": 366,
+   "skill": "Vocabulary",
+   "topic": "Health and Fitness",
+   "type": "matching",
+   "difficulty": "medium",
+   "question": "Match each health word with its Arabic meaning.",
+   "pairs": [
+    {
+     "left": "Balanced diet",
+     "right": "غذاء متوازن"
+    },
+    {
+     "left": "Exercise",
+     "right": "تمرين رياضي"
+    },
+    {
+     "left": "Rest",
+     "right": "راحة"
+    },
+    {
+     "left": "Medicine",
+     "right": "دواء"
+    },
+    {
+     "left": "Healthy",
+     "right": "صحي"
+    }
+   ],
+   "explanation_ar": "تساعد هذه المفردات على الحديث عن الصحة والعادات اليومية المفيدة."
+  },
+  {
+   "id": 367,
+   "skill": "Vocabulary",
+   "topic": "Health Advice",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "What should you do when you feel very thirsty?",
+   "options": [
+    "Drink water",
+    "Eat paper",
+    "Stop sleeping",
+    "Run in the sun"
+   ],
+   "correct_answer": "Drink water",
+   "explanation_ar": "شرب الماء يساعد على ترطيب الجسم عند الشعور بالعطش."
+  },
+  {
+   "id": 368,
+   "skill": "Vocabulary",
+   "topic": "Jobs and Workplaces",
+   "type": "matching",
+   "difficulty": "medium",
+   "question": "Match each job with its workplace.",
+   "pairs": [
+    {
+     "left": "Doctor",
+     "right": "Hospital"
+    },
+    {
+     "left": "Pilot",
+     "right": "Aircraft"
+    },
+    {
+     "left": "Chef",
+     "right": "Kitchen"
+    },
+    {
+     "left": "Librarian",
+     "right": "Library"
+    },
+    {
+     "left": "Farmer",
+     "right": "Farm"
+    }
+   ],
+   "explanation_ar": "اربط كل مهنة بالمكان الذي يعمل فيه الشخص عادةً."
+  },
+  {
+   "id": 369,
+   "skill": "Vocabulary",
+   "topic": "Natural Disasters",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "A very strong shaking of the ground is called an _____.",
+   "options": [
+    "earthquake",
+    "avalanche",
+    "drought",
+    "rainbow"
+   ],
+   "correct_answer": "earthquake",
+   "explanation_ar": "Earthquake تعني زلزالًا، وهو اهتزاز مفاجئ للأرض."
+  },
+  {
+   "id": 370,
+   "skill": "Vocabulary",
+   "topic": "Geography",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "A large area of land surrounded by water is an _____.",
+   "correct_answer": "island",
+   "accepted_answers": [
+    "island"
+   ],
+   "explanation_ar": "Island تعني جزيرة، وهي أرض تحيط بها المياه من جميع الجهات."
+  },
+  {
+   "id": 371,
+   "skill": "Reading",
+   "topic": "The School Garden",
+   "type": "reading_comprehension",
+   "difficulty": "medium",
+   "passage": "Last year, our school started a small garden. The students planted tomatoes, carrots, and flowers. Every class had a special day to water the plants. Some students made signs to explain how plants grow. After a few months, the vegetables were ready to collect. The school used some of them in a healthy lunch. Everyone was happy because they had worked together.",
+   "question": "What did the students plant?",
+   "options": [
+    "Tomatoes, carrots, and flowers",
+    "Apples, oranges, and bananas",
+    "Rice, wheat, and corn",
+    "Only trees"
+   ],
+   "correct_answer": "Tomatoes, carrots, and flowers",
+   "explanation_ar": "يذكر النص أن الطلاب زرعوا الطماطم والجزر والزهور."
+  },
+  {
+   "id": 372,
+   "skill": "Reading",
+   "topic": "The School Garden",
+   "type": "reading_comprehension",
+   "difficulty": "medium",
+   "passage": "Last year, our school started a small garden. The students planted tomatoes, carrots, and flowers. Every class had a special day to water the plants. Some students made signs to explain how plants grow. After a few months, the vegetables were ready to collect. The school used some of them in a healthy lunch. Everyone was happy because they had worked together.",
+   "question": "Why did the students water the plants on different days?",
+   "options": [
+    "Each class had a special day",
+    "The garden was closed",
+    "The plants did not need water",
+    "Only the teachers could water them"
+   ],
+   "correct_answer": "Each class had a special day",
+   "explanation_ar": "كان لكل صف يوم خاص لسقي النباتات، كما ورد في النص."
+  },
+  {
+   "id": 373,
+   "skill": "Reading",
+   "topic": "The School Garden",
+   "type": "reading_comprehension",
+   "difficulty": "challenging",
+   "passage": "Last year, our school started a small garden. The students planted tomatoes, carrots, and flowers. Every class had a special day to water the plants. Some students made signs to explain how plants grow. After a few months, the vegetables were ready to collect. The school used some of them in a healthy lunch. Everyone was happy because they had worked together.",
+   "question": "What can we learn from the students' experience?",
+   "options": [
+    "Teamwork can help people achieve a shared goal",
+    "Plants grow without any care",
+    "School gardens are always expensive",
+    "Students should avoid working together"
+   ],
+   "correct_answer": "Teamwork can help people achieve a shared goal",
+   "explanation_ar": "الاستنتاج المناسب أن التعاون بين الطلاب ساعدهم على إنجاز الحديقة والاستفادة منها."
+  },
+  {
+   "id": 374,
+   "skill": "Grammar",
+   "topic": "Conjunctions",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "_____ it was raining, the children continued playing.",
+   "options": [
+    "Although",
+    "Because",
+    "So",
+    "Unless"
+   ],
+   "correct_answer": "Although",
+   "explanation_ar": "Although تعني بالرغم من، وتستخدم لربط فكرتين بينهما تعارض."
+  },
+  {
+   "id": 375,
+   "skill": "Writing",
+   "topic": "Healthy Lifestyle",
+   "type": "open_ended",
+   "difficulty": "medium",
+   "question": "Write four sentences about how to stay healthy.",
+   "accepted_answers": [],
+   "rubric": {
+    "minimum_sentences": 4,
+    "criteria": [
+     "Mention healthy food.",
+     "Mention physical activity.",
+     "Mention sleep or rest.",
+     "Use clear and correct English sentences."
+    ],
+    "sample_answer": "We should eat healthy food. We should exercise every day. We should drink enough water. We should sleep well at night."
+   },
+   "explanation_ar": "اكتب أربع جمل تتحدث فيها عن الغذاء الصحي والرياضة والماء والنوم."
+  }
+ ]
+}

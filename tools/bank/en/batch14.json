@@ -1,0 +1,430 @@
+{
+ "bank": "Boomi English Academy",
+ "batch": 14,
+ "question_range": "326-350",
+ "stage": "Elementary",
+ "level": "Elementary Plus",
+ "grade": "Primary",
+ "language": "English",
+ "explanation_language": "Arabic",
+ "questions": [
+  {
+   "id": 326,
+   "skill": "Grammar",
+   "topic": "Second Conditional",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "If I had a million rials, I _____ a big house.",
+   "options": [
+    "would buy",
+    "will buy",
+    "bought",
+    "am buying"
+   ],
+   "correct_answer": "would buy",
+   "explanation_ar": "نستخدم would مع الفعل الأساسي للتعبير عن نتيجة موقف افتراضي."
+  },
+  {
+   "id": 327,
+   "skill": "Grammar",
+   "topic": "Second Conditional",
+   "type": "fill_blank",
+   "difficulty": "challenging",
+   "question": "If I were a bird, I _____ fly around the world.",
+   "correct_answer": "would",
+   "accepted_answers": [
+    "would"
+   ],
+   "explanation_ar": "في الشرط الثاني نستخدم would في جملة النتيجة، ثم الفعل الأساسي."
+  },
+  {
+   "id": 328,
+   "skill": "Grammar",
+   "topic": "Question Tags",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "You are a student, _____?",
+   "options": [
+    "are you",
+    "aren't you",
+    "do you",
+    "don't you"
+   ],
+   "correct_answer": "aren't you",
+   "explanation_ar": "الجملة مثبتة، لذلك نستخدم سؤالًا قصيرًا منفيًا مع نفس الفعل المساعد."
+  },
+  {
+   "id": 329,
+   "skill": "Grammar",
+   "topic": "Question Tags",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "She cannot swim, _____?",
+   "options": [
+    "can she",
+    "can't she",
+    "does she",
+    "is she"
+   ],
+   "correct_answer": "can she",
+   "explanation_ar": "الجملة منفية، لذلك يأتي السؤال القصير مثبتًا can she."
+  },
+  {
+   "id": 330,
+   "skill": "Grammar",
+   "topic": "Reported Speech",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "Ali said, \"I am tired.\" Choose the correct reported speech.",
+   "options": [
+    "Ali said that he was tired.",
+    "Ali said that I am tired.",
+    "Ali said that he is tiring.",
+    "Ali said that he tired."
+   ],
+   "correct_answer": "Ali said that he was tired.",
+   "explanation_ar": "في الكلام المنقول قد يتحول am إلى was، ويتغير الضمير I إلى he بحسب المتحدث."
+  },
+  {
+   "id": 331,
+   "skill": "Grammar",
+   "topic": "Reported Speech",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "Sara said, \"I like music.\" Choose the correct reported speech.",
+   "options": [
+    "Sara said that she liked music.",
+    "Sara said that I liked music.",
+    "Sara said that she like music.",
+    "Sara said that she liking music."
+   ],
+   "correct_answer": "Sara said that she liked music.",
+   "explanation_ar": "عند نقل الكلام في الماضي يتغير الضمير I إلى she، ويتحول like إلى liked."
+  },
+  {
+   "id": 332,
+   "skill": "Grammar",
+   "topic": "Modal Verbs",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "You _____ wear a seat belt in a car. It is important for safety.",
+   "options": [
+    "should",
+    "might",
+    "could",
+    "would"
+   ],
+   "correct_answer": "should",
+   "explanation_ar": "نستخدم should لتقديم النصيحة أو التعبير عن التصرف المناسب."
+  },
+  {
+   "id": 333,
+   "skill": "Grammar",
+   "topic": "Modal Verbs",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "_____ I borrow your pencil, please?",
+   "options": [
+    "May",
+    "Must",
+    "Should",
+    "Would"
+   ],
+   "correct_answer": "May",
+   "explanation_ar": "نستخدم May لطلب الإذن بطريقة مهذبة."
+  },
+  {
+   "id": 334,
+   "skill": "Grammar",
+   "topic": "Modal Verbs",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "You _____ not park here. It is forbidden.",
+   "correct_answer": "must",
+   "accepted_answers": [
+    "must"
+   ],
+   "explanation_ar": "نستخدم must not للتعبير عن المنع."
+  },
+  {
+   "id": 335,
+   "skill": "Grammar",
+   "topic": "Modal Verbs",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "When my father was young, he _____ run very fast.",
+   "options": [
+    "could",
+    "must",
+    "should",
+    "may"
+   ],
+   "correct_answer": "could",
+   "explanation_ar": "نستخدم could للتعبير عن قدرة كانت موجودة في الماضي."
+  },
+  {
+   "id": 336,
+   "skill": "Grammar",
+   "topic": "Conjunctions",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "I wanted to play outside, _____ it was raining.",
+   "options": [
+    "but",
+    "because",
+    "so",
+    "or"
+   ],
+   "correct_answer": "but",
+   "explanation_ar": "نستخدم but للربط بين فكرتين متعارضتين."
+  },
+  {
+   "id": 337,
+   "skill": "Grammar",
+   "topic": "Conjunctions",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "I stayed at home _____ I was sick.",
+   "correct_answer": "because",
+   "accepted_answers": [
+    "because"
+   ],
+   "explanation_ar": "نستخدم because لذكر السبب."
+  },
+  {
+   "id": 338,
+   "skill": "Grammar",
+   "topic": "Conjunctions",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "It was very hot, _____ we went swimming.",
+   "options": [
+    "so",
+    "but",
+    "although",
+    "because"
+   ],
+   "correct_answer": "so",
+   "explanation_ar": "نستخدم so لذكر النتيجة؛ كان الجو حارًا ولذلك ذهبنا للسباحة."
+  },
+  {
+   "id": 339,
+   "skill": "Vocabulary",
+   "topic": "Personality Adjectives",
+   "type": "matching",
+   "difficulty": "medium",
+   "question": "Match each personality adjective with its Arabic meaning.",
+   "pairs": [
+    {
+     "left": "Honest",
+     "right": "صادق"
+    },
+    {
+     "left": "Generous",
+     "right": "كريم"
+    },
+    {
+     "left": "Patient",
+     "right": "صبور"
+    },
+    {
+     "left": "Brave",
+     "right": "شجاع"
+    },
+    {
+     "left": "Polite",
+     "right": "مهذب"
+    }
+   ],
+   "explanation_ar": "هذه صفات تصف شخصية الإنسان وطريقة تعامله مع الآخرين."
+  },
+  {
+   "id": 340,
+   "skill": "Vocabulary",
+   "topic": "Feelings and Emotions",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "How does someone feel when they have nothing to do and are not interested?",
+   "options": [
+    "Bored",
+    "Excited",
+    "Proud",
+    "Surprised"
+   ],
+   "correct_answer": "Bored",
+   "explanation_ar": "Bored تعني يشعر بالملل."
+  },
+  {
+   "id": 341,
+   "skill": "Vocabulary",
+   "topic": "Environment",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "We should _____ paper and plastic to reduce waste.",
+   "correct_answer": "recycle",
+   "accepted_answers": [
+    "recycle"
+   ],
+   "explanation_ar": "Recycle تعني يعيد التدوير، وهي طريقة مفيدة لتقليل النفايات."
+  },
+  {
+   "id": 342,
+   "skill": "Vocabulary",
+   "topic": "Environment",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "Which action helps save water?",
+   "options": [
+    "Turning off the tap while brushing your teeth",
+    "Leaving the tap running",
+    "Washing one cup for an hour",
+    "Throwing rubbish into rivers"
+   ],
+   "correct_answer": "Turning off the tap while brushing your teeth",
+   "explanation_ar": "إغلاق الصنبور أثناء تنظيف الأسنان يساعد على توفير الماء."
+  },
+  {
+   "id": 343,
+   "skill": "Vocabulary",
+   "topic": "Science",
+   "type": "matching",
+   "difficulty": "medium",
+   "question": "Match each science word with its Arabic meaning.",
+   "pairs": [
+    {
+     "left": "Experiment",
+     "right": "تجربة"
+    },
+    {
+     "left": "Temperature",
+     "right": "درجة الحرارة"
+    },
+    {
+     "left": "Electricity",
+     "right": "كهرباء"
+    },
+    {
+     "left": "Magnet",
+     "right": "مغناطيس"
+    },
+    {
+     "left": "Energy",
+     "right": "طاقة"
+    }
+   ],
+   "explanation_ar": "هذه مفردات علمية أساسية تساعد على فهم موضوعات العلوم باللغة الإنجليزية."
+  },
+  {
+   "id": 344,
+   "skill": "Grammar",
+   "topic": "Comparative Adverbs",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "Mona speaks English _____ than her brother.",
+   "options": [
+    "more clearly",
+    "most clearly",
+    "clear",
+    "clearest"
+   ],
+   "correct_answer": "more clearly",
+   "explanation_ar": "نستخدم more clearly للمقارنة بين طريقة تحدث شخصين."
+  },
+  {
+   "id": 345,
+   "skill": "Grammar",
+   "topic": "Superlative Adverbs",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "Of all the runners, Ahmed ran _____.",
+   "options": [
+    "the fastest",
+    "faster",
+    "fast",
+    "more fast"
+   ],
+   "correct_answer": "the fastest",
+   "explanation_ar": "نستخدم the fastest للمقارنة بين ثلاثة أشخاص أو أكثر في السرعة."
+  },
+  {
+   "id": 346,
+   "skill": "Reading",
+   "topic": "The Science Fair",
+   "type": "reading_comprehension",
+   "difficulty": "medium",
+   "passage": "Last month, our school held a science fair. Each class prepared a different project. My group made a small model of a solar-powered house. We used cardboard, small solar panels, and wires. Our teacher explained how sunlight can produce electricity. Many students visited our table and asked questions. We felt proud because our project helped others learn about clean energy.",
+   "question": "What did the students make?",
+   "options": [
+    "A model of a solar-powered house",
+    "A model of an airport",
+    "A wooden boat",
+    "A paper airplane"
+   ],
+   "correct_answer": "A model of a solar-powered house",
+   "explanation_ar": "يذكر النص أن المجموعة صنعت نموذجًا صغيرًا لمنزل يعمل بالطاقة الشمسية."
+  },
+  {
+   "id": 347,
+   "skill": "Reading",
+   "topic": "The Science Fair",
+   "type": "reading_comprehension",
+   "difficulty": "medium",
+   "passage": "Last month, our school held a science fair. Each class prepared a different project. My group made a small model of a solar-powered house. We used cardboard, small solar panels, and wires. Our teacher explained how sunlight can produce electricity. Many students visited our table and asked questions. We felt proud because our project helped others learn about clean energy.",
+   "question": "Which materials did the group use?",
+   "options": [
+    "Cardboard, solar panels, and wires",
+    "Glass, water, and sand",
+    "Wood, paint, and cloth",
+    "Paper, leaves, and stones"
+   ],
+   "correct_answer": "Cardboard, solar panels, and wires",
+   "explanation_ar": "المواد المذكورة في النص هي cardboard وsolar panels وwires."
+  },
+  {
+   "id": 348,
+   "skill": "Reading",
+   "topic": "The Science Fair",
+   "type": "reading_comprehension",
+   "difficulty": "challenging",
+   "passage": "Last month, our school held a science fair. Each class prepared a different project. My group made a small model of a solar-powered house. We used cardboard, small solar panels, and wires. Our teacher explained how sunlight can produce electricity. Many students visited our table and asked questions. We felt proud because our project helped others learn about clean energy.",
+   "question": "Why did the group feel proud?",
+   "options": [
+    "Because their project helped others learn about clean energy",
+    "Because they won a football match",
+    "Because they went on holiday",
+    "Because they finished school early"
+   ],
+   "correct_answer": "Because their project helped others learn about clean energy",
+   "explanation_ar": "شعر أفراد المجموعة بالفخر لأن مشروعهم ساعد الآخرين على التعرف على الطاقة النظيفة."
+  },
+  {
+   "id": 349,
+   "skill": "Grammar",
+   "topic": "Sentence Transformation",
+   "type": "error_correction",
+   "difficulty": "challenging",
+   "question": "Correct the sentence: If I will see Ahmed, I will tell him.",
+   "correct_answer": "If I see Ahmed, I will tell him.",
+   "explanation_ar": "في الشرط الأول نستخدم المضارع البسيط بعد if، ولا نضع will في جملة الشرط."
+  },
+  {
+   "id": 350,
+   "skill": "Writing",
+   "topic": "Giving Advice",
+   "type": "open_ended",
+   "difficulty": "challenging",
+   "question": "Your friend spends too much time playing video games. Write three sentences giving advice.",
+   "accepted_answers": [],
+   "rubric": {
+    "minimum_sentences": 3,
+    "criteria": [
+     "Give at least three relevant pieces of advice.",
+     "Use should or should not correctly.",
+     "Use clear and understandable English."
+    ],
+    "sample_answer": "You should spend less time playing video games. You should do some exercise every day. You should read books and spend time with your family."
+   },
+   "explanation_ar": "استخدم should للنصيحة، وshould not للنصيحة بتجنب تصرف معين."
+  }
+ ]
+}

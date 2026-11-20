@@ -1,0 +1,494 @@
+{
+ "bank": "Boomi English Academy",
+ "batch": 9,
+ "question_range": "201-225",
+ "stage": "Elementary English",
+ "level": "Elementary",
+ "grade": "Primary",
+ "language": "English",
+ "explanation_language": "Arabic",
+ "questions": [
+  {
+   "id": 201,
+   "skill": "Grammar",
+   "topic": "Articles A and An",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "I saw _____ elephant at the zoo.",
+   "options": [
+    "an",
+    "a",
+    "the",
+    "no article"
+   ],
+   "correct_answer": "an",
+   "explanation_ar": "نستخدم an قبل الكلمة التي يبدأ نطقها بصوت متحرك. كلمة elephant تبدأ بصوت متحرك.",
+   "wrong_answers_ar": {
+    "a": "تُستخدم قبل الصوت الساكن.",
+    "the": "تُستخدم غالبًا عند الحديث عن شيء محدد ومعروف.",
+    "no article": "نحتاج إلى أداة تنكير هنا لأننا نتحدث عن فيل غير محدد."
+   }
+  },
+  {
+   "id": 202,
+   "skill": "Grammar",
+   "topic": "Articles A and An",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "She has _____ blue umbrella.",
+   "options": [
+    "a",
+    "an",
+    "the",
+    "are"
+   ],
+   "correct_answer": "a",
+   "explanation_ar": "نستخدم a لأن كلمة blue تبدأ بصوت ساكن، حتى لو كانت الكلمة التالية umbrella تبدأ بصوت متحرك.",
+   "wrong_answers_ar": {
+    "an": "تأتي قبل الصوت المتحرك في الكلمة التي تليها مباشرة، وهنا الكلمة هي blue.",
+    "the": "تُستخدم للتحديد، ولا يوجد تحديد هنا.",
+    "are": "فعل وليست أداة تعريف أو تنكير."
+   }
+  },
+  {
+   "id": 203,
+   "skill": "Grammar",
+   "topic": "Definite Article The",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "The sun rises in _____ east.",
+   "correct_answer": "the",
+   "explanation_ar": "نستخدم the مع الجهات الأصلية مثل the east وthe west.",
+   "accepted_answers": [
+    "the"
+   ]
+  },
+  {
+   "id": 204,
+   "skill": "Grammar",
+   "topic": "Articles",
+   "type": "error_correction",
+   "difficulty": "medium",
+   "question": "Correct the sentence: He is an teacher.",
+   "correct_answer": "He is a teacher.",
+   "explanation_ar": "نستخدم a قبل teacher لأن الكلمة تبدأ بصوت ساكن."
+  },
+  {
+   "id": 205,
+   "skill": "Grammar",
+   "topic": "Comparative Adjectives",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "This road is _____ than that road.",
+   "options": [
+    "longer",
+    "long",
+    "longest",
+    "more long"
+   ],
+   "correct_answer": "longer",
+   "explanation_ar": "نضيف er إلى الصفة القصيرة long لتصبح longer عند المقارنة بين طريقين.",
+   "wrong_answers_ar": {
+    "long": "الصفة الأساسية وليست صيغة مقارنة.",
+    "longest": "صيغة التفضيل.",
+    "more long": "الصيغة المعتادة للمقارنة هنا هي longer."
+   }
+  },
+  {
+   "id": 206,
+   "skill": "Grammar",
+   "topic": "Comparative Adjectives",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "A lion is _____ than a mouse. (strong)",
+   "correct_answer": "stronger",
+   "explanation_ar": "نضيف er إلى strong لتصبح stronger، أي أقوى.",
+   "accepted_answers": [
+    "stronger"
+   ]
+  },
+  {
+   "id": 207,
+   "skill": "Grammar",
+   "topic": "Superlative Adjectives",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "This is the _____ building in our town.",
+   "options": [
+    "tallest",
+    "taller",
+    "tall",
+    "more tall"
+   ],
+   "correct_answer": "tallest",
+   "explanation_ar": "نستخدم the tallest عند اختيار الأعلى ضمن مجموعة من المباني.",
+   "wrong_answers_ar": {
+    "taller": "تُستخدم للمقارنة بين شيئين.",
+    "tall": "الصفة الأساسية.",
+    "more tall": "صيغة غير صحيحة هنا؛ الصفة القصيرة تأخذ est."
+   }
+  },
+  {
+   "id": 208,
+   "skill": "Grammar",
+   "topic": "Comparative and Superlative",
+   "type": "matching",
+   "difficulty": "medium",
+   "question": "Match each adjective with its comparative form.",
+   "pairs": [
+    {
+     "item": "Small",
+     "match": "Smaller"
+    },
+    {
+     "item": "Fast",
+     "match": "Faster"
+    },
+    {
+     "item": "Happy",
+     "match": "Happier"
+    },
+    {
+     "item": "Good",
+     "match": "Better"
+    },
+    {
+     "item": "Bad",
+     "match": "Worse"
+    }
+   ],
+   "explanation_ar": "هذه صيغ المقارنة: small تصبح smaller، وfast تصبح faster، وhappy تصبح happier، وgood تصبح better، وbad تصبح worse."
+  },
+  {
+   "id": 209,
+   "skill": "Grammar",
+   "topic": "Adverbs of Manner",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "The girl sings _____.",
+   "options": [
+    "beautifully",
+    "beautiful",
+    "beauty",
+    "more beautiful"
+   ],
+   "correct_answer": "beautifully",
+   "explanation_ar": "نستخدم beautifully لوصف طريقة الغناء؛ لأنها حال يصف الفعل sings.",
+   "wrong_answers_ar": {
+    "beautiful": "صفة تصف الاسم، مثل a beautiful song.",
+    "beauty": "اسم يعني الجمال.",
+    "more beautiful": "صيغة مقارنة لصفة وليست الحال المناسب هنا."
+   }
+  },
+  {
+   "id": 210,
+   "skill": "Grammar",
+   "topic": "Adverbs of Manner",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "The students listened _____. (careful)",
+   "correct_answer": "carefully",
+   "explanation_ar": "نحوّل الصفة careful إلى الحال carefully بإضافة ly.",
+   "accepted_answers": [
+    "carefully"
+   ]
+  },
+  {
+   "id": 211,
+   "skill": "Vocabulary",
+   "topic": "Directions",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "If you want to go to the opposite side of the street, you should _____ the road.",
+   "options": [
+    "cross",
+    "climb",
+    "swim",
+    "fly"
+   ],
+   "correct_answer": "cross",
+   "explanation_ar": "Cross تعني يعبر، فنقول cross the road لعبور الطريق.",
+   "wrong_answers_ar": {
+    "climb": "تعني يتسلق.",
+    "swim": "تعني يسبح.",
+    "fly": "تعني يطير."
+   }
+  },
+  {
+   "id": 212,
+   "skill": "Vocabulary",
+   "topic": "Directions",
+   "type": "matching",
+   "difficulty": "easy",
+   "question": "Match each direction with its meaning.",
+   "pairs": [
+    {
+     "item": "Turn left",
+     "match": "Move to the left"
+    },
+    {
+     "item": "Turn right",
+     "match": "Move to the right"
+    },
+    {
+     "item": "Go straight",
+     "match": "Continue forward"
+    },
+    {
+     "item": "Stop",
+     "match": "Do not move"
+    }
+   ],
+   "explanation_ar": "Turn left انعطف يسارًا، Turn right انعطف يمينًا، Go straight واصل إلى الأمام، Stop توقف."
+  },
+  {
+   "id": 213,
+   "skill": "Vocabulary",
+   "topic": "Directions",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "To go forward without turning, go _____.",
+   "correct_answer": "straight",
+   "explanation_ar": "Straight تعني مستقيمًا أو إلى الأمام دون انعطاف.",
+   "accepted_answers": [
+    "straight"
+   ]
+  },
+  {
+   "id": 214,
+   "skill": "Vocabulary",
+   "topic": "Community Helpers",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Who helps put out fires?",
+   "options": [
+    "Firefighter",
+    "Farmer",
+    "Baker",
+    "Dentist"
+   ],
+   "correct_answer": "Firefighter",
+   "explanation_ar": "رجل الإطفاء Firefighter يساعد على إخماد الحرائق.",
+   "wrong_answers_ar": {
+    "Farmer": "المزارع يعمل في الزراعة.",
+    "Baker": "الخباز يصنع المخبوزات.",
+    "Dentist": "طبيب الأسنان يعالج الأسنان."
+   }
+  },
+  {
+   "id": 215,
+   "skill": "Vocabulary",
+   "topic": "Community Helpers",
+   "type": "matching",
+   "difficulty": "easy",
+   "question": "Match each worker with the correct job.",
+   "pairs": [
+    {
+     "item": "Dentist",
+     "match": "Checks teeth"
+    },
+    {
+     "item": "Farmer",
+     "match": "Grows crops"
+    },
+    {
+     "item": "Baker",
+     "match": "Makes bread"
+    },
+    {
+     "item": "Police officer",
+     "match": "Helps keep people safe"
+    }
+   ],
+   "explanation_ar": "طبيب الأسنان يفحص الأسنان، والمزارع يزرع المحاصيل، والخباز يصنع الخبز، ورجل الشرطة يساعد في الحفاظ على سلامة الناس."
+  },
+  {
+   "id": 216,
+   "skill": "Vocabulary",
+   "topic": "Community Helpers",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "A person who grows food on a farm is a _____.",
+   "correct_answer": "farmer",
+   "explanation_ar": "Farmer تعني مزارع، وهو الشخص الذي يزرع الطعام في المزرعة.",
+   "accepted_answers": [
+    "farmer"
+   ]
+  },
+  {
+   "id": 217,
+   "skill": "Grammar",
+   "topic": "Past Continuous",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "At 8 p.m. yesterday, I _____ watching television.",
+   "options": [
+    "was",
+    "were",
+    "am",
+    "are"
+   ],
+   "correct_answer": "was",
+   "explanation_ar": "نستخدم was مع I لتكوين الماضي المستمر: was watching.",
+   "wrong_answers_ar": {
+    "were": "تُستخدم مع you وwe وthey.",
+    "am": "صيغة المضارع مع I.",
+    "are": "صيغة المضارع مع you وwe وthey."
+   }
+  },
+  {
+   "id": 218,
+   "skill": "Grammar",
+   "topic": "Past Continuous",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "The children were _____ in the garden. (play)",
+   "correct_answer": "playing",
+   "explanation_ar": "يتكون الماضي المستمر من was أو were ثم الفعل مع ing.",
+   "accepted_answers": [
+    "playing"
+   ]
+  },
+  {
+   "id": 219,
+   "skill": "Grammar",
+   "topic": "Past Continuous",
+   "type": "error_correction",
+   "difficulty": "medium",
+   "question": "Correct the sentence: She were cooking dinner.",
+   "correct_answer": "She was cooking dinner.",
+   "explanation_ar": "نستخدم was مع She، وليس were."
+  },
+  {
+   "id": 220,
+   "skill": "Grammar",
+   "topic": "Past Continuous",
+   "type": "sentence_ordering",
+   "difficulty": "medium",
+   "question": "Arrange the words to make a correct sentence.",
+   "words": [
+    "was",
+    "My",
+    "father",
+    "driving",
+    "home",
+    "."
+   ],
+   "correct_sentence": "My father was driving home.",
+   "explanation_ar": "نبدأ بالفاعل My father، ثم was، ثم الفعل driving، ثم home."
+  },
+  {
+   "id": 221,
+   "skill": "Vocabulary",
+   "topic": "Animals and Habitats",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Which animal lives mainly in the ocean?",
+   "options": [
+    "Dolphin",
+    "Camel",
+    "Eagle",
+    "Rabbit"
+   ],
+   "correct_answer": "Dolphin",
+   "explanation_ar": "الدلفين Dolphin يعيش في البحر.",
+   "wrong_answers_ar": {
+    "Camel": "الجمل يعيش في البيئات البرية والصحراوية.",
+    "Eagle": "النسر طائر يعيش ويطير في الهواء.",
+    "Rabbit": "الأرنب حيوان بري."
+   }
+  },
+  {
+   "id": 222,
+   "skill": "Vocabulary",
+   "topic": "Animals and Habitats",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "A camel can live in the _____.",
+   "correct_answer": "desert",
+   "explanation_ar": "الجمل يستطيع العيش في الصحراء Desert ويتحمل الظروف الجافة.",
+   "accepted_answers": [
+    "desert"
+   ]
+  },
+  {
+   "id": 223,
+   "skill": "Reading",
+   "topic": "The Lost Puppy",
+   "type": "reading_comprehension",
+   "difficulty": "medium",
+   "passage": "One afternoon, Noor found a small puppy near her house. The puppy looked hungry and thirsty. Noor gave it some water and asked her father for help. Together, they found the puppy's owner using a tag on its collar.",
+   "question": "Where did Noor find the puppy?",
+   "options": [
+    "Near her house",
+    "At school",
+    "In a shop",
+    "At the beach"
+   ],
+   "correct_answer": "Near her house",
+   "explanation_ar": "النص يذكر أن نور وجدت الجرو بالقرب من منزلها.",
+   "wrong_answers_ar": {
+    "At school": "المدرسة لم تُذكر مكانًا للعثور على الجرو.",
+    "In a shop": "المتجر لم يُذكر في النص.",
+    "At the beach": "الشاطئ لم يُذكر في النص."
+   }
+  },
+  {
+   "id": 224,
+   "skill": "Reading",
+   "topic": "The Lost Puppy",
+   "type": "reading_comprehension",
+   "difficulty": "medium",
+   "passage": "One afternoon, Noor found a small puppy near her house. The puppy looked hungry and thirsty. Noor gave it some water and asked her father for help. Together, they found the puppy's owner using a tag on its collar.",
+   "question": "How did Noor and her father find the owner?",
+   "options": [
+    "By reading the tag on its collar",
+    "By asking a teacher",
+    "By calling the police",
+    "By looking at a map"
+   ],
+   "correct_answer": "By reading the tag on its collar",
+   "explanation_ar": "استخدما البطاقة الموجودة على طوق الجرو لمعرفة صاحبه.",
+   "wrong_answers_ar": {
+    "By asking a teacher": "لم يذكر النص سؤال المعلم.",
+    "By calling the police": "لم يذكر النص الاتصال بالشرطة.",
+    "By looking at a map": "لم يذكر النص استخدام خريطة."
+   }
+  },
+  {
+   "id": 225,
+   "skill": "Writing",
+   "topic": "Giving Directions",
+   "type": "open_ended",
+   "difficulty": "medium",
+   "question": "Write three simple instructions to help someone find a place.",
+   "example_answer": [
+    "Go straight.",
+    "Turn left at the school.",
+    "The library is on your right."
+   ],
+   "explanation_ar": "اكتب ثلاث تعليمات واضحة لإرشاد شخص إلى مكان. استخدم كلمات الاتجاهات مثل straight وleft وright.",
+   "rubric": {
+    "total_score": 5,
+    "criteria": [
+     {
+      "criterion": "Writes three clear instructions",
+      "score": 2
+     },
+     {
+      "criterion": "Uses direction vocabulary correctly",
+      "score": 1
+     },
+     {
+      "criterion": "Uses correct sentence structure",
+      "score": 1
+     },
+     {
+      "criterion": "Uses capitalization and punctuation",
+      "score": 1
+     }
+    ]
+   }
+  }
+ ]
+}

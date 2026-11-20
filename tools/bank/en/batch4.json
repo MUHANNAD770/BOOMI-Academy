@@ -1,0 +1,520 @@
+{
+ "bank": "Boomi English Academy",
+ "batch": 4,
+ "question_range": "76-100",
+ "stage": "Elementary English",
+ "level": "Beginner",
+ "grade": "Primary",
+ "language": "English",
+ "explanation_language": "Arabic",
+ "questions": [
+  {
+   "id": 76,
+   "skill": "Grammar",
+   "topic": "Have and Has",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "She _____ a new school bag.",
+   "options": [
+    "have",
+    "has",
+    "having",
+    "is"
+   ],
+   "correct_answer": "has",
+   "explanation_ar": "نستخدم has مع She وHe وIt في المضارع البسيط للتعبير عن الملكية.",
+   "wrong_answers_ar": {
+    "have": "تُستخدم مع I وYou وWe وThey.",
+    "having": "لا تناسب تركيب الجملة هنا.",
+    "is": "فعل be وليس فعل الملكية المطلوب."
+   }
+  },
+  {
+   "id": 77,
+   "skill": "Grammar",
+   "topic": "Have and Has",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "I _____ two brothers.",
+   "correct_answer": "have",
+   "explanation_ar": "نستخدم have مع الضمير I عند التعبير عن الملكية.",
+   "accepted_answers": [
+    "have"
+   ]
+  },
+  {
+   "id": 78,
+   "skill": "Grammar",
+   "topic": "Can and Cannot",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "A bird _____ fly.",
+   "options": [
+    "can",
+    "cannot",
+    "does",
+    "has"
+   ],
+   "correct_answer": "can",
+   "explanation_ar": "نستخدم can للتعبير عن القدرة. الطائر يستطيع الطيران.",
+   "wrong_answers_ar": {
+    "cannot": "تعني لا يستطيع، وهي عكس المعنى المطلوب.",
+    "does": "تُستخدم للمضارع البسيط وليست فعل قدرة.",
+    "has": "تعني يملك، ولا تعبّر عن القدرة."
+   }
+  },
+  {
+   "id": 79,
+   "skill": "Grammar",
+   "topic": "Can and Cannot",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "A fish _____ walk.",
+   "correct_answer": "cannot",
+   "explanation_ar": "نستخدم cannot للتعبير عن عدم القدرة. السمكة لا تستطيع المشي.",
+   "accepted_answers": [
+    "cannot",
+    "can't"
+   ]
+  },
+  {
+   "id": 80,
+   "skill": "Vocabulary",
+   "topic": "Days of the Week",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Which day comes after Monday?",
+   "options": [
+    "Sunday",
+    "Tuesday",
+    "Friday",
+    "Saturday"
+   ],
+   "correct_answer": "Tuesday",
+   "explanation_ar": "اليوم الذي يأتي بعد Monday هو Tuesday، أي الثلاثاء.",
+   "wrong_answers_ar": {
+    "Sunday": "الأحد يأتي قبل Monday.",
+    "Friday": "الجمعة يأتي في نهاية أسبوع العمل.",
+    "Saturday": "السبت يأتي بعد Friday."
+   }
+  },
+  {
+   "id": 81,
+   "skill": "Vocabulary",
+   "topic": "Days of the Week",
+   "type": "ordering",
+   "difficulty": "easy",
+   "question": "Put the days in the correct order, starting with Sunday.",
+   "items": [
+    "Wednesday",
+    "Sunday",
+    "Tuesday",
+    "Monday"
+   ],
+   "correct_order": [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday"
+   ],
+   "explanation_ar": "ترتيب الأيام ابتداءً من Sunday هو Sunday ثم Monday ثم Tuesday ثم Wednesday."
+  },
+  {
+   "id": 82,
+   "skill": "Vocabulary",
+   "topic": "Months",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Which month comes after March?",
+   "options": [
+    "January",
+    "February",
+    "April",
+    "May"
+   ],
+   "correct_answer": "April",
+   "explanation_ar": "الشهر الذي يأتي بعد March هو April، أي أبريل.",
+   "wrong_answers_ar": {
+    "January": "يناير هو الشهر الأول.",
+    "February": "فبراير يأتي قبل March.",
+    "May": "مايو يأتي بعد April."
+   }
+  },
+  {
+   "id": 83,
+   "skill": "Grammar",
+   "topic": "Imperatives",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Choose the correct classroom instruction.",
+   "options": [
+    "Open your book.",
+    "Opens your book.",
+    "Opening your book.",
+    "You opening book."
+   ],
+   "correct_answer": "Open your book.",
+   "explanation_ar": "في الأمر نستخدم الفعل بصيغته الأساسية مباشرة، مثل Open.",
+   "wrong_answers_ar": {
+    "Opens your book.": "لا نضيف s إلى فعل الأمر.",
+    "Opening your book.": "صيغة ing لا تكوّن أمرًا هنا.",
+    "You opening book.": "تركيب غير صحيح."
+   }
+  },
+  {
+   "id": 84,
+   "skill": "Grammar",
+   "topic": "Imperatives",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "You want someone to be quiet. What do you say?",
+   "options": [
+    "Be quiet, please.",
+    "Are quiet, please.",
+    "Quiet be please.",
+    "Being quiet please."
+   ],
+   "correct_answer": "Be quiet, please.",
+   "explanation_ar": "نستخدم Be في بداية الأمر، ومعناها كن هادئًا أو كوني هادئة.",
+   "wrong_answers_ar": {
+    "Are quiet, please.": "لا نستخدم are بهذه الطريقة في الأمر.",
+    "Quiet be please.": "ترتيب الكلمات غير صحيح.",
+    "Being quiet please.": "صيغة غير مناسبة للأمر المباشر."
+   }
+  },
+  {
+   "id": 85,
+   "skill": "Grammar",
+   "topic": "Prepositions of Place",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "The shoes are _____ the bed.",
+   "options": [
+    "under",
+    "between",
+    "at",
+    "from"
+   ],
+   "correct_answer": "under",
+   "explanation_ar": "Under تعني تحت. الجملة تعني: الأحذية تحت السرير.",
+   "wrong_answers_ar": {
+    "between": "تعني بين شيئين.",
+    "at": "تُستخدم غالبًا لتحديد موقع أو نقطة.",
+    "from": "تعني من."
+   }
+  },
+  {
+   "id": 86,
+   "skill": "Grammar",
+   "topic": "Prepositions of Place",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "The picture is _____ the wall.",
+   "correct_answer": "on",
+   "explanation_ar": "نستخدم on عندما يكون الشيء مثبتًا أو موجودًا على سطح، مثل الصورة على الجدار.",
+   "accepted_answers": [
+    "on"
+   ]
+  },
+  {
+   "id": 87,
+   "skill": "Grammar",
+   "topic": "Prepositions of Time",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "I go to school _____ the morning.",
+   "options": [
+    "in",
+    "on",
+    "at",
+    "under"
+   ],
+   "correct_answer": "in",
+   "explanation_ar": "نستخدم in مع أجزاء اليوم مثل in the morning وin the afternoon.",
+   "wrong_answers_ar": {
+    "on": "تُستخدم غالبًا مع الأيام والتواريخ.",
+    "at": "تُستخدم مع أوقات محددة مثل at 7 o'clock.",
+    "under": "تعني تحت ولا تناسب الزمن."
+   }
+  },
+  {
+   "id": 88,
+   "skill": "Vocabulary",
+   "topic": "Telling the Time",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "What time is it? 7:00",
+   "options": [
+    "Seven o'clock",
+    "Half past seven",
+    "Quarter past seven",
+    "Eight o'clock"
+   ],
+   "correct_answer": "Seven o'clock",
+   "explanation_ar": "عندما تكون الدقائق صفرًا نقول o'clock، لذلك 7:00 تعني Seven o'clock.",
+   "wrong_answers_ar": {
+    "Half past seven": "تعني 7:30.",
+    "Quarter past seven": "تعني 7:15.",
+    "Eight o'clock": "تعني 8:00."
+   }
+  },
+  {
+   "id": 89,
+   "skill": "Vocabulary",
+   "topic": "Telling the Time",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "What time is 3:30?",
+   "options": [
+    "Half past three",
+    "Three o'clock",
+    "Quarter past three",
+    "Half past four"
+   ],
+   "correct_answer": "Half past three",
+   "explanation_ar": "Half past تعني مرور نصف ساعة على الساعة، و3:30 تعني الثالثة والنصف.",
+   "wrong_answers_ar": {
+    "Three o'clock": "تعني 3:00.",
+    "Quarter past three": "تعني 3:15.",
+    "Half past four": "تعني 4:30."
+   }
+  },
+  {
+   "id": 90,
+   "skill": "Vocabulary",
+   "topic": "Food and Drinks",
+   "type": "matching",
+   "difficulty": "easy",
+   "question": "Match each food with its correct category.",
+   "pairs": [
+    {
+     "item": "Apple",
+     "match": "Fruit"
+    },
+    {
+     "item": "Carrot",
+     "match": "Vegetable"
+    },
+    {
+     "item": "Milk",
+     "match": "Drink"
+    },
+    {
+     "item": "Bread",
+     "match": "Bakery food"
+    }
+   ],
+   "explanation_ar": "التفاح فاكهة، والجزر من الخضراوات، والحليب مشروب، والخبز من المخبوزات."
+  },
+  {
+   "id": 91,
+   "skill": "Grammar",
+   "topic": "Present Simple Negative",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "He _____ like coffee.",
+   "options": [
+    "doesn't",
+    "don't",
+    "isn't",
+    "aren't"
+   ],
+   "correct_answer": "doesn't",
+   "explanation_ar": "نستخدم doesn't مع He وShe وIt في النفي بالمضارع البسيط، ويأتي الفعل بعدها بصيغته الأساسية.",
+   "wrong_answers_ar": {
+    "don't": "تُستخدم مع I وYou وWe وThey.",
+    "isn't": "تُستخدم لنفي فعل be.",
+    "aren't": "تُستخدم مع you وwe وthey لنفي فعل be."
+   }
+  },
+  {
+   "id": 92,
+   "skill": "Grammar",
+   "topic": "Present Simple Negative",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "They _____ play tennis on Mondays.",
+   "correct_answer": "don't",
+   "explanation_ar": "نستخدم don't مع They في النفي بالمضارع البسيط.",
+   "accepted_answers": [
+    "don't",
+    "do not"
+   ]
+  },
+  {
+   "id": 93,
+   "skill": "Grammar",
+   "topic": "Present Simple Questions",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "_____ she speak English?",
+   "options": [
+    "Does",
+    "Do",
+    "Is",
+    "Are"
+   ],
+   "correct_answer": "Does",
+   "explanation_ar": "نستخدم Does في بداية السؤال مع She، ثم يأتي الفعل بصيغته الأساسية speak.",
+   "wrong_answers_ar": {
+    "Do": "تُستخدم مع I وYou وWe وThey.",
+    "Is": "تُستخدم مع فعل be.",
+    "Are": "تُستخدم مع you وwe وthey."
+   }
+  },
+  {
+   "id": 94,
+   "skill": "Grammar",
+   "topic": "Present Simple Questions",
+   "type": "sentence_ordering",
+   "difficulty": "medium",
+   "question": "Arrange the words to make a correct question.",
+   "words": [
+    "you",
+    "Do",
+    "like",
+    "music",
+    "?"
+   ],
+   "correct_sentence": "Do you like music?",
+   "explanation_ar": "يبدأ السؤال بـ Do، ثم الفاعل you، ثم الفعل like، ثم المفعول music."
+  },
+  {
+   "id": 95,
+   "skill": "Reading",
+   "topic": "Daily Routine",
+   "type": "reading_comprehension",
+   "difficulty": "easy",
+   "passage": "My name is Ali. I wake up at six o'clock every morning. I eat breakfast with my family. Then I go to school by bus. I like English and science.",
+   "question": "What time does Ali wake up?",
+   "options": [
+    "At five o'clock",
+    "At six o'clock",
+    "At seven o'clock",
+    "At eight o'clock"
+   ],
+   "correct_answer": "At six o'clock",
+   "explanation_ar": "ورد في النص أن علي يستيقظ at six o'clock، أي الساعة السادسة.",
+   "wrong_answers_ar": {
+    "At five o'clock": "النص لا يذكر الساعة الخامسة.",
+    "At seven o'clock": "النص يذكر السادسة وليس السابعة.",
+    "At eight o'clock": "النص يذكر السادسة وليس الثامنة."
+   }
+  },
+  {
+   "id": 96,
+   "skill": "Reading",
+   "topic": "Daily Routine",
+   "type": "reading_comprehension",
+   "difficulty": "easy",
+   "passage": "My name is Ali. I wake up at six o'clock every morning. I eat breakfast with my family. Then I go to school by bus. I like English and science.",
+   "question": "How does Ali go to school?",
+   "options": [
+    "By car",
+    "On foot",
+    "By bus",
+    "By bicycle"
+   ],
+   "correct_answer": "By bus",
+   "explanation_ar": "الجملة في النص تقول: I go to school by bus، أي أذهب إلى المدرسة بالحافلة.",
+   "wrong_answers_ar": {
+    "By car": "لم يذكر النص السيارة.",
+    "On foot": "تعني مشيًا، وهذا غير مذكور.",
+    "By bicycle": "تعني بالدراجة، وهذا غير مذكور."
+   }
+  },
+  {
+   "id": 97,
+   "skill": "Writing",
+   "topic": "Capitalization",
+   "type": "error_correction",
+   "difficulty": "easy",
+   "question": "Correct the sentence: my name is sara.",
+   "correct_answer": "My name is Sara.",
+   "explanation_ar": "نبدأ الجملة بحرف كبير، ونكتب الاسم الشخصي بحرف كبير أيضًا، ونضع نقطة في نهاية الجملة."
+  },
+  {
+   "id": 98,
+   "skill": "Writing",
+   "topic": "Punctuation",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Which punctuation mark should end this question: Where are you",
+   "options": [
+    ".",
+    "?",
+    ",",
+    "!"
+   ],
+   "correct_answer": "?",
+   "explanation_ar": "نضع علامة الاستفهام ? في نهاية السؤال.",
+   "wrong_answers_ar": {
+    ".": "النقطة تُستخدم غالبًا في نهاية الجملة الخبرية.",
+    ",": "الفاصلة تفصل بين أجزاء الجملة.",
+    "!": "علامة التعجب تُستخدم للتعبير عن الانفعال."
+   }
+  },
+  {
+   "id": 99,
+   "skill": "Vocabulary",
+   "topic": "Opposites",
+   "type": "matching",
+   "difficulty": "easy",
+   "question": "Match each word with its opposite.",
+   "pairs": [
+    {
+     "item": "Early",
+     "match": "Late"
+    },
+    {
+     "item": "Clean",
+     "match": "Dirty"
+    },
+    {
+     "item": "Strong",
+     "match": "Weak"
+    },
+    {
+     "item": "Near",
+     "match": "Far"
+    }
+   ],
+   "explanation_ar": "Early عكسها Late، وClean عكسها Dirty، وStrong عكسها Weak، وNear عكسها Far."
+  },
+  {
+   "id": 100,
+   "skill": "Writing",
+   "topic": "My Daily Routine",
+   "type": "open_ended",
+   "difficulty": "medium",
+   "question": "Write three simple sentences about your daily routine.",
+   "example_answer": [
+    "I wake up at seven o'clock.",
+    "I eat breakfast in the morning.",
+    "I go to school every day."
+   ],
+   "explanation_ar": "اكتب ثلاث جمل بسيطة عن روتينك اليومي. ابدأ كل جملة بحرف كبير، واستخدم الفعل المناسب، وضع نقطة في النهاية.",
+   "rubric": {
+    "total_score": 5,
+    "criteria": [
+     {
+      "criterion": "Writes three relevant sentences",
+      "score": 2
+     },
+     {
+      "criterion": "Uses correct simple present verbs",
+      "score": 1
+     },
+     {
+      "criterion": "Uses correct word order",
+      "score": 1
+     },
+     {
+      "criterion": "Uses capitalization and punctuation",
+      "score": 1
+     }
+    ]
+   }
+  }
+ ]
+}

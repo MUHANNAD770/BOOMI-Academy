@@ -1,0 +1,395 @@
+{
+ "bank": "Boomi English Academy",
+ "batch": 2,
+ "question_range": "26-50",
+ "stage": "Early Foundation",
+ "level": "Beginner",
+ "grade": "Grade 1-2",
+ "language": "English",
+ "explanation_language": "Arabic",
+ "questions": [
+  {
+   "id": 26,
+   "skill": "Alphabet",
+   "topic": "Letter Order",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Which letter comes after D?",
+   "options": [
+    "C",
+    "E",
+    "F"
+   ],
+   "correct_answer": "E",
+   "explanation_ar": "الحرف الذي يأتي بعد D هو E."
+  },
+  {
+   "id": 27,
+   "skill": "Alphabet",
+   "topic": "Uppercase and Lowercase",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Choose the uppercase letter of m.",
+   "options": [
+    "N",
+    "M",
+    "W"
+   ],
+   "correct_answer": "M",
+   "explanation_ar": "الحرف M هو الشكل الكبير للحرف m."
+  },
+  {
+   "id": 28,
+   "skill": "Phonics",
+   "topic": "Beginning Sounds",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Which word begins with the /f/ sound?",
+   "options": [
+    "Fish",
+    "Dog",
+    "Cat"
+   ],
+   "correct_answer": "Fish",
+   "explanation_ar": "كلمة Fish تبدأ بصوت /f/."
+  },
+  {
+   "id": 29,
+   "skill": "Phonics",
+   "topic": "Ending Sounds",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Which word ends with the /t/ sound?",
+   "options": [
+    "Sun",
+    "Hat",
+    "Dog"
+   ],
+   "correct_answer": "Hat",
+   "explanation_ar": "كلمة Hat تنتهي بصوت /t/."
+  },
+  {
+   "id": 30,
+   "skill": "Phonics",
+   "topic": "Short Vowel Sounds",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Which word has the short /e/ sound?",
+   "options": [
+    "Bed",
+    "Bike",
+    "Home"
+   ],
+   "correct_answer": "Bed",
+   "explanation_ar": "حرف e في كلمة Bed ينطق بصوت قصير /e/."
+  },
+  {
+   "id": 31,
+   "skill": "Vocabulary",
+   "topic": "Animals",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Which animal gives us milk?",
+   "options": [
+    "Lion",
+    "Cow",
+    "Tiger"
+   ],
+   "correct_answer": "Cow",
+   "translation_ar": "بقرة",
+   "explanation_ar": "Cow تعني بقرة، وهي من الحيوانات التي تعطينا الحليب."
+  },
+  {
+   "id": 32,
+   "skill": "Vocabulary",
+   "topic": "Body Parts",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Which part of the body do we use to see?",
+   "options": [
+    "Ears",
+    "Eyes",
+    "Hands"
+   ],
+   "correct_answer": "Eyes",
+   "translation_ar": "العينان",
+   "explanation_ar": "نستخدم العينين للرؤية."
+  },
+  {
+   "id": 33,
+   "skill": "Vocabulary",
+   "topic": "Body Parts",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "We use our ______ to hear sounds.",
+   "options": [
+    "Ears",
+    "Feet",
+    "Nose"
+   ],
+   "correct_answer": "Ears",
+   "translation_ar": "الأذنان",
+   "explanation_ar": "نستخدم الأذنين لسماع الأصوات."
+  },
+  {
+   "id": 34,
+   "skill": "Vocabulary",
+   "topic": "Food",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Which food is made from milk?",
+   "options": [
+    "Cheese",
+    "Rice",
+    "Bread"
+   ],
+   "correct_answer": "Cheese",
+   "translation_ar": "جبن",
+   "explanation_ar": "Cheese تعني جبن، ويُصنع عادةً من الحليب."
+  },
+  {
+   "id": 35,
+   "skill": "Vocabulary",
+   "topic": "Clothes",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "What do you wear on your feet?",
+   "options": [
+    "Hat",
+    "Shoes",
+    "Shirt"
+   ],
+   "correct_answer": "Shoes",
+   "translation_ar": "أحذية",
+   "explanation_ar": "نرتدي الأحذية في أقدامنا."
+  },
+  {
+   "id": 36,
+   "skill": "Vocabulary",
+   "topic": "Weather",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "What is the weather like when it rains?",
+   "options": [
+    "Rainy",
+    "Sunny",
+    "Snowy"
+   ],
+   "correct_answer": "Rainy",
+   "translation_ar": "ممطر",
+   "explanation_ar": "Rainy تعني أن الجو ممطر."
+  },
+  {
+   "id": 37,
+   "skill": "Numbers",
+   "topic": "Number Sequence",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "What number comes before eight?",
+   "options": [
+    "Six",
+    "Seven",
+    "Nine"
+   ],
+   "correct_answer": "Seven",
+   "explanation_ar": "العدد الذي يأتي قبل ثمانية هو سبعة."
+  },
+  {
+   "id": 38,
+   "skill": "Numbers",
+   "topic": "Number Spelling",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Which word means the number 5?",
+   "options": [
+    "Four",
+    "Five",
+    "Six"
+   ],
+   "correct_answer": "Five",
+   "explanation_ar": "Five تعني خمسة."
+  },
+  {
+   "id": 39,
+   "skill": "Grammar",
+   "topic": "Verb To Be",
+   "type": "fill_in_the_blank",
+   "difficulty": "easy",
+   "question": "She ______ my sister.",
+   "options": [
+    "am",
+    "is",
+    "are"
+   ],
+   "correct_answer": "is",
+   "explanation_ar": "نستخدم is مع She. الجملة الصحيحة: She is my sister."
+  },
+  {
+   "id": 40,
+   "skill": "Grammar",
+   "topic": "Verb To Be",
+   "type": "fill_in_the_blank",
+   "difficulty": "easy",
+   "question": "They ______ happy.",
+   "options": [
+    "am",
+    "is",
+    "are"
+   ],
+   "correct_answer": "are",
+   "explanation_ar": "نستخدم are مع They لأنها ضمير جمع."
+  },
+  {
+   "id": 41,
+   "skill": "Grammar",
+   "topic": "Articles",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "I see ______ elephant.",
+   "options": [
+    "a",
+    "an",
+    "the"
+   ],
+   "correct_answer": "an",
+   "explanation_ar": "نستخدم an قبل صوت حرف متحرك. كلمة elephant تبدأ بصوت متحرك."
+  },
+  {
+   "id": 42,
+   "skill": "Grammar",
+   "topic": "Singular and Plural",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "What is the plural of book?",
+   "options": [
+    "Bookes",
+    "Books",
+    "Book"
+   ],
+   "correct_answer": "Books",
+   "explanation_ar": "نضيف s إلى معظم الأسماء لتحويلها إلى الجمع. Book تصبح Books."
+  },
+  {
+   "id": 43,
+   "skill": "Grammar",
+   "topic": "Demonstratives",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "______ is my pencil here in my hand.",
+   "options": [
+    "This",
+    "Those",
+    "They"
+   ],
+   "correct_answer": "This",
+   "explanation_ar": "نستخدم This للإشارة إلى شيء مفرد قريب منا."
+  },
+  {
+   "id": 44,
+   "skill": "Grammar",
+   "topic": "Prepositions of Place",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "The fish is ______ the water.",
+   "options": [
+    "in",
+    "on",
+    "under"
+   ],
+   "correct_answer": "in",
+   "explanation_ar": "In تعني داخل. السمكة في الماء."
+  },
+  {
+   "id": 45,
+   "skill": "Conversation",
+   "topic": "Introducing Yourself",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "A: What is your name? B: ______",
+   "options": [
+    "My name is Ali.",
+    "I am fine.",
+    "Good night."
+   ],
+   "correct_answer": "My name is Ali.",
+   "explanation_ar": "عندما يسألك شخص عن اسمك، يمكنك الإجابة: My name is Ali."
+  },
+  {
+   "id": 46,
+   "skill": "Conversation",
+   "topic": "Feelings",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "A: How are you? B: ______",
+   "options": [
+    "I am fine, thank you.",
+    "My name is Sara.",
+    "I am seven."
+   ],
+   "correct_answer": "I am fine, thank you.",
+   "explanation_ar": "هذا رد مناسب على سؤال How are you؟ ومعناه: أنا بخير، شكرًا لك."
+  },
+  {
+   "id": 47,
+   "skill": "Reading",
+   "topic": "Reading Comprehension",
+   "type": "reading_comprehension",
+   "difficulty": "easy",
+   "passage": "Mona has a small cat. Its name is Mimi. The cat is white. Mona gives Mimi milk every morning.",
+   "question": "What is the cat's name?",
+   "options": [
+    "Lulu",
+    "Mimi",
+    "Max"
+   ],
+   "correct_answer": "Mimi",
+   "explanation_ar": "يذكر النص أن اسم القطة Mimi."
+  },
+  {
+   "id": 48,
+   "skill": "Reading",
+   "topic": "Reading Comprehension",
+   "type": "reading_comprehension",
+   "difficulty": "easy",
+   "passage": "Mona has a small cat. Its name is Mimi. The cat is white. Mona gives Mimi milk every morning.",
+   "question": "What color is the cat?",
+   "options": [
+    "Black",
+    "Brown",
+    "White"
+   ],
+   "correct_answer": "White",
+   "explanation_ar": "النص يذكر أن لون القطة أبيض."
+  },
+  {
+   "id": 49,
+   "skill": "Writing",
+   "topic": "Sentence Completion",
+   "type": "fill_in_the_blank",
+   "difficulty": "easy",
+   "question": "Complete the sentence: I like ______.",
+   "options": [
+    "apples",
+    "happy",
+    "blue"
+   ],
+   "correct_answer": "apples",
+   "explanation_ar": "Apples اسم طعام يمكن أن يأتي بعد I like. وتُقبل أسماء أخرى صحيحة إذا كان السؤال مفتوحًا."
+  },
+  {
+   "id": 50,
+   "skill": "Vocabulary",
+   "topic": "Opposites",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "What is the opposite of big?",
+   "options": [
+    "Tall",
+    "Small",
+    "Long"
+   ],
+   "correct_answer": "Small",
+   "explanation_ar": "Big تعني كبير، وعكسها Small وتعني صغير."
+  }
+ ]
+}
