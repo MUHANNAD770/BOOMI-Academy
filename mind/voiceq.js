@@ -40,13 +40,13 @@ function judge(q,alts){alts=alts.filter(Boolean);if(!alts.length)return{ok:false
 
 /* ---------- الواجهة ---------- */
 const el=()=>document.getElementById('vq');
-function close(){open=false;clearInterval(timer);const e=el();if(e)e.remove();try{say.stop()}catch(_){}}
+function close(){open=false;clearInterval(timer);const e=el();if(e)e.remove();try{say.stop();window.HurufiClips&&HurufiClips.stop()}catch(_){}}
 function ask(manual){if(open||!window.P)return false;const q=make();if(!q)return false;q.ask=fem(q.ask);open=true;const m=Mem.M(),T=(+P.age||7)<7?15:12,mic=micMode();
  const d=document.createElement('div');d.id='vq';d.setAttribute('role','dialog');d.setAttribute('aria-label','سؤال من بومي');
  d.innerHTML=`<div class=vq-card><button class=vq-x aria-label="تخطّي">✕</button><div class=vq-head><span class=vq-owl>🦉</span><b>سُؤَالٌ مِنْ بُومِي!</b></div>${q.show}<p class=vq-ask dir=auto>${q.ask}</p>
   <div class=vq-timer hidden><svg viewBox="0 0 80 80"><circle cx=40 cy=40 r=34 class=vq-bg /><circle cx=40 cy=40 r=34 class=vq-fg /></svg><b id=vq-sec>${D(T)}</b></div>
   <p id=vq-st class=vq-st aria-live=polite>🔊 اِسْمَعِ السُّؤَالَ…</p><div id=vq-opts class=vq-opts hidden></div></div>`;
- document.body.appendChild(d);d.querySelector('.vq-x').onclick=()=>{stopRec();close()};
+ document.body.appendChild(d);d.querySelector('.vq-x').onclick=()=>{done=true;clearInterval(timer);stopRec();close();try{say.stop();window.HurufiClips&&HurufiClips.stop()}catch(_){}}; /* ✕ يوقف كل شيء: كان انتهاء كلام بومي بعد الإغلاق يفتح الميكروفون ويكمل السؤال بالصوت */
  try{HurufiSound.play('select');MC.mood('wow',1200)}catch(_){}
  const st=t=>{const e=document.getElementById('vq-st');if(e)e.textContent=fem(t)};
  let rec=null,alts=[],done=false,left=T;
@@ -76,7 +76,7 @@ function ask(manual){if(open||!window.P)return false;const q=make();if(!q)return
     rec.onend=()=>{if(!done&&left>3&&rec)setTimeout(()=>{if(!done&&document.getElementById('vq-opts').hidden)start()},200)};
     rec.start();st('🎤 أَسْمَعُكَ… تَكَلَّمِ الْآنَ');try{MC.mood('listen',T*1000)}catch(_){}}catch(_){st('👆 اِخْتَرِ الْإِجَابَةَ');showChoices()}};start()}
  /* بومي يتكلم أولًا، ثم يُفتح الميكروفون تلقائيًا */
- let started=false;const go=()=>{if(started||done)return;started=true;listen()};
+ let started=false;const go=()=>{if(started||done||!document.body.contains(d))return;started=true;listen()};
  if(muted())setTimeout(go,900);else{say(q.ask,q.askLang||'ar',go,'ask');
   /* احتياط إن لم يصل إشعار انتهاء الكلام: لا نفتح الميكروفون وبومي ما زال يتكلم (كان يلتقط صوته هو: «زَائِد ٢») */
   const wait=()=>{if(started||done)return;if(window.say&&say.live)setTimeout(wait,400);else go()};setTimeout(wait,6500)}
