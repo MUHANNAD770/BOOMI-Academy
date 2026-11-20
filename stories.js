@@ -47,7 +47,7 @@ const stars=id=>{const b=best(id);return b==null?'':'★'.repeat(b)+'☆'.repeat
 /* القائمة الرئيسية لعالم القصص */
 window.stories=function(tab){tab=tab||'ar';V='sec';window.CS='games';const L=tab==='en'?EN:AR;
  const card=x=>`<button class="story-card" onclick="story('${x.id}')"><span>${x.ic}</span><b dir=auto>${esc(x.t)}</b><small>${'⭐'.repeat(x.lv)} ${best(x.id)!=null?'· '+stars(x.id):''}</small></button>`;
- h(`<section class="sec stories"><div class=path-h style="background:linear-gradient(135deg,#9be7b0,#25a43a)"><span>📚</span><div><h2>عالم القصص والقراءة</h2><p>اقرأ، استمع، ثم أجب</p></div></div>
+ h(`<section class="sec stories"><div class=path-h style="background:linear-gradient(135deg,#9be7b0,#25a43a)"><span>📚</span><div><h2>عالم القصص والقراءة</h2><p>${window.P&&P.gender==='female'?'اِقْرَئِي، اِسْتَمِعِي، ثُمَّ أَجِيبِي':'اِقْرَأْ، اِسْتَمِعْ، ثُمَّ أَجِبْ'}</p></div></div>
  <div class=course-filters><button class="${tab==='ar'?'on':''}" onclick="stories('ar')">📖 قصص عربية</button><button class="${tab==='en'?'on':''}" onclick="stories('en')">📘 English stories</button><button class="${tab==='talk'?'on':''}" onclick="stories('talk')">💬 Conversations</button></div>
  ${tab==='talk'?`<div class=story-grid>${TALK.map(x=>`<button class="story-card" onclick="talk('${x.id}')"><span>${x.ic}</span><b dir=ltr>${esc(x.t)}</b><small>${best(x.id)!=null?stars(x.id):'👂 Listen & answer'}</small></button>`).join('')}</div>`:`<div class=story-grid>${L.map(card).join('')}</div>`}
  <h3>🎧 اختبارات</h3><div class=list><button class=row onclick="listenTest()"><span>🎧</span><b>Listening test — اسمع واختر</b></button><button class=row onclick="readTest()"><span>👀</span><b>Reading test — اقرأ واختر</b></button></div></section>`)};

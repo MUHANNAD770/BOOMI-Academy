@@ -31,7 +31,10 @@ h(`<h1>حروفي</h1><p class=mut>تعلّم العربية والإنجليز�
 <button class=big onclick="start()">ابدأ اختبار تحديد المستوى</button>`)}
 function start(){const n=document.getElementById('nm').value.trim()||'صديقي',a=+document.getElementById('ag').value;
 P={name:n,gender:document.querySelector('input[name=gender]:checked')?.value||'male',age:a,lang:document.getElementById('lg').value,stage:Math.min(4,Math.floor((a-3)/2)),done:{},sc:{}};save();place()}
-function place(){const it=units(P.stage).flatMap(u=>u.i);cur={id:'pl',n:'اختبار تحديد المستوى',i:it};tries=0;quiz()}
+function place(){const us=units(P.stage).filter(u=>u.i&&u.i.length>=4),it=us.flatMap(u=>u.i);cur={id:'pl',n:'اختبار تحديد المستوى',i:it};tries=0;
+ /* كل سؤال خياراته من درسه نفسه (كانت من كل دروس المرحلة: صورة ثور وخياراتها Jam وPilot ومربع) */
+ try{if(typeof lq==='function'&&us.length){const pick=[...us].sort(()=>Math.random()-.5);cur.qs=[0,1,2,3,4].map(k=>{const u=pick[k%pick.length],x=u.i[Math.floor(Math.random()*u.i.length)];return lq(x,u.i)})}}catch(e){}
+ quiz()}
 function home(){V='home';const st=P.stage,us=units(st),dn=us.filter(u=>P.done[u.id]).length,any=Object.keys(P.done).length;
 h(`<h1>أهلاً ${P.name}! 👋</h1><p class=mut>المرحلة ${st+1}: ${S[st].n} (${S[st].a} سنوات)</p>
 <div class=bar><div style="width:${us.length?dn/us.length*100:0}%"></div></div>
@@ -57,10 +60,10 @@ h(`<p class=mut>سؤال ${qi+1} من ${qs.length}</p><div class=q dir=auto>${m=
 function ans(b){const ok=b.dataset.ok=='1';document.querySelectorAll('.opt').forEach(x=>{x.disabled=1;if(x.dataset.ok=='1')x.classList.add('ok')});if(!ok)b.classList.add('no');sc+=ok;
 setTimeout(()=>{++qi<qs.length?q():fin()},ok?800:1500)}
 function fin(){const pass=sc>=4;let msg='';
-if(cur.id=='pl'){P.stage=Math.max(0,P.stage-(sc>=4?0:sc>=2?1:2));save();return h(`<h1>🎉</h1><h2>أحسنت يا ${P.name}!</h2><p>نتيجتك ${sc} من 5، وسنبدأ من المرحلة ${P.stage+1}: ${S[P.stage].n}. يمكن لولي الأمر تغيير المرحلة في أي وقت.</p><button class=big onclick=home()>هيا نتعلم</button>`)}
+if(cur.id=='pl'){P.stage=Math.max(0,P.stage-(sc>=4?0:sc>=2?1:2));save();return h(`<h1>🎉</h1><h2>أحسنت يا ${P.name}!</h2><p>${P.gender==='female'?'نَتِيجَتُكِ':'نَتِيجَتُكَ'} ${String(sc).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d])} مِنْ ٥، وَسَنَبْدَأُ مِنَ الْمَرْحَلَةِ ${String(P.stage+1).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d])}: ${S[P.stage].n}. يمكن لولي الأمر تغيير المرحلة في أي وقت.</p><button class=big onclick=home()>هيا نتعلم</button>`)}
 if(cur.id=='rv')return h(`<h1>🔁</h1><h2>${sc} من 5</h2><p>مراجعة رائعة!</p><button class=big onclick=home()>رجوع</button>`);
 P.sc[cur.id]=Math.max(P.sc[cur.id]||0,sc);if(pass)P.done[cur.id]={s:sc,d:day()};save();
-h(pass?`<h1>🌟</h1><h2>أتقنت الدرس! ${sc} من 5</h2><button class=big onclick=goNextLesson()>${nextLabel()}</button>`:`<h1>💪</h1><h2>${sc} من 5 – قريب جداً!</h2><p>نحتاج 4 على الأقل للانتقال. سنعيد التدريب بطريقة مختلفة.</p><button class=big onclick="tries++;lesson('${cur.id}')">أعد التدريب</button>`)}
+h(pass?`<h1>🌟</h1><h2>أتقنت الدرس! ${String(sc).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d])} مِنْ ٥</h2><button class=big onclick=goNextLesson()>${nextLabel()}</button>`:`<h1>💪</h1><h2>${String(sc).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d])} مِنْ ٥ – ${sc>=3?'قَرِيبٌ جِدًّا!':sc>=2?'بِدَايَةٌ جَيِّدَةٌ!':'لَا بَأْسَ، سَنَتَعَلَّمُ مَعًا!'}</h2><p>نَحْتَاجُ ٤ عَلَى الْأَقَلِّ لِلِانْتِقَالِ. سَنُعِيدُ التَّدْرِيبَ بِطَرِيقَةٍ مُخْتَلِفَةٍ.</p><button class=big onclick="tries++;lesson('${cur.id}')">أعد التدريب</button>`)}
 function parent(){V='parent';h(`<button class=link onclick=home()>رجوع ←</button><h2>لوحة ولي الأمر – ${P.name}</h2>
 <label for=ps>المرحلة الحالية</label><select id=ps onchange="P.stage=+this.value;save()">${S.map((s,i)=>`<option value=${i} ${i==P.stage?'selected':''}>${i+1}. ${s.n} (${s.a})</option>`)}</select>
 <label for=pl>اللغة</label><select id=pl onchange="P.lang=this.value;save()">${[['both','العربية والإنجليزية'],['ar','العربية'],['en','الإنجليزية']].map(x=>`<option value=${x[0]} ${x[0]==P.lang?'selected':''}>${x[1]}</option>`)}</select>
