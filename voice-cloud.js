@@ -64,8 +64,10 @@
  const rate=()=>Math.max(.8,Math.min(1.4,(+(window.P&&P.rate)||.92)/.92));
  const vol=()=>Math.max(.05,Math.min(1,window.P&&P.vol!=null?+P.vol:1));
  /* play → true عند الاكتمال/الإيقاف، false إذا تعذّر (فيُقرأ بالمحرك المحلي) */
+ /* الكلمة أو العبارة الإنجليزية القصيرة (٣ كلمات فأقل) تُنطق أبطأ قليلًا لتكون واضحة للطالب العربي؛ الجمل الطويلة بسرعتها الطبيعية */
+ const slowEn=(t,l)=>l==='en'&&String(t).trim().split(/\s+/).length<=3?.82:1;
  const play=async(t,l,valid,onStart)=>{if(!has(t,l))return false;stop();const ep=++st.ep,who=teacher(),k=key(t,l);
-  try{const r=rate(),c=ctx(),fast=c&&Math.abs(r-1)<.02;
+  try{const r=rate()*slowEn(t,l),c=ctx(),fast=c&&Math.abs(r-1)<.02;
    /* مقطع مفكوك مسبقًا (تجهيز الصفحة): يبدأ فورًا بلا أي طلب شبكة */
    let b=fast&&BUF.has(who+k)?null:await clip(who,k);if(b!=null&&!b.size)return false;if(ep!==st.ep||(valid&&!valid()))return true;
    if(fast){if(c.state!=='running')try{await c.resume()}catch(e){}
@@ -91,7 +93,7 @@
    try{(await caches.open(TC)).put(u,new Response(b.slice(0,b.size,'audio/mpeg'),{headers:{'content-type':'audio/mpeg'}}))}catch(e){}return b})().catch(()=>null);
   TM.set(u,pr);if(TM.size>60)TM.delete(TM.keys().next().value);pr.then(b=>{if(!b)TM.delete(u)});return pr};
  const speak=async(t,l,valid,onStart)=>{stop();const ep=++st.ep;
-  try{const b=await ttsBlob(t,l);if(!b)return false;if(ep!==st.ep||(valid&&!valid()))return true;const r=rate(),c=ctx(),id='tts:'+ttsUrl(t,l);
+  try{const b=await ttsBlob(t,l);if(!b)return false;if(ep!==st.ep||(valid&&!valid()))return true;const r=rate()*slowEn(t,l),c=ctx(),id='tts:'+ttsUrl(t,l);
    if(c&&Math.abs(r-1)<.02){if(c.state!=='running')try{await c.resume()}catch(e){}const buf=await decode(id,b);if(ep!==st.ep||(valid&&!valid()))return true;
     const src=c.createBufferSource();src.buffer=buf;st.gain.gain.value=vol();src.connect(st.gain);st.src=src;st.playing=1;
     await new Promise(ok=>{st.done=ok;src.onended=()=>{if(st.src===src){st.src=null;st.playing=0}if(st.done===ok){st.done=null;ok()}};src.start(c.currentTime+.015);onStart&&onStart();mouthLoop()});return true}

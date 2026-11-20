@@ -43,7 +43,8 @@ function pageCtx(lite){let fn='',args=[];try{const e=window.Router&&Router.entry
   else if(fn=='g2play'&&cur&&cur.game){const g=(window.G2GAMES||[]).find(x=>x.id==cur.game.id)||cur.game;I.subject=SUBJ[g.cat]||'ألعاب تعليمية';I.lesson='لعبة: '+(g.name||'')}
   else if(cur&&cur.n&&(V=='quiz'&&qs&&qs[qi]||((V=='lesson'||/^(lesson|review|daily)$/.test(fn))&&nd(head).includes(nd(cur.n))))){ /* cur قد يبقى من صفحة سابقة: نستعمله فقط إن طابق عنوان الصفحة الظاهرة */I.subject=SUBJ[cur.l]||(cur.i&&cur.i[0]&&/[a-z]/i.test(cur.i[0][0])?SUBJ.en:SUBJ.ar);I.lesson=cur.n;topic=cur.n;
    if(cur.i&&!/^(pl|rv)$/.test(cur.id))I.words=cur.i.slice(0,8).map(x=>{const m=clean(x[1]);return m&&m!==x[0]?x[0]+' ('+m+')':x[0]}).join('، ')}}catch(e){}
- if(!I.lesson&&head)I.lesson=head;
+ if(fn==='home'||V==='home'){topic=''} /* عنوان الترحيب في الرئيسية ليس موضوع درس (كان: «هيا نتدرّب على: مرحبًا بك في…») */
+ if(!I.lesson&&head&&!(fn==='home'||V==='home'))I.lesson=head;
  /* السؤال الحالي واختياراته وإجابة الطالب */
  const Q=q('.q')||q('.ct-quiz b')||q('.practice-prompt,.practice-q')||null;
  if(V=='quiz'&&qs&&qs[qi])I.question=strip(qs[qi].show)+(qs[qi].sp?' — يُسمع: '+(Array.isArray(qs[qi].sp)?qs[qi].sp[0]:qs[qi].sp):'');
@@ -176,11 +177,11 @@ async function bex(){if(busy)return;const i=document.getElementById('bi'),bm=doc
 if(aiLeft()<=0&&onl())return bpush('a',LIM_MSG);if(onl()){aiUse().n++;save()}
 busy=1;think();const w=bpush('a','أجهّز لك تمارين جديدة ✍️…');w.classList.add('think');let d=onl()?await aiCall({mode:'exercise',topic}):{err:'net'};if(d.items&&window.Brain)Brain.exLearn(topic,d.items);else if(window.Brain){const f=Brain.exFind(topic);if(f)d={items:f}}if(!d.items){const L=localEx();if(L)d={items:L}}busy=0;w.classList.remove('think');unthink(!!d.items);
 if(!d.items){w.textContent=d.err=='busy'?'أنا أحتاج استراحة صغيرة 😴 جرّب بعد دقيقة.':'لم أستطع تجهيز التمارين الآن 🦉 جرّب بعد قليل، أو اختر درسًا من القائمة.';return}
-w.textContent='هيا نتدرّب'+(topic?' على: '+topic:'')+' 💪';runEx(d.items,0,0,topic)}
+const lab=(bm&&bm.dataset.topic)||'';w.textContent='هيا نتدرّب'+(lab&&lab.length<40?' على: '+lab:'')+' 💪'; /* عنوان قصير فقط (كان يعرض سياق الصفحة كاملًا) */runEx(d.items,0,0,topic)}
 function runEx(L,i,s,topic){if(!document.getElementById('bl'))return;
 if(i>=L.length){P.star+=s;save();const m=s==L.length?'ممتاز! أجبت عن الكل بشكل صحيح 🌟':(s===0?`لا بأس! لم تكن الإجابات صحيحة هذه المرة 💪 سنتدرّب عليها معًا خطوة خطوة`:`أحسنت! أجبت صحيحًا عن ${s} من ${L.length} 💪 ونتدرّب أكثر معًا`);bpush('a',m);window.MC&&MC.mood(s>=2?'happy':'oops',1800);if(!muted())say(m.replace(/[🌟💪]/g,''),'ar',null,'cheer');return}
 const q=L[i];q.q=shape(q.q);q.o=q.o.map(shape);q.w=shape(q.w||'');bpush('a',`(${i+1}/${L.length}) ${q.q}`);if(!muted()&&i==0)say(q.q,'ar');
-const box=document.createElement('div');box.className='chips';
+const pics=q.o.every(o=>!/[\p{L}\p{N}]/u.test(o)),box=document.createElement('div');box.className=pics?'chips bm-pics':'chips'; /* خيارات الصور: شبكة بطاقات كبيرة واضحة */
 q.o.forEach((o,j)=>{const b=document.createElement('button');b.textContent=o;b.dir='auto';b.onclick=()=>{box.querySelectorAll('button').forEach(x=>x.disabled=true);const ok=j==q.a;b.classList.add(ok?'ok':'no');
 const k='ai:'+String(topic||q.q).slice(0,24),sk=P.sk[k]=P.sk[k]||{n:0,m:0};sk.n++;sk.t=Date.now();if(ok)sk.m=Math.max(0,sk.m-1);else{sk.m++;sk.e=(sk.e||0)+1}save();
 const m=ok?pk(OKS.ar):'لا بأس 🌱 '+(q.w||'');bpush('a',m);window.MC&&MC.mood(ok?'happy':'oops',1200);if(!muted())say(m.replace(/[🌱]/g,''),'ar',null,ok?'happy':'soft');setTimeout(()=>runEx(L,i+1,s+ok,topic),ok?700:1250)};box.appendChild(b)});
