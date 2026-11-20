@@ -1,0 +1,381 @@
+{
+ "bank": "Boomi Bilingual Story Academy",
+ "batch": 2,
+ "stories": [
+  {
+   "id": "story_en_006",
+   "language": "en",
+   "stage": "مرحلة التأسيس",
+   "level": "A1",
+   "title": "My New Friend",
+   "text": "Adam is a new student at school. He feels shy because he does not know anyone. During the break, he sits alone under a tree. A boy named Tom comes and says, Hello! Would you like to play with me? Adam smiles and says, Yes, thank you! They play football together. At the end of the day, Adam feels happy because he has made a new friend.",
+   "vocabulary": [
+    {
+     "word": "Student",
+     "meaning": "طالب"
+    },
+    {
+     "word": "Shy",
+     "meaning": "خجول"
+    },
+    {
+     "word": "Break",
+     "meaning": "استراحة"
+    },
+    {
+     "word": "Alone",
+     "meaning": "وحيدًا"
+    },
+    {
+     "word": "Friend",
+     "meaning": "صديق"
+    }
+   ],
+   "exercises": [
+    {
+     "id": "en006_q1",
+     "type": "multiple_choice",
+     "question": "What is Adam?",
+     "options": [
+      "A new student",
+      "A teacher",
+      "A doctor"
+     ],
+     "answer": "A new student",
+     "explanation": "The story says Adam is a new student at school."
+    },
+    {
+     "id": "en006_q2",
+     "type": "multiple_choice",
+     "question": "Where does Adam sit during the break?",
+     "options": [
+      "In the classroom",
+      "Under a tree",
+      "Near the shop"
+     ],
+     "answer": "Under a tree",
+     "explanation": "Adam sits alone under a tree during the break."
+    },
+    {
+     "id": "en006_q3",
+     "type": "true_false",
+     "question": "Tom invites Adam to play.",
+     "answer": true,
+     "explanation": "Tom asks Adam if he would like to play with him."
+    },
+    {
+     "id": "en006_q4",
+     "type": "short_answer",
+     "question": "How does Adam feel at the end of the day?",
+     "answer": "He feels happy.",
+     "explanation": "Adam is happy because he has made a new friend."
+    }
+   ],
+   "image": {
+    "url": "",
+    "alt": "Two schoolboys becoming friends and playing football",
+    "prompt": "Two friendly schoolboys in a beautiful school garden, one boy inviting a new student to play football, both smiling, colorful school environment, high-quality 3D animated children's storybook illustration, no text."
+   }
+  },
+  {
+   "id": "story_ar_007",
+   "language": "ar",
+   "stage": "مرحلة التأسيس",
+   "level": "A2",
+   "title": "أَمَانَةُ سَالِمٍ",
+   "text": "كَانَ سَالِمٌ يَعُودُ مِنَ الْمَدْرَسَةِ عِنْدَمَا وَجَدَ مِحْفَظَةً صَغِيرَةً عَلَى الرَّصِيفِ. فَتَحَهَا فَوَجَدَ فِيهَا بَعْضَ النُّقُودِ وَبِطَاقَةً تَحْمِلُ اسْمَ صَاحِبِهَا. فَكَّرَ سَالِمٌ فِي الطَّرِيقَةِ الْمُنَاسِبَةِ لِإِعَادَةِ الْمِحْفَظَةِ. ذَهَبَ إِلَى أَقْرَبِ مَرْكَزٍ لِلشُّرْطَةِ وَسَلَّمَهَا إِلَى الْمُوَظَّفِ. بَعْدَ وَقْتٍ قَصِيرٍ، وَصَلَ صَاحِبُ الْمِحْفَظَةِ وَاسْتَعَادَهَا. شَكَرَ سَالِمًا عَلَى أَمَانَتِهِ، وَشَعَرَ سَالِمٌ بِالسَّعَادَةِ لِأَنَّهُ فَعَلَ الصَّوَابَ.",
+   "vocabulary": [
+    {
+     "word": "مِحْفَظَةٌ",
+     "meaning": "حَافِظَةٌ صَغِيرَةٌ لِلنُّقُودِ وَالْبِطَاقَاتِ"
+    },
+    {
+     "word": "الرَّصِيفُ",
+     "meaning": "مَمَرٌّ مُخَصَّصٌ لِلْمُشَاةِ بِجَانِبِ الطَّرِيقِ"
+    },
+    {
+     "word": "صَاحِبُهَا",
+     "meaning": "الشَّخْصُ الَّذِي يَمْلِكُهَا"
+    },
+    {
+     "word": "أَمَانَةٌ",
+     "meaning": "حِفْظُ الْحُقُوقِ وَأَدَاءُ الْوَاجِبِ بِصِدْقٍ"
+    },
+    {
+     "word": "اسْتَعَادَهَا",
+     "meaning": "أَخَذَهَا مَرَّةً أُخْرَى بَعْدَ فَقْدِهَا"
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ar007_q1",
+     "type": "multiple_choice",
+     "question": "أَيْنَ وَجَدَ سَالِمٌ الْمِحْفَظَةَ؟",
+     "options": [
+      "فِي الْمَدْرَسَةِ",
+      "عَلَى الرَّصِيفِ",
+      "فِي الْبَيْتِ"
+     ],
+     "answer": "عَلَى الرَّصِيفِ",
+     "explanation": "وَجَدَ سَالِمٌ الْمِحْفَظَةَ عَلَى الرَّصِيفِ وَهُوَ عَائِدٌ مِنَ الْمَدْرَسَةِ."
+    },
+    {
+     "id": "ar007_q2",
+     "type": "multiple_choice",
+     "question": "مَاذَا وَجَدَ سَالِمٌ دَاخِلَ الْمِحْفَظَةِ؟",
+     "options": [
+      "كُتُبًا وَأَقْلَامًا",
+      "نُقُودًا وَبِطَاقَةً",
+      "مِفْتَاحًا وَهَاتِفًا"
+     ],
+     "answer": "نُقُودًا وَبِطَاقَةً",
+     "explanation": "احْتَوَتِ الْمِحْفَظَةُ عَلَى بَعْضِ النُّقُودِ وَبِطَاقَةٍ تَحْمِلُ اسْمَ صَاحِبِهَا."
+    },
+    {
+     "id": "ar007_q3",
+     "type": "true_false",
+     "question": "احْتَفَظَ سَالِمٌ بِالْمِحْفَظَةِ وَنُقُودِهَا.",
+     "answer": false,
+     "explanation": "سَلَّمَ سَالِمٌ الْمِحْفَظَةَ إِلَى مَرْكَزِ الشُّرْطَةِ."
+    },
+    {
+     "id": "ar007_q4",
+     "type": "short_answer",
+     "question": "مَا الصِّفَةُ الَّتِي تَمَيَّزَ بِهَا سَالِمٌ؟",
+     "answer": "الْأَمَانَةُ.",
+     "explanation": "أَعَادَ سَالِمٌ الْمِحْفَظَةَ إِلَى صَاحِبِهَا وَلَمْ يَأْخُذْ مَا فِيهَا."
+    }
+   ],
+   "image": {
+    "url": "",
+    "alt": "طَالِبٌ يُسَلِّمُ مِحْفَظَةً مَفْقُودَةً إِلَى مُوَظَّفٍ فِي مَرْكَزِ الشُّرْطَةِ",
+    "prompt": "A young Omani schoolboy wearing a neat school uniform handing a lost wallet to a friendly police officer at a clean modern police station reception, warm expressions, high-quality 3D animated children's educational story illustration, no text."
+   }
+  },
+  {
+   "id": "story_en_008",
+   "language": "en",
+   "stage": "مرحلة التأسيس",
+   "level": "A2",
+   "title": "The Broken Bicycle",
+   "text": "One Saturday morning, Jack decides to ride his bicycle to the park. He puts on his helmet and checks the tires. On the way, he hears a strange sound. He stops and discovers that the bicycle chain has come off. Jack does not know how to fix it. An older man nearby notices the problem and offers to help. He shows Jack how to put the chain back in place. Jack thanks him and learns an important lesson: it is useful to know how to repair simple things.",
+   "vocabulary": [
+    {
+     "word": "Bicycle",
+     "meaning": "دراجة هوائية"
+    },
+    {
+     "word": "Helmet",
+     "meaning": "خوذة واقية"
+    },
+    {
+     "word": "Tires",
+     "meaning": "إطارات"
+    },
+    {
+     "word": "Chain",
+     "meaning": "سلسلة"
+    },
+    {
+     "word": "Repair",
+     "meaning": "يُصْلِح"
+    }
+   ],
+   "exercises": [
+    {
+     "id": "en008_q1",
+     "type": "multiple_choice",
+     "question": "Where does Jack want to go?",
+     "options": [
+      "To the park",
+      "To the library",
+      "To the market"
+     ],
+     "answer": "To the park",
+     "explanation": "Jack decides to ride his bicycle to the park."
+    },
+    {
+     "id": "en008_q2",
+     "type": "multiple_choice",
+     "question": "What is wrong with the bicycle?",
+     "options": [
+      "The tire is missing",
+      "The chain has come off",
+      "The seat is broken"
+     ],
+     "answer": "The chain has come off",
+     "explanation": "Jack discovers that the bicycle chain has come off."
+    },
+    {
+     "id": "en008_q3",
+     "type": "true_false",
+     "question": "Jack fixes the bicycle without any help.",
+     "answer": false,
+     "explanation": "An older man helps Jack put the chain back in place."
+    },
+    {
+     "id": "en008_q4",
+     "type": "short_answer",
+     "question": "What lesson does Jack learn?",
+     "answer": "It is useful to know how to repair simple things.",
+     "explanation": "The story ends by explaining the value of learning simple repair skills."
+    }
+   ],
+   "image": {
+    "url": "",
+    "alt": "A boy learning to repair his bicycle chain with help from an older man",
+    "prompt": "A young boy wearing a bicycle helmet learning how to fix a loose bicycle chain with help from a kind older man in a sunny park, detailed bicycle, friendly expressions, high-quality 3D animated children's storybook illustration, no text."
+   }
+  },
+  {
+   "id": "story_ar_009",
+   "language": "ar",
+   "stage": "مرحلة التطوير",
+   "level": "A2",
+   "title": "رِحْلَةٌ إِلَى الْمَكْتَبَةِ",
+   "text": "قَرَّرَتْ مَرْيَمُ أَنْ تَزُورَ مَكْتَبَةَ الْمَدِينَةِ فِي عُطْلَةِ نِهَايَةِ الْأُسْبُوعِ. كَانَتْ تُحِبُّ الْقِرَاءَةَ، وَخَاصَّةً الْكُتُبَ الَّتِي تَتَحَدَّثُ عَنِ الْعُلُومِ وَالْفَضَاءِ. عِنْدَمَا وَصَلَتْ، اسْتَقْبَلَهَا أَمِينُ الْمَكْتَبَةِ وَدَلَّهَا عَلَى قِسْمِ كُتُبِ الْأَطْفَالِ. اخْتَارَتْ مَرْيَمُ كِتَابًا عَنِ الْكَوَاكِبِ، وَجَلَسَتْ تَقْرَؤُهُ بِاهْتِمَامٍ. تَعَلَّمَتْ أَنَّ الْمَشْتَرِيَ أَكْبَرُ كَوَاكِبِ الْمَجْمُوعَةِ الشَّمْسِيَّةِ. قَبْلَ أَنْ تُغَادِرَ، اسْتَعَارَتِ الْكِتَابَ لِتُكْمِلَ قِرَاءَتَهُ فِي الْبَيْتِ.",
+   "vocabulary": [
+    {
+     "word": "مَكْتَبَةٌ",
+     "meaning": "مَكَانٌ تَجْتَمِعُ فِيهِ الْكُتُبُ لِلْقِرَاءَةِ وَالِاسْتِعَارَةِ"
+    },
+    {
+     "word": "أَمِينُ الْمَكْتَبَةِ",
+     "meaning": "الشَّخْصُ الْمَسْؤُولُ عَنْ تَنْظِيمِ الْمَكْتَبَةِ وَكُتُبِهَا"
+    },
+    {
+     "word": "الْفَضَاءُ",
+     "meaning": "الْحَيِّزُ الْوَاسِعُ الَّذِي تَقَعُ فِيهِ الْكَوَاكِبُ وَالنُّجُومُ"
+    },
+    {
+     "word": "الْكَوَاكِبُ",
+     "meaning": "أَجْرَامٌ سَمَاوِيَّةٌ تَدُورُ حَوْلَ نَجْمٍ"
+    },
+    {
+     "word": "اسْتَعَارَتْ",
+     "meaning": "أَخَذَتِ الْكِتَابَ لِتَقْرَأَهُ ثُمَّ تُعِيدَهُ"
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ar009_q1",
+     "type": "multiple_choice",
+     "question": "مَتَى زَارَتْ مَرْيَمُ الْمَكْتَبَةَ؟",
+     "options": [
+      "فِي عُطْلَةِ نِهَايَةِ الْأُسْبُوعِ",
+      "فِي وَقْتِ اللَّيْلِ",
+      "فِي يَوْمِ الِامْتِحَانِ"
+     ],
+     "answer": "فِي عُطْلَةِ نِهَايَةِ الْأُسْبُوعِ",
+     "explanation": "ذَكَرَ النَّصُّ أَنَّ مَرْيَمَ قَرَّرَتْ زِيَارَةَ الْمَكْتَبَةِ فِي عُطْلَةِ نِهَايَةِ الْأُسْبُوعِ."
+    },
+    {
+     "id": "ar009_q2",
+     "type": "multiple_choice",
+     "question": "عَنْ أَيِّ مَوْضُوعٍ كَانَ الْكِتَابُ الَّذِي اخْتَارَتْهُ؟",
+     "options": [
+      "الْحَيَوَانَاتِ",
+      "الْكَوَاكِبِ",
+      "الرِّيَاضَةِ"
+     ],
+     "answer": "الْكَوَاكِبِ",
+     "explanation": "اخْتَارَتْ مَرْيَمُ كِتَابًا يَتَحَدَّثُ عَنِ الْكَوَاكِبِ."
+    },
+    {
+     "id": "ar009_q3",
+     "type": "true_false",
+     "question": "الْمُشْتَرِي هُوَ أَكْبَرُ كَوَاكِبِ الْمَجْمُوعَةِ الشَّمْسِيَّةِ.",
+     "answer": true,
+     "explanation": "تَعَلَّمَتْ مَرْيَمُ هَذِهِ الْمَعْلُومَةَ مِنَ الْكِتَابِ."
+    },
+    {
+     "id": "ar009_q4",
+     "type": "short_answer",
+     "question": "لِمَاذَا اسْتَعَارَتْ مَرْيَمُ الْكِتَابَ؟",
+     "answer": "لِتُكْمِلَ قِرَاءَتَهُ فِي الْبَيْتِ.",
+     "explanation": "أَرَادَتْ مَرْيَمُ مُوَاصَلَةَ قِرَاءَةِ الْكِتَابِ بَعْدَ مُغَادَرَةِ الْمَكْتَبَةِ."
+    }
+   ],
+   "image": {
+    "url": "",
+    "alt": "طَالِبَةٌ تَقْرَأُ كِتَابًا عَنِ الْكَوَاكِبِ فِي مَكْتَبَةٍ حَدِيثَةٍ",
+    "prompt": "A young Arab girl reading a colorful astronomy book about planets inside a beautiful modern children's library, tall bookshelves, a friendly librarian in the background, warm natural light, high-quality 3D animated educational storybook illustration, no text."
+   }
+  },
+  {
+   "id": "story_en_010",
+   "language": "en",
+   "stage": "مرحلة التطوير",
+   "level": "A2",
+   "title": "A Rainy Day",
+   "text": "It is Saturday morning, and dark clouds cover the sky. Emma wants to play outside, but soon it starts to rain. She feels disappointed because she has planned a picnic with her family. Her mother suggests making a small indoor picnic instead. They prepare sandwiches, fruit, and fresh juice. Then they spread a blanket on the living room floor. Emma's father tells funny stories while everyone eats. Emma realizes that a rainy day can also be full of happiness.",
+   "vocabulary": [
+    {
+     "word": "Clouds",
+     "meaning": "غيوم"
+    },
+    {
+     "word": "Rain",
+     "meaning": "مطر"
+    },
+    {
+     "word": "Disappointed",
+     "meaning": "خائب الأمل"
+    },
+    {
+     "word": "Suggests",
+     "meaning": "يقترح"
+    },
+    {
+     "word": "Realizes",
+     "meaning": "يدرك"
+    }
+   ],
+   "exercises": [
+    {
+     "id": "en010_q1",
+     "type": "multiple_choice",
+     "question": "What does Emma want to do?",
+     "options": [
+      "Play outside",
+      "Go shopping",
+      "Read at school"
+     ],
+     "answer": "Play outside",
+     "explanation": "The story says Emma wants to play outside."
+    },
+    {
+     "id": "en010_q2",
+     "type": "multiple_choice",
+     "question": "What does her mother suggest?",
+     "options": [
+      "Watching a film",
+      "Making an indoor picnic",
+      "Going to the beach"
+     ],
+     "answer": "Making an indoor picnic",
+     "explanation": "Her mother suggests having a picnic inside the house."
+    },
+    {
+     "id": "en010_q3",
+     "type": "true_false",
+     "question": "Emma's family eats sandwiches and fruit.",
+     "answer": true,
+     "explanation": "The family prepares sandwiches, fruit, and fresh juice."
+    },
+    {
+     "id": "en010_q4",
+     "type": "short_answer",
+     "question": "What does Emma learn at the end?",
+     "answer": "A rainy day can also be full of happiness.",
+     "explanation": "The family enjoys their indoor picnic despite the rain."
+    }
+   ],
+   "image": {
+    "url": "",
+    "alt": "A happy family enjoying an indoor picnic on a rainy day",
+    "prompt": "A happy family having a cozy indoor picnic on a soft blanket in the living room, sandwiches, colorful fruit and juice on a picnic cloth, rain visible through the window, father telling a funny story, beautiful high-quality 3D animated children's storybook illustration, no text."
+   }
+  }
+ ]
+}

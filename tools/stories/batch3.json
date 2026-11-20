@@ -1,0 +1,443 @@
+{
+ "bank": "Boomi Bilingual Story Academy",
+ "batch": 3,
+ "stories": [
+  {
+   "id": "story_ar_011",
+   "language": "ar",
+   "stage": "مرحلة التطوير",
+   "level": "A2",
+   "title": "سِرُّ الْبُحَيْرَةِ",
+   "text": "كَانَ يُوسُفُ يُحِبُّ التَّنَزُّهَ فِي الْغَابَةِ الْقَرِيبَةِ مِنْ قَرْيَتِهِ. وَفِي أَحَدِ الْأَيَّامِ، لَاحَظَ أَنَّ مَاءَ بُحَيْرَةٍ صَغِيرَةٍ أَصْبَحَ أَقَلَّ مِنَ الْمُعْتَادِ. اقْتَرَبَ مِنَ الْبُحَيْرَةِ، فَرَأَى أَوْرَاقًا وَأَغْصَانًا تَسُدُّ مَجْرَى الْمَاءِ. أَدْرَكَ أَنَّ هَذَا قَدْ يَكُونُ سَبَبَ انْخِفَاضِ الْمَاءِ. عَادَ إِلَى قَرْيَتِهِ وَأَخْبَرَ أَهْلَهَا بِمَا رَآهُ. اجْتَمَعَ بَعْضُ السُّكَّانِ وَذَهَبُوا مَعَهُ لِإِزَالَةِ الْأَغْصَانِ وَالْأَوْرَاقِ بِحَذَرٍ. بَعْدَ أَنْ فُتِحَ مَجْرَى الْمَاءِ، بَدَأَتِ الْبُحَيْرَةُ تَمْتَلِئُ مِنْ جَدِيدٍ. فَرِحَ يُوسُفُ وَأَهْلُ الْقَرْيَةِ؛ لِأَنَّهُمْ تَعَلَّمُوا أَنَّ مُلَاحَظَةَ الْمُشْكِلَةِ وَالتَّعَاوُنَ قَدْ يُسَاعِدَانِ فِي حِمَايَةِ الْبِيئَةِ.",
+   "vocabulary": [
+    {
+     "word": "لَاحَظَ",
+     "meaning": "انْتَبَهَ إِلَى شَيْءٍ وَرَآهُ بِدِقَّةٍ"
+    },
+    {
+     "word": "مَجْرَى الْمَاءِ",
+     "meaning": "الطَّرِيقُ الَّذِي يَجْرِي فِيهِ الْمَاءُ"
+    },
+    {
+     "word": "تَسُدُّ",
+     "meaning": "تَمْنَعُ الْمُرُورَ أَوِ الْحَرَكَةَ"
+    },
+    {
+     "word": "إِزَالَةٌ",
+     "meaning": "رَفْعُ الشَّيْءِ وَإِبْعَادُهُ"
+    },
+    {
+     "word": "الْبِيئَةُ",
+     "meaning": "كُلُّ مَا يُحِيطُ بِالْإِنْسَانِ مِنْ كَائِنَاتٍ وَمَوَارِدَ وَظُرُوفٍ"
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ar011_q1",
+     "type": "multiple_choice",
+     "question": "مَا الْمُشْكِلَةُ الَّتِي لَاحَظَهَا يُوسُفُ؟",
+     "options": [
+      "جَفَافُ الْأَشْجَارِ",
+      "انْخِفَاضُ مَاءِ الْبُحَيْرَةِ",
+      "اخْتِفَاءُ الْحَيَوَانَاتِ"
+     ],
+     "answer": "انْخِفَاضُ مَاءِ الْبُحَيْرَةِ",
+     "explanation": "لَاحَظَ يُوسُفُ أَنَّ مَاءَ الْبُحَيْرَةِ أَصْبَحَ أَقَلَّ مِنَ الْمُعْتَادِ."
+    },
+    {
+     "id": "ar011_q2",
+     "type": "multiple_choice",
+     "question": "مَا الَّذِي كَانَ يَسُدُّ مَجْرَى الْمَاءِ؟",
+     "options": [
+      "الرِّمَالُ وَالْحِجَارَةُ",
+      "الْأَوْرَاقُ وَالْأَغْصَانُ",
+      "الْأَسْمَاكُ الصَّغِيرَةُ"
+     ],
+     "answer": "الْأَوْرَاقُ وَالْأَغْصَانُ",
+     "explanation": "رَأَى يُوسُفُ أَوْرَاقًا وَأَغْصَانًا تَمْنَعُ جَرَيَانَ الْمَاءِ."
+    },
+    {
+     "id": "ar011_q3",
+     "type": "ordering",
+     "question": "رَتِّبِ الْأَحْدَاثَ حَسَبَ وُرُودِهَا فِي الْقِصَّةِ.",
+     "items": [
+      "اجْتِمَاعُ السُّكَّانِ لِإِزَالَةِ الْأَغْصَانِ.",
+      "مُلَاحَظَةُ يُوسُفَ انْخِفَاضَ مَاءِ الْبُحَيْرَةِ.",
+      "بَدْءُ امْتِلَاءِ الْبُحَيْرَةِ مِنْ جَدِيدٍ.",
+      "إِخْبَارُ أَهْلِ الْقَرْيَةِ بِالْمُشْكِلَةِ."
+     ],
+     "answer": [
+      "مُلَاحَظَةُ يُوسُفَ انْخِفَاضَ مَاءِ الْبُحَيْرَةِ.",
+      "إِخْبَارُ أَهْلِ الْقَرْيَةِ بِالْمُشْكِلَةِ.",
+      "اجْتِمَاعُ السُّكَّانِ لِإِزَالَةِ الْأَغْصَانِ.",
+      "بَدْءُ امْتِلَاءِ الْبُحَيْرَةِ مِنْ جَدِيدٍ."
+     ],
+     "explanation": "يَبْدَأُ الْحَدَثُ بِمُلَاحَظَةِ الْمُشْكِلَةِ، ثُمَّ إِخْبَارِ السُّكَّانِ، ثُمَّ التَّعَاوُنِ عَلَى حَلِّهَا."
+    },
+    {
+     "id": "ar011_q4",
+     "type": "inference",
+     "question": "لِمَاذَا أَخْبَرَ يُوسُفُ أَهْلَ الْقَرْيَةِ بِالْمُشْكِلَةِ؟",
+     "answer": "لِأَنَّهُ أَرَادَ مُسَاعَدَتَهُمْ فِي حَلِّ الْمُشْكِلَةِ وَحِمَايَةِ الْبُحَيْرَةِ.",
+     "explanation": "يُسْتَنْتَجُ ذَلِكَ مِنْ قَرَارِهِ بِإِخْبَارِ السُّكَّانِ وَتَعَاوُنِهِمْ بَعْدَ ذَلِكَ."
+    },
+    {
+     "id": "ar011_q5",
+     "type": "short_answer",
+     "question": "مَا الْفِكْرَةُ الرَّئِيسِيَّةُ لِلْقِصَّةِ؟",
+     "answer": "أَهَمِّيَّةُ مُلَاحَظَةِ الْمُشْكِلَاتِ وَالتَّعَاوُنِ لِحِمَايَةِ الْبِيئَةِ.",
+     "explanation": "تُبَيِّنُ الْقِصَّةُ أَنَّ الْعَمَلَ الْمُشْتَرَكَ يُسَاعِدُ فِي حَلِّ الْمُشْكِلَاتِ الْبِيئِيَّةِ."
+    }
+   ],
+   "image": {
+    "url": "",
+    "alt": "يُوسُفُ وَسُكَّانُ الْقَرْيَةِ يُنَظِّفُونَ مَجْرَى بُحَيْرَةٍ فِي غَابَةٍ",
+    "prompt": "A young Arab boy named Yusuf and several villagers carefully removing fallen branches and leaves from a small stream feeding a beautiful forest lake, clear blue water, lush green trees, hopeful atmosphere, cinematic high-quality 3D animated educational storybook illustration, no text."
+   }
+  },
+  {
+   "id": "story_en_012",
+   "language": "en",
+   "stage": "مرحلة التطوير",
+   "level": "A2",
+   "title": "The School Garden Project",
+   "text": "When the new school year began, the students noticed that an empty corner of their playground was covered with dry soil and rubbish. Their science teacher suggested turning it into a small garden. The students formed teams and made a plan. One team prepared the soil, another planted seeds, and a third team collected empty containers to use as plant pots. Every morning, the students watered the plants and recorded their growth. After several weeks, green leaves and colorful flowers appeared. The garden became a peaceful place where students could learn about nature and responsibility. They discovered that even a small idea can create a wonderful change when people work together.",
+   "vocabulary": [
+    {
+     "word": "Playground",
+     "meaning": "ساحة المدرسة"
+    },
+    {
+     "word": "Rubbish",
+     "meaning": "قمامة"
+    },
+    {
+     "word": "Seeds",
+     "meaning": "بذور"
+    },
+    {
+     "word": "Containers",
+     "meaning": "حاويات أو أوعية"
+    },
+    {
+     "word": "Responsibility",
+     "meaning": "المسؤولية"
+    },
+    {
+     "word": "Growth",
+     "meaning": "النمو"
+    }
+   ],
+   "exercises": [
+    {
+     "id": "en012_q1",
+     "type": "multiple_choice",
+     "question": "What problem did the students notice?",
+     "options": [
+      "The playground was too small.",
+      "An empty corner was dirty and covered with dry soil.",
+      "The school had no classrooms."
+     ],
+     "answer": "An empty corner was dirty and covered with dry soil.",
+     "explanation": "The story describes an empty corner covered with dry soil and rubbish."
+    },
+    {
+     "id": "en012_q2",
+     "type": "multiple_choice",
+     "question": "What did the third team collect?",
+     "options": [
+      "Books",
+      "Empty containers",
+      "Sports equipment"
+     ],
+     "answer": "Empty containers",
+     "explanation": "The third team collected empty containers to use as plant pots."
+    },
+    {
+     "id": "en012_q3",
+     "type": "true_false",
+     "question": "The students stopped caring for the plants after one day.",
+     "answer": false,
+     "explanation": "They watered the plants every morning and recorded their growth."
+    },
+    {
+     "id": "en012_q4",
+     "type": "inference",
+     "question": "Why did the students work in teams?",
+     "answer": "To divide the tasks and complete the garden project together.",
+     "explanation": "Different teams had different responsibilities, helping them organize their work."
+    },
+    {
+     "id": "en012_q5",
+     "type": "short_answer",
+     "question": "What lesson did the students learn?",
+     "answer": "A small idea can create a wonderful change when people work together.",
+     "explanation": "The final sentence explains the main lesson of the story."
+    }
+   ],
+   "image": {
+    "url": "",
+    "alt": "Students working together to create a colorful school garden",
+    "prompt": "A diverse group of happy schoolchildren working together in a school garden, planting seeds, watering flowers, and reusing empty containers as plant pots, bright green plants and colorful flowers, modern school playground, high-quality 3D animated educational storybook illustration, no text."
+   }
+  },
+  {
+   "id": "story_ar_013",
+   "language": "ar",
+   "stage": "مرحلة التطوير",
+   "level": "B1",
+   "title": "الْمُخْتَرِعُ الصَّغِيرُ",
+   "text": "كَانَ مَازِنٌ طِفْلًا يُحِبُّ الْعُلُومَ وَالتَّجَارِبَ. وَفِي أَحَدِ الْأَيَّامِ، طَلَبَ مِنْهُ مُعَلِّمُهُ أَنْ يُقَدِّمَ مَشْرُوعًا عِلْمِيًّا يُسَاعِدُ فِي حَلِّ مُشْكِلَةٍ مِنْ مُشْكِلَاتِ الْحَيَاةِ الْيَوْمِيَّةِ. فَكَرَ مَازِنٌ فِي كَمِّيَّةِ الْمَاءِ الَّتِي تَضِيعُ عِنْدَمَا يَنْسَى النَّاسُ إِغْلَاقَ صُنْبُورِ الْمَاءِ. قَرَّرَ أَنْ يَصْنَعَ جِهَازًا بَسِيطًا يُصْدِرُ تَنْبِيهًا عِنْدَمَا يَتْرُكُ الصُّنْبُورَ مَفْتُوحًا مُدَّةً طَوِيلَةً. جَمَعَ مَازِنٌ بَعْضَ الْأَدَوَاتِ الْقَدِيمَةِ وَاسْتَعَانَ بِوَالِدِهِ فِي تَرْكِيبِ الْجِهَازِ. فِي الْمُحَاوَلَةِ الْأُولَى، لَمْ يَعْمَلِ الْجِهَازُ كَمَا تَوَقَّعَ. لَمْ يَيْأَسْ مَازِنٌ، بَلْ فَحَصَ التَّوْصِيلَاتِ وَعَدَّلَ تَصْمِيمَهُ. بَعْدَ عِدَّةِ مُحَاوَلَاتٍ، نَجَحَ فِي تَشْغِيلِهِ. عَرَضَ مَازِنٌ اخْتِرَاعَهُ أَمَامَ زُمَلَائِهِ، وَشَرَحَ لَهُمْ كَيْفَ يُمْكِنُ لِفِكْرَةٍ بَسِيطَةٍ أَنْ تُسَاهِمَ فِي تَوْفِيرِ الْمِيَاهِ. حَصَلَ مَشْرُوعُهُ عَلَى إِعْجَابِ الْمُعَلِّمِ، وَتَعَلَّمَ مَازِنٌ أَنَّ النَّجَاحَ يَحْتَاجُ إِلَى صَبْرٍ وَتَجْرِبَةٍ وَتَحْسِينٍ مُسْتَمِرٍّ.",
+   "vocabulary": [
+    {
+     "word": "مُخْتَرِعٌ",
+     "meaning": "شَخْصٌ يُبْتَكِرُ شَيْئًا جَدِيدًا أَوْ يُطَوِّرُ حَلًّا"
+    },
+    {
+     "word": "تَنْبِيهٌ",
+     "meaning": "إِشَارَةٌ تُخْبِرُ بِحُدُوثِ شَيْءٍ"
+    },
+    {
+     "word": "تَرْكِيبٌ",
+     "meaning": "جَمْعُ الْأَجْزَاءِ وَوَصْلُهَا لِتَكْوِينِ جِهَازٍ"
+    },
+    {
+     "word": "التَّوْصِيلَاتُ",
+     "meaning": "الْوَصْلَاتُ الَّتِي تَرْبِطُ أَجْزَاءَ الْجِهَازِ"
+    },
+    {
+     "word": "يَيْأَسُ",
+     "meaning": "يَفْقِدُ الْأَمَلَ فِي النَّجَاحِ"
+    },
+    {
+     "word": "تَوْفِيرُ الْمِيَاهِ",
+     "meaning": "اسْتِخْدَامُ الْمَاءِ بِحِكْمَةٍ وَتَقْلِيلُ هَدْرِهِ"
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ar013_q1",
+     "type": "multiple_choice",
+     "question": "مَا الْمُشْكِلَةُ الَّتِي أَرَادَ مَازِنٌ حَلَّهَا؟",
+     "options": [
+      "هَدْرُ الْمَاءِ بِسَبَبِ تَرْكِ الصُّنْبُورِ مَفْتُوحًا",
+      "نَقْصُ الْكُتُبِ فِي الْمَكْتَبَةِ",
+      "تَعَطُّلُ أَجْهِزَةِ الْمَدْرَسَةِ"
+     ],
+     "answer": "هَدْرُ الْمَاءِ بِسَبَبِ تَرْكِ الصُّنْبُورِ مَفْتُوحًا",
+     "explanation": "اخْتَارَ مَازِنٌ مُشْكِلَةَ ضَيَاعِ الْمَاءِ عِنْدَمَا يَنْسَى النَّاسُ إِغْلَاقَ الصُّنْبُورِ."
+    },
+    {
+     "id": "ar013_q2",
+     "type": "multiple_choice",
+     "question": "مَاذَا يَفْعَلُ الْجِهَازُ الَّذِي صَنَعَهُ مَازِنٌ؟",
+     "options": [
+      "يَزِيدُ تَدَفُّقَ الْمَاءِ",
+      "يُصْدِرُ تَنْبِيهًا عِنْدَ تَرْكِ الصُّنْبُورِ مَفْتُوحًا مُدَّةً طَوِيلَةً",
+      "يُنَظِّفُ الْمَاءَ مِنَ الْأَوْسَاخِ"
+     ],
+     "answer": "يُصْدِرُ تَنْبِيهًا عِنْدَ تَرْكِ الصُّنْبُورِ مَفْتُوحًا مُدَّةً طَوِيلَةً",
+     "explanation": "صَمَّمَ مَازِنٌ الْجِهَازَ لِيُنَبِّهَ النَّاسَ إِلَى تَرْكِ الصُّنْبُورِ مَفْتُوحًا."
+    },
+    {
+     "id": "ar013_q3",
+     "type": "true_false",
+     "question": "نَجَحَ الْجِهَازُ فِي الْمُحَاوَلَةِ الْأُولَى.",
+     "answer": false,
+     "explanation": "لَمْ يَعْمَلِ الْجِهَازُ فِي الْمُحَاوَلَةِ الْأُولَى، فَفَحَصَ مَازِنٌ التَّوْصِيلَاتِ وَعَدَّلَ التَّصْمِيمَ."
+    },
+    {
+     "id": "ar013_q4",
+     "type": "inference",
+     "question": "مَاذَا تَكْشِفُ مُوَاصَلَةُ مَازِنٍ لِلْمُحَاوَلَاتِ عَنْ شَخْصِيَّتِهِ؟",
+     "answer": "تَدُلُّ عَلَى صَبْرِهِ وَإِصْرَارِهِ وَرَغْبَتِهِ فِي التَّعَلُّمِ.",
+     "explanation": "لَمْ يَتَوَقَّفْ عِنْدَ فَشَلِ الْمُحَاوَلَةِ الْأُولَى، بَلْ بَحَثَ عَنِ الْخَطَأِ وَحَسَّنَ تَصْمِيمَهُ."
+    },
+    {
+     "id": "ar013_q5",
+     "type": "short_answer",
+     "question": "مَا الدَّرْسُ الَّذِي تَعَلَّمَهُ مَازِنٌ مِنْ تَجْرِبَتِهِ؟",
+     "answer": "أَنَّ النَّجَاحَ يَحْتَاجُ إِلَى الصَّبْرِ وَالتَّجْرِبَةِ وَالتَّحْسِينِ الْمُسْتَمِرِّ.",
+     "explanation": "تُوَضِّحُ نِهَايَةُ الْقِصَّةِ أَنَّ النَّجَاحَ لَمْ يَأْتِ مِنْ مُحَاوَلَةٍ وَاحِدَةٍ."
+    }
+   ],
+   "image": {
+    "url": "",
+    "alt": "مَازِنٌ يَعْرِضُ جِهَازًا صَغِيرًا لِتَوْفِيرِ الْمَاءِ فِي مَعْرِضٍ مَدْرَسِيٍّ",
+    "prompt": "A clever young Arab boy presenting a small homemade water-saving alert device at a modern school science fair, a simple faucet model and electronic components on a table, classmates watching with interest, bright educational atmosphere, premium 3D animated storybook style, no text."
+   }
+  },
+  {
+   "id": "story_en_014",
+   "language": "en",
+   "stage": "مرحلة الإتقان المتوسط",
+   "level": "B1",
+   "title": "The Mystery of the Missing Key",
+   "text": "On a quiet afternoon, Daniel discovered that the key to the old school library was missing. The librarian had placed it on her desk before leaving for a meeting, but it was no longer there. Daniel decided to help because the library was supposed to open for a reading event that evening. He searched the desk carefully, checked the nearby shelves, and asked the students who had visited earlier. Nobody had seen the key. Then Daniel noticed a small piece of blue thread caught in the drawer. He remembered that the librarian had carried a blue fabric bag that morning. He found the bag on a chair and noticed that its side pocket was partly open. Inside, he discovered the missing key. The librarian returned shortly afterward and thanked Daniel for his careful observation. Daniel learned that solving a mystery often requires patience, attention, and logical thinking.",
+   "vocabulary": [
+    {
+     "word": "Mystery",
+     "meaning": "لغز أو أمر غامض"
+    },
+    {
+     "word": "Missing",
+     "meaning": "مفقود"
+    },
+    {
+     "word": "Librarian",
+     "meaning": "أمين المكتبة"
+    },
+    {
+     "word": "Thread",
+     "meaning": "خيط"
+    },
+    {
+     "word": "Drawer",
+     "meaning": "درج"
+    },
+    {
+     "word": "Observation",
+     "meaning": "ملاحظة دقيقة"
+    },
+    {
+     "word": "Logical",
+     "meaning": "منطقي"
+    }
+   ],
+   "exercises": [
+    {
+     "id": "en014_q1",
+     "type": "multiple_choice",
+     "question": "Why was the missing key important?",
+     "options": [
+      "It opened the school gate.",
+      "It was needed to open the library for an evening event.",
+      "It belonged to Daniel."
+     ],
+     "answer": "It was needed to open the library for an evening event.",
+     "explanation": "The library was supposed to open for a reading event that evening."
+    },
+    {
+     "id": "en014_q2",
+     "type": "multiple_choice",
+     "question": "What did Daniel notice in the drawer?",
+     "options": [
+      "A blue thread",
+      "A silver coin",
+      "A small notebook"
+     ],
+     "answer": "A blue thread",
+     "explanation": "Daniel noticed a small piece of blue thread caught in the drawer."
+    },
+    {
+     "id": "en014_q3",
+     "type": "true_false",
+     "question": "Daniel found the key inside the librarian's blue fabric bag.",
+     "answer": true,
+     "explanation": "The key was inside the partly open side pocket of the bag."
+    },
+    {
+     "id": "en014_q4",
+     "type": "inference",
+     "question": "How did the blue thread help Daniel solve the mystery?",
+     "answer": "It reminded him of the librarian's blue fabric bag, which led him to search it.",
+     "explanation": "Daniel connected the blue thread with the bag he had seen earlier."
+    },
+    {
+     "id": "en014_q5",
+     "type": "short_answer",
+     "question": "What qualities helped Daniel find the key?",
+     "answer": "Patience, careful observation, and logical thinking.",
+     "explanation": "Daniel searched carefully and connected the clues before finding the key."
+    }
+   ],
+   "image": {
+    "url": "",
+    "alt": "A schoolboy discovering a missing key inside a blue fabric bag in a library",
+    "prompt": "A thoughtful schoolboy in an old-fashioned school library discovering a small brass key inside the side pocket of a blue fabric bag, bookshelves and a wooden desk nearby, a tiny blue thread visible, mysterious but friendly atmosphere, cinematic high-quality 3D animated children's mystery illustration, no text."
+   }
+  },
+  {
+   "id": "story_ar_015",
+   "language": "ar",
+   "stage": "مرحلة الإتقان المتوسط",
+   "level": "B1",
+   "title": "رِحْلَةٌ غَيَّرَتْ نَظْرَتِي",
+   "text": "كَانَتْ لَيْلَى تَعْتَقِدُ أَنَّ الْقِرَاءَةَ نَشَاطٌ مُمِلٌّ لَا يَحْتَاجُ إِلَيْهِ الْإِنْسَانُ إِلَّا فِي الْمَدْرَسَةِ. وَلَكِنَّ رِحْلَةً مَدْرَسِيَّةً إِلَى مَرْكَزٍ لِلْعُلُومِ غَيَّرَتْ رَأْيَهَا. خِلَالَ الرِّحْلَةِ، شَاهَدَتْ مَعْرِضًا تَفَاعُلِيًّا يَشْرَحُ كَيْفَ تَعْمَلُ الْأَجْهِزَةُ وَكَيْفَ تَتَطَوَّرُ الْاِخْتِرَاعَاتُ. وَقَفَتْ أَمَامَ جِهَازٍ يَعْرِضُ تَجَارِبَ عِلْمِيَّةً، فَأَثَارَ ذَلِكَ فُضُولَهَا. سَأَلَتِ الْمُرْشِدَ عَنْ مَصَادِرَ يُمْكِنُ أَنْ تَسَاعِدَهَا عَلَى فَهْمِ الْمَزِيدِ. نَصَحَهَا بِقِرَاءَةِ كُتُبٍ مُبَسَّطَةٍ وَمَقَالَاتٍ عِلْمِيَّةٍ مُنَاسِبَةٍ لِعُمْرِهَا. عِنْدَمَا عَادَتْ إِلَى الْمَنْزِلِ، بَدَأَتْ تَبْحَثُ عَنْ كُتُبٍ فِي الْمَكْتَبَةِ، وَخَصَّصَتْ وَقْتًا يَوْمِيًّا لِلْقِرَاءَةِ. وَبَعْدَ أَسَابِيعَ، أَصْبَحَتْ تَسْتَمْتِعُ بِاكْتِشَافِ الْمَعْلُومَاتِ الْجَدِيدَةِ. أَدْرَكَتْ لَيْلَى أَنَّ الْقِرَاءَةَ لَيْسَتْ مُجَرَّدَ وَاجِبٍ مَدْرَسِيٍّ، بَلْ هِيَ وَسِيلَةٌ لِفَتْحِ أَبْوَابِ الْمَعْرِفَةِ وَتَوْسِيعِ الْأُفُقِ.",
+   "vocabulary": [
+    {
+     "word": "نَشَاطٌ",
+     "meaning": "عَمَلٌ أَوْ فِعَالِيَّةٌ يَقُومُ بِهَا الْإِنْسَانُ"
+    },
+    {
+     "word": "مَعْرِضٌ تَفَاعُلِيٌّ",
+     "meaning": "مَكَانٌ يَسْمَحُ لِلزَّائِرِ بِالْمُشَارَكَةِ وَالتَّجْرِبَةِ"
+    },
+    {
+     "word": "فُضُولٌ",
+     "meaning": "رَغْبَةٌ فِي مَعْرِفَةِ شَيْءٍ جَدِيدٍ"
+    },
+    {
+     "word": "مَصَادِرُ",
+     "meaning": "مَرَاجِعُ أَوْ أَمَاكِنُ نَحْصُلُ مِنْهَا عَلَى الْمَعْلُومَاتِ"
+    },
+    {
+     "word": "الْأُفُقُ",
+     "meaning": "مَدَى فَهْمِ الْإِنْسَانِ وَمَعْرِفَتِهِ"
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ar015_q1",
+     "type": "multiple_choice",
+     "question": "مَا رَأْيُ لَيْلَى فِي الْقِرَاءَةِ قَبْلَ الرِّحْلَةِ؟",
+     "options": [
+      "كَانَتْ تَعْتَقِدُ أَنَّهَا نَشَاطٌ مُمْتِعٌ",
+      "كَانَتْ تَعْتَقِدُ أَنَّهَا نَشَاطٌ مُمِلٌّ",
+      "كَانَتْ تَعْتَقِدُ أَنَّهَا غَيْرُ مُهِمَّةٍ فِي الْمَدْرَسَةِ فَقَطْ"
+     ],
+     "answer": "كَانَتْ تَعْتَقِدُ أَنَّهَا نَشَاطٌ مُمِلٌّ",
+     "explanation": "ذَكَرَتِ الْقِصَّةُ أَنَّ لَيْلَى كَانَتْ تَعْتَقِدُ أَنَّ الْقِرَاءَةَ مُمِلَّةٌ."
+    },
+    {
+     "id": "ar015_q2",
+     "type": "multiple_choice",
+     "question": "مَا الَّذِي غَيَّرَ نَظْرَةَ لَيْلَى إِلَى الْقِرَاءَةِ؟",
+     "options": [
+      "رِحْلَةٌ إِلَى مَرْكَزٍ لِلْعُلُومِ",
+      "مُسَابَقَةٌ رِيَاضِيَّةٌ",
+      "زِيَارَةٌ لِمَتْجَرٍ"
+     ],
+     "answer": "رِحْلَةٌ إِلَى مَرْكَزٍ لِلْعُلُومِ",
+     "explanation": "كَانَتِ الرِّحْلَةُ إِلَى مَرْكَزِ الْعُلُومِ السَّبَبَ الَّذِي أَثَارَ فُضُولَهَا."
+    },
+    {
+     "id": "ar015_q3",
+     "type": "true_false",
+     "question": "نَصَحَ الْمُرْشِدُ لَيْلَى بِقِرَاءَةِ كُتُبٍ وَمَقَالَاتٍ عِلْمِيَّةٍ.",
+     "answer": true,
+     "explanation": "اقْتَرَحَ الْمُرْشِدُ عَلَيْهَا مَصَادِرَ مُنَاسِبَةً لِعُمْرِهَا."
+    },
+    {
+     "id": "ar015_q4",
+     "type": "inference",
+     "question": "مَا الَّذِي يُمْكِنُ اسْتِنْتَاجُهُ مِنْ تَخْصِيصِ لَيْلَى وَقْتًا يَوْمِيًّا لِلْقِرَاءَةِ؟",
+     "answer": "أَنَّهَا أَصْبَحَتْ مُهْتَمَّةً بِالْمَعْرِفَةِ وَمُسْتَعِدَّةً لِتَغْيِيرِ عَادَاتِهَا.",
+     "explanation": "تَغْيِيرُ عَادَتِهَا وَتَخْصِيصُ وَقْتٍ لِلْقِرَاءَةِ يَدُلَّانِ عَلَى تَطَوُّرِ اهْتِمَامِهَا."
+    },
+    {
+     "id": "ar015_q5",
+     "type": "short_answer",
+     "question": "مَا الرِّسَالَةُ الَّتِي تُقَدِّمُهَا الْقِصَّةُ؟",
+     "answer": "أَنَّ الْقِرَاءَةَ وَسِيلَةٌ لِاكْتِسَابِ الْمَعْرِفَةِ وَتَوْسِيعِ الْأُفُقِ.",
+     "explanation": "تُوَضِّحُ الْقِصَّةُ أَنَّ الْقِرَاءَةَ تُسَاعِدُ الْإِنْسَانَ عَلَى اكْتِشَافِ أَفْكَارٍ وَمَعْلُومَاتٍ جَدِيدَةٍ."
+    }
+   ],
+   "image": {
+    "url": "",
+    "alt": "لَيْلَى تَكْتَشِفُ تَجَارِبَ عِلْمِيَّةً فِي مَرْكَزٍ حَدِيثٍ لِلْعُلُومِ",
+    "prompt": "A curious young Arab schoolgirl exploring an interactive science exhibition with fascinating scientific machines, glowing educational displays and simple experiments, a friendly science guide nearby, modern science center, cinematic 3D animated educational storybook illustration, no text."
+   }
+  }
+ ]
+}
