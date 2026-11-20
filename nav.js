@@ -60,9 +60,9 @@ ${(()=>{/* الخطوة التالية يقررها عقل بومي (mind/hub.js
 <button class="h2-card en" onclick="sec('en')"><span class=h2-ic dir=ltr>ABC</span><b>أكاديمية الإنجليزية</b><small dir=ltr>Letters • Phonics • Words</small><i class=h2-go>ابدأ الآن ▶</i></button>
 <button class="h2-card math" onclick="sec('math')"><span class="h2-ic e">🔢</span><b>أكاديمية الرياضيات</b><small>أرقام .. عمليات .. أشكال</small><i class=h2-go>ابدأ الآن ▶</i></button>
 <button class="h2-card ai" onclick="bomi()"><span class="h2-ic e">💬</span><b>المعلم الذكي بومي</b><small>اسأل وتعلّم معي</small><i class=h2-go>تحدّث الآن ▶</i></button></div>
-<button class=h2-parent onclick=parent()><span class=e>👨‍👩‍👧</span><span><b>لوحة ولي الأمر</b><small>متابعة تقدّم طفلك · ${dn}/${us.length} دروس مكتملة</small></span><i>←</i></button>
 <h3 class=h2-h>🎮 تعلّم والعب</h3>
-<div class="tl tl-glass">${tl.slice(3).map(t=>`<button class=gt onclick="${t[3]}">${t[0]}<b>${t[1]}</b><small>${t[2]}</small></button>`).join('')}</div>`)}
+<div class="tl tl-glass">${tl.slice(3).map(t=>`<button class=gt onclick="${t[3]}">${t[0]}<b>${t[1]}</b><small>${t[2]}</small></button>`).join('')}</div>
+<button class="h2-parent h2-parent-end" onclick=parent()><span class=e>👨‍👩‍👧</span><span><b>لوحة ولي الأمر</b><small>متابعة تقدّم طفلك · ${dn}/${us.length} دروس مكتملة</small></span><i>←</i></button> <!-- لوحة ولي الأمر في أسفل الصفحة (طلب صاحب المشروع) -->`)}
 
 /* إعادة رسم الصفحة بعد تحميل كل الملفات حتى تظهر الصفحة الرئيسية الجديدة (smart.js يرسم الصفحة القديمة عند تحميله) */
 P=load();ens();DB.kids.length>1?who():P?home():setup();
