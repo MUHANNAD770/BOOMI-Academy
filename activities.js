@@ -71,7 +71,8 @@ window.aPath=(i=0,s=0)=>{V='lesson';if(i>=PT.length)return fin(s,PT.length,'aPat
  cv.onpointerdown=e=>{e.preventDefault();cv.setPointerCapture(e.pointerId);d=1;mv(e)};cv.onpointermove=mv;cv.onpointerup=cv.onpointercancel=()=>{d=0};draw()};
 /* ربط القسم بالموقع: قائمة الألعاب + بلاطة الصفحة الرئيسية */
 const os=sec;sec=function(k){os(k);if(k=='games'){const l=document.querySelector('.list');l&&l.insertAdjacentHTML('afterbegin','<button class=row onclick=act()><span>🎨</span><b>أنشطة تفاعلية</b><small>جديد</small></button>')}};
-const oh=home;home=function(){oh();const t=document.querySelector('.tl');t&&t.insertAdjacentHTML('beforeend','<button class=gt onclick=act()><i class="ico ico-em">🎨</i><b>أنشطة</b><small>تتبّع وعدّ ولوّن</small></button>')};
+const actTile=()=>{const t=document.querySelector('.tl');if(t&&!t.querySelector('.act-tile'))t.insertAdjacentHTML('beforeend','<button class="gt act-tile" onclick=act()><i class="ico ico-em">🎨</i><b>أنشطة</b><small>تتبّع وعدّ ولوّن</small></button>')};
+const oh=home;home=function(){oh();actTile()};if(window.V==='home')actTile(); /* الصفحة الأولى رُسمت قبل تحميل هذا الملف */
 window.AC={MN,q5,opts,pal,pad,tracer,back,good,star,sh,pk,R,ad,COL};
 if(V=='home')home();
 })();
