@@ -5,7 +5,7 @@
    • أسئلة القصص الإنجليزية للمبتدئ مع ترجمتها العربية. النتائج في P.stories (نجوم) وتصل لعقل بومي.
    • لا يُحذف شيء من القصص القديمة: تبقى في تبويباتها. */
 (()=>{'use strict';
-const FILE='data/stories-bank.json?v=4';let DATA=null,LOAD=null;
+const FILE='data/stories-bank.json?v=5';let DATA=null,LOAD=null;
 const load=()=>DATA?Promise.resolve(DATA):(LOAD||(LOAD=fetch(FILE).then(r=>r.json()).then(j=>DATA=j).catch(e=>{LOAD=null;throw e})));
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const shuf=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
