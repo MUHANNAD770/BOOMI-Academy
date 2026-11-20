@@ -1,0 +1,137 @@
+{
+  "bank": "Boomi Bilingual Story Academy",
+  "batch": 1,
+  "stories": [
+    {
+      "id": "story_ar_101",
+      "title": "الْأَرْنَبُ وَالْجَزَرَةُ",
+      "language": "ar",
+      "english_title": "The Rabbit and the Carrot",
+      "stage": "مرحلة التأسيس",
+      "level": "A1",
+      "category": "القيم والأخلاق",
+      "moral": "الصبر والاجتهاد",
+      "text": "فِي صَبَاحٍ جَمِيلٍ، خَرَجَ أَرْنَبٌ صَغِيرٌ مِنْ بَيْتِهِ. كَانَ الْأَرْنَبُ يُحِبُّ الْجَزَرَ كَثِيرًا. قَالَ الْأَرْنَبُ: سَأَزْرَعُ جَزَرَةً فِي حَدِيقَتِي. أَحْضَرَ الْمِعْوَلَ، وَحَفَرَ حُفْرَةً صَغِيرَةً، ثُمَّ وَضَعَ بَذْرَةً فِي التُّرَابِ. سَقَى الْأَرْنَبُ الْبَذْرَةَ بِالْمَاءِ كُلَّ يَوْمٍ، وَانْتَظَرَ بِصَبْرٍ. بَعْدَ أَيَّامٍ، ظَهَرَتْ نَبْتَةٌ خَضْرَاءُ صَغِيرَةٌ. فَرِحَ الْأَرْنَبُ كَثِيرًا، وَقَالَ: الصَّبْرُ وَالْعَمَلُ يُحَقِّقَانِ الْأَحْلَامَ.",
+      "english_text": "One beautiful morning, a little rabbit came out of his house. The rabbit loved carrots very much. He said, I will plant a carrot in my garden. He brought a small shovel, dug a little hole, and put a seed in the soil. Every day, the rabbit watered the seed and waited patiently. After a few days, a little green plant appeared. The rabbit was very happy. He said, Patience and hard work make dreams come true.",
+      "vocabulary": [
+        {"ar": "أَرْنَبٌ", "en": "Rabbit"},
+        {"ar": "جَزَرٌ", "en": "Carrot"},
+        {"ar": "حَدِيقَةٌ", "en": "Garden"},
+        {"ar": "بَذْرَةٌ", "en": "Seed"},
+        {"ar": "تُرَابٌ", "en": "Soil"},
+        {"ar": "صَبْرٌ", "en": "Patience"}
+      ],
+      "questions": [
+        {"id": 1, "type": "multiple_choice", "question": "مَاذَا يُحِبُّ الْأَرْنَبُ؟", "options": ["التُّفَّاحَ", "الْجَزَرَ", "الْمَوْزَ"], "answer": "الْجَزَرَ"},
+        {"id": 2, "type": "multiple_choice", "question": "أَيْنَ زَرَعَ الْأَرْنَبُ الْبَذْرَةَ؟", "options": ["فِي الْحَدِيقَةِ", "فِي الْبَيْتِ", "فِي الْبَحْرِ"], "answer": "فِي الْحَدِيقَةِ"},
+        {"id": 3, "type": "true_false", "question": "سَقَى الْأَرْنَبُ الْبَذْرَةَ كُلَّ يَوْمٍ.", "answer": true},
+        {"id": 4, "type": "open_question", "question": "مَا الدَّرْسُ الْمُسْتَفَادُ مِنَ الْقِصَّةِ؟", "sample_answer": "الصَّبْرُ وَالِاجْتِهَادُ يُسَاعِدَانِ عَلَى تَحْقِيقِ الْأَحْلَامِ."}
+      ]
+    },
+    {
+      "id": "story_ar_102",
+      "title": "الْحَدِيقَةُ النَّظِيفَةُ",
+      "language": "ar",
+      "english_title": "The Clean Garden",
+      "stage": "مرحلة التأسيس",
+      "level": "A1",
+      "category": "البيئة",
+      "moral": "المحافظة على البيئة",
+      "text": "فِي يَوْمِ الْجُمُعَةِ، ذَهَبَ أَحْمَدُ وَسَارَةُ إِلَى الْحَدِيقَةِ. شَاهَدَا أَوْرَاقًا وَزُجَاجَاتٍ فَارِغَةً عَلَى الْأَرْضِ. قَالَ أَحْمَدُ: يَجِبُ أَنْ نُحَافِظَ عَلَى نَظَافَةِ الْحَدِيقَةِ. أَحْضَرَتْ سَارَةُ كِيسًا، وَبَدَآ يَجْمَعَانِ الْمُخَلَّفَاتِ. وَضَعَا الْبِلَاسْتِيكَ فِي حَاوِيَةٍ خَاصَّةٍ، وَالْوَرَقَ فِي حَاوِيَةٍ أُخْرَى. بَعْدَ قَلِيلٍ، أَصْبَحَتِ الْحَدِيقَةُ نَظِيفَةً وَجَمِيلَةً. ابْتَسَمَ أَحْمَدُ وَقَالَ: الْبِيئَةُ النَّظِيفَةُ مَسْؤُولِيَّةُ الْجَمِيعِ.",
+      "english_text": "On Friday, Ahmed and Sarah went to the park. They saw papers and empty bottles on the ground. Ahmed said, We must keep the park clean. Sarah brought a bag, and they started collecting the rubbish. They put plastic in one special bin and paper in another. Soon, the park became clean and beautiful. Ahmed smiled and said, A clean environment is everyone's responsibility.",
+      "vocabulary": [
+        {"ar": "حَدِيقَةٌ", "en": "Park"},
+        {"ar": "نَظَافَةٌ", "en": "Cleanliness"},
+        {"ar": "بِيئَةٌ", "en": "Environment"},
+        {"ar": "زُجَاجَةٌ", "en": "Bottle"},
+        {"ar": "وَرَقٌ", "en": "Paper"},
+        {"ar": "مُخَلَّفَاتٌ", "en": "Waste"}
+      ],
+      "questions": [
+        {"id": 1, "type": "multiple_choice", "question": "إِلَى أَيْنَ ذَهَبَ أَحْمَدُ وَسَارَةُ؟", "options": ["الْمَدْرَسَةِ", "الْحَدِيقَةِ", "الْمَتْجَرِ"], "answer": "الْحَدِيقَةِ"},
+        {"id": 2, "type": "multiple_choice", "question": "مَاذَا جَمَعَا مِنَ الْأَرْضِ؟", "options": ["الْأَلْعَابَ", "الْمُخَلَّفَاتِ", "الْكُتُبَ"], "answer": "الْمُخَلَّفَاتِ"},
+        {"id": 3, "type": "true_false", "question": "وَضَعَا الْوَرَقَ فِي حَاوِيَةٍ خَاصَّةٍ.", "answer": true},
+        {"id": 4, "type": "open_question", "question": "لِمَاذَا يَجِبُ أَنْ نُحَافِظَ عَلَى الْبِيئَةِ؟", "sample_answer": "لِتَبْقَى الْبِيئَةُ نَظِيفَةً وَصِحِّيَّةً."}
+      ]
+    },
+    {
+      "id": "story_ar_103",
+      "title": "رِحْلَةٌ إِلَى الْفَضَاءِ",
+      "language": "ar",
+      "english_title": "A Journey to Space",
+      "stage": "مرحلة التطوير",
+      "level": "A2",
+      "category": "العلوم والفضاء",
+      "moral": "حُبُّ الْعِلْمِ وَالِاكْتِشَافِ",
+      "text": "كَانَ سَالِمٌ طِفْلًا يُحِبُّ الْعُلُومَ وَالْفَضَاءَ. كَانَ يَنْظُرُ إِلَى النُّجُومِ كُلَّ لَيْلَةٍ، وَيَحْلُمُ بِرِحْلَةٍ إِلَى الْقَمَرِ. فِي أَحَدِ الْأَيَّامِ، شَاهَدَ فِلْمًا عَنْ رُوَّادِ الْفَضَاءِ. تَعَلَّمَ أَنَّ الْأَرْضَ كَوْكَبٌ يَدُورُ حَوْلَ الشَّمْسِ، وَأَنَّ الْقَمَرَ يَدُورُ حَوْلَ الْأَرْضِ. رَأَى فِي الْفِلْمِ مَحَطَّةً فَضَائِيَّةً كَبِيرَةً، وَمَرْكَبَةً تَطِيرُ بَيْنَ النُّجُومِ. قَالَ سَالِمٌ: أَتَمَنَّى أَنْ أُصْبِحَ رَائِدَ فَضَاءٍ، وَأَكْتَشِفَ أَسْرَارَ الْكَوْنِ.",
+      "english_text": "Salim was a child who loved science and space. Every night, he looked at the stars and dreamed of traveling to the Moon. One day, he watched a movie about astronauts. He learned that Earth is a planet that moves around the Sun, and the Moon moves around Earth. In the movie, he saw a large space station and a spacecraft flying among the stars. Salim said, I hope to become an astronaut and discover the secrets of the universe.",
+      "vocabulary": [
+        {"ar": "الْفَضَاءُ", "en": "Space"},
+        {"ar": "نَجْمٌ", "en": "Star"},
+        {"ar": "كَوْكَبٌ", "en": "Planet"},
+        {"ar": "الْقَمَرُ", "en": "Moon"},
+        {"ar": "الشَّمْسُ", "en": "Sun"},
+        {"ar": "رَائِدُ فَضَاءٍ", "en": "Astronaut"},
+        {"ar": "الْكَوْنُ", "en": "Universe"}
+      ],
+      "questions": [
+        {"id": 1, "type": "multiple_choice", "question": "مَاذَا يُحِبُّ سَالِمٌ؟", "options": ["الرِّيَاضَةَ", "الْعُلُومَ وَالْفَضَاءَ", "الطَّبْخَ"], "answer": "الْعُلُومَ وَالْفَضَاءَ"},
+        {"id": 2, "type": "multiple_choice", "question": "حَوْلَ مَاذَا تَدُورُ الْأَرْضُ؟", "options": ["الْقَمَرِ", "الشَّمْسِ", "الْمُشْتَرِي"], "answer": "الشَّمْسِ"},
+        {"id": 3, "type": "true_false", "question": "يَدُورُ الْقَمَرُ حَوْلَ الْأَرْضِ.", "answer": true},
+        {"id": 4, "type": "open_question", "question": "مَاذَا يُرِيدُ سَالِمٌ أَنْ يُصْبِحَ؟", "sample_answer": "يُرِيدُ أَنْ يُصْبِحَ رَائِدَ فَضَاءٍ."}
+      ]
+    },
+    {
+      "id": "story_ar_104",
+      "title": "الْفَتَى وَالرَّجُلُ الْمُسِنُّ",
+      "language": "ar",
+      "english_title": "The Boy and the Old Man",
+      "stage": "مرحلة التطوير",
+      "level": "A2",
+      "category": "القيم والأخلاق",
+      "moral": "احترام كبار السن ومساعدة الآخرين",
+      "text": "فِي صَبَاحِ يَوْمٍ مُشْمِسٍ، كَانَ خَالِدٌ يَسِيرُ فِي الشَّارِعِ. رَأَى رَجُلًا مُسِنًّا يَحْمِلُ أَكْيَاسًا ثَقِيلَةً. كَانَ الرَّجُلُ يَمْشِي بِبُطْءٍ وَيَبْدُو عَلَيْهِ التَّعَبُ. اقْتَرَبَ خَالِدٌ مِنْهُ وَقَالَ: هَلْ أُسَاعِدُكَ يَا عَمِّي؟ ابْتَسَمَ الرَّجُلُ وَقَالَ: نَعَمْ، شُكْرًا لَكَ يَا بُنَيَّ. حَمَلَ خَالِدٌ بَعْضَ الْأَكْيَاسِ وَسَاعَدَ الرَّجُلَ حَتَّى وَصَلَ إِلَى بَيْتِهِ. شَكَرَهُ الرَّجُلُ وَدَعَا لَهُ بِالْخَيْرِ. عَادَ خَالِدٌ إِلَى بَيْتِهِ سَعِيدًا، لِأَنَّهُ أَدْخَلَ السُّرُورَ عَلَى قَلْبِ إِنْسَانٍ آخَرَ.",
+      "english_text": "On a sunny morning, Khalid was walking in the street. He saw an old man carrying heavy bags. The man was walking slowly and looked tired. Khalid came closer and said, Can I help you, sir? The man smiled and said, Yes, thank you, my son. Khalid carried some of the bags and helped the man until they reached his house. The man thanked him and wished him well. Khalid returned home happily because he had made another person happy.",
+      "vocabulary": [
+        {"ar": "مُسِنٌّ", "en": "Elderly"},
+        {"ar": "ثَقِيلٌ", "en": "Heavy"},
+        {"ar": "يُسَاعِدُ", "en": "Helps"},
+        {"ar": "اقْتَرَبَ", "en": "Came closer"},
+        {"ar": "ابْتَسَمَ", "en": "Smiled"},
+        {"ar": "السُّرُورُ", "en": "Happiness"}
+      ],
+      "questions": [
+        {"id": 1, "type": "multiple_choice", "question": "مَاذَا كَانَ يَحْمِلُ الرَّجُلُ الْمُسِنُّ؟", "options": ["كُتُبًا", "أَكْيَاسًا ثَقِيلَةً", "أَلْعَابًا"], "answer": "أَكْيَاسًا ثَقِيلَةً"},
+        {"id": 2, "type": "multiple_choice", "question": "كَيْفَ سَاعَدَ خَالِدٌ الرَّجُلَ؟", "options": ["حَمَلَ بَعْضَ الْأَكْيَاسِ", "تَرَكَهُ", "أَعْطَاهُ كِتَابًا"], "answer": "حَمَلَ بَعْضَ الْأَكْيَاسِ"},
+        {"id": 3, "type": "true_false", "question": "عَادَ خَالِدٌ إِلَى بَيْتِهِ حَزِينًا.", "answer": false},
+        {"id": 4, "type": "open_question", "question": "مَا الْقِيمَةُ الَّتِي تَعَلَّمْتَهَا مِنَ الْقِصَّةِ؟", "sample_answer": "مُسَاعَدَةُ الْآخَرِينَ وَاحْتِرَامُ كِبَارِ السِّنِّ."}
+      ]
+    },
+    {
+      "id": "story_ar_105",
+      "title": "سِرُّ الْبَحْرِ الْعَجِيبِ",
+      "language": "ar",
+      "english_title": "The Secret of the Wonderful Sea",
+      "stage": "مرحلة التقدم",
+      "level": "B1",
+      "category": "العلوم والطبيعة",
+      "moral": "حماية الحياة البحرية",
+      "text": "فِي عُطْلَةِ الصَّيْفِ، ذَهَبَتْ لَيْلَى مَعَ أُسْرَتِهَا إِلَى الشَّاطِئِ. كَانَ الْبَحْرُ هَادِئًا، وَمَاؤُهُ صَافِيًا، وَأَمْوَاجُهُ تَلْمَعُ تَحْتَ أَشِعَّةِ الشَّمْسِ. وَبَيْنَمَا كَانَتْ لَيْلَى تَتَأَمَّلُ الْمَاءَ، شَاهَدَتْ سُلَحْفَاةً بَحْرِيَّةً تَسْبَحُ بِبُطْءٍ. فَرِحَتْ كَثِيرًا، وَلَكِنَّهَا لَاحَظَتْ كِيسًا بِلَاسْتِيكِيًّا يَعُومُ قَرِيبًا مِنَ السُّلَحْفَاةِ. قَالَتْ لِوَالِدِهَا: إِنَّ الْبِلَاسْتِيكَ قَدْ يُؤْذِي الْحَيَوَانَاتِ الْبَحْرِيَّةَ. سَاعَدَهَا وَالِدُهَا فِي جَمْعِ الْمُخَلَّفَاتِ بِطَرِيقَةٍ آمِنَةٍ، ثُمَّ أَخْبَرَهَا أَنَّ الْبَحْرَ بَيْتٌ لِكَثِيرٍ مِنَ الْمَخْلُوقَاتِ. فَهِمَتْ لَيْلَى أَنَّ حِمَايَةَ الْبَحْرِ مَسْؤُولِيَّةٌ يَشْتَرِكُ فِيهَا الْجَمِيعُ.",
+      "english_text": "During the summer holiday, Layla went to the beach with her family. The sea was calm, the water was clear, and the waves sparkled under the sunlight. While Layla was looking at the water, she saw a sea turtle swimming slowly. She was very happy, but she noticed a plastic bag floating near the turtle. She told her father, Plastic can hurt marine animals. Her father helped her collect the rubbish safely. Then he explained that the sea is home to many creatures. Layla understood that protecting the sea is everyone's responsibility.",
+      "vocabulary": [
+        {"ar": "الشَّاطِئُ", "en": "Beach"},
+        {"ar": "سُلَحْفَاةٌ بَحْرِيَّةٌ", "en": "Sea turtle"},
+        {"ar": "أَمْوَاجٌ", "en": "Waves"},
+        {"ar": "مُخَلَّفَاتٌ", "en": "Waste"},
+        {"ar": "مَخْلُوقَاتٌ", "en": "Creatures"},
+        {"ar": "حِمَايَةٌ", "en": "Protection"}
+      ],
+      "questions": [
+        {"id": 1, "type": "multiple_choice", "question": "أَيْنَ ذَهَبَتْ لَيْلَى مَعَ أُسْرَتِهَا؟", "options": ["إِلَى الْجَبَلِ", "إِلَى الشَّاطِئِ", "إِلَى الْمَدْرَسَةِ"], "answer": "إِلَى الشَّاطِئِ"},
+        {"id": 2, "type": "multiple_choice", "question": "مَاذَا شَاهَدَتْ لَيْلَى فِي الْبَحْرِ؟", "options": ["سُلَحْفَاةً بَحْرِيَّةً", "أَسَدًا", "حِصَانًا"], "answer": "سُلَحْفَاةً بَحْرِيَّةً"},
+        {"id": 3, "type": "true_false", "question": "الْبِلَاسْتِيكُ لَا يُؤْذِي الْحَيَوَانَاتِ الْبَحْرِيَّةَ.", "answer": false},
+        {"id": 4, "type": "open_question", "question": "لِمَاذَا يَجِبُ أَنْ نَحْمِيَ الْبَحْرَ؟", "sample_answer": "لِأَنَّهُ بَيْتٌ لِكَثِيرٍ مِنَ الْحَيَوَانَاتِ وَالْمَخْلُوقَاتِ الْبَحْرِيَّةِ."}
+      ]
+    }
+  ]
+}

@@ -5,7 +5,7 @@
    • أسئلة القصص الإنجليزية للمبتدئ مع ترجمتها العربية. النتائج في P.stories (نجوم) وتصل لعقل بومي.
    • لا يُحذف شيء من القصص القديمة: تبقى في تبويباتها. */
 (()=>{'use strict';
-const FILE='data/stories-bank.json?v=3';let DATA=null,LOAD=null;
+const FILE='data/stories-bank.json?v=4';let DATA=null,LOAD=null;
 const load=()=>DATA?Promise.resolve(DATA):(LOAD||(LOAD=fetch(FILE).then(r=>r.json()).then(j=>DATA=j).catch(e=>{LOAD=null;throw e})));
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const shuf=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
@@ -35,13 +35,16 @@ window.stories=function(tab,lang){if(tab&&tab!=='lib'){const r=oStories.apply(th
 /* ===== قراءة القصة ===== */
 window.sbStory=function(id){load().then(()=>{const s=find(id);if(!s)return stories('lib');V='lesson';window.CS='games';const en=s.l==='en',dir=en?'ltr':'rtl';
  h(`<section class="sec story sb-story"><button class=link onclick="stories('lib')">← المكتبة</button>
- <div class=sb-hero>${pic(s)}<h2 dir=auto>${esc(s.t)}</h2><small><em class=sb-lang>${en?'English':'عربي'}</em> <em class=sb-lv>${esc(s.lv)}</em> ${esc(s.stage)}</small></div>
+ <div class=sb-hero>${pic(s)}<h2 dir=auto>${esc(s.t)}</h2>${s.tt?`<p class=sb-tt dir=ltr>${esc(s.tt)}</p>`:''}<small><em class=sb-lang>${en?'English':'عربي'}</em> <em class=sb-lv>${esc(s.lv)}</em> ${esc(s.stage)}</small></div>
  <div class=story-text dir=${dir}>${s.s.map((t,i)=>`<span class=ss data-i=${i} onclick="sbSay('${id}',${i})">${esc(t)}</span>`).join(' ')}</div>
  <p class=mut>اضغط على أي جملة لتسمعها.</p>
+ ${s.m?`<p class=sb-moral dir=auto>🌟 الْعِبْرَةُ: ${esc(s.m)}</p>`:''}
+ ${s.tr&&s.tr.length?`<details class=sb-tr><summary>🇬🇧 الترجمة الإنجليزية</summary><div class=story-text dir=ltr>${s.tr.map((t,i)=>`<span class=ss onclick="sbSayTr('${id}',${i})">${esc(t)}</span>`).join(' ')}</div></details>`:''}
  <button class=alt onclick="sbRead('${id}')">🔊 اسمع القصة كاملة</button>
  ${s.v.length?`<h3>📒 كلمات القصة</h3><div class=sb-vocab>${s.v.map((w,i)=>`<button class=sb-w onclick="sbWord('${id}',${i})"><b dir=auto>${esc(w[0])}</b><small dir=auto>${esc(w[1])}</small></button>`).join('')}</div>`:''}
  <button class=big onclick="sbQuiz('${id}')">❓ أجب عن الأسئلة (${D(s.x.length)})</button>${s.T?`<button class="big sb-testbtn" onclick="sbTest('${id}')">📝 الاختبار الشامل (${D(s.T.length)} سؤالًا)${tb(s.id)!=null?` · ${D(tb(s.id))}٪`:''}</button>`:''}</section>`)})};
 const mark=i=>document.querySelectorAll('.sb-story .ss').forEach(e=>e.classList.toggle('now',+e.dataset.i===i));
+window.sbSayTr=(id,i)=>{const s=find(id);if(s&&s.tr&&s.tr[i])say1(s.tr[i],'en')}; /* جملة من الترجمة الإنجليزية */
 window.sbSay=(id,i)=>{const s=find(id);if(!s)return;mark(i);say1(s.s[i],s.l,()=>mark(-1))};
 window.sbRead=id=>{const s=find(id);if(!s)return;let i=0;const nx=()=>{if(i>=s.s.length||!document.querySelector('.sb-story')){mark(-1);return}const k=i++;mark(k);say1(s.s[k],s.l,()=>{const t=say.tk;setTimeout(()=>{if(say.tk===t||!say.live)nx()},250)})};nx()};
 window.sbWord=(id,i)=>{const s=find(id),w=s&&s.v[i];if(!w)return;(window.sayList||((L)=>say(L[0][0],L[0][1])))([[w[0],s.l],[w[1],/[؀-ۿ]/.test(w[1])?'ar':'en']])};

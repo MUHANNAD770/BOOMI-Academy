@@ -354,3 +354,9 @@ button.bank-sub{width:100%;border:0;font:inherit;text-align:start;cursor:pointer
 .zone .zi{position:relative!important;top:auto!important;inset-inline-end:auto!important;align-self:flex-end;font-size:2.3rem!important;line-height:1;margin-bottom:2px}
 .zone .zi img,.zone .zi .e3d{width:1.1em!important;height:1.1em!important}
 .zone .zp{margin-top:auto!important}
+/* مكتبة القصص: العنوان الإنجليزي، والعبرة، والترجمة */
+.sb-tt{margin:2px 0 4px;font-weight:700;opacity:.75;font-size:.95rem}
+.sb-moral{background:linear-gradient(135deg,#fff6d6,#ffe9a8);color:#5a4100;border-radius:14px;padding:10px 12px;font-weight:800;margin:10px 0}
+.sb-tr{margin:8px 0 12px;border-radius:14px;background:rgba(108,92,231,.07);padding:6px 10px}.sb-tr summary{cursor:pointer;font-weight:800;padding:6px 0}
+:root[data-theme=dark] .sb-moral{background:linear-gradient(135deg,#3b3420,#4a3c12);color:#ffe9a8}:root[data-theme=dark] .sb-tr{background:rgba(255,255,255,.06)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .sb-moral{background:linear-gradient(135deg,#3b3420,#4a3c12);color:#ffe9a8}:root:not([data-theme=light]) .sb-tr{background:rgba(255,255,255,.06)}}
