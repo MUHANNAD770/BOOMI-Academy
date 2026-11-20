@@ -8,7 +8,7 @@
 const teacher=()=>P&&P.teacher=='male'?'male':'female';
 /* تحويل الخطاب حسب جنس الطالب (اضغطْ/اضغطي…) يخص الجمل الموجّهة للطالب فقط؛ القصص والسرد والقراءة لا تُحوَّل
    (كان يحوّل «وَصَلَتِ السلحفاةُ» إلى «وَصَلْتِ» خطأً). */
-const NOG=/^(story|stories|listenTest|readTest|courseViewer|courseModule|talk|dictation|dictationAdv|lesson|quiz|review|daily|bank|bankSub|bankLesson|bankReview|bankPractice|arTeach|sbStory|sbQuiz)$/; /* صفحات محتوى تعليمي: لا تأنيث لكلمات الدرس (كانت «نَجْمٌ» تُقرأ «نَجْمَة») */
+const NOG=/^(story|stories|listenTest|readTest|courseViewer|courseModule|talk|dictation|dictationAdv|lesson|quiz|review|daily|bank|bankSub|bankLesson|bankReview|bankPractice|arTeach|sbStory|sbQuiz|sbTest)$/; /* صفحات محتوى تعليمي: لا تأنيث لكلمات الدرس (كانت «نَجْمٌ» تُقرأ «نَجْمَة») */
 /* كلمة أو كلمتان = محتوى درس (مُمْتَاز، بَطَل…) لا خطاب؛ جمل التشجيع تصل مُحوَّلة أصلًا من مصدرها (المدرّب، بومي، معلّم الإنجليزية) */
 const genderOk=t=>{if(window.__noGender)return false;if(t!=null&&String(t).trim().split(/\s+/).length<=2)return false;try{const e=window.Router&&Router.entry();return!(e&&NOG.test(e.fn))}catch(e){return true}};
 window.teacherOf=teacher;

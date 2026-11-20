@@ -73,6 +73,24 @@ for f in sorted(glob.glob(os.path.join(R,'batch*.json')),key=lambda p:int(re.fin
         img=st.get('image') or {}
         stories.append({'id':st['id'],'l':st['language'],'stage':st.get('stage',''),'lv':st.get('level','A1'),'t':st['title'],'s':sentences(st['text']),
           'v':[[w['word'],w['meaning']] for w in st.get('vocabulary',[])],'x':ex,'img':img.get('url',''),'alt':img.get('alt',''),'sc':scene(st),'_b':b['batch'],'_i':i})
+# الاختبارات الشاملة (tools/stories/tests/testsN.json): لكل قصة أقسام: فهم، صح أو خطأ، مفردات، ترتيب، مفتوح
+SECS=['فهم','صح أو خطأ','مفردات','ترتيب','مفتوح']
+TESTS={}
+for f in sorted(glob.glob(os.path.join(R,'tests','tests*.json'))):
+    for sid,items in json.load(open(f,encoding='utf8'))['tests'].items():
+        L=[]
+        for k,e in enumerate(items):
+            assert e['sec'] in SECS,(sid,k,e['sec']);t=e['type'];q={'id':f'{sid}_T{k+1}','sec':e['sec'],'t':t,'q':e['question'],'e':e.get('explanation','')}
+            if e.get('qar'):q['qar']=e['qar']
+            if t=='multiple_choice':assert e['answer'] in e['options'] and len(set(e['options']))==len(e['options']),(sid,k);q.update(o=e['options'],a=e['answer'])
+            elif t=='true_false':q['a']=bool(e['answer'])
+            elif t=='ordering':assert sorted(e['items'])==sorted(e['answer']) and e['items']!=e['answer'],(sid,k);q.update(o=e['items'],a=e['answer'])
+            elif t in('open','short_answer','inference'):q.update(t='open',a=e['answer'],acc=e.get('accepted_answers',[]))
+            else:raise AssertionError((sid,k,t))
+            L.append(q)
+        TESTS[sid]=L
+for s in stories:
+    if s['id'] in TESTS:s['T']=TESTS[s['id']]
 lv=lambda s:LEVELS.index(s['lv']) if s['lv'] in LEVELS else 9
 so=lambda s:STAGES.index(s['stage']) if s['stage'] in STAGES else 10+lv(s)
 stories.sort(key=lambda s:(so(s),lv(s),s['_b'],s['_i']))
@@ -87,5 +105,5 @@ for g in groups:
     g['levels']=' • '.join(f"{x} {LEVEL_AR.get(x,'')}".strip() for x in ls)
 out={'title':'مكتبة القصص المتدرّجة','source':'Boomi Bilingual Story Academy — دفعات من صاحب المشروع','stages':groups}
 json.dump(out,open(os.path.join(ROOT,'data','stories-bank.json'),'w',encoding='utf8'),ensure_ascii=False,separators=(',',':'))
-print('stories',len(stories),[(g['name'],len(g['stories']),g['levels']) for g in groups])
+print('tests',len(TESTS),'stories',sum(len(v) for v in TESTS.values()),'questions');print('stories',len(stories),[(g['name'],len(g['stories']),g['levels']) for g in groups])
 for s in stories:print(' ',s['id'],s['lv'],''.join(s['sc']),len(s['s']),'جمل')
