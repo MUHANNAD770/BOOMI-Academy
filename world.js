@@ -76,7 +76,10 @@ const oSec=window.sec;window.sec=function(k){const r=oSec.apply(this,arguments);
  if(k==='ach'){const s=app.querySelector('.sec');s&&s.insertAdjacentHTML('beforeend',`<h3>🏅 شاراتي</h3>${badgeGrid()}<button class=big onclick="world()">🗺️ عالم المغامرات</button>`)}
  if(k==='ar'||k==='en'||k==='math'){const s=app.querySelector('.sec h2');s&&s.insertAdjacentHTML('afterend',`<button class="path-btn" onclick="path('${k}')">🧭 مسار التعلم خطوة بخطوة</button>`)}
 }catch(e){}return r};
-const oHome=window.home;window.home=function(){const r=oHome.apply(this,arguments);try{const t=app.querySelector('.tl');if(t&&!t.querySelector('.world-tile'))t.insertAdjacentHTML('afterbegin','<button class="gt world-tile" onclick="world()"><i class="ico ico-em">🗺️</i><b>عالم المغامرات</b><small>افتح مناطق جديدة</small></button>')}catch(e){}return r};
+const worldTile=()=>{try{const t=app.querySelector('.tl');if(t&&!t.querySelector('.world-tile'))t.insertAdjacentHTML('afterbegin','<button class="gt world-tile" onclick="world()"><i class="ico ico-em">🗺️</i><b>عالم المغامرات</b><small>افتح مناطق جديدة</small></button>')}catch(e){}};
+const oHome=window.home;window.home=function(){const r=oHome.apply(this,arguments);worldTile();return r};
+/* الصفحة الرئيسية تُرسم عند فتح الموقع قبل تحميل هذا الملف: نضيف البطاقة إليها الآن (كانت تختفي أحيانًا) */
+if(window.V==='home')worldTile();
 
 /* ---------- لوحة ولي الأمر: ملخص واضح + خطة أسبوعية ---------- */
 const acc=k=>{const s=(P.stat||{})[k];return s&&s[0]?Math.round(s[1]/s[0]*100):null};
