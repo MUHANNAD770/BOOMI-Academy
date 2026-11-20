@@ -3,6 +3,7 @@
   "private": true,
   "description": "حروفي — بومي التعليمية. Netlify يثبّت هذه الحزمة تلقائيًا عند النشر من GitHub (لحفظ تقدّم الطلاب).",
   "dependencies": {
-    "@netlify/blobs": "^11.1.0"
+    "@netlify/blobs": "^11.1.0",
+    "ws": "^8.18.0"
   }
 }

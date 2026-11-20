@@ -64,8 +64,12 @@ function runner(tk,L,mood){const parts=[];let i=0,ended=false,cb=null,buf='',all
    if(f){if(f.x)out.push({t:f.x,l:p.l,e:'',sub:1});i=f.j}else{const x=w[i].replace(TRIM,'').replace(TRIM2,'');uw++;const last=out[out.length-1];if(last&&last.unk)last.t+=' '+x;else{unk++;out.push({t:x,l:p.l,e:'',sub:1,unk:1})}i++}}
   if(!out.length||unk>1||uw>2||out.length>9||out.every(o=>o.unk))return null;out[out.length-1].e=p.e;return out}catch(e){return null}};
 const browser=p=>{try{window.HurufiClips&&HurufiClips.record(p.t,p.l)}catch(e){}
-  if(window.HurufiClips&&!p.sub&&!HurufiClips.has(p.t,p.l)){const sub=split(p);if(sub){parts.splice(i,0,...sub);return nx()}}
   const gap=/[.!؟?\n]/.test(p.e)?170:p.e?70:0,after=ok=>{if(tk!=say.tk)return;ok===true?(gap?setTimeout(nx,gap):nx()):device(p)};
+  /* جملة بلا مقطع مسجّل كامل: تُنطق كاملة بسلاسة من خادم الصوت (بصوت المعلّم نفسه) بدل تركيبها كلمةً كلمةً؛
+     التركيب من المقاطع يبقى احتياطًا عند انقطاع الإنترنت أو تعذّر الخادم */
+  if(window.HurufiClips&&HurufiClips.speak&&!p.sub&&!p.tts&&!H(p.t,p.l)&&p.t.split(/\s+/).length>=2&&navigator.onLine!==false){p.tts=1;
+   HurufiClips.speak(p.t,p.l,()=>tk==say.tk,()=>{onTalk(true)}).then(ok=>{if(tk!=say.tk)return;if(ok===true)return after(true);browser(p)});return}
+  if(window.HurufiClips&&!p.sub&&!HurufiClips.has(p.t,p.l)&&!H(p.t,p.l)){const sub=split(p);if(sub){parts.splice(i,0,...sub);return nx()}}
   /* الأرقام تُكتب بالعربية (٣٥) والمقطع مسجّل بالأرقام اللاتينية (35) */
   {const k0=!p.sub&&H(p.t,p.l);if(k0)p.t=k0}
   if(window.HurufiClips&&HurufiClips.has(p.t,p.l)){HurufiClips.play(p.t,p.l,()=>tk==say.tk,()=>{onTalk(true)}).then(ok=>{if(tk!=say.tk)return;ok===true?after(true):device(p)});return}
@@ -74,7 +78,7 @@ const browser=p=>{try{window.HurufiClips&&HurufiClips.record(p.t,p.l)}catch(e){}
   if(i>=parts.length){if(ended&&!buf.trim())return fin();setTimeout(nx,60);return} /* ننتظر بقية الإجابة */
   const p=parts[i++];
   /* نجهّز المقطعين التاليين أثناء نطق الحالي: لا فجوات بين أجزاء الجملة */
-  try{if(window.HurufiClips&&HurufiClips.warm)parts.slice(i,i+2).forEach(q=>{const d=q.t.replace(/[\u0660-\u0669]/g,x=>String(x.charCodeAt(0)-1632));HurufiClips.warm(HurufiClips.has(q.t,q.l)?q.t:d,q.l)})}catch(e){}
+  try{if(window.HurufiClips&&HurufiClips.warm)parts.slice(i,i+2).forEach(q=>{const d=q.t.replace(/[\u0660-\u0669]/g,x=>String(x.charCodeAt(0)-1632)),k=HurufiClips.has(q.t,q.l)?q.t:HurufiClips.has(d,q.l)?d:null;if(k)HurufiClips.warm(k,q.l);else if(HurufiClips.warmTts&&!q.sub&&q.t.split(/\s+/).length>=2)HurufiClips.warmTts(q.t,q.l) /* الجملة التالية تُجهَّز من الخادم أثناء نطق الحالية */})}catch(e){}
   browser(p)};
  const flush=final=>{let m=buf.match(/^[\s\S]*[.!؟?\n]/);if(m){add(m[0]);buf=buf.slice(m[0].length)}
   else if(buf.length>150){const k=Math.max(buf.lastIndexOf('،'),buf.lastIndexOf(','));if(k>40){add(buf.slice(0,k+1)+'،');buf=buf.slice(k+1)}}

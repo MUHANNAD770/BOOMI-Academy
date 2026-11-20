@@ -81,6 +81,24 @@
    await new Promise((ok,no)=>{st.done=ok;a.onended=()=>{st.done=null;ok()};a.onerror=()=>{st.done=null;no(new Error('clip'))};a.play().then(()=>{onStart&&onStart()}).catch(e=>{st.done=null;no(e)})});
    return true}catch(e){return false}
   finally{if(ep===st.ep){quiet();if(st.url)URL.revokeObjectURL(st.url);st.audio=null;st.url='';st.playing=0}}};
+ /* ===== جملة كاملة بلا مقطع مسجّل: تُولَّد بسلاسة من الخادم (netlify/functions/tts.mjs) بصوت المعلّم نفسه =====
+    كانت تُركّب كلمةً كلمةً من مقاطع منفردة (متقطّعة وبطيئة) أو تسكت. النتيجة تُحفظ في الجهاز فلا تُطلب مرتين. */
+ const TC='hurufi-tts-v1',TM=new Map();
+ const ttsUrl=(t,l)=>'/.netlify/functions/tts?w='+teacher()+'&l='+(l==='en'?'en':'ar')+'&t='+encodeURIComponent(String(t).replace(/\s+/g,' ').trim().normalize('NFC'));
+ const ttsBlob=(t,l)=>{const u=ttsUrl(t,l);if(TM.has(u))return TM.get(u);
+  const pr=(async()=>{try{const c=await caches.open(TC),hit=await c.match(u);if(hit)return await hit.blob()}catch(e){}
+   if(navigator.onLine===false)return null;const r=await fetch(u);if(!r.ok)return null;const b=await r.blob();if(!b.size||!/audio/.test(b.type))return null;
+   try{(await caches.open(TC)).put(u,new Response(b.slice(0,b.size,'audio/mpeg'),{headers:{'content-type':'audio/mpeg'}}))}catch(e){}return b})().catch(()=>null);
+  TM.set(u,pr);if(TM.size>60)TM.delete(TM.keys().next().value);pr.then(b=>{if(!b)TM.delete(u)});return pr};
+ const speak=async(t,l,valid,onStart)=>{stop();const ep=++st.ep;
+  try{const b=await ttsBlob(t,l);if(!b)return false;if(ep!==st.ep||(valid&&!valid()))return true;const r=rate(),c=ctx(),id='tts:'+ttsUrl(t,l);
+   if(c&&Math.abs(r-1)<.02){if(c.state!=='running')try{await c.resume()}catch(e){}const buf=await decode(id,b);if(ep!==st.ep||(valid&&!valid()))return true;
+    const src=c.createBufferSource();src.buffer=buf;st.gain.gain.value=vol();src.connect(st.gain);st.src=src;st.playing=1;
+    await new Promise(ok=>{st.done=ok;src.onended=()=>{if(st.src===src){st.src=null;st.playing=0}if(st.done===ok){st.done=null;ok()}};src.start(c.currentTime+.015);onStart&&onStart();mouthLoop()});return true}
+   const a=new Audio(),url=URL.createObjectURL(b);a.src=url;a.volume=vol();a.playbackRate=r;try{a.preservesPitch=true}catch(e){}st.audio=a;st.url=url;st.playing=1;
+   await new Promise((ok,no)=>{st.done=ok;a.onended=()=>{st.done=null;ok()};a.onerror=()=>{st.done=null;no(new Error('tts'))};a.play().then(()=>{onStart&&onStart()}).catch(e=>{st.done=null;no(e)})});return true}
+  catch(e){return false}finally{if(ep===st.ep){quiet();if(st.url)URL.revokeObjectURL(st.url);st.audio=null;st.url='';st.playing=0}}};
+ const warmTts=(t,l)=>{try{if(navigator.onLine!==false)ttsBlob(t,l)}catch(e){}};
  /* تجهيز مسبق: نفكّ مقاطع الكلمات الظاهرة في الصفحة كي يبدأ الصوت فور الضغط */
  const warmText=(t,l)=>{try{if(!has(t,l)||!ctx())return;const who=teacher(),k=key(t,l);if(BUF.has(who+k))return;clip(who,k).then(b=>b&&decode(who+k,b)).catch(()=>{})}catch(e){}};
  const record=(t,l)=>{try{if(localStorage.getItem('hurufiCollect')!=='1')return;const k='hurufiPhrases',o=JSON.parse(localStorage.getItem(k)||'{}');o[l+'|'+t]=1;localStorage.setItem(k,JSON.stringify(o))}catch(e){}};
@@ -109,7 +127,7 @@
  const reset=async()=>{try{for(const k of await caches.keys())await caches.delete(k)}catch(e){}try{for(const r of await navigator.serviceWorker.getRegistrations())await r.unregister()}catch(e){}
   try{localStorage.removeItem('hurufi-tts')}catch(e){}location.replace(location.pathname+'?fresh='+Date.now())};
  const offline=async()=>{const who=teacher();await loadIx(who);if(!st.ix[who])return false;st.pre[who]=0;warm(who,1);return true};
- window.HurufiClips={has,play,stop,pause,resume,warm:warmText,offline,diag,reset,progress:()=>st.prog||null,busy:()=>!!st.playing,record,export:exp,key,ready,load:loadIx,
+ window.HurufiClips={has,play,speak,warmTts,stop,pause,resume,warm:warmText,offline,diag,reset,progress:()=>st.prog||null,busy:()=>!!st.playing,record,export:exp,key,ready,load:loadIx,
   count:()=>[st.ix.female?Object.keys(st.ix.female.idx).length:0,st.ix.male?Object.keys(st.ix.male.idx).length:0],voice:who=>st.ix[who||teacher()]?.voice||null};
  /* بعد رسم كل صفحة: نجهّز مقاطع الكلمات القابلة للضغط فيها (بطاقات الدرس، أزرار 🔊) */
  const warmPage=()=>{try{if(!window.say||!say.parts)return;const L=[],add=(t,l)=>{for(const p of say.parts(t,l))L.push(p)};
