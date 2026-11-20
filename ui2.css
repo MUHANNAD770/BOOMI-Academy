@@ -179,3 +179,11 @@ body:not([data-theme=dark]){background:radial-gradient(900px 420px at 85% -60px,
 :root[data-theme=dark] .bq-fb.good{background:#163d2b;color:#bff3d4}:root[data-theme=dark] .bq-fb.soft{background:#3d2a16;color:#ffd9a8}:root[data-theme=dark] .bq-hint{background:#3a3218;color:#ffe9a8}
 @media (prefers-color-scheme: dark){:root:not([data-theme=light]) .bq-fb.good{background:#163d2b;color:#bff3d4}:root:not([data-theme=light]) .bq-fb.soft{background:#3d2a16;color:#ffd9a8}:root:not([data-theme=light]) .bq-hint{background:#3a3218;color:#ffe9a8}}
 .bank-end{text-align:center}.bank-end .alt{margin:6px 4px}
+
+/* «المنهج المتكامل»: بطاقتا القسمين وصورة السؤال */
+.bank-subs{display:grid;gap:14px;margin-top:10px}
+button.bank-sub{width:100%;border:0;font:inherit;text-align:start;cursor:pointer;margin:0}
+.bank-sub .bank-n{display:block;margin-top:4px;opacity:.9;font-weight:700}
+.bq-img{font-size:5rem;text-align:center;line-height:1.1;margin:4px 0}
+.bq-img .e3d{width:1.15em;height:1.15em}
+.bq-tr{font-weight:700}
