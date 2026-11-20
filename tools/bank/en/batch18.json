@@ -1,0 +1,421 @@
+{
+ "bank": "Boomi English Academy",
+ "batch": 18,
+ "question_range": "426-450",
+ "stage": "Elementary",
+ "level": "Elementary Plus",
+ "grade": "Primary",
+ "language": "English",
+ "explanation_language": "Arabic",
+ "questions": [
+  {
+   "id": 426,
+   "skill": "Grammar",
+   "topic": "Causative Have",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "I had my hair _____ yesterday.",
+   "options": [
+    "cut",
+    "cuts",
+    "cutting",
+    "to cut"
+   ],
+   "correct_answer": "cut",
+   "explanation_ar": "في تركيب have something done نستخدم التصريف الثالث للفعل، وcut له نفس الشكل في التصريفات الثلاثة."
+  },
+  {
+   "id": 427,
+   "skill": "Grammar",
+   "topic": "Make and Let",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "My parents let me _____ with my friends.",
+   "options": [
+    "play",
+    "to play",
+    "playing",
+    "played"
+   ],
+   "correct_answer": "play",
+   "explanation_ar": "بعد let يأتي الفعل الأساسي دون to."
+  },
+  {
+   "id": 428,
+   "skill": "Grammar",
+   "topic": "Make and Let",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "The funny story made everyone _____.",
+   "options": [
+    "laugh",
+    "to laugh",
+    "laughing",
+    "laughed"
+   ],
+   "correct_answer": "laugh",
+   "explanation_ar": "بعد make عندما تعني يجعل شخصًا يفعل شيئًا نستخدم الفعل الأساسي دون to."
+  },
+  {
+   "id": 429,
+   "skill": "Grammar",
+   "topic": "Relative Pronouns",
+   "type": "error_correction",
+   "difficulty": "challenging",
+   "question": "Correct the sentence: This is the teacher which helped me.",
+   "correct_answer": "This is the teacher who helped me.",
+   "explanation_ar": "نستخدم who للأشخاص، وليس which."
+  },
+  {
+   "id": 430,
+   "skill": "Grammar",
+   "topic": "Articles",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "She wants to become _____ engineer.",
+   "options": [
+    "an",
+    "a",
+    "the",
+    "no article"
+   ],
+   "correct_answer": "an",
+   "explanation_ar": "نستخدم an قبل كلمة engineer لأن بدايتها صوت حرف متحرك."
+  },
+  {
+   "id": 431,
+   "skill": "Grammar",
+   "topic": "Articles",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "_____ sun rises in the east.",
+   "options": [
+    "The",
+    "A",
+    "An",
+    "No article"
+   ],
+   "correct_answer": "The",
+   "explanation_ar": "نستخدم the عند الحديث عن الشمس بوصفها شيئًا محددًا وفريدًا."
+  },
+  {
+   "id": 432,
+   "skill": "Grammar",
+   "topic": "Uncountable Nouns",
+   "type": "error_correction",
+   "difficulty": "medium",
+   "question": "Correct the sentence: I need an information about the course.",
+   "correct_answer": "I need some information about the course.",
+   "explanation_ar": "Information اسم غير معدود، لذلك لا نستخدم قبله an."
+  },
+  {
+   "id": 433,
+   "skill": "Grammar",
+   "topic": "Prepositions",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "The cat jumped _____ the table.",
+   "options": [
+    "onto",
+    "between",
+    "during",
+    "since"
+   ],
+   "correct_answer": "onto",
+   "explanation_ar": "Onto تعني إلى سطح شيء، وهي مناسبة لوصف قفز القطة إلى الطاولة."
+  },
+  {
+   "id": 434,
+   "skill": "Grammar",
+   "topic": "Prepositions",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "The school is _____ the bank and the hospital.",
+   "correct_answer": "between",
+   "accepted_answers": [
+    "between"
+   ],
+   "explanation_ar": "نستخدم between عندما يكون الشيء بين اثنين."
+  },
+  {
+   "id": 435,
+   "skill": "Grammar",
+   "topic": "Punctuation",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Which sentence uses punctuation correctly?",
+   "options": [
+    "Where are you going?",
+    "Where are you going.",
+    "Where are you going!",
+    "Where are you going,"
+   ],
+   "correct_answer": "Where are you going?",
+   "explanation_ar": "نضع علامة الاستفهام في نهاية السؤال المباشر."
+  },
+  {
+   "id": 436,
+   "skill": "Grammar",
+   "topic": "Capitalization",
+   "type": "error_correction",
+   "difficulty": "easy",
+   "question": "Correct the sentence: my friend ali lives in oman.",
+   "correct_answer": "My friend Ali lives in Oman.",
+   "explanation_ar": "نبدأ الجملة بحرف كبير، وتُكتب أسماء الأشخاص والبلدان بحروف كبيرة في الإنجليزية."
+  },
+  {
+   "id": 437,
+   "skill": "Grammar",
+   "topic": "Conjunctions",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "You can have tea _____ coffee, but not both.",
+   "options": [
+    "or",
+    "because",
+    "although",
+    "so"
+   ],
+   "correct_answer": "or",
+   "explanation_ar": "نستخدم or لتقديم اختيار بين شيئين."
+  },
+  {
+   "id": 438,
+   "skill": "Grammar",
+   "topic": "Conjunctions",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "He was tired, _____ he finished his homework.",
+   "correct_answer": "but",
+   "accepted_answers": [
+    "but"
+   ],
+   "explanation_ar": "نستخدم but لربط فكرتين متعارضتين؛ كان متعبًا لكنه أكمل واجبه."
+  },
+  {
+   "id": 439,
+   "skill": "Vocabulary",
+   "topic": "Problem Solving",
+   "type": "matching",
+   "difficulty": "challenging",
+   "question": "Match each problem-solving word with its Arabic meaning.",
+   "pairs": [
+    {
+     "left": "Solution",
+     "right": "حل"
+    },
+    {
+     "left": "Problem",
+     "right": "مشكلة"
+    },
+    {
+     "left": "Reason",
+     "right": "سبب"
+    },
+    {
+     "left": "Result",
+     "right": "نتيجة"
+    },
+    {
+     "left": "Decision",
+     "right": "قرار"
+    }
+   ],
+   "explanation_ar": "تساعد هذه الكلمات على شرح المشكلات وأسبابها ونتائجها والحلول المناسبة."
+  },
+  {
+   "id": 440,
+   "skill": "Vocabulary",
+   "topic": "Environment and Conservation",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "What does endangered mean?",
+   "options": [
+    "At risk of disappearing",
+    "Very common everywhere",
+    "Made of plastic",
+    "Able to fly"
+   ],
+   "correct_answer": "At risk of disappearing",
+   "explanation_ar": "Endangered تعني مهددًا بالانقراض أو معرضًا للاختفاء."
+  },
+  {
+   "id": 441,
+   "skill": "Vocabulary",
+   "topic": "Weather and Climate",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "What is the difference between weather and climate?",
+   "options": [
+    "Weather describes short-term conditions, while climate describes long-term patterns.",
+    "They always mean exactly the same thing.",
+    "Climate changes every hour, but weather never changes.",
+    "Weather only describes temperature."
+   ],
+   "correct_answer": "Weather describes short-term conditions, while climate describes long-term patterns.",
+   "explanation_ar": "الطقس يصف حالة الجو خلال فترة قصيرة، أما المناخ فيصف الأنماط المعتادة خلال فترات طويلة."
+  },
+  {
+   "id": 442,
+   "skill": "Vocabulary",
+   "topic": "Technology and Communication",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "A message sent from one computer to another through the internet is called an _____.",
+   "correct_answer": "email",
+   "accepted_answers": [
+    "email",
+    "e-mail"
+   ],
+   "explanation_ar": "Email تعني بريدًا إلكترونيًا."
+  },
+  {
+   "id": 443,
+   "skill": "Vocabulary",
+   "topic": "Culture",
+   "type": "matching",
+   "difficulty": "medium",
+   "question": "Match each culture word with its Arabic meaning.",
+   "pairs": [
+    {
+     "left": "Tradition",
+     "right": "تقليد"
+    },
+    {
+     "left": "Festival",
+     "right": "مهرجان"
+    },
+    {
+     "left": "Heritage",
+     "right": "تراث"
+    },
+    {
+     "left": "Custom",
+     "right": "عادة"
+    },
+    {
+     "left": "Celebration",
+     "right": "احتفال"
+    }
+   ],
+   "explanation_ar": "تُستخدم هذه المفردات للحديث عن العادات والتقاليد والتراث والاحتفالات."
+  },
+  {
+   "id": 444,
+   "skill": "Grammar",
+   "topic": "Vocabulary in Context",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "The instructions were unclear, so I asked the teacher to _____ them.",
+   "options": [
+    "clarify",
+    "destroy",
+    "forget",
+    "hide"
+   ],
+   "correct_answer": "clarify",
+   "explanation_ar": "Clarify تعني يوضّح، وهي مناسبة لأن التعليمات لم تكن واضحة."
+  },
+  {
+   "id": 445,
+   "skill": "Grammar",
+   "topic": "Word Formation",
+   "type": "fill_blank",
+   "difficulty": "challenging",
+   "question": "The opposite of possible is _____.",
+   "correct_answer": "impossible",
+   "accepted_answers": [
+    "impossible"
+   ],
+   "explanation_ar": "نضيف السابقة im إلى possible لتكوين عكسها impossible."
+  },
+  {
+   "id": 446,
+   "skill": "Reading",
+   "topic": "A Community Project",
+   "type": "reading_comprehension",
+   "difficulty": "challenging",
+   "passage": "A group of students decided to improve their neighbourhood park. First, they asked the local community what needed to be changed. Many people said that the park needed more rubbish bins and better signs. The students prepared a plan and presented it to the local council. After receiving permission, they organised a clean-up day. Volunteers collected rubbish, planted flowers, and painted old benches. The park became cleaner and more welcoming. The students learned that small actions can make a positive difference.",
+   "question": "What was the main purpose of the students' project?",
+   "options": [
+    "To improve their neighbourhood park",
+    "To build a shopping centre",
+    "To organise a sports competition",
+    "To close the park"
+   ],
+   "correct_answer": "To improve their neighbourhood park",
+   "explanation_ar": "كان الهدف الأساسي للمشروع تحسين حديقة الحي."
+  },
+  {
+   "id": 447,
+   "skill": "Reading",
+   "topic": "A Community Project",
+   "type": "reading_comprehension",
+   "difficulty": "challenging",
+   "passage": "A group of students decided to improve their neighbourhood park. First, they asked the local community what needed to be changed. Many people said that the park needed more rubbish bins and better signs. The students prepared a plan and presented it to the local council. After receiving permission, they organised a clean-up day. Volunteers collected rubbish, planted flowers, and painted old benches. The park became cleaner and more welcoming. The students learned that small actions can make a positive difference.",
+   "question": "Why did the students ask the local community for opinions?",
+   "options": [
+    "To understand what improvements were needed",
+    "To sell tickets to the park",
+    "To find a new school",
+    "To cancel the project"
+   ],
+   "correct_answer": "To understand what improvements were needed",
+   "explanation_ar": "أراد الطلاب معرفة احتياجات المجتمع قبل وضع خطة التحسين."
+  },
+  {
+   "id": 448,
+   "skill": "Reading",
+   "topic": "A Community Project",
+   "type": "reading_comprehension",
+   "difficulty": "challenging",
+   "passage": "A group of students decided to improve their neighbourhood park. First, they asked the local community what needed to be changed. Many people said that the park needed more rubbish bins and better signs. The students prepared a plan and presented it to the local council. After receiving permission, they organised a clean-up day. Volunteers collected rubbish, planted flowers, and painted old benches. The park became cleaner and more welcoming. The students learned that small actions can make a positive difference.",
+   "question": "Which activity was NOT mentioned in the passage?",
+   "options": [
+    "Painting old benches",
+    "Planting flowers",
+    "Collecting rubbish",
+    "Building a swimming pool"
+   ],
+   "correct_answer": "Building a swimming pool",
+   "explanation_ar": "ذكر النص جمع النفايات وزراعة الزهور وطلاء المقاعد، ولم يذكر بناء مسبح."
+  },
+  {
+   "id": 449,
+   "skill": "Critical Thinking",
+   "topic": "Drawing Conclusions",
+   "type": "multiple_choice",
+   "difficulty": "challenging",
+   "question": "A student studies a little every day instead of studying everything the night before an exam. What is the most likely benefit?",
+   "options": [
+    "The student can remember information more effectively.",
+    "The student will never need to attend class.",
+    "The student will forget every lesson.",
+    "The exam will automatically become easier."
+   ],
+   "correct_answer": "The student can remember information more effectively.",
+   "explanation_ar": "المراجعة المنتظمة تساعد غالبًا على تثبيت المعلومات وتجنب ضغط المذاكرة في اللحظة الأخيرة."
+  },
+  {
+   "id": 450,
+   "skill": "Writing",
+   "topic": "Problem and Solution",
+   "type": "open_ended",
+   "difficulty": "challenging",
+   "question": "Your school has too much rubbish in the playground. Write five sentences explaining the problem and suggesting solutions.",
+   "accepted_answers": [],
+   "rubric": {
+    "minimum_sentences": 5,
+    "criteria": [
+     "Describe the rubbish problem.",
+     "Suggest at least two practical solutions.",
+     "Use linking words such as because, so, and also.",
+     "Use clear and understandable English.",
+     "Keep the suggestions relevant to the school."
+    ],
+    "sample_answer": "There is too much rubbish in our school playground. This makes the school look untidy. We should put more rubbish bins in the playground. Students should use the bins and recycle paper and plastic. We can organise a clean-up day every month."
+   },
+   "explanation_ar": "اكتب خمس جمل على الأقل، واشرح المشكلة ثم اقترح حلولًا عملية باللغة الإنجليزية."
+  }
+ ]
+}

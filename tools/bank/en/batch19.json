@@ -1,0 +1,411 @@
+{
+ "bank": "Boomi English Academy",
+ "batch": 19,
+ "question_range": "451-475",
+ "stage": "Elementary",
+ "level": "Elementary Plus",
+ "grade": "Primary",
+ "language": "English",
+ "explanation_language": "Arabic",
+ "questions": [
+  {
+   "id": 451,
+   "skill": "Grammar",
+   "topic": "Reported Speech",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "Sara said, \"I am happy.\" What did Sara say?",
+   "options": [
+    "Sara said that she was happy.",
+    "Sara said that I am happy.",
+    "Sara says she happy.",
+    "Sara said she is happily."
+   ],
+   "correct_answer": "Sara said that she was happy.",
+   "explanation_ar": "عند نقل الكلام في الماضي، تتحول am غالبًا إلى was، ويتغير الضمير I إلى she."
+  },
+  {
+   "id": 452,
+   "skill": "Grammar",
+   "topic": "Say and Tell",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "My teacher _____ me to open my book.",
+   "options": [
+    "said",
+    "told",
+    "spoke",
+    "talked"
+   ],
+   "correct_answer": "told",
+   "explanation_ar": "نستخدم told عندما نذكر الشخص الذي وُجّه إليه الكلام: told me."
+  },
+  {
+   "id": 453,
+   "skill": "Grammar",
+   "topic": "Question Tags",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "You are a student, _____?",
+   "correct_answer": "aren't you",
+   "accepted_answers": [
+    "aren't you"
+   ],
+   "explanation_ar": "الجملة مثبتة، لذلك نستخدم سؤالًا قصيرًا منفيًا: aren't you?"
+  },
+  {
+   "id": 454,
+   "skill": "Grammar",
+   "topic": "Relative Pronouns",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "The woman _____ teaches us English is very kind.",
+   "options": [
+    "which",
+    "who",
+    "where",
+    "when"
+   ],
+   "correct_answer": "who",
+   "explanation_ar": "نستخدم who للإشارة إلى الأشخاص."
+  },
+  {
+   "id": 455,
+   "skill": "Grammar",
+   "topic": "Adverbs of Manner",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "The boy speaks _____.",
+   "options": [
+    "quiet",
+    "quietly",
+    "quietness",
+    "quieter"
+   ],
+   "correct_answer": "quietly",
+   "explanation_ar": "نستخدم الظرف quietly لوصف طريقة تحدث الولد، وغالبًا نضيف ly إلى الصفة."
+  },
+  {
+   "id": 456,
+   "skill": "Vocabulary",
+   "topic": "Confusing Words",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "Can I _____ your pencil? I will give it back tomorrow.",
+   "options": [
+    "lend",
+    "borrow",
+    "bring",
+    "carry"
+   ],
+   "correct_answer": "borrow",
+   "explanation_ar": "borrow تعني يستعير شيئًا من شخص، أما lend فتعني يُعير شيئًا لشخص."
+  },
+  {
+   "id": 457,
+   "skill": "Vocabulary",
+   "topic": "Confusing Words",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "Please _____ this book to your teacher.",
+   "correct_answer": "take",
+   "accepted_answers": [
+    "take"
+   ],
+   "explanation_ar": "take تعني تأخذ الشيء إلى مكان أو شخص آخر."
+  },
+  {
+   "id": 458,
+   "skill": "Vocabulary",
+   "topic": "Collocations",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Which phrase is correct?",
+   "options": [
+    "Do a decision",
+    "Make a decision",
+    "Take a decision homework",
+    "Have a decision photo"
+   ],
+   "correct_answer": "Make a decision",
+   "explanation_ar": "التعبير الشائع والصحيح هو make a decision أي يتخذ قرارًا."
+  },
+  {
+   "id": 459,
+   "skill": "Vocabulary",
+   "topic": "Education",
+   "type": "matching",
+   "difficulty": "easy",
+   "question": "Match each school word with its meaning.",
+   "pairs": [
+    {
+     "left": "Library",
+     "right": "A place to read or borrow books"
+    },
+    {
+     "left": "Laboratory",
+     "right": "A place for scientific experiments"
+    },
+    {
+     "left": "Timetable",
+     "right": "A plan showing lesson times"
+    },
+    {
+     "left": "Uniform",
+     "right": "Special clothes worn at school"
+    }
+   ],
+   "explanation_ar": "المطلوب ربط كل كلمة مدرسية بمعناها الصحيح."
+  },
+  {
+   "id": 460,
+   "skill": "Grammar",
+   "topic": "Adverbs of Frequency",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Mona _____ brushes her teeth before sleeping. She never forgets.",
+   "options": [
+    "never",
+    "rarely",
+    "always",
+    "sometimes"
+   ],
+   "correct_answer": "always",
+   "explanation_ar": "always تعني دائمًا، وهي مناسبة لأن الجملة تقول إنها لا تنسى أبدًا."
+  },
+  {
+   "id": 461,
+   "skill": "Grammar",
+   "topic": "Reported Speech",
+   "type": "error_correction",
+   "difficulty": "medium",
+   "question": "Correct the sentence: Ali said that he is tired.",
+   "correct_answer": "Ali said that he was tired.",
+   "explanation_ar": "في نقل الكلام باستخدام said في الماضي، تتحول is عادةً إلى was."
+  },
+  {
+   "id": 462,
+   "skill": "Grammar",
+   "topic": "Question Tags",
+   "type": "fill_blank",
+   "difficulty": "medium",
+   "question": "She can swim, _____?",
+   "correct_answer": "can't she",
+   "accepted_answers": [
+    "can't she"
+   ],
+   "explanation_ar": "الجملة مثبتة وتستخدم can، لذلك يكون السؤال القصير منفيًا: can't she?"
+  },
+  {
+   "id": 463,
+   "skill": "Vocabulary",
+   "topic": "Inventions",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "Which invention helps people see very small objects?",
+   "options": [
+    "Microscope",
+    "Compass",
+    "Telephone",
+    "Clock"
+   ],
+   "correct_answer": "Microscope",
+   "explanation_ar": "المجهر microscope يساعدنا على رؤية الأشياء الصغيرة جدًا."
+  },
+  {
+   "id": 464,
+   "skill": "Vocabulary",
+   "topic": "Safety",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "What should you do before crossing a road?",
+   "options": [
+    "Run quickly",
+    "Look both ways",
+    "Close your eyes",
+    "Use your phone"
+   ],
+   "correct_answer": "Look both ways",
+   "explanation_ar": "يجب النظر في الاتجاهين والتأكد من خلو الطريق قبل العبور."
+  },
+  {
+   "id": 465,
+   "skill": "Grammar",
+   "topic": "Relative Clauses",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "This is the school _____ my mother works.",
+   "correct_answer": "where",
+   "accepted_answers": [
+    "where"
+   ],
+   "explanation_ar": "نستخدم where عندما نتحدث عن المكان."
+  },
+  {
+   "id": 466,
+   "skill": "Reading",
+   "topic": "Science Fair",
+   "type": "reading_comprehension",
+   "difficulty": "medium",
+   "passage": "Last Thursday, our school held a science fair. Students showed different inventions. Omar made a small robot that could move forward and turn left. His classmates asked many questions. The judges liked his project because it was useful and creative. Omar felt proud of his work.",
+   "question": "What did Omar make?",
+   "options": [
+    "A wooden boat",
+    "A small robot",
+    "A new computer",
+    "A school bus"
+   ],
+   "correct_answer": "A small robot",
+   "explanation_ar": "يذكر النص أن عمر صنع روبوتًا صغيرًا يستطيع التحرك إلى الأمام والانعطاف يسارًا."
+  },
+  {
+   "id": 467,
+   "skill": "Reading",
+   "topic": "Science Fair",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "Why did the judges like Omar's project?",
+   "passage_reference": 466,
+   "options": [
+    "It was expensive",
+    "It was useful and creative",
+    "It was very large",
+    "It was made of paper"
+   ],
+   "correct_answer": "It was useful and creative",
+   "explanation_ar": "ورد في النص أن الحكام أعجبوا بالمشروع لأنه مفيد وإبداعي."
+  },
+  {
+   "id": 468,
+   "skill": "Reading",
+   "topic": "Science Fair",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "How did Omar feel about his work?",
+   "passage_reference": 466,
+   "options": [
+    "Angry",
+    "Bored",
+    "Proud",
+    "Afraid"
+   ],
+   "correct_answer": "Proud",
+   "explanation_ar": "النص يقول إن عمر شعر بالفخر بعمله."
+  },
+  {
+   "id": 469,
+   "skill": "Grammar",
+   "topic": "Sentence Ordering",
+   "type": "sentence_ordering",
+   "difficulty": "medium",
+   "question": "Arrange the words to make a correct sentence.",
+   "words": [
+    "carefully",
+    "the",
+    "student",
+    "experiment",
+    "did",
+    "the"
+   ],
+   "correct_answer": "The student did the experiment carefully.",
+   "explanation_ar": "نبدأ بالفاعل The student، ثم الفعل did، ثم المفعول به the experiment، وأخيرًا الظرف carefully."
+  },
+  {
+   "id": 470,
+   "skill": "Vocabulary",
+   "topic": "Teamwork",
+   "type": "multiple_choice",
+   "difficulty": "easy",
+   "question": "When people work together to reach a goal, this is called _____.",
+   "options": [
+    "Teamwork",
+    "Loneliness",
+    "Competition",
+    "Silence"
+   ],
+   "correct_answer": "Teamwork",
+   "explanation_ar": "Teamwork تعني العمل الجماعي والتعاون لتحقيق هدف مشترك."
+  },
+  {
+   "id": 471,
+   "skill": "Grammar",
+   "topic": "Conjunctions",
+   "type": "fill_blank",
+   "difficulty": "easy",
+   "question": "I wanted to play outside, _____ it was raining.",
+   "correct_answer": "but",
+   "accepted_answers": [
+    "but"
+   ],
+   "explanation_ar": "نستخدم but للربط بين فكرتين متعارضتين."
+  },
+  {
+   "id": 472,
+   "skill": "Vocabulary",
+   "topic": "Word Meaning",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "What does the word \"invent\" mean?",
+   "options": [
+    "To create something new",
+    "To forget something",
+    "To break something",
+    "To borrow something"
+   ],
+   "correct_answer": "To create something new",
+   "explanation_ar": "الفعل invent يعني يخترع أو ينشئ شيئًا جديدًا."
+  },
+  {
+   "id": 473,
+   "skill": "Writing",
+   "topic": "Creative Writing",
+   "type": "open_ended",
+   "difficulty": "medium",
+   "question": "Write two or three sentences about a useful invention you would like to create.",
+   "accepted_answers": [],
+   "rubric": {
+    "criteria": [
+     "Mentions an invention",
+     "Explains what it does",
+     "Uses understandable English sentences"
+    ],
+    "sample_answer": "I want to invent a smart school bag. It will carry books and remind students about homework."
+   },
+   "explanation_ar": "اكتب عن اختراع تتمنى صنعه، واشرح فائدته باستخدام جمل إنجليزية بسيطة."
+  },
+  {
+   "id": 474,
+   "skill": "Thinking",
+   "topic": "Problem Solving",
+   "type": "open_ended",
+   "difficulty": "medium",
+   "question": "Your classroom is untidy after an activity. What can you and your classmates do?",
+   "accepted_answers": [],
+   "rubric": {
+    "criteria": [
+     "Suggests cleaning the classroom",
+     "Mentions cooperation or sharing tasks",
+     "Uses a relevant English sentence"
+    ],
+    "sample_answer": "We can work together, pick up the rubbish, and put the chairs in the right places."
+   },
+   "explanation_ar": "فكر في حل عملي للمشكلة، واذكر كيف يمكن للطلاب التعاون."
+  },
+  {
+   "id": 475,
+   "skill": "Grammar",
+   "topic": "Mixed Grammar Review",
+   "type": "multiple_choice",
+   "difficulty": "medium",
+   "question": "Choose the correct sentence.",
+   "options": [
+    "The girl which lives here is my friend.",
+    "The girl who lives here is my friend.",
+    "The girl where lives here is my friend.",
+    "The girl whom live here is my friend."
+   ],
+   "correct_answer": "The girl who lives here is my friend.",
+   "explanation_ar": "نستخدم who للإشارة إلى الفتاة لأنها شخص، ويأتي الفعل lives مع المفرد."
+  }
+ ]
+}

@@ -79,6 +79,9 @@ const firstG=w=>{const g=graphemes(w);if(g.length>2&&base(g[0])==='ا'&&base(g[1
 /* ---------------- ٤) مولّدات التمارين ---------------- */
 const pool=u=>u.i.filter(x=>x&&x[0]);
 const SPK=it=>[it[0],it[2]||'ar'];
+/* الكلمة كما تُركَّب من حروفها (بلا تنوين ظاهر): تُنطق بالوقف «جَدّ، قِطَّةْ» لا «جَدٌّ، قِطَّةٌ» — النطق يطابق المكتوب */
+const WAQF=w=>/[\u064B-\u064D\u0652]$/.test(w)||/[^\u0621-\u064A\u064B-\u0652\u0670]/.test(w)?w:w+'\u0652';
+const SPKW=it=>(it[2]||'ar')==='ar'?[WAQF(it[0]),'ar']:SPK(it);
 const exOf=it=>[`الصحيح: ${it[0]} ${isPic(it[1])?it[1]:'— '+it[1]}`,`استمع 🔊 ثم انظر: ${it[0]} ⟵ ${it[1]}`];
 const others=(u,it,f)=>shuf(pool(u).filter(x=>x!==it&&(f?f(x):true)));
 const mkQ=(k,show,opts,okIdx,extra)=>Object.assign({k,m:0,l:'ar',show,opts:opts.map((h,i)=>({h,ok:i===okIdx})),ex:['','']},extra||{});
@@ -100,10 +103,10 @@ const Q={
  /* الحرف الناقص */
  missing(u,it){const w=it[0];if(/\s/.test(w))return null;const g=graphemes(w);if(g.length<3)return null;const i=1+Math.floor(Math.random()*(g.length-1)),right=g[i];
   const shown=g.map((x,j)=>j===i?'<i class=gap>؟</i>':`<span>${x}</span>`).join('');
-  return mcq(it,`<div class=q>${isPic(it[1])?it[1]:''}</div><div class=spell dir=rtl>${shown}</div><p class=mut>مَا الحَرْفُ النَّاقِص؟</p>`,right,distract(right),{sp:SPK(it),ex:[`الكلمة كاملة: ${w} — الحرف الناقص: ${right}`,`استمع جيدًا: ${w}`]})},
+  return mcq(it,`<div class=q>${isPic(it[1])?it[1]:''}</div><div class=spell dir=rtl>${shown}</div><p class=mut>مَا الحَرْفُ النَّاقِص؟</p>`,right,distract(right),{sp:SPKW(it),ex:[`الكلمة كاملة: ${w} — الحرف الناقص: ${right}`,`استمع جيدًا: ${w}`]})},
  /* تركيب الكلمة من حروفها */
  build(u,it){const w=it[0];if(/\s/.test(w))return null;const g=graphemes(w);if(g.length<2||g.length>8)return null;
-  return{k:w,m:4,l:'ar',sp:SPK(it),w:'build',tiles:shuf([...g,...(g.length<5?distract(g[1],1):[])]),target:g,hint:isPic(it[1])?it[1]:'',ex:[`الكلمة: ${w}`,`ابدأ بالحرف ${g[0]} ثم ${g[1]}`]}},
+  return{k:w,m:4,l:'ar',sp:SPKW(it),w:'build',tiles:shuf([...g,...(g.length<5?distract(g[1],1):[])]),target:g,hint:isPic(it[1])?it[1]:'',ex:[`الكلمة: ${w}`,`ابدأ بالحرف ${g[0]} ثم ${g[1]}`]}},
  /* أين الشدة؟ */
  shadda(u,it){const g=graphemes(it[0]),i=g.findIndex(x=>x.includes('ّ'));if(i<0)return null;
   return mcq(it,`<div class=q>${isPic(it[1])?it[1]:''}</div><div class=q>${esc(it[0])}</div><p class=mut>أَيُّ حَرْفٍ عَلَيْهِ شَدَّة؟</p>`,base(g[i]),g.filter((x,j)=>j!==i).map(base),{sp:SPK(it),ex:[`الشدة على حرف ${base(g[i])} في «${it[0]}»`,`الشدة تعني الحرف مكررًا: ${base(g[i])}${base(g[i])}`]})},
