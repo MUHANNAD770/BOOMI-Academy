@@ -11,7 +11,7 @@ const now=()=>Date.now();
 const fmt=c=>c?c.slice(0,4)+'-'+c.slice(4):'';
 /* نحفظ على الإنترنت «الأشياء الثابتة» فقط: بيانات الطالب، الدروس المتقنة ودرجاتها، المرحلة، النجوم، الشارات، مستويات الرياضيات، الإنجازات.
    أما التفاصيل الكثيرة المتغيرة (إحصاءات كل كلمة، المحادثات، الإعدادات المؤقتة) فتبقى على الجهاز فقط. هذا يُبقي الحفظ مجانيًا. */
-const KEEP=['name','gender','age','lang','stage','teacher','mic','snd','vol','rate','star','done','sc','fd','ml','cd','act','courseDone','badges','unlockAll','stories','wk','speed','vq','days','g2','courseQuiz','coursePractice','sk','mind']; /* g2: نجوم الألعاب ومراحلها المفتوحة */
+const KEEP=['name','gender','age','lang','stage','teacher','mic','snd','vol','rate','star','done','sc','fd','ml','cd','act','courseDone','badges','unlockAll','stories','wk','speed','vq','days','g2','courseQuiz','coursePractice','sk','mind','bank']; /* g2: نجوم الألعاب ومراحلها المفتوحة */
 const payload=k=>{const o={};for(const x of KEEP)if(k[x]!==undefined)o[x]=k[x];return o};
 const sig=k=>{const s=JSON.stringify(payload(k));let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return h+':'+s.length};
 
@@ -37,6 +37,8 @@ function merge(L,R){if(!R)return L;const o={...R,...L};
  /* الألعاب: لكل لعبة أعلى نجوم في كل مرحلة، وأبعد مرحلة مفتوحة */
  o.g2={...(R.g2||{})};for(const[k,v]of Object.entries(L.g2||{})){const r=o.g2[k];if(!r||typeof r!=='object'){o.g2[k]=v;continue}const s={...(r.s||{})};for(const[lv,st]of Object.entries(v.s||{}))s[lv]=Math.max(+st||0,+s[lv]||0);
   o.g2[k]={...r,...v,s,u:Math.max(+v.u||1,+r.u||1),n:Math.max(+v.n||0,+r.n||0),last:Math.max(+v.last||0,+r.last||0),b:{...(r.b||{}),...(v.b||{})}}}
+ /* «كل الدروس» (bank.js): أفضل نتيجة وأكثر محاولات لكل درس */
+ o.bank={...(R.bank||{})};for(const[k,v]of Object.entries(L.bank||{})){const r=o.bank[k];o.bank[k]=r?{b:Math.max(+v.b||0,+r.b||0),n:Math.max(+v.n||0,+r.n||0),t:Math.max(+v.t||0,+r.t||0)}:v}
  /* عقل بومي (mind/hub.js + mind/memory.js): لكل مهارة الأحدث، ولكل مصدر الأكثر، وأحدث السجلات من الجهازين */
  {const A=L.mind||{},B=R.mind||{};if(L.mind||R.mind){const m={...B,...A};
   m.sk={...(B.sk||{})};for(const[k,v]of Object.entries(A.sk||{}))m.sk[k]=!m.sk[k]||(+v.t||0)>=(+m.sk[k].t||0)?v:m.sk[k];
