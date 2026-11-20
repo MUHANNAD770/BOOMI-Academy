@@ -163,3 +163,19 @@ body:not([data-theme=dark]){background:radial-gradient(900px 420px at 85% -60px,
 :root[data-theme=light] .q.seq .sq{background:#f4f1ff;border-color:#d6ccff}
 @media (prefers-color-scheme: light){:root:not([data-theme=dark]) .q.seq .sq{background:#f4f1ff;border-color:#d6ccff}}
 .h2-parent.h2-parent-end{margin:18px 0 8px}
+
+/* «كل الدروس» (bank.js) */
+.bq-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin:6px 0}
+.bq-top small{opacity:.75}
+.bq-bar{height:10px;border-radius:99px;background:rgba(127,127,200,.25);overflow:hidden;margin-bottom:14px}
+.bq-bar i{display:block;height:100%;background:linear-gradient(90deg,#7a5cff,#4fb4ff);border-radius:99px;transition:width .4s}
+.bq-text{font-size:clamp(1.25rem,5.5vw,1.6rem)!important;line-height:1.9!important;text-align:start;padding:14px 16px}
+.bq-tools{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.bq-tools .alt{flex:1 1 140px}
+.bq-hint{background:#fff7dc;color:#5a4300;border-radius:14px;padding:10px 12px;font-weight:700}
+.bq-opts .opt{font-size:1.15rem;line-height:1.7;min-height:56px}
+.bq-fb{margin-top:12px;border-radius:18px;padding:12px 14px;font-weight:700}
+.bq-fb.good{background:#e6fbef;color:#14643a}.bq-fb.soft{background:#fff3e6;color:#7a4300}
+.bq-fb p{margin:6px 0 10px;font-weight:600;line-height:1.8}
+:root[data-theme=dark] .bq-fb.good{background:#163d2b;color:#bff3d4}:root[data-theme=dark] .bq-fb.soft{background:#3d2a16;color:#ffd9a8}:root[data-theme=dark] .bq-hint{background:#3a3218;color:#ffe9a8}
+@media (prefers-color-scheme: dark){:root:not([data-theme=light]) .bq-fb.good{background:#163d2b;color:#bff3d4}:root:not([data-theme=light]) .bq-fb.soft{background:#3d2a16;color:#ffd9a8}:root:not([data-theme=light]) .bq-hint{background:#3a3218;color:#ffe9a8}}
+.bank-end{text-align:center}.bank-end .alt{margin:6px 4px}

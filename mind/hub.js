@@ -63,7 +63,7 @@ const ANS='.opt,.practice-options button,.ct-opts button';let t0=now();
 document.addEventListener('click',e=>{const el=e.target.closest&&e.target.closest(ANS);if(!el||el.closest('.g2-pz,.g2-ov,.g2-match'))return;const ms=now()-t0;
  const st=()=>{const c=' '+el.className+' ';return/ (ok|good|right) /.test(c)?1:/ (no|bad|wrong) /.test(c)?0:-1};
  let c0=null;try{const x=ctx();c0={subject:code(x.subject),topic:x.lesson||x.course,src:x.page}}catch(_){}
- const go=entry(),fire=v=>record({ok:!!v,ms,...(c0||{}),go});
+ const go=entry(),fire=v=>{if(now()-last.t<120)return; /* الصفحة سجّلتها بنفسها للتو بمادتها ودرسها */record({ok:!!v,ms,...(c0||{}),go})};
  const v=st();if(v>=0)fire(v);else setTimeout(()=>{const v2=st();if(v2>=0)fire(v2)},60)},false);
 /* بداية كل سؤال/صفحة: لقياس زمن الإجابة */
 new MutationObserver(()=>{t0=now()}).observe(document.getElementById('app')||document.body,{childList:true});

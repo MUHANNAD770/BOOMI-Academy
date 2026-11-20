@@ -16,7 +16,7 @@ const ARC='games';
 const CFG={
  home:{cs:'home'},who:{root:1,cs:''},setup:{root:1,cs:''},
  sec:{cs:a=>a&&a[0]||'les'},parent:{cs:'set'},voiceSet:{cs:'set'},cert:{cs:'ach'},
- lesson:{cs:'les'},quiz:{vol:1},mstart:{cs:'math'},wnum:{cs:'math'},daily:{cs:ARC},review:{cs:ARC},speak:{cs:ARC},
+ lesson:{cs:'les'},quiz:{vol:1},bank:{cs:'les'},bankLesson:{cs:'les'},mstart:{cs:'math'},wnum:{cs:'math'},daily:{cs:ARC},review:{cs:ARC},speak:{cs:ARC},
  courseLibrary:{cs:'les',iter:1},courseModule:{cs:'les'},courseViewer:{cs:'les',iter:(a,b)=>a&&b&&a[0]==b[0]&&a[1]==b[1]},coursePractice:{cs:'les'},
  act:{cs:ARC},aLet:{cs:ARC},aLetP:{cs:ARC,iter:1},aNumEn:{cs:ARC},aNumAr:{cs:ARC},aNumP:{cs:ARC,iter:1},aCount:{cs:ARC},aMiss:{cs:ARC},aDice:{cs:ARC},aPath:{cs:ARC,iter:1},
  aColAr:{cs:ARC},aColEn:{cs:ARC},aColQAr:{cs:ARC},aColQEn:{cs:ARC},aShpAr:{cs:ARC},aShpEn:{cs:ARC},aShpQAr:{cs:ARC},aShpQEn:{cs:ARC},
@@ -107,7 +107,7 @@ function wrapOverlay(){
   const mo=new MutationObserver(()=>{if(document.getElementById('bm'))return;mo.disconnect();
    if(ov){ov=null;const c=entry();if(c&&c.ov)H.back()}});mo.observe(document.body,{childList:true})};
  f.__rt=1;window.bomi=f}
-['home','who','setup','sec','parent','voiceSet','cert','lesson','quiz','mstart','wnum','daily','review','speak',
+['home','who','setup','sec','parent','voiceSet','cert','lesson','quiz','bank','bankLesson','mstart','wnum','daily','review','speak',
  'courseLibrary','courseModule','courseViewer','coursePractice','act','aLet','aLetP','aNumEn','aNumAr','aNumP','aCount','aMiss','aDice','aPath',
  'aColAr','aColEn','aColQAr','aColQEn','aShpAr','aShpEn','aShpQAr','aShpQEn','aHar','aHarP','aHarQ','aAbj','aAbjP',
  'gMem','gBuild','gPat','gOrd','world','path',
