@@ -300,3 +300,8 @@ button.bank-sub{width:100%;border:0;font:inherit;text-align:start;cursor:pointer
 .sb-secs{display:grid;gap:8px;margin:10px 0}.sb-srow{display:grid;grid-template-columns:8.5em 1fr 4.2em;align-items:center;gap:8px;font-weight:800}
 .sb-srow i{height:10px;border-radius:99px;background:rgba(127,127,200,.25);overflow:hidden}.sb-srow i b{display:block;height:100%;background:linear-gradient(90deg,#ffd54a,#22a35a);border-radius:99px}
 .sb-srow em{font-style:normal;text-align:center}
+/* تمارين بومي: خيارات الصور شبكة بطاقات كبيرة (كانت صغيرة ومقطوعة في سطر واحد) */
+.chips.bm-pics{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;overflow:visible;padding:6px 2px}
+.chips.bm-pics button{min-height:84px;font-size:2.7rem;line-height:1;border-radius:18px;padding:8px;white-space:normal;display:grid;place-items:center}
+.chips.bm-pics button img,.chips.bm-pics button .e3d{width:1.25em;height:1.25em}
+.chips.bm-pics button.ok{box-shadow:0 0 0 3px #22a35a}.chips.bm-pics button.no{box-shadow:0 0 0 3px #f08a3c}
