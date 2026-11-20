@@ -111,7 +111,7 @@ function wrapOverlay(){
  'courseLibrary','courseModule','courseViewer','coursePractice','act','aLet','aLetP','aNumEn','aNumAr','aNumP','aCount','aMiss','aDice','aPath',
  'aColAr','aColEn','aColQAr','aColQEn','aShpAr','aShpEn','aShpQAr','aShpQEn','aHar','aHarP','aHarQ','aAbj','aAbjP',
  'gMem','gBuild','gPat','gOrd','world','path',
- 'stories','story','talk','listenTest','readTest','puzzles','riddles','logic','measure','wordProblems','speedGame','dragBuild','matchPics','dictation','dictationAdv','syllables','weekly','advanced','advMath','advMul','teacher','enTeach','aFirst','aOpp','aPat','aOdd','aDays','aEnPic'].forEach(wrap);
+ 'stories','story','talk','sbStory','sbQuiz','listenTest','readTest','puzzles','riddles','logic','measure','wordProblems','speedGame','dragBuild','matchPics','dictation','dictationAdv','syllables','weekly','advanced','advMath','advMul','teacher','enTeach','aFirst','aOpp','aPat','aOdd','aDays','aEnPic'].forEach(wrap);
 wrapOverlay();
 /* البداية: إعادة الشاشة المحفوظة عند التحديث، أو تسجيل المدخل الأول */
 (function init(){
