@@ -26,7 +26,7 @@ const AR=/[\u0600-\u06FF]/,LA=/[A-Za-z]/;
 /* تقسيم النص إلى مقاطع عربية وإنجليزية متتالية */
 const runs=(s,L)=>{const o=[];let cl=null,cur=[];for(const w of s.split(' ')){const c=AR.test(w)?'ar':LA.test(w)?'en':(cl||L);if(cl&&c!==cl){o.push([cur.join(' '),cl]);cur=[]}cl=c;cur.push(w)}if(cur.length)o.push([cur.join(' '),cl]);return o};
 const clean=(t,L)=>{let s=String(t==null?'':t);const k=fixAr(s.trim());if(SYL[k])s=SYL[k];
-s=s.replace(/\+\s*(?=[0-9\u0660-\u0669]+\s*(?:⭐|🌟|نجم|نَجْم))/g,'') /* «+٢ ⭐» مكافأة نجوم لا عملية جمع: لا تُقرأ «زَائِد» */.replace(/<[^>]*>/g,' ').replace(EM,' ').replace(/[⟵⟶←→⬅➡«»“”"]/g,' ');
+s=s.replace(/\+\s*(?=[0-9\u0660-\u0669]+\s*(?:⭐|🌟|نجم|نَجْم))/g,'')/* حرف منفرد داخل جملة («ا»، حرف ب) يُنطق باسمه كما وحده؛ كان يُرسل حرفًا مجردًا فيُنطق «آ/ع» */.replace(/«\s*([\u0621-\u064A])\s*»/g,(m,l)=>' '+(SYL[fixAr(l)]||l)+' ').replace(/(حَ?رْ?فِ?ُ?\s+)([\u0621-\u064A])(?=[\s،,.!؟?:]|$)/g,(m,a,l)=>a+(SYL[fixAr(l)]||l)) /* «+٢ ⭐» مكافأة نجوم لا عملية جمع: لا تُقرأ «زَائِد» */.replace(/<[^>]*>/g,' ').replace(EM,' ').replace(/[⟵⟶←→⬅➡«»“”"]/g,' ');
 if(L=='ar'&&!/[0-9\u0660-\u0669]/.test(s))s=s.replace(/\s*[=+]\s*/g,' ، '); /* «=» و«+» في الشرح (لا في الحساب) فاصلٌ لا «يساوي/زائد» */
 if(L=='ar')s=s.replace(/×/g,' ضَرْب ').replace(/÷/g,' قِسْمَة عَلَى ').replace(/\+/g,' زَائِد ').replace(/[−]/g,' نَاقِص ').replace(/(\d)\s*-\s*(\d)/g,'$1 نَاقِص $2').replace(/=/g,' يُسَاوِي ').replace(/[«»]/g,' ');
 s=fixAr(s); /* لا نستعمل Pron.speech: كان يكتب الكلمات بتهجئة خاصة لصوت الجهاز (كِتَابُنْ، دُبْبْ) فتخالف نص المقاطع المسجّلة */
