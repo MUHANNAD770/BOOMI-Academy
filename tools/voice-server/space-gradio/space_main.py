@@ -32,8 +32,9 @@ try:
     mounted = True
 except Exception as e:  # noqa
     print('gradio mount failed:', e, flush=True)
-# إن لم تُركّب الواجهة نبلّغ ZeroGPU بأنفسنا
-if spaces is not None and not mounted:
+# نبلّغ ZeroGPU بأنفسنا دائمًا: في إصدارات Gradio الحديثة لا يضيف تركيب الواجهة هذا الإبلاغ تلقائيًا
+# (فتظهر الرسالة: No @spaces.GPU function detected during startup)
+if spaces is not None:
     try:
         from spaces.zero import startup
         startup()
