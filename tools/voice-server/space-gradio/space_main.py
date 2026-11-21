@@ -28,7 +28,13 @@ try:
     import gradio as gr
     with gr.Blocks(title='Boomi personal voice') as ui:
         gr.Markdown('Boomi personal voice server is running. Status: /health')
-    app = gr.mount_gradio_app(app, ui, path='/ui')
+        # ZeroGPU يكتشف دوال GPU من أحداث واجهة Gradio نفسها: نربط الدالة بزر
+        if spaces is not None:
+            _b = gr.Button('GPU check')
+            _o = gr.Number(label='GPU')
+            _b.click(_gpu_probe, None, _o)
+    # في المسار الرئيسي (/): المنصة تقرأ إعدادات الواجهة من /config؛ مسارات الخادم (/health، /enroll، /tts) لها الأولوية
+    app = gr.mount_gradio_app(app, ui, path='/')
     mounted = True
 except Exception as e:  # noqa
     print('gradio mount failed:', e, flush=True)
