@@ -363,3 +363,31 @@ button.bank-sub{width:100%;border:0;font:inherit;text-align:start;cursor:pointer
 /* الوضع الداكن: أرقام لوحة ولي الأمر وسطر تفاصيل مراحل مكتبة القصص كانت باهتة على الخلفية الداكنة */
 :root[data-theme=dark] .pm-st b{color:#d6ccff!important}:root[data-theme=dark] .lesson-menu summary small{color:#c3c8f0!important}
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]) .pm-st b{color:#d6ccff!important}:root:not([data-theme=light]) .lesson-menu summary small{color:#c3c8f0!important}}
+/* ===== شاشة الدرس بطاقة بطاقة (lfocus.js) كما في التصميم ===== */
+.lf{margin:6px 0 14px;border-radius:24px;overflow:hidden;background:#fff;box-shadow:0 10px 26px rgba(76,56,200,.16)}
+.lf-top{display:flex;align-items:center;gap:10px;padding:10px 12px;background:linear-gradient(90deg,#6a4cf0,#8b6cff);color:#fff}
+.lf-home{background:rgba(255,255,255,.18)!important;border:0!important;color:#fff!important;border-radius:12px!important;min-width:40px;min-height:40px;font-size:1.2rem}
+.lf-title{flex:1;font-size:1.05rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lf-prog{width:80px;height:9px;border-radius:9px;background:rgba(255,255,255,.3);overflow:hidden}.lf-prog i{display:block;height:100%;background:linear-gradient(90deg,#3ddc84,#22a35a);border-radius:9px;transition:width .35s}
+.lf-cnt{font-weight:800;font-size:.95rem;white-space:nowrap}
+.lf-body{display:grid;grid-template-columns:1.15fr 1fr;gap:12px;padding:14px;align-items:stretch}
+@media(max-width:380px){.lf-body{grid-template-columns:1fr}}
+.lf-card{border-radius:20px;background:linear-gradient(180deg,#bfe9ff 0%,#d9f7c9 62%,#9ad86c 100%);padding:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;min-height:230px;position:relative}
+.lf-letter{background:#fff;border-radius:18px;min-width:84px;padding:4px 16px;text-align:center;font-size:4.2rem;font-weight:900;color:#e5484d;line-height:1.2;box-shadow:0 6px 0 rgba(0,0,0,.06)}
+.lf-pic{font-size:4.6rem;line-height:1}.lf-pic-big{font-size:6.2rem}
+.lf-pic img,.lf-pic .e3d{width:1.15em!important;height:1.15em!important}
+.lf-word{background:linear-gradient(180deg,#fff7d6,#ffe9a8);border-radius:16px;padding:4px 18px;font-size:1.8rem;font-weight:900;color:#2a1f6b;box-shadow:0 4px 0 #e3c46a}
+.lf-mean{font-size:1rem;font-weight:700;color:#2a1f6b;opacity:.8}
+.lf-side{display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center}
+.lf-listen{display:flex!important;align-items:center;gap:8px;width:100%;justify-content:center;background:#fff!important;border:2px solid #e6e0ff!important;border-radius:18px!important;padding:8px!important;color:#2a1f6b!important}
+.lf-listen span{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#8b6cff,#6a4cf0);color:#fff;font-size:1.2rem;flex:none}
+.lf-listen b{font-size:.95rem}
+.lf-mic{width:96px;height:96px;border-radius:50%!important;border:0!important;background:radial-gradient(circle at 35% 30%,#9b7dff,#5b3fe0)!important;color:#fff!important;font-size:2.4rem;box-shadow:0 10px 24px rgba(91,63,224,.35),0 0 0 10px rgba(139,108,255,.15)}
+.lf-mic.on{animation:mvp 1s infinite;background:radial-gradient(circle at 35% 30%,#ff7b7f,#e5484d)!important}
+.lf-mic-t{text-align:center;font-weight:700;min-height:1.2em}
+.lf-nav{display:flex;gap:8px;width:100%}.lf-nav button{flex:1;border-radius:16px!important;min-height:46px;font-weight:800}
+.lf-prev{background:#eef0f7!important;color:#6b6f8f!important;border:0!important}.lf-prev[disabled]{opacity:.5}
+.lf-next{background:linear-gradient(135deg,#8b6cff,#6a4cf0)!important;color:#fff!important;border:0!important}.lf-done{background:linear-gradient(135deg,#ffcf3d,#ffb400)!important;color:#2a1f6b!important}
+.lf-all{margin:8px 0}.lf-all summary{cursor:pointer;font-weight:800;padding:10px 12px;border-radius:14px;background:rgba(108,92,231,.08)}
+:root[data-theme=dark] .lf{background:#24275e}:root[data-theme=dark] .lf-listen{background:#2e3270!important;border-color:#3a3f86!important;color:#eef0ff!important}:root[data-theme=dark] .lf-mic-t{color:#eef0ff}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .lf{background:#24275e}:root:not([data-theme=light]) .lf-listen{background:#2e3270!important;border-color:#3a3f86!important;color:#eef0ff!important}:root:not([data-theme=light]) .lf-mic-t{color:#eef0ff}}
