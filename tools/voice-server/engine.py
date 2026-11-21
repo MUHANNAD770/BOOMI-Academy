@@ -10,7 +10,39 @@ REPO = 'audarai/Audar-TTS-V1-Flash'
 CODEC_SHA = '30c3ea13ceeb2de693c56e5e33a1b7e00d44c95dcdd08a4ed0d552d0bf59ebdf'  # pytorch_model.bin الرسمي من neuphonic/neucodec
 # NeuCodec الرسمي يطلب قبول شروطه بحساب Hugging Face. إن لم يتوفر رمز نستعمل نسخة مطابقة له بايتًا ببايت (نتحقق من SHA-256)
 CODEC_REPOS = ['neuphonic/neucodec', 'nguyensu27/neucodec']
-torch.set_num_threads(int(os.environ.get('THREADS', os.cpu_count() or 2)))
+
+
+def _cpus():
+    # عدد الأنوية المتاحة فعلًا: os.cpu_count() يعطي أنوية الجهاز المضيف كلها (قد تكون ٣٢ أو أكثر) بينما للمساحة حصة صغيرة،
+    # فيتزاحم عدد هائل من الخيوط على نواتين فيصير التوليد أبطأ بعشرات المرات. نقرأ الحصة الحقيقية من cgroup.
+    n = None
+    try:
+        q, per = open('/sys/fs/cgroup/cpu.max').read().split()[:2]
+        if q != 'max':
+            n = -(-int(q) // int(per))
+    except Exception:  # noqa
+        pass
+    if not n:
+        try:
+            q = int(open('/sys/fs/cgroup/cpu/cpu.cfs_quota_us').read()); per = int(open('/sys/fs/cgroup/cpu/cpu.cfs_period_us').read())
+            if q > 0:
+                n = -(-q // per)
+        except Exception:  # noqa
+            pass
+    try:
+        aff = len(os.sched_getaffinity(0))
+    except Exception:  # noqa
+        aff = os.cpu_count() or 2
+    n = min(n or aff, aff)
+    return max(1, min(n, 8))
+
+
+THREADS = int(os.environ.get('THREADS') or _cpus())
+torch.set_num_threads(THREADS)
+try:
+    torch.set_num_interop_threads(1)
+except Exception:  # noqa
+    pass
 LOCK = threading.Lock()
 
 
@@ -56,7 +88,7 @@ class Engine:
                                     'https://abetlen.github.io/llama-cpp-python/whl/cpu', 'llama-cpp-python'], timeout=900, check=False)
                 from llama_cpp import Llama
                 g = hf_hub_download(REPO, os.environ.get('GGUF', 'Audar-TTS-V1-Flash-Q8_0.gguf'))
-                self.llm = Llama(model_path=g, n_ctx=4096, n_threads=torch.get_num_threads(), n_gpu_layers=int(os.environ.get('GPU_LAYERS', '0')), verbose=False)
+                self.llm = Llama(model_path=g, n_ctx=4096, n_threads=THREADS, n_threads_batch=THREADS, n_batch=512, n_gpu_layers=int(os.environ.get('GPU_LAYERS', '0')), verbose=False)
                 self.tce = self.llm.tokenize(b'<|TARGET_CODES_END|>', add_bos=False, special=True)[0]
             except ImportError:
                 self.backend = 'hf'

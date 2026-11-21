@@ -533,3 +533,10 @@ html.bm-open body{position:fixed;left:0;right:0;width:100%}
 /* مسافة بين شريط الاختبار العلوي وبومة السؤال (كانت ملتصقة به) */
 .qh+.qo,.qh~.qo{margin-top:18px!important}
 .qo svg,.qo .owl,.qo #mc{overflow:visible}
+/* شريط تقدّم إنشاء الصوت الشخصي */
+.mv-pg{margin:12px 0;padding:12px 14px;border-radius:16px;background:rgba(108,92,231,.08);border:1px solid rgba(108,92,231,.25)}
+.mv-pg-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}.mv-pg-top b{font-size:1.5rem;color:#6c5ce7}.mv-pg-top span{font-weight:700;font-size:.95rem}
+.mv-pg-bar{height:14px;border-radius:99px;background:rgba(0,0,0,.08);overflow:hidden}.mv-pg-bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#8e7cff,#22c39a);transition:width .4s ease}
+.mv-pg small{display:block;margin-top:6px}
+:root[data-theme=dark] .mv-pg-top b{color:#b9adff}:root[data-theme=dark] .mv-pg-bar{background:rgba(255,255,255,.12)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .mv-pg-top b{color:#b9adff}:root:not([data-theme=light]) .mv-pg-bar{background:rgba(255,255,255,.12)}}

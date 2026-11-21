@@ -16,10 +16,46 @@ except Exception as e:  # noqa
 SRC = 'https://raw.githubusercontent.com/MUHANNAD770/BOOMI-Academy/main/tools/voice-server/'
 FILES = ['app.py', 'engine.py', 'shim/torchtune/__init__.py', 'shim/torchtune/modules/__init__.py', 'shim/torchtune/modules/position_embeddings.py']
 D = os.path.join(os.getcwd(), 'srv')
+import hashlib, threading, time
+
+
+def _fetch_all():
+    out = {}
+    for f in FILES + ['space-gradio/space_main.py']:
+        out[f] = urllib.request.urlopen(SRC + f, timeout=30).read()
+    return out
+
+
+def _rev(files):
+    return hashlib.sha256(b''.join(files[k] for k in sorted(files))).hexdigest()[:12]
+
+
+_F = _fetch_all()
 for f in FILES:
     p = os.path.join(D, 'voice_app.py' if f == 'app.py' else f)
     os.makedirs(os.path.dirname(p), exist_ok=True)
-    urllib.request.urlretrieve(SRC + f, p)
+    open(p, 'wb').write(_F[f])
+os.environ['VOICE_REV'] = _rev(_F)
+
+
+# تحديث تلقائي: كل ١٠ دقائق نقارن ملفات الخادم بما في GitHub؛ إن تغيّرت والخادم غير مشغول نعيد تشغيله بالنسخة الجديدة
+# (فلا يحتاج صاحب الموقع إلى إعادة التشغيل يدويًا من Hugging Face بعد كل إصلاح)
+def _updater():
+    while True:
+        time.sleep(600)
+        try:
+            if _rev(_fetch_all()) == os.environ['VOICE_REV']:
+                continue
+            import voice_app as _va
+            while _va.BUSY['n'] > 0 or time.time() - _va.BUSY['last'] < 30:
+                time.sleep(10)
+            print('voice server: new version on GitHub, restarting', flush=True)
+            os.execv(sys.executable, [sys.executable] + sys.argv)
+        except Exception as e:  # noqa
+            print('updater:', e, flush=True)
+
+
+threading.Thread(target=_updater, daemon=True).start()
 sys.path.insert(0, os.path.join(D, 'shim'))
 sys.path.insert(0, D)
 import uvicorn, voice_app
