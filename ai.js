@@ -170,14 +170,19 @@ busy=0;netBadge()}
 /* تمارين يولّدها الذكاء الاصطناعي حسب الموضوع المكتوب أو الدرس الحالي أو أضعف مهارة */
 /* تمارين محلية (بلا إنترنت أو إذا تعذّر الذكاء الخارجي): من كلمات الدرس الحالي، أو دروس مرحلة الطالب والدروس التي أتقنها.
    الخيارات دائمًا من الدرس نفسه كي تكون متجانسة (صور مع صور، معانٍ مع معانٍ) */
-function localEx(){const units=[],add=u=>{if(u&&u.i){const its=[],seen=new Set();u.i.forEach(it=>{const k=it&&String(it[1]||'').trim();if(it&&it[0]&&k&&!seen.has(k)){seen.add(k);its.push(it)}});if(its.length>=4)units.push(its)}};
+function localEx(){const units=[],add=u=>{if(u&&u.i){const its=[],seen=new Set();u.i.forEach(it=>{const k=it&&String(it[1]||'').trim();if(it&&it[0]&&k&&!seen.has(k)){seen.add(k);its.push(it)}});if(its.length>=4){its.n=u.n||'';units.push(its)}}};
  try{if(cur&&cur.i)add(cur)}catch(e){}
  if(!units.length)try{Object.keys(P.done||{}).forEach(id=>{try{add(find(id))}catch(e){}});(S[+P.stage||0]||S[0]).u.forEach(add)}catch(e){}
  if(!units.length)return null;const sh=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);
  const U=units[0===units.length-1?0:Math.floor(Math.random()*Math.min(units.length,cur&&cur.i?1:units.length))];
  return sh(U).slice(0,3).map(it=>{const o=sh([it,...sh(U.filter(x=>x!==it)).slice(0,3)]),pic=!/[\p{L}\p{N}]/u.test(String(it[1]));
   const num=/^[\d\u0660-\u0669]+$/.test(String(it[1]).trim());
-  return{q:pic?`أَيْنَ صُورَةُ «${it[0]}»؟`:num?`أَيُّ رَقْمٍ هُوَ «${it[0]}»؟`:`ما معنى «${it[0]}»؟`,o:o.map(x=>String(x[1])),a:o.indexOf(it),w:pic?`الصورة الصحيحة هي ${it[1]}`:`«${it[0]}» معناها: ${it[1]}`}})}
+  /* صياغة السؤال حسب نوع الدرس (الحركات، المقاطع، اللام، الاسم والفعل…) بدل «ما معنى» لكل شيء */
+  const un=String(U.n||'').replace(/[\u064B-\u0652]/g,''),w=it[0];
+  const qq=pic?`أَيْنَ صُورَةُ «${w}»؟`:num?`أَيُّ رَقْمٍ هُوَ «${w}»؟`:/الحركات|حركة/.test(un)?`مَا الْحَرَكَةُ عَلَى «${w}»؟`:/المقاطع|مقطع/.test(un)?`مَا نَوْعُ الْمَقْطَعِ «${w}»؟`
+   :/الشمسية|القمرية/.test(un)?`هَلِ اللَّامُ فِي «${w}» شَمْسِيَّةٌ أَمْ قَمَرِيَّةٌ؟`:/الاسم والفعل/.test(un)?`هَلْ «${w}» اسْمٌ أَمْ فِعْلٌ؟`:/الماضي|المضارع|الأمر/.test(un)?`مَا زَمَنُ الْفِعْلِ «${w}»؟`
+   :/العطف/.test(un)?`مَا مَعْنَى حَرْفِ الْعَطْفِ «${w}»؟`:/sound|يفعل|اصوات|أصوات/i.test(un)?`مَاذَا يَفْعَلُ «${w}»؟`:`مَا مَعْنَى «${w}»؟`;
+  return{q:qq,o:o.map(x=>String(x[1])),a:o.indexOf(it),w:pic?`الصورة الصحيحة هي ${it[1]}`:`«${it[0]}» معناها: ${it[1]}`}})}
 async function bex(){if(busy)return;const i=document.getElementById('bi'),bm=document.getElementById('bm'),topic=(i&&i.value.trim())||bm?.dataset.topic||bm?.dataset.ctx||profile().weak[0]||'';if(i)i.value='';
 if(aiLeft()<=0&&onl())return bpush('a',LIM_MSG);if(onl()){aiUse().n++;save()}
 busy=1;think();const w=bpush('a','أجهّز لك تمارين جديدة ✍️…');w.classList.add('think');let d=onl()?await aiCall({mode:'exercise',topic}):{err:'net'};if(d.items&&window.Brain)Brain.exLearn(topic,d.items);else if(window.Brain){const f=Brain.exFind(topic);if(f)d={items:f}}if(!d.items){const L=localEx();if(L)d={items:L}}busy=0;w.classList.remove('think');unthink(!!d.items);
@@ -190,7 +195,7 @@ const pics=q.o.every(o=>!/[\p{L}\p{N}]/u.test(o)),nums=!pics&&q.o.every(o=>/^[\d
 q.o.forEach((o,j)=>{const b=document.createElement('button');b.textContent=o;b.dir='auto';b.onclick=()=>{box.querySelectorAll('button').forEach(x=>x.disabled=true);const ok=j==q.a;b.classList.add(ok?'ok':'no');
 const k='ai:'+String(topic||q.q).slice(0,24),sk=P.sk[k]=P.sk[k]||{n:0,m:0};sk.n++;sk.t=Date.now();if(ok)sk.m=Math.max(0,sk.m-1);else{sk.m++;sk.e=(sk.e||0)+1}save();
 const m=ok?pk(OKS.ar):'لا بأس 🌱 '+(q.w||'');bpush('a',m);window.MC&&MC.mood(ok?'happy':'oops',1200);if(!muted())say(m.replace(/[🌱]/g,''),'ar',null,ok?'happy':'soft');setTimeout(()=>runEx(L,i+1,s+ok,topic),ok?700:1250)};box.appendChild(b)});
-const l=document.getElementById('bl');l.appendChild(box);l.scrollTop=l.scrollHeight;requestAnimationFrame(()=>setTimeout(()=>{try{box.scrollIntoView({block:'end',behavior:'smooth'})}catch(e){l.scrollTop=l.scrollHeight}},120))}
+const l=document.getElementById('bl');l.appendChild(box);const toEnd=()=>{try{l.scrollTop=l.scrollHeight}catch(e){}};toEnd();[60,250,600,1200].forEach(t=>setTimeout(toEnd,t));box.querySelectorAll('img').forEach(im=>im.addEventListener('load',toEnd,{once:true}))}
 const pickc=()=>{const a=localAI.topics();return a[Math.floor(Math.random()*a.length)]};
 let BMIC=null;
 const bmicText=t=>{const e=document.getElementById('bst');if(e)e.textContent=t||''};
