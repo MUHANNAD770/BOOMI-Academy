@@ -20,14 +20,14 @@
   <div class=lf-body>
    <div class=lf-card onclick="lfSay()">
     ${lt?`<div class=lf-letter>${esc(lt)}</div>`:''}
-    <div class=lf-pic${lt?'':' lf-pic-big'}>${pic?esc(x[1]):'📖'}</div>
+    <div class="lf-pic${lt?'':' lf-pic-big'}">${pic?esc(x[1]):'📖'}</div>
     <div class=lf-word dir=auto>${esc(x[0])}</div>${!pic&&x[1]?`<div class=lf-mean dir=auto>${esc(x[1])}</div>`:''}
    </div>
    <div class=lf-side>
     <button class=lf-listen onclick="lfSay()"><span>🔊</span><b>${girl()?'اِسْتَمِعِي':'اِسْتَمِعْ'} إِلَى الصَّوْتِ</b></button>
     ${mic?`<button class=lf-mic id=lf-mic onclick="lfMic()" aria-label="اقرأ الكلمة">🎤</button><small class=lf-mic-t id=lf-mic-t>${girl()?'اِضْغَطِي وَاقْرَئِي الْكَلِمَةَ':'اِضْغَطْ وَاقْرَأِ الْكَلِمَةَ'}</small>`:''}
     <div class=lf-nav><button class=lf-prev onclick="lfGo(-1)" ${k===0?'disabled':''}>‹ السَّابِقُ</button>
-     ${k<n-1?`<button class=lf-next onclick="lfGo(1)">التَّالِي ›</button>`:`<button class=lf-next lf-done onclick="lfQuiz()">${girl()?'اِبْدَئِي':'اِبْدَأِ'} الِاخْتِبَارَ ✨</button>`}</div>
+     ${k<n-1?`<button class=lf-next onclick="lfGo(1)">التَّالِي ›</button>`:`<button class="lf-next lf-done" onclick="lfQuiz()">${girl()?'اِبْدَئِي':'اِبْدَأِ'} الِاخْتِبَارَ ✨</button>`}</div>
    </div>
   </div>`}
  const draw=()=>{const e=document.getElementById('lf');if(e)e.innerHTML=card()};
@@ -48,7 +48,7 @@
  const decorate=()=>{try{if(window.V!=='lesson'||!window.cur||items().length<2)return;const app=document.getElementById('app'),g=app&&app.querySelector('.grid');if(!g||document.getElementById('lf'))return;
    if(F.id!==cur.id){F.id=cur.id;F.i=0}
    const box=document.createElement('section');box.id='lf';box.className='lf';box.innerHTML=card();
-   const h2=app.querySelector('h2');(h2||g).insertAdjacentElement(h2?'afterend':'beforebegin',box);
+   const h2=app.querySelector('h2');(h2||g).insertAdjacentElement(h2?'afterend':'beforebegin',box);if(h2)h2.classList.add('lf-h2');
    const det=document.createElement('details');det.id='lf-all';det.className='lf-all';det.innerHTML=`<summary>🗂️ عَرْضُ كُلِّ الْبِطَاقَاتِ (${D(items().length)})</summary>`;g.insertAdjacentElement('beforebegin',det);det.appendChild(g);
   }catch(e){}};
  const oL=window.lesson;if(typeof oL==='function'){window.lesson=function(){const r=oL.apply(this,arguments);decorate();return r}}

@@ -56,6 +56,14 @@ EXPL={
  'story_ar_105':['ذَهَبَتْ لَيْلَى مَعَ أُسْرَتِهَا إِلَى الشَّاطِئِ فِي عُطْلَةِ الصَّيْفِ.','شَاهَدَتْ لَيْلَى سُلَحْفَاةً بَحْرِيَّةً تَسْبَحُ بِبُطْءٍ.','قَالَتْ لَيْلَى: إِنَّ الْبِلَاسْتِيكَ قَدْ يُؤْذِي الْحَيَوَانَاتِ الْبَحْرِيَّةَ.','أَخْبَرَهَا وَالِدُهَا أَنَّ الْبَحْرَ بَيْتٌ لِكَثِيرٍ مِنَ الْمَخْلُوقَاتِ.']}
 # كلمات مشاهد للدفعات بالصيغة الجديدة فقط (لا تغيّر صور القصص السابقة)
 SCENE2=[('rabbit','🐰'),('patient','🥕'),('patient','🌱'),('carrot','🥕'),('space','🚀'),('old man','👴'),('clean','🧹'),('beach','🏖️'),('sea','🌊'),('garden|park','🌳'),('turtle','🐢'),('star','⭐'),('moon','🌙')]
+# صور القصص (مقصوصة من تصميم صاحب المشروع لمكتبة القصص) والعناوين المقابلة كما في التصميم
+TT={'story_ar_001':'The Little Cat','story_ar_003':'The Rabbit and the Carrot','story_ar_005':'The Little Fish','story_ar_007':"Salim's Honesty",
+ 'story_ar_009':'A Trip to the Library','story_ar_011':'The Secret of the Lake','story_ar_013':'The Little Inventor','story_ar_015':'A Journey That Changed Me',
+ 'story_ar_017':'Between Dream and Work','story_ar_019':'The Green City','story_ar_021':'The Value of Time','story_ar_023':'When Science Became a Responsibility',
+ 'story_ar_025':'Not Everything We See Is True'}
+TA={'story_en_002':'الطَّائِرُ الصَّغِيرُ','story_en_004':'الْبَالُونُ الْأَحْمَرُ','story_en_006':'صَدِيقِي الْجَدِيدُ','story_en_008':'الدَّرَّاجَةُ الْمَكْسُورَةُ',
+ 'story_en_010':'يَوْمٌ مُمْطِرٌ','story_en_012':'مَشْرُوعُ حَدِيقَةِ الْمَدْرَسَةِ','story_en_014':'لُغْزُ الْمِفْتَاحِ الْمَفْقُودِ','story_en_016':'قُوَّةُ الْقَرَارِ الصَّغِيرِ',
+ 'story_en_018':'الْقَائِدُ غَيْرُ الْمُتَوَقَّعِ','story_en_020':'أَبْعَدُ مِنَ الْأُفُقِ','story_en_022':'الِاخْتِيَارُ الَّذِي غَيَّرَ كُلَّ شَيْءٍ','story_en_024':'مَسْؤُولِيَّةُ التَّقَدُّمِ'}
 def scene(st):
     t=' '.join([st.get('image',{}).get('prompt',''),st.get('image',{}).get('alt',''),st.get('title',''),st.get('english_title','')]).lower();o=[]
     for k,e in (SCENE2 if st.get('english_title') else SCENE):
@@ -95,6 +103,10 @@ for f in sorted(glob.glob(os.path.join(R,'batch*.json')),key=lambda p:int(re.fin
         img=st.get('image') or {}
         stories.append({'id':st['id'],'l':st['language'],'stage':st.get('stage',''),'lv':st.get('level','A1'),'t':st['title'],'s':sentences(st['text']),
           'v':[[w.get('word') or w.get('ar'),w.get('meaning') or w.get('en')] for w in st.get('vocabulary',[])],'x':ex,'img':img.get('url',''),'alt':img.get('alt',''),'sc':scene(st),'_b':_bn,'_i':i})
+        _im=os.path.join(ROOT,'img','stories',st['id']+'.webp')
+        if not stories[-1]['img'] and os.path.exists(_im):stories[-1]['img']='img/stories/'+st['id']+'.webp';stories[-1]['alt']=stories[-1]['alt'] or st.get('english_title') or TT.get(st['id'],'') or st['title']
+        if st['id'] in TT:stories[-1]['tt']=TT[st['id']]
+        if st['id'] in TA:stories[-1]['ta']=TA[st['id']]
         if st.get('english_text'):stories[-1]['tr']=sentences(st['english_text'])
         if st.get('english_title'):stories[-1]['tt']=st['english_title']
         if st.get('moral'):stories[-1]['m']=MORAL.get(st['moral'],st['moral'])
