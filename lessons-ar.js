@@ -88,7 +88,7 @@ const mkQ=(k,show,opts,okIdx,extra)=>Object.assign({k,m:0,l:'ar',show,opts:opts.
 function mcq(it,show,right,wrongs,extra){const o=shuf([right,...wrongs.filter(w=>w!==right)].filter((x,i,a)=>a.indexOf(x)===i).slice(0,4));if(o.length<2)return null;return mkQ(it[0],show,o,o.indexOf(right),Object.assign({ex:exOf(it)},extra))}
 const Q={
  /* الصورة ← الكلمة */
- pic(u,it){if(!isPic(it[1]))return null;return mcq(it,`<div class=q>${it[1]}</div><p class=mut>${/\s/.test(String(it[0]).trim())?'أَيُّ جُمْلَةٍ تُنَاسِبُ الصُّورَة؟':'مَا اسْمُ هَذِهِ الصُّورَة؟'}</p>`,it[0],others(u,it,x=>x[0]!==it[0]).map(x=>x[0]))},
+ pic(u,it){if(!isPic(it[1]))return null;return mcq(it,`<div class=q>${it[1]}</div><p class=mut>${/sound|يَفْعَلُ|يفعل|أصوات|أَصْوَات/i.test(u&&u.n||'')?(u.l==='en'?'What sound does it make? — مَاذَا يَقُولُ هَذَا الْحَيَوَانُ؟':'مَاذَا يَفْعَلُ هَذَا الْحَيَوَانُ؟'):/\s/.test(String(it[0]).trim())?'أَيُّ جُمْلَةٍ تُنَاسِبُ الصُّورَة؟':'مَا اسْمُ هَذِهِ الصُّورَة؟'}</p>`,it[0],others(u,it,x=>x[0]!==it[0]).map(x=>x[0]))},
  /* اسمع ← اختر الصورة */
  listenPic(u,it){if(!isPic(it[1]))return null;return mcq(it,`<div class=q>🔊</div><p class=mut>اسْتَمِعْ ثُمَّ اخْتَرِ الصُّورَة</p>`,it[1],others(u,it,x=>x[1]!==it[1]&&isPic(x[1])).map(x=>x[1]),{sp:SPK(it),m:1})},
  /* الكلمة ← المعنى/الوصف */
