@@ -43,7 +43,7 @@ window.sbStory=function(id){load().then(()=>{const s=find(id);if(!s)return stori
  h(`<section class="sec story sb-story"><button class=link onclick="stories('lib')">← المكتبة</button>
  <div class=sb-hero>${pic(s)}<h2 dir=auto>${esc(s.t)}</h2>${s.tt?`<p class=sb-tt dir=ltr>${esc(s.tt)}</p>`:''}${s.ta?`<p class=sb-tt dir=rtl>${esc(s.ta)}</p>`:''}<small><em class=sb-lang>${en?'English':'عربي'}</em> <em class=sb-lv>${esc(s.lv)}</em> ${esc(s.stage)}</small></div>
  <div class=story-text dir=${dir}>${s.s.map((t,i)=>`<span class=ss data-i=${i} onclick="sbSay('${id}',${i})">${esc(t)}</span>`).join(' ')}</div>
- <p class=mut>اضغط على أي جملة لتسمعها.</p>
+ <p class=mut>${window.P&&P.gender==='female'?'اِضْغَطِي عَلَى أَيِّ جُمْلَةٍ لِتَسْمَعِيهَا.':'اِضْغَطْ عَلَى أَيِّ جُمْلَةٍ لِتَسْمَعَهَا.'}</p>
  ${s.m?`<p class=sb-moral dir=auto>🌟 الْعِبْرَةُ: ${esc(s.m)}</p>`:''}
  ${s.tr&&s.tr.length?`<details class=sb-tr><summary>🇬🇧 الترجمة الإنجليزية</summary><div class=story-text dir=ltr>${s.tr.map((t,i)=>`<span class=ss onclick="sbSayTr('${id}',${i})">${esc(t)}</span>`).join(' ')}</div></details>`:''}
  <button class=alt onclick="sbRead('${id}')">🔊 اسمع القصة كاملة</button>
