@@ -2,7 +2,6 @@
 torch
 torchaudio
 neucodec
-llama-cpp-python
 python-multipart
 soundfile
 numpy

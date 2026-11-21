@@ -1,7 +1,7 @@
 # محرك «صوتي الشخصي»: استنساخ صوت من تسجيل قصير (5–15 ثانية) بنموذج Audar-TTS-V1-Flash المفتوح
 # الترخيص: أوزان النموذج تحت AudarAI Open License v1.0 (استخدام تجاري وإعادة توزيع مسموحة)،
 # والمرمِّز NeuCodec تحت Apache-2.0. يعمل على المعالج (CPU) بلا رسوم لكل جملة.
-import hashlib, os, re, threading, warnings
+import hashlib, os, re, sys, threading, warnings
 warnings.filterwarnings('ignore')
 import numpy as np, torch
 from huggingface_hub import hf_hub_download
@@ -46,6 +46,14 @@ class Engine:
         self.codec = _codec()
         if self.backend == 'gguf':
             try:
+                try:
+                    import llama_cpp  # noqa
+                except ImportError:
+                    # على Hugging Face: تجميع المكتبة أثناء البناء يتجاوز الوقت المسموح، فننزّل نسخة جاهزة (بلا تجميع) عند التشغيل؛
+                    # وإن لم توجد نسخة جاهزة نعمل بمكتبة transformers (أبطأ لكنها مضمونة)
+                    import subprocess
+                    subprocess.run([sys.executable, '-m', 'pip', 'install', '--quiet', '--only-binary=:all:', '--extra-index-url',
+                                    'https://abetlen.github.io/llama-cpp-python/whl/cpu', 'llama-cpp-python'], timeout=900, check=False)
                 from llama_cpp import Llama
                 g = hf_hub_download(REPO, os.environ.get('GGUF', 'Audar-TTS-V1-Flash-Q8_0.gguf'))
                 self.llm = Llama(model_path=g, n_ctx=4096, n_threads=torch.get_num_threads(), n_gpu_layers=int(os.environ.get('GPU_LAYERS', '0')), verbose=False)
