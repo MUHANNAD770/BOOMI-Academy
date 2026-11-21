@@ -85,8 +85,8 @@
   finally{if(ep===st.ep){quiet();if(st.url)URL.revokeObjectURL(st.url);st.audio=null;st.url='';st.playing=0}}};
  /* ===== جملة كاملة بلا مقطع مسجّل: تُولَّد بسلاسة من الخادم (netlify/functions/tts.mjs) بصوت المعلّم نفسه =====
     كانت تُركّب كلمةً كلمةً من مقاطع منفردة (متقطّعة وبطيئة) أو تسكت. النتيجة تُحفظ في الجهاز فلا تُطلب مرتين. */
- const TC='hurufi-tts-v3',TM=new Map(); /* v3: التاء المربوطة حسب موضعها (وقف/وصل بالإعراب)؛ الجمل المحفوظة سابقًا تُحذف */
- try{window.caches&&['hurufi-tts-v1','hurufi-tts-v2'].forEach(n=>caches.delete(n))}catch(e){}
+ const TC='hurufi-tts-v4',TM=new Map(); /* v3: التاء المربوطة حسب موضعها (وقف/وصل بالإعراب)؛ الجمل المحفوظة سابقًا تُحذف */
+ try{window.caches&&['hurufi-tts-v1','hurufi-tts-v2','hurufi-tts-v3'].forEach(n=>caches.delete(n))}catch(e){}
  const ttsUrl=(t,l)=>'/.netlify/functions/tts?w='+teacher()+'&l='+(l==='en'?'en':'ar')+'&t='+encodeURIComponent(String(t).replace(/\s+/g,' ').trim().normalize('NFC'));
  const ttsBlob=(t,l)=>{const u=ttsUrl(t,l);if(TM.has(u))return TM.get(u);
   const pr=(async()=>{try{const c=await caches.open(TC),hit=await c.match(u);if(hit)return await hit.blob()}catch(e){}

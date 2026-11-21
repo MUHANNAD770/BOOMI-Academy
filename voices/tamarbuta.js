@@ -1,5 +1,5 @@
 /* tamarbuta.js — نطق التاء المربوطة (ة) حسب موضعها في الجملة. للمحرك فقط: النص المعروض لا يتغيّر.
-   • الوقف (آخر الجملة أو قبل علامة ترقيم): هاء ساكنة ← نكتب للمحرك «ةْ» (بلا سكون قد يُسقط المحرك الهاء).
+   • الوقف (آخر الجملة أو قبل علامة ترقيم): هاء ساكنة ← نكتب للمحرك «هْ» صريحة (كان «ةْ» فقرأها المحرك تاءً: فَتْحَتْ).
    • الوصل (بعدها كلمة): تاء بحركتها الإعرابية. الحركة المكتوبة في النص تبقى كما هي. وإن لم تُكتب:
      (١) جمل الموقع الثابتة: الحركة من خريطة أعدّتها أداة التشكيل CATT (voices/tm-map.json، tools/tamarbuta/)
      (٢) نص جديد (ردود بومي…): قواعد نحوية: بعد حرف الجر كسرة، بعد «إنّ وأخواتها» أو فعل متعدٍّ فتحة،
@@ -42,7 +42,7 @@
    const tail=w.slice(w.lastIndexOf(TA)+1),next=words[i+1];
    const stop=/[.!؟?،,:;؛…]/.test(tail)||!next||!AR.test(next)||/^[.!؟?،,:;؛…\-—]/.test(next);
    const v=stop?SUK:guess(words,i,done);done[i]=v;
-   const k=w.lastIndexOf(TA);words[i]=w.slice(0,k+1)+v+w.slice(k+1)}
+   const k=w.lastIndexOf(TA);words[i]=v===SUK?w.slice(0,k)+'\u0647\u0652'+w.slice(k+1):w.slice(0,k+1)+v+w.slice(k+1)} /* الوقف: هاء ساكنة صريحة «هْ» (المحرك يقرأ «ةْ» تاءً) */
   idx.forEach((j,n)=>ws[j]=words[n]);return ws.join('')}
  const api={engine,guess};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.TaMarbuta=api;
