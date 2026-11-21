@@ -510,3 +510,7 @@ img.e3s{width:3.2em!important;height:3.2em!important;max-width:120px;max-height:
 :root[data-theme=dark] .lf-card.lf-k{background-image:url(img/ui/card-meadow-night.webp)!important}
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]) .lf-card.lf-k{background-image:url(img/ui/card-meadow-night.webp)!important}}
 .lf-card.lf-k .lf-word{font-size:13cqw!important;font-weight:900!important;padding:1cqw 4cqw!important;line-height:1.45!important}
+/* الصفحة خلف نافذة بومي ثابتة (لا تتحرك عند السحب داخل الدردشة) */
+html.bm-open,html.bm-open body{overflow:hidden!important;overscroll-behavior:none}
+html.bm-open body{position:fixed;left:0;right:0;width:100%}
+.bm,.bm .bl,.bm .chips{overscroll-behavior:contain}

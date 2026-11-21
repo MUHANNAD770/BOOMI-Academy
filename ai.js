@@ -202,3 +202,12 @@ window.bmic=function(){if(BMIC)return bmicStop();if(!P||!P.mic)return bpush('a',
  rec.onend=()=>{if(BMIC&&BMIC.rec===rec){BMIC=null;if(!final)bmicText('انتهى الاستماع. اضغط الميكروفون للمحاولة مرة أخرى.');const x=document.getElementById('bmb');if(x){x.textContent='🎤';x.classList.remove('bmic-listen')}}};try{rec.start()}catch(e){bmicStop(1);bpush('a','تعذّر تشغيل الميكروفون الآن.')}};
 const NOASK=/^(setup|who|g2play|speedGame)$/;
 const oh=h;h=x=>{oh(x);let fn='';try{const e=window.Router&&Router.entry();fn=e?e.fn:''}catch(e){}if(window.P&&V!='setup'&&V!='who'&&V!='game'&&!NOASK.test(fn)&&!app.querySelector('.ask'))app.insertAdjacentHTML('beforeend','<button class=ask onclick=bomi()>🦉 اسأل بومي</button>')};
+/* عند فتح نافذة بومي: نثبّت الصفحة التي خلفها فلا تتحرك عند السحب داخل الدردشة، ونعيد موضع التمرير كما كان عند الإغلاق */
+(()=>{let locked=false,sy=0;const B=document.body,H=document.documentElement;
+ const lock=()=>{if(locked)return;locked=true;sy=window.scrollY||H.scrollTop||0;H.classList.add('bm-open');B.style.top=(-sy)+'px'};
+ const unlock=()=>{if(!locked)return;locked=false;H.classList.remove('bm-open');B.style.top='';window.scrollTo(0,sy)};
+ new MutationObserver(()=>{document.getElementById('bm')?lock():unlock()}).observe(B,{childList:true});
+ /* لمسة تتحرك خارج منطقة قابلة للتمرير داخل النافذة لا تُمرَّر للصفحة */
+ document.addEventListener('touchmove',e=>{if(!locked)return;const bm=document.getElementById('bm');if(!bm||!bm.contains(e.target)){e.preventDefault();return}
+  let n=e.target;while(n&&n!==bm){const cs=getComputedStyle(n);if(/(auto|scroll)/.test(cs.overflowY+cs.overflowX)&&(n.scrollHeight>n.clientHeight+1||n.scrollWidth>n.clientWidth+1))return;n=n.parentElement}e.preventDefault()},{passive:false});
+})();
