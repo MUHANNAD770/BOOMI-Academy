@@ -526,3 +526,7 @@ html.bm-open body{position:fixed;left:0;right:0;width:100%}
 .bm .bl>.chips:not(.bm-pics){display:grid!important;grid-template-columns:1fr 1fr;gap:8px;overflow:visible!important;white-space:normal;height:auto!important;padding:4px 2px}
 .bm .bl>.chips:not(.bm-pics) button{white-space:normal!important;min-height:48px;font-size:1rem;line-height:1.5}
 .bm .bl>.chips:not(.bm-pics) button{font-weight:800!important;font-size:1.1rem!important}
+/* شريط الاختبار: مسافة داخلية من الجانبين فلا يلتصق ✕ ولا رقم القلوب بحافة المستطيل */
+.qh{padding-inline:16px!important;gap:12px!important;box-sizing:border-box}
+.qh .x{margin-inline-start:2px}
+.qh .hp{padding-inline:8px 4px;white-space:nowrap;flex:none}
