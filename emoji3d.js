@@ -6,7 +6,7 @@ const AV=new Set('1f1ec-1f1e7,1f1f8-1f1e6,1f305,1f308,1f309,1f30a,1f30b,1f30d,1f
 const EM=/(?:[\u{1F1E6}-\u{1F1FF}]{2}|[\u{1F300}-\u{1FAFF}☀-➿⬀-⯿⌀-⏿]️?[\u{1F3FB}-\u{1F3FF}]?(?:‍[\u{1F300}-\u{1FAFF}☀-➿♀♂]️?)*)/gu;
 const nm=e=>{const c=[...e].map(x=>x.codePointAt(0).toString(16));for(const n of [c.join('-'),c.filter(x=>x!=='fe0f').join('-'),c.join('-')+'-fe0f'])if(AV.has(n))return n;return null};
 /* الحيوانات المرسومة كاملة (img/scenes): تُعرض بدل الرمز في البطاقات الكبيرة فقط، وتبقى الرموز الصغيرة داخل النصوص */
-window.SCENES=window.SCENES||[];const SC=new Set(window.SCENES);
+window.SCENES=["1f400", "1f402", "1f403", "1f407", "1f40a", "1f40d", "1f410", "1f411", "1f412", "1f413", "1f414", "1f418", "1f41c", "1f41f", "1f422", "1f424", "1f426", "1f427", "1f428", "1f42e", "1f42f", "1f430", "1f431", "1f434", "1f436", "1f437", "1f438", "1f43a", "1f43b", "1f980", "1f981", "1f983", "1f985", "1f986", "1f987", "1f989", "1f98a", "1f98c", "1f992", "1f993", "1f99a", "1f99b", "1f9a6"];const SC=new Set(window.SCENES);
 const BIG='#app .grid .card,#app .grid .opt,#app .opts .opt,.chips.bm-pics button,#app .q,.lf-pic,#app .engrid .opt,#app .sb-opts .opt';
 const SKIP='script,style,textarea,input,select,option,svg,canvas,code,pre,.e3w,[data-no3d]';
 function conv(root){if(!root||root.nodeType!==1&&root.nodeType!==3)return;
