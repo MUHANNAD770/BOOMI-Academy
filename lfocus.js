@@ -16,6 +16,10 @@
  const lang=x=>x[2]||(/[؀-ۿ]/.test(x[0])?'ar':'en');
  /* الحرف الأول بهمزته وحركته كما في الكلمة (أَسَد ← أَ، حِصَان ← حِ) */
  const letterOf=x=>{if(!(window.cur&&cur.k))return'';const m=String(x[0]).trim().match(/^[ء-ي][ً-ْٰ]*|^[A-Za-z]/);return m?m[0]:''};
+ /* بطاقة الحروف الموحّدة: الشيء نفسه بلا خلفية فوق المرج (رسم مفرّغ، أو صورة ثلاثية الأبعاد شفافة) */
+ const CUTS=new Set(["1f400", "1f402", "1f403", "1f407", "1f410", "1f411", "1f412", "1f413", "1f418", "1f422", "1f42a", "1f42f", "1f430", "1f434", "1f436", "1f437", "1f43a", "1f43b", "1f54a", "1f981", "1f985", "1f986", "1f988", "1f98a", "1f98c", "1f993", "1f99b", "1f9a6"]);
+ const objImg=(e,alt)=>{const k=scKey(e);if(CUTS.has(k))return `<img src="img/cut/${k}.webp" alt="${esc(alt)}">`;
+  let n=null;try{n=window.Emoji3D&&Emoji3D.name(String(e).trim())}catch(x){}return n?`<img class=lf-3d src="img/3d/${n}.webp" alt="${esc(alt)}">`:`<span class=lf-emo>${esc(e)}</span>`};
  function card(){const L=items(),n=L.length;if(!n)return'';const k=Math.max(0,Math.min(F.i,n-1)),x=L[k],pic=isPic(x[1]),l=lang(x),lt=letterOf(x);
   const mic=window.P&&P.mic&&(window.SpeechRecognition||window.webkitSpeechRecognition);
   return `<div class=lf-top><button class=lf-home onclick="home()" aria-label="الرئيسية">🏠</button><b class=lf-title>${esc(cur.n)}</b>
@@ -23,7 +27,7 @@
   <div class=lf-body>
    <div class="lf-card${lt?' lf-k':''}" onclick="lfSay()">
     ${lt?`<div class="lf-letter${/[A-Za-z]/.test(lt)?' lf-latin':''}">${esc(lt)}</div>`:''}
-    ${pic&&SCN.has(scKey(x[1]))?`<div class=lf-scene><img src="img/scenes/${scKey(x[1])}.webp" alt="${esc(x[0])}"></div>`:`<div class="lf-pic${lt?'':' lf-pic-big'}">${pic?esc(x[1]):'📖'}</div>`}
+    ${lt&&pic?`<div class=lf-obj>${objImg(x[1],x[0])}</div>`:pic&&SCN.has(scKey(x[1]))?`<div class=lf-scene><img src="img/scenes/${scKey(x[1])}.webp" alt="${esc(x[0])}"></div>`:`<div class="lf-pic${lt?'':' lf-pic-big'}">${pic?esc(x[1]):'📖'}</div>`}
     <div class=lf-word dir=auto>${esc(x[0])}</div>${!pic&&x[1]?`<div class=lf-mean dir=auto>${esc(x[1])}</div>`:''}
    </div>
    <div class=lf-side>

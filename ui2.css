@@ -492,3 +492,21 @@ img.e3s{width:3.2em!important;height:3.2em!important;max-width:120px;max-height:
 .lf-card.lf-k .lf-letter{font-size:24cqw!important;padding:0 0 3cqw!important;line-height:1.35!important}
 .lf-card.lf-k .lf-letter.lf-latin{font-size:32cqw!important;line-height:1!important}
 .lf-card.lf-k .lf-word{font-size:11cqw!important;padding:1.5cqw 4cqw!important}
+/* ===== بطاقة الحروف الموحّدة (مطابقة للتصميم المرجعي): خلفية مرج واحدة، الشيء مدمج يسارًا بلا مربع، الحرف المجسّم يمينًا في مربع كريمي، والاسم في شريط كريمي عريض أسفل ===== */
+.lf-card.lf-k{display:grid!important;grid-template-columns:1.15fr 1fr!important;grid-template-rows:auto auto;grid-template-areas:"letter obj" "word word"!important;
+ gap:2.5cqw 3cqw!important;padding:4cqw 4cqw 4.5cqw!important;border-radius:6cqw!important;overflow:hidden;position:relative;
+ background:url(img/ui/card-meadow.webp) center 70%/cover no-repeat!important;box-shadow:0 10px 26px rgba(40,30,120,.2),inset 0 0 0 3px rgba(255,255,255,.55)}
+.lf-card.lf-k .lf-obj{grid-area:obj;display:grid;place-items:end center;aspect-ratio:1/1;align-self:end;position:relative}
+.lf-card.lf-k .lf-obj img{width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 2.2cqw 1.6cqw rgba(0,40,0,.32));position:relative;z-index:1}
+.lf-card.lf-k .lf-obj img.lf-3d{width:84%;height:84%}
+.lf-card.lf-k .lf-obj::after{content:'';position:absolute;bottom:1cqw;left:16%;right:16%;height:4cqw;border-radius:50%;background:radial-gradient(rgba(20,60,10,.35),transparent 70%)}
+.lf-card.lf-k .lf-emo{font-size:30cqw;line-height:1}
+.lf-card.lf-k .lf-letter{grid-area:letter;align-self:center;aspect-ratio:1/1;width:100%!important;height:auto!important;
+ background:linear-gradient(160deg,#fffdf6 0%,#f7ecd6 100%)!important;border-radius:5cqw!important;
+ box-shadow:0 1.6cqw 0 #e2cfa7,0 3cqw 4cqw rgba(60,40,10,.25),inset 0 0.6cqw 0 #fff!important;color:#e0262e!important;
+ text-shadow:0 0.6cqw 0 #a5141a,0 1.2cqw 1.6cqw rgba(120,0,0,.3)}
+.lf-card.lf-k .lf-word{grid-area:word;justify-self:stretch;border-radius:5cqw!important;background:linear-gradient(180deg,#fff7da 0%,#f3dca0 100%)!important;
+ box-shadow:0 1.4cqw 0 #d6b264,0 3cqw 4cqw rgba(60,40,10,.22),inset 0 0.5cqw 0 #fffdf3!important;color:#1f1a4d!important}
+:root[data-theme=dark] .lf-card.lf-k{background-image:url(img/ui/card-meadow-night.webp)!important}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .lf-card.lf-k{background-image:url(img/ui/card-meadow-night.webp)!important}}
+.lf-card.lf-k .lf-word{font-size:13cqw!important;font-weight:900!important;padding:1cqw 4cqw!important;line-height:1.45!important}
