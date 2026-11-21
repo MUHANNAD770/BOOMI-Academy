@@ -21,8 +21,8 @@
   return `<div class=lf-top><button class=lf-home onclick="home()" aria-label="الرئيسية">🏠</button><b class=lf-title>${esc(cur.n)}</b>
    <div class=lf-prog><i style="width:${Math.round((k+1)/n*100)}%"></i></div><span class=lf-cnt>${D(k+1)}/${D(n)} ⭐</span></div>
   <div class=lf-body>
-   <div class=lf-card onclick="lfSay()">
-    ${lt?`<div class=lf-letter>${esc(lt)}</div>`:''}
+   <div class="lf-card${lt?' lf-k':''}" onclick="lfSay()">
+    ${lt?`<div class="lf-letter${/[A-Za-z]/.test(lt)?' lf-latin':''}">${esc(lt)}</div>`:''}
     ${pic&&SCN.has(scKey(x[1]))?`<div class=lf-scene><img src="img/scenes/${scKey(x[1])}.webp" alt="${esc(x[0])}"></div>`:`<div class="lf-pic${lt?'':' lf-pic-big'}">${pic?esc(x[1]):'📖'}</div>`}
     <div class=lf-word dir=auto>${esc(x[0])}</div>${!pic&&x[1]?`<div class=lf-mean dir=auto>${esc(x[1])}</div>`:''}
    </div>
@@ -33,7 +33,18 @@
      ${k<n-1?`<button class=lf-next onclick="lfGo(1)">التَّالِي ›</button>`:`<button class="lf-next lf-done" onclick="lfQuiz()">${girl()?'اِبْدَئِي':'اِبْدَأِ'} الِاخْتِبَارَ ✨</button>`}</div>
    </div>
   </div>`}
- const draw=()=>{const e=document.getElementById('lf');if(e)e.innerHTML=card()};
+ /* ملاءمة الحرف داخل مربعه: نقيس ارتفاع الحرف الفعلي بحركته وهمزته ونكبّره ليملأ ٧٢٪ من المربع ويتوسّطه تمامًا */
+ const fit=()=>{try{const e=document.querySelector('.lf-card.lf-k .lf-letter');if(!e)return;const t=e.textContent;const box=e.getBoundingClientRect();if(!box.width)return;
+  const cs=getComputedStyle(e),c=document.createElement('canvas').getContext('2d'),fam=cs.fontFamily,wt=cs.fontWeight,T=100;c.font=`${wt} ${T}px ${fam}`;
+  const m=c.measureText(t),ih=m.actualBoundingBoxAscent+m.actualBoundingBoxDescent,iw=m.actualBoundingBoxLeft+m.actualBoundingBoxRight;if(!ih)return;
+  const k=Math.min(box.height*0.72/ih,box.width*0.72/iw),fs=T*k;
+  /* السطر = ارتفاع المربع، ثم نزيح الحرف حتى يقع مركز رسمه في مركز المربع */
+  const asc=m.actualBoundingBoxAscent*k,dsc=m.actualBoundingBoxDescent*k,fa=(m.fontBoundingBoxAscent||T*.9)*k,fd=(m.fontBoundingBoxDescent||T*.3)*k;
+  const lh=box.height,base=(lh-(fa+fd))/2+fa,inkMid=base-(asc-dsc)/2,shift=lh/2-inkMid;
+  e.style.setProperty('font-size',fs+'px','important');e.style.setProperty('line-height',lh+'px','important');e.style.setProperty('padding','0','important');
+  e.style.display='block';e.style.textAlign='center';e.innerHTML=`<span style="display:inline-block;transform:translateY(${shift.toFixed(1)}px)">${t.replace(/[&<]/g,'')}</span>`}catch(x){}};
+ addEventListener('resize',()=>setTimeout(fit,60));
+ const draw=()=>{const e=document.getElementById('lf');if(e){e.innerHTML=card();requestAnimationFrame(fit)}};
  window.lfSay=()=>{const x=items()[F.i];if(x)try{say(x[0],lang(x))}catch(e){}};
  window.lfGo=d=>{const n=items().length;F.i=Math.max(0,Math.min(n-1,F.i+d));draw();setTimeout(lfSay,120)};
  window.lfQuiz=()=>{const b=[...document.querySelectorAll('#app button.big')].find(e=>/quiz\(\)/.test(e.getAttribute('onclick')||''));if(b)b.click();else if(typeof quiz==='function')quiz()};
@@ -50,7 +61,7 @@
  /* نضيف البطاقة أعلى صفحة الدرس، ونطوي الشبكة الأصلية تحت «عرض كل البطاقات» */
  const decorate=()=>{try{if(window.V!=='lesson'||!window.cur||items().length<2)return;const app=document.getElementById('app'),g=app&&app.querySelector('.grid');if(!g||document.getElementById('lf'))return;
    if(F.id!==cur.id){F.id=cur.id;F.i=0}
-   const box=document.createElement('section');box.id='lf';box.className='lf';box.innerHTML=card();
+   const box=document.createElement('section');box.id='lf';box.className='lf';box.innerHTML=card();setTimeout(fit,30);(document.fonts&&document.fonts.ready||Promise.resolve()).then(()=>setTimeout(fit,30));
    const h2=app.querySelector('h2');(h2||g).insertAdjacentElement(h2?'afterend':'beforebegin',box);if(h2)h2.classList.add('lf-h2');
    const det=document.createElement('details');det.id='lf-all';det.className='lf-all';det.innerHTML=`<summary>🗂️ عَرْضُ كُلِّ الْبِطَاقَاتِ (${D(items().length)})</summary>`;g.insertAdjacentElement('beforebegin',det);det.appendChild(g);
   }catch(e){}};
