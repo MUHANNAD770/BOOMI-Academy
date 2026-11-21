@@ -5,7 +5,7 @@
    • أسئلة القصص الإنجليزية للمبتدئ مع ترجمتها العربية. النتائج في P.stories (نجوم) وتصل لعقل بومي.
    • لا يُحذف شيء من القصص القديمة: تبقى في تبويباتها. */
 (()=>{'use strict';
-const FILE='data/stories-bank.json?v=5';let DATA=null,LOAD=null;
+const FILE='data/stories-bank.json?v=6';let DATA=null,LOAD=null;
 const load=()=>DATA?Promise.resolve(DATA):(LOAD||(LOAD=fetch(FILE).then(r=>r.json()).then(j=>DATA=j).catch(e=>{LOAD=null;throw e})));
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const shuf=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
@@ -19,23 +19,29 @@ const GT=t=>window.studentGenderText?studentGenderText(t):t; /* رسائل ال�
 const say1=(t,l,cb)=>{try{if(window.muted&&muted()){cb&&cb();return}say(t,l||'ar',cb)}catch(e){}};
 const pic=(s,n)=>s.img?`<img class=sb-photo src="${esc(s.img)}" alt="${esc(s.alt)}">`:`<span class=sb-scene aria-label="${esc(s.alt)}">${s.sc.slice(0,n||4).map((e,i)=>`<i style="--k:${i}">${e}</i>`).join('')}</span>`;
 /* ===== المكتبة ===== */
+const LV=[{lv:['Pre-A1','A1'],ar:'الْمُبْتَدِئُ',en:'Beginner',d:'كَلِمَاتٌ وَجُمَلٌ بَسِيطَةٌ مَعَ صُوَرٍ مُسَاعِدَةٍ',ic:'🔤'},
+ {lv:['A2'],ar:'الْمُبْتَدِئُ الْمُتَقَدِّمُ',en:'High Beginner',d:'قِصَصٌ أَطْوَلُ بِقَلِيلٍ وَمُفْرَدَاتٌ جَدِيدَةٌ',ic:'📚'},
+ {lv:['B1'],ar:'الْمُتَوَسِّطُ',en:'Intermediate',d:'قِصَصٌ مُتَنَوِّعَةٌ مَعَ فَهْمٍ أَعْمَقَ',ic:'🏆'},
+ {lv:['B2'],ar:'الْمُتَقَدِّمُ',en:'Advanced',d:'قِصَصٌ عَمِيقَةٌ مَعَ تَحْلِيلٍ وَاسْتِنْتَاجٍ',ic:'🏅'},
+ {lv:['C1','C2'],ar:'الْمُتْقِنُ',en:'Mastery',d:'قِصَصٌ مُلْهِمَةٌ مَعَ أَفْكَارٍ عَمِيقَةٍ',ic:'👑'}];
 const oStories=window.stories;
 function tabs(cur){return `<div class=course-filters><button class="${cur==='lib'?'on':''}" onclick="stories('lib')">📚 المكتبة المتدرّجة</button><button class="${cur==='ar'?'on':''}" onclick="stories('ar')">📖 قصص عربية</button><button class="${cur==='en'?'on':''}" onclick="stories('en')">📘 English stories</button><button class="${cur==='talk'?'on':''}" onclick="stories('talk')">💬 Conversations</button></div>`}
 window.stories=function(tab,lang){if(tab&&tab!=='lib'){const r=oStories.apply(this,arguments);try{const f=document.querySelector('#app .stories .course-filters');if(f)f.outerHTML=tabs(tab)}catch(e){}return r}
  V='sec';window.CS='games';lang=lang||'all';
- h(`<section class="sec stories sb-lib"><div class=path-h style="background:linear-gradient(135deg,#9be7b0,#25a43a)"><span>📚</span><div><h2>عالم القصص والقراءة</h2><p>قصص بالتدريج من المبتدئ إلى المتقن</p></div></div>${tabs('lib')}<p class=mut>⏳ تحميل المكتبة…</p></section>`);
+ h(`<section class="sec stories sb-lib"><div class=sb-banner><img class=sb-owl src="img/stories/_owl-reading.webp" alt=""><div class=sb-sign><h2>قِصَصُ الْبُومَةِ التَّعْلِيمِيَّةِ الذَّكِيَّةِ</h2><p>رِحْلَةٌ مُمْتِعَةٌ مِنَ الْقِرَاءَةِ إِلَى الْإِتْقَانِ ⭐</p></div><div class=sb-cloud><b>اِقْرَأْ . اِفْهَمْ . تَعَلَّمْ . حَقِّقْ أَهْدَافَكَ</b><small dir=ltr>Read • Understand • Learn • Achieve</small></div></div>${tabs('lib')}<p class=mut>⏳ تحميل المكتبة…</p></section>`);
  load().then(d=>{const sec=document.querySelector('.sb-lib');if(!sec)return;const L=s=>lang==='all'||s.l===lang;
   const done=all().filter(s=>best(s.id)!=null).length,next=all().find(s=>L(s)&&best(s.id)==null);
   let html=`<div class=sb-langs>${[['all','الكل'],['ar','📖 عربي'],['en','📘 English']].map(([k,t])=>`<button class="${lang===k?'on':''}" onclick="stories('lib','${k}')">${t}</button>`).join('')}</div>
    <p class=mut>${NS(all().length)} · المقروءة ${D(done)}. ${window.P&&P.gender==='female'?'اِبْدَئِي':'اِبْدَأْ'} مِنَ الْأَعْلَى، وَالْقِصَّةُ التَّالِيَةُ عَلَيْهَا ▶.</p>`;
-  d.stages.forEach((g,gi)=>{const S0=g.stories.filter(L);if(!S0.length)return;const dn=S0.filter(s=>best(s.id)!=null).length;
-   html+=`<details class="lesson-menu sb-stage"${S0.includes(next)?' open':''}><summary><span><b>${g.ic} ${esc(g.name)}</b><small>${esc(g.levels)} · ${NS(S0.length)} · المقروءة ${D(dn)}</small></span><i>⌄</i></summary>
-    <div class="story-grid sb-grid">${S0.map(s=>`<button class="story-card sb-card${s===next?' sb-next':''}" onclick="sbStory('${s.id}')">${pic(s,3)}<b dir=auto>${esc(s.t)}</b><small><em class=sb-lang>${s.l==='en'?'English':'عربي'}</em> <em class=sb-lv>${esc(s.lv)}</em> ${best(s.id)!=null?stars(best(s.id)):s===next?'▶ التالية':''}${tb(s.id)!=null?` <em class=sb-lv>📝 ${D(tb(s.id))}٪</em>`:''}</small></button>`).join('')}</div></details>`});
+  /* خمسة مستويات كما في تصميم المكتبة (حسب مستوى القصة) */
+  LV.forEach((v,gi)=>{const S0=all().filter(s=>L(s)&&v.lv.includes(s.lv));if(!S0.length)return;const dn=S0.filter(s=>best(s.id)!=null).length;
+   html+=`<details class="lesson-menu sb-stage sb-row sb-r${gi+1}"${S0.includes(next)?' open':''}><summary><span class=sb-num>${D(gi+1)}</span><span class=sb-rt><b>${v.ar}</b><em dir=ltr>${v.en}</em><small>${v.d}</small><small class=sb-st>${'⭐'.repeat(gi+1)} · ${NS(S0.length)} · المقروءة ${D(dn)}</small></span><span class=sb-ri>${v.ic}</span><i>⌄</i></summary>
+    <div class="story-grid sb-grid">${S0.map(s=>`<button class="story-card sb-card${s===next?' sb-next':''}" onclick="sbStory('${s.id}')">${pic(s,3)}<b dir=auto>${esc(s.l==='en'&&s.ta?s.ta:s.t)}</b>${(s.l==='en'?s.t:s.tt)?`<span class=sb-ct dir=ltr>${esc(s.l==='en'?s.t:s.tt)}</span>`:''}<small><em class=sb-lang>${s.l==='en'?'English':'عربي'}</em> <em class=sb-lv>${esc(s.lv)}</em> ${best(s.id)!=null?stars(best(s.id)):s===next?'▶ التالية':''}${tb(s.id)!=null?` <em class=sb-lv>📝 ${D(tb(s.id))}٪</em>`:''}</small></button>`).join('')}</div></details>`});
   sec.querySelector('.mut').outerHTML=html}).catch(()=>{const m=document.querySelector('.sb-lib .mut');if(m)m.textContent='تعذّر تحميل المكتبة. تأكد من الاتصال ثم حاول مرة أخرى.'})};
 /* ===== قراءة القصة ===== */
 window.sbStory=function(id){load().then(()=>{const s=find(id);if(!s)return stories('lib');V='lesson';window.CS='games';const en=s.l==='en',dir=en?'ltr':'rtl';
  h(`<section class="sec story sb-story"><button class=link onclick="stories('lib')">← المكتبة</button>
- <div class=sb-hero>${pic(s)}<h2 dir=auto>${esc(s.t)}</h2>${s.tt?`<p class=sb-tt dir=ltr>${esc(s.tt)}</p>`:''}<small><em class=sb-lang>${en?'English':'عربي'}</em> <em class=sb-lv>${esc(s.lv)}</em> ${esc(s.stage)}</small></div>
+ <div class=sb-hero>${pic(s)}<h2 dir=auto>${esc(s.t)}</h2>${s.tt?`<p class=sb-tt dir=ltr>${esc(s.tt)}</p>`:''}${s.ta?`<p class=sb-tt dir=rtl>${esc(s.ta)}</p>`:''}<small><em class=sb-lang>${en?'English':'عربي'}</em> <em class=sb-lv>${esc(s.lv)}</em> ${esc(s.stage)}</small></div>
  <div class=story-text dir=${dir}>${s.s.map((t,i)=>`<span class=ss data-i=${i} onclick="sbSay('${id}',${i})">${esc(t)}</span>`).join(' ')}</div>
  <p class=mut>اضغط على أي جملة لتسمعها.</p>
  ${s.m?`<p class=sb-moral dir=auto>🌟 الْعِبْرَةُ: ${esc(s.m)}</p>`:''}

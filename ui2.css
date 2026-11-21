@@ -363,3 +363,61 @@ button.bank-sub{width:100%;border:0;font:inherit;text-align:start;cursor:pointer
 /* الوضع الداكن: أرقام لوحة ولي الأمر وسطر تفاصيل مراحل مكتبة القصص كانت باهتة على الخلفية الداكنة */
 :root[data-theme=dark] .pm-st b{color:#d6ccff!important}:root[data-theme=dark] .lesson-menu summary small{color:#c3c8f0!important}
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]) .pm-st b{color:#d6ccff!important}:root:not([data-theme=light]) .lesson-menu summary small{color:#c3c8f0!important}}
+/* ===== شاشة الدرس بطاقة بطاقة (lfocus.js) كما في التصميم ===== */
+.lf{margin:6px 0 14px;border-radius:24px;overflow:hidden;background:#fff;box-shadow:0 10px 26px rgba(76,56,200,.16)}
+.lf-top{display:flex;align-items:center;gap:10px;padding:10px 12px;background:linear-gradient(90deg,#6a4cf0,#8b6cff);color:#fff}
+.lf-home{background:rgba(255,255,255,.18)!important;border:0!important;color:#fff!important;border-radius:12px!important;min-width:40px;min-height:40px;font-size:1.2rem}
+.lf-title{flex:1;font-size:1.05rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lf-prog{width:80px;height:9px;border-radius:9px;background:rgba(255,255,255,.3);overflow:hidden}.lf-prog i{display:block;height:100%;background:linear-gradient(90deg,#3ddc84,#22a35a);border-radius:9px;transition:width .35s}
+.lf-cnt{font-weight:800;font-size:.95rem;white-space:nowrap}
+.lf-body{display:grid;grid-template-columns:1.15fr 1fr;gap:12px;padding:14px;align-items:stretch}
+@media(max-width:380px){.lf-body{grid-template-columns:1fr}}
+.lf-card{border-radius:20px;background:linear-gradient(180deg,#bfe9ff 0%,#d9f7c9 62%,#9ad86c 100%);padding:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;min-height:230px;position:relative}
+.lf-letter{background:#fff;border-radius:18px;min-width:84px;padding:4px 16px;text-align:center;font-size:4.2rem;font-weight:900;color:#e5484d;line-height:1.2;box-shadow:0 6px 0 rgba(0,0,0,.06)}
+.lf-pic{font-size:4.6rem;line-height:1}.lf-pic-big{font-size:6.2rem}
+.lf-pic img,.lf-pic .e3d{width:1.15em!important;height:1.15em!important}
+.lf-word{background:linear-gradient(180deg,#fff7d6,#ffe9a8);border-radius:16px;padding:4px 18px;font-size:1.8rem;font-weight:900;color:#2a1f6b;box-shadow:0 4px 0 #e3c46a}
+.lf-mean{font-size:1rem;font-weight:700;color:#2a1f6b;opacity:.8}
+.lf-side{display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center}
+.lf-listen{display:flex!important;align-items:center;gap:8px;width:100%;justify-content:center;background:#fff!important;border:2px solid #e6e0ff!important;border-radius:18px!important;padding:8px!important;color:#2a1f6b!important}
+.lf-listen span{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#8b6cff,#6a4cf0);color:#fff;font-size:1.2rem;flex:none}
+.lf-listen b{font-size:.95rem}
+.lf-mic{width:96px;height:96px;border-radius:50%!important;border:0!important;background:radial-gradient(circle at 35% 30%,#9b7dff,#5b3fe0)!important;color:#fff!important;font-size:2.4rem;box-shadow:0 10px 24px rgba(91,63,224,.35),0 0 0 10px rgba(139,108,255,.15)}
+.lf-mic.on{animation:mvp 1s infinite;background:radial-gradient(circle at 35% 30%,#ff7b7f,#e5484d)!important}
+.lf-mic-t{text-align:center;font-weight:700;min-height:1.2em}
+.lf-nav{display:flex;gap:8px;width:100%}.lf-nav button{flex:1;border-radius:16px!important;min-height:46px;font-weight:800}
+.lf-prev{background:#eef0f7!important;color:#6b6f8f!important;border:0!important}.lf-prev[disabled]{opacity:.5}
+.lf-next{background:linear-gradient(135deg,#8b6cff,#6a4cf0)!important;color:#fff!important;border:0!important}.lf-done{background:linear-gradient(135deg,#ffcf3d,#ffb400)!important;color:#2a1f6b!important}
+.lf-all{margin:8px 0}.lf-all summary{cursor:pointer;font-weight:800;padding:10px 12px;border-radius:14px;background:rgba(108,92,231,.08)}
+:root[data-theme=dark] .lf{background:#24275e}:root[data-theme=dark] .lf-listen{background:#2e3270!important;border-color:#3a3f86!important;color:#eef0ff!important}:root[data-theme=dark] .lf-mic-t{color:#eef0ff}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .lf{background:#24275e}:root:not([data-theme=light]) .lf-listen{background:#2e3270!important;border-color:#3a3f86!important;color:#eef0ff!important}:root:not([data-theme=light]) .lf-mic-t{color:#eef0ff}}
+/* ===== مكتبة القصص كما في التصميم: لافتة البومة وخمسة مستويات ملوّنة ===== */
+.sb-banner{position:relative;border-radius:24px;overflow:hidden;min-height:150px;background:linear-gradient(180deg,#7cc8ff,#bfe9ff 60%,#9ad86c);display:grid;grid-template-columns:42% 1fr;align-items:center;gap:6px;padding:8px;box-shadow:0 10px 26px rgba(76,56,200,.16);margin-bottom:10px}
+.sb-owl{width:100%;max-height:150px;object-fit:contain;border-radius:16px;align-self:end}
+.sb-sign{background:linear-gradient(180deg,#c98a4a,#a8682d);border:3px solid #7a4a1f;border-radius:16px;padding:8px 10px;color:#fff;text-align:center;box-shadow:0 6px 0 rgba(0,0,0,.18)}
+.sb-sign h2{margin:0;font-size:1.05rem;line-height:1.5;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.25)}
+.sb-sign p{margin:4px 0 0;font-size:.8rem;font-weight:800;background:#ffe7a3;color:#5a3d12;border-radius:10px;padding:2px 6px}
+.sb-cloud{grid-column:1/-1;background:rgba(255,255,255,.88);border-radius:999px;padding:6px 14px;text-align:center;color:#2a1f6b}
+.sb-cloud b{display:block;font-size:.9rem}.sb-cloud small{font-weight:800;color:#5b4bd6}
+.sb-row{border-radius:22px!important;overflow:hidden;margin:10px 0!important;border:2px solid var(--rc,#cfe9b6)!important;background:var(--rb,#f3fbe9)!important}
+.sb-r1{--rc:#9ad86c;--rb:#f1fbe7;--rn:#2bb24c}.sb-r2{--rc:#8ec5ff;--rb:#edf6ff;--rn:#2f7de1}.sb-r3{--rc:#c7a6ff;--rb:#f5efff;--rn:#7c4ddb}.sb-r4{--rc:#ffc17a;--rb:#fff5e8;--rn:#f0851c}.sb-r5{--rc:#ff9fbf;--rb:#fff0f5;--rn:#e5487a}
+.sb-row>summary{display:flex!important;align-items:center;gap:10px;padding:10px!important;background:transparent!important}
+.sb-num{flex:none;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:var(--rn);color:#fff;font-size:1.6rem;font-weight:900;box-shadow:0 4px 0 rgba(0,0,0,.15)}
+.sb-rt{flex:1;display:flex;flex-direction:column;gap:1px;min-width:0}
+.sb-rt b{font-size:1.15rem;color:var(--rn)!important}.sb-rt em{font-style:normal;font-weight:800;color:#2a1f6b;font-size:.9rem}
+.sb-rt small{font-size:.8rem;color:#4a4f72}.sb-st{font-weight:700}
+.sb-ri{font-size:2rem;flex:none}
+.sb-row .sb-grid{padding:0 10px 12px}
+.sb-card .sb-photo{width:100%;aspect-ratio:16/8;object-fit:cover;border-radius:14px}
+.sb-ct{display:block;font-size:.78rem;font-weight:700;color:#5b4bd6;margin-top:1px}
+:root[data-theme=dark] .sb-row{background:#24275e!important}:root[data-theme=dark] .sb-rt em{color:#eef0ff}:root[data-theme=dark] .sb-rt small{color:#c3c8f0}:root[data-theme=dark] .sb-ct{color:#c9bcff}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .sb-row{background:#24275e!important}:root:not([data-theme=light]) .sb-rt em{color:#eef0ff}:root:not([data-theme=light]) .sb-rt small{color:#c3c8f0}:root:not([data-theme=light]) .sb-ct{color:#c9bcff}}
+.story-card .sb-ct,.sb-card .sb-ct{font-size:.78rem!important;line-height:1.35!important;font-weight:700!important;display:block!important;margin:1px 0 2px!important;color:#5b4bd6;animation:none!important}
+.sb-row>summary .sb-rt b{font-size:1.1rem!important;line-height:1.4}.sb-row>summary .sb-rt em{font-size:.85rem!important}.sb-row>summary .sb-rt small{font-size:.78rem!important;line-height:1.5}
+.sb-row>summary>span.sb-rt{display:flex!important;flex-direction:column!important;align-items:flex-start!important;text-align:start}
+.lf-h2{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.lf-nav button{white-space:nowrap;font-size:.95rem!important;padding:6px 8px!important}
+/* بطاقة الدرس في الوضع الداكن: سماء ليلية وعشب داكن بدل الألوان الفاتحة */
+:root[data-theme=dark] .lf-card{background:linear-gradient(180deg,#2b3478 0%,#27466b 60%,#2c5a3e 100%)}
+:root[data-theme=dark] .lf-letter{background:#f3f1ff}:root[data-theme=dark] .lf-mean{color:#e6e8ff}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .lf-card{background:linear-gradient(180deg,#2b3478 0%,#27466b 60%,#2c5a3e 100%)}:root:not([data-theme=light]) .lf-letter{background:#f3f1ff}:root:not([data-theme=light]) .lf-mean{color:#e6e8ff}}
