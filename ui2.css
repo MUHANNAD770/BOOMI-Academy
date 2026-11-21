@@ -530,3 +530,6 @@ html.bm-open body{position:fixed;left:0;right:0;width:100%}
 .qh{padding-inline:16px!important;gap:12px!important;box-sizing:border-box}
 .qh .x{margin-inline-start:2px}
 .qh .hp{padding-inline:8px 4px;white-space:nowrap;flex:none}
+/* مسافة بين شريط الاختبار العلوي وبومة السؤال (كانت ملتصقة به) */
+.qh+.qo,.qh~.qo{margin-top:18px!important}
+.qo svg,.qo .owl,.qo #mc{overflow:visible}
