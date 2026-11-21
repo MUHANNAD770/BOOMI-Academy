@@ -16,12 +16,17 @@ if(typeof oSec==='function')window.sec=function(k){const r=oSec.apply(this,argum
   h2.insertAdjacentHTML('beforebegin',`<div class=ach-hd><span class=ach-cup>🏆</span><div class=ach-rib>إنجازاتي</div><b>${st?'أحسنت يا بطل!':'هيا نبدأ رحلة الإنجازات!'}</b><small>${st?`جمعت ${st} نجمة${bd?` و${bd} شارة`:''} 🌟`:'كل درس تتقنه يمنحك نجومًا وشارات جديدة'}</small><span class="ach-conf c1">🎉</span><span class="ach-conf c2">✨</span></div>`)}}catch(e){}return r};
 /* لوحة ولي الأمر: مستوى الإتقان (متوسط أفضل نتائج الدروس من ٥) + الإنجازات + الدروس المكتملة + النجوم */
 const oPar=window.parent;
+/* وقت التعلّم (P.tm بالثواني): يُحسب فقط والصفحة ظاهرة والطالب تفاعل خلال آخر دقيقة */
+const AD2='٠١٢٣٤٥٦٧٨٩',D2=n=>String(n).replace(/\d/g,d=>AD2[d]);
+const tmTxt=t=>{t=+t||0;const h=Math.floor(t/3600),m=Math.round(t%3600/60);return h?`${D2(h)}س ${D2(m)}د`:`${D2(m)} دقيقة`};
+let lastAct=Date.now();['pointerdown','keydown','touchstart'].forEach(e=>document.addEventListener(e,()=>{lastAct=Date.now()},{passive:true,capture:true}));
+setInterval(()=>{try{if(window.P&&document.visibilityState==='visible'&&Date.now()-lastAct<60000&&window.V!=='setup'&&window.V!=='who'){P.tm=(+P.tm||0)+15;if((P.tm/15)%4===0)save()}}catch(e){}},15000);
 if(typeof oPar==='function'&&oPar!==window.top)window.parent=function(){const r=oPar.apply(this,arguments);try{const A=document.getElementById('app'),h2=A&&A.querySelector('h2');if(!h2||A.querySelector('.pm-card'))return r;
  const P0=window.P||{},sc=Object.values(P0.sc||{}).map(Number).filter(x=>x>=0),pct=sc.length?Math.round(sc.reduce((a,b)=>a+b,0)/sc.length/5*100):0,
   done=Object.keys(P0.done||{}).length,bd=Object.keys(P0.badges||{}).length,st=+P0.star||0,R=44,C=2*Math.PI*R;
  h2.insertAdjacentHTML('afterend',`<div class=pm-card><div class=pm-ring><svg viewBox="0 0 110 110" aria-hidden=true><circle cx=55 cy=55 r=${R} class=pm-bg /><circle cx=55 cy=55 r=${R} class=pm-fg stroke-dasharray="${C}" stroke-dashoffset="${C*(1-pct/100)}" /></svg><b>${pct}٪</b><small>مستوى الإتقان</small></div>
   <div class=pm-who><span class=pm-av>${P0.gender==='female'?'👧':'👦'}</span><div><b>${esc(P0.name)}</b><small>${P0.age?esc(P0.age)+' سنوات':''}</small></div></div>
-  <ul class=pm-st><li><span>🏆</span>الإنجازات<b>${bd}</b></li><li><span>⭐</span>النجوم<b>${st}</b></li><li><span>📚</span>الدروس المكتملة<b>${done}</b></li></ul></div>${mindCard()}${(window.BankReport&&BankReport())||''}${themeCard()}`)}catch(e){}return r};
+  <ul class=pm-st><li><span>🏆</span>الإنجازات<b>${bd}</b></li><li><span>⭐</span>النجوم<b>${st}</b></li><li><span>📚</span>الدروس المكتملة<b>${done}</b></li><li><span>⏱️</span>وقت التعلّم<b>${tmTxt(P0.tm)}</b></li></ul></div>${mindCard()}${(window.BankReport&&BankReport())||''}${themeCard()}`)}catch(e){}return r};
 /* تحليل بومي: من العقل الموحّد (mind/hub.js) — إتقان كل مادة، ما يحتاج تدريبًا (بزر تدريب مباشر)، المتقن، الأخطاء المتكررة، والخطوة المقترحة */
 function mindCard(){const M=window.Mind;if(!M)return'';const bs=M.bySubject(),w=M.weak(4),g=M.strong(3),nx=M.next();let errs=[];try{errs=(window.MindMemory&&MindMemory.summary().errs)||[]}catch(e){}
  const bars=Object.values(bs).map(x=>`<li><span>${esc(x.name)}</span><i><b style="width:${M.pct(x.p)}%"></b></i><em>${M.pct(x.p)}٪</em></li>`).join('');

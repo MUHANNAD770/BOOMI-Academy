@@ -435,3 +435,11 @@ button.bank-sub{width:100%;border:0;font:inherit;text-align:start;cursor:pointer
 :root:not([data-theme=light]) .sb-card{background:#262b62!important;border-color:#3a3f86!important;color:#f4f4ff}:root:not([data-theme=light]) .sb-card b{color:#f4f4ff!important}
 :root:not([data-theme=light]) .sb-card .sb-ct{color:#c9bcff!important}
 :root:not([data-theme=light]) .sb-story .story-text{background:#1f2358!important;color:#f1f2ff!important;border-color:#3a3f86!important}}
+/* ===== الصفحة الرئيسية بالرسومات (من تصميم صاحب المشروع): بومة تحمل كتابًا وقلعة، وصور الأكاديميات ===== */
+.h2-owlbig{position:absolute;left:2px;bottom:-4px;width:min(40%,170px);height:auto;z-index:0;filter:drop-shadow(0 10px 14px rgba(60,40,140,.28));animation:h2float 6s ease-in-out infinite;pointer-events:none}
+.h2-hero .h2-castle{opacity:.9;width:110px;left:-18px;bottom:0}
+.h2-txt{margin-left:min(36%,150px)!important;z-index:1}
+.h2-img{min-height:74px}.h2-img img{height:72px;width:auto;max-width:96%;object-fit:contain;filter:drop-shadow(0 6px 8px rgba(0,0,0,.18))}
+.ico-pic{background:none!important;box-shadow:none!important}.ico-pic img{width:54px;height:54px;object-fit:contain;filter:drop-shadow(0 5px 6px rgba(0,0,0,.18))}
+@media(min-width:760px){.h2-owlbig{width:230px}.h2-img img{height:90px}}
+@media(prefers-reduced-motion:reduce){.h2-owlbig{animation:none}}
