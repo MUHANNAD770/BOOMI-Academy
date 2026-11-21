@@ -421,3 +421,17 @@ button.bank-sub{width:100%;border:0;font:inherit;text-align:start;cursor:pointer
 :root[data-theme=dark] .lf-card{background:linear-gradient(180deg,#2b3478 0%,#27466b 60%,#2c5a3e 100%)}
 :root[data-theme=dark] .lf-letter{background:#f3f1ff}:root[data-theme=dark] .lf-mean{color:#e6e8ff}
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]) .lf-card{background:linear-gradient(180deg,#2b3478 0%,#27466b 60%,#2c5a3e 100%)}:root:not([data-theme=light]) .lf-letter{background:#f3f1ff}:root:not([data-theme=light]) .lf-mean{color:#e6e8ff}}
+/* تنسيق الوضع الداكن لمكتبة القصص وصفحة القصة (كانت البطاقات والنص فاتحة على خلفية داكنة) */
+.sb-hero .sb-photo{width:100%;aspect-ratio:9/4;object-fit:cover;border-radius:20px}
+:root[data-theme=dark] .sb-banner{background:linear-gradient(180deg,#1c2266,#2a3a7a 60%,#244d3a)}
+:root[data-theme=dark] .sb-cloud{background:rgba(24,28,80,.85);color:#eef0ff}:root[data-theme=dark] .sb-cloud small{color:#c9bcff}
+:root[data-theme=dark] .sb-card{background:#262b62!important;border-color:#3a3f86!important;color:#f4f4ff}:root[data-theme=dark] .sb-card b{color:#f4f4ff!important}
+:root[data-theme=dark] .sb-card .sb-ct{color:#c9bcff!important}
+:root[data-theme=dark] .sb-story .story-text{background:#1f2358!important;color:#f1f2ff!important;border-color:#3a3f86!important}
+:root[data-theme=dark] .sb-moral{background:linear-gradient(135deg,#3b3420,#4a3c12);color:#ffe9a8}
+@media(prefers-color-scheme:dark){
+:root:not([data-theme=light]) .sb-banner{background:linear-gradient(180deg,#1c2266,#2a3a7a 60%,#244d3a)}
+:root:not([data-theme=light]) .sb-cloud{background:rgba(24,28,80,.85);color:#eef0ff}:root:not([data-theme=light]) .sb-cloud small{color:#c9bcff}
+:root:not([data-theme=light]) .sb-card{background:#262b62!important;border-color:#3a3f86!important;color:#f4f4ff}:root:not([data-theme=light]) .sb-card b{color:#f4f4ff!important}
+:root:not([data-theme=light]) .sb-card .sb-ct{color:#c9bcff!important}
+:root:not([data-theme=light]) .sb-story .story-text{background:#1f2358!important;color:#f1f2ff!important;border-color:#3a3f86!important}}
