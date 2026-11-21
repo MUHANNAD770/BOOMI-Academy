@@ -85,7 +85,7 @@ for(const[a,u]of NEW){if(!S[a])continue;const id=a+'-'+S[a].u.length;u.id=id;u.l
 
 /* ---------- ٣) أنواع التمارين الإنجليزية ---------- */
 const LET='abcdefghijklmnopqrstuvwxyz'.split(''),VOW='aeiou';
-const mk=(it,show,right,wrongs,extra)=>{const o=shuf([right,...wrongs.filter(w=>w!==right)].filter((x,i,a)=>a.indexOf(x)===i).slice(0,4));if(o.length<2)return null;
+const mk=(it,show,right,wrongs,extra)=>{const o=shuf([right,...wrongs.filter(w=>w!==right&&isPic(w)===isPic(right)) /* لا خليط بين الصور والكلمات */].filter((x,i,a)=>a.indexOf(x)===i).slice(0,4));if(o.length<2)return null;
  return Object.assign({k:it[0],m:0,l:'en',show,opts:o.map(h=>({h,ok:h===right})),ex:[`${it[0]} = ${it[1]}`,`الْكَلِمَةُ: ${it[0]}`]},extra||{})};
 const others=(u,it,f)=>shuf(u.i.filter(x=>x!==it&&(!f||f(x))));
 const ar=it=>{const m=String(it[1]);if(/[؀-ۿ]/.test(m))return m.replace(/[\p{Extended_Pictographic}️‍]/gu,'').trim();try{return window.EnCoach&&EnCoach.meaning(it[0])||''}catch(e){return''}}; /* (القاموس لا يعطي معنى لجملة كاملة إلا إذا كُتبت ترجمتها في الدرس) */

@@ -43,8 +43,9 @@ if(k=='mul'){a=R(1,[2,5,10,12][l-1]);b=pk(B);return Q(`<div class=q dir=ltr>${D(
 b=pk(B);const c=R(1,[5,10,10,12][l-1]);a=b*c;return Q(`<div class=q dir=ltr>${D(a)} ÷ ${D(b)} = ؟</div>`,no(c,0,20,3),[`كم مرة يدخل ${D(b)} في ${D(a)}؟ اقفز: ${Array.from({length:c},(_,i)=>D(b*(i+1))).join('، ')}`,`وزّع ${D(a)} على ${D(b)} مجموعات متساوية: في كل مجموعة ${D(c)}`])}
 
 /* ---------- أسئلة اللغة: متنوعة، وتتغير الطريقة بعد كل مرة ---------- */
+const PIC=v=>/\p{Extended_Pictographic}/u.test(String(v))&&!/[\p{L}\p{N}]/u.test(String(v));
 function lq(it,pool){const s=P.sk[it[0]]||{},m=((s.lm??2)+1)%3,typ=s.n>=3&&!s.m&&stripD(it[0]).length<12&&!/\s/.test(it[0])&&Math.random()<.5,
-o=shuf([it,...(a=>m?a.filter((x,i)=>a.findIndex(y=>y[1]==x[1])==i):a)(shuf(pool.filter(x=>x[1]!=it[1]&&x[0]!=it[0]))).slice(0,3)]),ex=[`الصحيح: ${it[0]} ${it[1]}`,`استمع 🔊 ثم انظر: ${it[0]} ⟵ ${it[1]}`];
+o=shuf([it,...(a=>m?a.filter((x,i)=>a.findIndex(y=>y[1]==x[1])==i):a)(shuf(pool.filter(x=>x[1]!=it[1]&&x[0]!=it[0]&&(!m||PIC(x[1])===PIC(it[1])) /* خيارات الصور كلها صور */))).slice(0,3)]),ex=[`الصحيح: ${it[0]} ${it[1]}`,`استمع 🔊 ثم انظر: ${it[0]} ⟵ ${it[1]}`];
 if(typ)return{k:it[0],m:3,l:it[2],typ:it[0],show:`<div class=q>${it[1]}</div><p class=mut>اكتب الكلمة</p>`,sp:[it[0],it[2]],ex,opts:[]};
 return{k:it[0],m,l:it[2],sp:m?[it[0],it[2]]:null,show:`<div class=q dir=auto>${m==0?it[1]:m==1?'🔊':it[0]}</div>`,opts:o.map(x=>({h:m?x[1]:x[0],ok:x==it})),ex}}
 const wsample=(pool,n)=>pool.map(x=>{const s=P.sk[x[0]]||{};return[x,-Math.log(Math.random())/(1+2*(s.m||0)+(s.n?0:1)+Math.min(3,(Date.now()-(s.t||0))/864e5))]}).sort((a,b)=>a[1]-b[1]).slice(0,n).map(x=>x[0]);

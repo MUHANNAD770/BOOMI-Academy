@@ -85,7 +85,7 @@ const SPKW=it=>(it[2]||'ar')==='ar'?[WAQF(it[0]),'ar']:SPK(it);
 const exOf=it=>[`الصحيح: ${it[0]} ${isPic(it[1])?it[1]:'— '+it[1]}`,`استمع 🔊 ثم انظر: ${it[0]} ⟵ ${it[1]}`];
 const others=(u,it,f)=>shuf(pool(u).filter(x=>x!==it&&(f?f(x):true)));
 const mkQ=(k,show,opts,okIdx,extra)=>Object.assign({k,m:0,l:'ar',show,opts:opts.map((h,i)=>({h,ok:i===okIdx})),ex:['','']},extra||{});
-function mcq(it,show,right,wrongs,extra){const o=shuf([right,...wrongs.filter(w=>w!==right)].filter((x,i,a)=>a.indexOf(x)===i).slice(0,4));if(o.length<2)return null;return mkQ(it[0],show,o,o.indexOf(right),Object.assign({ex:exOf(it)},extra))}
+function mcq(it,show,right,wrongs,extra){const o=shuf([right,...wrongs.filter(w=>w!==right&&isPic(w)===isPic(right)) /* الخيارات كلها صور أو كلها كلمات، لا خليط */].filter((x,i,a)=>a.indexOf(x)===i).slice(0,4));if(o.length<2)return null;return mkQ(it[0],show,o,o.indexOf(right),Object.assign({ex:exOf(it)},extra))}
 const Q={
  /* الصورة ← الكلمة */
  pic(u,it){if(!isPic(it[1]))return null;return mcq(it,`<div class=q>${it[1]}</div><p class=mut>${/sound|يَفْعَلُ|يفعل|أصوات|أَصْوَات/i.test(u&&u.n||'')?(u.l==='en'?'What sound does it make? — مَاذَا يَقُولُ هَذَا الْحَيَوَانُ؟':'مَاذَا يَفْعَلُ هَذَا الْحَيَوَانُ؟'):/\s/.test(String(it[0]).trim())?'أَيُّ جُمْلَةٍ تُنَاسِبُ الصُّورَة؟':'مَا اسْمُ هَذِهِ الصُّورَة؟'}</p>`,it[0],others(u,it,x=>x[0]!==it[0]).map(x=>x[0]))},
@@ -160,7 +160,7 @@ function build(u,n=5){const t=typeOf(u);const plan=PLAN[t]||PLAN.vocab,items=shu
  while(out.length<n&&guard++<60){const g=Q[plan[k%plan.length]],it=items[out.length%items.length];k++;let q=null;try{q=g&&g(u,it)}catch(e){q=null}
   if(q&&!out.some(x=>x.w==='order'&&q.w==='order'&&x.k===q.k))out.push(q)}
  /* احتياط: إن لم تكفِ الأنواع نكمل بالمعنى */
- while(out.length<n&&items.length>=2){const it=items[out.length%items.length];out.push(Q.meaning(u,it))}
+ let g2=0;while(out.length<n&&items.length>=2&&g2++<40){const it=items[(out.length+g2)%items.length],q=Q.meaning(u,it)||Q.listenWord(u,it);if(q)out.push(q)}
  return out}
 window.ArLessonQuiz=build;
 
