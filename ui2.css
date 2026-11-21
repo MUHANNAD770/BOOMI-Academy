@@ -514,3 +514,15 @@ img.e3s{width:3.2em!important;height:3.2em!important;max-width:120px;max-height:
 html.bm-open,html.bm-open body{overflow:hidden!important;overscroll-behavior:none}
 html.bm-open body{position:fixed;left:0;right:0;width:100%}
 .bm,.bm .bl,.bm .chips{overscroll-behavior:contain}
+/* شريط الاختبار العلوي (✕ والتقدّم والقلوب) يبقى ظاهرًا كاملًا تحت منطقة الكاميرا/الساعة في وضع ملء الشاشة، حتى عند تحريك الشاشة */
+.qh{top:0!important;padding-top:calc(env(safe-area-inset-top,0px) + 10px)!important;margin-top:calc(-1 * env(safe-area-inset-top,0px));z-index:20!important;background:var(--bg)!important}
+:root[data-theme=dark] .qh{background:#191b45!important}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .qh{background:#191b45!important}}
+/* نافذة بومي: مسافة أسفل الرسائل كي لا تختفي خيارات التمرين خلف الاقتراحات */
+.bm .bl{padding-bottom:18px!important;scroll-padding-bottom:18px}
+/* السبب الحقيقي لاختفاء خيارات تمارين بومي: عناصر الدردشة كانت تنضغط (flex-shrink) فصار صندوق الخيارات ٨ بكسل فقط */
+.bm .bl>*{flex-shrink:0!important}
+/* خيارات التمرين النصية: شبكة عمودين واضحة بدل صف أفقي مخفي */
+.bm .bl>.chips:not(.bm-pics){display:grid!important;grid-template-columns:1fr 1fr;gap:8px;overflow:visible!important;white-space:normal;height:auto!important;padding:4px 2px}
+.bm .bl>.chips:not(.bm-pics) button{white-space:normal!important;min-height:48px;font-size:1rem;line-height:1.5}
+.bm .bl>.chips:not(.bm-pics) button{font-weight:800!important;font-size:1.1rem!important}
