@@ -1,6 +1,8 @@
 # التشغيل الفعلي لخادم «صوتي الشخصي» على Hugging Face. يُجلب من GitHub عبر app.py القصير في المساحة،
 # فأي تحديث هنا يصل للخادم بإعادة تشغيله فقط (بلا تعديل يدوي في Hugging Face).
 import os, sys, urllib.request
+# Gradio الحديث يشغّل خادم Node.js (العرض المسبق SSR) على المنفذ 7860 نفسه فيتعارض مع خادمنا (address already in use): نعطّله
+os.environ['GRADIO_SSR_MODE'] = 'false'
 # ١) عتاد ZeroGPU المجاني: يجب استيراد spaces أولًا (قبل torch)، ووجود دالة @spaces.GPU واحدة على الأقل
 spaces = None
 try:
@@ -34,7 +36,10 @@ try:
             _o = gr.Number(label='GPU')
             _b.click(_gpu_probe, None, _o)
     # في المسار الرئيسي (/): المنصة تقرأ إعدادات الواجهة من /config؛ مسارات الخادم (/health، /enroll، /tts) لها الأولوية
-    app = gr.mount_gradio_app(app, ui, path='/')
+    try:
+        app = gr.mount_gradio_app(app, ui, path='/', ssr_mode=False)
+    except TypeError:
+        app = gr.mount_gradio_app(app, ui, path='/')
     mounted = True
 except Exception as e:  # noqa
     print('gradio mount failed:', e, flush=True)
