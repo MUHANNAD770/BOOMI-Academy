@@ -461,3 +461,13 @@ img.e3s{width:3.2em!important;height:3.2em!important;max-width:120px;max-height:
 .chips.bm-pics button img.e3s{width:84px!important;height:84px!important}
 :root[data-theme=dark] img.e3s{border-color:#3a3f86}
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]) img.e3s{border-color:#3a3f86}}
+/* مربع الحرف: الحرف بحركته وهمزته داخل المربع في المنتصف دائمًا (كانت الحركات والهمزة تخرج فوق المربع) */
+.lf-letter{display:grid!important;place-items:center;width:112px;height:120px;min-width:0!important;padding:0!important;box-sizing:border-box;font-size:3.4rem!important;line-height:2.1!important;overflow:hidden}
+.lf-letter{font-family:inherit}
+@media(min-width:700px){.lf-letter{width:140px;height:150px;font-size:4.2rem!important}}
+/* صور المشاهد داخل معلّم الكلمات وأسئلة بومي المفاجئة والألعاب: حجم مناسب لكل مكان */
+.enpic img.e3s,.enpic2 img.e3s{width:180px!important;height:180px!important;max-width:none;max-height:none;border-radius:22px}
+.vq-pic img.e3s{width:150px!important;height:150px!important;max-width:none;max-height:none}
+.g2-pic img.e3s,.g2-q img.e3s{width:130px!important;height:130px!important;max-width:none;max-height:none}
+#app .q img.e3s{width:150px!important;height:150px!important;max-width:none;max-height:none;border-radius:22px}
+#app .opt img.e3s{width:84px!important;height:84px!important}
