@@ -446,3 +446,18 @@ button.bank-sub{width:100%;border:0;font:inherit;text-align:start;cursor:pointer
 .tl-glass .gt>small .e3w,.tl-glass .gt>small .e3d{width:1.1em!important;height:1.1em!important;vertical-align:-2px}
 .tl-glass .gt>small{display:inline-flex;align-items:center;gap:3px}
 .pm-st li b{white-space:nowrap}
+/* صورة مرسومة كاملة في بطاقة الدرس (إطار أبيض كالتصميم) */
+.lf-scene{width:100%;max-width:260px;border-radius:20px;overflow:hidden;border:5px solid #fff;box-shadow:0 8px 18px rgba(40,30,120,.18);background:#fff;line-height:0}
+.lf-scene img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.lf-card:has(.lf-scene){background:linear-gradient(180deg,#e9f6ff,#f4fbe9)}
+:root[data-theme=dark] .lf-scene{border-color:#3a3f86}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .lf-scene{border-color:#3a3f86}}
+:root[data-theme=dark] .lf-card:has(.lf-scene){background:linear-gradient(180deg,#2b3478,#24275e)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .lf-card:has(.lf-scene){background:linear-gradient(180deg,#2b3478,#24275e)}}
+/* صور الحيوانات المرسومة داخل البطاقات والخيارات */
+.e3sw{display:inline-block;line-height:0}
+img.e3s{width:3.2em!important;height:3.2em!important;max-width:120px;max-height:120px;border-radius:18px;border:3px solid #fff;box-shadow:0 5px 12px rgba(40,30,120,.18);object-fit:cover;vertical-align:middle}
+.card img.e3s,.grid .opt img.e3s{width:96px!important;height:96px!important;font-size:inherit}
+.chips.bm-pics button img.e3s{width:84px!important;height:84px!important}
+:root[data-theme=dark] img.e3s{border-color:#3a3f86}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) img.e3s{border-color:#3a3f86}}
