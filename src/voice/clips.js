@@ -13,7 +13,11 @@
   for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,0x01000193)>>>0}return h.toString(36)+'_'+s.length.toString(36)};
  const teacher=()=>{try{if(window.BumiVoiceConfig)return BumiVoiceConfig.getSettings().voice.gender==='male'?'male':'female'}catch(e){}return window.P&&P.teacher==='male'?'male':'female'};
  const engVoice=()=>null; /* لا يوجد محرك توليد على الجهاز: كل الصوت مقاطع Edge مسجّلة */
- const loadIx=who=>st.load[who]||(st.load[who]=fetch(base+who+'.json?v=102',{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(j=>{if(j&&j.idx){if(j.v)j.packs=j.packs.map(p=>p+'?v='+j.v);st.ix[who]=j;st.need=st.need||{};for(const[pi,off,len]of Object.values(j.idx)){const n=j.packs[pi];if((st.need[n]||0)<off+len)st.need[n]=off+len}}return st.ix[who]} /* لا تنزيل تلقائي لكل الحزم: كان ~130 م.ب في أول 30 ثانية فيبطئ الهاتف */).catch(()=>{st.load[who]=null;return null}));
+ /* الفهرس يُحفظ في ذاكرة المقاطع الدائمة: بدونه لا يُعرف مكان أي مقطع فيصمت الصوت المسجّل بلا إنترنت */
+ const ixGet=async who=>{const u=new URL(base+who+'.json',location.href).href;let c=null;try{c=window.caches&&await caches.open(CC)}catch(e){}
+  try{const r=await fetch(base+who+'.json?v=102',{cache:'no-cache'});if(r.ok){if(c)try{await c.put(u,r.clone())}catch(e){}return await r.json()}}catch(e){}
+  try{const h=c&&await c.match(u);if(h)return await h.json()}catch(e){}return null};
+ const loadIx=who=>st.load[who]||(st.load[who]=ixGet(who).then(j=>{if(j&&j.idx){if(j.v)j.packs=j.packs.map(p=>p+'?v='+j.v);st.ix[who]=j;st.need=st.need||{};for(const[pi,off,len]of Object.values(j.idx)){const n=j.packs[pi];if((st.need[n]||0)<off+len)st.need[n]=off+len}}return st.ix[who]} /* لا تنزيل تلقائي لكل الحزم: كان ~130 م.ب في أول 30 ثانية فيبطئ الهاتف */).catch(()=>{st.load[who]=null;return null}));
  const ready=loadIx(teacher());
  try{window.caches&&['hurufi-clips-v1','hurufi-clips-v2','hurufi-clips-v3','hurufi-clips-v4'].forEach(n=>caches.delete(n))}catch(e){} /* مقاطع الإصدارات السابقة */
  /* أُزيل محرك Supertonic 3: نحذف ملفاته المحفوظة سابقًا في المتصفح (~157 م.ب) وإعداداته */
@@ -131,8 +135,12 @@
  /* إعادة ضبط كاملة: حذف كل النسخ المحفوظة (الكود والأصوات) وعامل الخدمة، ثم إعادة التحميل (بيانات الطالب تبقى) */
  const reset=async()=>{try{for(const k of await caches.keys())await caches.delete(k)}catch(e){}try{for(const r of await navigator.serviceWorker.getRegistrations())await r.unregister()}catch(e){}
   try{localStorage.removeItem('hurufi-tts')}catch(e){}location.replace(location.pathname+'?fresh='+Date.now())};
- const offline=async()=>{const who=teacher();await loadIx(who);if(!st.ix[who])return false;st.pre[who]=0;warm(who,1);return true};
- window.HurufiClips={has,play,speak,playBlob,warmTts,stop,pause,resume,warm:warmText,offline,diag,reset,progress:()=>st.prog||null,busy:()=>!!st.playing,record,export:exp,key,ready,load:loadIx,
+ const offline=async()=>{const who=teacher();await loadIx(who);if(!st.ix[who])return false;try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}st.pre[who]=0;warm(who,1);return true};
+ /* كم حزمة من صوت المعلّم الحالي محفوظة في الجهاز، وحجمها التقريبي */
+ const offStat=async()=>{const who=teacher(),j=await loadIx(who);if(!j)return null;const c=await cache();let have=0;
+  if(c){const ks=new Set((await c.keys()).map(r=>r.url));for(const n of j.packs)if(ks.has(new URL(base+n,location.href).href))have++}
+  const mb=Math.round(j.packs.reduce((a,n)=>a+((st.need||{})[n]||0),0)/1048576);return{have,total:j.packs.length,mb,running:!!st.pre[who]&&st.prog&&st.prog[0]<st.prog[1]}};
+ window.HurufiClips={has,play,speak,playBlob,warmTts,stop,pause,resume,warm:warmText,offline,offStat,diag,reset,progress:()=>st.prog||null,busy:()=>!!st.playing,record,export:exp,key,ready,load:loadIx,
   count:()=>[st.ix.female?Object.keys(st.ix.female.idx).length:0,st.ix.male?Object.keys(st.ix.male.idx).length:0],voice:who=>st.ix[who||teacher()]?.voice||null};
  /* بعد رسم كل صفحة: نجهّز مقاطع الكلمات القابلة للضغط فيها (بطاقات الدرس، أزرار 🔊) */
  const warmPage=()=>{try{if(!window.VoiceParts)return;const L=[],add=(t,l)=>{for(const p of VoiceParts.parts(t,l))L.push(p)};
