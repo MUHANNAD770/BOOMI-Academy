@@ -4,7 +4,7 @@
 # الحماية: VOICE_SECRET سرّ مشترك مع Netlify فقط (لا يوجد في GitHub ولا في المتصفح):
 #  • /enroll يتطلّب تذكرة قصيرة العمر تصدرها دالة Netlify (myvoice.mjs).
 #  • /tts يقبل فقط بصمات وقّعها هذا الخادم (لا يمكن استعماله بصوت شخص آخر أو كخادم عام).
-import asyncio, hashlib, hmac, json, os, subprocess, tempfile, time
+import asyncio, hashlib, hmac, json, os, re, subprocess, tempfile, time
 from collections import OrderedDict, defaultdict
 import numpy as np
 from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
@@ -170,8 +170,15 @@ async def tts(req: Request):
         data = open(p, 'rb').read()
     else:
         need_ready()
-        temp = 0.35 if len(text.split()) <= 3 else 0.6
+        temp = 0.35 if len(text.split()) <= 3 else 0.55
         w = await asyncio.get_running_loop().run_in_executor(None, lambda: E.speak(rt, codes, text, temp))
+        # مدّ الحروف أو التمتمة: صوت أطول كثيرًا مما يحتاجه عدد الحروف ← نعيد التوليد بحرارة أقل ونأخذ الأقصر
+        letters = len(re.findall(r'[\u0621-\u064AA-Za-z]', text))
+        limit = 0.8 + letters * 0.16
+        if len(w) / 24000 > limit:
+            w2 = await asyncio.get_running_loop().run_in_executor(None, lambda: E.speak(rt, codes, text, 0.25))
+            if len(w2) < len(w):
+                w = w2
         data = await asyncio.get_running_loop().run_in_executor(None, mp3, w)
         if not data:
             raise HTTPException(500, 'encode')

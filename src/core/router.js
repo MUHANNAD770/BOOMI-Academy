@@ -84,7 +84,13 @@
     dictationAdv: { cs: ARC },
     syllables: { cs: ARC },
     weekly: { cs: ARC },
-    advanced: { cs: ARC }
+    advanced: { cs: ARC },
+    /* أكاديمية الرياضيات: الصفحة الرئيسية للأكاديمية في السجل، والدروس والاختبارات «مؤقتة» يعود منها زر الرجوع إلى الأكاديمية */
+    mathAcademy: { cs: 'math' },
+    mathUnit: { vol: 1, cs: 'math' },
+    mathStageTest: { vol: 1, cs: 'math' },
+    mathReview: { vol: 1, cs: 'math' },
+    mathPlacement: { vol: 1, cs: 'math' }
   };
 
   let depth = 0, restoring = false, shown = null, shownRoute = null, curN = 0, ov = null;

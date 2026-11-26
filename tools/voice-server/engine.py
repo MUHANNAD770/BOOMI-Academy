@@ -118,7 +118,9 @@ class Engine:
     # نص ← صوت 24 kHz بصوت صاحب التسجيل. حرارة منخفضة = نطق ثابت وواضح (مناسب للتعليم)
     def speak(self, ref_text, ref_codes, text, temp=0.6):
         prompt = self._prompt(ref_text, ref_codes, text)
-        mx = min(1500, 60 + len(text) * 14)
+        # سقف الطول من عدد الحروف (بلا الحركات): ~٠٫٢ ثانية للحرف (٥٠ رمزًا في الثانية) — يمنع مدّ الحروف إلى ما لا نهاية
+        letters = len(re.findall(r'[\u0621-\u064AA-Za-z]', text))
+        mx = min(1200, 50 + letters * 11)
         with LOCK, torch.no_grad():
             if self.backend == 'gguf':
                 toks = self.llm.tokenize(prompt.encode('utf-8'), add_bos=False, special=True)
