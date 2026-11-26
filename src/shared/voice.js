@@ -1031,6 +1031,18 @@
   say.warm = warmText;
 
   window.say = say;
+
+  /* الخروج من التطبيق أو تصغيره أو فتح تطبيق آخر: يتوقف كل صوت فورًا ولا يكمل في الخلفية */
+  const hush = () => {
+    try { stop(true); } catch (_) {}
+    try { window.HurufiClips && HurufiClips.stop(); } catch (_) {}
+    try { if (audioCtx && audioCtx.state === 'running') audioCtx.suspend(); } catch (_) {}
+    try { document.querySelectorAll('audio,video').forEach(m => { try { m.pause(); } catch (_) {} }); } catch (_) {}
+  };
+  document.addEventListener('visibilitychange', () => { if (document.hidden) hush(); });
+  addEventListener('pagehide', hush);
+  addEventListener('blur', () => { if (document.hidden) hush(); });
+  window.BumiHush = hush;
   window.sayList = sayList;
   window.HurufiVoice = { say, sayList, config: BumiVoiceConfig, cleanSpeechText, extractVisibleText, clearCache };
 

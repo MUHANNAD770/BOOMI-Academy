@@ -220,22 +220,22 @@ details>summary{cursor:pointer}
 /* الكمبيوتر: محتوى أوسع ومريح */
 @media(min-width:900px){main{max-width:760px}body.hm main{max-width:1120px}.grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}}
 /* محرك بومي الذكي: السؤال الصوتي المفاجئ + وسوم التدريب */
-#vq{position:fixed;inset:0;z-index:9000;display:grid;place-items:center;padding:16px;background:rgba(20,18,60,.55);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);animation:rise .25s ease both}
-.vq-card{position:relative;width:min(420px,100%);max-height:92vh;overflow:auto;background:var(--card);color:var(--ink);border-radius:28px;padding:20px 18px 18px;text-align:center;box-shadow:var(--shadow-lg);border:3px solid var(--sun)}
-.vq-card.good{border-color:var(--mint)}.vq-card.soft{border-color:var(--sky)}
-.vq-x{position:absolute;top:10px;inset-inline-end:10px;width:44px;height:44px;border-radius:50%;padding:0;font-size:1.1rem}
-.vq-head{display:flex;align-items:center;justify-content:center;gap:8px;font-size:1.2rem;margin-bottom:6px}.vq-owl{font-size:2.2rem;animation:pulse-go 1.6s ease-in-out infinite}
-.vq-pic{font-size:5.5rem;line-height:1.2}.vq-word{font-size:2.6rem;font-weight:800;margin:8px 0}.vq-obs{font-size:2.2rem;letter-spacing:4px;line-height:1.5;word-break:break-all}
-.vq-ask{font-size:1.35rem;font-weight:800;margin:8px 0}
-.vq-timer{position:relative;width:92px;height:92px;margin:8px auto}.vq-timer svg{width:100%;height:100%;transform:rotate(-90deg)}
-.vq-timer circle{fill:none;stroke-width:8}.vq-bg{stroke:var(--line)}.vq-fg{stroke:var(--berry);stroke-linecap:round;transition:stroke-dashoffset .1s linear}
-.vq-timer b{position:absolute;inset:0;display:grid;place-items:center;font-size:1.7rem}
-.vq-st{min-height:2.2em;font-size:1.15rem;font-weight:700;margin:6px 0}
-.vq-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:10px;margin-top:8px}.vq-opts .opt{min-height:56px;font-size:1.3rem}
+
+
+
+
+
+
+
+
+
+
+
+
 .mind-tag{display:inline-block;margin:6px auto 0;padding:4px 14px;border-radius:999px;background:#eaf2ff;color:#2b4bb8;font-weight:800;font-size:.95rem}
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]) .mind-tag{background:#2b2f7a;color:#dfe6ff}}
 #mind-report ul.plan{padding-inline-start:1.2em}
-#vq [hidden]{display:none!important}
+
 
 /* light-surface-fix — أي صندوق خلفيته بيضاء/فاتحة ثابتة يأخذ نصًا داكنًا وألوانًا فاتحة لأبنائه حتى في الوضع الداكن، فلا يختفي الكلام الأبيض على الأبيض */
 .ac-pad,.ac-c,.ac-dice,.ac-sg button,.ac-hv button,.story-card,.story-text,.dl.a,.dl.b,.slot,.slot.over,.slot.ok,.slot.no,.mw,.mp,.mw.sel,.mp.sel,.mw.ok,.mp.ok,
@@ -696,7 +696,7 @@ img.e3s{width:3.2em!important;height:3.2em!important;max-width:120px;max-height:
 @media(min-width:700px){.lf-letter{width:140px;height:150px;font-size:4.2rem!important}}
 /* صور المشاهد داخل معلّم الكلمات وأسئلة بومي المفاجئة والألعاب: حجم مناسب لكل مكان */
 .enpic img.e3s,.enpic2 img.e3s{width:180px!important;height:180px!important;max-width:none;max-height:none;border-radius:22px}
-.vq-pic img.e3s{width:150px!important;height:150px!important;max-width:none;max-height:none}
+
 .g2-pic img.e3s,.g2-q img.e3s{width:130px!important;height:130px!important;max-width:none;max-height:none}
 #app .q img.e3s{width:150px!important;height:150px!important;max-width:none;max-height:none;border-radius:22px}
 #app .opt img.e3s{width:84px!important;height:84px!important}
@@ -1243,3 +1243,4 @@ html.bm-open #mc {
   .pm-card .pm-st{grid-column:1/-1;grid-template-columns:1fr 1fr}
   .pm-card .pm-st li{font-size:.88rem}
 }
+.q.vq-obs{font-size:2.2rem;letter-spacing:4px;line-height:1.5;word-break:break-all} /* صور العدّ في أسئلة «كم عددها؟» */

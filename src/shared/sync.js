@@ -5,7 +5,7 @@
   let off = false, offWhy = '', busy = false, timer = 0, last = 0, dirty = false;
   const now = () => Date.now();
   const fmt = c => (c ? c.slice(0, 4) + '-' + c.slice(4) : '');
-  const KEEP = ['name', 'gender', 'age', 'lang', 'stage', 'voiceId', 'autoSpeak', 'teacher', 'mic', 'snd', 'vol', 'rate', 'star', 'done', 'sc', 'fd', 'cd', 'act', 'courseDone', 'badges', 'unlockAll', 'stories', 'wk', 'speed', 'vq', 'days', 'g2', 'courseQuiz', 'coursePractice', 'sk', 'mind', 'bank', 'en', 'arw', 'tm', 'exams', 'mistakes'];
+  const KEEP = ['name', 'gender', 'age', 'lang', 'stage', 'voiceId', 'autoSpeak', 'teacher', 'mic', 'snd', 'vol', 'rate', 'star', 'done', 'sc', 'fd', 'cd', 'act', 'courseDone', 'badges', 'unlockAll', 'stories', 'wk', 'speed', 'days', 'math', 'myv', 'vmode', 'em', 'g2', 'courseQuiz', 'coursePractice', 'sk', 'mind', 'bank', 'en', 'arw', 'tm', 'exams', 'mistakes'];
   const payload = k => {
     const o = {};
     for (const x of KEEP) if (k[x] !== undefined) o[x] = k[x];

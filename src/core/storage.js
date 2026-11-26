@@ -44,6 +44,7 @@
     delete P.lim;
     // حقول قديمة لم تعد مستعملة. «صوتي الشخصي» (P.myv و P.vmode) وتقدّم أكاديمية الرياضيات (P.math) يبقيان
     delete P.ml;
+    delete P.vq; /* «سؤال بومي المفاجئ» أُلغي */
     delete P.voice;
     delete P.voiceCloud;
     if (!P.voiceId) P.voiceId = P.teacher === 'male' ? 'puck' : 'kore';

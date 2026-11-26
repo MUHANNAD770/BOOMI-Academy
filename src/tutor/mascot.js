@@ -288,7 +288,7 @@ window.BumiRead = (() => {
   'use strict';
   const AR = /[؀-ۿ]/, LA = /[A-Za-z]/, EMO = /[\p{Extended_Pictographic}\u{FE0F}\u{200D}\u{1F1E6}-\u{1F1FF}]/gu;
   const CNT = /[\d٠-٩]+\s*(?:مِنْ|من|\/|of)\s*[\d٠-٩]+/;
-  const OPT = '.opt,[data-ok],.vq-opts button,.practice-options button,.ch button,.choices button,.mcol button';
+  const OPT = '.opt,[data-ok],.practice-options button,.ch button,.choices button,.mcol button';
   const SKIP = 'button,a,select,option,script,style,textarea,.owl-dock,.owl-me,#tb,.link,[aria-hidden="true"],.speed-top,.h-hearts,.practice-count,.lvb,.lv-badge,.qo,#qo,svg,canvas';
   const hidden = e => {
     for (let x = e; x && x.nodeType === 1; x = x.parentElement) {

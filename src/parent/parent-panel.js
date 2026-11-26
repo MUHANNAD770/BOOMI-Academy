@@ -281,15 +281,6 @@
       </section>
       <section class=pp-sec data-t=voice ${tab === 'voice' ? '' : 'hidden'}>
       ${themeCard()}
-      <div class=pdash id=vq-set>
-        <h3>🎤 أسئلة بومي الصوتية المفاجئة</h3>
-        <p class=mut>بومي يسأل الطالب سؤالًا واحدًا مما تعلّمه بين التمارين لا أثناءها. ${P0.mic && (window.SpeechRecognition || window.webkitSpeechRecognition) ? 'يجيب الطالب بصوته.' : 'الميكروفون غير مفعّل، فيجيب بالضغط على الخيار.'}</p>
-        <select onchange="P.vq=+this.value;save()">
-          <option value=1 ${P0.vq !== 0 && P0.vq !== 2 ? 'selected' : ''}>مفعّلة</option>
-          <option value=2 ${P0.vq === 2 ? 'selected' : ''}>مفعّلة (أسئلة أكثر)</option>
-          <option value=0 ${P0.vq === 0 ? 'selected' : ''}>متوقفة</option>
-        </select>
-      </div>
       <div class=pdash id=parent-tools>
         <h3>🛠️ أدوات سريعة وإعدادات الصوت</h3>
         <div class=row style="gap:8px;flex-wrap:wrap">

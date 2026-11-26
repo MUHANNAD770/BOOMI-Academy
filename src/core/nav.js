@@ -175,7 +175,6 @@
         <button class=row onclick="act()"><span>🧩</span><b>أَنْشِطَةٌ تَفَاعُلِيَّةٌ وَإِمْلَاءٌ</b></button>
         <button class=row onclick="puzzles()"><span>🏝️</span><b>جَزِيرَةُ الْأَلْغَازِ وَالتَّفْكِيرِ</b></button>
         <button class=row onclick="speak()"><span>🎤</span><b>تَدْرِيبُ النُّطْقِ بِالْمَيْكْرُوفُونِ</b></button>
-        <button class=row onclick="MindVoice.ask(true)"><span>🗣️</span><b>سُؤَالٌ صَوْتِيٌّ مِنْ بُومِي</b></button>
         ${dc ? `<button class=row onclick="review()"><span>🔁</span><b>مُرَاجَعَةٌ ذَكِيَّةٌ</b><small>${D(dc)}</small></button>` : ''}
       </div>`],
       ach: ['🏆 إنجازاتي', achBody()]
