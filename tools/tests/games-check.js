@@ -14,6 +14,8 @@ srv.listen(0,'127.0.0.1',async()=>{const url=`http://127.0.0.1:${srv.address().p
  const p=await (await b.newContext({viewport:{width:390,height:844},hasTouch:true})).newPage();let errs=[];p.on('pageerror',e=>errs.push(e.message));
  await p.addInitScript(()=>{localStorage.setItem('hrw2',JSON.stringify({kids:[{name:'test',gender:'male',age:7,lang:'both',stage:1,done:{},sc:{}}],cur:0}))});
  await p.goto(url);await p.waitForTimeout(2000);
+ /* الألعاب تُحمَّل عند الطلب (src/core/lazy.js) */
+ await p.evaluate(()=>games2d());await p.waitForFunction(()=>window.G2GAMES&&window.G2API,null,{timeout:20000});
  const ids=(await p.evaluate(()=>G2GAMES.map(g=>g.id))).filter(x=>!ONLY||x===ONLY);
  for(const id of ids){errs=[];const play=st=>p.evaluate(async([id,st])=>{const W=ms=>new Promise(z=>setTimeout(z,ms)),$=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
   const out={id,steps:0,kind:'',notes:[]};const BADTXT=/undefined|NaN|\[object|null\b/;

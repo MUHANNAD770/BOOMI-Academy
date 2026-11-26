@@ -3,3 +3,8 @@ __pycache__/
 tools/clips/out/
 tools/clips/progress.txt
 tools/clips/fail.txt
+.env
+.env.local
+.env.*.local
+!.env.example
+storage/

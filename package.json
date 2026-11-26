@@ -1,9 +1,21 @@
 {
-  "name": "hurufi",
+  "name": "boomi-academy",
+  "version": "2.0.0",
   "private": true,
-  "description": "حروفي — بومي التعليمية. Netlify يثبّت هذه الحزمة تلقائيًا عند النشر من GitHub (لحفظ تقدّم الطلاب).",
+  "description": "حروفي – البومة التعليمية الذكية لتعلّم العربية والإنجليزية",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "node -e \"console.log('Static build ok')\"",
+    "test": "node tools/tests/suite.js",
+    "audio:audit": "node tools/generate-missing-audio.js --audit",
+    "audio:backfill": "node tools/generate-missing-audio.js"
+  },
   "dependencies": {
-    "@netlify/blobs": "^11.1.0",
+    "@google/genai": "^3.6.1",
+    "@netlify/blobs": "^11.1.11",
+    "express": "^4.21.2",
     "ws": "^8.18.0"
   }
 }

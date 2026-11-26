@@ -1,11 +1,12 @@
-# تجميع المقاطع في حزم ~1.5MB وكتابة الفهرس داخل المشروع (voices/clips)
+# تجميع المقاطع في حزم ~1.5MB وكتابة الفهرس داخل المشروع (audio/clips)
 import json, os, sys, glob, shutil
 W=os.path.dirname(os.path.abspath(__file__)); DST=sys.argv[1]; V=int(sys.argv[2]) if len(sys.argv)>2 else 61
-# وضع الإضافة: python pack.py <مجلد voices/clips> <إصدار> append  ← يضيف المقاطع الجديدة فقط في حزم جديدة ويحدّث الفهرس،
+# وضع الإضافة: python pack.py <مجلد audio/clips> <إصدار> append  ← يضيف المقاطع الجديدة فقط في حزم جديدة ويحدّث الفهرس،
 # دون إعادة كتابة الحزم القديمة (لا يتضخم المستودع). المقاطع الجديدة في out/<who>/ والجمل في final.json.
 if len(sys.argv)>3 and sys.argv[3]=='append':
     phr=json.load(open(os.environ.get('PHR') or os.path.join(W,'final.json')))
     for who,pre in (('female','f'),('male','m')):
+        if os.environ.get('WHO') and who not in os.environ['WHO'].split(','): continue  # WHO=male: إضافة مقاطع المعلّم وحده
         jp=os.path.join(DST,who+'.json'); j=json.load(open(jp,encoding='utf8')); packs=j['packs']; idx=j['idx']
         cur=bytearray(); n=0
         def out_pack():

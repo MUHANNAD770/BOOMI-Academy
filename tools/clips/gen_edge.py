@@ -28,7 +28,9 @@ def tanween_male(t,l):
     if l!='ar': return t
     def f(m):
         w=m.group(0);sh=w.endswith('\u0651') and w[-2] in '\u064C\u064D'
-        if sh: w=w[:-2]+'\u0651'+w[-2]
+        # حرف مشدّد قبل التنوين (أُمٌّ، جَدٌّ، كُرْسِيٌّ): الحيلة «ـُنّْ» تجعل المحرك يُسقط همزة البداية ويدمج الشدّتين («مُومُن» بدل «أُمٌّ») — نتركها كما كُتبت
+        if sh or (len(w)>1 and w[-2]=='\u0651'):
+            return m.group(0)
         v='\u064F' if w.endswith('\u064C') else '\u0650';w=w[:-1]
         if w.endswith('\u0629'): w=w[:-1]+'\u062A'
         return w+v+'\u0646\u0651\u0652'
@@ -47,11 +49,20 @@ def tanween(t,l):
     # كل كلمة منوّنة بالضم أو الكسر (منفردة أو في جملة) تُرسل للمحرك بالنون صريحة كي لا يقف عليها فيُسقطها
     if l!='ar': return t
     return re.sub(r'[\u0621-\u064A][\u0621-\u064A\u064B-\u0652\u0670]*[\u064C\u064D]\u0651?(?![\u0621-\u064A\u064B-\u0652])',lambda m:_nun(m.group(0)),t)
-# التاء المربوطة حسب موضعها (voices/tamarbuta.js، مصدر واحد مع خادم النطق والصوت المستنسخ):
-# الوقف «ةْ» (هاء ساكنة مسموعة)، والوصل تاء بحركتها الإعرابية (من خريطة التشكيل voices/tm-map.json أو القواعد).
+# التاء المربوطة حسب موضعها (src/voice/tamarbuta.js، مصدر واحد مع خادم النطق والصوت المستنسخ):
+# الوقف «ةْ» (هاء ساكنة مسموعة)، والوصل تاء بحركتها الإعرابية (من خريطة التشكيل src/voice/tm-map.json أو القواعد).
 TM={}
 def tamarbuta(t,l):
     return TM.get(t,t) if l=='ar' else t
+# صوت المعلّم (Hamed) مع «الشدّة ثم التنوين» في آخر الكلمة يُسقط أولها أو يشوّهها (أُمٌّ ← «مُمْ»، دُبٌّ ← «دُمْت» بقياس Whisper-medium)،
+# وبترتيب «التنوين ثم الشدّة» ينطقها صحيحة (أُمٌّ ← «أُمُّنْ»). صوت المعلّمة صحيح بالترتيب المعتاد فلا يتغيّر. للمحرك فقط؛ المفتاح والنص المعروض كما هما.
+def male_shadda(t,l):
+    if l!='ar': return t
+    return re.sub('\u0651([\u064C\u064D])'+STOPC,'\\1\u0651',t)
+# صوت المعلّمة: الترتيب المعتاد صحيح إلا في كلمة تبدأ بهمزة (أُمٌّ ← «أُمّ» مبتورة)، فنقدّم التنوين فيها فقط (أُمٌّ ← «أُمُّنْ»)
+def female_shadda(t,l):
+    if l!='ar': return t
+    return re.sub('(?<![\u0621-\u064A\u064B-\u0652])([\u0623\u0625\u0622][\u0621-\u064A\u064B-\u0650\u0652\u0670]*)\u0651([\u064C\u064D])'+STOPC,'\\1\\2\u0651',t)
 PROXY=os.environ.get('HTTPS_PROXY')
 WHOS=os.environ.get('WHO','female,male').split(',')  # WHO=female لتسجيل صوت المعلّمة وحده
 phr=json.load(open(os.environ.get('PHR') or os.path.join(W,'final.json')))
@@ -67,7 +78,7 @@ async def one(who,k,t,l,sem,stat):
     async with sem:
         for a in range(5):
             try:
-                c=edge_tts.Communicate(natural(allah(tanween_male(tamarbuta(t,l),l),l),l) if who=='female' else allah(tanween_male(tamarbuta(t,l),l),l),VOICES[who][l],rate=RATES[who][l],proxy=PROXY)
+                c=edge_tts.Communicate(female_shadda(natural(allah(tanween_male(tamarbuta(t,l),l),l),l),l) if who=='female' else male_shadda(allah(tanween_male(tamarbuta(t,l),l),l),l),VOICES[who][l],rate=RATES[who][l],proxy=PROXY)
                 await c.save(raw)
                 if os.path.getsize(raw)<300: raise Exception('small')
                 break

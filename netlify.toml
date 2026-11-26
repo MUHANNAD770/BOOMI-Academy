@@ -3,7 +3,8 @@
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
-  external_node_modules = ["ws"]  # خادم الصوت (tts.mjs): مكتبة WebSocket تُثبَّت كما هي دون تجميع
+  external_node_modules = ["ws", "@google/genai"]  # تُثبَّت كما هي دون تجميع
+  included_files = ["server/**", "data/tts-manifest.json", "src/voice/tamarbuta.js", "src/voice/tm-map.json"]
 [[headers]]
   for = "/*"
   [headers.values]
@@ -14,8 +15,39 @@
   for = "/img/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+# مسارات الخادم الموحّدة (نفسها في server.js وفي Netlify)
+[[redirects]]
+  from = "/api/tts/clip/:id"
+  to = "/.netlify/functions/tts?id=:id"
+  status = 200
+  force = true
+[[redirects]]
+  from = "/api/tts-stream"
+  to = "/.netlify/functions/tts"
+  status = 200
+  force = true
+[[redirects]]
+  from = "/api/tts"
+  to = "/.netlify/functions/tts"
+  status = 200
+  force = true
+[[redirects]]
+  from = "/api/edge-tts"
+  to = "/.netlify/functions/edge-tts"
+  status = 200
+  force = true
+[[redirects]]
+  from = "/api/tutor-stream"
+  to = "/.netlify/functions/tutor-stream"
+  status = 200
+  force = true
+[[redirects]]
+  from = "/api/tutor"
+  to = "/.netlify/functions/tutor"
+  status = 200
+  force = true
 [[headers]]
-  for = "/voices/*"
+  for = "/audio/clips/*"
   [headers.values]
     Cache-Control = "public, max-age=604800"
 [[headers]]

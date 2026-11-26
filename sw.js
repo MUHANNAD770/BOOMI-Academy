@@ -1,11 +1,127 @@
-/* sw.js — يجعل الموقع يعمل بلا إنترنت: أي صفحة أو ملف فُتح مرة يُحفظ، ويُحدَّث تلقائيًا عند وجود إنترنت (الشبكة أولًا). */
-const C='hurufi-app-v159',CORE=['./','index.html','manifest.webmanifest','style.css','home.css','quiz.css','mascot.css','voices/voice-ui.css','phase9.css','course.css','course-text.css','activities.css','motion.css','voice-cloud.css','pull-refresh.css','theme.css','dark-fix.css','grade.js','app.js','smart.js','content1.js','content2.js','content3.js','content4.js','content5.js','content6.js','content7.js','home.js','quiz.js','local.js','brain.js','ai.js','voices/lex.js','voices/lex-ext.js','voices/tashkeel.js','voices/pron.js','voice.js','sounds.js','voice-cloud.js','pull-refresh.js','nav.js','games.js','mic.js','mascot.js','phase9.js','course-text-data.js','course-text-data2.js','course-text-data3.js','course-text-data4.js','course-text.js','course.js','practice.js','activities.js','activities2.js','stories.js','more.js','puzzles.js','world.js','mind/memory.js','mind/analyzer.js','mind/coach.js','mind/hub.js','mind/voiceq.js','mind/en-pron.js','mind/english.js','mind/arabic-teacher.js','sync.js','lfocus.js','voices/tamarbuta.js','myvoice.js','router.js','voices/clips/female.json','voices/clips/male.json','audio/tap.wav','audio/select.wav','audio/correct.wav','audio/wrong.wav','audio/finish.wav','img/icon.png','img/icon-512.png','bumi.css','lib/gsap.min.js','anim.js','lessons-ar.js','lessons-en.js','stories2.js','stories-bank.js','data/stories-bank.json','games2d/engine.js','games2d/games.js','games2d/phaser-games.js','games2d/games.css','img/fav.png','ui2.css','emoji3d.js','ui2.js','bank.js','data/ar-bank.json','data/en-bank.json'];
-self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>Promise.all(CORE.map(u=>c.add(new Request(u,{cache:'reload'})).catch(()=>{})))).then(()=>self.skipWaiting()))});
-self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k.startsWith('hurufi-app-')&&k!=C).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
-self.addEventListener('fetch',e=>{const r=e.request;if(r.method!=='GET')return;const u=new URL(r.url);
- if(u.pathname.startsWith('/.netlify/')||u.pathname.startsWith('/models/')||/\/voices\/clips\/.*\.bin/.test(u.pathname)||r.headers.has('range'))return; /* الذكاء الخارجي خارج هذه الذاكرة */
- const ext=u.origin!==location.origin;
- if(ext&&!/fonts\.(googleapis|gstatic)\.com/.test(r.url))return;
- if(ext){e.respondWith(caches.match(r).then(h=>h||fetch(r).then(x=>{if(x&&(x.ok||x.type==='opaque'))caches.open(C).then(c=>c.put(r,x.clone()));return x})));return} /* مكتبات خارجية: الذاكرة أولًا */
- /* الشبكة أولًا مع تحقق من الخادم (no-cache) كي لا تُستخدم نسخة قديمة من ذاكرة المتصفح بعد النشر؛ بلا إنترنت نعود للمحفوظ (مع تجاهل ?v=) */
- e.respondWith(fetch(r.mode==='navigate'?r:new Request(r.url,{cache:'no-cache',credentials:'same-origin'})).then(x=>{if(x&&x.ok)caches.open(C).then(c=>c.put(r,x.clone()));return x}).catch(()=>caches.match(r,{ignoreSearch:true}).then(h=>h||(r.mode==='navigate'?caches.match('index.html'):Response.error()))))});
+/* sw.js — ذاكرة العمل دون اتصال (Offline Cache) لمنصة حروفي */
+'use strict';
+
+const CACHE = 'hurufi-app-v207';
+
+const PRECACHE = [
+  './',
+  './index.html',
+  './manifest.webmanifest',
+  './img/fav.png',
+  './img/icon.png',
+  './img/icon-192c.png',
+  './img/icon-512.png',
+  './img/icon-512c.png',
+  './img/ui/acad-ar.webp',
+  './img/ui/acad-en.webp',
+  './img/ui/owl-book.webp',
+  './img/ui/medal.webp',
+  './src/styles/tokens.css',
+  './src/styles/base.css',
+  './src/styles/features.css',
+  './src/styles/components.css',
+  './src/core/utils.js',
+  './src/core/storage.js',
+  './src/core/lazy.js',
+  './src/shared/sounds.js',
+  './src/voice/lex.js',
+  './src/voice/lex-ext.js',
+  './src/voice/tashkeel.js',
+  './src/voice/pron.js',
+  './src/voice/tamarbuta.js',
+  './src/voice/voice-parts.js',
+  './src/voice/clips.js',
+  './src/shared/voice.js',
+  './src/voice/myvoice.js',
+  './src/shared/grader.js',
+  './src/shared/mic.js',
+  './src/core/curriculum-core.js',
+  './src/core/badges.js',
+  './src/academies/arabic/quiz-ar.js',
+  './src/academies/arabic/teacher-ar.js',
+  './src/academies/english/pron-en.js',
+  './src/academies/english/quiz-en.js',
+  './src/academies/english/teacher-en.js',
+  './src/shared/home.js',
+  './src/core/quiz.js',
+  './src/assessment/exam-engine.js',
+  './src/tutor/brain.js',
+  './src/tutor/local-ai.js',
+  './src/tutor/mind-memory.js',
+  './src/tutor/mind-analyzer.js',
+  './src/tutor/mind-coach.js',
+  './src/tutor/mind-hub.js',
+  './src/shared/emoji3d.js',
+  './src/shared/lfocus.js',
+  './src/shared/phase9.js',
+  './src/shared/pull-refresh.js',
+  './src/shared/sync.js',
+  './src/parent/parent-panel.js',
+  './src/tutor/mascot.js',
+  './src/tutor/boomi-ui.js',
+  './src/tutor/mind-voiceq.js',
+  './src/core/nav.js',
+  './src/core/router.js',
+  './lib/gsap.min.js',
+  './src/shared/anim.js'
+];
+
+self.addEventListener('install', event => {
+  event.waitUntil((async () => {
+    const cache = await caches.open(CACHE);
+    await Promise.allSettled(PRECACHE.map(url => cache.add(new Request(url, { cache: 'reload' }))));
+    self.skipWaiting();
+  })());
+});
+
+self.addEventListener('activate', event => {
+  event.waitUntil((async () => {
+    const keys = await caches.keys();
+    /* نحذف نسخ الموقع القديمة فقط؛ ذاكرات الأصوات (المقاطع المسجّلة، Gemini، صوتي الشخصي) تبقى */
+    await Promise.all(keys.filter(k => k !== CACHE && /^hurufi-app-/.test(k)).map(k => caches.delete(k)));
+    await self.clients.claim();
+  })());
+});
+
+self.addEventListener('fetch', event => {
+  const req = event.request;
+  if (req.method !== 'GET') return;
+
+  const url = new URL(req.url);
+  if (url.origin !== self.location.origin) return;
+
+  // لا تخزّن نقاط النهاية الديناميكية لـ API أو Netlify Functions
+  if (url.pathname.startsWith('/api/') || url.pathname.startsWith('/.netlify/')) return;
+  // المقاطع المسجّلة: لها ذاكرتها الخاصة وطلبات جزئية (Range) — لا يتدخّل عامل الخدمة
+  if (url.pathname.startsWith('/audio/clips/') || req.headers.has('range')) return;
+
+  // الصفحة الرئيسية وملفات الكود والبيانات: الشبكة أولًا مع تحديث الذاكرة والتراجع إليها عند انقطاع الاتصال
+  if (req.mode === 'navigate' || url.pathname.startsWith('/data/') || /\.(?:html?|js|css|json|webmanifest)$/i.test(url.pathname)) {
+    event.respondWith((async () => {
+      try {
+        const net = await fetch(req, { cache: 'no-cache' });
+        if (net && net.ok) {
+          const cache = await caches.open(CACHE);
+          cache.put(req.mode === 'navigate' ? req : url.pathname, net.clone());
+        }
+        return net;
+      } catch {
+        const cache = await caches.open(CACHE);
+        const hit = await cache.match(req, { ignoreSearch: true });
+        return hit || (req.mode === 'navigate' ? cache.match('./index.html') : undefined);
+      }
+    })());
+    return;
+  }
+
+  // الصور والملفات الصوتية والخطوط: الذاكرة أولًا مع تحديث خلفي
+  event.respondWith((async () => {
+    const cache = await caches.open(CACHE);
+    const cached = await cache.match(req, { ignoreSearch: true });
+    const updating = fetch(req).then(net => {
+      if (net && net.ok) cache.put(url.pathname, net.clone());
+      return net;
+    }).catch(() => cached);
+    return cached || updating;
+  })());
+});

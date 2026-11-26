@@ -1,7 +1,7 @@
 /* numbers.js — مقاطع الأرقام ٠–١٠٠٠ (عربي + إنجليزي) لأسئلة الرياضيات المتغيّرة.
    المفتاح هو الرقم نفسه ("35") لأن voice.js يحوّل ٣٥ ← 35 قبل البحث عن المقطع.
    العربي يُرسل إلى Edge كلماتٍ مشكولة (خَمْسَةٌ وَثَلَاثُون) لا أرقامًا، كي يكون النطق مضبوطًا ومعروفًا مسبقًا؛ الإنجليزي يُرسل بالأرقام.
-   الاستعمال: node numbers.js > numbers.json  ثم  PHR=numbers.json python gen_edge.py  ثم  PHR=numbers.json python pack.py <voices/clips> 61 append */
+   الاستعمال: node numbers.js > numbers.json  ثم  PHR=numbers.json python gen_edge.py  ثم  PHR=numbers.json python pack.py <audio/clips> 61 append */
 const {key}=require('./harness.js');
 const U=['صِفْر','وَاحِد','اِثْنَان','ثَلَاثَة','أَرْبَعَة','خَمْسَة','سِتَّة','سَبْعَة','ثَمَانِيَة','تِسْعَة'];
 /* الآحاد قبل «وَ + عشرات» مرفوعة منوّنة */
