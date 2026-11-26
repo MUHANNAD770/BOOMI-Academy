@@ -260,7 +260,7 @@
     });
     if (vis.length) G.fromTo(vis, { autoAlpha: 0, y: 16, scale: 0.96 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.4, delay: 0.08, stagger: 0.035, ease: 'back.out(1.6)', clearProps: 'transform,opacity,visibility' });
     if (io) below.forEach(el => io.observe(el));
-    $$('.q,.vq-word,.enword,.enpic,.vq-pic,.card>.e,.big-letter,.lt', app).slice(0, 6).forEach((el, i) => {
+    $$('.q,.enword,.enpic,.card>.e,.big-letter,.lt', app).slice(0, 6).forEach((el, i) => {
       G.fromTo(el, { scale: 0.55, rotation: -8, autoAlpha: 0 }, { scale: 1, rotation: 0, autoAlpha: 1, duration: 0.6, delay: 0.12 + i * 0.05, ease: 'back.out(2.2)', clearProps: 'transform,opacity,visibility' });
     });
     countUp(app);

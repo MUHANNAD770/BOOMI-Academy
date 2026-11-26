@@ -1110,4 +1110,4 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   outline-offset: 2px;
 }
 button { min-height: 44px; touch-action: manipulation; }
-.h2-card .h2-go, .link, .bmh button, .lf-home, .vq-x { min-height: 36px; }
+.h2-card .h2-go, .link, .bmh button, .lf-home { min-height: 36px; }

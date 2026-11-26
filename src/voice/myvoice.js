@@ -48,7 +48,7 @@
  const Q={list:[],keys:new Set(),busy:0,total:0,done:0,cb:null};
  const queue=(items,front)=>{const v=me();if(!v)return;const add=[];for(const[t,l]of items){if(!norm(t))continue;const k=ck(v,t,l);if(Q.keys.has(k)||RB.has(k))continue;Q.keys.add(k);add.push([t,l,k])}
   if(!add.length)return;Q.total+=add.length;if(front)Q.list.unshift(...add);else Q.list.push(...add);pump()};
- const pump=async()=>{if(Q.busy||!Q.list.length)return;if(!canGen()){setTimeout(pump,30000);return}Q.busy=1;const[t,l,k]=Q.list.shift();
+ const pump=async()=>{if(Q.busy||!Q.list.length)return;if(typeof JOB!=='undefined'&&JOB.on){setTimeout(pump,5000);return} /* أثناء إنشاء صوت جديد لا نزاحمه على الخادم */if(!canGen()){setTimeout(pump,30000);return}Q.busy=1;const[t,l,k]=Q.list.shift();
   try{const v=me();if(v&&!(await cached(t,l))){const b=await gen(v,t,l,90000);if(b)keep(k,b)}}catch(e){}finally{Q.keys.delete(k);Q.busy=0;Q.done++;try{Q.cb&&Q.cb(Q.done,Q.total)}catch(e){}setTimeout(pump,60)}};
  /* أجزاء النطق نفسها التي سيطلبها محرك الصوت (المفاتيح متطابقة) */
  const partsOf=(t,l)=>{try{return window.VoiceParts?VoiceParts.parts(t,l):[[t,l]]}catch(e){return[[t,l]]}};

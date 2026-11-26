@@ -68,14 +68,18 @@ def voice_id(codes, ref_text):
 HITS = defaultdict(list)
 
 
-def limit(req: Request, n, per):
+def limit(req: Request, n, per, kind='x'):
+    # عدّاد منفصل لكل نوع طلب: كان عدّاد واحد يجمع الجمل وإنشاء الصوت معًا، فبعد ٦ جمل يُرفض إنشاء الصوت («مشغول»)
     if DEV:
         return
     ip = (req.headers.get('x-forwarded-for') or (req.client.host if req.client else '')).split(',')[0].strip()
-    now = time.time(); h = [t for t in HITS[ip] if now - t < per]
+    key = kind + '|' + ip
+    now = time.time(); h = [t for t in HITS[key] if now - t < per]
     if len(h) >= n:
         raise HTTPException(429, 'busy')
-    h.append(now); HITS[ip] = h
+    h.append(now); HITS[key] = h
+    if len(HITS) > 5000:
+        HITS.clear()
 
 
 def need_ready():
@@ -103,7 +107,7 @@ def to16k(raw: bytes):
 
 @app.post('/enroll')
 async def enroll(req: Request, audio: UploadFile = File(...), ref_text: str = Form(...), ticket: str = Form(''), exp: str = Form('0')):
-    limit(req, 6, 3600)
+    limit(req, 20, 3600, 'enroll')
     if not DEV:
         if not SECRET:
             raise HTTPException(503, 'not_configured')
@@ -159,7 +163,7 @@ async def tts(req: Request):
 
 
 async def _tts(req: Request):
-    limit(req, 240, 600)
+    limit(req, 900, 600, 'tts')  # حفظ مرحلة كاملة في الجهاز يولّد مئات الجمل؛ الخادم يولّد جملة واحدة في كل مرة
     try:
         b = await req.json()
     except Exception:
