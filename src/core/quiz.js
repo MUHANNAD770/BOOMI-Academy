@@ -694,7 +694,7 @@
       return h(`<button class=link onclick="goBack()">← رُجُوعٌ</button>
         <h2>🎤 تَدْرِيبُ النُّطْقِ</h2>
         <p>${qn('لِاسْتِخْدَامِ الْمَيْكْرُوفُونِ نَحْتَاجُ مُوَافَقَةَ وَلِيِّ الْأَمْرِ مِنْ لَوْحَةِ وَلِيِّ الْأَمْرِ.')}</p>
-        <button class=big onclick="parentPanel()">فَتْحُ لَوْحَةِ وَلِيِّ الْأَمْرِ ⚙️</button>`);
+        <button class=big onclick="parentPanel('kid')">فَتْحُ لَوْحَةِ وَلِيِّ الْأَمْرِ ⚙️</button>`);
     }
     const L = units(P.stage).flatMap(u => u.i).filter(x => stripD(x[0]).length > 1);
     sp1 = wsample(L, 1)[0];

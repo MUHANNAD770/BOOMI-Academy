@@ -220,7 +220,21 @@
 
   const yn = (f, v) => `<select onchange="P.${f}=+this.value;save()"><option value=1 ${v !== 0 && v ? 'selected' : ''}>مسموح</option><option value=0 ${v === 0 || (!v && f === 'mic') ? 'selected' : ''}>غير مسموح</option></select>`;
 
-  function parentPanel() {
+  /* أقسام اللوحة: تبويب واحد ظاهر في كل مرة، ويُتذكّر آخر قسم مفتوح */
+  const TABS = [['prog', '📊', 'التقدّم'], ['exams', '📝', 'الاختبارات والأخطاء'], ['kid', '👤', 'الطالب'], ['voice', '🔊', 'الصوت والمظهر'], ['report', '📄', 'التقرير والحفظ']];
+  let tab = 'prog';
+  window.ppTab = k => {
+    if (!TABS.some(t => t[0] === k)) return;
+    tab = k;
+    document.querySelectorAll('.pp-tabs button').forEach(b => { const on = b.dataset.t === k; b.classList.toggle('on', on); b.setAttribute('aria-selected', on ? 'true' : 'false'); });
+    document.querySelectorAll('.pp-sec').forEach(x => { x.hidden = x.dataset.t !== k; });
+    /* المحتوى يبدأ تحت الشاشة (الهاتف) أو صار شريط الأقسام فوقها: نُظهر بداية القسم */
+    const sec = document.querySelector('.pp-sec:not([hidden])'), bar = document.querySelector('.pp-tabs');
+    if (sec && bar) { const r = sec.getBoundingClientRect(); if (r.top > innerHeight * 0.7 || bar.getBoundingClientRect().top < 0) bar.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  };
+
+  function parentPanel(open) {
+    if (typeof open === 'string') tab = open;
     window.V = 'parent';
     window.CS = 'set';
     rs = 0;
@@ -243,9 +257,9 @@
       <div class=pm-card>
         <div class=pm-ring>
           <svg viewBox="0 0 110 110" aria-hidden=true><circle cx=55 cy=55 r=${R} class=pm-bg /><circle cx=55 cy=55 r=${R} class=pm-fg stroke-dasharray="${C}" stroke-dashoffset="${C * (1 - pct / 100)}" /></svg>
-          <b>${pct}٪</b><small>مستوى الإتقان</small>
+          <b>${D(pct)}٪</b><small>مستوى الإتقان</small>
         </div>
-        <div class=pm-who><span class=pm-av>${P0.gender === 'female' ? '👧' : '👦'}</span><div><b>${esc(P0.name)}</b><small>${P0.age ? esc(P0.age) + ' سنوات' : ''}</small></div></div>
+        <div class=pm-who><span class=pm-av>${P0.gender === 'female' ? '👧' : '👦'}</span><div><b>${esc(P0.name)}</b><small>${P0.age ? D(esc(P0.age)) + ' سنوات' : ''}</small></div></div>
         <ul class=pm-st>
           <li><span>🏆</span>الإنجازات<b>${D(bd)}</b></li>
           <li><span>⭐</span>النجوم<b>${D(st)}</b></li>
@@ -253,13 +267,19 @@
           <li><span>⏱️</span>وَقْتُ التَّعَلُّمِ<b dir=ltr>${tmTxt(P0.tm)}</b></li>
         </ul>
       </div>
+      <nav class=pp-tabs role=tablist aria-label="أقسام لوحة ولي الأمر">${TABS.map(t => `<button type=button role=tab data-t=${t[0]} class="${t[0] === tab ? 'on' : ''}" aria-selected=${t[0] === tab} onclick="ppTab('${t[0]}')"><span>${t[1]}</span><b>${t[2]}</b></button>`).join('')}</nav>
+      <section class=pp-sec data-t=prog ${tab === 'prog' ? '' : 'hidden'}>
       ${mindCard()}
       ${academyProgressHTML()}
       ${mathReportHost()}
+      </section>
+      <section class=pp-sec data-t=exams ${tab === 'exams' ? '' : 'hidden'}>
       ${examsAndMistakesHTML()}
       ${(window.MindCoach && MindCoach.report()) || ''}
       <div id=bank-report-host>${(window.BankReport && !window.BankReport.__lazyStub && BankReport()) || ''}</div>
       ${(window.G2summary && G2summary()) || ''}
+      </section>
+      <section class=pp-sec data-t=voice ${tab === 'voice' ? '' : 'hidden'}>
       ${themeCard()}
       <div class=pdash id=vq-set>
         <h3>🎤 أسئلة بومي الصوتية المفاجئة</h3>
@@ -270,7 +290,6 @@
           <option value=0 ${P0.vq === 0 ? 'selected' : ''}>متوقفة</option>
         </select>
       </div>
-      ${(window.HurufiSync && HurufiSync.box()) || ''}
       <div class=pdash id=parent-tools>
         <h3>🛠️ أدوات سريعة وإعدادات الصوت</h3>
         <div class=row style="gap:8px;flex-wrap:wrap">
@@ -282,6 +301,8 @@
           <button class=alt onclick="bomi()">🦉 التحدّث مع بومي</button>
         </div>
       </div>
+      </section>
+      <section class=pp-sec data-t=kid ${tab === 'kid' ? '' : 'hidden'}>
       <div class=pdash id=parent-settings>
         <h3>👤 الملف الشخصي وإعدادات الطالب</h3>
         <label for=pk>تبديل الطالب</label>${sel('pk', DB.kids.map((k, i) => [i, esc(k.name)]), DB.cur, 'DB.cur=+this.value;P=load();ens();parentPanel()')}
@@ -295,9 +316,11 @@
         <label>السماح باستخدام الميكروفون</label>${yn('mic', P0.mic)}
         <label for=pp>رقم سري للوحة (اتركه فارغًا لإلغائه)</label><input id=pp inputmode=numeric maxlength=4 value="${esc(DB.pin || '')}" onchange="DB.pin=this.value.trim();save()">
       </div>
-      <div class=pdash>
+      </section>
+      <section class=pp-sec data-t=report ${tab === 'report' ? '' : 'hidden'}>
+      <div class=pdash id=parent-report>
         <h3>📄 تقرير ${esc(P0.name)}</h3>
-        <pre>${esc(rtxt())}</pre>
+        <pre class=pp-report>${esc(rtxt())}</pre>
         <label for=em>بريد ولي الأمر</label><input id=em type=email value="${esc(P0.em || '')}" onchange="P.em=this.value.trim();save();parentPanel()">
         <div class=row style="gap:8px;flex-wrap:wrap">
           <a class="big" href="mailto:${esc(P0.em || '')}?subject=${encodeURIComponent('تقرير تقدّم ' + P0.name)}&body=${encodeURIComponent(rtxt())}">إرسال التقرير بالبريد</a>
@@ -306,7 +329,9 @@
         </div>
         <p class=mut style="margin-top:10px">🔒 بيانات الطالب محفوظة على هذا الجهاز أو عبر رمز المزامنة الخاص بك فقط. لا إعلانات ولا تواصل خارجي.</p>
         <button class=alt onclick="window.__deleteCurrentKid(this)">حذف ملف هذا الطالب</button>
-      </div>`);
+      </div>
+      ${(window.HurufiSync && HurufiSync.box()) || ''}
+      </section>`);
     if ((!window.BankReport || window.BankReport.__lazyStub) && window.Lazy && Lazy.loadBundle) {
       Lazy.loadBundle(['src/curriculum/course-data.js', 'src/curriculum/course-text.js', 'src/curriculum/course.js', 'src/curriculum/bank.js', 'src/curriculum/practice.js']).then(() => {
         const host = document.getElementById('bank-report-host');
