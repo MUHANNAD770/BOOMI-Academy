@@ -150,6 +150,52 @@ def prep(text, lang):
     return t
 
 
+SR = 24000
+
+
+def segments(w):
+    """مقاطع الكلام (بالعيّنات) بعتبة طاقة نسبية؛ الفجوات الأقصر من ٨٠ م.ث تُدمج"""
+    fr = SR // 100
+    n = len(w) // fr
+    if n < 3:
+        return []
+    e = np.sqrt(np.mean(w[:n * fr].reshape(n, fr) ** 2, axis=1))
+    on = e > max(0.01, float(e.max()) * 0.06)
+    segs, st = [], None
+    for i, v in enumerate(on):
+        if v and st is None:
+            st = i
+        elif not v and st is not None:
+            segs.append([st, i]); st = None
+    if st is not None:
+        segs.append([st, n])
+    out = []
+    for x in segs:
+        if out and x[0] - out[-1][1] < 8:
+            out[-1][1] = x[1]
+        else:
+            out.append(x)
+    return [[a * fr, b * fr] for a, b in out]
+
+
+def trim_edges(w):
+    """أصوات قصيرة منفصلة في أول الجملة أو آخرها (نفَس، «اح»، بقايا من تسجيل المرجع) تُقصّ: ٤٠–٢٥٠ م.ث وبعدها/قبلها صمت ٣٠٠ م.ث"""
+    sg = segments(w)
+    if len(sg) < 2:
+        return w, 0
+    cut = 0
+    # أقصر من ٤٠ م.ث (انفجار حرف مثل «ك» في آخر الكلمة) جزء من الكلام فلا يُقصّ
+    stray = lambda x: SR // 25 <= x[1] - x[0] < SR // 4
+    while len(sg) >= 2 and stray(sg[0]) and sg[1][0] - sg[0][1] >= SR * 3 // 10:
+        sg.pop(0); cut += 1
+    while len(sg) >= 2 and stray(sg[-1]) and sg[-1][0] - sg[-2][1] >= SR * 3 // 10:
+        sg.pop(); cut += 1
+    if not cut:
+        return w, 0
+    a, b = max(0, sg[0][0] - SR // 12), min(len(w), sg[-1][1] + SR // 5)
+    return w[a:b], cut
+
+
 @app.post('/tts')
 async def tts(req: Request):
     try:
@@ -177,7 +223,7 @@ async def _tts(req: Request):
     text = prep(b.get('text', ''), b.get('lang', 'ar'))
     if not text:
         raise HTTPException(400, 'text')
-    k = hashlib.sha256((vid + '|' + text).encode()).hexdigest()
+    k = hashlib.sha256((vid + '|' + text + '|v3').encode()).hexdigest()  # v3: قصّ الأصوات الزائدة ونسختان للجمل القصيرة
     p = os.path.join(CACHE_DIR, k + '.mp3')
     if k in MEM:
         MEM.move_to_end(k); data = MEM[k]
@@ -185,14 +231,25 @@ async def _tts(req: Request):
         data = open(p, 'rb').read()
     else:
         need_ready()
-        temp = 0.35 if len(text.split()) <= 3 else 0.55
-        w = await asyncio.get_running_loop().run_in_executor(None, lambda: E.speak(rt, codes, text, temp))
-        # مدّ الحروف أو التمتمة: صوت أطول كثيرًا مما يحتاجه عدد الحروف ← نعيد التوليد بحرارة أقل ونأخذ الأقصر
+        loop = asyncio.get_running_loop()
+        short = len(text.split()) <= 3
+        temp = 0.35 if short else 0.55
         letters = len(re.findall(r'[\u0621-\u064AA-Za-z]', text))
-        max_dur = 0.8 + letters * 0.16
-        if len(w) / 24000 > max_dur:
-            w2 = await asyncio.get_running_loop().run_in_executor(None, lambda: E.speak(rt, codes, text, 0.25))
-            if len(w2) < len(w):
+        max_dur = 0.7 + letters * 0.14  # الكلام الطبيعي ~٠٫١ ث للحرف
+        want = 0.2 + letters * 0.1
+
+        # نص فيه فواصل (مقاطع منفصلة مثل «دك، كلاك، بلاك») له وقفات مقصودة: لا نقصّ أطرافه
+        pauses = bool(re.search(r'[،,.;؛…:\-–—]', text.rstrip('.!?؟،,:; ')))  # علامة آخر الجملة ليست وقفة داخلية
+
+        async def one(t):
+            x = await loop.run_in_executor(None, lambda: E.speak(rt, codes, text, t))
+            return (x, 0) if pauses else trim_edges(x)
+
+        w, cut = await one(temp)
+        # مدّ الحروف أو التمتمة أو مقطع زائد («اح اح»)، أو جملة قصيرة (أكثر عرضة لذلك): نولّد نسخة ثانية بحرارة أقل ونأخذ الأقرب للطول الطبيعي
+        if short or cut or len(w) / SR > max_dur:
+            w2, cut2 = await one(0.25)
+            if abs(len(w2) / SR - want) < abs(len(w) / SR - want):
                 w = w2
         data = await asyncio.get_running_loop().run_in_executor(None, mp3, w)
         if not data:
