@@ -1,7 +1,8 @@
 /* sw.js — ذاكرة العمل دون اتصال (Offline Cache) لمنصة حروفي */
 'use strict';
 
-const CACHE = 'hurufi-app-v215';
+const CACHE = 'hurufi-app-v216';
+const FONT_CSS = 'https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;800&display=swap';
 const FONTS = 'hurufi-fonts-v1';
 
 const PRECACHE = [
@@ -1119,6 +1120,19 @@ self.addEventListener('install', event => {
       }
     };
     await Promise.all(Array.from({ length: 6 }, worker));
+    /* خط الموقع: نحفظه من أول زيارة (قبل أن يتحكّم عامل الخدمة في الصفحة) */
+    try {
+      const fc = await caches.open(FONTS);
+      if (!(await fc.match(FONT_CSS))) {
+        const css = await fetch(FONT_CSS);
+        if (css.ok) {
+          const txt = await css.clone().text();
+          await fc.put(FONT_CSS, css);
+          const urls = [...txt.matchAll(/url\((https:\/\/fonts\.gstatic\.com\/[^)]+)\)/g)].map(m => m[1]);
+          await Promise.allSettled(urls.map(async u => { const r = await fetch(u); if (r.ok) await fc.put(u, r); }));
+        }
+      }
+    } catch (_) {}
   })());
 });
 
@@ -1140,7 +1154,7 @@ self.addEventListener('fetch', event => {
   if (url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com') {
     event.respondWith((async () => {
       const cache = await caches.open(FONTS);
-      const hit = await cache.match(req);
+      const hit = await cache.match(req, { ignoreVary: true });
       if (hit) return hit;
       try { const net = await fetch(req); if (net && (net.ok || net.type === 'opaque')) cache.put(req, net.clone()); return net; }
       catch (e) { return hit || Response.error(); }
