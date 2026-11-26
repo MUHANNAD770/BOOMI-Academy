@@ -1,7 +1,7 @@
 /* sw.js — ذاكرة العمل دون اتصال (Offline Cache) لمنصة حروفي */
 'use strict';
 
-const CACHE = 'hurufi-app-v207';
+const CACHE = 'hurufi-app-v208';
 
 const PRECACHE = [
   './',

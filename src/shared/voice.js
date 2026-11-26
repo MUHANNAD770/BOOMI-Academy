@@ -753,6 +753,7 @@
   }
 
   /* ---------- جزء واحد: صوتي الشخصي ← المقطع المسجّل ← Gemini (محفوظ) ← Edge المجاني ---------- */
+  let geminiOffUntil = 0;
   async function speakPart(t, l, token, ep, mood) {
     const valid = () => token === say.tk && ep === navEpoch && !muted();
     if (!valid()) return false;
@@ -770,9 +771,12 @@
       if (ok === true || !valid()) return ok;
     }
     try {
+      if (Date.now() < geminiOffUntil) throw new Error('gemini_off');
       return await playSegment(geminiText(t, l), l, token, ep, mood);
     } catch (err) {
       if (err && err.name === 'AbortError') return false;
+      /* Gemini غير مُعدّ على الخادم (بلا مفتاح) أو تجاوز الحد: لا نكرر المحاولة لكل جملة؛ نعيدها بعد ١٠ دقائق */
+      if (err && (err.status === 503 || err.status === 429 || err.status === 401 || err.status === 403)) geminiOffUntil = Date.now() + 600000;
       if (!valid()) return false;
       /* Gemini غير متاح (بلا مفتاح أو تجاوز الحد): صوت المعلّم نفسه من خادم Edge المجاني */
       try {
