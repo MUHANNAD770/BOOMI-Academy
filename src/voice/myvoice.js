@@ -6,7 +6,7 @@
    • أي تعذّر (الخادم نائم، بلا إنترنت، خطأ) ← يكمل بومي بصوته المعتاد تلقائيًا. */
 (()=>{
  'use strict';
- const CN='hurufi-myvoice-v2',MEM=new Map(),READ='مَرْحَبًا يَا أَصْدِقَائِي، أَنَا بُومِي مُعَلِّمُكُمْ. هَيَّا نَتَعَلَّمُ مَعًا الْحُرُوفَ وَالْكَلِمَاتِ، وَنَقْرَأُ قِصَّةً جَمِيلَةً كُلَّ يَوْمٍ.';
+ const CN='hurufi-myvoice-v3',MEM=new Map(),READ='مَرْحَبًا يَا أَصْدِقَائِي، أَنَا بُومِي مُعَلِّمُكُمْ. هَيَّا نَتَعَلَّمُ مَعًا الْحُرُوفَ وَالْكَلِمَاتِ، وَنَقْرَأُ قِصَّةً جَمِيلَةً كُلَّ يَوْمٍ.';
  const st={cfg:null,cfgAt:0,down:0,warn:0,inflight:0,rec:null,blob:null,draft:null,ok:0};
  const dev=()=>{try{return /^(localhost|127\.0\.0\.1)$/.test(location.hostname)&&localStorage.getItem('hurufiVoiceDev')}catch(e){return null}};
  const cfg=async(fresh)=>{if(!fresh&&st.cfg&&Date.now()-st.cfgAt<8*60e3)return st.cfg;
@@ -36,7 +36,7 @@
  const playV=async(v,t,l,valid,onStart,ms)=>{const H=window.HurufiClips;if(!H||!H.playBlob)return false;const done=wait();
   try{return await H.playBlob(async()=>{const g=gen(v,t,l,90000).then(b=>{if(b)keep(ck(v,t,l),b);return b});
    /* لا ننتظر أكثر من ms: إن تأخّر الخادم يكمل بومي الآن، والتوليد يكمل ويُحفظ للمرة القادمة */
-   return ms?await Promise.race([g,new Promise(r=>setTimeout(()=>r(null),ms))]):await g},'mv:'+ck(v,t,l),valid,onStart)}finally{done()}};
+   st.direct=(st.direct||0)+1;try{return ms?await Promise.race([g,new Promise(r=>setTimeout(()=>r(null),ms))]):await g}finally{st.direct--}},'mv:'+ck(v,t,l),valid,onStart)}finally{done()}};
  const play=(t,l,valid,onStart,ms)=>{const v=me();return v?playV(v,t,l,valid,onStart,ms):Promise.resolve(false)};
  const warm=(t,l)=>{const v=me();if(v&&norm(t))queue([[t,l]],1)};
  /* ===== نطق فوري: الجملة المحفوظة في الجهاز تُشغَّل مباشرة؛ غير المحفوظة لا ننتظرها (يُكمل بومي بصوته) وتُجهَّز في الخلفية ===== */
@@ -50,7 +50,7 @@
  const Q={list:[],keys:new Set(),busy:0,total:0,done:0,cb:null};
  const queue=(items,front)=>{const v=me();if(!v)return;const add=[];for(const[t,l]of items){if(!norm(t))continue;const k=ck(v,t,l);if(Q.keys.has(k)||RB.has(k))continue;Q.keys.add(k);add.push([t,l,k])}
   if(!add.length)return;Q.total+=add.length;if(front)Q.list.unshift(...add);else Q.list.push(...add);pump()};
- const pump=async()=>{if(Q.busy||!Q.list.length)return;if(typeof JOB!=='undefined'&&JOB.on){setTimeout(pump,5000);return} /* أثناء إنشاء صوت جديد لا نزاحمه على الخادم */if(!canGen()){setTimeout(pump,30000);return}Q.busy=1;const[t,l,k]=Q.list.shift();
+ const pump=async()=>{if(Q.busy||!Q.list.length)return;if(st.direct){setTimeout(pump,250);return} /* جملة ينتظرها الطالب الآن لها الأولوية على الخادم */if(typeof JOB!=='undefined'&&JOB.on){setTimeout(pump,5000);return} /* أثناء إنشاء صوت جديد لا نزاحمه على الخادم */if(!canGen()){setTimeout(pump,30000);return}Q.busy=1;const[t,l,k]=Q.list.shift();
   try{const v=me();if(v&&!(await cached(t,l))){const b=await gen(v,t,l,90000);if(b)keep(k,b)}}catch(e){}finally{Q.keys.delete(k);Q.busy=0;Q.done++;try{Q.cb&&Q.cb(Q.done,Q.total)}catch(e){}setTimeout(pump,60)}};
  /* أجزاء النطق نفسها التي سيطلبها محرك الصوت (المفاتيح متطابقة) */
  const partsOf=(t,l)=>{try{return window.VoiceParts?VoiceParts.parts(t,l):[[t,l]]}catch(e){return[[t,l]]}};
@@ -60,6 +60,7 @@
   try{if(window.qs&&window.qs[window.qi]&&window.qList)qList(qs[qi]).forEach(([t,l])=>add(t,l))}catch(e){}
   try{const q=window.MathAcademy&&MathAcademy.current&&MathAcademy.current();if(q){add(MathAcademy.speech(q.prompt),'ar');(q.options||[]).forEach(o=>add(MathAcademy.speech(o),'ar'))}}catch(e){}
   try{document.querySelectorAll('#app [onclick^="say("]').forEach(e=>{const m=e.getAttribute('onclick').match(/^say\('([^']*)','(ar|en)'/);if(m)add(m[1],m[2])})}catch(e){}
+  try{if(window.V==='home'&&window.MC&&MC.greetTexts){const hr=new Date().getHours(),g=MC.greetTexts(),now=hr>=4&&hr<12?g[0]:hr<17?g[1]:g[2];[now,...g.slice(3)].forEach(t=>add(window.studentGenderText?studentGenderText(t):t,'ar'))}}catch(e){}
   try{const m=window.MC&&MC.text&&MC.text();if(m)add(window.studentGenderText?studentGenderText(m[0]):m[0],m[1])}catch(e){}
   try{if(window.V!=='sec'&&window.V!=='parent'){const r=window.BumiRead&&BumiRead();(r||[]).forEach(([t,l])=>add(t,l))}}catch(e){}
   return L};
@@ -70,6 +71,9 @@
   try{const st0=window.S&&S[+(window.P&&P.stage)||0];(st0?st0.u:[]).forEach(u=>u.i.forEach(it=>{add(it[0],it[2]||u.l)}))}catch(e){}
   ['أَحْسَنْتَ!','مُمْتَازٌ!','حَاوِلْ مَرَّةً أُخْرَى','اِسْتَمِعْ جَيِّدًا، ثُمَّ اخْتَرِ الْإِجَابَةَ الْمُنَاسِبَةَ','اِخْتَرِ الْإِجَابَةَ الْمُنَاسِبَةَ','الْخِيَارَاتُ'].forEach(t=>add(window.studentGenderText?studentGenderText(t):t,'ar'));
   const seen=new Set();return L.filter(([t,l])=>{const k=l+'|'+t;if(seen.has(k))return false;seen.add(k);return true})};
+ /* عبارات بومي المتكرّرة (المديح والتعليمات): تُجهَّز بهدوء بعد فتح الموقع فتُنطق فورًا */
+ const CORE=['أَحْسَنْتَ!','مُمْتَازٌ!','رَائِعٌ!','حَاوِلْ مَرَّةً أُخْرَى','إِجَابَةٌ صَحِيحَةٌ','اِسْتَمِعْ جَيِّدًا، ثُمَّ اخْتَرِ الْإِجَابَةَ الْمُنَاسِبَةَ','اِخْتَرِ الْإِجَابَةَ الْمُنَاسِبَةَ','الْخِيَارَاتُ'];
+ setTimeout(()=>{try{if(on()&&canGen()){const L=[];CORE.forEach(t=>partsOf(window.studentGenderText?studentGenderText(t):t,'ar').forEach(p=>L.push(p)));queue(L,0)}}catch(e){}},6000);
  const countCached=async list=>{let n=0;for(const[t,l]of list)if(await cached(t,l))n++;return n};
  window.mvOffline=async()=>{const b=$('mv-off-btn'),o=$('mv-off');if(!me()||!b)return;const list=stageTexts();b.disabled=true;
   const have=await countCached(list),need=list.filter(x=>true);Q.total=0;Q.done=0;
@@ -79,7 +83,7 @@
 
  /* ===== واجهة الإعدادات ===== */
  const $=id=>document.getElementById(id);
- try{window.caches&&caches.delete('hurufi-myvoice-v1')}catch(e){} /* v2: سقف طول الجملة في الخادم (منع مدّ الحروف)؛ المقاطع القديمة تُحذف */
+ try{window.caches&&['hurufi-myvoice-v1','hurufi-myvoice-v2'].forEach(n=>caches.delete(n))}catch(e){} /* v3: الخادم يقصّ الأصوات الزائدة («اح») في أول الجملة وآخرها */ /* v2: سقف طول الجملة في الخادم (منع مدّ الحروف)؛ المقاطع القديمة تُحذف */
  const msg=(t,cls)=>{const e=$('mv-msg');if(e){e.textContent=t||'';e.className='mv-msg '+(cls||'')}};
  const fmt=ts=>{try{return new Date(ts).toLocaleDateString('ar',{day:'numeric',month:'long',year:'numeric'})}catch(e){return''}};
  const panel=()=>{const v=me(),mode=window.P&&P.vmode==='mine'&&v?'mine':'bomi';

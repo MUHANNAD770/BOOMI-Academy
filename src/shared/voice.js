@@ -815,12 +815,21 @@
     return null;
   }
 
+  /* «صوتي»: نولّد الجزء التالي بصوتك بينما يُنطق الحالي، فلا ينتظر الطالب بين الأجزاء.
+     التأخير القصير يضمن أن طلب الجزء الحالي وصل الخادم أولًا (الخادم يولّد جملة واحدة في كل مرة) */
+  function mvAhead(items) {
+    try {
+      if (items && items.length && window.MyVoice && MyVoice.on() && MyVoice.canGen && MyVoice.canGen()) setTimeout(() => MyVoice.queue(items, true), 400);
+    } catch (_) {}
+  }
+
   async function speakText(text, lang, token, ep, mood) {
     const ps = partsOf(text, lang);
     if (ps) {
       for (let i = 0; i < ps.length; i++) {
         if (token !== say.tk || ep !== navEpoch || muted()) return false;
         try { if (window.HurufiClips && ps[i + 1]) { const nk = VoiceParts.clipKey(ps[i + 1][0], ps[i + 1][1]); if (nk) HurufiClips.warm(nk, ps[i + 1][1]); } } catch (_) {}
+        if (ps[i + 1]) mvAhead([ps[i + 1]]);
 
         await speakPart(ps[i][0], ps[i][1], token, ep, mood);
       }
@@ -909,7 +918,9 @@
           if (token !== say.tk || ep !== navEpoch || muted()) break;
           if (!(await waitIfPaused(token, ep))) break;
           const [txt, lng] = items[i];
+          if (i === 0 && items[1]) mvAhead(partsOf(raws[1] || items[1][0], items[1][1]) || []);
           await speakText(raws[i] || txt, lng, token, ep, 'normal');
+          if (items[i + 2]) mvAhead(partsOf(raws[i + 2] || items[i + 2][0], items[i + 2][1]) || []);
           if (i + 1 < items.length && token === say.tk && ep === navEpoch) {
             await new Promise(r => setTimeout(r, 140));
           }

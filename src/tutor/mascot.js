@@ -141,6 +141,8 @@ const MC = (() => {
       if (msg) say(msg, lang);
     },
     text: () => msg ? [msg, lang] : null,
+    /* كل ترحيبات الرئيسية (تتغيّر مع كل ضغطة): تُجهَّز مسبقًا بـ«صوتي» فتُنطق فورًا */
+    greetTexts: () => ['صَبَاحُ الْخَيْرِ!', 'أَهْلًا وَسَهْلًا!', 'مَسَاءُ الْخَيْرِ!', ...GREET],
     park() {
       document.body.appendChild(el);
       el.classList.remove('inl', 'dock');
