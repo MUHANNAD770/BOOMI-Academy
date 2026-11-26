@@ -9,7 +9,8 @@
 |---|---|
 | `index.html`, `sw.js`, `manifest.webmanifest` | الصفحة الرئيسية وعامل الخدمة (عمل بلا إنترنت) |
 | `src/core/` | النواة: المنهج الموحّد (`curriculum-core.js`)، التخزين، التنقل، الاختبار، الشارات |
-| `src/academies/arabic/`, `src/academies/english/` | أكاديمية العربية وأكاديمية الإنجليزية (منفصلتان) |
+| `src/academies/arabic/`, `src/academies/english/`, `src/academies/math/` | أكاديميات العربية والإنجليزية والرياضيات (منفصلة) |
+| `data/math/` | دفعات بنك الرياضيات: لإضافة دفعة ضع ملفها هنا وأضف اسمه في `index.json`، ثم شغّل `node tools/tests/math-bank-check.js` |
 | `src/curriculum/` | الدروس النصية، بنك الأسئلة، التدريب |
 | `src/stories/` | مكتبة القصص |
 | `src/assessment/` | الاختبارات المتدرّجة |

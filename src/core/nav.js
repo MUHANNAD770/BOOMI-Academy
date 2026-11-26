@@ -147,7 +147,7 @@
   };
 
   function sec(k) {
-    if (k === 'math') return home();
+    if (k === 'math') return window.mathAcademy ? mathAcademy() : home();
     window.V = 'sec';
     window.CS = k;
     ens();
@@ -239,6 +239,7 @@
       <div class=h2-acad>
         <button class="h2-card ar" onclick="sec('ar')"><span class="h2-ic h2-img"><img src="img/ui/acad-ar.webp" alt="ض" onerror="this.parentNode.textContent='ض'"></span><b>أكاديمية العربية</b><small>حروف • مخارج • قراءة • قواعد</small><i class=h2-go>${P.gender === 'female' ? 'اِبْدَئِي' : 'اِبْدَأِ'} الْآنَ ▶</i></button>
         <button class="h2-card en" onclick="sec('en')"><span class="h2-ic h2-img" dir=ltr><img src="img/ui/acad-en.webp" alt="ABC" onerror="this.parentNode.textContent='ABC'"></span><b>أكاديمية الإنجليزية</b><small dir=ltr>Letters • Phonics • Words</small><i class=h2-go>${P.gender === 'female' ? 'اِبْدَئِي' : 'اِبْدَأِ'} الْآنَ ▶</i></button>
+        <button class="h2-card math" onclick="mathAcademy()"><span class="h2-ic h2-img"><img src="img/ui/acad-math.webp" alt="١٢٣" onerror="this.parentNode.textContent='١٢٣'"></span><b>أكاديمية الرياضيات</b><small>أعداد • عمليات • هندسة</small><i class=h2-go>${P.gender === 'female' ? 'اِبْدَئِي' : 'اِبْدَأِ'} الْآنَ ▶</i></button>
       </div>
       <h3 class=h2-h>🎮 تعلّم والعب واختبر مستواك</h3>
       <div class="tl tl-glass">${tl.map(t => `<button class=gt onclick="${t[3]}">${t[0]}<b>${t[1]}</b><small>${t[2]}</small></button>`).join('')}</div>
