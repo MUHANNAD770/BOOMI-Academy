@@ -42,10 +42,8 @@
     P.gender = P.gender === 'female' ? 'female' : 'male';
     delete P.t;
     delete P.lim;
-    // Remove legacy math and deprecated voice provider fields if present
+    // حقول قديمة لم تعد مستعملة. «صوتي الشخصي» (P.myv و P.vmode) وتقدّم أكاديمية الرياضيات (P.math) يبقيان
     delete P.ml;
-    delete P.myv;
-    delete P.vmode;
     delete P.voice;
     delete P.voiceCloud;
     if (!P.voiceId) P.voiceId = P.teacher === 'male' ? 'puck' : 'kore';

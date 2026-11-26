@@ -860,7 +860,8 @@
       oh(x);
       let fn = '';
       try { const e = window.Router && Router.entry(); fn = e ? e.fn : ''; } catch (_) {}
-      if (window.P && window.V !== 'setup' && window.V !== 'who' && window.V !== 'game' && !NOASK.test(fn) && !app.querySelector('.ask')) {
+      /* زر «اسأل بومي» العائم أُلغي بطلب صاحب المشروع (كان يغطي الأسئلة)؛ بومي متاح من بطاقة «المعلم الذكي بومي» في الرئيسية */
+      if (false && window.P && window.V !== 'setup' && window.V !== 'who' && window.V !== 'game' && !NOASK.test(fn) && !app.querySelector('.ask')) {
         /* في الاختبار والدروس: الزر داخل الصفحة أسفل المحتوى (لا يطفو فوق الخيارات أو أزرار التنقل) */
         const inline = window.V === 'quiz' || window.V === 'lesson';
         app.insertAdjacentHTML('beforeend', `<button class="ask${inline ? ' ask-inline' : ''}" onclick="bomi()">🦉 اسأل بومي</button>`);
