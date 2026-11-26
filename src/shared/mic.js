@@ -72,7 +72,7 @@
     stopAll();
     if (window.Lazy) Lazy.onLeave(stopAll);
     if (!P.mic) {
-      return h(`<section class="sec"><button class="link" onclick="goBack()">← رجوع</button><h2>🎤 تدريب النطق</h2><p>لاستخدام الميكروفون نحتاج موافقة ولي الأمر من لوحة ولي الأمر.</p><button class="big" onclick="parentPanel()">فتح لوحة ولي الأمر</button></section>`);
+      return h(`<section class="sec"><button class="link" onclick="goBack()">← رجوع</button><h2>🎤 تدريب النطق</h2><p>لاستخدام الميكروفون نحتاج موافقة ولي الأمر من لوحة ولي الأمر.</p><button class="big" onclick="parentPanel('kid')">فتح لوحة ولي الأمر</button></section>`);
     }
     const pool = units(P.stage).flatMap(u => u.i).filter(x => stripD(x[0]).length > 1 && !/\s/.test(x[0]));
     sp1 = (window.wsample ? wsample(pool, 1)[0] : pk(pool)) || ['أَسَدٌ', '🦁', 'ar'];

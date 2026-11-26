@@ -1207,3 +1207,39 @@ html.bm-open #mc {
 .math-pbar em{font-style:normal;font-size:.85rem;opacity:.85;white-space:nowrap}
 :root[data-theme=dark] .math-pbar i{background:rgba(255,255,255,.14)}
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]) .math-pbar i{background:rgba(255,255,255,.14)}}
+
+/* ===== لوحة ولي الأمر: أقسام (تبويبات) ومقاسات الشاشات ===== */
+.pp-tabs{position:relative;z-index:11;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;
+  margin:12px -4px 6px;padding:8px 4px;background:color-mix(in srgb,var(--bg,#f4f2ff) 88%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-radius:18px}
+.pp-tabs::-webkit-scrollbar{display:none}
+.pp-tabs button{grid-column:span 2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:2px;min-height:58px;padding:6px 6px;border-radius:16px;border:2px solid var(--line,#dfe6f5);
+  background:var(--card,#fff);color:inherit;font:inherit;font-weight:800;font-size:.85rem;line-height:1.35;cursor:pointer;box-shadow:0 2px 8px rgba(40,30,120,.06)}
+.pp-tabs button:nth-child(4){grid-column:2/span 2}
+.pp-tabs button span{font-size:1.15rem}
+.pp-tabs button.on{background:linear-gradient(150deg,#8e7cff,#6a4cf0);color:#fff;border-color:transparent;box-shadow:0 6px 16px rgba(106,76,240,.35)}
+.pp-tabs button:focus-visible{outline:3px solid #ffb84d;outline-offset:2px}
+.pp-sec{animation:ppin .22s ease-out}
+@keyframes ppin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.pp-sec{animation:none}}
+/* لا تمرير أفقي: النصوص الطويلة والتقرير تلتف داخل البطاقة */
+.pdash{max-width:100%;box-sizing:border-box;overflow-wrap:anywhere;min-width:0}
+.pdash pre,.pp-report{white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;max-width:100%;box-sizing:border-box;background:rgba(0,0,0,.03);border-radius:14px;padding:12px;font:inherit;font-size:.92rem;line-height:1.9;margin:8px 0}
+.pdash select,.pdash input,.pdash textarea{max-width:100%;box-sizing:border-box}
+#parent-settings label{display:block;margin-top:10px}
+#parent-settings select,#parent-settings input{width:100%}
+.pm-card{max-width:100%;box-sizing:border-box}
+@media(min-width:761px){
+  .pp-tabs{position:sticky;top:64px;grid-template-columns:repeat(5,minmax(0,1fr))}
+  .pp-tabs button,.pp-tabs button:nth-child(4){grid-column:auto;flex-direction:row;gap:6px;font-size:.95rem}
+}
+@media(min-width:1100px){
+  #parent-settings{display:grid;grid-template-columns:1fr 1fr;column-gap:16px}
+  #parent-settings>h3,#parent-settings>.link{grid-column:1/-1}
+}
+:root[data-theme=dark] .pp-tabs{background:color-mix(in srgb,#14163d 88%,transparent)}:root[data-theme=dark] .pdash pre{background:rgba(255,255,255,.06)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .pp-tabs{background:color-mix(in srgb,#14163d 88%,transparent)}:root:not([data-theme=light]) .pdash pre{background:rgba(255,255,255,.06)}}
+@media(max-width:480px){
+  .pm-card{grid-template-columns:auto 1fr}
+  .pm-card .pm-st{grid-column:1/-1;grid-template-columns:1fr 1fr}
+  .pm-card .pm-st li{font-size:.88rem}
+}
