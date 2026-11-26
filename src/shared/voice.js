@@ -814,6 +814,8 @@
       for (let i = 0; i < ps.length; i++) {
         if (token !== say.tk || ep !== navEpoch || muted()) return false;
         try { if (window.HurufiClips && ps[i + 1]) { const nk = VoiceParts.clipKey(ps[i + 1][0], ps[i + 1][1]); if (nk) HurufiClips.warm(nk, ps[i + 1][1]); } } catch (_) {}
+        /* «صوتي الشخصي»: الجملتان التاليتان تُولَّدان أثناء نطق الحالية (أقل انتظارًا) */
+        try { if (window.MyVoice && MyVoice.on()) ps.slice(i + 1, i + 3).forEach(q => MyVoice.warm(q[0], q[1])); } catch (_) {}
         await speakPart(ps[i][0], ps[i][1], token, ep, mood);
       }
       return true;
@@ -1093,6 +1095,9 @@
 
   /* ---------- شريط التحكّم المرئي بالصوت (#boomi-player) ---------- */
   function renderPlayer() {
+    /* الشريط العائم أُلغي بطلب صاحب المشروع (كان يغطي الأسئلة): نحذف أي نسخة قديمة منه فقط */
+    const old = document.getElementById('boomi-player'); if (old) old.remove();
+    return;
     let bar = document.getElementById('boomi-player');
     const shouldShow = playState !== 'idle' || !!lastErrorMsg;
 
