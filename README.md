@@ -10,7 +10,8 @@
 | `index.html`, `sw.js`, `manifest.webmanifest` | الصفحة الرئيسية وعامل الخدمة (عمل بلا إنترنت) |
 | `src/core/` | النواة: المنهج الموحّد (`curriculum-core.js`)، التخزين، التنقل، الاختبار، الشارات |
 | `src/academies/arabic/`, `src/academies/english/`, `src/academies/math/` | أكاديميات العربية والإنجليزية والرياضيات (منفصلة) |
-| `data/math/` | دفعات بنك الرياضيات: لإضافة دفعة ضع ملفها هنا وأضف اسمه في `index.json`، ثم شغّل `node tools/tests/math-bank-check.js` |
+| `data/math/` | بنك الرياضيات (٣٦٠ سؤالًا في ٦ دفعات، ٦ مراحل و٢٦ وحدة) |
+| `tools/math/` | الدفعات كما أُرسلت (`raw/`)، وأداة البناء والمراجعة: `python3 tools/math/build_batches.py` ثم `python3 tools/math/review.py data/math/*.json` و`node tools/tests/math-bank-check.js`. سجل التصحيحات في `tools/math/REVIEW.md` |
 | `src/curriculum/` | الدروس النصية، بنك الأسئلة، التدريب |
 | `src/stories/` | مكتبة القصص |
 | `src/assessment/` | الاختبارات المتدرّجة |

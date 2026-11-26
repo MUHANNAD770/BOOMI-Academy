@@ -92,6 +92,38 @@
     </div>`;
   }
 
+  /* أكاديمية الرياضيات: المستوى، الوحدات المتقنة، الدقة، اختبارات المراحل، ونقاط الضعف (من P.math) */
+  function mathHTML(r) {
+    if (!r) return `<div class=pdash id=math-progress><h3>🧮 أكاديمية الرياضيات</h3><p class=mut>لم يبدأ الطالب أكاديمية الرياضيات بعد.</p><button class=alt onclick="mathAcademy()">🧮 فتح أكاديمية الرياضيات</button></div>`;
+    const pct = r.units ? Math.round(r.mastered / r.units * 100) : 0;
+    const tm = t => { try { return D(new Date(t).toLocaleDateString('ar', { day: 'numeric', month: 'short' })); } catch (_) { return ''; } };
+    const K = { unit: '📘', stage: '🏁', place: '🎯', review: '🔁' };
+    return `<div class=pdash id=math-progress>
+      <h3>🧮 أكاديمية الرياضيات (${D(pct)}٪)</h3>
+      <ul class=pm-st>
+        <li><span>📍</span>المستوى${r.place ? '' : ' (بلا اختبار)'}<b>${esc(r.place ? r.place.stage : 'المرحلة الأولى')}</b></li>
+        <li><span>✅</span>وحدات متقنة<b>${D(r.mastered)}/${D(r.units)}</b></li>
+        <li><span>🎯</span>دقّة الإجابات<b>${r.accuracy == null ? '—' : D(r.accuracy) + '٪'}</b></li>
+        <li><span>✍️</span>أسئلة محلولة<b>${D(r.answered)}</b></li>
+      </ul>
+      ${r.place ? `<p class=mut>اختبار تحديد المستوى (${tm(r.place.at)}): ${D(r.place.total)} من ${D(r.place.of)}${r.place.review.length ? ' · يحتاج مراجعة: ' + r.place.review.map(esc).join('، ') : ''}</p>` : ''}
+      <div class=math-pbars>${r.stages.map(s => `<div class=math-pbar><span>${s.passed ? '🏆 ' : ''}${esc(s.name)}</span><i><b style="width:${s.units ? Math.round(s.mastered / s.units * 100) : 0}%"></b></i><em>${D(s.mastered)}/${D(s.units)}${s.best ? ` · اختبار ${D(s.best)}٪` : ''}</em></div>`).join('')}</div>
+      ${r.weak.length ? `<p><b>🌱 تحتاج شرحًا مبسّطًا وتمارين أسهل:</b> ${r.weak.map(esc).join('، ')}</p>` : ''}
+      ${r.practicing.length ? `<p><b>🎯 قيد التدريب (٦٠–٨٤٪):</b> ${r.practicing.map(esc).join('، ')}</p>` : ''}
+      ${r.wrong ? `<p class=mut>🔁 أخطاء محفوظة للمراجعة: ${D(r.wrong)}</p>` : ''}
+      ${r.recent.length ? `<details><summary>🕒 آخر النشاطات</summary><div class=list>${r.recent.map(x => `<div class=row><span>${K[x.kind] || '📘'}</span><b>${esc(x.name)}</b><small>${D(x.pc)}٪ · ${tm(x.t)}</small></div>`).join('')}</div></details>` : ''}
+      <button class=alt onclick="mathAcademy()">🧮 فتح أكاديمية الرياضيات</button></div>`;
+  }
+  function mathReportHost() {
+    setTimeout(() => {
+      const host = document.getElementById('math-report-host');
+      if (!host || !window.MathAcademy) return;
+      MathAcademy.load().then(() => { const e = document.getElementById('math-report-host'); if (e) e.innerHTML = mathHTML(MathAcademy.summary()); }).catch(() => {});
+    }, 0);
+    return '<div id=math-report-host></div>';
+  }
+  window.mathParentHTML = () => window.MathAcademy ? mathHTML(MathAcademy.summary()) : '';
+
   function examsAndMistakesHTML() {
     const P0 = window.P || {};
     const exams = P0.exams || {};
@@ -152,6 +184,12 @@
     return `<div class=mind-card><b class=mc-h>🎯 خطة بومي لطفلك</b>${body}${nx ? `<button class=mc-next onclick="${go(nx.go)}"><span>${nx.icon}</span><div><small>الخطوة المقترحة · ${esc(nx.why || '')}</small><b>${esc(nx.t)}</b></div></button>` : ''}</div>`;
   }
 
+  function mathTxt() {
+    try {
+      const r = window.MathAcademy && MathAcademy.summary(); if (!r) return '';
+      return `\nالرياضيات: ${r.place ? r.place.stage : 'المرحلة الأولى'} | وحدات متقنة ${r.mastered}/${r.units} | الدقة ${r.accuracy == null ? '—' : r.accuracy + '%'}${r.weak.length ? ' | تحتاج مراجعة: ' + r.weak.join('، ') : ''}`;
+    } catch (_) { return ''; }
+  }
   function rtxt() {
     const E = Object.entries(P.sk || {}).filter(([k]) => !k.startsWith('ai:'));
     const st = P.stat || {};
@@ -177,7 +215,7 @@
 تحتاج مراجعة: ${weak.join('، ') || '—'}
 أخطاء قيد التدريب: ${unres.join('، ') || 'لا توجد'}
 حروف يجد صعوبة فيها: ${wl || '—'}
-نطق يحتاج تدريبًا: ${pw || '—'}`;
+نطق يحتاج تدريبًا: ${pw || '—'}${mathTxt()}`;
   }
 
   const yn = (f, v) => `<select onchange="P.${f}=+this.value;save()"><option value=1 ${v !== 0 && v ? 'selected' : ''}>مسموح</option><option value=0 ${v === 0 || (!v && f === 'mic') ? 'selected' : ''}>غير مسموح</option></select>`;
@@ -217,6 +255,7 @@
       </div>
       ${mindCard()}
       ${academyProgressHTML()}
+      ${mathReportHost()}
       ${examsAndMistakesHTML()}
       ${(window.MindCoach && MindCoach.report()) || ''}
       <div id=bank-report-host>${(window.BankReport && !window.BankReport.__lazyStub && BankReport()) || ''}</div>

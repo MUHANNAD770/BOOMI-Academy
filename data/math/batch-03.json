@@ -1,0 +1,737 @@
+{
+ "bank_name": "Boomi Mathematics Academy",
+ "batch": 3,
+ "language": "ar",
+ "source": "tools/math/raw/batch-03.json (مراجَع: tools/math/build_batches.py)",
+ "stages": [
+  {
+   "id": "math_stage_01",
+   "name": "مرحلة التأسيس",
+   "units": [
+    {
+     "id": "basic_ops",
+     "name": "الجمع والطرح البسيط"
+    }
+   ],
+   "questions": [
+    {
+     "id": "math_121",
+     "unit_id": "counting",
+     "type": "choice",
+     "prompt": "ما العدد الذي يأتي بعد ١٩؟",
+     "options": [
+      "١٨",
+      "٢٠",
+      "٢١"
+     ],
+     "correct_answer": "٢٠",
+     "explanation": "نضيف واحدًا إلى ١٩ فيكون ٢٠."
+    },
+    {
+     "id": "math_122",
+     "unit_id": "counting",
+     "type": "fill",
+     "prompt": "أكمل: ٢، ٤، ٦، ٨، __",
+     "options": [],
+     "correct_answer": "١٠",
+     "explanation": "نضيف ٢ في كل مرة."
+    },
+    {
+     "id": "math_123",
+     "unit_id": "compare",
+     "type": "choice",
+     "prompt": "أي عدد أصغر؟",
+     "options": [
+      "١٢",
+      "٧",
+      "١٥"
+     ],
+     "correct_answer": "٧",
+     "explanation": "٧ أصغر من ١٢ و١٥."
+    },
+    {
+     "id": "math_124",
+     "unit_id": "basic_ops",
+     "type": "fill",
+     "prompt": "كم يساوي ٣ + ٤؟",
+     "options": [],
+     "correct_answer": "٧",
+     "explanation": "ثلاثة زائد أربعة يساوي سبعة."
+    },
+    {
+     "id": "math_125",
+     "unit_id": "shapes",
+     "type": "choice",
+     "prompt": "أي شكل له أربعة أضلاع متساوية وأربع زوايا قائمة؟",
+     "options": [
+      "المثلث",
+      "المربع",
+      "الدائرة"
+     ],
+     "correct_answer": "المربع",
+     "explanation": "المربع له أربعة أضلاع متساوية وأربع زوايا قائمة."
+    },
+    {
+     "id": "math_126",
+     "unit_id": "counting",
+     "type": "fill",
+     "prompt": "أكمل: ١٠، ٩، ٨، ٧، __",
+     "options": [],
+     "correct_answer": "٦",
+     "explanation": "ننقص واحدًا في كل مرة."
+    },
+    {
+     "id": "math_127",
+     "unit_id": "basic_ops",
+     "type": "choice",
+     "prompt": "كم عدد الأرجل لدى قطتين؟",
+     "options": [
+      "٤",
+      "٦",
+      "٨"
+     ],
+     "correct_answer": "٨",
+     "explanation": "لكل قطة أربع أرجل؛ ٤ + ٤ = ٨."
+    },
+    {
+     "id": "math_128",
+     "unit_id": "basic_ops",
+     "type": "fill",
+     "prompt": "١٥ = ١٠ + __",
+     "options": [],
+     "correct_answer": "٥",
+     "explanation": "١٥ − ١٠ = ٥."
+    },
+    {
+     "id": "math_129",
+     "unit_id": "counting",
+     "type": "choice",
+     "prompt": "أي عدد فردي؟",
+     "options": [
+      "٨",
+      "١٢",
+      "١٥"
+     ],
+     "correct_answer": "١٥",
+     "explanation": "العدد ١٥ لا يقبل القسمة على ٢ دون باقٍ."
+    },
+    {
+     "id": "math_130",
+     "unit_id": "basic_ops",
+     "type": "fill",
+     "prompt": "لديك ٥ كرات وأعطاك صديقك كرتين. كم كرة لديك الآن؟",
+     "options": [],
+     "correct_answer": "٧",
+     "explanation": "٥ + ٢ = ٧ كرات."
+    }
+   ]
+  },
+  {
+   "id": "math_stage_02",
+   "name": "مرحلة المبتدئ",
+   "units": [
+    {
+     "id": "mult_intro",
+     "name": "الضرب والقسمة الأولي"
+    }
+   ],
+   "questions": [
+    {
+     "id": "math_131",
+     "unit_id": "addition",
+     "type": "fill",
+     "prompt": "احسب: ٣٥ + ٢٤ = __",
+     "options": [],
+     "correct_answer": "٥٩",
+     "explanation": "٥ + ٤ = ٩، و٣ + ٢ = ٥."
+    },
+    {
+     "id": "math_132",
+     "unit_id": "addition",
+     "type": "fill",
+     "prompt": "احسب: ٢٧ + ١٨ = __",
+     "options": [],
+     "correct_answer": "٤٥",
+     "explanation": "٧ + ٨ = ١٥، نكتب ٥ ونحمل ١؛ ثم ٢ + ١ + ١ = ٤."
+    },
+    {
+     "id": "math_133",
+     "unit_id": "subtraction",
+     "type": "fill",
+     "prompt": "احسب: ٨٣ − ٤١ = __",
+     "options": [],
+     "correct_answer": "٤٢",
+     "explanation": "٣ − ١ = ٢، و٨ − ٤ = ٤."
+    },
+    {
+     "id": "math_134",
+     "unit_id": "subtraction",
+     "type": "fill",
+     "prompt": "احسب: ٧٠ − ٢٦ = __",
+     "options": [],
+     "correct_answer": "٤٤",
+     "explanation": "نستلف عشرة: ١٠ − ٦ = ٤، ثم ٦ − ٢ = ٤."
+    },
+    {
+     "id": "math_135",
+     "unit_id": "word_problems",
+     "type": "choice",
+     "prompt": "في المكتبة ٣٢ كتابًا، أضيف إليها ١٥ كتابًا. كم أصبح عدد الكتب؟",
+     "options": [
+      "٤٢",
+      "٤٧",
+      "٥٢"
+     ],
+     "correct_answer": "٤٧",
+     "explanation": "٣٢ + ١٥ = ٤٧ كتابًا."
+    },
+    {
+     "id": "math_136",
+     "unit_id": "word_problems",
+     "type": "choice",
+     "prompt": "مع مريم ٥٠ ريالًا، اشترت لعبة بـ٢٨ ريالًا. كم بقي معها؟",
+     "options": [
+      "٢٢",
+      "٢٨",
+      "٣٢"
+     ],
+     "correct_answer": "٢٢",
+     "explanation": "٥٠ − ٢٨ = ٢٢ ريالًا."
+    },
+    {
+     "id": "math_137",
+     "unit_id": "addition",
+     "type": "fill",
+     "prompt": "أكمل: __ + ٢٥ = ٦٠",
+     "options": [],
+     "correct_answer": "٣٥",
+     "explanation": "٦٠ − ٢٥ = ٣٥."
+    },
+    {
+     "id": "math_138",
+     "unit_id": "subtraction",
+     "type": "choice",
+     "prompt": "ما ناتج ١٠٠ − ٤٥؟",
+     "options": [
+      "٤٥",
+      "٥٥",
+      "٦٥"
+     ],
+     "correct_answer": "٥٥",
+     "explanation": "١٠٠ − ٤٥ = ٥٥."
+    },
+    {
+     "id": "math_139",
+     "unit_id": "word_problems",
+     "type": "fill",
+     "prompt": "لدى خالد ٢٣ كرة، فقد ٧ كرات. كم بقي؟",
+     "options": [],
+     "correct_answer": "١٦",
+     "explanation": "٢٣ − ٧ = ١٦ كرة."
+    },
+    {
+     "id": "math_140",
+     "unit_id": "word_problems",
+     "type": "choice",
+     "prompt": "ما العدد الذي إذا أضفنا إليه ١٧ أصبح ٤٠؟",
+     "options": [
+      "٢٣",
+      "٢٧",
+      "٣٣"
+     ],
+     "correct_answer": "٢٣",
+     "explanation": "٤٠ − ١٧ = ٢٣."
+    }
+   ]
+  },
+  {
+   "id": "math_stage_03",
+   "name": "مرحلة المتوسط",
+   "units": [
+    {
+     "id": "fractions_intro",
+     "name": "كسور ونسب وقياس تمهيدي"
+    }
+   ],
+   "questions": [
+    {
+     "id": "math_141",
+     "unit_id": "multiplication",
+     "type": "fill",
+     "prompt": "احسب: ٨ × ٧ = __",
+     "options": [],
+     "correct_answer": "٥٦",
+     "explanation": "٨ مجموعات من ٧ تساوي ٥٦."
+    },
+    {
+     "id": "math_142",
+     "unit_id": "division",
+     "type": "fill",
+     "prompt": "احسب: ٩٦ ÷ ١٢ = __",
+     "options": [],
+     "correct_answer": "٨",
+     "explanation": "١٢ × ٨ = ٩٦."
+    },
+    {
+     "id": "math_143",
+     "unit_id": "multiplication",
+     "type": "choice",
+     "prompt": "ما ناتج ١٥ × ٤؟",
+     "options": [
+      "٥٠",
+      "٦٠",
+      "٧٠"
+     ],
+     "correct_answer": "٦٠",
+     "explanation": "١٥ × ٤ = ٦٠."
+    },
+    {
+     "id": "math_144",
+     "unit_id": "division",
+     "type": "fill",
+     "prompt": "احسب: ١٢٥ ÷ ٥ = __",
+     "options": [],
+     "correct_answer": "٢٥",
+     "explanation": "٥ × ٢٥ = ١٢٥."
+    },
+    {
+     "id": "math_145",
+     "unit_id": "patterns_operations",
+     "type": "choice",
+     "prompt": "احسب: ٢٠ − ٣ × ٤",
+     "options": [
+      "٨",
+      "٦٨",
+      "١٢"
+     ],
+     "correct_answer": "٨",
+     "explanation": "نضرب أولًا: ٣ × ٤ = ١٢، ثم ٢٠ − ١٢ = ٨."
+    },
+    {
+     "id": "math_146",
+     "unit_id": "patterns_operations",
+     "type": "fill",
+     "prompt": "أكمل النمط: ٣، ٦، ١٢، ٢٤، __",
+     "options": [],
+     "correct_answer": "٤٨",
+     "explanation": "نضرب كل عدد في ٢."
+    },
+    {
+     "id": "math_147",
+     "unit_id": "division",
+     "type": "choice",
+     "prompt": "ما باقي قسمة ١٧ على ٥؟",
+     "options": [
+      "١",
+      "٢",
+      "٣"
+     ],
+     "correct_answer": "٢",
+     "explanation": "٥ × ٣ = ١٥، ويتبقى ٢."
+    },
+    {
+     "id": "math_148",
+     "unit_id": "multiplication",
+     "type": "fill",
+     "prompt": "اشترى ٦ أطفال ٥ أقلام لكل واحد. كم قلمًا اشتروا؟",
+     "options": [],
+     "correct_answer": "٣٠",
+     "explanation": "٦ × ٥ = ٣٠ قلمًا."
+    },
+    {
+     "id": "math_149",
+     "unit_id": "patterns_operations",
+     "type": "choice",
+     "prompt": "أي عدد يقبل القسمة على ٣ دون باقٍ؟",
+     "options": [
+      "١٤",
+      "١٨",
+      "٢٢"
+     ],
+     "correct_answer": "١٨",
+     "explanation": "١٨ ÷ ٣ = ٦ دون باقٍ."
+    },
+    {
+     "id": "math_150",
+     "unit_id": "patterns_operations",
+     "type": "fill",
+     "prompt": "احسب: ٤٥ + ٢٥ ÷ ٥ = __",
+     "options": [],
+     "correct_answer": "٥٠",
+     "explanation": "نقسم أولًا: ٢٥ ÷ ٥ = ٥، ثم ٤٥ + ٥ = ٥٠."
+    }
+   ]
+  },
+  {
+   "id": "math_stage_04",
+   "name": "مرحلة فوق المتوسط",
+   "units": [
+    {
+     "id": "ratio_money",
+     "name": "النسبة والمال والمعادلات البسيطة"
+    }
+   ],
+   "questions": [
+    {
+     "id": "math_151",
+     "unit_id": "fractions",
+     "type": "choice",
+     "prompt": "أي كسر أصغر؟",
+     "options": [
+      "١⁄٢",
+      "١⁄٣",
+      "١⁄٦"
+     ],
+     "correct_answer": "١⁄٦",
+     "explanation": "عند تساوي البسط، يكون الكسر ذو المقام الأكبر أصغر."
+    },
+    {
+     "id": "math_152",
+     "unit_id": "fractions",
+     "type": "fill",
+     "prompt": "احسب: ٣⁄٥ + ١⁄٥ = __",
+     "options": [],
+     "correct_answer": "٤⁄٥",
+     "explanation": "المقامات متساوية؛ نجمع البسطين: ٣ + ١ = ٤."
+    },
+    {
+     "id": "math_153",
+     "unit_id": "fractions",
+     "type": "fill",
+     "prompt": "احسب: ٧⁄٨ − ٣⁄٨ = __",
+     "options": [],
+     "correct_answer": "١⁄٢",
+     "explanation": "٧⁄٨ − ٣⁄٨ = ٤⁄٨، وتبسيطه ١⁄٢."
+    },
+    {
+     "id": "math_154",
+     "unit_id": "decimals_percent",
+     "type": "choice",
+     "prompt": "ما العدد العشري الذي يساوي ٧⁄١٠٠؟",
+     "options": [
+      "٠٫٧",
+      "٠٫٠٧",
+      "٧٫٠"
+     ],
+     "correct_answer": "٠٫٠٧",
+     "explanation": "سبعة من مئة تُكتب ٠٫٠٧."
+    },
+    {
+     "id": "math_155",
+     "unit_id": "decimals_percent",
+     "type": "fill",
+     "prompt": "احسب ٢٠٪ من ٢٠٠ ريال.",
+     "options": [],
+     "correct_answer": "٤٠",
+     "explanation": "٢٠٪ من ٢٠٠ = ٠٫٢ × ٢٠٠ = ٤٠ ريالًا."
+    },
+    {
+     "id": "math_156",
+     "unit_id": "measurement_geometry",
+     "type": "fill",
+     "prompt": "مستطيل طوله ٩ سم وعرضه ٣ سم. ما محيطه؟ __ سم",
+     "options": [],
+     "correct_answer": "٢٤",
+     "explanation": "المحيط = ٢ × (٩ + ٣) = ٢٤ سم."
+    },
+    {
+     "id": "math_157",
+     "unit_id": "measurement_geometry",
+     "type": "choice",
+     "prompt": "ما مساحة مربع طول ضلعه ٧ سم؟",
+     "options": [
+      "١٤",
+      "٢٨",
+      "٤٩"
+     ],
+     "correct_answer": "٤٩",
+     "explanation": "المساحة = ٧ × ٧ = ٤٩ سم²."
+    },
+    {
+     "id": "math_158",
+     "unit_id": "decimals_percent",
+     "type": "fill",
+     "prompt": "حوّل ٢٫٥ كيلومتر إلى أمتار: __ متر",
+     "options": [],
+     "correct_answer": "٢٥٠٠",
+     "explanation": "كل كيلومتر يساوي ١٠٠٠ متر؛ ٢٫٥ × ١٠٠٠ = ٢٥٠٠."
+    },
+    {
+     "id": "math_159",
+     "unit_id": "measurement_geometry",
+     "type": "choice",
+     "prompt": "بدأت الحصة الساعة ٨:١٥ وانتهت الساعة ٩:٠٠. كم مدتها؟",
+     "options": [
+      "٣٠ دقيقة",
+      "٤٥ دقيقة",
+      "٦٠ دقيقة"
+     ],
+     "correct_answer": "٤٥ دقيقة",
+     "explanation": "من ٨:١٥ إلى ٩:٠٠ تساوي ٤٥ دقيقة."
+    },
+    {
+     "id": "math_160",
+     "unit_id": "ratio_money",
+     "type": "fill",
+     "prompt": "إذا كان سعر ٤ كيلوجرامات من التفاح ٨ ريالات، فما سعر الكيلوجرام الواحد؟ __ ريال",
+     "options": [],
+     "correct_answer": "٢",
+     "explanation": "٨ ÷ ٤ = ٢ ريال."
+    }
+   ]
+  },
+  {
+   "id": "math_stage_05",
+   "name": "مرحلة المتقدم",
+   "units": [
+    {
+     "id": "ratio_percent",
+     "name": "النسب المئوية والإحصاء والاحتمال"
+    }
+   ],
+   "questions": [
+    {
+     "id": "math_161",
+     "unit_id": "integers_powers",
+     "type": "fill",
+     "prompt": "احسب: −٧ + ١٢ = __",
+     "options": [],
+     "correct_answer": "٥",
+     "explanation": "نبدأ من −٧ ونتحرك ١٢ وحدة إلى اليمين؛ الناتج ٥."
+    },
+    {
+     "id": "math_162",
+     "unit_id": "integers_powers",
+     "type": "fill",
+     "prompt": "احسب: (−٤) × ٦ = __",
+     "options": [],
+     "correct_answer": "−٢٤",
+     "explanation": "سالب × موجب = سالب، و٤ × ٦ = ٢٤."
+    },
+    {
+     "id": "math_163",
+     "unit_id": "integers_powers",
+     "type": "choice",
+     "prompt": "ما قيمة ٣³؟",
+     "options": [
+      "٩",
+      "٢٧",
+      "٨١"
+     ],
+     "correct_answer": "٢٧",
+     "explanation": "٣ × ٣ × ٣ = ٢٧."
+    },
+    {
+     "id": "math_164",
+     "unit_id": "algebra",
+     "type": "fill",
+     "prompt": "حل المعادلة: س − ٩ = ١٤؛ س = __",
+     "options": [],
+     "correct_answer": "٢٣",
+     "explanation": "نضيف ٩ إلى الطرفين؛ س = ١٤ + ٩ = ٢٣."
+    },
+    {
+     "id": "math_165",
+     "unit_id": "algebra",
+     "type": "fill",
+     "prompt": "حل المعادلة: ٥س + ٢ = ٢٧؛ س = __",
+     "options": [],
+     "correct_answer": "٥",
+     "explanation": "نطرح ٢: ٥س = ٢٥، ثم نقسم على ٥."
+    },
+    {
+     "id": "math_166",
+     "unit_id": "integers_powers",
+     "type": "choice",
+     "prompt": "ما قيمة ٢(٣ + ٥)؟",
+     "options": [
+      "١٣",
+      "١٦",
+      "٢١"
+     ],
+     "correct_answer": "١٦",
+     "explanation": "نحسب داخل القوس أولًا: ٣ + ٥ = ٨، ثم ٢ × ٨ = ١٦."
+    },
+    {
+     "id": "math_167",
+     "unit_id": "coordinates",
+     "type": "fill",
+     "prompt": "مثلث زواياه ٥٠° و٦٠° و س. أوجد س = __°",
+     "options": [],
+     "correct_answer": "٧٠",
+     "explanation": "مجموع زوايا المثلث ١٨٠°؛ ١٨٠ − ٥٠ − ٦٠ = ٧٠°."
+    },
+    {
+     "id": "math_168",
+     "unit_id": "coordinates",
+     "type": "choice",
+     "prompt": "ما المسافة بين النقطتين (٠، ٠) و(٠، ٥)؟",
+     "options": [
+      "٣",
+      "٥",
+      "١٠"
+     ],
+     "correct_answer": "٥",
+     "explanation": "المسافة الرأسية بين النقطتين تساوي ٥ وحدات."
+    },
+    {
+     "id": "math_169",
+     "unit_id": "ratio_percent",
+     "type": "fill",
+     "prompt": "إذا كانت النسبة ٢ : ٣ وكان العدد الأول ٨، فما العدد الثاني؟",
+     "options": [],
+     "correct_answer": "١٢",
+     "explanation": "ضربنا ٢ في ٤ لنحصل على ٨؛ نضرب ٣ في ٤ فنحصل على ١٢."
+    },
+    {
+     "id": "math_170",
+     "unit_id": "ratio_percent",
+     "type": "choice",
+     "prompt": "اشترى متجر سلعة بـ٤٠ ريالًا وباعها بـ٥٠ ريالًا. ما مقدار الربح؟",
+     "options": [
+      "٥",
+      "١٠",
+      "١٥"
+     ],
+     "correct_answer": "١٠",
+     "explanation": "الربح = سعر البيع − سعر الشراء = ٥٠ − ٤٠ = ١٠ ريالات."
+    }
+   ]
+  },
+  {
+   "id": "math_stage_06",
+   "name": "مرحلة الإتقان",
+   "units": [
+    {
+     "id": "calculus",
+     "name": "مقدمة التفاضل والتكامل"
+    },
+    {
+     "id": "geometry_adv",
+     "name": "الهندسة والقياس المتقدم"
+    },
+    {
+     "id": "fractions_adv",
+     "name": "العمليات المتقدمة على الكسور"
+    }
+   ],
+   "questions": [
+    {
+     "id": "math_171",
+     "unit_id": "quadratics_systems",
+     "type": "fill",
+     "prompt": "حل المعادلة: ٣(س − ٢) = ٢١؛ س = __",
+     "options": [],
+     "correct_answer": "٩",
+     "explanation": "نقسم على ٣: س − ٢ = ٧، ثم نضيف ٢؛ س = ٩."
+    },
+    {
+     "id": "math_172",
+     "unit_id": "quadratics_systems",
+     "type": "fill",
+     "prompt": "حل المعادلة: س² = ٣٦؛ اكتب الجذرين.",
+     "options": [],
+     "correct_answer": "٦ و−٦",
+     "explanation": "٦² = ٣٦ وكذلك (−٦)² = ٣٦.",
+     "alt": [
+      "−٧ و٧",
+      "±٧",
+      "٧، −٧",
+      "−٧، ٧"
+     ]
+    },
+    {
+     "id": "math_173",
+     "unit_id": "quadratics_systems",
+     "type": "choice",
+     "prompt": "ما ناتج التعبير ٢ × ٥ − ٣ × ٢؟",
+     "options": [
+      "٤",
+      "٦",
+      "١٠"
+     ],
+     "correct_answer": "٤",
+     "explanation": "نضرب أولًا: ٢ × ٥ = ١٠ و٣ × ٢ = ٦، ثم ١٠ − ٦ = ٤."
+    },
+    {
+     "id": "math_174",
+     "unit_id": "statistics_probability",
+     "type": "fill",
+     "prompt": "إذا كانت البيانات ٣، ٥، ٥، ٧، ١٠، فما الوسيط؟",
+     "options": [],
+     "correct_answer": "٥",
+     "explanation": "القيمة الوسطى بعد الترتيب هي ٥."
+    },
+    {
+     "id": "math_175",
+     "unit_id": "statistics_probability",
+     "type": "choice",
+     "prompt": "كيس فيه ٣ كرات حمراء و٢ زرقاء. ما احتمال سحب كرة زرقاء؟",
+     "options": [
+      "٢⁄٥",
+      "٣⁄٥",
+      "١⁄٢"
+     ],
+     "correct_answer": "٢⁄٥",
+     "explanation": "عدد الكرات الزرقاء ٢ من مجموع ٥ كرات."
+    },
+    {
+     "id": "math_176",
+     "unit_id": "geometry_adv",
+     "type": "fill",
+     "prompt": "دائرة نصف قطرها ٣ سم. ما محيطها بدلالة ط؟",
+     "options": [],
+     "correct_answer": "٦ط سم",
+     "explanation": "محيط الدائرة = ٢ × ط × نصف القطر = ٦ط سم.",
+     "alt": [
+      "٦ط"
+     ]
+    },
+    {
+     "id": "math_177",
+     "unit_id": "functions_trigonometry",
+     "type": "fill",
+     "prompt": "إذا كانت د(س) = س² + ٢س، فأوجد د(٣) = __",
+     "options": [],
+     "correct_answer": "١٥",
+     "explanation": "٣² + ٢ × ٣ = ٩ + ٦ = ١٥."
+    },
+    {
+     "id": "math_178",
+     "unit_id": "calculus",
+     "type": "choice",
+     "prompt": "ما مشتقة الدالة د(س) = س³؟",
+     "options": [
+      "٣س²",
+      "س²",
+      "٣س"
+     ],
+     "correct_answer": "٣س²",
+     "explanation": "قاعدة القوة: نضرب في الأس ثم ننقصه واحدًا، فتكون المشتقة ٣س²."
+    },
+    {
+     "id": "math_179",
+     "unit_id": "fractions_adv",
+     "type": "fill",
+     "prompt": "احسب: ٣⁄٤ × ٨⁄٩ = __",
+     "options": [],
+     "correct_answer": "٢⁄٣",
+     "explanation": "نضرب البسطين والمقامين: ٢٤⁄٣٦، ثم نبسط إلى ٢⁄٣."
+    },
+    {
+     "id": "math_180",
+     "unit_id": "statistics_probability",
+     "type": "choice",
+     "prompt": "إذا كان متوسط ٤ أعداد يساوي ١٠، فما مجموعها؟",
+     "options": [
+      "٢٠",
+      "٣٠",
+      "٤٠"
+     ],
+     "correct_answer": "٤٠",
+     "explanation": "المجموع = المتوسط × عدد القيم = ١٠ × ٤ = ٤٠."
+    }
+   ]
+  }
+ ]
+}
