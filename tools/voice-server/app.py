@@ -185,8 +185,8 @@ async def _tts(req: Request):
         w = await asyncio.get_running_loop().run_in_executor(None, lambda: E.speak(rt, codes, text, temp))
         # مدّ الحروف أو التمتمة: صوت أطول كثيرًا مما يحتاجه عدد الحروف ← نعيد التوليد بحرارة أقل ونأخذ الأقصر
         letters = len(re.findall(r'[\u0621-\u064AA-Za-z]', text))
-        limit = 0.8 + letters * 0.16
-        if len(w) / 24000 > limit:
+        max_dur = 0.8 + letters * 0.16
+        if len(w) / 24000 > max_dur:
             w2 = await asyncio.get_running_loop().run_in_executor(None, lambda: E.speak(rt, codes, text, 0.25))
             if len(w2) < len(w):
                 w = w2
