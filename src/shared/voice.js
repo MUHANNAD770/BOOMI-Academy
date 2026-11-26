@@ -765,7 +765,11 @@
       if (window.MyVoice && MyVoice.on()) {
         const ok = await MyVoice.playCached(t, l, valid, onStart);
         if (ok === true || !valid()) return ok;
-        MyVoice.queue([[t, l]], true);
+        /* غير محفوظ: نولّده الآن بصوتك ونشغّله (يُحفظ للمرات القادمة). صوت بومي فقط إن لم يوجد إنترنت أو تعذّر الخادم أو تأخّر */
+        if (MyVoice.canGen && MyVoice.canGen()) {
+          const ok2 = await MyVoice.play(t, l, valid, onStart, 15000);
+          if (ok2 === true || !valid()) return ok2;
+        } else MyVoice.queue([[t, l]], true);
       }
     } catch (_) {}
     const k = window.VoiceParts ? VoiceParts.clipKey(t, l) : null;

@@ -33,9 +33,11 @@
      if(Date.now()-st.warn>300e3){st.warn=Date.now();note('🎙️ تعذّر الصوت الشخصي الآن، يكمل بومي بصوته المعتاد')}}return null});
   MEM.set(k,pr);if(MEM.size>80)MEM.delete(MEM.keys().next().value);return pr};
  const wait=()=>{let e=null;const k=setTimeout(()=>{e=document.createElement('div');e.className='mv-toast mv-wait';e.textContent='🎙️ يُجهَّز صوتك…';document.body.appendChild(e)},900);return()=>{clearTimeout(k);e&&e.remove()}};
- const playV=async(v,t,l,valid,onStart)=>{const H=window.HurufiClips;if(!H||!H.playBlob)return false;const done=wait();
-  try{return await H.playBlob(()=>gen(v,t,l),'mv:'+ck(v,t,l),valid,onStart)}finally{done()}};
- const play=(t,l,valid,onStart)=>{const v=me();return v?playV(v,t,l,valid,onStart):Promise.resolve(false)};
+ const playV=async(v,t,l,valid,onStart,ms)=>{const H=window.HurufiClips;if(!H||!H.playBlob)return false;const done=wait();
+  try{return await H.playBlob(async()=>{const g=gen(v,t,l,90000).then(b=>{if(b)keep(ck(v,t,l),b);return b});
+   /* لا ننتظر أكثر من ms: إن تأخّر الخادم يكمل بومي الآن، والتوليد يكمل ويُحفظ للمرة القادمة */
+   return ms?await Promise.race([g,new Promise(r=>setTimeout(()=>r(null),ms))]):await g},'mv:'+ck(v,t,l),valid,onStart)}finally{done()}};
+ const play=(t,l,valid,onStart,ms)=>{const v=me();return v?playV(v,t,l,valid,onStart,ms):Promise.resolve(false)};
  const warm=(t,l)=>{const v=me();if(v&&norm(t))queue([[t,l]],1)};
  /* ===== نطق فوري: الجملة المحفوظة في الجهاز تُشغَّل مباشرة؛ غير المحفوظة لا ننتظرها (يُكمل بومي بصوته) وتُجهَّز في الخلفية ===== */
  const RB=new Map(); /* جمل جاهزة في الذاكرة (تشغيل بلا أي انتظار) */
@@ -58,6 +60,8 @@
   try{if(window.qs&&window.qs[window.qi]&&window.qList)qList(qs[qi]).forEach(([t,l])=>add(t,l))}catch(e){}
   try{const q=window.MathAcademy&&MathAcademy.current&&MathAcademy.current();if(q){add(MathAcademy.speech(q.prompt),'ar');(q.options||[]).forEach(o=>add(MathAcademy.speech(o),'ar'))}}catch(e){}
   try{document.querySelectorAll('#app [onclick^="say("]').forEach(e=>{const m=e.getAttribute('onclick').match(/^say\('([^']*)','(ar|en)'/);if(m)add(m[1],m[2])})}catch(e){}
+  try{const m=window.MC&&MC.text&&MC.text();if(m)add(window.studentGenderText?studentGenderText(m[0]):m[0],m[1])}catch(e){}
+  try{if(window.V!=='sec'&&window.V!=='parent'){const r=window.BumiRead&&BumiRead();(r||[]).forEach(([t,l])=>add(t,l))}}catch(e){}
   return L};
  const preparePage=()=>{if(on())queue(pageTexts().slice(0,40),1)};
  if(typeof window.h==='function'){const oh=window.h;window.h=function(){const r=oh.apply(this,arguments);setTimeout(preparePage,500);return r}}
@@ -71,7 +75,7 @@
   const have=await countCached(list),need=list.filter(x=>true);Q.total=0;Q.done=0;
   const show=(d,tot)=>{const e=$('mv-off');if(e){const pc=Math.round((have+d)/Math.max(1,list.length)*100);e.innerHTML=`<div class="mv-pg"><div class="mv-pg-top"><b>${D(Math.min(100,pc))}٪</b><span>${pc>=100?'✅ صوتك محفوظ في الجهاز لهذه المرحلة':'⏳ يُحفظ صوتك في الجهاز… يمكنك متابعة التعلّم'}</span></div><div class="mv-pg-bar"><i style="width:${Math.min(100,pc)}%"></i></div></div>`}};
   Q.cb=(d,t)=>show(Math.min(d,list.length-have),t);show(0);queue(need,0);if(have>=list.length){show(0);b.disabled=false}};
- window.MyVoice={on,play,warm,cfg,ready:()=>!!me(),cached,playCached,queue,preparePage};
+ window.MyVoice={on,play,warm,cfg,ready:()=>!!me(),cached,playCached,queue,preparePage,canGen};
 
  /* ===== واجهة الإعدادات ===== */
  const $=id=>document.getElementById(id);
