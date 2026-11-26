@@ -8,7 +8,7 @@
     "dev": "node server.js",
     "start": "node server.js",
     "build": "node -e \"console.log('Static build ok')\"",
-    "test": "node tools/tests/suite.js",
+    "test": "node tools/tests/suite.js && node tools/offline/gen-sw-list.js --check",
     "audio:audit": "node tools/generate-missing-audio.js --audit",
     "audio:backfill": "node tools/generate-missing-audio.js"
   },

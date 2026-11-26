@@ -1218,6 +1218,31 @@
     setTimeout(() => window.testT && window.testT(), 120);
   };
 
+  /* حفظ كل مقاطع صوت المعلّم الحالي في الجهاز مع نسبة التقدّم */
+  let offTimer = 0;
+  async function voiceOfflineShow(start) {
+    const C = window.HurufiClips, t = document.getElementById('vs-off-t');
+    if (!C || !C.offStat || !t) { clearInterval(offTimer); offTimer = 0; return; }
+    const Dg = window.D || (n => String(n));
+    const s = await C.offStat().catch(() => null);
+    const bar = document.getElementById('vs-off-bar'), btn = document.getElementById('vs-off-btn');
+    if (!s || !document.getElementById('vs-off-t')) { if (!s && t) t.textContent = navigator.onLine === false ? 'اتصل بالإنترنت مرة واحدة لحفظ الأصوات.' : ''; clearInterval(offTimer); offTimer = 0; return; }
+    const pct = Math.round(s.have * 100 / Math.max(1, s.total));
+    bar.style.width = pct + '%';
+    if (s.have >= s.total) { t.textContent = '✅ كل أصوات بومي محفوظة في الجهاز وتعمل بلا إنترنت'; btn.disabled = true; btn.textContent = '✅ محفوظة في الجهاز'; clearInterval(offTimer); offTimer = 0; return; }
+    t.textContent = (s.running || start ? '⏳ جارٍ الحفظ… ' : 'محفوظ الآن: ') + Dg(pct) + '٪ (الحجم الكامل نحو ' + Dg(s.mb) + ' م.ب)' + (s.running || start ? ' — يمكنك متابعة التعلّم' : '');
+    if (s.running || start) { btn.disabled = true; if (!offTimer) offTimer = setInterval(() => voiceOfflineShow(), 2000); }
+    else { btn.disabled = false; clearInterval(offTimer); offTimer = 0; }
+  }
+  window.voiceOffline = async function () {
+    const C = window.HurufiClips, t = document.getElementById('vs-off-t');
+    if (navigator.onLine === false) { if (t) t.textContent = 'لا يوجد إنترنت الآن؛ اتصل ثم اضغط مرة أخرى.'; return; }
+    if (!C || !C.offline) return;
+    const ok = await C.offline();
+    if (!ok) { if (t) t.textContent = 'تعذّر الوصول إلى الأصوات الآن، حاول بعد قليل.'; return; }
+    voiceOfflineShow(true);
+  };
+
   window.voiceSet = function () {
     if (!window.P) return;
     migrateProfileVoice();
@@ -1266,6 +1291,13 @@
         <input id="vs-rate" type="range" min="0.75" max="1.25" step="0.05" value="${cfg.rate}" onchange="BumiVoiceConfig.updateSettings({rate:+this.value});document.getElementById('vs-rate-v').textContent=(window.D?D:String)(Math.round(this.value*100))+'٪'">
       </div>
 
+      <div class="voice-plan" id="vs-off">
+        <h3>📥 صوت بومي بلا إنترنت</h3>
+        <p class="mut">كل الصور والأيقونات والدروس تُحفظ في الجهاز تلقائيًا. والكلمات التي سمعتها تُحفظ أيضًا؛ ولتعمل كل أصوات بومي بلا إنترنت احفظها كلها مرة واحدة (يُفضَّل عبر Wi‑Fi).</p>
+        <button type="button" class="big" id="vs-off-btn" onclick="voiceOffline()">⬇️ احفظ كل أصوات بومي في الجهاز</button>
+        <div class="mv-pg" style="margin-top:8px"><div class="mv-pg-bar"><i id="vs-off-bar" style="width:0%"></i></div><small id="vs-off-t" class="mut"></small></div>
+      </div>
+
       <div class="voice-plan">
         <h3>🧹 الذاكرة المحلية على الجهاز</h3>
         <p class="mut">الأصوات محفوظة دائمًا في الموقع؛ ويمكنك هنا مسح النسخة المؤقتة في متصفح هذا الجهاز فقط (تُنزَّل من جديد عند الحاجة).</p>
@@ -1274,6 +1306,7 @@
 
       <button type="button" class="big" onclick="goBack()">حفظ والعودة ✓</button>
     </section>`);
+    setTimeout(() => voiceOfflineShow(), 50);
   };
 
   window.testT = () => {
