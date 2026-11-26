@@ -759,10 +759,13 @@
     if (!valid()) return false;
     if (!(await waitIfPaused(token, ep))) return false;
     const onStart = () => { if (valid() && playState !== 'paused') setState('playing'); };
+    /* «صوتي الشخصي»: المحفوظ في الجهاز يُنطق فورًا (حتى بلا إنترنت). غير المحفوظ لا ننتظره: يُجهَّز في الخلفية
+       للمرة القادمة، ويُنطق الآن بصوت بومي المسجّل فلا يتأخر الطالب */
     try {
       if (window.MyVoice && MyVoice.on()) {
-        const ok = await MyVoice.play(t, l, valid, onStart);
+        const ok = await MyVoice.playCached(t, l, valid, onStart);
         if (ok === true || !valid()) return ok;
+        MyVoice.queue([[t, l]], true);
       }
     } catch (_) {}
     const k = window.VoiceParts ? VoiceParts.clipKey(t, l) : null;
@@ -814,8 +817,7 @@
       for (let i = 0; i < ps.length; i++) {
         if (token !== say.tk || ep !== navEpoch || muted()) return false;
         try { if (window.HurufiClips && ps[i + 1]) { const nk = VoiceParts.clipKey(ps[i + 1][0], ps[i + 1][1]); if (nk) HurufiClips.warm(nk, ps[i + 1][1]); } } catch (_) {}
-        /* «صوتي الشخصي»: الجملتان التاليتان تُولَّدان أثناء نطق الحالية (أقل انتظارًا) */
-        try { if (window.MyVoice && MyVoice.on()) ps.slice(i + 1, i + 3).forEach(q => MyVoice.warm(q[0], q[1])); } catch (_) {}
+
         await speakPart(ps[i][0], ps[i][1], token, ep, mood);
       }
       return true;

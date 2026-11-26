@@ -6,14 +6,16 @@
    • أي تعذّر (الخادم نائم، بلا إنترنت، خطأ) ← يكمل بومي بصوته المعتاد تلقائيًا. */
 (()=>{
  'use strict';
- const CN='hurufi-myvoice-v1',MEM=new Map(),READ='مَرْحَبًا يَا أَصْدِقَائِي، أَنَا بُومِي مُعَلِّمُكُمْ. هَيَّا نَتَعَلَّمُ مَعًا الْحُرُوفَ وَالْكَلِمَاتِ، وَنَقْرَأُ قِصَّةً جَمِيلَةً كُلَّ يَوْمٍ.';
+ const CN='hurufi-myvoice-v2',MEM=new Map(),READ='مَرْحَبًا يَا أَصْدِقَائِي، أَنَا بُومِي مُعَلِّمُكُمْ. هَيَّا نَتَعَلَّمُ مَعًا الْحُرُوفَ وَالْكَلِمَاتِ، وَنَقْرَأُ قِصَّةً جَمِيلَةً كُلَّ يَوْمٍ.';
  const st={cfg:null,cfgAt:0,down:0,warn:0,inflight:0,rec:null,blob:null,draft:null,ok:0};
  const dev=()=>{try{return /^(localhost|127\.0\.0\.1)$/.test(location.hostname)&&localStorage.getItem('hurufiVoiceDev')}catch(e){return null}};
  const cfg=async(fresh)=>{if(!fresh&&st.cfg&&Date.now()-st.cfgAt<8*60e3)return st.cfg;
   const d=dev();if(d){st.cfg={configured:true,url:d.replace(/\/+$/,''),ticket:'',exp:'0'};st.cfgAt=Date.now();return st.cfg}
   try{const r=await fetch('/.netlify/functions/myvoice',{cache:'no-store'});st.cfg=r.ok?await r.json():{configured:false}}catch(e){st.cfg={configured:false,net:1}}st.cfgAt=Date.now();return st.cfg};
  const me=()=>window.P&&P.myv&&P.myv.vt&&Array.isArray(P.myv.codes)?P.myv:null;
- const on=()=>!!(window.P&&P.vmode==='mine'&&me()&&Date.now()>st.down&&navigator.onLine!==false);
+ /* مفعّل حتى بلا إنترنت: الجمل المحفوظة في الجهاز تُنطق فورًا؛ التوليد وحده يحتاج الإنترنت */
+ const on=()=>!!(window.P&&P.vmode==='mine'&&me());
+ const canGen=()=>Date.now()>st.down&&navigator.onLine!==false;
  const norm=t=>String(t||'').replace(/\s+/g,' ').trim().normalize('NFC');
  const ck=(v,t,l)=>'https://myvoice.local/'+v.vid.slice(0,24)+'/'+(l==='en'?'en':'ar')+'/'+encodeURIComponent(norm(t));
  const fetchT=(u,o,ms)=>{const c=new AbortController(),k=setTimeout(()=>c.abort(),ms);return fetch(u,{...o,signal:c.signal}).finally(()=>clearTimeout(k))};
@@ -34,11 +36,46 @@
  const playV=async(v,t,l,valid,onStart)=>{const H=window.HurufiClips;if(!H||!H.playBlob)return false;const done=wait();
   try{return await H.playBlob(()=>gen(v,t,l),'mv:'+ck(v,t,l),valid,onStart)}finally{done()}};
  const play=(t,l,valid,onStart)=>{const v=me();return v?playV(v,t,l,valid,onStart):Promise.resolve(false)};
- const warm=(t,l)=>{const v=me();if(v&&st.inflight<2&&norm(t))gen(v,t,l)};
- window.MyVoice={on,play,warm,cfg,ready:()=>!!me()};
+ const warm=(t,l)=>{const v=me();if(v&&norm(t))queue([[t,l]],1)};
+ /* ===== نطق فوري: الجملة المحفوظة في الجهاز تُشغَّل مباشرة؛ غير المحفوظة لا ننتظرها (يُكمل بومي بصوته) وتُجهَّز في الخلفية ===== */
+ const RB=new Map(); /* جمل جاهزة في الذاكرة (تشغيل بلا أي انتظار) */
+ const keep=(k,b)=>{RB.delete(k);RB.set(k,b);if(RB.size>200)RB.delete(RB.keys().next().value);return b};
+ const cached=async(t,l)=>{const v=me();if(!v||!norm(t))return null;const k=ck(v,t,l);if(RB.has(k))return RB.get(k);
+  try{const c=await caches.open(CN),h=await c.match(k);if(h)return keep(k,await h.blob())}catch(e){}return null};
+ const playCached=async(t,l,valid,onStart)=>{const H=window.HurufiClips,v=me();if(!H||!H.playBlob||!v)return false;
+  const b=await cached(t,l);if(!b)return false;return await H.playBlob(()=>Promise.resolve(b),'mv:'+ck(v,t,l),valid,onStart)};
+ /* طابور التجهيز في الخلفية (الخادم يولّد جملة واحدة في كل مرة): الأحدث أولًا، بلا تكرار */
+ const Q={list:[],keys:new Set(),busy:0,total:0,done:0,cb:null};
+ const queue=(items,front)=>{const v=me();if(!v)return;const add=[];for(const[t,l]of items){if(!norm(t))continue;const k=ck(v,t,l);if(Q.keys.has(k)||RB.has(k))continue;Q.keys.add(k);add.push([t,l,k])}
+  if(!add.length)return;Q.total+=add.length;if(front)Q.list.unshift(...add);else Q.list.push(...add);pump()};
+ const pump=async()=>{if(Q.busy||!Q.list.length)return;if(!canGen()){setTimeout(pump,30000);return}Q.busy=1;const[t,l,k]=Q.list.shift();
+  try{const v=me();if(v&&!(await cached(t,l))){const b=await gen(v,t,l,90000);if(b)keep(k,b)}}catch(e){}finally{Q.keys.delete(k);Q.busy=0;Q.done++;try{Q.cb&&Q.cb(Q.done,Q.total)}catch(e){}setTimeout(pump,60)}};
+ /* أجزاء النطق نفسها التي سيطلبها محرك الصوت (المفاتيح متطابقة) */
+ const partsOf=(t,l)=>{try{return window.VoiceParts?VoiceParts.parts(t,l):[[t,l]]}catch(e){return[[t,l]]}};
+ /* تجهيز كلمات الصفحة الظاهرة قبل أن يضغط الطالب: بطاقات الدرس، السؤال الحالي، أزرار الاستماع */
+ const pageTexts=()=>{const L=[],add=(t,l)=>{if(t)partsOf(t,l||'ar').forEach(p=>L.push(p))};
+  try{if(window.V==='lesson'&&window.cur&&cur.i)cur.i.forEach(it=>add(it[0],it[2]||cur.l))}catch(e){}
+  try{if(window.qs&&window.qs[window.qi]&&window.qList)qList(qs[qi]).forEach(([t,l])=>add(t,l))}catch(e){}
+  try{const q=window.MathAcademy&&MathAcademy.current&&MathAcademy.current();if(q){add(MathAcademy.speech(q.prompt),'ar');(q.options||[]).forEach(o=>add(MathAcademy.speech(o),'ar'))}}catch(e){}
+  try{document.querySelectorAll('#app [onclick^="say("]').forEach(e=>{const m=e.getAttribute('onclick').match(/^say\('([^']*)','(ar|en)'/);if(m)add(m[1],m[2])})}catch(e){}
+  return L};
+ const preparePage=()=>{if(on())queue(pageTexts().slice(0,40),1)};
+ if(typeof window.h==='function'){const oh=window.h;window.h=function(){const r=oh.apply(this,arguments);setTimeout(preparePage,500);return r}}
+ /* «تنزيل صوتي»: كل كلمات دروس المرحلة الحالية وعبارات بومي الثابتة، تُحفظ في الجهاز للعمل بلا إنترنت */
+ const stageTexts=()=>{const L=[],add=(t,l)=>partsOf(t,l).forEach(p=>L.push(p));
+  try{const st0=window.S&&S[+(window.P&&P.stage)||0];(st0?st0.u:[]).forEach(u=>u.i.forEach(it=>{add(it[0],it[2]||u.l)}))}catch(e){}
+  ['أَحْسَنْتَ!','مُمْتَازٌ!','حَاوِلْ مَرَّةً أُخْرَى','اِسْتَمِعْ جَيِّدًا، ثُمَّ اخْتَرِ الْإِجَابَةَ الْمُنَاسِبَةَ','اِخْتَرِ الْإِجَابَةَ الْمُنَاسِبَةَ','الْخِيَارَاتُ'].forEach(t=>add(window.studentGenderText?studentGenderText(t):t,'ar'));
+  const seen=new Set();return L.filter(([t,l])=>{const k=l+'|'+t;if(seen.has(k))return false;seen.add(k);return true})};
+ const countCached=async list=>{let n=0;for(const[t,l]of list)if(await cached(t,l))n++;return n};
+ window.mvOffline=async()=>{const b=$('mv-off-btn'),o=$('mv-off');if(!me()||!b)return;const list=stageTexts();b.disabled=true;
+  const have=await countCached(list),need=list.filter(x=>true);Q.total=0;Q.done=0;
+  const show=(d,tot)=>{const e=$('mv-off');if(e){const pc=Math.round((have+d)/Math.max(1,list.length)*100);e.innerHTML=`<div class="mv-pg"><div class="mv-pg-top"><b>${D(Math.min(100,pc))}٪</b><span>${pc>=100?'✅ صوتك محفوظ في الجهاز لهذه المرحلة':'⏳ يُحفظ صوتك في الجهاز… يمكنك متابعة التعلّم'}</span></div><div class="mv-pg-bar"><i style="width:${Math.min(100,pc)}%"></i></div></div>`}};
+  Q.cb=(d,t)=>show(Math.min(d,list.length-have),t);show(0);queue(need,0);if(have>=list.length){show(0);b.disabled=false}};
+ window.MyVoice={on,play,warm,cfg,ready:()=>!!me(),cached,playCached,queue,preparePage};
 
  /* ===== واجهة الإعدادات ===== */
  const $=id=>document.getElementById(id);
+ try{window.caches&&caches.delete('hurufi-myvoice-v1')}catch(e){} /* v2: سقف طول الجملة في الخادم (منع مدّ الحروف)؛ المقاطع القديمة تُحذف */
  const msg=(t,cls)=>{const e=$('mv-msg');if(e){e.textContent=t||'';e.className='mv-msg '+(cls||'')}};
  const fmt=ts=>{try{return new Date(ts).toLocaleDateString('ar',{day:'numeric',month:'long',year:'numeric'})}catch(e){return''}};
  const panel=()=>{const v=me(),mode=window.P&&P.vmode==='mine'&&v?'mine':'bomi';
@@ -47,6 +84,8 @@
   <p class="mut">${mode==='mine'?'✅ بومي يتكلّم الآن بصوتك في كل الموقع. إذا تعذّر صوتك (بلا إنترنت مثلًا) يكمل بصوته المعتاد تلقائيًا.':v?'صوت بومي المعتاد مفعّل. يمكنك التبديل إلى صوتك بضغطة واحدة.':'صوت بومي المعتاد مفعّل. أنشئ صوتك الشخصي أدناه ليتكلّم به بومي.'}</p>
   ${v?`<div class="mv-have"><b>🎙️ صوتك الشخصي جاهز</b><span class="mut">أُنشئ ${fmt(v.at)}</span>
    <div class="mv-row"><button class="alt" onclick="mvPreview('ar',1)">🔊 استمع بالعربية</button><button class="alt" onclick="mvPreview('en',1)">🔊 Listen in English</button></div>
+   <div class="mv-row"><button class="big" id="mv-off-btn" onclick="mvOffline()">⬇️ احفظ صوتي في الجهاز (المرحلة الحالية)</button></div>
+   <p class="mut">يُجهَّز صوتك لكل كلمات دروس مرحلتك ويُحفظ في الجهاز، فيُنطق فورًا وبلا إنترنت. الكلمات الظاهرة في كل صفحة تُجهَّز تلقائيًا أيضًا.</p><div id="mv-off"></div>
    <div class="mv-row"><button class="alt" onclick="mvRedo()">🔁 أَعِدْ إِنْشَاءَ صَوْتِي</button><button class="alt mv-del" onclick="mvDelete(this)">🗑️ اِحْذِفْ صَوْتِي</button></div></div>`:''}
   <details class="mv-make" id="mv-make" ${v?'':'open'}><summary>🎙️ ${v?'إنشاء صوت جديد':'إنشاء صوتي الشخصي'}</summary>
    <ol class="mv-steps">
