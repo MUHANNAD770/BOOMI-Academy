@@ -148,6 +148,17 @@ def prep(text, lang):
 
 @app.post('/tts')
 async def tts(req: Request):
+    try:
+        return await _tts(req)
+    except HTTPException:
+        raise
+    except Exception as e:  # noqa — سبب الخطأ يُعاد للتشخيص (بلا بيانات حساسة)
+        import traceback
+        tb = traceback.format_exc().strip().splitlines()[-3:]
+        return JSONResponse({'detail': 'tts_error', 'error': f'{type(e).__name__}: {e}'[:300], 'where': tb}, status_code=500)
+
+
+async def _tts(req: Request):
     limit(req, 240, 600)
     try:
         b = await req.json()
