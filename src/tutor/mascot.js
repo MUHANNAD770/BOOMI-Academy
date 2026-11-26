@@ -123,6 +123,13 @@ const MC = (() => {
       M.mood('happy', 900);
       if (window.V === 'home') return greet();
       if (window.V === 'quiz' && window.__L) return sayList(window.__L);
+      /* سؤال الرياضيات المعروض: نقرأ السؤال نفسه */
+      if (typeof window.mathSay === 'function' && document.querySelector('#app [onclick="mathSay()"]')) return mathSay();
+      /* صفحات الأقسام (الأكاديميات، القصص، الاختبارات، الرياضيات، الألعاب، لوحة ولي الأمر): رسالة بومي المكتوبة للصفحة،
+         لا عناوين البطاقات والأزرار (كانت تُقرأ ملتصقة بلا تشكيل فيُسمع منها أصوات غريبة) */
+      const app = document.getElementById('app');
+      const asks = app && app.querySelector('[data-ok],#ty,input[type=text]:not([hidden]),.practice-input');
+      if ((window.V === 'sec' || window.V === 'parent') && msg && !asks) return say(msg, lang);
       let r = null;
       try { r = window.BumiRead && BumiRead(); } catch (_) {}
       if (r && r.length) {
@@ -133,6 +140,7 @@ const MC = (() => {
       }
       if (msg) say(msg, lang);
     },
+    text: () => msg ? [msg, lang] : null,
     park() {
       document.body.appendChild(el);
       el.classList.remove('inl', 'dock');
@@ -169,6 +177,10 @@ const MC = (() => {
         's-ach': 'هُنَا نُجُومُكَ وَشَارَاتُكَ وَمُسْتَوَى تَقَدُّمِكَ! أَحْسَنْتَ!',
         's-set': 'لَوْحَةُ وَلِيِّ الْأَمْرِ وَمُتَابَعَةِ التَّقَدُّمِ وَالنَّتَائِجِ.',
         exam: 'اخْتَرِ اللُّغَةَ وَالْمُسْتَوَى لِتَبْدَأَ الِاخْتِبَارَ التَّقْيِيمِيَّ.',
+        's-math': 'أَهْلًا بِكَ فِي أَكَادِيمِيَّةِ الرِّيَاضِيَّاتِ! اخْتَرْ وَحْدَةً وَابْدَأِ التَّدْرِيبَ.',
+        's-stories': 'اخْتَرْ قِصَّةً جَمِيلَةً، وَاسْتَمِعْ إِلَيْهَا مَعَ بُومِي.',
+        's-exams': 'اخْتَرِ اخْتِبَارًا لِتَعْرِفَ مُسْتَوَاكَ.',
+        parent: 'لَوْحَةُ وَلِيِّ الْأَمْرِ وَمُتَابَعَةِ التَّقَدُّمِ وَالنَّتَائِجِ.',
         cert: 'مُبَارَكٌ! هَذِهِ شَهَادَةُ إِتْقَانِكَ.',
         fin: ''
       };
@@ -197,7 +209,7 @@ const MC = (() => {
         return null;
       })();
       const t = ctxT ? ctxT[0] : T[k];
-      if (t == null) return;
+      if (t == null) { msg = ''; return; } /* لا نترك رسالة صفحة سابقة فيُقرأ ترحيب الرئيسية في صفحة أخرى */
       set(window.studentGenderText ? studentGenderText(t) : t);
     }
   };
@@ -289,7 +301,7 @@ window.BumiRead = (() => {
   const AR = /[؀-ۿ]/, LA = /[A-Za-z]/, EMO = /[\p{Extended_Pictographic}\u{FE0F}\u{200D}\u{1F1E6}-\u{1F1FF}]/gu;
   const CNT = /[\d٠-٩]+\s*(?:مِنْ|من|\/|of)\s*[\d٠-٩]+/;
   const OPT = '.opt,[data-ok],.practice-options button,.ch button,.choices button,.mcol button';
-  const SKIP = 'button,a,select,option,script,style,textarea,.owl-dock,.owl-me,#tb,.link,[aria-hidden="true"],.speed-top,.h-hearts,.practice-count,.lvb,.lv-badge,.qo,#qo,svg,canvas';
+  const SKIP = 'button,a,select,option,script,style,textarea,summary,.enlv,.owl-dock,.owl-me,#tb,.link,[aria-hidden="true"],.speed-top,.h-hearts,.practice-count,.lvb,.lv-badge,.qo,#qo,svg,canvas';
   const hidden = e => {
     for (let x = e; x && x.nodeType === 1; x = x.parentElement) {
       if (x.hidden) return true;
@@ -316,8 +328,11 @@ window.BumiRead = (() => {
       const raw = n.nodeValue.replace(/\s+/g, ' ');
       if (!raw.trim()) continue;
       const b = blockOf(n);
-      if (!seen.has(b)) { seen.set(b, blocks.length); blocks.push({ b, t: '' }); }
-      blocks[seen.get(b)].t += raw;
+      if (!seen.has(b)) { seen.set(b, blocks.length); blocks.push({ b, t: '', p: null }); }
+      const x = blocks[seen.get(b)];
+      /* نصوص عناصر مختلفة داخل الكتلة نفسها (عنوان ثم وصف) تُفصل، ولا تلتصق كلمتان في كلمة واحدة */
+      x.t += (x.t && x.p && x.p !== p && !/\s$/.test(x.t) && !/^\s/.test(raw) ? ' · ' : '') + raw;
+      x.p = p;
     }
     const out = [];
     for (const x of blocks) {

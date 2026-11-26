@@ -15,7 +15,7 @@
  const engVoice=()=>null; /* لا يوجد محرك توليد على الجهاز: كل الصوت مقاطع Edge مسجّلة */
  /* الفهرس يُحفظ في ذاكرة المقاطع الدائمة: بدونه لا يُعرف مكان أي مقطع فيصمت الصوت المسجّل بلا إنترنت */
  const ixGet=async who=>{const u=new URL(base+who+'.json',location.href).href;let c=null;try{c=window.caches&&await caches.open(CC)}catch(e){}
-  try{const r=await fetch(base+who+'.json?v=102',{cache:'no-cache'});if(r.ok){if(c)try{await c.put(u,r.clone())}catch(e){}return await r.json()}}catch(e){}
+  try{const r=await fetch(base+who+'.json?v=110',{cache:'no-cache'});if(r.ok){if(c)try{await c.put(u,r.clone())}catch(e){}return await r.json()}}catch(e){}
   try{const h=c&&await c.match(u);if(h)return await h.json()}catch(e){}return null};
  const loadIx=who=>st.load[who]||(st.load[who]=ixGet(who).then(j=>{if(j&&j.idx){if(j.v)j.packs=j.packs.map(p=>p+'?v='+j.v);st.ix[who]=j;st.need=st.need||{};for(const[pi,off,len]of Object.values(j.idx)){const n=j.packs[pi];if((st.need[n]||0)<off+len)st.need[n]=off+len}}return st.ix[who]} /* لا تنزيل تلقائي لكل الحزم: كان ~130 م.ب في أول 30 ثانية فيبطئ الهاتف */).catch(()=>{st.load[who]=null;return null}));
  const ready=loadIx(teacher());
@@ -33,7 +33,7 @@
  const later=name=>{if(st.pre[name])return;try{const n=navigator.connection;if(n&&(n.saveData||/(^|-)2g|3g/.test(n.effectiveType||'')))return}catch(e){}st.pre[name]=1;
   (window.requestIdleCallback||(f=>setTimeout(f,1500)))(()=>pack(name).catch(()=>{st.pre[name]=0}),{timeout:6000})};
  const pack=async name=>{if(st.blob[name])return st.blob[name];const u=new URL(base+name,location.href).href,c=await cache();
-  let r=c&&await c.match(u),b=r&&await r.blob();
+  let r=c&&await c.match(u,{ignoreSearch:true}),b=r&&await r.blob(); /* الحزم لا تتغيّر بعد نشرها (التحديث يضيف حزمًا جديدة): لا نعيد تنزيلها عند تغيّر رقم الإصدار */
   /* نسخة ناقصة أو قديمة (أقصر من نهاية آخر مقطع فيها) تُعاد من الخادم: إزاحات المقاطع ستكون خاطئة فتُسمع كلمة أخرى */
   if(!b||(st.need&&st.need[name]&&b.size<st.need[name])){r=await fetch(u,{cache:b?'reload':'default'});if(!r.ok)throw new Error('pack');b=await r.clone().blob();
    if(st.need&&st.need[name]&&b.size<st.need[name])throw new Error('pack-size');if(c)try{await c.put(u,r)}catch(e){}}
@@ -45,7 +45,7 @@
  /* مقطع واحد: من الحزمة إن كانت محمّلة، وإلا نطلب جزءه فقط من الخادم (سريع جدًا) */
  const clip=async(who,k)=>{const j=st.ix[who],[p,off,len]=j.idx[k],name=j.packs[p];
   if(st.blob[name])return st.blob[name].slice(off,off+len,'audio/mpeg');
-  try{const c=await cache(),hit=c&&await c.match(new URL(base+name,location.href).href);if(hit){const b=keep(name,await hit.blob());return b.slice(off,off+len,'audio/mpeg')}}catch(e){}
+  try{const c=await cache(),hit=c&&await c.match(new URL(base+name,location.href).href,{ignoreSearch:true});if(hit){const b=keep(name,await hit.blob());return b.slice(off,off+len,'audio/mpeg')}}catch(e){}
   try{const r=await fetch(base+name,{headers:{Range:'bytes='+off+'-'+(off+len-1)}});if(r.status===206){const b=await r.blob(),m=/bytes\s+(\d+)-(\d+)/.exec(r.headers.get('content-range')||'');
     /* نتحقق أن الخادم أعاد البايتات المطلوبة نفسها؛ وإلا نستعمل الحزمة كاملة */
     if(m&&+m[1]===off&&+m[2]===off+len-1&&b.size===len){later(name);return new Blob([b],{type:'audio/mpeg'})}}
@@ -138,7 +138,7 @@
  const offline=async()=>{const who=teacher();await loadIx(who);if(!st.ix[who])return false;try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}st.pre[who]=0;warm(who,1);return true};
  /* كم حزمة من صوت المعلّم الحالي محفوظة في الجهاز، وحجمها التقريبي */
  const offStat=async()=>{const who=teacher(),j=await loadIx(who);if(!j)return null;const c=await cache();let have=0;
-  if(c){const ks=new Set((await c.keys()).map(r=>r.url));for(const n of j.packs)if(ks.has(new URL(base+n,location.href).href))have++}
+  if(c){const nq=u=>u.split('?')[0],ks=new Set((await c.keys()).map(r=>nq(r.url)));for(const n of j.packs)if(ks.has(nq(new URL(base+n,location.href).href)))have++}
   const mb=Math.round(j.packs.reduce((a,n)=>a+((st.need||{})[n]||0),0)/1048576);return{have,total:j.packs.length,mb,running:!!st.pre[who]&&st.prog&&st.prog[0]<st.prog[1]}};
  window.HurufiClips={has,play,speak,playBlob,warmTts,stop,pause,resume,warm:warmText,offline,offStat,diag,reset,progress:()=>st.prog||null,busy:()=>!!st.playing,record,export:exp,key,ready,load:loadIx,
   count:()=>[st.ix.female?Object.keys(st.ix.female.idx).length:0,st.ix.male?Object.keys(st.ix.male.idx).length:0],voice:who=>st.ix[who||teacher()]?.voice||null};
