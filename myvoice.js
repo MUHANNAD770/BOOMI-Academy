@@ -58,6 +58,7 @@
     <li><label class="mv-consent"><input type="checkbox" id="mv-ok"> هذا صوتي (أو بإذن صاحبه)، وأوافق على إنشاء نسخة منه ليستخدمها بومي في هذا الموقع فقط.</label></li>
    </ol>
    <button class="big" id="mv-make-btn" onclick="mvCreate()">✨ أَنْشِئْ نُسْخَتِي الصَّوْتِيَّةَ</button>
+   <div id="mv-pg" class="mv-pg" hidden role="progressbar" aria-valuemin="0" aria-valuemax="100"><div class="mv-pg-top"><b id="mv-pg-t">٠٪</b><span id="mv-pg-s"></span></div><div class="mv-pg-bar"><i id="mv-pg-f"></i></div><small id="mv-pg-r" class="mut"></small></div>
    <div id="mv-prev" hidden><h3>🎧 معاينة صوتك قبل اعتماده</h3><div class="mv-row"><button class="alt" onclick="mvPreview('ar')">🔊 جملة عربية</button><button class="alt" onclick="mvPreview('en')">🔊 English sentence</button></div>
     <button class="big" id="mv-accept" disabled onclick="mvAccept()">✅ اِعْتَمِدْ صَوْتِي وَفَعِّلْهُ فِي كُلِّ الْمَوْقِعِ</button><p class="mut">يُفعَّل زر الاعتماد بعد نجاح معاينة واحدة على الأقل.</p></div>
    <p id="mv-msg" class="mv-msg"></p>
@@ -82,19 +83,47 @@
   const t=$('mv-time');if(t)t.textContent=d?'✅ سُجّل '+Math.round(d)+' ثانية. استمع إليه، ثم أنشئ نسختك أو أعد التسجيل.':'✅ اختير الملف. استمع إليه وتأكد أن النص أدناه يطابقه.';const p=$('mv-prev');if(p)p.hidden=true};
  window.mvFile=inp=>{const f=inp.files&&inp.files[0];if(!f)return;if(f.size>12*1024*1024)return msg('الملف كبير جدًا (الحد ١٢ م.ب). يكفي تسجيل من ٦ إلى ١٥ ثانية.','bad');msg('');setBlob(f,0)};
  const ERR={ticket:'انتهت صلاحية الطلب، حاول مرة أخرى.',too_short:'التسجيل قصير جدًا (٥ ثوانٍ على الأقل).',silent:'التسجيل صامت تقريبًا. اقترب من الميكروفون وأعد التسجيل.',bad_audio:'تعذّرت قراءة الملف الصوتي. جرّب تسجيلًا آخر.',too_big:'الملف كبير جدًا.',text:'اكتب النص المقروء في التسجيل.',busy:'محاولات كثيرة، حاول بعد قليل.',not_configured:'خادم الصوت الشخصي غير مُعدّ بعد.'};
- /* الخادم المجاني ينام عند عدم الاستخدام: ننتظر استيقاظه (حتى ٤ دقائق) */
- const wake=async url=>{for(let i=0;i<48;i++){try{const r=await fetchT(url+'/health',{cache:'no-store'},8000);if(r.ok){const j=await r.json();if(j.ready)return true;if(j.err)return false}}catch(e){}
-   msg('⏳ خادم الصوت يستيقظ… ('+(i*5)+' ث) قد يستغرق دقيقة أو اثنتين أول مرة.');await new Promise(r=>setTimeout(r,5000))}return false};
- window.mvCreate=async()=>{if(!st.blob)return msg('سجّل صوتك أو ارفع ملفًا أولًا.','bad');if(!$('mv-ok').checked)return msg('ضع علامة الموافقة أولًا.','bad');
-  const rt=norm($('mv-text').value);if(rt.length<8)return msg(ERR.text,'bad');const btn=$('mv-make-btn');btn.disabled=true;
-  try{msg('⏳ أتصل بخادم الصوت…');const g=await cfg(true);if(!g.configured)return msg(g.net?'لا يوجد اتصال بالإنترنت.':ERR.not_configured+' (يحتاج صاحب الموقع لتشغيل خادم الصوت المجاني)','bad');
-   if(!await wake(g.url))return msg('خادم الصوت لا يستجيب الآن. حاول بعد قليل.','bad');
-   msg('⏳ أُنشئ نسختك الصوتية…');const f=new FormData();f.append('audio',st.blob,'rec');f.append('ref_text',rt);f.append('ticket',g.ticket||'');f.append('exp',String(g.exp||0));
-   const r=await fetchT(g.url+'/enroll',{method:'POST',body:f},120000);let j={};try{j=await r.json()}catch(e){}
-   if(!r.ok)return msg(ERR[j.detail]||'تعذّر إنشاء النسخة ('+r.status+'). حاول مرة أخرى.','bad');
-   st.draft={codes:j.codes,rt:j.ref_text,vid:j.vid,vt:j.vt,dur:j.dur,url:g.url,at:Date.now()};st.ok=0;
-   $('mv-prev').hidden=false;$('mv-accept').disabled=true;msg('✅ أُنشئت نسختك الصوتية. استمع إلى المعاينة ثم اعتمدها.','good');mvPreview('ar')}
-  catch(e){msg('تعذّر الاتصال بخادم الصوت. تحقّق من الإنترنت وحاول مرة أخرى.','bad')}finally{btn.disabled=false}};
+ /* ===== إنشاء النسخة الصوتية: يعمل بلا توقف (يعيد المحاولة تلقائيًا) ويعرض النسبة المئوية لما بقي ===== */
+ const AD='٠١٢٣٤٥٦٧٨٩',D=n=>String(n).replace(/\d/g,d=>AD[d]);
+ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+ const JOB={on:0,p:0,stage:'',t0:0};
+ /* النسبة لا ترجع للخلف أبدًا، وتتحرّك بنعومة داخل كل مرحلة */
+ const pg=(p,stage)=>{JOB.p=Math.max(JOB.p,Math.min(100,p));if(stage)JOB.stage=stage;const b=$('mv-pg');if(!b)return;b.hidden=!JOB.on&&JOB.p<100;
+  const v=Math.floor(JOB.p),f=$('mv-pg-f'),t=$('mv-pg-t'),s=$('mv-pg-s'),r=$('mv-pg-r');if(f)f.style.width=v+'%';if(t)t.textContent=D(v)+'٪';if(s)s.textContent=JOB.stage;b.setAttribute('aria-valuenow',v);
+  if(r)r.textContent=v>=100?'':'بَاقٍ '+D(100-v)+'٪ — لَا تُغْلِقِ الصَّفْحَةَ، الْعَمَلُ مُسْتَمِرٌّ تِلْقَائِيًّا'};
+ /* تقدّم تقريبي داخل مرحلة طويلة: يقترب من نهايتها ولا يتجاوزها */
+ const creep=(a,b,secs)=>{const s0=Date.now();const k=setInterval(()=>{const x=(Date.now()-s0)/1000;pg(a+(b-a)*(1-Math.exp(-x/secs)))},400);return()=>clearInterval(k)};
+ let WL=null;const awake=async on=>{try{if(on&&navigator.wakeLock&&!WL)WL=await navigator.wakeLock.request('screen');else if(!on&&WL){await WL.release();WL=null}}catch(e){}};
+ /* الخادم المجاني ينام: ننتظر استيقاظه بلا حدّ قصير (حتى ١٥ دقيقة) */
+ const wake=async url=>{const stop=creep(8,40,90);try{for(let i=0;i<180;i++){try{const r=await fetchT(url+'/health',{cache:'no-store'},10000);if(r.ok){const j=await r.json();if(j.ready)return true;if(j.err)return false}}catch(e){}
+   pg(0,i<2?'⏳ يُوقِظُ خَادِمَ الصَّوْتِ…':'⏳ الْخَادِمُ يَسْتَيْقِظُ ('+D(i*5)+' ث)… أَوَّلُ مَرَّةٍ قَدْ تَأْخُذُ دَقِيقَتَيْنِ');await sleep(5000)}return false}finally{stop()}};
+ /* رفع التسجيل مع نسبة الرفع الحقيقية (XHR) */
+ const upload=(url,f,a,b)=>new Promise(res=>{const x=new XMLHttpRequest();x.open('POST',url);x.timeout=600000;let stop=null;
+  x.upload.onprogress=e=>{if(e.lengthComputable)pg(a+(b-a)*0.4*e.loaded/e.total,'📤 يُرْسِلُ تَسْجِيلَكَ…')};
+  x.upload.onload=()=>{pg(a+(b-a)*0.4,'🧠 يُحَلِّلُ صَوْتَكَ وَيَصْنَعُ بَصْمَتَهُ…');stop=creep(a+(b-a)*0.4,b,120)};
+  const end=(st,j)=>{stop&&stop();res({status:st,j})};
+  x.onload=()=>{let j={};try{j=JSON.parse(x.responseText)}catch(e){}end(x.status,j)};x.onerror=()=>end(0,{});x.ontimeout=()=>end(0,{});x.send(f)});
+ const FATAL=['too_short','silent','bad_audio','too_big','text'];
+ window.mvCreate=async()=>{if(JOB.on)return;if(!st.blob)return msg('سجّل صوتك أو ارفع ملفًا أولًا.','bad');if(!$('mv-ok').checked)return msg('ضع علامة الموافقة أولًا.','bad');
+  const rt=norm($('mv-text').value);if(rt.length<8)return msg(ERR.text,'bad');const btn=$('mv-make-btn');
+  JOB.on=1;JOB.p=0;JOB.t0=Date.now();btn.disabled=true;btn.textContent='⏳ جَارٍ الْإِنْشَاءُ…';msg('');$('mv-prev').hidden=true;awake(true);pg(1,'🔌 يَتَّصِلُ بِخَادِمِ الصَّوْتِ…');
+  const fail=m=>{msg(m,'bad');JOB.on=0;const b=$('mv-pg');if(b)b.hidden=true};
+  try{for(let n=1;n<=8;n++){if(n>1){pg(0,'🔁 مُحَاوَلَةٌ جَدِيدَةٌ تِلْقَائِيًّا ('+D(n)+')…');await sleep(Math.min(20000,3000*n))}
+    const g=await cfg(true);if(!g.configured){if(g.net){pg(0,'📶 لَا يُوجَدُ إِنْتَرْنِتْ، أَنْتَظِرُ عَوْدَتَهُ…');continue}return fail(ERR.not_configured)}pg(6);
+    if(!await wake(g.url))continue;pg(42,'✅ الْخَادِمُ جَاهِزٌ');
+    const f=new FormData();f.append('audio',st.blob,'rec');f.append('ref_text',rt);f.append('ticket',g.ticket||'');f.append('exp',String(g.exp||0));
+    const {status,j}=await upload(g.url+'/enroll',f,42,75);
+    if(status===200&&j.vt){st.draft={codes:j.codes,rt:j.ref_text,vid:j.vid,vt:j.vt,dur:j.dur,url:g.url,at:Date.now()};st.ok=0;pg(76,'🎧 يُجَهِّزُ مُعَايَنَةَ صَوْتِكَ…');
+     /* المعاينة جزء من الإنشاء: نولّدها الآن (مع إعادة المحاولة) حتى يكون الصوت جاهزًا للاستماع */
+     const stop=creep(76,98,90);let b=null;try{for(let k=0;k<4&&!b;k++){b=await gen(st.draft,SAMPLE.ar,"ar",300000);if(!b){MEM.delete(ck(st.draft,SAMPLE.ar,'ar'));st.down=0;await sleep(4000)}}}finally{stop()}
+     pg(100,'✅ اكتمل إنشاء نسختك الصوتية');JOB.on=0;$('mv-prev').hidden=false;$('mv-accept').disabled=true;awake(false);
+     msg(b?'✅ أُنشئت نسختك الصوتية. استمع إلى المعاينة ثم اعتمدها.':'✅ أُنشئت نسختك الصوتية. اضغط «جملة عربية» للاستماع.','good');if(b)mvPreview('ar');return}
+    if(FATAL.includes(j.detail))return fail(ERR[j.detail]);
+    if(status===429){pg(0,'⏳ الْخَادِمُ مَشْغُولٌ، أَنْتَظِرُ دَقِيقَةً ثُمَّ أُكْمِلُ…');await sleep(60000)}
+    /* غير ذلك (انقطاع، خادم يُعاد تشغيله، تذكرة انتهت): نعيد المحاولة تلقائيًا بتذكرة جديدة */}
+   fail('تعذّر الإنشاء بعد عدة محاولات. تحقّق من الإنترنت ثم اضغط الزر مرة أخرى.')}
+  catch(e){fail('حدث خطأ غير متوقع. اضغط الزر مرة أخرى.')}
+  finally{JOB.on=0;awake(false);const b2=$('mv-make-btn');if(b2){b2.disabled=false;b2.textContent='✨ أَنْشِئْ نُسْخَتِي الصَّوْتِيَّةَ'}}};
  const SAMPLE={ar:'أَحْسَنْتَ يَا بَطَلُ! هَيَّا نَقْرَأُ قِصَّةً جَدِيدَةً عَنِ الْقِطَّةِ الصَّغِيرَةِ.',en:'Great job! Let us read a new story about a little cat.'};
  window.mvPreview=async(l,saved)=>{const v=saved?me():st.draft;if(!v)return;try{say.stop()}catch(e){}msg('⏳ يُولَّد صوتك… (أول مرة قد تستغرق بضع ثوانٍ)');
   const ok=await playV(v,SAMPLE[l],l,()=>true,()=>msg('🔊 '+SAMPLE[l]));

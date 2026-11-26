@@ -21,7 +21,19 @@ app = FastAPI(title='Boomi personal voice')
 app.add_middleware(CORSMiddleware, allow_origins=ORIGINS, allow_origin_regex=r'https://[a-z0-9-]+--boomi-academy\.netlify\.app' if not DEV else r'.*',
                    allow_methods=['GET', 'POST'], allow_headers=['content-type'])
 E = None
+BUSY = {'n': 0, 'last': 0.0}
+
+
+@app.middleware('http')
+async def _busy(req, call_next):
+    # نعدّ الطلبات الجارية: التحديث التلقائي لا يعيد تشغيل الخادم أثناء إنشاء صوت أو توليد جملة
+    BUSY['n'] += 1; BUSY['last'] = time.time()
+    try:
+        return await call_next(req)
+    finally:
+        BUSY['n'] -= 1; BUSY['last'] = time.time()
 STATE = {'ready': False, 'err': ''}
+REV = os.environ.get('VOICE_REV', '')
 
 
 def load():
@@ -29,6 +41,12 @@ def load():
     try:
         from engine import Engine
         E = Engine(); STATE['ready'] = True
+        # قياس السرعة مرة واحدة (يظهر في /health): ثوانٍ لكل ثانية صوت — للتشخيص فقط
+        try:
+            t = time.time(); w = np.zeros(16000 * 3, np.float32); w[::50] = 0.1; E.encode(w)
+            STATE['speed'] = {'encode_3s': round(time.time() - t, 1)}
+        except Exception as e:  # noqa
+            STATE['speed'] = {'err': str(e)[:100]}
     except Exception as e:  # noqa
         STATE['err'] = str(e)[:300]
 
@@ -68,7 +86,9 @@ def need_ready():
 @app.get('/')
 @app.get('/health')
 def health():
-    return {'ok': True, 'ready': STATE['ready'], 'err': STATE['err'], 'backend': getattr(E, 'backend', None), 'configured': bool(SECRET) or DEV}
+    import engine as _eg  # noqa
+    return {'ok': True, 'ready': STATE['ready'], 'err': STATE['err'], 'backend': getattr(E, 'backend', None), 'configured': bool(SECRET) or DEV,
+            'threads': getattr(_eg, 'THREADS', None) if STATE['ready'] else None, 'cpu_count': os.cpu_count(), 'rev': REV, 'speed': STATE.get('speed')}
 
 
 def to16k(raw: bytes):
