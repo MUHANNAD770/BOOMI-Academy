@@ -1,6 +1,6 @@
 // اختبار نطق التاء المربوطة: الوقف (هاء ساكنة «ةْ») والوصل (تاء بحركتها الإعرابية)، دون تغيير الكتابة.
 // التشغيل: node tools/tests/tamarbuta-check.js
-const T=require('../../voices/tamarbuta.js'),M=require('../../voices/tm-map.json');
+const T=require('../../src/voice/tamarbuta.js'),M=require('../../src/voice/tm-map.json');
 const H=/[ً-ْٰ]/g;let fail=0,n=0;
 const ok=(c,msg)=>{n++;if(!c){fail++;console.log('✗ '+msg)}};
 const eq=(inp,exp,map)=>{const got=T.engine(inp,map);ok(got.normalize('NFC')===exp.normalize('NFC'),`«${inp}» ← المتوقع «${exp}» والناتج «${got}»`)};
@@ -42,9 +42,10 @@ ok(bad===0,'خريطة التشكيل: '+bad+' جمل غُيّرت كتابته�
 
 // ٦) مصدر واحد: المقاطع المسجّلة وخادم النطق والصوت المستنسخ تستعمل القاعدة نفسها
 const fs=require('fs'),R=p=>fs.readFileSync(require('path').join(__dirname,'../..',p),'utf8');
-ok(/tamarbuta/.test(R('netlify/functions/tts.mjs'))&&/TMR\.engine/.test(R('netlify/functions/tts.mjs')),'خادم النطق tts.mjs يستعمل tamarbuta.js');
+ok(/tamarbuta/.test(R('netlify/functions/edge-tts.mjs'))&&/TMR\.engine/.test(R('netlify/functions/edge-tts.mjs')),'خادم Edge (edge-tts.mjs) يستعمل tamarbuta.js');
 ok(/engine_cli\.js/.test(R('tools/clips/gen_edge.py')),'توليد المقاطع gen_edge.py يستعمل tamarbuta.js');
-ok(/TaMarbuta\.engine/.test(R('myvoice.js')),'الصوت المستنسخ myvoice.js يستعمل tamarbuta.js');
-ok(/voices\/tamarbuta\.js/.test(R('index.html')),'tamarbuta.js محمّل في الموقع');
+ok(/TaMarbuta\.engine/.test(R('src/voice/myvoice.js')),'الصوت المستنسخ myvoice.js يستعمل tamarbuta.js');
+ok(/src\/voice\/tamarbuta\.js/.test(R('index.html')),'tamarbuta.js محمّل في الموقع');
+ok(/TaMarbuta\.engine/.test(R('src/shared/voice.js')),'توليد Gemini (src/shared/voice.js) يستعمل tamarbuta.js');
 
 console.log(fail?`✗ ${fail} من ${n} اختبارًا فشل`:`✓ نجحت كل الاختبارات (${n})`);process.exit(fail?1:0);

@@ -1,6 +1,6 @@
 # syl_sukun_shadda.py — السكون «أَبْ» والشدة «أَبْ ، بَ» بالصوت رقم ٩ (اختيار صاحب المشروع بعد الاستماع إلى الخيارات).
 # كل مقطع تسجيل مستقل (لا يُقص من قائمة: الشدة في القائمة كانت تفقد فتحتها فتشبه السكون).
-# الاستعمال: python syl_sukun_shadda.py <مجلد الإخراج> syl_spec.json  ثم  REPLACE=1 PHR=<المجلد>/phr.json python pack.py voices/clips <إصدار> append
+# الاستعمال: python syl_sukun_shadda.py <مجلد الإخراج> syl_spec.json  ثم  REPLACE=1 PHR=<المجلد>/phr.json python pack.py audio/clips <إصدار> append
 import asyncio,edge_tts,os,json,sys,subprocess
 P=os.environ.get('HTTPS_PROXY');SP=sys.argv[1];spec=json.load(open(sys.argv[2],encoding='utf8'));phr=[]
 sem=asyncio.Semaphore(5)

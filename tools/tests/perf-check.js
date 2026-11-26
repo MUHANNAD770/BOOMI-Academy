@@ -14,7 +14,7 @@ srv.listen(0,'127.0.0.1',async()=>{const url=`http://127.0.0.1:${srv.address().p
  const errs=[];p.on('pageerror',e=>errs.push(e.message));const cdp=await ctx.newCDPSession(p);await cdp.send('Network.enable');await cdp.send('Performance.enable');
  let bytes=0;const by={};const reqUrl={};const pending=new Set();
  cdp.on('Network.requestWillBeSent',e=>{reqUrl[e.requestId]=e.request.url;pending.add(e.requestId)});
- cdp.on('Network.loadingFinished',e=>{pending.delete(e.requestId);bytes+=e.encodedDataLength;const u=(reqUrl[e.requestId]||'').replace(url,'').split('?')[0];const g=u.startsWith('voices/clips/')&&u.endsWith('.bin')?'voice clip packs':u.startsWith('lib/')?'libraries':'app files';by[g]=(by[g]||0)+e.encodedDataLength});
+ cdp.on('Network.loadingFinished',e=>{pending.delete(e.requestId);bytes+=e.encodedDataLength;const u=(reqUrl[e.requestId]||'').replace(url,'').split('?')[0];const g=u.startsWith('audio/clips/')&&u.endsWith('.bin')?'voice clip packs':u.startsWith('lib/')?'libraries':'app files';by[g]=(by[g]||0)+e.encodedDataLength});
  cdp.on('Network.loadingFailed',e=>pending.delete(e.requestId));
  await p.addInitScript(()=>{localStorage.setItem('hrw2',JSON.stringify({kids:[{name:'x',gender:'female',age:7,lang:'both',stage:2,done:{},sc:{},unlockAll:1}],cur:0}));
   window.__lt=[];try{new PerformanceObserver(l=>l.getEntries().forEach(e=>__lt.push(Math.round(e.duration)))).observe({type:'longtask',buffered:true})}catch(e){}

@@ -1,7 +1,7 @@
 # خريطة حركات التاء المربوطة في الوصل لجمل الموقع الثابتة، بأداة التشكيل CATT (Apache-2.0، تعمل بلا إنترنت):
-#   pip install catt-tashkeel  ثم: python build_map.py phrases.json ../../voices/tm-map.json
+#   pip install catt-tashkeel  ثم: python build_map.py phrases.json ../../src/voice/tm-map.json
 # phrases.json: قائمة النصوص كما تُنطق (أو [[نص, ...], ...]). نأخذ من CATT حركة التاء المربوطة فقط في الكلمات غير المشكولة
-# المتبوعة بكلمة؛ بقية الكلمات والوقف تعالجها voices/tamarbuta.js. حركات مقبولة: فتحة/ضمة/كسرة وتنوينها.
+# المتبوعة بكلمة؛ بقية الكلمات والوقف تعالجها src/voice/tamarbuta.js. حركات مقبولة: فتحة/ضمة/كسرة وتنوينها.
 import json, re, sys, warnings
 warnings.filterwarnings('ignore')
 from catt_tashkeel import CATTEncoderDecoder

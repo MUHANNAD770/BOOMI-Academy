@@ -1,7 +1,7 @@
 /* letters.js — مقاطع نطق الحروف التعليمي (اسم الحرف موجود مسبقًا؛ هنا صوت الحرف):
    الحرف مع الفتحة/الضمة/الكسرة (تَ تُ تِ)، الساكن بهمزة قبله (أَتْ)، المشدّد مضاعفًا (أَتْتَ)، التنوين (تًا تٌ تٍ)،
    والمدود (تَا تُو تِي)، والحروف الإنجليزية الصغيرة. المفتاح هو نص الحرف كما يعالجه الموقع (say.parts) والمرسَل إلى Edge نص النطق.
-   الاستعمال: ROOT=<المشروع> node letters.js > letters.json  ثم  PHR=letters.json python gen_edge.py  ثم  PHR=letters.json python pack.py <voices/clips> 61 append */
+   الاستعمال: ROOT=<المشروع> node letters.js > letters.json  ثم  PHR=letters.json python gen_edge.py  ثم  PHR=letters.json python pack.py <audio/clips> 61 append */
 const {mkCtx,key}=require('./harness.js');
 const c=mkCtx('male');
 const BASE='بتثجحخدذرزسشصضطظعغفقكلمنهوي'.split('');

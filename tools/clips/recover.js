@@ -1,6 +1,6 @@
 const fs=require('fs'),path=require('path');const {mkCtx,key}=require('./harness.js');
 const ROOT=process.env.ROOT;
-const idx={female:JSON.parse(fs.readFileSync(ROOT+'/voices/clips/female.json')).idx,male:JSON.parse(fs.readFileSync(ROOT+'/voices/clips/male.json')).idx};
+const idx={female:JSON.parse(fs.readFileSync(ROOT+'/audio/clips/female.json')).idx,male:JSON.parse(fs.readFileSync(ROOT+'/audio/clips/male.json')).idx};
 const files=[];(function walk(d){for(const f of fs.readdirSync(d)){const p=path.join(d,f);const s=fs.statSync(p);if(s.isDirectory()){if(!/^(tts|node_modules|lib|netlify|img|audio|clips)$/.test(f))walk(p)}else if(/\.(js|html)$/.test(f))files.push(p)}})(ROOT);
 const cand=new Set();
 const add=s=>{s=s.replace(/\\n/g,'\n').replace(/\\'/g,"'").replace(/\\"/g,'"');if(/[\p{L}]/u.test(s)&&s.length<2000){cand.add(s);
