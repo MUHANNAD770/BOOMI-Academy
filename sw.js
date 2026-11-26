@@ -1,7 +1,7 @@
 /* sw.js — ذاكرة العمل دون اتصال (Offline Cache) لمنصة حروفي */
 'use strict';
 
-const CACHE = 'hurufi-app-v208';
+const CACHE = 'hurufi-app-v209';
 
 const PRECACHE = [
   './',
@@ -42,6 +42,8 @@ const PRECACHE = [
   './src/academies/english/pron-en.js',
   './src/academies/english/quiz-en.js',
   './src/academies/english/teacher-en.js',
+  './src/academies/math/math-academy.js',
+  './img/ui/acad-math.webp',
   './src/shared/home.js',
   './src/core/quiz.js',
   './src/assessment/exam-engine.js',

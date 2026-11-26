@@ -100,7 +100,8 @@ test('Forbidden legacy references and unsafe iframe patterns are absent from act
   for (const f of activeFiles) {
     const txt = fs.readFileSync(f, 'utf8');
     const rel = path.relative(ROOT, f);
-    assert(!/academies\/math|acad-math\.webp|math-adv/.test(txt), `Forbidden math ref in ${rel}`);
+    /* أكاديمية الرياضيات الجديدة (src/academies/math) مطلوبة من صاحب المشروع؛ الممنوع فقط بقايا النظام القديم */
+    assert(!/math-adv|mathHome\(/.test(txt), `Forbidden legacy math ref in ${rel}`);
     assert(!/\bfunction\s+parent\s*\(/.test(txt), `Forbidden window.parent shadow in ${rel}`);
     assert(!/\b(?:window\.)?(?:alert|confirm)\s*\(/.test(txt), `Forbidden dialog call in ${rel}`);
     assert(!/\bwindow\.open\s*\(/.test(txt), `Forbidden window.open call in ${rel}`);

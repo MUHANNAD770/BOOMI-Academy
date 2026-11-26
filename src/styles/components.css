@@ -1154,3 +1154,29 @@ html.bm-open #mc {
 
 /* زر «اسأل بومي» داخل الصفحة في الاختبار والدروس: لا يغطي الخيارات */
 .ask.ask-inline{position:static;display:flex;margin:22px auto calc(96px + env(safe-area-inset-bottom,0px));inset:auto}
+
+/* ===== أكاديمية الرياضيات ===== */
+.h2-card.math{background:linear-gradient(160deg,#ffb36b,#f0712b)}
+.h2-acad{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.h2-acad .h2-card.math:nth-child(3):last-child{grid-column:1/-1}
+@media(min-width:760px){.h2-acad{grid-template-columns:repeat(3,1fr)}.h2-acad .h2-card.math:nth-child(3):last-child{grid-column:auto}}
+.acad-hd.math{background:linear-gradient(150deg,#ffc07a,#f0712b)}
+.acad-hd.math .acad-ic{font-size:1.25rem;color:#c2410c}
+.math-place-cta,.math-place-res{background:var(--card,#fff);border-radius:20px;padding:14px;margin:10px 0;box-shadow:0 4px 16px rgba(40,30,120,.08)}
+.math-place-cta b{display:block;font-size:1.1rem;margin-bottom:4px}
+.math-place-res{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.math-place-res>span{font-size:1.6rem}.math-place-res>div{flex:1 1 160px;display:grid}
+.math-next{width:100%;margin:6px 0 10px}
+.math-stage{background:var(--card,#fff);border-radius:18px;margin:10px 0;padding:6px 12px;box-shadow:0 3px 12px rgba(40,30,120,.07)}
+.math-stage summary{cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 0;list-style:none}
+.math-stage summary::-webkit-details-marker{display:none}
+.math-stage summary b{font-size:1.05rem}.math-stage .row[disabled]{opacity:.55}
+.math-prompt{font-size:1.5rem;line-height:1.9;text-align:center;font-weight:800;margin:8px 0 12px;unicode-bidi:plaintext}
+.math-opts .opt{font-size:1.45rem;font-weight:800;unicode-bidi:plaintext}
+.math-opts.two{grid-template-columns:1fr 1fr}
+.math-q .opt.picked{outline:3px solid #7c4dff;outline-offset:2px}
+.math-q .bq-in{font-size:1.4rem;text-align:center}
+.math-wrong{list-style:none;padding:0;display:grid;gap:8px}
+.math-wrong li{background:var(--card,#fff);border-radius:14px;padding:10px 12px;display:grid;gap:4px;box-shadow:0 2px 10px rgba(40,30,120,.06)}
+.math-wrong span{color:#1f9d55;font-weight:800}
+:root[data-theme=dark] .math-place-cta,:root[data-theme=dark] .math-place-res,:root[data-theme=dark] .math-stage,:root[data-theme=dark] .math-wrong li{background:#24275e;color:#eef0ff}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .math-place-cta,:root:not([data-theme=light]) .math-place-res,:root:not([data-theme=light]) .math-stage,:root:not([data-theme=light]) .math-wrong li{background:#24275e;color:#eef0ff}}

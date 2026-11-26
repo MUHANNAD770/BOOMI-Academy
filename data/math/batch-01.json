@@ -1,0 +1,111 @@
+{
+  "bank_name": "Boomi Mathematics Academy",
+  "version": "1.0",
+  "batch": 1,
+  "language": "ar",
+  "number_system": "Arabic-Indic numerals in learner-facing content",
+  "description": "بنك تمارين رياضيات متدرج من التأسيس إلى الإتقان. هذه دفعة تأسيسية قابلة للتوسعة.",
+  "progression_rules": {"start_with_placement_test": true, "advance_when_mastery_percent_at_least": 85, "recommended_questions_per_lesson": "20-30", "retry_wrong_answers_with_new_values": true, "explain_after_wrong_answer": true, "do_not_repeat_same_question_in_same_session": true},
+  "stages": [
+    {"id": "math_stage_01", "name": "مرحلة التأسيس", "level": "مبتدئ جدًا",
+     "units": [{"id": "counting", "name": "الأعداد والعد"}, {"id": "compare", "name": "المقارنة والترتيب"}, {"id": "shapes", "name": "الأشكال والأنماط"}],
+     "questions": [
+      {"id": "math_stage_01_q001", "unit_id": "counting", "type": "choice", "prompt": "ما العدد الذي يأتي بعد ٤؟", "options": ["٣", "٥", "٦"], "correct_answer": "٥", "explanation": "نعد تصاعديًا: ٣، ٤، ٥."},
+      {"id": "math_stage_01_q002", "unit_id": "counting", "type": "choice", "prompt": "كم عدد التفاحات؟ 🍎🍎🍎", "options": ["٢", "٣", "٤"], "correct_answer": "٣", "explanation": "نعد التفاحات واحدةً واحدة: ١، ٢، ٣."},
+      {"id": "math_stage_01_q003", "unit_id": "counting", "type": "fill", "prompt": "أكمل: ١، ٢، ٣، __", "options": [], "correct_answer": "٤", "explanation": "العدد الذي يأتي بعد ٣ هو ٤."},
+      {"id": "math_stage_01_q004", "unit_id": "counting", "type": "choice", "prompt": "أي عدد يساوي عشرة؟", "options": ["٨", "١٠", "١٢"], "correct_answer": "١٠", "explanation": "هذا هو العدد ١٠."},
+      {"id": "math_stage_01_q005", "unit_id": "compare", "type": "choice", "prompt": "أي العددين أكبر؟", "options": ["٤", "٧"], "correct_answer": "٧", "explanation": "٧ أكبر من ٤."},
+      {"id": "math_stage_01_q006", "unit_id": "compare", "type": "choice", "prompt": "اختر علامة المقارنة الصحيحة: ٣ __ ٥", "options": ["<", ">", "="], "correct_answer": "<", "explanation": "٣ أصغر من ٥، لذلك نستخدم علامة أصغر من."},
+      {"id": "math_stage_01_q007", "unit_id": "compare", "type": "fill", "prompt": "رتّب تصاعديًا: ٣، ١، ٢", "options": [], "correct_answer": "١، ٢، ٣", "explanation": "نبدأ بالأصغر ثم الأكبر."},
+      {"id": "math_stage_01_q008", "unit_id": "shapes", "type": "choice", "prompt": "ما اسم هذا الشكل؟ 🔺", "options": ["دائرة", "مثلث", "مربع"], "correct_answer": "مثلث", "explanation": "المثلث له ثلاثة أضلاع."},
+      {"id": "math_stage_01_q009", "unit_id": "shapes", "type": "choice", "prompt": "كم ضلعًا للمربع؟", "options": ["٣", "٤", "٥"], "correct_answer": "٤", "explanation": "للمربع أربعة أضلاع متساوية."},
+      {"id": "math_stage_01_q010", "unit_id": "shapes", "type": "choice", "prompt": "ما الشكل الذي ليس له أضلاع؟", "options": ["مربع", "مثلث", "دائرة"], "correct_answer": "دائرة", "explanation": "الدائرة ليس لها أضلاع مستقيمة."}
+     ]},
+    {"id": "math_stage_02", "name": "مرحلة المبتدئ", "level": "مبتدئ",
+     "units": [{"id": "addition", "name": "الجمع"}, {"id": "subtraction", "name": "الطرح"}, {"id": "word_problems", "name": "المسائل الكلامية"}],
+     "questions": [
+      {"id": "math_stage_02_q001", "unit_id": "addition", "type": "choice", "prompt": "ما ناتج ٤ + ٣؟", "options": ["٦", "٧", "٨"], "correct_answer": "٧", "explanation": "نبدأ من ٤ ونضيف ٣: ٥، ٦، ٧."},
+      {"id": "math_stage_02_q002", "unit_id": "addition", "type": "choice", "prompt": "ما ناتج ٨ + ٥؟", "options": ["١٢", "١٣", "١٤"], "correct_answer": "١٣", "explanation": "٨ + ٥ = ١٣. نجمع الآحاد ونحمل عشرة عند الحاجة."},
+      {"id": "math_stage_02_q003", "unit_id": "addition", "type": "fill", "prompt": "أكمل: ١٢ + __ = ١٧", "options": [], "correct_answer": "٥", "explanation": "١٧ − ١٢ = ٥."},
+      {"id": "math_stage_02_q004", "unit_id": "addition", "type": "choice", "prompt": "ما ناتج ٢٦ + ١٣؟", "options": ["٣٩", "٣٨", "٤٠"], "correct_answer": "٣٩", "explanation": "نجمع الآحاد: ٦ + ٣ = ٩، والعشرات: ٢ + ١ = ٣."},
+      {"id": "math_stage_02_q005", "unit_id": "subtraction", "type": "choice", "prompt": "ما ناتج ٩ − ٤؟", "options": ["٤", "٥", "٦"], "correct_answer": "٥", "explanation": "نطرح ٤ من ٩ فيتبقى ٥."},
+      {"id": "math_stage_02_q006", "unit_id": "subtraction", "type": "choice", "prompt": "ما ناتج ٣٢ − ١٥؟", "options": ["١٧", "١٨", "١٩"], "correct_answer": "١٧", "explanation": "نستلف عشرة: ١٢ − ٥ = ٧، ثم ٢ − ١ = ١."},
+      {"id": "math_stage_02_q007", "unit_id": "subtraction", "type": "fill", "prompt": "أكمل: ٢٠ − __ = ١٢", "options": [], "correct_answer": "٨", "explanation": "٢٠ − ١٢ = ٨."},
+      {"id": "math_stage_02_q008", "unit_id": "word_problems", "type": "choice", "prompt": "مع سارة ٥ أقلام واشترت ٣ أخرى. كم قلمًا معها؟", "options": ["٧", "٨", "٩"], "correct_answer": "٨", "explanation": "نجمع ٥ + ٣ = ٨ أقلام."},
+      {"id": "math_stage_02_q009", "unit_id": "word_problems", "type": "choice", "prompt": "كان لدى علي ١٠ كرات، أعطى صديقه ٤. كم بقي؟", "options": ["٥", "٦", "٧"], "correct_answer": "٦", "explanation": "نطرح ١٠ − ٤ = ٦ كرات."},
+      {"id": "math_stage_02_q010", "unit_id": "word_problems", "type": "choice", "prompt": "في الحافلة ١٢ راكبًا، صعد ٦ ركاب. كم أصبح العدد؟", "options": ["١٦", "١٧", "١٨"], "correct_answer": "١٨", "explanation": "نجمع ١٢ + ٦ = ١٨ راكبًا."}
+     ]},
+    {"id": "math_stage_03", "name": "مرحلة المتوسط", "level": "متوسط",
+     "units": [{"id": "multiplication", "name": "الضرب"}, {"id": "division", "name": "القسمة"}, {"id": "patterns_operations", "name": "الأنماط وترتيب العمليات"}],
+     "questions": [
+      {"id": "math_stage_03_q001", "unit_id": "multiplication", "type": "choice", "prompt": "ما ناتج ٦ × ٤؟", "options": ["٢٠", "٢٤", "٢٨"], "correct_answer": "٢٤", "explanation": "٦ × ٤ يعني ٦ مجموعات في كل مجموعة ٤، والناتج ٢٤."},
+      {"id": "math_stage_03_q002", "unit_id": "multiplication", "type": "choice", "prompt": "ما ناتج ٩ × ٧؟", "options": ["٥٦", "٦٣", "٧٢"], "correct_answer": "٦٣", "explanation": "٩ × ٧ = ٦٣."},
+      {"id": "math_stage_03_q003", "unit_id": "multiplication", "type": "fill", "prompt": "أكمل: ٨ × __ = ٤٠", "options": [], "correct_answer": "٥", "explanation": "٤٠ ÷ ٨ = ٥."},
+      {"id": "math_stage_03_q004", "unit_id": "multiplication", "type": "choice", "prompt": "ما ناتج ٢٣ × ٣؟", "options": ["٦٦", "٦٩", "٧٢"], "correct_answer": "٦٩", "explanation": "٢٠ × ٣ = ٦٠ و٣ × ٣ = ٩؛ المجموع ٦٩."},
+      {"id": "math_stage_03_q005", "unit_id": "division", "type": "choice", "prompt": "ما ناتج ٣٦ ÷ ٦؟", "options": ["٥", "٦", "٧"], "correct_answer": "٦", "explanation": "لأن ٦ × ٦ = ٣٦."},
+      {"id": "math_stage_03_q006", "unit_id": "division", "type": "choice", "prompt": "ما ناتج ٤٥ ÷ ٥؟", "options": ["٨", "٩", "١٠"], "correct_answer": "٩", "explanation": "لأن ٥ × ٩ = ٤٥."},
+      {"id": "math_stage_03_q007", "unit_id": "division", "type": "fill", "prompt": "أكمل: ٢٤ ÷ __ = ٦", "options": [], "correct_answer": "٤", "explanation": "٢٤ ÷ ٦ = ٤، إذن العدد الناقص ٤."},
+      {"id": "math_stage_03_q008", "unit_id": "patterns_operations", "type": "choice", "prompt": "أكمل النمط: ٥، ١٠، ١٥، __", "options": ["١٨", "٢٠", "٢٥"], "correct_answer": "٢٠", "explanation": "نضيف ٥ في كل مرة."},
+      {"id": "math_stage_03_q009", "unit_id": "patterns_operations", "type": "choice", "prompt": "احسب مع مراعاة ترتيب العمليات: ٣ + ٢ × ٤", "options": ["٢٠", "١١", "١٤"], "correct_answer": "١١", "explanation": "نضرب أولًا: ٢ × ٤ = ٨، ثم ٣ + ٨ = ١١."},
+      {"id": "math_stage_03_q010", "unit_id": "patterns_operations", "type": "choice", "prompt": "أي الأعداد الآتية زوجي؟", "options": ["١٣", "١٧", "٢٠"], "correct_answer": "٢٠", "explanation": "العدد الزوجي يقبل القسمة على ٢ دون باقٍ."}
+     ]},
+    {"id": "math_stage_04", "name": "مرحلة فوق المتوسط", "level": "فوق المتوسط",
+     "units": [{"id": "fractions", "name": "الكسور"}, {"id": "decimals_percent", "name": "الكسور العشرية والنسب المئوية"}, {"id": "measurement_geometry", "name": "القياس والهندسة"}],
+     "questions": [
+      {"id": "math_stage_04_q001", "unit_id": "fractions", "type": "choice", "prompt": "ما الكسر الذي يمثل نصفًا؟", "options": ["١⁄٢", "١⁄٣", "١⁄٤"], "correct_answer": "١⁄٢", "explanation": "النصف يعني جزءًا واحدًا من جزأين متساويين."},
+      {"id": "math_stage_04_q002", "unit_id": "fractions", "type": "choice", "prompt": "أي الكسرين أكبر؟", "options": ["١⁄٢", "١⁄٤"], "correct_answer": "١⁄٢", "explanation": "عند تساوي البسط، يكون الكسر ذو المقام الأصغر أكبر."},
+      {"id": "math_stage_04_q003", "unit_id": "fractions", "type": "fill", "prompt": "أكمل: ١⁄٤ + ١⁄٤ = __", "options": [], "correct_answer": "٢⁄٤", "explanation": "نجمع البسطين مع إبقاء المقام: ٢⁄٤، ويمكن تبسيطه إلى ١⁄٢."},
+      {"id": "math_stage_04_q004", "unit_id": "decimals_percent", "type": "choice", "prompt": "ما قيمة ٠٫٥ على صورة كسر؟", "options": ["١⁄٢", "١⁄٤", "٣⁄٤"], "correct_answer": "١⁄٢", "explanation": "٠٫٥ يساوي خمسة أعشار، وهو يساوي النصف."},
+      {"id": "math_stage_04_q005", "unit_id": "decimals_percent", "type": "choice", "prompt": "كم يساوي ٢٥٪ من ١٠٠؟", "options": ["١٥", "٢٥", "٥٠"], "correct_answer": "٢٥", "explanation": "٢٥٪ تعني ٢٥ من كل ١٠٠."},
+      {"id": "math_stage_04_q006", "unit_id": "decimals_percent", "type": "fill", "prompt": "حوّل ٣⁄١٠ إلى عدد عشري.", "options": [], "correct_answer": "٠٫٣", "explanation": "ثلاثة أعشار تكتب ٠٫٣."},
+      {"id": "math_stage_04_q007", "unit_id": "measurement_geometry", "type": "choice", "prompt": "كم سنتيمترًا في المتر الواحد؟", "options": ["١٠", "١٠٠", "١٠٠٠"], "correct_answer": "١٠٠", "explanation": "المتر الواحد يساوي ١٠٠ سنتيمتر."},
+      {"id": "math_stage_04_q008", "unit_id": "measurement_geometry", "type": "choice", "prompt": "مستطيل طوله ٦ سم وعرضه ٣ سم. ما محيطه؟", "options": ["٩ سم", "١٨ سم", "٢٤ سم"], "correct_answer": "١٨ سم", "explanation": "المحيط = ٢ × (الطول + العرض) = ٢ × ٩ = ١٨ سم."},
+      {"id": "math_stage_04_q009", "unit_id": "measurement_geometry", "type": "choice", "prompt": "ما مساحة مربع طول ضلعه ٥ سم؟", "options": ["١٠ سم²", "٢٠ سم²", "٢٥ سم²"], "correct_answer": "٢٥ سم²", "explanation": "مساحة المربع = الضلع × الضلع = ٥ × ٥ = ٢٥ سم²."},
+      {"id": "math_stage_04_q010", "unit_id": "measurement_geometry", "type": "choice", "prompt": "كم درجة في الزاوية القائمة؟", "options": ["٤٥°", "٩٠°", "١٨٠°"], "correct_answer": "٩٠°", "explanation": "الزاوية القائمة قياسها ٩٠ درجة."}
+     ]},
+    {"id": "math_stage_05", "name": "مرحلة المتقدم", "level": "متقدم",
+     "units": [{"id": "integers_powers", "name": "الأعداد الصحيحة والقوى والجذور"}, {"id": "algebra", "name": "الجبر والمعادلات"}, {"id": "coordinates", "name": "الإحداثيات والهندسة"}],
+     "questions": [
+      {"id": "math_stage_05_q001", "unit_id": "integers_powers", "type": "choice", "prompt": "ما ناتج −٣ + ٨؟", "options": ["−١١", "٥", "١١"], "correct_answer": "٥", "explanation": "نبدأ من −٣ ونتحرك ٨ وحدات باتجاه الموجب، فنصل إلى ٥."},
+      {"id": "math_stage_05_q002", "unit_id": "integers_powers", "type": "choice", "prompt": "ما ناتج ٢⁴؟", "options": ["٨", "١٦", "٢٤"], "correct_answer": "١٦", "explanation": "٢⁴ = ٢ × ٢ × ٢ × ٢ = ١٦."},
+      {"id": "math_stage_05_q003", "unit_id": "integers_powers", "type": "choice", "prompt": "ما الجذر التربيعي للعدد ٨١؟", "options": ["٧", "٨", "٩"], "correct_answer": "٩", "explanation": "٩ × ٩ = ٨١."},
+      {"id": "math_stage_05_q004", "unit_id": "algebra", "type": "choice", "prompt": "إذا كان س + ٥ = ١٢، فما قيمة س؟", "options": ["٦", "٧", "٨"], "correct_answer": "٧", "explanation": "نطرح ٥ من الطرفين: س = ١٢ − ٥ = ٧."},
+      {"id": "math_stage_05_q005", "unit_id": "algebra", "type": "choice", "prompt": "بسّط: ٣س + ٢س", "options": ["٥", "٥س", "٦س"], "correct_answer": "٥س", "explanation": "نجمع الحدود المتشابهة: ٣س + ٢س = ٥س."},
+      {"id": "math_stage_05_q006", "unit_id": "algebra", "type": "fill", "prompt": "إذا كان ٢س = ١٨، فإن س = __", "options": [], "correct_answer": "٩", "explanation": "نقسم الطرفين على ٢، فنحصل على س = ٩."},
+      {"id": "math_stage_05_q007", "unit_id": "algebra", "type": "choice", "prompt": "حل المعادلة: س − ٤ = ١٠", "options": ["٦", "١٤", "١٥"], "correct_answer": "١٤", "explanation": "نضيف ٤ إلى الطرفين: س = ١٤."},
+      {"id": "math_stage_05_q008", "unit_id": "coordinates", "type": "choice", "prompt": "في الزوج المرتب (٣، ٢)، ما الإحداثي السيني؟", "options": ["٢", "٣", "٥"], "correct_answer": "٣", "explanation": "الإحداثي الأول هو الإحداثي السيني."},
+      {"id": "math_stage_05_q009", "unit_id": "coordinates", "type": "choice", "prompt": "كم مجموع زوايا المثلث؟", "options": ["٩٠°", "١٨٠°", "٣٦٠°"], "correct_answer": "١٨٠°", "explanation": "مجموع الزوايا الداخلية لأي مثلث يساوي ١٨٠ درجة."},
+      {"id": "math_stage_05_q010", "unit_id": "coordinates", "type": "choice", "prompt": "مثلث قائم ضلعاه القائمان ٣ و٤. ما طول الوتر؟", "options": ["٥", "٦", "٧"], "correct_answer": "٥", "explanation": "حسب نظرية فيثاغورس: ٣² + ٤² = ٢٥، والجذر التربيعي لـ٢٥ هو ٥."}
+     ]},
+    {"id": "math_stage_06", "name": "مرحلة الإتقان", "level": "إتقان وتحدي",
+     "units": [{"id": "quadratics_systems", "name": "المعادلات التربيعية والأنظمة"}, {"id": "statistics_probability", "name": "الإحصاء والاحتمالات"}, {"id": "functions_trigonometry", "name": "الدوال والمثلثات"}],
+     "questions": [
+      {"id": "math_stage_06_q001", "unit_id": "quadratics_systems", "type": "choice", "prompt": "حل المعادلة س² = ٤٩ في مجموعة الأعداد الحقيقية.", "options": ["٧ فقط", "−٧ فقط", "٧ أو −٧"], "correct_answer": "٧ أو −٧", "explanation": "لأن ٧² = ٤٩ وكذلك (−٧)² = ٤٩."},
+      {"id": "math_stage_06_q002", "unit_id": "quadratics_systems", "type": "choice", "prompt": "ما جذرا المعادلة س² − ٥س + ٦ = ٠؟", "options": ["٢ و٣", "١ و٦", "−٢ و−٣"], "correct_answer": "٢ و٣", "explanation": "نحلل: (س − ٢)(س − ٣) = ٠، إذن س = ٢ أو ٣."},
+      {"id": "math_stage_06_q003", "unit_id": "quadratics_systems", "type": "choice", "prompt": "إذا كان س + ص = ١٠، وس = ٤، فما قيمة ص؟", "options": ["٤", "٦", "١٤"], "correct_answer": "٦", "explanation": "نعوض س = ٤: ٤ + ص = ١٠، إذن ص = ٦."},
+      {"id": "math_stage_06_q004", "unit_id": "statistics_probability", "type": "choice", "prompt": "ما المتوسط الحسابي للأعداد ٢، ٤، ٦؟", "options": ["٣", "٤", "٦"], "correct_answer": "٤", "explanation": "المتوسط = (٢ + ٤ + ٦) ÷ ٣ = ٤."},
+      {"id": "math_stage_06_q005", "unit_id": "statistics_probability", "type": "choice", "prompt": "ما الوسيط للأعداد ٣، ٨، ٥، بعد ترتيبها؟", "options": ["٣", "٥", "٨"], "correct_answer": "٥", "explanation": "نرتبها: ٣، ٥، ٨؛ العدد الأوسط هو ٥."},
+      {"id": "math_stage_06_q006", "unit_id": "statistics_probability", "type": "choice", "prompt": "عند رمي قطعة نقد عادلة، ما احتمال ظهور الصورة؟", "options": ["١⁄٤", "١⁄٢", "١"], "correct_answer": "١⁄٢", "explanation": "هناك نتيجتان متساويتان في الاحتمال، إحداهما الصورة."},
+      {"id": "math_stage_06_q007", "unit_id": "statistics_probability", "type": "choice", "prompt": "ما المنوال في البيانات: ٢، ٣، ٣، ٤، ٥؟", "options": ["٢", "٣", "٥"], "correct_answer": "٣", "explanation": "المنوال هو القيمة الأكثر تكرارًا، وهي ٣."},
+      {"id": "math_stage_06_q008", "unit_id": "functions_trigonometry", "type": "choice", "prompt": "إذا كانت د(س) = ٢س + ١، فما د(٣)؟", "options": ["٥", "٦", "٧"], "correct_answer": "٧", "explanation": "نعوض س = ٣: د(٣) = ٢ × ٣ + ١ = ٧."},
+      {"id": "math_stage_06_q009", "unit_id": "functions_trigonometry", "type": "choice", "prompt": "في مثلث قائم، جا الزاوية يساوي:", "options": ["المجاور ÷ الوتر", "المقابل ÷ الوتر", "المقابل ÷ المجاور"], "correct_answer": "المقابل ÷ الوتر", "explanation": "جيب الزاوية = طول الضلع المقابل ÷ طول الوتر."},
+      {"id": "math_stage_06_q010", "unit_id": "functions_trigonometry", "type": "choice", "prompt": "ما مشتقة الدالة د(س) = س²؟", "options": ["س", "٢س", "٢"], "correct_answer": "٢س", "explanation": "قاعدة القوة: مشتقة س أس ٢ تساوي ٢س."}
+     ]}
+  ],
+  "placement_test": {
+    "id": "boomi_math_placement_v1",
+    "name": "اختبار تحديد مستوى الرياضيات",
+    "description": "اختبار تشخيصي من 18 سؤالًا موزعة على المراحل الست. يستخدم لتقدير نقطة بداية الطالب، وليس للحكم النهائي على قدرته.",
+    "estimated_duration_minutes": 15,
+    "stage_mastery_threshold_percent": 67,
+    "questions": [
+      "math_stage_01_q001", "math_stage_01_q006", "math_stage_01_q010",
+      "math_stage_02_q001", "math_stage_02_q006", "math_stage_02_q010",
+      "math_stage_03_q001", "math_stage_03_q006", "math_stage_03_q010",
+      "math_stage_04_q001", "math_stage_04_q006", "math_stage_04_q010",
+      "math_stage_05_q001", "math_stage_05_q006", "math_stage_05_q010",
+      "math_stage_06_q001", "math_stage_06_q006", "math_stage_06_q010"
+    ]
+  },
+  "adaptive_learning": {"lesson_mastery_threshold_percent": 85, "minimum_questions_before_mastery_decision": 10}
+}
