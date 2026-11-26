@@ -1180,3 +1180,30 @@ html.bm-open #mc {
 .math-wrong span{color:#1f9d55;font-weight:800}
 :root[data-theme=dark] .math-place-cta,:root[data-theme=dark] .math-place-res,:root[data-theme=dark] .math-stage,:root[data-theme=dark] .math-wrong li{background:#24275e;color:#eef0ff}
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]) .math-place-cta,:root:not([data-theme=light]) .math-place-res,:root:not([data-theme=light]) .math-stage,:root:not([data-theme=light]) .math-wrong li{background:#24275e;color:#eef0ff}}
+/* أكاديمية الرياضيات: شاشة أول دخول، شريط تقدّم المراحل، المثال المحلول */
+.math-intro-card{background:var(--card,#fff);border-radius:24px;padding:18px 16px;margin:12px 0;text-align:center;box-shadow:0 6px 22px rgba(40,30,120,.1);display:grid;gap:10px;justify-items:center}
+.math-intro-card h2{margin:0;font-size:1.3rem}.math-intro-card p{margin:0;line-height:1.9}
+.math-intro-owl{font-size:3.2rem;line-height:1;animation:mathbob 2.4s ease-in-out infinite}
+@keyframes mathbob{50%{transform:translateY(-6px)}}
+@media (prefers-reduced-motion:reduce){.math-intro-owl{animation:none}}
+.math-intro-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:100%}
+.math-intro-list li{background:rgba(240,113,43,.1);border-radius:14px;padding:8px;font-weight:700;font-size:.95rem}
+.math-intro-card .big,.math-intro-card .alt{width:100%;max-width:420px}
+.math-stage summary{display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:"n t c" "n l b";align-items:center;column-gap:10px;row-gap:4px}
+.math-stage summary>b{grid-area:t}.math-stage summary>small:first-of-type{grid-area:l;opacity:.75}.math-stage summary>small:last-of-type{grid-area:c}
+.math-stage-n{grid-area:n;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(150deg,#ffc07a,#f0712b);color:#fff;font-weight:900;font-size:1.1rem}
+.math-stage-bar{grid-area:b;display:block;width:70px;height:8px;border-radius:99px;background:rgba(0,0,0,.08);overflow:hidden}
+.math-stage-bar em{display:block;height:100%;background:linear-gradient(90deg,#ffb36b,#22c39a);border-radius:99px}
+.math-stage .math-stage-test{border:2px dashed rgba(240,113,43,.45)}
+.math-ex{background:rgba(124,77,255,.08);border-radius:14px;padding:10px 12px;margin:10px 0;display:grid;gap:4px;text-align:start}
+.math-ex p{margin:0;font-weight:700;unicode-bidi:plaintext}.math-ex small{opacity:.8}
+.math-rev{width:100%;margin-bottom:8px}
+@media(min-width:900px){.math-q .bq-card,.math-res,.math-intro-card{max-width:760px;margin-inline:auto}}
+:root[data-theme=dark] .math-intro-card{background:#24275e;color:#eef0ff}:root[data-theme=dark] .math-stage-bar{background:rgba(255,255,255,.14)}:root[data-theme=dark] .math-ex{background:rgba(185,173,255,.14)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .math-intro-card{background:#24275e;color:#eef0ff}:root:not([data-theme=light]) .math-stage-bar{background:rgba(255,255,255,.14)}:root:not([data-theme=light]) .math-ex{background:rgba(185,173,255,.14)}}
+.math-pbars{display:grid;gap:8px;margin:10px 0}
+.math-pbar{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(60px,1fr) auto;align-items:center;gap:10px;font-weight:700;font-size:.92rem}
+.math-pbar i{display:block;height:10px;border-radius:99px;background:rgba(0,0,0,.08);overflow:hidden}.math-pbar i b{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#ffb36b,#22c39a)}
+.math-pbar em{font-style:normal;font-size:.85rem;opacity:.85;white-space:nowrap}
+:root[data-theme=dark] .math-pbar i{background:rgba(255,255,255,.14)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .math-pbar i{background:rgba(255,255,255,.14)}}
