@@ -125,12 +125,12 @@
   /* دروس الفيديو التفاعلية: ما شاهده الطالب ونتيجة أسئلة كل درس (P.tv) */
   function tvHTML() {
     const tv = (window.P && P.tv) || {}, ids = Object.keys(tv);
-    if (!ids.length) return `<div class=pdash id=tv-progress><h3>📺 دروس الفيديو التفاعلية</h3><p class=mut>لم يشاهد الطالب دروس الفيديو بعد.</p><button class=alt onclick="videos()">📺 فتح دروس الفيديو</button></div>`;
+    if (!ids.length) return `<div class=pdash id=tv-progress><h3>🎬 الدروس المرئية</h3><p class=mut>لم يشاهد الطالب الدروس المرئية بعد.</p><button class=alt onclick="videos()">🎬 فتح الدروس المرئية</button></div>`;
     const name = id => { try { return (window.find && find(id) || {}).n || id; } catch (_) { return id; } };
     const ok = ids.filter(id => (tv[id].best || 0) >= 85).length;
-    return `<div class=pdash id=tv-progress><h3>📺 دروس الفيديو التفاعلية</h3><p>شاهد ${D(ids.length)} درسًا · فهم ${D(ok)} منها (٨٥٪ فأكثر)</p>
+    return `<div class=pdash id=tv-progress><h3>🎬 الدروس المرئية</h3><p>شاهد ${D(ids.length)} درسًا · فهم ${D(ok)} منها (٨٥٪ فأكثر)</p>
       <div class=list>${ids.sort((a, b) => (tv[b].d || 0) - (tv[a].d || 0)).slice(0, 12).map(id => `<div class=row><span>${(tv[id].best || 0) >= 85 ? '✅' : '🔁'}</span><b>${esc(name(id))}</b><small>${D(tv[id].best || 0)}٪ · ${D(tv[id].n || 1)} مرة</small></div>`).join('')}</div>
-      <button class=alt onclick="videos()">📺 فتح دروس الفيديو</button></div>`;
+      <button class=alt onclick="videos()">🎬 فتح الدروس المرئية</button></div>`;
   }
   window.mathParentHTML = () => window.MathAcademy ? mathHTML(MathAcademy.summary()) : '';
 

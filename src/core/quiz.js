@@ -317,7 +317,7 @@
         </div>
       </div>
     </section>`);
-    try { if (!(window.muted && muted())) say(R[3].replace(/<[^>]+>/g, ''), 'ar', null, 'cheer'); } catch (_) {}
+    try { window.say && say.stop && say.stop(); } catch (_) {} /* صفحة الشهادة صامتة (طلب صاحب المشروع) */
   }
 
   /* ---------- الدروس والكتابة ---------- */

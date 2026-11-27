@@ -165,7 +165,7 @@
     Quest.card({ c: c0 + 1, ic: uiImg('img/ui/acad-en.webp', 'ABC'), t: 'أَكَادِيمِيَّةُ الْإِنْجِلِيزِيَّةِ', en: 'Letters • Phonics • Words • Grammar', go: "sec('en')" }),
     Quest.card({ c: c0 + 3, ic: uiImg('img/ui/acad-math.webp', '١٢٣'), t: 'أَكَادِيمِيَّةُ الرِّيَاضِيَّاتِ', s: 'أَعْدَادٌ • عَمَلِيَّاتٌ • هَنْدَسَةٌ • جَبْرٌ', go: 'mathAcademy()' })
   ];
-  const videoCard = c => Quest.card({ c, ic: Quest.img('1f4fa'), t: 'دُرُوسُ الْفِيدْيُو التَّفَاعُلِيَّةُ', s: 'حُرُوفٌ • كَلِمَاتٌ • نُطْقٌ — شَاهِدْ وَأَجِبْ بِالضَّغْطِ', go: 'videos()' });
+  const videoCard = c => Quest.card({ c, ic: Quest.img('1f4fa'), t: 'الدُّرُوسُ الْمَرْئِيَّةُ', s: 'حُرُوفٌ وَكَلِمَاتٌ وَنُطْقٌ بِالصُّورَةِ وَالصَّوْتِ', go: 'videos()' });
   const teacherCards = c0 => [
     Quest.card({ c: c0, ic: Quest.img('1f469-200d-1f3eb'), t: 'مُعَلِّمُ الْعَرَبِيَّةِ', s: 'كَلِمَاتٌ جَدِيدَةٌ • نُطْقٌ • مُرَاجَعَةٌ ذَكِيَّةٌ', go: "teachers('ar')" }),
     Quest.card({ c: c0 + 1, ic: Quest.img('1f1ec-1f1e7'), t: 'مُعَلِّمُ الْإِنْجِلِيزِيَّةِ', en: 'English Smart Teacher', s: 'يَشْرَحُ بِالْعَرَبِيَّةِ أَوَّلًا', go: "teachers('en')" })
