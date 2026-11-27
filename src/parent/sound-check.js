@@ -21,6 +21,7 @@
 
   const rows = () => [['أ', HAMZA.map(([k, n, t]) => [k, n, t])], ...LETTERS.map(l => [l, FORMS.map(([k, n, f]) => [k, n, f(l)])])];
   const id = (l, k) => l + ':' + k;
+  window.SoundCheckRows = rows; /* يستعملها «استوديو صوتي» (src/voice/studio.js) لقسم الحروف */
 
   function count() {
     const m = load(), n = Object.keys(m).length;

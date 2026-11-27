@@ -48,7 +48,10 @@
   const b=await cached(t,l);if(!b)return false;return await H.playBlob(()=>Promise.resolve(b),'mv:'+ck(v,t,l),valid,onStart)};
  /* طابور التجهيز في الخلفية (الخادم يولّد جملة واحدة في كل مرة): الأحدث أولًا، بلا تكرار */
  const Q={list:[],keys:new Set(),busy:0,total:0,done:0,cb:null};
- const queue=(items,front)=>{const v=me();if(!v)return;const add=[];for(const[t,l]of items){if(!norm(t))continue;const k=ck(v,t,l);if(Q.keys.has(k)||RB.has(k))continue;Q.keys.add(k);add.push([t,l,k])}
+ /* الحرف المشكّل والمقطع القصير والكلمة المنوّنة: نموذج الاستنساخ يمدّها ويخطئ في الحركات والتنوين،
+    فتُنطق بتسجيل صاحب الموقع (استوديو صوتي) أو بصوت بومي المراجَع، ولا تُولَّد بالصوت المستنسخ */
+ const suits=(t,l)=>{if(l==='en')return true;const s=norm(t);if(/\s/.test(s))return true;const base=s.replace(/[^\u0621-\u064A]/g,'');return base.length>2&&!/[\u064B-\u064D]/.test(s)};
+ const queue=(items,front)=>{const v=me();if(!v)return;const add=[];for(const[t,l]of items){if(!norm(t)||!suits(t,l))continue;const k=ck(v,t,l);if(Q.keys.has(k)||RB.has(k))continue;Q.keys.add(k);add.push([t,l,k])}
   if(!add.length)return;Q.total+=add.length;if(front)Q.list.unshift(...add);else Q.list.push(...add);pump()};
  const pump=async()=>{if(Q.busy||!Q.list.length)return;if(st.direct){setTimeout(pump,250);return} /* جملة ينتظرها الطالب الآن لها الأولوية على الخادم */if(typeof JOB!=='undefined'&&JOB.on){setTimeout(pump,5000);return} /* أثناء إنشاء صوت جديد لا نزاحمه على الخادم */if(!canGen()){setTimeout(pump,30000);return}Q.busy=1;const[t,l,k]=Q.list.shift();
   try{const v=me();if(v&&!(await cached(t,l))){const b=await gen(v,t,l,90000);if(b)keep(k,b)}}catch(e){}finally{Q.keys.delete(k);Q.busy=0;Q.done++;try{Q.cb&&Q.cb(Q.done,Q.total)}catch(e){}setTimeout(pump,60)}};
@@ -79,7 +82,7 @@
   const have=await countCached(list),need=list.filter(x=>true);Q.total=0;Q.done=0;
   const show=(d,tot)=>{const e=$('mv-off');if(e){const pc=Math.round((have+d)/Math.max(1,list.length)*100);e.innerHTML=`<div class="mv-pg"><div class="mv-pg-top"><b>${D(Math.min(100,pc))}٪</b><span>${pc>=100?'✅ صوتك محفوظ في الجهاز لهذه المرحلة':'⏳ يُحفظ صوتك في الجهاز… يمكنك متابعة التعلّم'}</span></div><div class="mv-pg-bar"><i style="width:${Math.min(100,pc)}%"></i></div></div>`}};
   Q.cb=(d,t)=>show(Math.min(d,list.length-have),t);show(0);queue(need,0);if(have>=list.length){show(0);b.disabled=false}};
- window.MyVoice={on,play,warm,cfg,ready:()=>!!me(),cached,playCached,queue,preparePage,canGen};
+ window.MyVoice={on,suits,play,warm,cfg,ready:()=>!!me(),cached,playCached,queue,preparePage,canGen};
 
  /* ===== واجهة الإعدادات ===== */
  const $=id=>document.getElementById(id);

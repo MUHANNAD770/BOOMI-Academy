@@ -759,8 +759,15 @@
     const onStart = () => { if (valid() && playState !== 'paused') setState('playing'); };
     /* «صوتي الشخصي»: المحفوظ في الجهاز يُنطق فورًا (حتى بلا إنترنت). غير المحفوظ لا ننتظره: يُجهَّز في الخلفية
        للمرة القادمة، ويُنطق الآن بصوت بومي المسجّل فلا يتأخر الطالب */
+    /* «استوديو صوتي»: النص الذي سجّله صاحب الموقع بصوته يُنطق بتسجيله أولًا (src/voice/studio.js) */
     try {
-      if (window.MyVoice && MyVoice.on()) {
+      if (window.MyRec && MyRec.on() && MyRec.has(t, l)) {
+        const ok = await MyRec.play(t, l, valid, onStart);
+        if (ok === true || !valid()) return ok;
+      }
+    } catch (_) {}
+    try {
+      if (window.MyVoice && MyVoice.on() && (!MyVoice.suits || MyVoice.suits(t, l))) {
         const ok = await MyVoice.playCached(t, l, valid, onStart);
         if (ok === true || !valid()) return ok;
         /* غير محفوظ: نولّده الآن بصوتك ونشغّله (يُحفظ للمرات القادمة). صوت بومي فقط إن لم يوجد إنترنت أو تعذّر الخادم أو تأخّر */
@@ -1302,6 +1309,12 @@
         <input id="vs-vol" type="range" min="0.1" max="1" step="0.05" value="${cfg.vol}" oninput="BumiVoiceConfig.updateSettings({vol:+this.value});document.getElementById('vs-vol-v').textContent=(window.D?D:String)(Math.round(this.value*100))+'٪'">
         <label for="vs-rate">سرعة النطق (<span id="vs-rate-v">${D(ratePct)}٪</span>)</label>
         <input id="vs-rate" type="range" min="0.75" max="1.25" step="0.05" value="${cfg.rate}" onchange="BumiVoiceConfig.updateSettings({rate:+this.value});document.getElementById('vs-rate-v').textContent=(window.D?D:String)(Math.round(this.value*100))+'٪'">
+      </div>
+
+      <div class="voice-plan" id="vs-studio">
+        <h3>🎙️ استوديو صوتي: اقرأ نصوص الموقع بصوتك</h3>
+        <p class="mut">كل الحروف بأشكالها والكلمات والجمل والقصص في قائمة واحدة. ما تسجّله يُنطق في الموقع بصوتك ويُحفظ في مشروعك.</p>
+        <button type="button" class="big" onclick="studio()">🎙️ افتح الاستوديو</button>
       </div>
 
       <div class="voice-plan" id="vs-off">

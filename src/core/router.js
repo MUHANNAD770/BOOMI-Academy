@@ -16,6 +16,7 @@
     parentPanel: { cs: 'set' },
     voiceSet: { cs: 'set' },
     soundCheck: { cs: 'set' },
+    studio: { cs: 'set' },
     cert: { cs: 'ach' },
     lesson: { cs: 'les' },
     quiz: { vol: 1 },

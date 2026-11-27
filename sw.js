@@ -1,7 +1,7 @@
 /* sw.js — ذاكرة العمل دون اتصال (Offline Cache) لمنصة حروفي */
 'use strict';
 
-const CACHE = 'hurufi-app-v235';
+const CACHE = 'hurufi-app-v236';
 const FONT_CSS = 'https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;800&display=swap';
 const FONTS = 'hurufi-fonts-v1';
 
@@ -143,6 +143,7 @@ const OFFLINE = ["./",
 "./src/voice/lex.js",
 "./src/voice/myvoice.js",
 "./src/voice/pron.js",
+"./src/voice/studio.js",
 "./src/voice/tamarbuta.js",
 "./src/voice/tashkeel.js",
 "./src/voice/tm-map.json",
