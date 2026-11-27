@@ -90,6 +90,7 @@
       const en = m.find(x => /[A-Za-z]/.test(x) && !/[\u0600-\u06FF]/.test(x)), ar = m.find(x => x !== en);
       if (en && ar) return `${esc(ar)}<span class=en dir=ltr>${esc(en)}</span>`;
     }
+    if (/[A-Za-z]/.test(n) && !/[\u0600-\u06FF]/.test(n)) return `<bdi dir=ltr>${esc(n)}</bdi>`; /* إنجليزي فقط: «Where is it?» لا «?Where is it» */
     return /[A-Za-z]/.test(n) && /[\u0600-\u06FF]/.test(n) ? `<bdi>${esc(n)}</bdi>` : esc(n);
   };
   window.QxName = nameHTML;
@@ -170,10 +171,15 @@
     Quest.card({ c: c0 + 1, ic: Quest.img('1f1ec-1f1e7'), t: 'مُعَلِّمُ الْإِنْجِلِيزِيَّةِ', en: 'English Smart Teacher', s: 'يَشْرَحُ بِالْعَرَبِيَّةِ أَوَّلًا', go: "teachers('en')" })
   ];
   window.QuestCards = { acadCards: c => acadCards(c), teacherCards: c => teacherCards(c) };
+  /* مستوى الطالب في الأكاديمية + زر اختبار تحديد المستوى (القفز إلى المرحلة المناسبة) */
+  const lvlPill = l => {
+    const n = window.langLevel ? langLevel(l) : (+P.stage || 0), st = S[n];
+    return `<div class=qx-extra><button class=qx-pill onclick="examHub('${l}')"><span class=e>${Quest.img('1f3af')}</span><span><small>${fm('مُسْتَوَاكَ', 'مُسْتَوَاكِ')}: الْمَرْحَلَةُ ${D(n + 1)}${st ? ' · ' + esc(st.n) : ''}</small><b>${fm('اِخْتَبِرْ مُسْتَوَاكَ', 'اِخْتَبِرِي مُسْتَوَاكِ')} لِتَنْتَقِلَ إِلَى مَرْحَلَتِكَ</b></span></button></div>`;
+  };
   const QX = {
-    ar: () => ({ t1: 'أَكَادِيمِيَّةُ', t2: 'اللُّغَةِ الْعَرَبِيَّةِ', sub: 'رِحْلَةٌ مُمْتِعَةٌ نَحْوَ التَّمَيُّزِ فِي لُغَتِنَا الْجَمِيلَةِ',
+    ar: () => ({ t1: 'أَكَادِيمِيَّةُ', t2: 'اللُّغَةِ الْعَرَبِيَّةِ', sub: 'رِحْلَةٌ مُمْتِعَةٌ نَحْوَ التَّمَيُّزِ فِي لُغَتِنَا الْجَمِيلَةِ', extra: lvlPill('ar'),
       body: `<div id=acad-stages-ar class=qx-path>${byLang('ar', G.g1)}</div>` }),
-    en: () => ({ t1: 'أَكَادِيمِيَّةُ', t2: 'اللُّغَةِ الْإِنْجِلِيزِيَّةِ', sub: 'رِحْلَةٌ مُمْتِعَةٌ لِتَعَلُّمِ الْإِنْجِلِيزِيَّةِ خُطْوَةً بِخُطْوَةٍ',
+    en: () => ({ t1: 'أَكَادِيمِيَّةُ', t2: 'اللُّغَةِ الْإِنْجِلِيزِيَّةِ', sub: 'رِحْلَةٌ مُمْتِعَةٌ لِتَعَلُّمِ الْإِنْجِلِيزِيَّةِ خُطْوَةً بِخُطْوَةٍ', extra: lvlPill('en'),
       body: `<div id=acad-stages-en class=qx-path>${byLang('en', G.g2)}</div>` }),
     les: () => {
       const c = window.coach && coach();

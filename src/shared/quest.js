@@ -53,5 +53,30 @@
     math: [img('1f9f8'), blocks(['١', '٢', '٣']), img('1f522'), img('1f4d0'), img('1f9ee'), img('1f9e0'), img('1f3c6'), img('1f393')]
   };
 
-  window.Quest = { head, card, foot, img, blocks, D, esc, STAGE, GO };
+  /* صفحات القوائم القديمة (الأنشطة، جزيرة الألغاز): نحوّلها إلى التصميم نفسه من محتواها — عنوانها، وصفها، وأزرارها */
+  const HUBS = { act: ['أَنْشِطَةٌ', 'تَفَاعُلِيَّةٌ'], puzzles: ['جَزِيرَةُ', 'الْأَلْغَازِ وَالتَّفْكِيرِ'] };
+  const SCENE = /^(stories|examHub|games2d)$/; /* صفحات لها رأسها الخاص: نضيف لها خلفية المشهد فقط */
+  function decorate() {
+    try {
+      const app = document.getElementById('app'), sec = app && app.querySelector(':scope>section.sec');
+      const e = window.Router && Router.entry && Router.entry(), fn = e && e.fn;
+      if (!sec || !fn || sec.classList.contains('qx')) return;
+      if (SCENE.test(fn) && window.V === 'sec') { sec.classList.add('qx-scene'); return; }
+      const hub = HUBS[fn];
+      if (!hub || window.V !== 'sec') return;
+      const rows = [...sec.querySelectorAll(':scope>.list>button.row[onclick]')];
+      if (!rows.length) return;
+      const sub = (sec.querySelector(':scope>p.mut') || {}).textContent || '';
+      const cards = rows.map((r, i) => {
+        const ic = r.querySelector(':scope>span'), b = r.querySelector(':scope>b'), sm = r.querySelector(':scope>small');
+        return card({ c: i, ic: ic ? `<span class="qx-em">${ic.innerHTML}</span>` : '', t: b ? b.innerHTML : r.textContent, s: sm ? sm.textContent : '', go: r.getAttribute('onclick') });
+      }).join('');
+      sec.classList.add('qx', 'qx-hub');
+      sec.innerHTML = head({ t1: hub[0], t2: hub[1], sub: esc(sub) }) + `<div class="qx-path">${cards}</div>` + foot();
+    } catch (_) {}
+  }
+  const oh = window.h;
+  if (typeof oh === 'function') window.h = function () { const r = oh.apply(this, arguments); decorate(); return r; };
+
+  window.Quest = { head, card, foot, img, blocks, D, esc, STAGE, GO, decorate };
 })();

@@ -369,6 +369,13 @@
           at: Date.now()
         };
         if (pass && !prev.pass) P.star = (P.star || 0) + 10;
+        /* اختبار المستوى: النجاح بإتقان (٨٥٪) يفتح مراحل هذا المستوى وما قبله، فيقفز الطالب إلى مرحلته حسب فهمه */
+        if (pct >= 85) {
+          const top = Math.max(...session.tier.stages) + 1, cap = session.lang === 'en' ? 4 : 6;
+          P.lvl = P.lvl || {};
+          const cur = P.lvl[session.lang] != null ? +P.lvl[session.lang] : (+P.stage || 0);
+          if (Math.min(cap, top) > cur) { P.lvl[session.lang] = Math.min(cap, top); session.leveled = P.lvl[session.lang]; }
+        }
       }
       save();
       try { window.checkBadges && checkBadges(); } catch {}

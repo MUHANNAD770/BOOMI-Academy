@@ -200,7 +200,7 @@
       const w = String(it[0]);
       if (/\s/.test(w)) return null;
       const f = w[0].toLowerCase();
-      return mk(it, `<div class=q>${isPic(it[1]) ? it[1] : esc(w)}</div><p class=mut>What letter does it start with? بِأَيِّ حَرْفٍ تَبْدَأُ؟</p>`, f.toUpperCase(), shuf(LET.filter(x => x !== f)).slice(0, 3).map(x => x.toUpperCase()), { sp: [w, 'en'] });
+      return mk(it, `<div class=q>${isPic(it[1]) ? it[1] : esc(w)}</div><p class=mut><span dir=ltr style="display:block">What letter does it start with?</span>بِأَيِّ حَرْفٍ تَبْدَأُ؟</p>`, f.toUpperCase(), shuf(LET.filter(x => x !== f)).slice(0, 3).map(x => x.toUpperCase()), { sp: [w, 'en'] });
     },
     missingEn(u, it) {
       const w = String(it[0]).toLowerCase();
