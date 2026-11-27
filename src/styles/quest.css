@@ -241,3 +241,11 @@ body:has(#app .qx-scene){background:#bfe5ff}
 /* مرحلة مقفلة حسب المستوى */
 .qx-path details>.qx-lockbox{display:grid;gap:6px;justify-items:center;text-align:center;margin:12px 6px 0;padding:12px;border-radius:20px;background:#fff7e6;border:2px dashed #f0b84b;color:#6b4a00}
 .qx-lockbox small{font-weight:700;color:#7a5a12}.qx-lockbox .alt{margin:4px 0 0}
+/* البطاقة المقفلة: صورة قفل واضحة على الأيقونة وبدل السهم */
+.qx-ic{position:relative}
+.qx-lock{position:absolute;inset-inline-end:-6px;bottom:-6px;width:34px;height:34px;display:grid;place-items:center;border-radius:50%;background:#fff;box-shadow:0 3px 8px rgba(0,0,0,.25);font-style:normal}
+.qx-lock img{width:24px;height:24px}
+.qx-card.locked .qx-go{background:#9aa0bf;box-shadow:0 4px 0 #7a809e}
+.qx-card.locked .qx-go img{width:28px;height:28px}
+.qx-card.locked{filter:none;opacity:1}
+.qx-card.locked .qx-ic img:not(.qx-lock img),.qx-card.locked .qx-blocks{filter:grayscale(.7);opacity:.75}
