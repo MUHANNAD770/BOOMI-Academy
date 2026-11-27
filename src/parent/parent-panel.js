@@ -295,6 +295,7 @@
         <h3>🛠️ أدوات سريعة وإعدادات الصوت</h3>
         <div class=row style="gap:8px;flex-wrap:wrap">
           <button class=big onclick="voiceSet()">🔊 إعدادات صوت بومي</button>
+          <button class=alt onclick="studio()">🎙️ استوديو صوتي</button>
           <button class=alt onclick="soundCheck()">🎧 مراجعة نطق الحروف</button>
           <button class=alt onclick="teacher()">👩‍🏫 لوحة المعلّم</button>
           <button class=alt onclick="examHub()">🏆 بوابة الاختبارات</button>

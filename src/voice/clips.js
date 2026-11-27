@@ -21,12 +21,15 @@
   try{const h=c&&await c.match(u);if(h)return await h.json()}catch(e){}return null};
  const loadIx=who=>st.load[who]||(st.load[who]=ixGet(who).then(j=>{if(j&&j.idx){if(j.v)j.packs=j.packs.map(p=>p+'?v='+j.v);st.ix[who]=j;st.need=st.need||{};for(const[pi,off,len]of Object.values(j.idx)){const n=j.packs[pi];if((st.need[n]||0)<off+len)st.need[n]=off+len}}return st.ix[who]} /* لا تنزيل تلقائي لكل الحزم: كان ~130 م.ب في أول 30 ثانية فيبطئ الهاتف */).catch(()=>{st.load[who]=null;return null}));
  const ready=loadIx(teacher());
+ /* تسجيلات صاحب الموقع بصوته («استوديو صوتي» ← tools/clips/studio_pack.py ← audio/clips/rec.json + r*.bin): تُقدَّم على صوت بومي لكل الطلاب */
+ loadIx('rec');
+ const whoFor=k=>st.ix.rec&&st.ix.rec.idx&&st.ix.rec.idx[k]?'rec':teacher();
  try{window.caches&&['hurufi-clips-v1','hurufi-clips-v2','hurufi-clips-v3','hurufi-clips-v4'].forEach(n=>caches.delete(n))}catch(e){} /* مقاطع الإصدارات السابقة */
  /* أُزيل محرك Supertonic 3: نحذف ملفاته المحفوظة سابقًا في المتصفح (~157 م.ب) وإعداداته */
  try{window.caches&&caches.keys().then(ks=>ks.filter(k=>/^hurufi-(model-|tts-)/.test(k)).forEach(k=>caches.delete(k))).catch(()=>{})}catch(e){}
  try{localStorage.removeItem('hurufi-tts')}catch(e){}
  /* المقطع صالح فقط إذا كانت نبرة المعلّم/المعلّمة المختارة هي نفس نبرة المقاطع */
- const has=(t,l)=>{const who=teacher(),j=st.ix[who];if(!j){loadIx(who);return false}const v=engVoice(who);return(j.engine==='edge'||!v||v===j.voice)&&!!j.idx[key(t,l)]}; /* مقاطع Edge تعمل مع أي نبرة مختارة */
+ const has=(t,l)=>{if(st.ix.rec&&st.ix.rec.idx&&st.ix.rec.idx[key(t,l)])return true;const who=teacher(),j=st.ix[who];if(!j){loadIx(who);return false}const v=engVoice(who);return(j.engine==='edge'||!v||v===j.voice)&&!!j.idx[key(t,l)]}; /* مقاطع Edge تعمل مع أي نبرة مختارة */
  const cache=()=>window.caches?caches.open(CC).catch(()=>null):Promise.resolve(null);
  /* حزمة كاملة من الذاكرة الدائمة أو الشبكة (تُحفظ فتعمل بلا إنترنت) */
  /* الحزم المحفوظة في الذاكرة: آخر ١٢ فقط (الباقي في ذاكرة المتصفح الدائمة) */
@@ -72,7 +75,7 @@
  /* play → true عند الاكتمال/الإيقاف، false إذا تعذّر (فيُقرأ بالمحرك المحلي) */
  /* الكلمة أو العبارة الإنجليزية القصيرة (٣ كلمات فأقل) تُنطق أبطأ قليلًا لتكون واضحة للطالب العربي؛ الجمل الطويلة بسرعتها الطبيعية */
  const slowEn=()=>1; /* الكلمات القصيرة صارت مسجّلة أبطأ (gen_edge RATES_JSON، وخادم الصوت)، فلا إبطاء عند التشغيل */
- const play=async(t,l,valid,onStart)=>{if(!has(t,l))return false;stop();const ep=++st.ep,who=teacher(),k=key(t,l);
+ const play=async(t,l,valid,onStart)=>{if(!has(t,l))return false;stop();const ep=++st.ep,k=key(t,l),who=whoFor(k);
   try{const r=rate()*slowEn(t,l),c=ctx(),fast=c&&Math.abs(r-1)<.02;
    /* مقطع مفكوك مسبقًا (تجهيز الصفحة): يبدأ فورًا بلا أي طلب شبكة */
    let b=fast&&BUF.has(who+k)?null:await clip(who,k);if(b!=null&&!b.size)return false;if(ep!==st.ep||(valid&&!valid()))return true;
@@ -111,7 +114,7 @@
   catch(e){return false}finally{if(ep===st.ep){quiet();if(st.url)URL.revokeObjectURL(st.url);st.audio=null;st.url='';st.playing=0}}};
  const warmTts=(t,l)=>{try{if(navigator.onLine!==false)ttsBlob(t,l)}catch(e){}};
  /* تجهيز مسبق: نفكّ مقاطع الكلمات الظاهرة في الصفحة كي يبدأ الصوت فور الضغط */
- const warmText=(t,l)=>{try{if(!has(t,l)||!ctx())return;const who=teacher(),k=key(t,l);if(BUF.has(who+k))return;clip(who,k).then(b=>b&&decode(who+k,b)).catch(()=>{})}catch(e){}};
+ const warmText=(t,l)=>{try{if(!has(t,l)||!ctx())return;const k=key(t,l),who=whoFor(k);if(BUF.has(who+k))return;clip(who,k).then(b=>b&&decode(who+k,b)).catch(()=>{})}catch(e){}};
  const record=(t,l)=>{try{if(localStorage.getItem('hurufiCollect')!=='1')return;const k='hurufiPhrases',o=JSON.parse(localStorage.getItem(k)||'{}');o[l+'|'+t]=1;localStorage.setItem(k,JSON.stringify(o))}catch(e){}};
  const exp=()=>{try{return Object.keys(JSON.parse(localStorage.getItem('hurufiPhrases')||'{}')).join('\n')}catch(e){return''}};
  const pause=()=>{try{if(st.ac&&st.ac.state==='running'&&st.playing){st.ac.suspend();return true}}catch(e){}return false};
@@ -137,7 +140,7 @@
  /* إعادة ضبط كاملة: حذف كل النسخ المحفوظة (الكود والأصوات) وعامل الخدمة، ثم إعادة التحميل (بيانات الطالب تبقى) */
  const reset=async()=>{try{for(const k of await caches.keys())await caches.delete(k)}catch(e){}try{for(const r of await navigator.serviceWorker.getRegistrations())await r.unregister()}catch(e){}
   try{localStorage.removeItem('hurufi-tts')}catch(e){}location.replace(location.pathname+'?fresh='+Date.now())};
- const offline=async()=>{const who=teacher();await loadIx(who);if(!st.ix[who])return false;try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}st.pre[who]=0;warm(who,1);return true};
+ const offline=async()=>{const who=teacher();await loadIx(who);if(!st.ix[who])return false;try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}st.pre[who]=0;warm(who,1);try{const R=await loadIx('rec');if(R&&R.packs.length){st.pre.rec=0;warm('rec',1)}}catch(e){}return true};
  /* كم حزمة من صوت المعلّم الحالي محفوظة في الجهاز، وحجمها التقريبي */
  const offStat=async()=>{const who=teacher(),j=await loadIx(who);if(!j)return null;const c=await cache();let have=0;
   if(c){const nq=u=>u.split('?')[0],ks=new Set((await c.keys()).map(r=>nq(r.url)));for(const n of j.packs)if(ks.has(nq(new URL(base+n,location.href).href)))have++}
