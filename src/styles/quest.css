@@ -381,3 +381,15 @@ body:has(.cert-page) #mc,#app:has(.cert-page)>.owl-dock{display:none!important}
 :root[data-theme=dark] #qx-scene{filter:brightness(.42) saturate(.85)}
 /* عدّاد بطاقات الدرس فوق الشريط البنفسجي */
 .lf-cnt{color:#fff!important;font-weight:800;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+/* مراجعة النطق (sound-check.js) */
+.sc-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0;position:sticky;top:0;z-index:3;background:var(--bg,#f4f1ff);padding:8px 0}
+.sc-bar .big{margin:0;flex:1 1 160px}.sc-bar .alt{margin:0}
+.sc-letter h3{margin:16px 0 6px;font-size:1.6rem}
+.sc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px}
+.sc-item{position:relative;display:flex;border-radius:16px;background:var(--card,#fff);border:2px solid var(--line,#e3e4f6);overflow:hidden}
+.sc-item.bad{border-color:#e5517f;background:#ffe9ef}
+.sc-play{flex:1;border:0;background:none;font:inherit;padding:8px 4px;cursor:pointer;color:inherit;display:grid;gap:2px;text-align:center}
+.sc-play b{font-size:1.8rem;line-height:1.3}.sc-play small{font-size:.72rem;color:var(--mut,#5b5f8a)}
+.sc-item.bad .sc-play b,.sc-item.bad .sc-play small{color:#9b1c43}
+.sc-x{border:0;width:34px;background:rgba(0,0,0,.05);color:#c0392b;font-size:1.1rem;font-weight:800;cursor:pointer}
+.sc-item.bad .sc-x{background:#e5517f;color:#fff}
