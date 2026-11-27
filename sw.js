@@ -1,7 +1,7 @@
 /* sw.js — ذاكرة العمل دون اتصال (Offline Cache) لمنصة حروفي */
 'use strict';
 
-const CACHE = 'hurufi-app-v230';
+const CACHE = 'hurufi-app-v231';
 const FONT_CSS = 'https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;800&display=swap';
 const FONTS = 'hurufi-fonts-v1';
 
@@ -24,6 +24,10 @@ const PRECACHE = [
   './src/styles/components.css',
   './src/styles/quest.css',
   './src/shared/quest.js',
+  './img/ui/quest/owl.webp',
+  './img/ui/quest/scene-left.webp',
+  './img/ui/quest/scene-right.webp',
+  './img/ui/quest/sign.webp',
   './src/core/utils.js',
   './src/core/storage.js',
   './src/core/lazy.js',
@@ -1090,6 +1094,17 @@ const OFFLINE = ["./",
 "./img/ui/card-meadow.webp",
 "./img/ui/medal.webp",
 "./img/ui/owl-book.webp",
+"./img/ui/quest/owl.webp",
+"./img/ui/quest/scene-left.webp",
+"./img/ui/quest/scene-right.webp",
+"./img/ui/quest/sign.webp",
+"./img/ui/quest/st0.webp",
+"./img/ui/quest/st1.webp",
+"./img/ui/quest/st2.webp",
+"./img/ui/quest/st3.webp",
+"./img/ui/quest/st4.webp",
+"./img/ui/quest/st5.webp",
+"./img/ui/quest/st6.webp",
 "./lib/gsap-plugins/Draggable.min.js",
 "./lib/gsap-plugins/InertiaPlugin.min.js",
 "./lib/gsap-plugins/MorphSVGPlugin.min.js",

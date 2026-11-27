@@ -15,7 +15,7 @@
   function head(o) {
     return `<div class="qx-top">
       ${o.home === false ? '' : `<button type="button" class="qx-home" onclick="${at(o.back || 'home()')}" aria-label="الرئيسية">${img('1f3e0', '')}</button>`}
-      <img class="qx-owl" src="img/ui/owl-book.webp" alt="" draggable="false" onerror="this.remove()">
+      <img class="qx-owl" src="img/ui/quest/owl.webp" alt="" draggable="false" onerror="this.src='img/ui/owl-book.webp'">
       <div class="qx-sign">${o.t1 ? `<span class="qx-t1">${o.t1}</span>` : ''}<b class="qx-t2">${o.t2}</b></div>
       ${o.sub ? `<div class="qx-rib"><span class="s">${img('2b50')}</span><p style="margin:0">${o.sub}</p><span class="s">${img('2b50')}</span></div>` : ''}
     </div>`;
@@ -33,7 +33,9 @@
     </${tag}>`;
   }
 
-  const foot = () => `<div class="qx-foot"><div class="qx-post">مَعَ بُومِي<br>نَصِلُ إِلَى الْقِمَّةِ<span class="h">❤️</span></div></div>`;
+  /* رسوم التصميم الأصلي (img/ui/quest/): مقصوصة من تصميم صاحب المشروع بلا خلفية */
+  const art = (n, alt) => `<img class="qx-art" src="img/ui/quest/${n}.webp" alt="${esc(alt || '')}" draggable="false" data-no3d>`;
+  const foot = () => `<div class="qx-foot"><img class="qx-signpost" src="img/ui/quest/sign.webp" alt="مع بومي نصل إلى القمة" draggable="false" data-no3d></div>`;
 
   /* المشهد الخلفي يُضاف مرة واحدة ويظهر فقط مع صفحات .qx (عبر CSS) */
   const scene = () => {
@@ -41,15 +43,15 @@
     const s = document.createElement('div');
     s.id = 'qx-scene';
     s.setAttribute('aria-hidden', 'true');
-    s.innerHTML = '<i class="q-shelf"></i><i class="q-castle"></i><i class="q-books"></i><i class="q-palm1"></i><i class="q-palm2"></i>';
+    s.innerHTML = '<i class="q-left"></i><i class="q-right"></i><i class="q-grass"></i>';
     document.body.prepend(s);
   };
   if (document.body) scene(); else addEventListener('DOMContentLoaded', scene, { once: true });
 
   /* أيقونات المراحل السبع بترتيب الصورة: لعبة، حروف، كتاب، أحجية، كتب، قبعة تخرّج، كأس */
   const STAGE = {
-    ar: [img('1f9f8'), blocks(['أ', 'ب', 'ت']), img('1f4d6'), img('1f9e9'), img('1f4da'), img('1f393'), img('1f3c6')],
-    en: [img('1f9f8'), blocks(['A', 'B', 'C']), img('1f4d6'), img('1f9e9'), img('1f4da'), img('1f393'), img('1f3c6')],
+    ar: ['st0', 'st1', 'st2', 'st3', 'st4', 'st5', 'st6'].map(n => art(n)),
+    en: [art('st0'), blocks(['A', 'B', 'C']), art('st2'), art('st3'), art('st4'), art('st5'), art('st6')],
     math: [img('1f9f8'), blocks(['١', '٢', '٣']), img('1f522'), img('1f4d0'), img('1f9ee'), img('1f9e0'), img('1f3c6'), img('1f393')]
   };
 
@@ -78,5 +80,5 @@
   const oh = window.h;
   if (typeof oh === 'function') window.h = function () { const r = oh.apply(this, arguments); decorate(); return r; };
 
-  window.Quest = { head, card, foot, img, blocks, D, esc, STAGE, GO, decorate };
+  window.Quest = { head, card, foot, img, art, blocks, D, esc, STAGE, GO, decorate };
 })();
