@@ -138,6 +138,9 @@
           { idx: 4, title: 'الإتقان والتطوير · Advanced Mastery', meta: '١١–١٢ سنة · ابتدائي متقدم', core: coreOf(4), bank: bankSlice(2, 0), courses: courseEntries(['en-visual-4']) }
         ];
 
+    /* فتح المراحل حسب مستوى الطالب: المرحلة مفتوحة إن كانت ضمن مستواه (اختبار المستوى) أو أتقن كل ما في المرحلة السابقة */
+    const level = window.langLevel ? langLevel(sub) : (+P.stage || 0);
+    let prevDone = true;
     return specs.map(sp => {
       const courseResCount = sp.courses.reduce((n, g) => n + g.rs.length, 0);
       const total = sp.core.length + sp.bank.length + courseResCount;
@@ -156,8 +159,13 @@
         if (g.rs.length <= 4) g.rs.forEach(r => inlineCourses.push(courseResBtn(g.m, r, sub)));
         else groupCourses.push(courseGroupBlock(g.m, g.rs, sub));
       });
-      const bodyHtml = `<div class=list>${items.join('')}${inlineCourses.join('')}</div>${groupCourses.join('')}`;
-      return { ...sp, total, done, pctDone, bodyHtml };
+      const open = !!(window.P && P.unlockAll) || sp.idx <= level || prevDone;
+      prevDone = total > 0 ? done >= total : prevDone;
+      let bodyHtml = `<div class=list>${items.join('')}${inlineCourses.join('')}</div>${groupCourses.join('')}`;
+      if (!open) /* مرحلة مقفلة: دروسها ظاهرة ومقفلة، وزر لاختبار المستوى */
+        bodyHtml = `<div class=qx-lockbox><b>🔒 ${window.P && P.gender === 'female' ? 'هَذِهِ الْمَرْحَلَةُ مُقْفَلَةٌ' : 'هَذِهِ الْمَرْحَلَةُ مُقْفَلَةٌ'}</b><small>تُفْتَحُ بَعْدَ إِتْقَانِ الْمَرْحَلَةِ السَّابِقَةِ، أَوْ بِاجْتِيَازِ اخْتِبَارِ تَحْدِيدِ الْمُسْتَوَى.</small><button class=alt onclick="examHub('${sub}')">🎯 اِخْتِبَارُ تَحْدِيدِ الْمُسْتَوَى</button></div>`
+          + bodyHtml.replace(/<button class="row([^"]*)" onclick="([^"]*)"/g, (m, c, go) => `<button class="row locked${c.replace(' locked', '')}" disabled aria-disabled="true" data-go="${go}"`);
+      return { ...sp, total, done, pctDone, bodyHtml, open };
     }).filter(sp => sp.total > 0);
   }
 
@@ -198,7 +206,7 @@
         /* تصميم «رحلة بومي» (src/shared/quest.js): بطاقة ملوّنة لكل مرحلة؛ عنوانها العربي، وسطر إنجليزي إن وُجد */
         if (window.Quest) {
           const [ta, te] = String(sp.title).split(' · ');
-          return `<details class="qx-st qx-c${sp.idx}" data-stage-idx="${sp.idx}"${isOpen ? ' open' : ''}>${Quest.card({ tag: 'summary', c: sp.idx, ic: (Quest.STAGE[sub] || Quest.STAGE.ar)[sp.idx] || '', t: esc(ta), en: te ? esc(te) : '', s: `${esc(sp.meta)} · ${D(sp.total)} دَرْسًا وَتَدْرِيبًا`, n: sp.done })}${content}</details>`;
+          return `<details class="qx-st qx-c${sp.idx}" data-stage-idx="${sp.idx}"${isOpen ? ' open' : ''}>${Quest.card({ tag: 'summary', c: sp.idx, ic: (Quest.STAGE[sub] || Quest.STAGE.ar)[sp.idx] || '', t: esc(ta), en: te ? esc(te) : '', s: `${sp.open ? '' : '🔒 '}${esc(sp.meta)} · ${D(sp.total)} دَرْسًا وَتَدْرِيبًا`, n: sp.done, locked: !sp.open })}${content}</details>`;
         }
         return `<details class="lesson-menu bank-st" data-stage-idx="${sp.idx}"${isOpen ? ' open' : ''}><summary><span><b>${ICON[sp.idx] || '📘'} ${esc(sp.title)}</b><small>${esc(sp.meta)} · ${D(sp.total)} درسًا وتدريبًا${sp.done ? ` · أُتقن ${D(sp.done)}` : ''}</small><i class=bank-pbar><b style="width:${sp.pctDone}%"></b></i></span><i>⌄</i></summary>${content}</details>`;
       }).join('');

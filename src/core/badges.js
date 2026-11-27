@@ -8,7 +8,10 @@
     const L = listFor(a, l);
     return L.length ? L.filter(u => P.done[u.id]).length / L.length : 1;
   };
-  const stageOpen = (a, l) => a <= Math.max(+P.stage || 0, 0) || (a > 0 && mastery(a - 1, l) >= 1) /* المرحلة التالية بعد إتقان كل دروس السابقة */;
+  /* مستوى الطالب في كل لغة (من اختبار تحديد المستوى والاختبارات المتدرّجة)؛ قبل أي اختبار = مرحلته المحفوظة */
+  const lvl = l => { const v = P && P.lvl && P.lvl[l]; return v != null && !isNaN(+v) ? +v : Math.max(+P.stage || 0, 0); };
+  window.langLevel = lvl;
+  const stageOpen = (a, l) => a <= lvl(l) || (a > 0 && mastery(a - 1, l) >= 1) /* المرحلة التالية بعد إتقان كل دروس السابقة */;
 
   function unlocked(u) {
     if (!u || !P) return true;
@@ -16,7 +19,7 @@
     const a = stageOf(u.id);
     if (a < 0) return true;
     if (P.done[u.id] || P.sc[u.id] != null) return true;
-    if (a < (+P.stage || 0)) return true;
+    if (a < lvl(u.l)) return true;
     if (!stageOpen(a, u.l)) return false;
     const L = listFor(a, u.l);
     const i = L.indexOf(u);
