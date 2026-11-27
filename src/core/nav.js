@@ -83,12 +83,22 @@
     nv.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.k === active));
   };
 
+  /* عنوان مختلط «What time is it? — الْوَقْتُ»: العربي سطرًا أول والإنجليزي سطرًا ثانيًا (لا تنقلب الكلمات) */
+  const nameHTML = n => {
+    const m = String(n).split(/\s+[—–-]\s+/);
+    if (m.length === 2) {
+      const en = m.find(x => /[A-Za-z]/.test(x) && !/[\u0600-\u06FF]/.test(x)), ar = m.find(x => x !== en);
+      if (en && ar) return `${esc(ar)}<span class=en dir=ltr>${esc(en)}</span>`;
+    }
+    return /[A-Za-z]/.test(n) && /[\u0600-\u06FF]/.test(n) ? `<bdi>${esc(n)}</bdi>` : esc(n);
+  };
+  window.QxName = nameHTML;
   const rid = () => { const c = window.coach && coach(); return c && c.u && c.u.id; };
   const unitLabel = u => u.id === '2-51' ? 'التَّاءُ الْمَرْبُوطَةُ وَالْمَفْتُوحَةُ (تَدْرِيبٌ إِضَافِيٌّ)' : u.n;
   const bt = u => {
     const open = !window.lessonUnlocked || lessonUnlocked(u);
     const ic = P.done[u.id] ? '✅' : !open ? '🔒' : '⭐';
-    return `<button class="row${u.id === rid() ? ' rec' : ''}${open ? '' : ' locked'}" onclick="lesson('${u.id}')"><span>${ic}</span><b>${esc(unitLabel(u))}</b><small>${P.sc[u.id] != null ? D(P.sc[u.id]) + '/٥' : (open ? '' : 'مقفل')}</small></button>`;
+    return `<button class="row${u.id === rid() ? ' rec' : ''}${open ? '' : ' locked'}" onclick="lesson('${u.id}')"><span>${ic}</span><b>${nameHTML(unitLabel(u))}</b><small>${P.sc[u.id] != null ? D(P.sc[u.id]) + '/٥' : (open ? '' : 'مقفل')}</small></button>`;
   };
 
   const byLang = (l, extra0) => S.map((s, a) => ({ s, a, u: [...s.u.filter(u => u.l === l), ...(a === 0 && extra0 ? [extra0] : [])] }))

@@ -219,3 +219,13 @@ details[open]>.qx-card .qx-go svg{transform:rotate(90deg)}
 .tv-end span{font-size:4rem}.tv-end b{font-size:2rem;color:#3b2a8a}.tv-end small{font-weight:800;color:#3a3f6e}
 .tv-cardpic{font-size:3rem;line-height:1}
 @media(prefers-reduced-motion:reduce){.tv-in,.tv-big>*,.tv-letter,.tv-ear,.tv-sky,.tv-opt{animation:none!important}}
+
+/* ---------- صفوف الدروس داخل المراحل: تصميم فاتح ثابت في الوضعين، والنص الإنجليزي سطر ثانٍ لا شارة ---------- */
+.qx-path details .row{background:#fff;color:#1d2556;border:2px solid #e6e8ff;border-radius:18px;box-shadow:0 3px 0 #e1e4fb}
+.qx-path details .row b{color:#1d2556;line-height:1.35}
+.qx-path details .row b small,.qx-path details .row b .en{display:block;margin:2px 0 0;padding:0;background:none!important;border:0;box-shadow:none;color:#6a6f9b;font-size:.8em;font-weight:700;white-space:normal;direction:ltr;text-align:right;unicode-bidi:isolate}
+.qx-path details .row>small{background:#fff4d6;color:#8a5a00;border-radius:99px;padding:3px 10px;font-weight:800;white-space:nowrap}
+.qx-path details .row.locked{background:#f3f4fa;color:#8a8fb0;border-style:dashed;box-shadow:none;opacity:1;filter:none}
+.qx-path details .row.locked b{color:#7d82a6}
+.qx-path details .row.locked>small{background:#eceef7;color:#7d82a6}
+.qx-path details .row.rec{border-color:#22c39a;box-shadow:0 3px 0 #1aa07e}

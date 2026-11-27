@@ -213,6 +213,16 @@
   }
 
   addEventListener('popstate', ev => {
+    /* حاجز أول السجل: الرجوع من أي صفحة لا يخرج من الموقع، بل يعود إلى الرئيسية؛ ومن الرئيسية يخرج كالمعتاد */
+    if (ev.state && ev.state.hurufiGuard) {
+      const atHome = shownRoute && shownRoute.fn === 'home' && !ov;
+      if (atHome || !window.P) { H.back(); return; }
+      const h0 = { id: uid(), n: 0, fn: 'home', args: [], vol: false, root: false, up: null, y: 0 };
+      put('pushState', h0);
+      curN = 0;
+      render(h0);
+      return;
+    }
     const e = ev.state && ev.state.hurufi;
     if (!e) {
       const h0 = { id: uid(), n: 0, fn: 'home', args: [], vol: false, root: false, up: null, y: 0 };
@@ -343,6 +353,13 @@
 
   function initRouter() {
     wrapAll();
+    /* أول فتح للموقع في هذا السجل: نضع حاجزًا تحت الصفحة الأولى (انظر popstate) */
+    try {
+      if (!H.state || (!H.state.hurufi && !H.state.hurufiGuard)) {
+        H.replaceState({ hurufiGuard: 1 }, '');
+        H.pushState(null, '');
+      }
+    } catch {}
     const e = entry();
     if (e && window.P) {
       const r = e.ov ? { ...e, ov: null } : e;
