@@ -17,7 +17,7 @@
  const engVoice=()=>null; /* لا يوجد محرك توليد على الجهاز: كل الصوت مقاطع Edge مسجّلة */
  /* الفهرس يُحفظ في ذاكرة المقاطع الدائمة: بدونه لا يُعرف مكان أي مقطع فيصمت الصوت المسجّل بلا إنترنت */
  const ixGet=async who=>{const u=new URL(base+who+'.json',location.href).href;let c=null;try{c=window.caches&&await caches.open(CC)}catch(e){}
-  try{const r=await fetch(base+who+'.json?v=111',{cache:'no-cache'});if(r.ok){if(c)try{await c.put(u,r.clone())}catch(e){}return await r.json()}}catch(e){}
+  try{const r=await fetch(base+who+'.json?v=113',{cache:'no-cache'});if(r.ok){if(c)try{await c.put(u,r.clone())}catch(e){}return await r.json()}}catch(e){}
   try{const h=c&&await c.match(u);if(h)return await h.json()}catch(e){}return null};
  const loadIx=who=>st.load[who]||(st.load[who]=ixGet(who).then(j=>{if(j&&j.idx){if(j.v)j.packs=j.packs.map(p=>p+'?v='+j.v);st.ix[who]=j;st.need=st.need||{};for(const[pi,off,len]of Object.values(j.idx)){const n=j.packs[pi];if((st.need[n]||0)<off+len)st.need[n]=off+len}}return st.ix[who]} /* لا تنزيل تلقائي لكل الحزم: كان ~130 م.ب في أول 30 ثانية فيبطئ الهاتف */).catch(()=>{st.load[who]=null;return null}));
  const ready=loadIx(teacher());
