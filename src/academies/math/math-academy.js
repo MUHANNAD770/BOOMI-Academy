@@ -217,7 +217,8 @@
   /* صورة ثلاثية الأبعاد بحجم نتحكّم فيه (لا مشهد بخلفية): للمقارنة بين كبير/صغير وطويل/قصير والمجموعات */
   const e3 = e => {
     const c = [...e].map(x => x.codePointAt(0).toString(16)).filter(x => x !== 'fe0f').join('-');
-    return `<img class=mp-i src="img/3d/${c}.webp" alt="${esc(e)}" draggable=false data-no3d onerror="this.replaceWith(this.alt)">`;
+    /* بعض الملفات اسمها بلاحقة fe0f (✏️ = 270f-fe0f): نجرّبها قبل الرجوع إلى الرمز نصًّا */
+    return `<img class=mp-i src="img/3d/${c}.webp" alt="${esc(e)}" draggable=false data-no3d onerror="if(!this.dataset.f){this.dataset.f=1;this.src='img/3d/${c}-fe0f.webp'}else this.replaceWith(this.alt)">`;
   };
   function pic(t, inner) {
     let m;
