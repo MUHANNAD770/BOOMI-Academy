@@ -294,3 +294,5 @@ body:has(#app .qx-scene){background:#bfe5ff}
   #app .cert.cert2{margin:0!important;box-shadow:none!important;height:186mm;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;page-break-inside:avoid;break-inside:avoid;padding:14mm 16mm 10mm}
   .cert-stats{grid-template-columns:repeat(4,1fr)!important}
 }
+/* ورقة نتيجة السؤال في الاختبار: لا تغطيها البومة العائمة */
+body:has(#ex-sh.g) #mc,body:has(#ex-sh.r) #mc{display:none!important}

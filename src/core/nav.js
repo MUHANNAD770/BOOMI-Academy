@@ -76,7 +76,7 @@
   const oh = window.h;
   window.h = x => {
     oh(x);
-    const show = !!window.P && !['setup', 'who', 'quiz', 'game'].includes(window.V);
+    const show = !!window.P && !['setup', 'who', 'quiz', 'game', 'exam'].includes(window.V);
     nv.style.display = show ? 'flex' : 'none';
     document.body.classList.toggle('hasnav', show);
     const active = window.V === 'home' ? 'home' : window.V === 'exam' ? 'exams' : window.V === 'parent' ? 'set' : (window.CS || '');

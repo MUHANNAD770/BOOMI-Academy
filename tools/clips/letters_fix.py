@@ -65,6 +65,8 @@ VOICES = os.environ.get('SYL_VOICES', 'ar-QA-MoazNeural,ar-OM-AbdullahNeural,ar-
 
 
 async def tts(text, out, rate, sem, voice=VOICE):
+    if os.path.exists(out) and os.path.getsize(out) > 300:  # نسخة موجودة من تشغيل سابق
+        return out
     async with sem:
         for a in range(4):
             try:
@@ -139,7 +141,8 @@ def lev(a, b):
 
 def slow(f, out, d):
     """المقطع القصير جدًّا يُبطَّأ قليلًا (بلا تغيير طبقة الصوت) ليُسمع واضحًا"""
-    t = 0.8 if d < 0.32 else 0.88 if d < 0.45 else 1.0
+    # التمطيط (atempo) يشوّه المقطع القصير فيسمع النموذج الفتحة كسرة؛ البطء يأتي من سرعة المحرك (-25%) لا من التمطيط
+    t = 1.0 if not os.environ.get('SYL_STRETCH') else (0.8 if d < 0.32 else 0.88 if d < 0.45 else 1.0)
     af = f'atempo={t}' if t < 1 else 'anull'
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', f, '-af', af, '-ac', '1', '-ar', '24000', '-c:a', 'libmp3lame', '-b:a', '48k',
                     '-write_xing', '0', '-id3v2_version', '0', out])

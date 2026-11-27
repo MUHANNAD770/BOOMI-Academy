@@ -336,7 +336,7 @@
 
       const msg = ok
         ? (item.l === 'en' ? 'Excellent! ⭐' : qn('أَحْسَنْتَ! إِجَابَةٌ صَحِيحَةٌ 🌟'))
-        : qn(`لَا بَأْسَ! الصَّحِيحُ: «${(item.ex && item.ex[0]) || item.k}»`);
+        : qn(`لَا بَأْسَ! الصَّحِيحُ: «${String((item.ex && item.ex[0]) || item.k).replace(/^الصَّحِيحُ:\s*/, '')}»`); /* «الصحيح» مرة واحدة */
 
       if (!(window.muted && muted())) say(msg.replace(/<[^>]*>/g, ''), 'ar');
 

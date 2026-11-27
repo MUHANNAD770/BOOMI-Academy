@@ -186,7 +186,7 @@ const MC = (() => {
         cert: 'مُبَارَكٌ! هَذِهِ شَهَادَةُ إِتْقَانِكَ.',
         fin: ''
       };
-      if (!el.classList.contains('inl') && window.P && window.V !== 'who' && window.V !== 'setup') {
+      if (!el.classList.contains('inl') && window.P && window.V !== 'who' && window.V !== 'setup' && window.V !== 'exam') { /* لا بطاقة الطالب وسط أسئلة الاختبار */
         const A = document.getElementById('app');
         if (A) {
           let d = A.querySelector(':scope>.owl-dock');
