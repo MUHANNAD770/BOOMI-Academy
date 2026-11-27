@@ -360,3 +360,19 @@ body:has(#ex-sh.g) #mc,body:has(#ex-sh.r) #mc{display:none!important}
   .qx-rib{max-width:100%;padding:7px 22px;font-size:.8rem;white-space:nowrap}
   .qx-badge{min-width:50px;padding:4px 6px}.qx-badge b{font-size:1rem}
 }
+/* صفحة الشهادة: بلا بومي العائمة ولا بطاقة الطالب، ومسافات واضحة بين الأسطر */
+body:has(.cert-page) #mc,#app:has(.cert-page)>.owl-dock{display:none!important}
+.cert2 .cert-org{margin:0 0 10px;line-height:2}
+.cert2 h1{margin:4px 0 6px;line-height:1.5}
+.cert-to{margin:18px 0 6px;line-height:1.9}
+.cert-name{line-height:1.6;padding:2px 26px 8px}
+.cert-lvl{margin:12px 0 10px;line-height:1.9}
+.cert-grade{margin:6px 0 12px}
+.cert-msg{line-height:2.15;margin:10px auto 16px}
+.cert-stats{margin:8px 0 18px}.cert-stats>div{padding:8px 4px}
+.cert-ft small,.cert-ft b{line-height:1.9}
+@media print{#app .cert.cert2{border-radius:0!important;outline-offset:-22px}}
+/* إطار الشهادة: حافة خارجية ذهبية مصمتة (لا فراغ فاتح على أطراف الورقة) وخط داخلي رفيع */
+#app .cert.cert2{border:9px solid #c9a43b;outline:2px solid #b8902a;outline-offset:-16px;box-shadow:inset 0 0 0 5px #f0dc9c,0 14px 34px rgba(60,40,10,.22)}
+@media print{#app .cert.cert2{box-shadow:inset 0 0 0 5px #f0dc9c!important;outline-offset:-18px}}
+@media print{html,body{background:#c9a43b!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}

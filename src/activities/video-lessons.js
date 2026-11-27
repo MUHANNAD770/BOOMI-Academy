@@ -169,7 +169,7 @@
     V = { id, cat: k, sc: scenesFor(u), i: 0, tk: 0, stars: 0, paused: false };
     h(`<section class="sec tv">
       <button class=link onclick="goBack()">← رُجُوعٌ</button>
-      <h2 class=tv-h>📺 ${esc(u.n)}</h2>
+      <h2 class=tv-h>🎬 ${esc(u.n)}</h2>
       <div class="tv-wrap" id="tv-wrap">
         <div class="tv-screen"><div class="tv-sky"></div><div id="tv-scene"></div><div class="tv-sub" id="tv-sub"></div></div>
         <div class="tv-ctrl"><button type="button" id="tv-pp" onclick="tvToggle()" aria-label="إيقاف أو تشغيل">⏸️</button><div class="tv-prog"><i id="tv-bar"></i></div><button type="button" onclick="tvReplay()" aria-label="إعادة المشهد">🔁</button></div>
@@ -183,11 +183,11 @@
     window.V = 'sec'; window.CS = 'les';
     if (cat && CATS.some(c => c.k === cat)) {
       const c = CATS.find(x => x.k === cat), eps = episodes(cat), tv = (window.P && P.tv) || {};
-      h(`<section class="sec qx qx-tv">${Quest.head({ t1: 'دُرُوسُ الْفِيدْيُو', t2: c.t, sub: c.s, back: 'videos()' })}
+      h(`<section class="sec qx qx-tv">${Quest.head({ t1: 'الدُّرُوسُ الْمَرْئِيَّةُ', t2: c.t, sub: c.s, back: 'videos()' })}
         <div class=qx-path>${eps.map((x, i) => Quest.card({ c: i, ic: icon(x.u), t: esc(x.u.n), s: tv[x.u.id] ? `${tv[x.u.id].best >= 85 ? '✅ ' : ''}أَفْضَلُ نَتِيجَةٍ ${D(tv[x.u.id].best)}٪` : `${D(Math.min(6, (x.u.i || []).length))} مَشَاهِدَ وَأَسْئِلَةٌ`, go: `video('${x.u.id}')` })).join('')}</div>${Quest.foot()}</section>`);
       return;
     }
-    h(`<section class="sec qx qx-tv">${Quest.head({ t1: 'دُرُوسُ', t2: 'الْفِيدْيُو التَّفَاعُلِيَّةُ', sub: fm('شَاهِدْ وَاسْمَعْ، ثُمَّ أَجِبْ بِالضَّغْطِ', 'شَاهِدِي وَاسْمَعِي، ثُمَّ أَجِيبِي بِالضَّغْطِ') })}
+    h(`<section class="sec qx qx-tv">${Quest.head({ t1: 'الدُّرُوسُ', t2: 'الْمَرْئِيَّةُ', sub: fm('شَاهِدْ وَاسْتَمِعْ، ثُمَّ أَجِبْ بِلَمْسِ الصُّورَةِ', 'شَاهِدِي وَاسْتَمِعِي، ثُمَّ أَجِيبِي بِلَمْسِ الصُّورَةِ') })}
       <div class=qx-path>${CATS.map((c, i) => { const n = episodes(c.k).length; return n ? Quest.card({ c: i, ic: catIcon(c), t: c.t, s: `${c.s} • ${D(n)} دَرْسًا`, go: `videos('${c.k}')` }) : ''; }).join('')}</div>${Quest.foot()}</section>`);
   }
   const catIcon = c => c.ic === 'blocks-ar' ? Quest.blocks(['أ', 'ب', 'ت']) : c.ic === 'blocks-en' ? Quest.blocks(['A', 'B', 'C']) : Quest.img(c.ic);
