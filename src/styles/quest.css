@@ -229,3 +229,12 @@ details[open]>.qx-card .qx-go svg{transform:rotate(90deg)}
 .qx-path details .row.locked b{color:#7d82a6}
 .qx-path details .row.locked>small{background:#eceef7;color:#7d82a6}
 .qx-path details .row.rec{border-color:#22c39a;box-shadow:0 3px 0 #1aa07e}
+
+/* صفحات لها رأسها الخاص (القصص، الاختبارات، عالم الألعاب): خلفية المشهد نفسها */
+body:has(#app .qx-scene) #qx-scene{display:block}
+body:has(#app .qx-scene){background:#bfe5ff}
+#app .qx-hub .qx-em{font-size:2.6rem;line-height:1}
+/* لوحة الإنجازات: بلون البطاقات في الوضعين (لا لوحة بيضاء فيها بطاقات داكنة) */
+.qx-panel{background:var(--card,#fff);color:var(--ink,#1d2556)}
+.qx-panel h3{color:inherit}
+#app .qx-scene>.link{background:rgba(255,255,255,.92);color:#2f3fb0;border-radius:99px;padding:6px 14px;box-shadow:0 3px 8px rgba(40,40,110,.15)}
