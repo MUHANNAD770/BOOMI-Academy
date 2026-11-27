@@ -64,7 +64,7 @@ def female_shadda(t,l):
     if l!='ar': return t
     return re.sub('(?<![\u0621-\u064A\u064B-\u0652])([\u0623\u0625\u0622][\u0621-\u064A\u064B-\u0650\u0652\u0670]*)\u0651([\u064C\u064D])'+STOPC,'\\1\\2\u0651',t)
 PROXY=os.environ.get('HTTPS_PROXY')
-WHOS=os.environ.get('WHO','female,male').split(',')  # WHO=female لتسجيل صوت المعلّمة وحده
+WHOS=os.environ.get('WHO','male').split(',')  # صوت المعلّمة أُزيل من المشروع  # WHO=female لتسجيل صوت المعلّمة وحده
 phr=json.load(open(os.environ.get('PHR') or os.path.join(W,'final.json')))
 import tempfile
 with tempfile.TemporaryDirectory() as _d:

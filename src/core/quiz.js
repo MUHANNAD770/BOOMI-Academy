@@ -601,7 +601,7 @@
     const c = cur || {};
     qs = (qs || []).filter(z => !z.rd);
     const total = Math.max(1, qs.length);
-    const pass = sc >= Math.min(4, total);
+    const need = Math.ceil(total * 0.85), pass = sc >= need; /* الإتقان ٨٥٪: لا يُفتح الدرس التالي بإجابات خاطئة */
     try { window.HurufiSound && HurufiSound.play(pass ? 'finish' : 'wrong'); } catch {}
     V = 'fin';
 
@@ -647,7 +647,7 @@
     h(`${sumHTML}${pass
       ? `<h1>🌟</h1><h2>${qn(`أَتْقَنْتَ الدَّرْسَ! ${D(sc)} مِنْ ${D(total)}`)}</h2><button class=big onclick="goNextLesson()">${nextLabel()}</button><button class=alt onclick="home()">🏠 الرَّئِيسِيَّةُ</button>`
       : `<h1>💪</h1><h2>${D(sc)} مِنْ ${D(total)} – ${sc >= 3 ? 'قَرِيبٌ جِدًّا!' : sc >= 2 ? 'بِدَايَةٌ جَيِّدَةٌ!' : 'لَا بَأْسَ، سَنَتَعَلَّمُ مَعًا!'}</h2>
-         <p>${qn('نَحْتَاجُ ٤ عَلَى الْأَقَلِّ لِلْإِتْقَانِ. سَنُعِيدُ التَّدْرِيبَ بِطَرِيقَةٍ مُخْتَلِفَةٍ.')}</p>
+         <p>${qn(`نَحْتَاجُ ${D(need)} مِنْ ${D(total)} لِلْإِتْقَانِ. سَنُعِيدُ التَّدْرِيبَ بِطَرِيقَةٍ مُخْتَلِفَةٍ.`)}</p>
          <button class=big onclick="tries++;lesson('${c.id}')">أَعِدِ التَّدْرِيبَ 🔁</button><button class=alt onclick="home()">🏠 الرَّئِيسِيَّةُ</button>`}`);
 
     if (pass && window.BumiFX && BumiFX.party) {

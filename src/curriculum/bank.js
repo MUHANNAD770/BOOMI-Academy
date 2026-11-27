@@ -13,6 +13,7 @@
   const B = () => { P.bank = P.bank || {}; return P.bank; };
   const key = (sub, si, li) => (sub === 'ar' ? '' : sub + ':') + si + '.' + li;
   const ICON = ['🔤', '✏️', '📖', '🧩', '📚', '🎓', '🏆'];
+  const MB = 0.85; /* الإتقان ٨٥٪ (مثل أكاديمية الرياضيات): لا ينتقل الطالب إلى التدريب التالي قبله */
   const stars = s => s >= 0.9 ? '⭐⭐⭐' : s >= 0.7 ? '⭐⭐' : s > 0 ? '⭐' : '';
   const subOf = s => SUBJ[s] ? s : 'ar';
   const say1 = (t, l) => { try { if (!window.muted || !muted()) say(t, l || 'ar'); } catch (_) {} };
@@ -42,7 +43,7 @@
   function mastery(sub, d) {
     const bk = B();
     let done = 0, all = 0;
-    d.stages.forEach((s, si) => s.lessons.forEach((_, li) => { all++; if ((bk[key(sub, si, li)] || {}).b >= 0.7) done++; }));
+    d.stages.forEach((s, si) => s.lessons.forEach((_, li) => { all++; if ((bk[key(sub, si, li)] || {}).b >= MB) done++; }));
     return { done, all };
   }
 
@@ -68,12 +69,13 @@
     'ar:4.3': ['علامات الإعراب (المتقدمة)', ''],
     'en:0.5': ['المحادثة الأساسية', 'Basic Conversation']
   };
-  function bankBtn(sub, si, li, l, bk) {
+  function bankBtn(sub, si, li, l, bk, locked) {
     const r = bk[key(sub, si, li)] || {};
+    if (locked) return `<button class="row locked" disabled aria-disabled="true" data-go="bankLesson(${si},${li},'${sub}')"><span>🔒</span><b>${esc((BANK_LABEL[sub + ':' + si + '.' + li] || [l.name])[0])}</b><small>${'أَتْقِنِ التَّدْرِيبَ السَّابِقَ أَوَّلًا'}</small></button>`;
     const ov = BANK_LABEL[sub + ':' + si + '.' + li];
     const name = ov ? ov[0] : l.name;
     const en = ov ? ov[1] : (l.en || '');
-    return `<button class="row" onclick="bankLesson(${si},${li},'${sub}')"><span>${r.b >= 0.7 ? '✅' : (l.ic || '📝')}</span><b>${esc(name)}${en ? ` <small dir=ltr>${esc(en)}</small>` : ''}</b><small>${D(l.q.length)} سؤالًا${r.b != null ? ' · ' + stars(r.b) : ''}</small></button>`;
+    return `<button class="row" onclick="bankLesson(${si},${li},'${sub}')"><span>${r.b >= MB ? '✅' : (l.ic || '📝')}</span><b>${esc(name)}${en ? ` <small dir=ltr>${esc(en)}</small>` : ''}</b><small>${D(l.q.length)} سؤالًا${r.b != null ? ' · ' + stars(r.b) : ''}</small></button>`;
   }
 
   function courseResBtn(m, r, sub) {
@@ -140,13 +142,13 @@
       const courseResCount = sp.courses.reduce((n, g) => n + g.rs.length, 0);
       const total = sp.core.length + sp.bank.length + courseResCount;
       const done = sp.core.filter(u => P.done && P.done[u.id]).length
-        + sp.bank.filter(b => (bk[key(sub, b.si, b.li)] || {}).b >= 0.7).length
+        + sp.bank.filter(b => (bk[key(sub, b.si, b.li)] || {}).b >= MB).length
         + sp.courses.reduce((n, g) => n + g.rs.filter(r => cd[`${g.m.id}:${r.id}`]).length, 0);
       const pctDone = total ? Math.round((done / total) * 100) : 0;
 
       const items = [
         ...sp.core.map(coreBtn),
-        ...sp.bank.map(b => bankBtn(sub, b.si, b.li, b.l, bk))
+        ...sp.bank.map((b, k) => bankBtn(sub, b.si, b.li, b.l, bk, k > 0 && !(window.P && P.unlockAll) && !((bk[key(sub, sp.bank[k - 1].si, sp.bank[k - 1].li)] || {}).b >= MB) && !((bk[key(sub, b.si, b.li)] || {}).b != null)))
       ];
       const inlineCourses = [];
       const groupCourses = [];
@@ -247,7 +249,7 @@
       let pool;
       if (topic) pool = all.filter(x => x.topic === topic);
       else {
-        let cs = d.stages.findIndex((s, si) => s.lessons.some((l, li) => !((bk[key(sub, si, li)] || {}).b >= 0.7)));
+        let cs = d.stages.findIndex((s, si) => s.lessons.some((l, li) => !((bk[key(sub, si, li)] || {}).b >= MB)));
         if (cs < 0) cs = d.stages.length - 1;
         const score = x => {
           const t = tp[x.topic];
@@ -588,8 +590,8 @@
     try { save(); } catch (_) {}
     const tp = Object.entries(S.tops).map(([t, v]) => ({ t, p: v[0] / v[1] })), good = tp.filter(x => x.p >= 0.8), bad = tp.filter(x => x.p < 0.6), X = S.L === 'en' ? ' dir=ltr' : '';
     window.V = 'fin';
-    h(`<section class="sec bank-end"><div class=be-hero><h1>${sc >= 0.9 ? '🏆' : sc >= 0.7 ? '🌟' : '💪'}</h1><h2>${D(ok)} من ${D(qs.length)} ${stars(sc)}</h2>
-      <p>${sc >= 0.9 ? 'ممتاز! أتقنت هذا الدرس تمامًا.' : sc >= 0.7 ? 'أحسنت! أتقنت هذا الدرس.' : 'تدرّب مرة أخرى، وستتقنه!'} +${D(gain)} ⭐</p>
+    h(`<section class="sec bank-end"><div class=be-hero><h1>${sc >= 0.9 ? '🏆' : sc >= MB ? '🌟' : '💪'}</h1><h2>${D(ok)} من ${D(qs.length)} ${stars(sc)}</h2>
+      <p>${sc >= 0.9 ? 'ممتاز! أتقنت هذا الدرس تمامًا.' : sc >= MB ? 'أحسنت! أتقنت هذا الدرس.' : 'تدرّب مرة أخرى، وستتقنه!'} +${D(gain)} ⭐</p>
       <ul class=be-st><li>🎯<b>${D(Math.round(sc * 100))}٪</b><small>الإتقان</small></li><li>🔥<b>${D(S.best)}</b><small>أطول سلسلة</small></li><li>⏱️<b dir=ltr>${D(Math.floor(secs / 60))}:${D(String(secs % 60).padStart(2, '0'))}</b><small>الوقت</small></li><li>💡<b>${D(S.hints)}</b><small>تلميحات</small></li></ul></div>
       ${good.length ? `<p class=be-sw>💪 <b>أتقنت:</b> ${good.map(x => esc(x.t)).join('، ')}</p>` : ''}
       ${bad.length ? `<div class=be-sw>🌱 <b>تحتاج تدريبًا (اضغط للتدريب):</b><div class=be-chips>${bad.map(x => `<button class=be-chip onclick="bankPractice('${sub}',this.dataset.t)" data-t="${esc(x.t)}" dir=auto>✏️ ${esc(x.t)}</button>`).join('')}</div></div>` : ''}
@@ -599,8 +601,8 @@
         ${S.si != null ? `<button class=alt onclick="bankLesson(${si},${li},'${sub}')">🔁 أعد الدرس</button>` : `<button class=alt onclick="bankPractice('${sub}')">🎯 تدريب آخر</button>`}
         <button class=alt onclick="bankBomi('اقْتَرِحْ عَلَيَّ خُطَّةَ تَدْرِيبٍ لِمَا أَخْطَأْتُ فِيهِ')">🦉 خطة تدريب من بومي</button>
         <button class=alt onclick="sec('${sub}')">📚 ${SUBJ[sub].name}</button></div></section>`);
-    try { window.HurufiSound && HurufiSound.play(sc >= 0.7 ? 'finish' : 'wrong'); } catch (_) {}
-    say1(sc >= 0.7 ? 'أَحْسَنْتَ! أَتْقَنْتَ هَذَا الدَّرْسَ.' : 'تَدَرَّبْ مَرَّةً أُخْرَى، وَسَتُتْقِنُهُ!', 'ar');
+    try { window.HurufiSound && HurufiSound.play(sc >= MB ? 'finish' : 'wrong'); } catch (_) {}
+    say1(sc >= MB ? 'أَحْسَنْتَ! أَتْقَنْتَ هَذَا الدَّرْسَ.' : 'تَدَرَّبْ مَرَّةً أُخْرَى، وَسَتُتْقِنُهُ!', 'ar');
     try { window.checkBadges && setTimeout(checkBadges, 900); } catch (_) {}
   }
 
@@ -609,7 +611,7 @@
     if (!b._a || !Object.keys(b._a).length) return '';
     return `<div class=bk-rep><h4>📚 التقدّم في التدريبات المتدرّجة</h4>${Object.keys(SUBJ).filter(s => b._a[s]).map(s => {
       const a = b._a[s], tp = topics(s).filter(t => t.n >= 2);
-      const dn = Object.entries(b).filter(([k, v]) => v && v.b >= 0.7 && (s === 'ar' ? /^\d+\.\d+$/.test(k) : k.startsWith(s + ':'))).length;
+      const dn = Object.entries(b).filter(([k, v]) => v && v.b >= MB && (s === 'ar' ? /^\d+\.\d+$/.test(k) : k.startsWith(s + ':'))).length;
       const weak = tp.filter(t => t.p < 0.6).sort((x, y) => x.p - y.p).slice(0, 4);
       const strong = tp.filter(t => t.p >= 0.85).sort((x, y) => y.n - x.n).slice(0, 4);
       return `<div class=bk-rs><b>${SUBJ[s].name}</b><ul><li>التدريبات المتقنة<em>${D(dn)}</em></li><li>الإجابات<em>${D(a[1])}</em></li><li>الدقّة<em>${D(pct(a))}٪</em></li><li>أخطاء للمراجعة<em>${D(((b._m && b._m[s]) || []).length)}</em></li></ul>
@@ -619,7 +621,7 @@
   };
 
   try {
-    const doneN = f => Object.entries((window.P && P.bank) || {}).filter(([k, v]) => v && v.b >= 0.7 && f(k)).length;
+    const doneN = f => Object.entries((window.P && P.bank) || {}).filter(([k, v]) => v && v.b >= MB && f(k)).length;
     const ans = s => ((((window.P && P.bank) || {})._a || {})[s] || [0, 0]);
     const BG = window.BADGES;
     if (BG && !BG.some(b => b[0] === 'bk1')) {

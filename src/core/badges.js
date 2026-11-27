@@ -8,7 +8,7 @@
     const L = listFor(a, l);
     return L.length ? L.filter(u => P.done[u.id]).length / L.length : 1;
   };
-  const stageOpen = (a, l) => a <= Math.max(+P.stage || 0, 0) || (a > 0 && mastery(a - 1, l) >= 0.7);
+  const stageOpen = (a, l) => a <= Math.max(+P.stage || 0, 0) || (a > 0 && mastery(a - 1, l) >= 1) /* المرحلة التالية بعد إتقان كل دروس السابقة */;
 
   function unlocked(u) {
     if (!u || !P) return true;

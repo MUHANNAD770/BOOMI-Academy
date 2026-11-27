@@ -50,7 +50,7 @@
   const STAGE = {
     ar: [img('1f9f8'), blocks(['أ', 'ب', 'ت']), img('1f4d6'), img('1f9e9'), img('1f4da'), img('1f393'), img('1f3c6')],
     en: [img('1f9f8'), blocks(['A', 'B', 'C']), img('1f4d6'), img('1f9e9'), img('1f4da'), img('1f393'), img('1f3c6')],
-    math: [blocks(['١', '٢', '٣']), img('1f522'), img('1f4d0'), img('1f9ee'), img('1f9e0'), img('1f3c6'), img('1f393')]
+    math: [img('1f9f8'), blocks(['١', '٢', '٣']), img('1f522'), img('1f4d0'), img('1f9ee'), img('1f9e0'), img('1f3c6'), img('1f393')]
   };
 
   window.Quest = { head, card, foot, img, blocks, D, esc, STAGE, GO };

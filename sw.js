@@ -1,7 +1,7 @@
 /* sw.js — ذاكرة العمل دون اتصال (Offline Cache) لمنصة حروفي */
 'use strict';
 
-const CACHE = 'hurufi-app-v219';
+const CACHE = 'hurufi-app-v220';
 const FONT_CSS = 'https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;800&display=swap';
 const FONTS = 'hurufi-fonts-v1';
 
@@ -143,6 +143,7 @@ const OFFLINE = ["./",
 "./src/voice/voice-parts.js",
 "./data/ar-bank.json",
 "./data/en-bank.json",
+"./data/math/batch-00.json",
 "./data/math/batch-01.json",
 "./data/math/batch-02.json",
 "./data/math/batch-03.json",
