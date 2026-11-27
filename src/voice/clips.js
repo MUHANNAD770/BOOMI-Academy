@@ -11,7 +11,9 @@
  const st={ix:{},load:{},blob:{},ep:0,audio:null,url:'',ac:null,an:null,raf:0,done:null,pre:{}};
  const key=(t,l)=>{const s=((l==='ar'?'ar':'en')+'|'+String(t||'').replace(/\s+/g,' ').trim()).normalize('NFC');let h=0x811c9dc5;
   for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,0x01000193)>>>0}return h.toString(36)+'_'+s.length.toString(36)};
- const teacher=()=>{try{if(window.BumiVoiceConfig)return BumiVoiceConfig.getSettings().voice.gender==='male'?'male':'female'}catch(e){}return window.P&&P.teacher==='male'?'male':'female'};
+ /* حزم المعلّمة المحفوظة سابقًا في الأجهزة (~٣١٠ م.ب) تُحذف لتوفير المساحة */
+ try{window.caches&&caches.open(CC).then(c=>c.keys().then(ks=>ks.forEach(r=>{if(/\/audio\/clips\/(f\d+\.bin|female\.json)/.test(r.url))c.delete(r)}))).catch(()=>{})}catch(e){}
+ const teacher=()=>'male'; /* صوت المعلّمة أُزيل: كل المقاطع بصوت المعلّم */
  const engVoice=()=>null; /* لا يوجد محرك توليد على الجهاز: كل الصوت مقاطع Edge مسجّلة */
  /* الفهرس يُحفظ في ذاكرة المقاطع الدائمة: بدونه لا يُعرف مكان أي مقطع فيصمت الصوت المسجّل بلا إنترنت */
  const ixGet=async who=>{const u=new URL(base+who+'.json',location.href).href;let c=null;try{c=window.caches&&await caches.open(CC)}catch(e){}

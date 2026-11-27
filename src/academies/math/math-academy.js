@@ -25,7 +25,7 @@
         let t = byId[s.id];
         if (!t) { t = byId[s.id] = { id: s.id, name: s.name, level: s.level, units: [], q: [] }; st.push(t); }
         if (!t.level && s.level) t.level = s.level;
-        for (const u of (s.units || [])) if (!t.units.some(x => x.id === u.id)) t.units.push({ id: u.id, name: u.name });
+        for (const u of (s.units || [])) if (!t.units.some(x => x.id === u.id)) t.units.push({ id: u.id, name: u.name, intro: u.intro || '' });
         for (const q of (s.questions || [])) if (!Q[q.id]) { const x = { ...q, options: q.options || [], stage_id: s.id }; Q[q.id] = x; t.q.push(x); }
       }
       const pt = b.placement_test;
@@ -41,11 +41,24 @@
   function load() {
     if (DATA) return Promise.resolve(DATA);
     if (LOADING) return LOADING;
-    LOADING = fetch('data/math/index.json?v=2', { cache: 'no-cache' }).then(r => r.json())
-      .then(ix => Promise.all((ix.batches || []).map(f => fetch('data/math/' + f + '?v=2', { cache: 'no-cache' }).then(r => r.json()))))
-      .then(bs => { DATA = merge(bs); return DATA; })
+    LOADING = fetch('data/math/index.json?v=3', { cache: 'no-cache' }).then(r => r.json())
+      .then(ix => Promise.all((ix.batches || []).map(f => fetch('data/math/' + f + '?v=3', { cache: 'no-cache' }).then(r => r.json()))))
+      .then(bs => { DATA = merge(bs); migrate(DATA); return DATA; })
       .catch(e => { LOADING = null; throw e; });
     return LOADING;
+  }
+
+  /* أُضيفت مرحلة «ما قبل التأسيس» أوّلًا: رقم مرحلة البداية المحفوظ سابقًا يُزاح واحدًا حتى لا يرجع الطالب للخلف،
+     ومن اختار سابقًا «ابدأ من المرحلة الأولى» يبقى من التأسيس */
+  function migrate(d) {
+    try {
+      const m = window.P && P.math;
+      if (!m || m.pv >= 2 || !d.stages[0] || d.stages[0].id !== 'pre_foundation') return;
+      if (m.place && typeof m.place.stage === 'number') m.place.stage += 1;
+      else if (m.skip && Object.keys(m.u || {}).length) m.from = 1;
+      m.pv = 2;
+      save();
+    } catch (_) {}
   }
 
   /* ---------- التقدّم ---------- */
@@ -56,14 +69,18 @@
   const unitsFlat = d => d.stages.flatMap((s, si) => s.units.map((u, ui) => ({ s, si, u, ui })));
   const stagePassed = (d, si) => { const s = d.stages[si]; return !!(s && (M().st[s.id] || {}).passed); };
   /* الوحدة مفتوحة: في مرحلة البداية المقترحة أو قبلها، أو بعد إتقان الوحدة السابقة، أو باجتياز اختبار المرحلة السابقة */
+  /* إتقان قبل الانتقال (طلب صاحب المشروع): لا ينتقل الطالب إلى الوحدة التالية إلا بعد إتقان السابقة (٨٥٪)،
+     ولا إلى المرحلة التالية إلا بعد إتقان كل وحدات المرحلة أو اجتياز اختبارها. المراحل قبل نقطة البداية (من اختبار المستوى) مفتوحة */
+  const startOf = m => m.place ? m.place.stage : (m.from || 0);
+  const stageDone = (d, si) => { const s = d.stages[si]; return !s || si < startOf(M()) || stagePassed(d, si) || s.units.every(u => (uStat(s, u) || {}).mastered); };
   function unlocked(d, si, ui) {
     const m = M();
     if (m.unlockAll || (window.P && P.unlockAll)) return true;
-    const start = m.place ? m.place.stage : 0;
-    if (si <= start || stagePassed(d, si) || (ui === 0 && si > 0 && stagePassed(d, si - 1))) return true;
-    const flat = unitsFlat(d), i = flat.findIndex(x => x.si === si && x.ui === ui);
-    if (i <= 0) return true;
-    const prev = flat[i - 1], st = uStat(prev.s, prev.u);
+    const start = startOf(m);
+    if (si < start) return true;
+    if (si > start && !stageDone(d, si - 1)) return false;
+    if (ui === 0) return true;
+    const s = d.stages[si], st = s && uStat(s, s.units[ui - 1]);
     return !!(st && st.mastered);
   }
   const stageOpen = (d, si) => unlocked(d, si, 0);
@@ -195,12 +212,33 @@
       .replace(/\s+/g, ' ').trim();
   }
 
-  /* ---------- الصوت: السؤال دائمًا، والخيارات في مرحلتي التأسيس والمبتدئ فقط ---------- */
+  /* ---------- صور «ما قبل التأسيس»: الخيار صورة لا كلمة ----------
+     «⚽» صورة · «big:🎈»/«small:🎈» كبير/صغير · «long:✏️»/«short:✏️» طويل/قصير · «x3:🍎» مجموعة · «⚪ 🟦» صورتان */
+  /* صورة ثلاثية الأبعاد بحجم نتحكّم فيه (لا مشهد بخلفية): للمقارنة بين كبير/صغير وطويل/قصير والمجموعات */
+  const e3 = e => {
+    const c = [...e].map(x => x.codePointAt(0).toString(16)).filter(x => x !== 'fe0f').join('-');
+    return `<img class=mp-i src="img/3d/${c}.webp" alt="${esc(e)}" draggable=false data-no3d onerror="this.replaceWith(this.alt)">`;
+  };
+  function pic(t, inner) {
+    let m;
+    if ((m = /^x(\d+):(.+)$/.exec(t))) return `<span class=mp-grp>${Array.from({ length: +m[1] }, () => pic(m[2], 1)).join('')}</span>`;
+    if ((m = /^(big|small):(.+)$/.exec(t))) return `<span class="mp-${m[1]}">${e3(m[2])}</span>`;
+    if ((m = /^(long|short):(.+)$/.exec(t))) return `<span class="mp-len mp-${m[1]}"><i></i>${e3(m[2])}</span>`;
+    return inner && /\p{Extended_Pictographic}/u.test(t) ? e3(t) : esc(t);
+  }
+  const optHTML = t => String(t).split(' ').map(pic).join(' ');
+  const isPic = q => !!(q && (q.visual || q.labels || (q.options || []).some(o => /^(x\d+|big|small|long|short):/.test(o))));
+  /* اسم الخيار المنطوق والمكتوب (الصور لها أسماء في labels) */
+  const lab = (q, o) => (q && q.labels && q.labels[o]) || mathSpeech(o);
+
+  /* ---------- الصوت: السؤال دائمًا، والخيارات في المراحل الأولى (ما قبل التأسيس، التأسيس، المبتدئ) ---------- */
   const speakQ = (q, si) => {
     try {
       if (window.muted && muted()) return;
       const L = [[mathSpeech(q.prompt), 'ar']];
-      if (si <= 1 && q.type === 'choice' && q.options.length) { L.push(['الْخِيَارَاتُ', 'ar']); q.options.forEach(o => L.push([mathSpeech(o), 'ar'])); }
+      if (S && S.i === 0 && S.intro) L.unshift([S.intro, 'ar']);
+      /* أسئلة الصور: نقرأ السؤال فقط (الطفل يختار الصورة)، ونقرأ أسماء الخيارات إن كانت أرقامًا أو ألوانًا */
+      if (si <= 2 && q.type === 'choice' && q.options.length && !(isPic(q) && !q.labels)) { L.push(['الْخِيَارَاتُ', 'ar']); q.options.forEach(o => L.push([lab(q, o), 'ar'])); }
       (window.sayList || (l => say(l.map(x => x[0]).join('، '), 'ar')))(L);
     } catch (_) {}
   };
@@ -215,7 +253,7 @@
     h(`<section class="sec math-intro${window.Quest ? ' qx' : ''}">${window.Quest ? Quest.head(QH) : back() + hd()}
       <div class=math-intro-card><span class=math-intro-owl>🦉</span>
         <h2>${g('أَهْلًا بِكَ', 'أَهْلًا بِكِ')} فِي أَكَادِيمِيَّةِ الرِّيَاضِيَّاتِ!</h2>
-        <p>${g('قَبْلَ أَنْ نَبْدَأَ، سَنَعْرِفُ مُسْتَوَاكَ بِاخْتِبَارٍ قَصِيرٍ', 'قَبْلَ أَنْ نَبْدَأَ، سَنَعْرِفُ مُسْتَوَاكِ بِاخْتِبَارٍ قَصِيرٍ')}: ${D(d.place.length)} سؤالًا من المراحل الست (نحو ١٥ دقيقة). لا تظهر الإجابات إلا في النهاية، فأجب بهدوء.</p>
+        <p>${g('قَبْلَ أَنْ نَبْدَأَ، سَنَعْرِفُ مُسْتَوَاكَ بِاخْتِبَارٍ قَصِيرٍ', 'قَبْلَ أَنْ نَبْدَأَ، سَنَعْرِفُ مُسْتَوَاكِ بِاخْتِبَارٍ قَصِيرٍ')}: ${D(d.place.length)} سؤالًا من كل المراحل (نحو ١٥ دقيقة). لا تظهر الإجابات إلا في النهاية، فأجب بهدوء.</p>
         <ul class=math-intro-list><li>📊 نتيجة لكل مرحلة</li><li>💪 نقاط القوة</li><li>🔁 المهارات التي تحتاج مراجعة</li><li>🗺️ مسار تعلّم خاص بك</li></ul>
         <button class=big onclick="mathPlacement()">🎯 ${g('اِبْدَأِ', 'اِبْدَئِي')} اخْتِبَارَ تَحْدِيدِ الْمُسْتَوَى</button>
         <button class=alt onclick="mathSkipPlacement()">${g('اِبْدَأْ', 'اِبْدَئِي')} مِنَ الْمَرْحَلَةِ الْأُولَى بِدُونِ اخْتِبَارٍ</button>
@@ -230,7 +268,7 @@
       const m = M(), flat = unitsFlat(d);
       if (!m.place && !m.skip) return intro(d);
       const done = flat.filter(x => (uStat(x.s, x.u) || {}).mastered).length;
-      const place = m.place, from = place ? place.stage : 0;
+      const place = m.place, from = place ? place.stage : (m.from || 0);
       /* الخطوة التالية تبدأ من مرحلة البداية المقترحة (لا من المرحلة الأولى) */
       const open = x => !(uStat(x.s, x.u) || {}).mastered && unlocked(d, x.si, x.ui);
       const next = flat.find(x => x.si >= from && open(x)) || flat.find(open);
@@ -275,13 +313,15 @@
     const total = S.qs.length, place = S.kind === 'place';
     const body = q.type === 'fill'
       ? `<div class=bq-type><input id=mq-in class=bq-in inputmode=${/[س]/.test(q.correct_answer) ? 'text' : 'decimal'} autocomplete=off placeholder="${esc(g('اُكْتُبْ', 'اُكْتُبِي'))} الْإِجَابَةَ" onkeydown="if(event.key==='Enter')mathCheck()"><button class=big onclick="mathCheck()">${place ? 'التالي ←' : 'تحقّق ✓'}</button></div>`
-      : `<div class="grid bq-opts math-opts${q.options.length === 2 ? ' two' : ''}">${shuf(q.options).map(o => `<button class=opt data-v="${esc(o)}" onclick="mathAns(this)">${esc(o)}</button>`).join('')}</div>`;
+      : `<div class="grid bq-opts math-opts${q.options.length === 2 ? ' two' : ''}${isPic(q) ? ' mp-opts' : ''}">${shuf(q.options).map(o => `<button class=opt data-v="${esc(o)}" aria-label="${esc(lab(q, o))}" onclick="mathAns(this)">${optHTML(o)}</button>`).join('')}</div>`;
     h(`<section class="sec bank-q math-q"><button class=link onclick="mathAcademy()">→ أكاديمية الرياضيات</button>
       <div class=bq-top><b>${esc(S.name)}</b><small>سؤال ${D(S.i + 1)} من ${D(total)}</small></div>
       <div class=bq-dots>${S.qs.map((x, k) => `<i class="${k < S.i ? (place ? 'cur' : x._ok ? 'ok' : 'no') : k === S.i ? 'cur' : ''}"></i>`).join('')}</div>
       <div class=bq-card>
         ${q._rt ? `<p class=bq-retry>🔁 ${q._v ? 'تَمْرِينٌ مُشَابِهٌ بِأَعْدَادٍ جَدِيدَةٍ' : 'فُرْصَةٌ ثَانِيَةٌ لِهَذَا السُّؤَالِ'}</p>` : ''}
+        ${S.i === 0 && S.intro ? `<p class=mp-intro>🦉 ${esc(S.intro)}</p>` : ''}
         <div class="bq-q math-prompt" dir=rtl>${esc(q.prompt)}</div>
+        ${q.visual ? `<div class=mp-vis>${optHTML(q.visual)}</div>` : ''}
         <div class=bq-tools><button class=alt onclick="mathSay()">🔊 اسمع السؤال</button></div>
         ${body}
         <div id=mq-fb class=bq-fb hidden></div>
@@ -323,11 +363,11 @@
     const fb = document.getElementById('mq-fb');
     fb.hidden = false; fb.className = 'bq-fb ' + (ok ? 'good' : 'soft');
     const lead = ok ? g('أَحْسَنْتَ! إِجَابَةٌ صَحِيحَةٌ.', 'أَحْسَنْتِ! إِجَابَةٌ صَحِيحَةٌ.') : 'مُحَاوَلَةٌ جَيِّدَةٌ! الْإِجَابَةُ الصَّحِيحَةُ:';
-    fb.innerHTML = `<b class=bq-lead>${ok ? '✅' : '💡'} ${lead}</b>${ok ? '' : `${given ? `<p class=bq-gave>إجابتك: <b>${esc(given)}</b> ✗</p>` : ''}<p class=bq-ans>${esc(q.correct_answer)}</p>`}
+    fb.innerHTML = `<b class=bq-lead>${ok ? '✅' : '💡'} ${lead}</b>${ok ? '' : `${given ? `<p class=bq-gave>إجابتك: <b>${esc(given)}</b> ✗</p>` : ''}<p class=bq-ans>${isPic(q) ? `<span class=mp-ans>${optHTML(q.correct_answer)}</span> ${esc(lab(q, q.correct_answer))}` : esc(q.correct_answer)}</p>`}
       ${q.explanation ? `<p class=bq-e>📘 <b>طريقة الحل:</b> ${esc(q.explanation)}</p>` : ''}
       ${ex ? `<div class=math-ex><b>🦉 مثال مشابه محلول</b><p dir=rtl>${esc(ex.prompt)}</p><p>✅ ${esc(ex.correct_answer)}${ex.explanation ? ` — ${esc(ex.explanation)}` : ''}</p>${S.kind !== 'stage' ? `<small>${g('سَتَجِدُ', 'سَتَجِدِينَ')} تَمْرِينًا مُشَابِهًا بَعْدَ قَلِيلٍ لِتُجَرِّبَ بِنَفْسِكَ.</small>` : ''}</div>` : ''}
       <div class=bq-next><button class=big onclick="mathNext()">${S.i + 1 < S.qs.length ? 'التالي ←' : 'النتيجة 🏁'}</button></div>`;
-    try { if (!(window.muted && muted())) sayList(ok ? [[lead, 'ar']] : [[lead, 'ar'], [mathSpeech(q.correct_answer), 'ar'], [mathSpeech(q.explanation || ''), 'ar']].filter(x => x[0])); } catch (_) {}
+    try { if (!(window.muted && muted())) sayList(ok ? [[lead, 'ar']] : [[lead, 'ar'], [lab(q, q.correct_answer), 'ar'], [mathSpeech(q.explanation || ''), 'ar']].filter(x => x[0])); } catch (_) {}
     fb.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
   window.mathAns = b => {
@@ -383,7 +423,7 @@
       acts += `<button class=alt onclick="mathStageTest(${S.si})">🔁 إعادة اختبار المرحلة</button>`;
     } else { msg = pc >= MASTER ? gx('أَحْسَنْتَ! صَحَّحْتَ أَخْطَاءَكَ.') : gx('تَحَسَّنْتَ! وَاصِلِ الْمُرَاجَعَةَ.'); log({ kind: 'review', name: S.name, pc }); }
     save();
-    const W = S.wrong.map(q => `<li><b>${esc(q.prompt)}</b><span>الصحيح: ${esc(q.correct_answer)}</span>${q.explanation ? `<small>📘 ${esc(q.explanation)}</small>` : ''}</li>`).join('');
+    const W = S.wrong.map(q => `<li><b>${esc(q.prompt)}</b><span>الصحيح: ${isPic(q) ? optHTML(q.correct_answer) + ' ' + esc(lab(q, q.correct_answer)) : esc(q.correct_answer)}</span>${q.explanation ? `<small>📘 ${esc(q.explanation)}</small>` : ''}</li>`).join('');
     h(`<section class="sec math-res"><div class=be-hero><span>${pc >= MASTER ? '🏆' : pc >= REVIEW ? '🌟' : '🌱'}</span><b>${D(pc)}٪</b><small>${D(S.ok)} من ${D(n)} صحيحة</small></div>
       <p class=be-msg>${esc(msg)}</p>
       ${W ? `<h3>📘 أخطاء نتعلّم منها</h3><ul class=math-wrong>${W}</ul>` : ''}
@@ -407,7 +447,7 @@
     else if (mode === 2) qs = [...base].sort((a, b) => easy(a) - easy(b) || (m.seen[a.id] || 0) - (m.seen[b.id] || 0)).slice(0, MIN_Q);
     else qs = fresh(base, MIN_Q);
     fill(qs, base, MIN_Q);
-    start({ kind: 'unit', si, ui, sid: si, key: uk(s, u), name: `${s.name} · ${u.name}`, qs, pool: qs.length });
+    start({ kind: 'unit', si, ui, sid: si, key: uk(s, u), name: `${s.name} · ${u.name}`, qs, pool: qs.length, intro: u.intro ? gx(u.intro) : '' });
   }).catch(() => academy());
 
   /* ---------- اختبار المرحلة: أسئلة من كل وحداتها بالتساوي ---------- */
@@ -447,7 +487,7 @@
       <h3>📊 نتيجة كل مرحلة</h3><div class=list>${rows.map(r => `<div class=row><span>${r.pass ? '✅' : '📌'}</span><b>${esc(r.s.name)}</b><small>${D(r.ok)} من ${D(r.q.length)}</small></div>`).join('')}</div>
       ${strengths.length ? `<h3>💪 نقاط القوة</h3><p class=mut>${strengths.map(esc).join('، ')}</p>` : ''}
       ${review.length ? `<h3>🔁 مهارات تحتاج مراجعة</h3><p class=mut>${review.map(esc).join('، ')}</p>` : ''}
-      <h3>📘 مراجعة الإجابات</h3><ul class=math-wrong>${S.qs.filter(q => !q._ok).map(q => `<li><b>${esc(q.prompt)}</b><span>الصحيح: ${esc(q.correct_answer)}</span>${q.explanation ? `<small>📘 ${esc(q.explanation)}</small>` : ''}</li>`).join('') || '<li>✨ كل إجاباتك صحيحة!</li>'}</ul>
+      <h3>📘 مراجعة الإجابات</h3><ul class=math-wrong>${S.qs.filter(q => !q._ok).map(q => `<li><b>${esc(q.prompt)}</b><span>الصحيح: ${isPic(q) ? optHTML(q.correct_answer) + ' ' + esc(lab(q, q.correct_answer)) : esc(q.correct_answer)}</span>${q.explanation ? `<small>📘 ${esc(q.explanation)}</small>` : ''}</li>`).join('') || '<li>✨ كل إجاباتك صحيحة!</li>'}</ul>
       <div class=be-acts><button class=big onclick="mathAcademy()">▶️ ${g('اِبْدَأْ', 'اِبْدَئِي')} رِحْلَتَكَ</button></div></section>`);
     try { if (!(window.muted && muted())) say(msg, 'ar', null, 'cheer'); } catch (_) {}
     S = null;

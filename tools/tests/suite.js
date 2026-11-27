@@ -253,7 +253,7 @@ test('Client voice engine uses Google Gemini TTS exclusively with centralized se
   assert(!/speechSynthesis|SpeechSynthesisUtterance/.test(voice), 'voice.js must not fall back to browser speechSynthesis');
   assert(/HurufiClips\.play/.test(voice) && voice.indexOf('HurufiClips.play') < voice.indexOf('playSegment(geminiText'), 'Recorded clips must be tried before Gemini');
   assert(/voice-cloud\.js/.test(html + sw) === false, 'index.html and sw.js must not reference the removed voice-cloud.js');
-  assert(fs.existsSync(path.join(ROOT, 'audio', 'clips', 'female.json')) && fs.existsSync(path.join(ROOT, 'audio', 'clips', 'male.json')), 'Recorded clip indexes must exist in the project');
+  assert(fs.existsSync(path.join(ROOT, 'audio', 'clips', 'male.json')), 'Recorded clip indexes must exist in the project');
   assert(/BumiVoiceConfig/.test(voice), 'Centralized BumiVoiceConfig must be defined');
   assert(/say\.pause\s*=/.test(voice) && /say\.resume\s*=/.test(voice) && /say\.replay\s*=/.test(voice) && /say\.stop\s*=/.test(voice), 'voice.js must expose pause/resume/replay/stop controls');
   assert(/cleanSpeechText/.test(voice) && /extractVisibleText/.test(voice), 'voice.js must sanitize and extract visible text only');

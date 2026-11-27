@@ -31,11 +31,9 @@
 
   const VOICE_MAP = Object.fromEntries(VOICES.map(v => [v.id, v]));
 
-  function resolveVoiceId(raw) {
-    const id = String(raw || '').toLowerCase().trim();
-    if (id === 'female' || id === 'zephyr') return 'kore';
-    if (id === 'male' || id === 'charon' || id === 'fenrir') return 'puck';
-    return VOICE_MAP[id] ? id : 'kore';
+  /* صوت المعلّمة أُزيل (طلب صاحب المشروع: كان يُسمع آليًا): بومي يتكلّم دائمًا بصوت المعلّم */
+  function resolveVoiceId() {
+    return 'puck';
   }
 
   function migrateProfileVoice() {
@@ -1276,7 +1274,7 @@
       <div class="voice-plan">
         <h3>🎙️ اختر صوت بومي</h3>
         <div class="voice-provider">
-          ${VOICES.filter(v => v.id === 'kore' || v.id === 'puck').map(v => `<button type="button" data-voice="${v.id}" class="${cfg.voiceId === v.id ? 'on' : ''}" onclick="voiceSelect('${v.id}')">
+          ${VOICES.filter(v => v.id === 'puck').map(v => `<button type="button" data-voice="${v.id}" class="${cfg.voiceId === v.id ? 'on' : ''}" onclick="voiceSelect('${v.id}')">
             <b>${v.badge} · ${v.label}</b>
             <small>${v.desc}</small>
           </button>`).join('')}
