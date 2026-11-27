@@ -1,7 +1,7 @@
 /* sw.js — ذاكرة العمل دون اتصال (Offline Cache) لمنصة حروفي */
 'use strict';
 
-const CACHE = 'hurufi-app-v234';
+const CACHE = 'hurufi-app-v235';
 const FONT_CSS = 'https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;800&display=swap';
 const FONTS = 'hurufi-fonts-v1';
 
@@ -109,6 +109,7 @@ const OFFLINE = ["./",
 "./src/games/mini-games.js",
 "./src/games/phaser-games.js",
 "./src/parent/parent-panel.js",
+"./src/parent/sound-check.js",
 "./src/shared/anim.js",
 "./src/shared/emoji3d.js",
 "./src/shared/grader.js",

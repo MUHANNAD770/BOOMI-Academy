@@ -15,6 +15,7 @@
     sec: { cs: a => (a && a[0]) || 'les' },
     parentPanel: { cs: 'set' },
     voiceSet: { cs: 'set' },
+    soundCheck: { cs: 'set' },
     cert: { cs: 'ach' },
     lesson: { cs: 'les' },
     quiz: { vol: 1 },
