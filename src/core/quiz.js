@@ -279,18 +279,45 @@
       <button class=alt onclick="setup()">+ إِضَافَةُ طَالِبٍ جَدِيدٍ</button>`);
   }
 
+  /* شهادة إنجاز حقيقية: إطار مزخرف، كأس، بومي، اسم الطالب ومستواه، تقدير حسب أدائه (ممتاز / جيد جدًا / جيد / يحتاج إلى دعم)،
+     رسالة باسمه، إحصاءاته، التاريخ، توقيع وختم. عند الطباعة أو الحفظ PDF تُطبع الشهادة وحدها (src/styles/quest.css: @media print) */
   function cert() {
     V = 'cert';
-    h(`<div class=cert>
-        <h1>🏆</h1>
-        <h2>شَهَادَةُ إِنْجَازٍ</h2>
-        <p>تُمْنَحُ هَذِهِ الشَّهَادَةُ إِلَى</p>
-        <h1>${esc(P.name)}</h1>
-        <p>${qn(`لِجَمْعِكَ ${D(P.star || 0)} نَجْمَةً فِي التَّعَلُّمِ وَالإِتْقَانِ. نَحْنُ فَخُورُونَ بِكَ!`)}</p>
-        <p>${day()}</p>
+    const f = P.gender === 'female', g = (m, w) => f ? w : m, nm = esc(P.name || '');
+    const done = Object.keys(P.done || {}).length, badges = Object.keys(P.badges || {}).length, stars = +P.star || 0;
+    const scs = Object.values(P.sc || {}).map(Number).filter(x => !isNaN(x));
+    const acc = scs.length ? Math.round(scs.reduce((a, b) => a + b, 0) / (scs.length * 5) * 100) : 0;
+    const st = Math.max(0, +P.stage || 0), stage = S[st] ? S[st].n : '';
+    const R = acc >= 85 && done >= 3 ? ['ممتاز', '⭐⭐⭐', 'ex', g(`أَدَاءٌ رَائِعٌ يَا ${nm}! أَتْقَنْتَ دُرُوسَكَ بِتَمَيُّزٍ، وَأَجَبْتَ إِجَابَاتٍ صَحِيحَةً بِثِقَةٍ. أَنْتَ قُدْوَةٌ فِي الِاجْتِهَادِ، وَنَحْنُ فَخُورُونَ بِكَ جِدًّا. وَاصِلْ تَأَلُّقَكَ!`, `أَدَاءٌ رَائِعٌ يَا ${nm}! أَتْقَنْتِ دُرُوسَكِ بِتَمَيُّزٍ، وَأَجَبْتِ إِجَابَاتٍ صَحِيحَةً بِثِقَةٍ. أَنْتِ قُدْوَةٌ فِي الِاجْتِهَادِ، وَنَحْنُ فَخُورُونَ بِكِ جِدًّا. وَاصِلِي تَأَلُّقَكِ!`)]
+      : acc >= 70 ? ['جيد جدًا', '⭐⭐', 'vg', g(`أَحْسَنْتَ يَا ${nm}! تَقَدُّمُكَ جَمِيلٌ وَفَهْمُكَ يَزْدَادُ كُلَّ يَوْمٍ. بِقَلِيلٍ مِنَ التَّدْرِيبِ سَتَصِلُ إِلَى الِامْتِيَازِ.`, `أَحْسَنْتِ يَا ${nm}! تَقَدُّمُكِ جَمِيلٌ وَفَهْمُكِ يَزْدَادُ كُلَّ يَوْمٍ. بِقَلِيلٍ مِنَ التَّدْرِيبِ سَتَصِلِينَ إِلَى الِامْتِيَازِ.`)]
+      : acc >= 55 ? ['جيد', '⭐', 'gd', g(`جُهْدٌ طَيِّبٌ يَا ${nm}! تَعَلَّمْتَ أَشْيَاءَ جَدِيدَةً، وَبِالْمُرَاجَعَةِ الْمُنْتَظِمَةِ سَتُصْبِحُ نَتَائِجُكَ أَفْضَلَ.`, `جُهْدٌ طَيِّبٌ يَا ${nm}! تَعَلَّمْتِ أَشْيَاءَ جَدِيدَةً، وَبِالْمُرَاجَعَةِ الْمُنْتَظِمَةِ سَتُصْبِحُ نَتَائِجُكِ أَفْضَلَ.`)]
+      : ['يحتاج إلى دعم', '🌱', 'sp', g(`بِدَايَةٌ مُوَفَّقَةٌ يَا ${nm}! كُلُّ خُطْوَةٍ تَتَعَلَّمُهَا مُهِمَّةٌ. سَنُرَاجِعُ مَعًا وَنَتَدَرَّبُ أَكْثَرَ، وَأَنَا وَاثِقٌ أَنَّكَ سَتَتَقَدَّمُ.`, `بِدَايَةٌ مُوَفَّقَةٌ يَا ${nm}! كُلُّ خُطْوَةٍ تَتَعَلَّمِينَهَا مُهِمَّةٌ. سَنُرَاجِعُ مَعًا وَنَتَدَرَّبُ أَكْثَرَ، وَأَنَا وَاثِقٌ أَنَّكِ سَتَتَقَدَّمِينَ.`)];
+    let date = day();
+    try { date = new Date().toLocaleDateString('ar', { day: 'numeric', month: 'long', year: 'numeric' }); } catch (_) {}
+    const tile = (ic, n, t) => `<div><b>${ic} ${D(n)}</b><small>${t}</small></div>`;
+    h(`<section class="sec cert-page">
+      <div class="cert-acts noprint"><button class=link onclick="goBack()">← رُجُوعٌ</button><button class=big onclick="window.print()">🖨️ طِبَاعَةُ الشَّهَادَةِ أَوْ حِفْظُهَا PDF</button></div>
+      <div class="cert cert2 cert-${R[2]}" id=cert>
+        <i class="cc tl">✦</i><i class="cc tr">✦</i><i class="cc bl">✦</i><i class="cc br">✦</i>
+        <div class=cert-hd>
+          <img class=cert-owl src="img/ui/owl-book.webp" alt="بومي">
+          <div><small class=cert-org>الْبُومَةُ التَّعْلِيمِيَّةُ الذَّكِيَّةُ</small><h1>شَهَادَةُ إِنْجَازٍ</h1><span class=cert-rib>Certificate of Achievement</span></div>
+          <img class=cert-cup src="img/3d/1f3c6.webp" alt="🏆">
+        </div>
+        <p class=cert-to>تُمْنَحُ هَذِهِ الشَّهَادَةُ ${g('لِلطَّالِبِ', 'لِلطَّالِبَةِ')}</p>
+        <h2 class=cert-name>${nm}</h2>
+        <p class=cert-lvl>الْمُسْتَوَى: الْمَرْحَلَةُ ${D(st + 1)}${stage ? ' · ' + esc(stage) : ''}</p>
+        <div class=cert-grade><span>التَّقْدِيرُ</span><b>${R[0]}</b><i>${R[1]}</i></div>
+        <p class=cert-msg>${R[3]}</p>
+        <div class=cert-stats>${tile('⭐', stars, 'نَجْمَةً')}${tile('✅', done, 'دَرْسًا مُتْقَنًا')}${tile('🏅', badges, 'شَارَةً')}${tile('🎯', acc, 'نِسْبَةُ الدِّقَّةِ ٪')}</div>
+        <div class=cert-ft>
+          <div><small>التَّارِيخُ</small><b>${esc(date)}</b></div>
+          <div class=cert-seal><img src="img/ui/medal.webp" alt=""><small>خَتْمُ الْأَكَادِيمِيَّةِ</small></div>
+          <div><small>الْمُعَلِّمُ</small><b class=cert-sign>بُومِي</b></div>
+        </div>
       </div>
-      <button class=big onclick="window.print()">🖨️ طِبَاعَةُ الشَّهَادَةِ</button>
-      <button class=link onclick="goBack()">← رُجُوعٌ</button>`);
+    </section>`);
+    try { if (!(window.muted && muted())) say(R[3].replace(/<[^>]+>/g, ''), 'ar', null, 'cheer'); } catch (_) {}
   }
 
   /* ---------- الدروس والكتابة ---------- */
