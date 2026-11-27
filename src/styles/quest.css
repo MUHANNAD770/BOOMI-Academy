@@ -1,0 +1,152 @@
+/* quest.css — تصميم «رحلة بومي» الموحّد للأكاديميات والصفحة الرئيسية:
+   لافتة خشبية + شريط + بومي بالكتاب + زر الرئيسية + مسار من بطاقات المراحل الملوّنة + لافتة «مع بومي نصل إلى القمة».
+   الألوان ثابتة داخل التصميم (البطاقات «أشياء» في المشهد) فيبدو متطابقًا في الوضعين الفاتح والداكن؛ السماء وحدها تتغيّر. */
+
+/* ---------- المشهد (السماء، الغيوم، العشب، القلعة، النخيل، رفّ الكتب) ---------- */
+#qx-scene{display:none;position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;
+  background:
+    radial-gradient(120px 46px at 18% 14%,#fff 60%,transparent 62%),
+    radial-gradient(90px 36px at 26% 12%,#fff 60%,transparent 62%),
+    radial-gradient(140px 50px at 82% 22%,rgba(255,255,255,.95) 60%,transparent 62%),
+    radial-gradient(100px 38px at 90% 19%,rgba(255,255,255,.95) 60%,transparent 62%),
+    radial-gradient(120% 60% at 50% 112%,#8fd16a 0 38%,transparent 39%),
+    radial-gradient(90% 40% at 8% 104%,#7cc35a 0 40%,transparent 41%),
+    radial-gradient(90% 40% at 96% 106%,#7cc35a 0 40%,transparent 41%),
+    linear-gradient(180deg,#8fd0ff 0%,#bfe5ff 45%,#e6f6ff 75%,#d7f0c4 100%)}
+body:has(#app .qx) #qx-scene{display:block}
+body:has(#app .qx){background:#bfe5ff}
+#qx-scene i{position:absolute;display:block;background:center/contain no-repeat;opacity:.9}
+#qx-scene .q-castle{left:-28px;top:26%;width:150px;height:150px;background-image:url(../../img/3d/1f3f0.webp);opacity:.55;filter:saturate(.8)}
+#qx-scene .q-palm1{left:-34px;bottom:6%;width:170px;height:170px;background-image:url(../../img/3d/1f334.webp)}
+#qx-scene .q-palm2{right:-40px;bottom:12%;width:150px;height:150px;background-image:url(../../img/3d/1f334.webp);transform:scaleX(-1)}
+#qx-scene .q-books{right:-22px;top:34%;width:120px;height:120px;background-image:url(../../img/3d/1f4da.webp);opacity:.5}
+#qx-scene .q-shelf{right:0;top:30%;width:min(26vw,220px);height:56%;opacity:.42;
+  background:repeating-linear-gradient(180deg,transparent 0 62px,#c98d4f 62px 72px),
+    repeating-linear-gradient(90deg,#5b8def 0 12px,#e45d7a 12px 22px,#58b36a 22px 34px,#f1b93b 34px 44px,#8a63d8 44px 56px,transparent 56px 62px);
+  -webkit-mask:linear-gradient(90deg,transparent,#000 40%);mask:linear-gradient(90deg,transparent,#000 40%);border-radius:14px 0 0 14px}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) #qx-scene{filter:brightness(.62) saturate(.9)}}
+:root[data-theme=dark] #qx-scene{filter:brightness(.62) saturate(.9)}
+
+/* ---------- رأس الصفحة ---------- */
+#app .qx{position:relative;padding-bottom:8px;color:#1d2556}
+.qx-top{position:relative;min-height:150px;margin:2px 0 18px}
+.qx-home{position:absolute;inset-inline-start:0;top:0;z-index:3;width:58px;height:58px;border-radius:50%;border:4px solid #fff;
+  background:radial-gradient(circle at 35% 30%,#5aa8ff,#1c62d6 70%);box-shadow:0 6px 0 #154ea9,0 10px 20px rgba(20,60,160,.35);
+  display:grid;place-items:center;cursor:pointer;padding:0}
+.qx-home img{width:34px;height:34px;filter:brightness(0) invert(1) drop-shadow(0 1px 0 rgba(0,0,0,.15))}
+.qx-home:active{transform:translateY(3px);box-shadow:0 3px 0 #154ea9}
+.qx-owl{position:absolute;inset-inline-end:-10px;top:4px;z-index:2;width:clamp(112px,29%,200px);height:auto;filter:drop-shadow(0 8px 12px rgba(40,30,90,.25));pointer-events:none;
+  animation:qxBob 4s ease-in-out infinite}
+@keyframes qxBob{50%{transform:translateY(-5px) rotate(-1.5deg)}}
+.qx-sign{position:relative;z-index:1;margin-top:10px;margin-inline-start:66px;margin-inline-end:clamp(76px,21%,150px);
+  padding:14px 12px 24px;border-radius:28px 22px 30px 24px;text-align:center;
+  background:repeating-linear-gradient(176deg,rgba(150,90,40,.07) 0 3px,transparent 3px 11px),linear-gradient(180deg,#f6d29c,#e8b16f);
+  border:3px solid #c88a4c;box-shadow:inset 0 3px 0 rgba(255,255,255,.55),inset 0 -5px 0 rgba(150,90,40,.25),0 8px 18px rgba(120,70,20,.25)}
+.qx-sign::before,.qx-sign::after{content:"";position:absolute;top:14px;width:9px;height:9px;border-radius:50%;background:#9b6430;box-shadow:inset 0 1px 1px rgba(0,0,0,.35)}
+.qx-sign::before{right:12px}.qx-sign::after{left:12px}
+.qx-t1{display:block;font-size:clamp(1.15rem,5vw,2rem);font-weight:800;line-height:1.15;color:#1f2a66;text-shadow:0 2px 0 rgba(255,255,255,.7)}
+.qx-t2{display:block;font-size:clamp(1.45rem,6.4vw,2.7rem);font-weight:800;line-height:1.15;
+  background:linear-gradient(180deg,#a04ff0,#5b2bc4);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 2px 0 #fff) drop-shadow(0 -1px 0 #fff)}
+.qx-rib{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:6px;margin:-16px auto 0;width:fit-content;max-width:94%;
+  padding:7px 26px;background:linear-gradient(180deg,#fff8e4,#f6e6bf);color:#2b2f5c;font-weight:800;font-size:clamp(.82rem,3.4vw,1.02rem);
+  clip-path:polygon(0 0,100% 0,96% 50%,100% 100%,0 100%,4% 50%);filter:drop-shadow(0 3px 3px rgba(120,80,20,.25))}
+.qx-rib .s{font-size:1.15em;line-height:1}
+.qx-rib .s img{width:1.25em;height:1.25em;vertical-align:-3px}
+
+/* ---------- المسار والبطاقات ---------- */
+.qx-path{position:relative;display:flex;flex-direction:column;gap:22px;padding:4px 0 6px}
+.qx-path::before{content:"";position:absolute;top:30px;bottom:30px;left:50%;width:10px;transform:translateX(-50%);border-radius:9px;
+  background:linear-gradient(180deg,#d6e6ff,#c6dafc);box-shadow:inset 0 0 0 2px rgba(255,255,255,.7)}
+.qx-path>*{position:relative;z-index:1}
+.qx-path>*+*::before{content:"";position:absolute;top:-17px;left:50%;width:14px;height:14px;transform:translateX(-50%);border-radius:50%;
+  background:radial-gradient(circle at 40% 35%,#fff7c2,#ffcf3a 60%,#f2a80c);box-shadow:0 0 0 4px rgba(255,240,170,.75),0 0 14px #ffd74d;z-index:2}
+
+.qx-card{--c:#3aa34a;--c2:#2b8a3a;--bg:#f3fbea;display:flex;align-items:center;gap:10px;width:100%;min-height:88px;padding:10px 12px;
+  border-radius:999px;border:4px solid var(--c);background:linear-gradient(180deg,#fff,var(--bg));color:#1d2556;text-align:center;
+  box-shadow:0 5px 0 var(--c2),0 10px 18px rgba(40,40,110,.14);cursor:pointer;font:inherit;list-style:none;
+  transition:transform .15s ease,box-shadow .15s ease}
+.qx-card::-webkit-details-marker{display:none}
+.qx-card:hover{transform:translateY(-2px)}
+.qx-card:active{transform:translateY(3px);box-shadow:0 2px 0 var(--c2),0 5px 10px rgba(40,40,110,.14)}
+.qx-ic{flex:0 0 auto;width:76px;height:64px;display:grid;place-items:center;margin-inline-start:4px}
+.qx-ic img{max-width:76px;max-height:66px;width:auto;height:auto;filter:drop-shadow(0 4px 4px rgba(0,0,0,.18))}
+.qx-ic .qx-em{font-size:2.4rem;line-height:1}
+.qx-txt{flex:1 1 auto;min-width:0;display:grid;gap:2px}
+.qx-txt b{font-size:clamp(1.08rem,4.6vw,1.45rem);font-weight:800;color:var(--c2);line-height:1.25}
+.qx-txt small{font-size:clamp(.74rem,3vw,.92rem);font-weight:700;color:#3a3f6e;line-height:1.35}
+.qx-txt .en{display:block;font-size:.78em;color:#6a6f9b;direction:ltr}
+.qx-badge{flex:0 0 auto;display:grid;place-items:center;min-width:58px;padding:5px 8px;border-radius:14px;background:var(--c);color:#fff;
+  box-shadow:inset 0 -3px 0 rgba(0,0,0,.15);line-height:1.1}
+.qx-badge small{font-size:.78rem;font-weight:800}
+.qx-badge b{font-size:1.05rem;font-weight:800;display:flex;align-items:center;gap:3px}
+.qx-badge b img{width:1.05em;height:1.05em}
+.qx-go{flex:0 0 auto;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:#fff;
+  background:radial-gradient(circle at 35% 30%,color-mix(in srgb,var(--c) 70%,#fff),var(--c) 65%);box-shadow:0 4px 0 var(--c2),inset 0 2px 0 rgba(255,255,255,.4)}
+.qx-go svg{width:26px;height:26px;transition:transform .25s ease}
+details[open]>.qx-card .qx-go svg{transform:rotate(90deg)}
+.qx-card.locked{filter:grayscale(.65);opacity:.8}
+
+/* الألوان السبعة بترتيب الصورة */
+.qx-c0{--c:#43a83b;--c2:#2d8a2a;--bg:#f2fbe6}
+.qx-c1{--c:#2f7de1;--c2:#1f5fbd;--bg:#ecf4ff}
+.qx-c2{--c:#8a4fe0;--c2:#6a33c2;--bg:#f4edff}
+.qx-c3{--c:#f08a24;--c2:#c86a10;--bg:#fff3e4}
+.qx-c4{--c:#17a5a0;--c2:#0f807c;--bg:#e8faf8}
+.qx-c5{--c:#5f5ae0;--c2:#4540bf;--bg:#efeeff}
+.qx-c6{--c:#e6a21b;--c2:#bb7f0c;--bg:#fff8e2}
+.qx-c7{--c:#e5517f;--c2:#bf3460;--bg:#ffeef4}
+
+/* مكعّبات الحروف (أ ب ت / A B C / ١ ٢ ٣) */
+.qx-blocks{position:relative;display:block;width:74px;height:60px}
+.qx-blocks i{position:absolute;display:grid;place-items:center;width:34px;height:34px;border-radius:8px;font-style:normal;font-weight:800;font-size:1.25rem;color:#fff;
+  box-shadow:inset 0 -4px 0 rgba(0,0,0,.18),0 3px 5px rgba(0,0,0,.2);font-family:inherit}
+.qx-blocks .b0{right:22px;top:-2px;background:#f7b733;transform:rotate(8deg);z-index:1}
+.qx-blocks .b1{left:0;top:26px;background:#2f8be8;transform:rotate(-6deg)}
+.qx-blocks .b2{right:0;top:28px;background:#ef5b8c;transform:rotate(5deg)}
+
+/* محتوى المرحلة عند فتحها */
+.qx-path details>.list,.qx-path details>.acad-lz-wrap,.qx-path details>div:not(.qx-card){margin:12px 6px 2px;padding:10px;border-radius:22px;background:rgba(255,255,255,.92);
+  border:3px solid color-mix(in srgb,var(--c,#8a4fe0) 45%,#fff);box-shadow:0 6px 16px rgba(40,40,110,.12)}
+.qx-path details.qx-c0,.qx-path details.qx-c1,.qx-path details.qx-c2,.qx-path details.qx-c3,.qx-path details.qx-c4,.qx-path details.qx-c5,.qx-path details.qx-c6,.qx-path details.qx-c7{background:none;border:0;box-shadow:none;padding:0;margin:0}
+
+/* عناصر إضافية فوق المسار (الخطوة التالية، المستوى) */
+.qx-extra{display:grid;gap:10px;margin:0 0 16px}
+.qx-extra>*{margin:0}
+.qx-pill{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:22px;background:rgba(255,255,255,.93);border:3px solid #ffd469;
+  box-shadow:0 4px 0 #f1b739,0 8px 16px rgba(40,40,110,.12);color:#1d2556;font:inherit;text-align:start;cursor:pointer}
+.qx-pill .e{font-size:1.9rem;line-height:1}.qx-pill .e img{width:42px;height:42px}
+.qx-pill b{display:block;font-size:1.05rem;font-weight:800}.qx-pill small{display:block;color:#4a4f7d;font-weight:700}
+.qx-pill>span:nth-child(2){flex:1}
+
+/* ---------- لافتة النهاية ---------- */
+.qx-foot{display:flex;justify-content:flex-end;margin:26px 4px 6px}
+.qx-post{position:relative;padding:12px 18px 14px;border-radius:12px;transform:rotate(-4deg);text-align:center;font-weight:800;font-size:1.05rem;line-height:1.35;color:#5a3412;
+  background:repeating-linear-gradient(178deg,rgba(150,90,40,.08) 0 3px,transparent 3px 10px),linear-gradient(180deg,#f2c98d,#dea461);border:3px solid #b9783d;
+  box-shadow:0 6px 12px rgba(110,60,20,.25)}
+.qx-post::after{content:"";position:absolute;left:50%;bottom:-34px;width:12px;height:34px;transform:translateX(-50%);background:linear-gradient(90deg,#9b6430,#b9783d);border-radius:0 0 4px 4px;z-index:-1}
+.qx-post .h{display:block;color:#7a3b16;font-size:1.3rem}
+
+/* ---------- مقاسات الشاشة ---------- */
+@media(max-width:420px){
+  .qx-top{min-height:128px}
+  .qx-sign{margin-inline-start:62px;padding:12px 8px 22px}
+  .qx-card{min-height:80px;gap:6px;padding:8px 8px;border-width:3px}
+  .qx-ic{width:58px;height:54px;margin-inline-start:2px}.qx-ic img{max-width:58px;max-height:54px}
+  .qx-blocks{transform:scale(.8);transform-origin:center}
+  .qx-go{width:44px;height:44px}.qx-go svg{width:22px;height:22px}
+  .qx-badge{min-width:48px;padding:4px 6px}.qx-badge small{font-size:.7rem}.qx-badge b{font-size:.95rem}
+}
+@media(min-width:760px){
+  #app .qx{max-width:860px;margin-inline:auto}
+  .qx-top{min-height:200px}
+  .qx-card{min-height:100px;padding:12px 18px}
+  .qx-ic{width:96px;height:78px}.qx-ic img{max-width:96px;max-height:80px}
+  .qx-go{width:60px;height:60px}
+}
+@media(prefers-reduced-motion:reduce){.qx-owl{animation:none}}
+
+/* لوحة محتوى عامة داخل صفحات التصميم (الإنجازات) */
+.qx-panel{padding:12px;border-radius:24px;background:rgba(255,255,255,.94);box-shadow:0 6px 18px rgba(40,40,110,.14);color:#1d2556}
+.qx-panel h3{color:#3b2a8a}
+.qx-extra .qx-pill .alt{flex:0 0 auto;margin:0;padding:8px 12px;font-size:.85rem}

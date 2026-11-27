@@ -207,11 +207,12 @@
 
   /* ---------- واجهة الأكاديمية ---------- */
   const hd = () => `<div class="acad-hd math"><span class="acad-ic">١٢٣</span><div><b>أكاديمية الرياضيات</b><small>أعداد • عمليات • هندسة • جبر</small></div><span class=acad-em>🧮</span></div>`;
+  const QH = { t1: 'أَكَادِيمِيَّةُ', t2: 'الرِّيَاضِيَّاتِ', sub: 'رِحْلَةٌ مُمْتِعَةٌ فِي عَالَمِ الْأَعْدَادِ وَالْأَشْكَالِ' };
   const back = () => `<button class=link onclick="home()">← الرئيسية</button>`;
   /* أول دخول: شاشة اختبار تحديد المستوى */
   function intro(d) {
     window.V = 'sec'; window.CS = 'math';
-    h(`<section class="sec math-intro">${back()}${hd()}
+    h(`<section class="sec math-intro${window.Quest ? ' qx' : ''}">${window.Quest ? Quest.head(QH) : back() + hd()}
       <div class=math-intro-card><span class=math-intro-owl>🦉</span>
         <h2>${g('أَهْلًا بِكَ', 'أَهْلًا بِكِ')} فِي أَكَادِيمِيَّةِ الرِّيَاضِيَّاتِ!</h2>
         <p>${g('قَبْلَ أَنْ نَبْدَأَ، سَنَعْرِفُ مُسْتَوَاكَ بِاخْتِبَارٍ قَصِيرٍ', 'قَبْلَ أَنْ نَبْدَأَ، سَنَعْرِفُ مُسْتَوَاكِ بِاخْتِبَارٍ قَصِيرٍ')}: ${D(d.place.length)} سؤالًا من المراحل الست (نحو ١٥ دقيقة). لا تظهر الإجابات إلا في النهاية، فأجب بهدوء.</p>
@@ -242,9 +243,20 @@
         const mst = s.units.filter(u => (uStat(s, u) || {}).mastered).length, sst = m.st[s.id], open = stageOpen(d, si);
         const pct = s.units.length ? Math.round(mst / s.units.length * 100) : 0;
         const test = `<button class="row math-stage-test" ${open ? `onclick="mathStageTest(${si})"` : 'disabled'}><span>${sst && sst.passed ? '🏆' : open ? '🏁' : '🔒'}</span><b>اختبار ${esc(s.name)}</b><small>${D(STAGE_Q)} سؤالًا من كل الوحدات${sst ? ` · أفضل نتيجة ${D(sst.best)}٪` : ''}</small></button>`;
+        if (window.Quest) return `<details class="qx-st qx-c${si % 8}">${Quest.card({ tag: 'summary', c: si, ic: Quest.STAGE.math[si] || '', t: esc(s.name), s: `${esc(s.level || '')} · ${D(s.units.length)} وَحَدَاتٍ${sst && sst.passed ? ' · 🏆' : ''}`, n: mst })}<div class=list>${us}${test}</div></details>`;
         return `<details class="math-stage" ${(next ? next.si : (place ? place.stage : 0)) === si ? 'open' : ''}><summary><span class=math-stage-n>${D(si + 1)}</span><b>${esc(s.name)}</b><small>${esc(s.level || '')}</small><i class=math-stage-bar><em style="width:${pct}%"></em></i><small>${D(mst)}/${D(s.units.length)} ${sst && sst.passed ? '🏆' : ''}</small></summary><div class=list>${us}${test}</div></details>`;
       }).join('');
       const tot = Object.values(m.u).reduce((a, x) => [a[0] + (x.ok || 0), a[1] + (x.n || 0)], [0, 0]);
+      if (window.Quest) {
+        h(`<section class="sec qx qx-math">${Quest.head(QH)}
+          <div class=qx-extra>
+            <div class=qx-pill><span class=e>${Quest.img('1f4cd')}</span><span><b>${place ? `${g('مُسْتَوَاكَ', 'مُسْتَوَاكِ')}: ${esc(d.stages[place.stage] ? d.stages[place.stage].name : '')}` : g('بَدَأْتَ مِنَ الْمَرْحَلَةِ الْأُولَى', 'بَدَأْتِ مِنَ الْمَرْحَلَةِ الْأُولَى')}</b><small>${g('أَتْقَنْتَ', 'أَتْقَنْتِ')} ${D(done)} مِنْ ${D(flat.length)} وَحْدَةً${tot[1] ? ` · ${g('دِقَّةُ إِجَابَاتِكَ', 'دِقَّةُ إِجَابَاتِكِ')} ${D(Math.round(tot[0] / tot[1] * 100))}٪` : ''}</small></span><button class=alt onclick="mathPlacement()">🎯 ${place ? 'أَعِدِ الِاخْتِبَارَ' : 'اِخْتِبَارُ الْمُسْتَوَى'}</button></div>
+            ${next ? `<button class="big math-next" onclick="mathUnit(${next.si},${next.ui})">▶️ ${g('تَابِعْ', 'تَابِعِي')}: ${esc(next.u.name)}</button>` : ''}
+            ${(m.wrong || []).length ? `<button class="alt math-rev" onclick="mathReview()">🔁 مراجعة أخطائي (${D(m.wrong.length)})</button>` : ''}
+          </div>
+          <div class=qx-path>${stg}</div>${Quest.foot()}</section>`);
+        return;
+      }
       h(`<section class=sec>${back()}${hd()}
         <div class="math-place-res"><span>📍</span><div><b>${place ? `مستواك: ${esc(d.stages[place.stage] ? d.stages[place.stage].name : '')}` : 'بدأت من المرحلة الأولى'}</b><small>أتقنت ${D(done)} من ${D(flat.length)} وحدة${tot[1] ? ` · دقّة إجاباتك ${D(Math.round(tot[0] / tot[1] * 100))}٪` : ''}</small></div><button class=alt onclick="mathPlacement()">🎯 ${place ? 'إعادة اختبار المستوى' : 'اختبار تحديد المستوى'}</button></div>
         ${next ? `<button class="big math-next" onclick="mathUnit(${next.si},${next.ui})">▶️ ${g('تَابِعْ', 'تَابِعِي')}: ${esc(next.u.name)}</button>` : ''}

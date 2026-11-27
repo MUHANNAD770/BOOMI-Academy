@@ -623,7 +623,7 @@ window.EnCoach = (() => {
       if (!window.P) return;
       const appEl = document.getElementById('app');
       if (!appEl) return;
-      if (window.V === 'sec' && window.CS === 'en' && !appEl.querySelector('.enhub')) {
+      if (!window.Quest && window.V === 'sec' && window.CS === 'en' && !appEl.querySelector('.enhub')) { /* المعلّم صار خارج الأكاديمية: teachers('en') */
         const sec0 = appEl.querySelector('.sec h2');
         if (sec0) {
           const st = stats() || {};

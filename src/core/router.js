@@ -23,6 +23,7 @@
     bankLesson: { cs: a => (a && a[2] === 'en' ? 'en' : 'ar') },
     bankReview: { cs: a => (a && a[0] === 'en' ? 'en' : 'ar') },
     bankPractice: { cs: a => (a && a[0] === 'en' ? 'en' : 'ar') },
+    teachers: { cs: 'les' },
     arTeach: { cs: 'ar' },
     enTeach: { cs: 'en' },
     teacher: { cs: 'set' },

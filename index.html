@@ -23,9 +23,10 @@ addEventListener('pointerup',go,{passive:true});addEventListener('touchend',go,{
 <meta property="og:description" content="منصة حروفي التعليمية الذكية مع المعلم بومي لتعلّم اللغة العربية واللغة الإنجليزية للأطفال من التأسيس إلى الإتقان.">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="src/styles/tokens.css?v=201" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="src/styles/base.css?v=202" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="src/styles/base.css?v=203" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="src/styles/features.css?v=201" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="src/styles/components.css?v=205" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="src/styles/quest.css?v=1" media="print" onload="this.media='all'">
 <link rel="icon" href="img/fav.png">
 <link rel="apple-touch-icon" href="img/icon.png">
 </head>
@@ -96,7 +97,7 @@ addEventListener('load',function(){setTimeout(tryHide,Math.max(0,1800-(Date.now(
 
 <script src="src/core/utils.js?v=200"></script>
 <script src="src/core/storage.js?v=203"></script>
-<script src="src/core/lazy.js?v=204"></script>
+<script src="src/core/lazy.js?v=205"></script>
 <script src="src/shared/sounds.js?v=201"></script>
 <script src="src/voice/lex.js?v=1"></script>
 <script src="src/voice/lex-ext.js?v=1"></script>
@@ -112,11 +113,11 @@ addEventListener('load',function(){setTimeout(tryHide,Math.max(0,1800-(Date.now(
 <script src="src/core/curriculum-core.js?v=201"></script>
 <script src="src/core/badges.js?v=200"></script>
 <script src="src/academies/arabic/quiz-ar.js?v=200"></script>
-<script src="src/academies/arabic/teacher-ar.js?v=200"></script>
+<script src="src/academies/arabic/teacher-ar.js?v=201"></script>
 <script src="src/academies/english/pron-en.js?v=200"></script>
 <script src="src/academies/english/quiz-en.js?v=200"></script>
-<script src="src/academies/english/teacher-en.js?v=200"></script>
-<script src="src/academies/math/math-academy.js?v=3"></script>
+<script src="src/academies/english/teacher-en.js?v=201"></script>
+<script src="src/academies/math/math-academy.js?v=4"></script>
 <script src="src/shared/home.js?v=200"></script>
 <script src="src/core/quiz.js?v=201"></script>
 <script src="src/assessment/exam-engine.js?v=200"></script>
@@ -131,11 +132,12 @@ addEventListener('load',function(){setTimeout(tryHide,Math.max(0,1800-(Date.now(
 <script src="src/shared/phase9.js?v=200"></script>
 <script src="src/shared/pull-refresh.js?v=200"></script>
 <script src="src/shared/sync.js?v=202"></script>
+<script src="src/shared/quest.js?v=1"></script>
 <script src="src/parent/parent-panel.js?v=205"></script>
 <script src="src/tutor/mascot.js?v=203"></script>
 <script src="src/tutor/boomi-ui.js?v=203"></script>
-<script src="src/core/nav.js?v=205"></script>
-<script src="src/core/router.js?v=205"></script>
+<script src="src/core/nav.js?v=206"></script>
+<script src="src/core/router.js?v=206"></script>
 <script src="lib/gsap.min.js?v=200"></script>
 <script src="src/shared/anim.js?v=201"></script>
 <script>
@@ -144,11 +146,19 @@ if ('serviceWorker' in navigator) {
   addEventListener('load', () => {
     const hadCtrl = !!navigator.serviceWorker.controller;
     let reloaded = false;
+    /* نسخة جديدة من الموقع: لا نعيد تحميل الصفحة فجأة أثناء التعلّم. نحدّث عند الخروج من التطبيق (الصفحة مخفية)،
+       ونعرض زرًا صغيرًا لمن يريد التحديث الآن */
     if (hadCtrl) {
+      const apply = () => { if (reloaded) return; reloaded = true; location.reload(); };
       navigator.serviceWorker.addEventListener('controllerchange', () => {
-        if (reloaded) return;
-        reloaded = true;
-        location.reload();
+        if (document.hidden) return apply();
+        document.addEventListener('visibilitychange', () => { if (document.hidden) apply(); });
+        if (!document.getElementById('upd-btn')) {
+          const b = document.createElement('button');
+          b.id = 'upd-btn'; b.type = 'button'; b.textContent = '✨ نسخة جديدة — اضغط للتحديث';
+          b.onclick = apply;
+          document.body.appendChild(b);
+        }
       });
     }
     navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).then(reg => {

@@ -1,7 +1,7 @@
 /* sw.js — ذاكرة العمل دون اتصال (Offline Cache) لمنصة حروفي */
 'use strict';
 
-const CACHE = 'hurufi-app-v218';
+const CACHE = 'hurufi-app-v219';
 const FONT_CSS = 'https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;800&display=swap';
 const FONTS = 'hurufi-fonts-v1';
 
@@ -22,6 +22,8 @@ const PRECACHE = [
   './src/styles/base.css',
   './src/styles/features.css',
   './src/styles/components.css',
+  './src/styles/quest.css',
+  './src/shared/quest.js',
   './src/core/utils.js',
   './src/core/storage.js',
   './src/core/lazy.js',
@@ -110,6 +112,7 @@ const OFFLINE = ["./",
 "./src/shared/mic.js",
 "./src/shared/phase9.js",
 "./src/shared/pull-refresh.js",
+"./src/shared/quest.js",
 "./src/shared/sounds.js",
 "./src/shared/sync.js",
 "./src/shared/voice.js",
@@ -119,6 +122,7 @@ const OFFLINE = ["./",
 "./src/styles/base.css",
 "./src/styles/components.css",
 "./src/styles/features.css",
+"./src/styles/quest.css",
 "./src/styles/tokens.css",
 "./src/tutor/boomi-ui.js",
 "./src/tutor/brain.js",
