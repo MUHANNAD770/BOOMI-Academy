@@ -287,12 +287,21 @@ body:has(#app .qx-scene){background:#bfe5ff}
 
 /* الطباعة / حفظ PDF: الشهادة وحدها على صفحة A4 أفقية — بلا القائمة العلوية ولا السفلية ولا الأزرار */
 @media print{
+  /* الشهادة تملأ الورقة بالطول أو بالعرض حسب اختيار الطابعة */
   @page{size:A4 landscape;margin:7mm}
   html,body{background:#fff!important;height:auto!important;min-height:0!important;overflow:visible!important;padding:0!important;margin:0!important}
   body>*:not(main),#app>*:not(.cert-page),.cert-page>.noprint,#qx-scene,#upd-btn{display:none!important}
   main#app,.cert-page{padding:0!important;margin:0!important;max-width:none!important;min-height:0!important;transform:none!important;animation:none!important}
-  #app .cert.cert2{margin:0!important;box-shadow:none!important;height:186mm;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;page-break-inside:avoid;break-inside:avoid;padding:14mm 16mm 10mm}
+  #app .cert.cert2{margin:0!important;box-shadow:none!important;height:195mm;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;page-break-inside:avoid;break-inside:avoid;padding:12mm 14mm 10mm}
   .cert-stats{grid-template-columns:repeat(4,1fr)!important}
+}
+@media print and (orientation:portrait){
+  /* ورق بالطول (الافتراضي في الجوال): الشهادة نفسها بالعرض كما تظهر في التطبيق، مُدارة لتملأ الصفحة كاملة */
+  @page{size:A4 portrait;margin:6mm}
+  main#app{position:static!important}
+  .cert-page{position:relative!important;width:197mm!important;height:284mm!important;overflow:hidden!important}
+  #app .cert.cert2{position:absolute!important;top:0;left:0;width:284mm;height:197mm;transform-origin:top left;transform:translateX(197mm) rotate(90deg)!important;padding:12mm 16mm 10mm}
+}
 }
 /* ورقة نتيجة السؤال في الاختبار: لا تغطيها البومة العائمة */
 body:has(#ex-sh.g) #mc,body:has(#ex-sh.r) #mc{display:none!important}
