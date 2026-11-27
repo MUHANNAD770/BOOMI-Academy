@@ -120,7 +120,17 @@
       if (!host || !window.MathAcademy) return;
       MathAcademy.load().then(() => { const e = document.getElementById('math-report-host'); if (e) e.innerHTML = mathHTML(MathAcademy.summary()); }).catch(() => {});
     }, 0);
-    return '<div id=math-report-host></div>';
+    return '<div id=math-report-host></div>' + tvHTML();
+  }
+  /* دروس الفيديو التفاعلية: ما شاهده الطالب ونتيجة أسئلة كل درس (P.tv) */
+  function tvHTML() {
+    const tv = (window.P && P.tv) || {}, ids = Object.keys(tv);
+    if (!ids.length) return `<div class=pdash id=tv-progress><h3>📺 دروس الفيديو التفاعلية</h3><p class=mut>لم يشاهد الطالب دروس الفيديو بعد.</p><button class=alt onclick="videos()">📺 فتح دروس الفيديو</button></div>`;
+    const name = id => { try { return (window.find && find(id) || {}).n || id; } catch (_) { return id; } };
+    const ok = ids.filter(id => (tv[id].best || 0) >= 85).length;
+    return `<div class=pdash id=tv-progress><h3>📺 دروس الفيديو التفاعلية</h3><p>شاهد ${D(ids.length)} درسًا · فهم ${D(ok)} منها (٨٥٪ فأكثر)</p>
+      <div class=list>${ids.sort((a, b) => (tv[b].d || 0) - (tv[a].d || 0)).slice(0, 12).map(id => `<div class=row><span>${(tv[id].best || 0) >= 85 ? '✅' : '🔁'}</span><b>${esc(name(id))}</b><small>${D(tv[id].best || 0)}٪ · ${D(tv[id].n || 1)} مرة</small></div>`).join('')}</div>
+      <button class=alt onclick="videos()">📺 فتح دروس الفيديو</button></div>`;
   }
   window.mathParentHTML = () => window.MathAcademy ? mathHTML(MathAcademy.summary()) : '';
 

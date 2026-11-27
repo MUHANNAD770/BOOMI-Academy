@@ -154,6 +154,7 @@
     Quest.card({ c: c0 + 1, ic: uiImg('img/ui/acad-en.webp', 'ABC'), t: 'أَكَادِيمِيَّةُ الْإِنْجِلِيزِيَّةِ', en: 'Letters • Phonics • Words • Grammar', go: "sec('en')" }),
     Quest.card({ c: c0 + 3, ic: uiImg('img/ui/acad-math.webp', '١٢٣'), t: 'أَكَادِيمِيَّةُ الرِّيَاضِيَّاتِ', s: 'أَعْدَادٌ • عَمَلِيَّاتٌ • هَنْدَسَةٌ • جَبْرٌ', go: 'mathAcademy()' })
   ];
+  const videoCard = c => Quest.card({ c, ic: Quest.img('1f4fa'), t: 'دُرُوسُ الْفِيدْيُو التَّفَاعُلِيَّةُ', s: 'حُرُوفٌ • كَلِمَاتٌ • نُطْقٌ — شَاهِدْ وَأَجِبْ بِالضَّغْطِ', go: 'videos()' });
   const teacherCards = c0 => [
     Quest.card({ c: c0, ic: Quest.img('1f469-200d-1f3eb'), t: 'مُعَلِّمُ الْعَرَبِيَّةِ', s: 'كَلِمَاتٌ جَدِيدَةٌ • نُطْقٌ • مُرَاجَعَةٌ ذَكِيَّةٌ', go: "teachers('ar')" }),
     Quest.card({ c: c0 + 1, ic: Quest.img('1f1ec-1f1e7'), t: 'مُعَلِّمُ الْإِنْجِلِيزِيَّةِ', en: 'English Smart Teacher', s: 'يَشْرَحُ بِالْعَرَبِيَّةِ أَوَّلًا', go: "teachers('en')" })
@@ -168,7 +169,7 @@
       const c = window.coach && coach();
       return { t2: 'الدُّرُوسُ', sub: fm('اِخْتَرْ أَكَادِيمِيَّتَكَ وَابْدَأْ رِحْلَتَكَ', 'اِخْتَارِي أَكَادِيمِيَّتَكِ وَابْدَئِي رِحْلَتَكِ'),
         extra: c ? `<div class=qx-extra><button class=qx-pill onclick="lesson('${c.u.id}')"><span class=e>${Quest.img('1f680')}</span><span><small>${fm('دَرْسُكَ التَّالِي', 'دَرْسُكِ التَّالِي')}</small><b>${esc(c.u.n)}</b></span></button></div>` : '',
-        body: `<div class=qx-path>${acadCards(0).join('')}${teacherCards(4).join('')}</div>` };
+        body: `<div class=qx-path>${acadCards(0).join('')}${videoCard(7)}${teacherCards(4).join('')}</div>` };
     },
     games: () => {
       const dc = dueN(), unres = window.ExamEngine ? ExamEngine.unresolvedMistakes() : [];
@@ -278,7 +279,7 @@
         { ic: Quest.img('1f468-200d-1f469-200d-1f467'), t: 'لَوْحَةُ وَلِيِّ الْأَمْرِ', s: `${D(dn)}/${D(us.length)} دُرُوسِ الْمَرْحَلَةِ`, go: 'parentPanel()' }
       ];
       h(`<section class="sec qx qx-home-pg">${Quest.head({ home: false, t1: fm('مَرْحَبًا بِكَ فِي', 'مَرْحَبًا بِكِ فِي'), t2: 'الْبُومَةِ التَّعْلِيمِيَّةِ', sub: fm('تَعَلَّمِ الْعَرَبِيَّةَ وَالْإِنْجِلِيزِيَّةَ وَالرِّيَاضِيَّاتِ بِمُتْعَةٍ', 'تَعَلَّمِي الْعَرَبِيَّةَ وَالْإِنْجِلِيزِيَّةَ وَالرِّيَاضِيَّاتِ بِمُتْعَةٍ') })}
-        ${nxQ}<div class=qx-path>${acadCards(0).join('')}${teacherCards(4).join('')}${more.map((x, i) => Quest.card({ ...x, c: (i + 6) % 8 })).join('')}</div>${Quest.foot()}</section>`);
+        ${nxQ}<div class=qx-path>${acadCards(0).join('')}${videoCard(7)}${teacherCards(4).join('')}${more.map((x, i) => Quest.card({ ...x, c: (i + 6) % 8 })).join('')}</div>${Quest.foot()}</section>`);
       return;
     }
     const tl = [

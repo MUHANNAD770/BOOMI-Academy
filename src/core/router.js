@@ -24,6 +24,8 @@
     bankReview: { cs: a => (a && a[0] === 'en' ? 'en' : 'ar') },
     bankPractice: { cs: a => (a && a[0] === 'en' ? 'en' : 'ar') },
     teachers: { cs: 'les' },
+    videos: { cs: 'les' },
+    video: { vol: 1, cs: 'les' },
     arTeach: { cs: 'ar' },
     enTeach: { cs: 'en' },
     teacher: { cs: 'set' },
