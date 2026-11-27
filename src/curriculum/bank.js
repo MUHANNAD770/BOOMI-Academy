@@ -56,7 +56,7 @@
   function coreBtn(u) {
     const open = !window.lessonUnlocked || lessonUnlocked(u);
     const ic = P.done[u.id] ? '✅' : !open ? '🔒' : '⭐';
-    return `<button class="row${u.id === rid() ? ' rec' : ''}${open ? '' : ' locked'}" onclick="lesson('${u.id}')"><span>${ic}</span><b>${esc(coreDisplayName(u))}</b><small>${P.sc[u.id] != null ? D(P.sc[u.id]) + '/٥' : (open ? '' : 'مقفل')}</small></button>`;
+    return `<button class="row${u.id === rid() ? ' rec' : ''}${open ? '' : ' locked'}" onclick="lesson('${u.id}')"><span>${ic}</span><b>${window.QxName ? QxName(coreDisplayName(u)) : esc(coreDisplayName(u))}</b><small>${P.sc[u.id] != null ? D(P.sc[u.id]) + '/٥' : (open ? '' : 'مقفل')}</small></button>`;
   }
 
   const BANK_LABEL = {
@@ -71,7 +71,7 @@
   };
   function bankBtn(sub, si, li, l, bk, locked) {
     const r = bk[key(sub, si, li)] || {};
-    if (locked) return `<button class="row locked" disabled aria-disabled="true" data-go="bankLesson(${si},${li},'${sub}')"><span>🔒</span><b>${esc((BANK_LABEL[sub + ':' + si + '.' + li] || [l.name])[0])}</b><small>${'أَتْقِنِ التَّدْرِيبَ السَّابِقَ أَوَّلًا'}</small></button>`;
+    if (locked) return `<button class="row locked" disabled aria-disabled="true" data-go="bankLesson(${si},${li},'${sub}')"><span>🔒</span><b>${esc((BANK_LABEL[sub + ':' + si + '.' + li] || [l.name])[0])}</b><small>🔒 بَعْدَ السَّابِقِ</small></button>`;
     const ov = BANK_LABEL[sub + ':' + si + '.' + li];
     const name = ov ? ov[0] : l.name;
     const en = ov ? ov[1] : (l.en || '');
