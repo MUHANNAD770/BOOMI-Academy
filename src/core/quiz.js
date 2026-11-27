@@ -301,7 +301,7 @@
         <i class="cc tl">✦</i><i class="cc tr">✦</i><i class="cc bl">✦</i><i class="cc br">✦</i>
         <div class=cert-hd>
           <img class=cert-owl src="img/ui/owl-book.webp" alt="بومي">
-          <div><small class=cert-org>الْبُومَةُ التَّعْلِيمِيَّةُ الذَّكِيَّةُ</small><h1>شَهَادَةُ إِنْجَازٍ</h1><span class=cert-rib>Certificate of Achievement</span></div>
+          <div><small class=cert-org>الْبُومَةُ التَّعْلِيمِيَّةُ الذَّكِيَّةُ</small><h1>شَهَادَةُ إِنْجَازٍ</h1></div>
           <img class=cert-cup src="img/3d/1f3c6.webp" alt="🏆">
         </div>
         <p class=cert-to>تُمْنَحُ هَذِهِ الشَّهَادَةُ ${g('لِلطَّالِبِ', 'لِلطَّالِبَةِ')}</p>
