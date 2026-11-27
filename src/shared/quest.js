@@ -27,9 +27,9 @@
     const act = tag === 'button' ? ` type="button"${o.go ? ` onclick="${at(o.go)}"` : ''}${o.locked ? ' aria-disabled="true"' : ''}` : '';
     const badge = o.n ? `<span class="qx-badge"><small>أتقن</small><b>${D(o.n)} ${img('2b50')}</b></span>` : (o.badge || '');
     return `<${tag} class="qx-card qx-c${(o.c || 0) % 8}${o.locked ? ' locked' : ''}"${act}>
-      <span class="qx-ic">${o.ic || ''}</span>${badge}
+      <span class="qx-ic">${o.ic || ''}${o.locked ? `<i class="qx-lock">${img('1f512', '')}</i>` : ''}</span>${badge}
       <span class="qx-txt"><b>${o.t}</b>${o.en ? `<span class="en">${o.en}</span>` : ''}${o.s ? `<small>${String(o.s).replace(/\s*·\s*/g, ' • ')}</small>` : ''}</span>
-      <span class="qx-go">${GO}</span>
+      <span class="qx-go">${o.locked ? img('1f512', 'مقفل') : GO}</span>
     </${tag}>`;
   }
 

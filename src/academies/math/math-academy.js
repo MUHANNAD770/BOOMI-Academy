@@ -282,7 +282,7 @@
         const mst = s.units.filter(u => (uStat(s, u) || {}).mastered).length, sst = m.st[s.id], open = stageOpen(d, si);
         const pct = s.units.length ? Math.round(mst / s.units.length * 100) : 0;
         const test = `<button class="row math-stage-test" ${open ? `onclick="mathStageTest(${si})"` : 'disabled'}><span>${sst && sst.passed ? '🏆' : open ? '🏁' : '🔒'}</span><b>اختبار ${esc(s.name)}</b><small>${D(STAGE_Q)} سؤالًا من كل الوحدات${sst ? ` · أفضل نتيجة ${D(sst.best)}٪` : ''}</small></button>`;
-        if (window.Quest) return `<details class="qx-st qx-c${si % 8}">${Quest.card({ tag: 'summary', c: si, ic: Quest.STAGE.math[si] || '', t: esc(s.name), s: `${esc(s.level || '')} · ${D(s.units.length)} وَحَدَاتٍ${sst && sst.passed ? ' · 🏆' : ''}`, n: mst })}<div class=list>${us}${test}</div></details>`;
+        if (window.Quest) return `<details class="qx-st qx-c${si % 8}">${Quest.card({ tag: 'summary', c: si, ic: Quest.STAGE.math[si] || '', t: esc(s.name), s: `${esc(s.level || '')} · ${D(s.units.length)} وَحَدَاتٍ${sst && sst.passed ? ' · 🏆' : ''}`, n: mst, locked: !open })}<div class=list>${us}${test}</div></details>`;
         return `<details class="math-stage" ${(next ? next.si : (place ? place.stage : 0)) === si ? 'open' : ''}><summary><span class=math-stage-n>${D(si + 1)}</span><b>${esc(s.name)}</b><small>${esc(s.level || '')}</small><i class=math-stage-bar><em style="width:${pct}%"></em></i><small>${D(mst)}/${D(s.units.length)} ${sst && sst.passed ? '🏆' : ''}</small></summary><div class=list>${us}${test}</div></details>`;
       }).join('');
       const tot = Object.values(m.u).reduce((a, x) => [a[0] + (x.ok || 0), a[1] + (x.n || 0)], [0, 0]);
