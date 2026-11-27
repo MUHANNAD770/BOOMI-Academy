@@ -235,6 +235,7 @@ window.ArCoach = (() => {
   function decorate() {
     try {
       if (!window.P || window.V !== 'sec' || window.CS !== 'ar') return;
+      if (window.Quest) return; /* المعلّم صار خارج الأكاديمية: صفحة «المعلّمون» من الرئيسية (teachers('ar')) */
       const appEl = document.getElementById('app');
       if (!appEl || appEl.querySelector('.arhub')) return;
       const h2 = appEl.querySelector('.sec h2') || appEl.querySelector('h2');

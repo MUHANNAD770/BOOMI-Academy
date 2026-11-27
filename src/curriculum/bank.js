@@ -185,7 +185,7 @@
       const h2 = document.getElementById(`acad-stages-${sub}`);
       if (!h2) return;
       const opened = new Set([...h2.querySelectorAll('details[data-stage-idx][open]')].map(el => +el.dataset.stageIdx));
-      if (!opened.size) opened.add(+((window.P && P.stage) || 0));
+      if (!opened.size && !window.Quest) opened.add(+((window.P && P.stage) || 0)); /* التصميم الجديد: كل المراحل بطاقات مغلقة كما في الصورة */
       renderAcademyDash(sub, d);
       const stages = buildUnifiedStages(sub, d);
       h2.innerHTML = stages.map(sp => {
@@ -193,6 +193,11 @@
         const content = isOpen
           ? sp.bodyHtml
           : (typeof window.lzList === 'function' ? lzList(sp.bodyHtml, 'acad-lz-wrap') : sp.bodyHtml);
+        /* تصميم «رحلة بومي» (src/shared/quest.js): بطاقة ملوّنة لكل مرحلة؛ عنوانها العربي، وسطر إنجليزي إن وُجد */
+        if (window.Quest) {
+          const [ta, te] = String(sp.title).split(' · ');
+          return `<details class="qx-st qx-c${sp.idx}" data-stage-idx="${sp.idx}"${isOpen ? ' open' : ''}>${Quest.card({ tag: 'summary', c: sp.idx, ic: (Quest.STAGE[sub] || Quest.STAGE.ar)[sp.idx] || '', t: esc(ta), en: te ? esc(te) : '', s: `${esc(sp.meta)} · ${D(sp.total)} دَرْسًا وَتَدْرِيبًا`, n: sp.done })}${content}</details>`;
+        }
         return `<details class="lesson-menu bank-st" data-stage-idx="${sp.idx}"${isOpen ? ' open' : ''}><summary><span><b>${ICON[sp.idx] || '📘'} ${esc(sp.title)}</b><small>${esc(sp.meta)} · ${D(sp.total)} درسًا وتدريبًا${sp.done ? ` · أُتقن ${D(sp.done)}` : ''}</small><i class=bank-pbar><b style="width:${sp.pctDone}%"></b></i></span><i>⌄</i></summary>${content}</details>`;
       }).join('');
     };
